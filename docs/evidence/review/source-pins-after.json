@@ -1,0 +1,10 @@
+{
+  "src/foundation/audit.ts": "730948ee0a1840885c8c8e7876f9fed5cead42c271d55f6a5f3ccbd1f06b7bec",
+  "src/contracts/schemas.ts": "e878ad12596dae43f8a5eb9796ea69f28ff1728f557735118a8113860b229d4b",
+  "src/contracts/canonical.ts": "ca63cec7f35446e159a8354c16a7ffd819654b181604aa8b32b4ed12cbda36c7",
+  "src/skills/catalog.ts": "bd1b6983623ae06985f67e8e2489aede943dcd1ba1554894ffc3affb277d335f",
+  "src/foundation/workflow.ts": "949d1da50f1f61fa76874eb1d18084b315cc6b3fa6df69c395fc2a6974f77899",
+  "src/cli.ts": "1dfa8573cfa71c79823d858a3c55036182d5de8c27d7df1fc89cf6ce6132827b",
+  "test/foundation.test.ts": "f61aecb663ef577e07cb8b8d8f101731e635c13e822f2303e0f5955d2ad560cd",
+  "docs/phase-1-acceptance.md": "9832cbda59a21ff17ff8d301b8587ae1dcbf92c0894a317a89677b9a11966a06"
+}

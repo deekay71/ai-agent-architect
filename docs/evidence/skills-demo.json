@@ -1,0 +1,45 @@
+{
+  "mode": "offline-fixture",
+  "discovered": [
+    {
+      "skillId": "fixture.local-review",
+      "version": "1.0.0",
+      "name": "Local review metadata fixture"
+    }
+  ],
+  "resolution": "eligible",
+  "binding": {
+    "schemaVersion": "0.5.0",
+    "bindingId": "binding:demo",
+    "taskId": "task:demo",
+    "planId": "plan:demo",
+    "artifactHash": "sha256:2afe7d4fc81cfabc2b1b321b30bc7a9737dff8928536c42b2946a992df603c14",
+    "skillId": "fixture.local-review",
+    "skillVersion": "1.0.0",
+    "descriptorDigest": "sha256:949bd58b16a33fcd592ea46ac330b9ebd06fcafa413dd7334e8361bc23e01fe3",
+    "projectProfileDigest": "sha256:064d2ec3d91691f490f01aefc5dc03e51e809f2757598691fd7d0a088ed54e5b",
+    "environmentDigest": "sha256:1e5fe73c792db9c8ef0d00ad6593e90e869bf5ed5297ac7ad9fb44720df0d24a",
+    "loadedResources": [
+      {
+        "path": "local-review/recipe.md",
+        "kind": "body",
+        "contentHash": "sha256:39f2cdaf03c1d2aaff8f06eef582097ad752a7f573d71049992fef12997d2783"
+      }
+    ],
+    "capabilityBindings": [
+      {
+        "capability": "repository.read",
+        "implementationRef": "fixture-read-only-adapter",
+        "implementationDigest": "sha256:f605a5bdb86733243e7f335ce787847fd39ccbb748976647867d0803197d793c",
+        "targetProjectId": "repo:fixture"
+      }
+    ],
+    "contextManifestRef": "manifest:demo",
+    "contextManifestDigest": "sha256:ef16159424e9f8213dd19e8917a87c42be56a81b1c8cbc302e2ea8aa153d8f00",
+    "certificationEvidenceRefs": [],
+    "policyReleaseId": null
+  },
+  "scriptsExecuted": 0,
+  "unityInvoked": false,
+  "dispatchAuthorized": false
+}

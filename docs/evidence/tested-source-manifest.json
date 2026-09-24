@@ -1,0 +1,106 @@
+{
+  "kind": "tested-source-files",
+  "createdAt": "2026-09-24T09:33:37.400042+00:00",
+  "files": [
+    {
+      "path": ".node-version",
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+    },
+    {
+      "path": "fixtures/contracts.ts",
+      "sha256": "e45c964c518968cbb02f48deef97a40f6b82611e149db34d13ee3f376505273d"
+    },
+    {
+      "path": "fixtures/foundation.ts",
+      "sha256": "b2f03890b3975cd143ec38e55967c6dcbe589b394b107b8285957659e6c28efc"
+    },
+    {
+      "path": "fixtures/skill-catalog/README.md",
+      "sha256": "92e6b04bbfa93c6baac1336a433fe030d4f1dba79208175b4eddabead9300424"
+    },
+    {
+      "path": "fixtures/skill-catalog/catalog.json",
+      "sha256": "487c2f0832d23894178f54affab88da14dbd0c91567c3a374c7844ff1f56b655"
+    },
+    {
+      "path": "fixtures/skill-catalog/catalog.pin.json",
+      "sha256": "fb9e2fd08ec6044b7d885bc44c75250a445642238699de316193a2d5a1165af9"
+    },
+    {
+      "path": "fixtures/skill-catalog/local-review/descriptor.json",
+      "sha256": "02b36fc1605feb85163c7be1d9fd6ae1bfc67258cda35a4f5c14be0d6cfc5624"
+    },
+    {
+      "path": "fixtures/skill-catalog/local-review/recipe.md",
+      "sha256": "39f2cdaf03c1d2aaff8f06eef582097ad752a7f573d71049992fef12997d2783"
+    },
+    {
+      "path": "fixtures/skill-catalog/local-review/reference.md",
+      "sha256": "1153c5cb8cf144495acb2c94200a5bc695ea79f48b63a1971feaeefc83e560d5"
+    },
+    {
+      "path": "package.json",
+      "sha256": "5fe0a4d9bd0ff28d3d6f2faca6fd5df89f80f3b543266416df4ca164a772d429"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "0e8f9db3a5ba6de2d9f8270fec66fff3683f90292021e0ca3fde77c1d9a67fd6"
+    },
+    {
+      "path": "scripts/dev.sh",
+      "sha256": "2e41ae9db5761c2c495b7363e24067fd5885f627d6cd62777a2712573d6e68df"
+    },
+    {
+      "path": "src/cli.ts",
+      "sha256": "1dfa8573cfa71c79823d858a3c55036182d5de8c27d7df1fc89cf6ce6132827b"
+    },
+    {
+      "path": "src/contracts/canonical.ts",
+      "sha256": "ca63cec7f35446e159a8354c16a7ffd819654b181604aa8b32b4ed12cbda36c7"
+    },
+    {
+      "path": "src/contracts/schemas.ts",
+      "sha256": "e878ad12596dae43f8a5eb9796ea69f28ff1728f557735118a8113860b229d4b"
+    },
+    {
+      "path": "src/foundation/audit.ts",
+      "sha256": "730948ee0a1840885c8c8e7876f9fed5cead42c271d55f6a5f3ccbd1f06b7bec"
+    },
+    {
+      "path": "src/foundation/permissions.ts",
+      "sha256": "4eb7c0cd3f22c89a9245f15c3c532d336ca6c60024a59820d4a1299e24f53765"
+    },
+    {
+      "path": "src/foundation/workflow.ts",
+      "sha256": "949d1da50f1f61fa76874eb1d18084b315cc6b3fa6df69c395fc2a6974f77899"
+    },
+    {
+      "path": "src/skills/catalog.ts",
+      "sha256": "bd1b6983623ae06985f67e8e2489aede943dcd1ba1554894ffc3affb277d335f"
+    },
+    {
+      "path": "test/contracts.test.ts",
+      "sha256": "1ac7d24189d63cf8cd6945b1ef722d39fbe5314f6658bafa5173c528a5a5809a"
+    },
+    {
+      "path": "test/foundation.test.ts",
+      "sha256": "f61aecb663ef577e07cb8b8d8f101731e635c13e822f2303e0f5955d2ad560cd"
+    },
+    {
+      "path": "test/permissions.test.ts",
+      "sha256": "32d2d64ea6b1e4b73ce5bd1787ea9ee21661681c143762f37419bcac00673c77"
+    },
+    {
+      "path": "test/skills.test.ts",
+      "sha256": "7927ca073c87284cec5d0cd9c578954edcfb8c88f0cadd5cf8fd8f071777e51e"
+    },
+    {
+      "path": "test/workflow-cli.test.ts",
+      "sha256": "efa9c76e25b5dfa40134e2962e83b6b5f26738928c69693009b4cbb9e8617ed6"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "fac5ce5399eb6bcf0c88ca96312a06ed4d6209b43b51a101652ff9d001136ca8"
+    }
+  ]
+}

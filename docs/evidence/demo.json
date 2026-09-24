@@ -1,0 +1,17 @@
+{
+  "mode": "offline-fixture",
+  "steps": [
+    "contract-preflight",
+    "fake-plan",
+    "fake-read-only-inspection",
+    "contract-audit"
+  ],
+  "conformance": {
+    "kind": "foundation-contract-conformance",
+    "valid": true,
+    "dispatchAuthorized": false,
+    "checkedContracts": 26,
+    "issues": []
+  },
+  "dispatchAuthorized": false
+}

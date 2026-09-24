@@ -1,0 +1,7 @@
+{
+  "src/foundation/audit.ts": "20752011ebcdf0601447fba24eb615fd631e4ab0ab25d93d2b22b415e7e357e1",
+  "src/contracts/schemas.ts": "32fb715bbf0408a83c9bf4a6aeed4d1c35fed95bc0a9a15cddedebf24bd99b4e",
+  "src/contracts/canonical.ts": "ca63cec7f35446e159a8354c16a7ffd819654b181604aa8b32b4ed12cbda36c7",
+  "src/skills/catalog.ts": "cf7e741130c399950a16cbc3cbb173119cd526a5347285f5c93282eae729d1ac",
+  "docs/phase-1-acceptance.md": "9832cbda59a21ff17ff8d301b8587ae1dcbf92c0894a317a89677b9a11966a06"
+}

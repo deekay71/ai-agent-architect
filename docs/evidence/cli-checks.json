@@ -1,0 +1,20 @@
+[
+  {
+    "command": "demo",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "output": "demo.json"
+  },
+  {
+    "command": "skills-demo",
+    "exitCode": 0,
+    "expectedExitCode": 0,
+    "output": "skills-demo.json"
+  },
+  {
+    "command": "demo --tamper",
+    "exitCode": 1,
+    "expectedExitCode": 1,
+    "output": "demo-tampered.json"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "new reviewed catalog version cannot reuse old gate",
+    "valid": false,
+    "codes": [
+      "gate.currentInputs"
+    ]
+  },
+  {
+    "name": "new observed profile cannot reuse old gate even if compatible",
+    "valid": false,
+    "codes": [
+      "gate.currentInputs"
+    ]
+  },
+  {
+    "name": "absent receipts cannot mask contradictory postconditions",
+    "valid": false,
+    "codes": [
+      "operation.receipt"
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.5.0",
+  "skillId": "fixture.local-review",
+  "version": "1.0.0",
+  "name": "Local review metadata fixture",
+  "source": {
+    "repository": "file:///local-fixtures/skill-catalog",
+    "revision": "sha256:e09a39bc1e70bcb23b7a56ced4959ccf1c0b8e467688f790477754583488cf3d",
+    "path": "local-review",
+    "license": "LicenseRef-Local-Inert-Fixture"
+  },
+  "contentDigest": "sha256:e09a39bc1e70bcb23b7a56ced4959ccf1c0b8e467688f790477754583488cf3d",
+  "resources": [
+    {
+      "kind": "body",
+      "path": "local-review/recipe.md",
+      "contentHash": "sha256:39f2cdaf03c1d2aaff8f06eef582097ad752a7f573d71049992fef12997d2783"
+    },
+    {
+      "kind": "reference",
+      "path": "local-review/reference.md",
+      "contentHash": "sha256:1153c5cb8cf144495acb2c94200a5bc695ea79f48b63a1971feaeefc83e560d5"
+    }
+  ],
+  "supportedTaskClasses": [
+    "code.review"
+  ],
+  "compatibility": {
+    "editorVersions": [],
+    "operatingSystems": [
+      "macOS",
+      "Linux"
+    ],
+    "buildTargets": [],
+    "requiredPackages": []
+  },
+  "requiredCapabilities": [
+    "repository.read"
+  ],
+  "inputRefs": [
+    "task.source-paths"
+  ],
+  "outputRefs": [
+    "review.findings"
+  ],
+  "checkRefs": [
+    "fixture.review-contract"
+  ],
+  "lifecycle": "reviewed"
+}

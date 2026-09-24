@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "entries": [
+    {
+      "descriptorPath": "local-review/descriptor.json",
+      "descriptorDigest": "sha256:949bd58b16a33fcd592ea46ac330b9ebd06fcafa413dd7334e8361bc23e01fe3"
+    }
+  ]
+}

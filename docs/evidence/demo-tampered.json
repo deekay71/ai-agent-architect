@@ -1,0 +1,25 @@
+{
+  "mode": "offline-fixture",
+  "steps": [
+    "contract-preflight-failed"
+  ],
+  "conformance": {
+    "kind": "foundation-contract-conformance",
+    "valid": false,
+    "dispatchAuthorized": false,
+    "checkedContracts": 26,
+    "issues": [
+      {
+        "code": "gate.issuer",
+        "path": "GateReport.issuerId",
+        "message": "Untrusted gate issuer"
+      },
+      {
+        "code": "gate.untrusted",
+        "path": "GateReport",
+        "message": "Content or reference does not match its canonical binding"
+      }
+    ]
+  },
+  "dispatchAuthorized": false
+}

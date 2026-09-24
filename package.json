@@ -1,0 +1,18 @@
+{
+  "name": "ai-agent-architect",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local foundations for a verified Unity agent architecture",
+  "type": "module",
+  "engines": { "node": ">=24.0.0 <25" },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test dist/test/*.test.js",
+    "check": "pnpm run build && pnpm run test",
+    "demo": "node dist/src/cli.js demo",
+    "schemas": "node dist/src/cli.js schemas"
+  },
+  "dependencies": { "zod": "4.1.12" },
+  "devDependencies": { "@types/node": "24.10.1", "typescript": "5.9.3" }
+}

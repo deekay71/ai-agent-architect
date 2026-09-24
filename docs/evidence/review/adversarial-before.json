@@ -1,0 +1,62 @@
+[
+  {
+    "name": "gate with OLD task/context input digests accepts CHANGED goal",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "gate with OLD task/context inputs accepts task + handoff path widening",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "ownership resource points to other project",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "context snapshot points to unrelated snapshot",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "readOnly result changed workspace digest",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "tool call grants commands outside plan allowedTools",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "committed operation has a failed matching attempt",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "skill swapped to arbitrary descriptor, binding self-resealed",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "incompatible skill profile accepted by integrated audit",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "unloaded body substituted with reference",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "unused Checkpoint node accepted",
+    "valid": true,
+    "issues": []
+  },
+  {
+    "name": "context evidence source/revision mismatched",
+    "valid": true,
+    "issues": []
+  }
+]

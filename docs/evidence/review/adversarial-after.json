@@ -1,0 +1,229 @@
+[
+  {
+    "name": "gate with OLD task/context input digests accepts CHANGED goal",
+    "valid": false,
+    "issues": [
+      {
+        "code": "task.authority",
+        "path": "TaskSpec",
+        "message": "Current task content differs from the reviewed task"
+      },
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      }
+    ]
+  },
+  {
+    "name": "gate with OLD task/context inputs accepts task + handoff path widening",
+    "valid": false,
+    "issues": [
+      {
+        "code": "task.authority",
+        "path": "TaskSpec",
+        "message": "Current task content differs from the reviewed task"
+      },
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "operation.permissions",
+        "path": "ToolCall.permissionScope",
+        "message": "Call paths, commands or network scope exceed the approved tool policy"
+      },
+      {
+        "code": "operation.argumentScope",
+        "path": "ToolCall.arguments.path",
+        "message": "Tool path argument exceeds its permission scope"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      }
+    ]
+  },
+  {
+    "name": "ownership resource points to other project",
+    "valid": false,
+    "issues": [
+      {
+        "code": "ownership.resource",
+        "path": "OwnershipRecord.resourceId",
+        "message": "Ownership is for a different project resource"
+      }
+    ]
+  },
+  {
+    "name": "context snapshot points to unrelated snapshot",
+    "valid": false,
+    "issues": [
+      {
+        "code": "context.snapshot",
+        "path": "ContextBundle.snapshotId",
+        "message": "Context is not bound to the selected project/revision/workspace snapshot"
+      },
+      {
+        "code": "operation.readOnlyWorkspace",
+        "path": "ToolResult.workspaceSnapshot",
+        "message": "Read-only operation changed the workspace snapshot"
+      }
+    ]
+  },
+  {
+    "name": "readOnly result changed workspace digest",
+    "valid": false,
+    "issues": [
+      {
+        "code": "operation.resultSnapshot",
+        "path": "ToolResult.workspaceSnapshot",
+        "message": "Result snapshot is absent from the selected project snapshot registry"
+      },
+      {
+        "code": "operation.readOnlyWorkspace",
+        "path": "ToolResult.workspaceSnapshot",
+        "message": "Read-only operation changed the workspace snapshot"
+      }
+    ]
+  },
+  {
+    "name": "tool call grants commands outside plan allowedTools",
+    "valid": false,
+    "issues": [
+      {
+        "code": "operation.permissions",
+        "path": "ToolCall.permissionScope",
+        "message": "Call paths, commands or network scope exceed the approved tool policy"
+      }
+    ]
+  },
+  {
+    "name": "committed operation has a failed matching attempt",
+    "valid": false,
+    "issues": [
+      {
+        "code": "operation.attemptResult",
+        "path": "OperationRecord.attempts",
+        "message": "Attempt terminal status, times or result reference contradict the ToolResult"
+      }
+    ]
+  },
+  {
+    "name": "skill swapped to arbitrary descriptor, binding self-resealed",
+    "valid": false,
+    "issues": [
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "skill.untrustedDescriptor",
+        "path": "SkillDescriptor",
+        "message": "Content or reference does not match its canonical binding"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      }
+    ]
+  },
+  {
+    "name": "incompatible skill profile accepted by integrated audit",
+    "valid": false,
+    "issues": [
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "skill.untrustedProfile",
+        "path": "ProjectProfile",
+        "message": "Content or reference does not match its canonical binding"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      },
+      {
+        "code": "skill.ineligible",
+        "path": "SkillDescriptor.compatibility",
+        "message": "editorVersion 9999.0.0 is not in the exact compatibility list"
+      }
+    ]
+  },
+  {
+    "name": "unloaded body substituted with reference",
+    "valid": false,
+    "issues": [
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "skill.untrustedDescriptor",
+        "path": "SkillDescriptor",
+        "message": "Content or reference does not match its canonical binding"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      },
+      {
+        "code": "skill.bodyNotLoaded",
+        "path": "SkillBinding.loadedResources",
+        "message": "The pinned skill body is not represented as loaded"
+      }
+    ]
+  },
+  {
+    "name": "unused Checkpoint node accepted",
+    "valid": false,
+    "issues": [
+      {
+        "code": "checkpoint.node",
+        "path": "Checkpoint",
+        "message": "Checkpoint node is outside the registered workflow/plan"
+      }
+    ]
+  },
+  {
+    "name": "context evidence source/revision mismatched",
+    "valid": false,
+    "issues": [
+      {
+        "code": "context.provenance",
+        "path": "ContextManifest.evidenceBindings",
+        "message": "Evidence source ID/revision is not registered in its canonical provenance"
+      },
+      {
+        "code": "gate.currentInputs",
+        "path": "GateReport.inputVersions",
+        "message": "Gate inputs omit or differ from the current task/context/plan/skill/profile/selection/environment"
+      },
+      {
+        "code": "source.reference",
+        "path": "SourceRecord.nonexistent-source",
+        "message": "Used source is absent"
+      },
+      {
+        "code": "skill.untrustedSelection",
+        "path": "SkillBinding",
+        "message": "Content or reference does not match its canonical binding"
+      }
+    ]
+  }
+]
