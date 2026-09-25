@@ -14,6 +14,10 @@ Explorer local có graph/backlinks và panel kiểu Obsidian, chỉ đọc snaps
 
 Đợt tiếp theo theo quyết định **chỉ chạy local** đã đạt **384/384 tests**, chạy đủ 960 comparison +120 control trials với mock: [test plan](docs/phase-3-test-plan.md), [kế hoạch đóng gate](docs/phase-3-closure-plan.md), [báo cáo và evidence mới](docs/phase-3-closure-report.md). Adapter OpenAI có token-count/structured output/usage accounting và spend ledger; profiles planning dùng `gpt-6-astra`, execution dùng `gpt-6-luna`. Phân vai này mới là cấu hình khởi điểm, chưa đo chất lượng model.
 
+Đợt sửa sau review đạt **422/422 tests, 0 fail/skip** từ source sạch, bổ sung error receipts có mã lỗi/HTTP status/request ID đã lọc, loại race giữa các lần count, pin và kiểm lại human-review evidence qua các async boundaries, chấm gathering tách khỏi reader, cùng audit nội dung dev/holdout. [Báo cáo sửa lỗi và xác minh](docs/phase-3-fixes-report.md) ghi evidence cho version mới; số 384 tests và campaign phía trên thuộc lần bàn giao trước. Report v2 báo coverage theo answerability/task class, giữ trường hợp chưa đo là `null`; không dùng mock để đóng gate Phase 3.
+
+Campaign mới `semantic-local-v2-fixes` hoàn tất 960 comparison +120 G controls, 1.350 mock calls và 0 provider calls; source/review/provider integrity ổn định. Gathering giữ đủ required evidence trên fixture, nhưng reader mock luôn abstain và các case unanswerable/conflict bị context block: chất lượng model vẫn chưa đo.
+
 ```sh
 ./scripts/dev.sh build
 ./scripts/dev.sh exec node dist/src/cli.js semantic-preflight fixtures/semantic-benchmark fixtures/semantic-config/local.json
@@ -97,6 +101,8 @@ mkdir -p .local
 | `src/context/` | Window/manifest, progressive skill loading, budget/compaction và current-source runtime guard |
 | `src/explorer/` | Graph/trace projection đã lọc scope, loopback HTTP chỉ đọc và proposal download |
 | `src/benchmark/` | Retrieval/reader/context fixture benchmark, oracle riêng và C# syntax spike giới hạn |
+| `src/evaluation/` | Semantic campaign F/R/C/G, dataset/split/review pins, gathering/reader scores, coverage và measurement spend |
+| `src/providers/` | OpenAI request/count/usage boundary, bounded transport và pinned-rate cost estimates |
 | `src/cli.ts` | CLI và các demo fixture |
 | `fixtures/` | Dữ liệu thử, authority tổng hợp và resource skill trơ |
 | `test/` | Kiểm schema, liên kết, negative cases, catalog và CLI |

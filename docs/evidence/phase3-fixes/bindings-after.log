@@ -1,0 +1,19 @@
+✔ review evidence changed during counting blocks dispatch and preserves pinned reviewer evidence (96.695958ms)
+✔ review drift after provider response rejects the answer but retains known usage settlement (82.457ms)
+✔ review removal after last trial prevents an integrity-clean final report (1440.608333ms)
+✔ generation failure OPENAI_HTTP_ERROR/401 retains sanitized diagnostics and unknown reservation (51.980875ms)
+✔ generation failure OPENAI_HTTP_ERROR/429 retains sanitized diagnostics and unknown reservation (43.046041ms)
+✔ generation failure OPENAI_HTTP_ERROR/503 retains sanitized diagnostics and unknown reservation (53.308333ms)
+✔ generation failure OPENAI_TIMEOUT/null retains sanitized diagnostics and unknown reservation (45.602792ms)
+✔ count failure records safe diagnostics without creating a billed generation attempt (36.270167ms)
+✔ untrusted exception payloads never enter error receipts or report (41.735959ms)
+✔ complete local campaign counts earlier compactions, separates reader controls, preserves immutable evidence and never claims model PASS (2346.008708ms)
+✔ sandbox reader and compactor run locally without filesystem or model access, labelled synthetic (60.720792ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2478.378708

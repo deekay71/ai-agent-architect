@@ -17,6 +17,16 @@ Người dùng chọn OpenAI/ChatGPT: model chất lượng cao cho planning, mo
 
 [Báo cáo mới](phase-3-closure-report.md), [test plan](phase-3-test-plan.md), [kế hoạch đóng gate](phase-3-closure-plan.md) là tài liệu tiếp nối baseline 327 tests. Đợt local mới đạt384/384tests,0fail/skip;960comparison+120controls hoàn tất,1.350mockcalls và0providercalls. Local fixture luôn abstain; model quality/provider tokens/cost vẫn chưa đo. Unknown nghiêm trọng vẫn block context, vì thế chưa đo reader abstention/conflict quality ở những case đó. Không hạ hard gate hoặc đổi status Phase 3 chỉ để đạt số test.
 
+## Đợt sửa sau review kết quả local
+
+Người dùng yêu cầu sửa bốn findings P2 và bổ sung thiếu sót. Bản sửa giữ chẩn đoán lỗi đã lọc trong call journals/report; count admission theo generation để recount cũ không hồi sinh quyền generation; khóa và tái kiểm human-review record/external evidence trước và sau async calls; chấm gathering độc lập reader cho mọi trial đã chuẩn bị context, kể cả reader bị block. Lỗi review drift dừng campaign và giữ receipt/chi phí đã phát sinh; không bỏ failed attempts hoặc đổi UNKNOWN thành miễn phí.
+
+Report `semantic-campaign-report/2` tách retrieval/selected evidence recall, precision và sufficiency khỏi reader quality; có coverage theo answerability/task class. `readerStrictPassRate` chỉ dùng scored trials, còn từng trial có gathering sufficiency để truy nguyên lỗi evidence. Không có required evidence thì recall/sufficiency là `null`; chưa có reader output không phải correct abstention. Mẫu số all-trial strictPass bảo thủ vẫn giữ, quality floor chưa được calibration không đổi. Citation nguồn optional vẫn kiểm revision khi xuất hiện, nhưng bỏ nguồn optional không làm fail mandatory revision check. Audit split dựa trên public question/history phát hiện bản sao exact/near giữa dev/holdout dù family/ID khác; các nghi vấn rộng hơn cần semantic review. Audit lexical sạch không chứng minh độc lập ngữ nghĩa.
+
+Source mới đạt **422/422 tests, 0 fail/skip**, 126 source files ổn định trước/sau clean run; bằng chứng và kết quả campaign của version mới nằm trong [báo cáo sửa lỗi](phase-3-fixes-report.md). Baseline 384 và campaign cũ ở trên được giữ nguyên làm lịch sử. Phạm vi vẫn chỉ local, không gọi API/key-check. T09/T10 vẫn Pass local; T19/T14 Not evaluated, T11 Replan và toàn Phase 3 chưa PASS.
+
+Campaign `semantic-local-v2-fixes` chạy đủ 960 main +120 G controls, 1.350 mock calls/0 provider calls; source/review/provider integrity true, không reserved/uncertain attempt. Gathering main có 816 required trial đủ evidence, 144 N/A; precision khoảng 0,48 do nguồn nhiễu. Main vẫn 630 reader outputs, 90 token block và 240 context block; unanswerable/conflict chưa có reader output. Không biến recall fixture cao hoặc review code sạch thành model acceptance.
+
 ## Mục tiêu và thứ tự bắt buộc
 Xây hạ tầng AI Agent Architect trước, nghiệm thu T22 rồi mới dùng hệ thống xây game Block Puzzle kiểu Block Blast từ đầu. Unity fixture nhỏ ở Phase 5 (P4 cũ) kiểm tra adapter, không phải gameplay. Giữ Context Engine / Planning Engine / Memory Engine; LLM Wiki, ADR và Experience nằm trong Memory.
 ## Các quyết định đã áp dụng
@@ -57,3 +67,5 @@ Hội thoại gốc và bộ 21 file được nhắc tới là nguồn lịch s�
 Bàn giao Phase 3: [Notion](https://app.notion.com/p/3e6a6c16b3dc81fb864ed042ed313b55), [Drive](https://drive.google.com/drive/folders/1J_9ASjL-YKWUFQCmsNk4EeOmcEvdHAe0). GitHub Phase2/3 vẫn chưa push; bản source và Git history được đóng gói riêng trên Drive.
 
 Bàn giao local tiếp nối: [Notion report](https://app.notion.com/p/3e6a6c16b3dc817e996dd2c20abd3cfe), [Notion test plan](https://app.notion.com/p/3e6a6c16b3dc81bd93c9f7c999882bd8), [Drive](https://drive.google.com/drive/folders/1C7ZQmtNnJyJafEABbt_je-1gZUuc42jE). Source/history/evidence và context được đóng gói; GitHub vẫn chưa push.
+
+Bàn giao sau sửa review: [Notion fixes](https://app.notion.com/p/3e6a6c16b3dc8180bc0cff5fc43cfd60), [Drive fixes](https://drive.google.com/drive/folders/18XOvGDcJnSmzxSNKH5G28WKOcRXecKuE). 422/422 clean tests và campaign 960+120 có source pins mới; GitHub chưa push.

@@ -1,0 +1,10 @@
+✔ complete local campaign counts earlier compactions, separates reader controls, preserves immutable evidence and never claims model PASS (1939.792959ms)
+✔ sandbox reader and compactor run locally without filesystem or model access, labelled synthetic (57.104458ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2062.835917

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "local-regression-reproduction/1",
+  "baselineCommit": "e82b42954cf291b369171069b652d1864365b63c",
+  "reproduction": "Copy one public development scenario into a holdout slot, keep the holdout ID, rename its family, and copy the evaluator record programmatically with the holdout ID.",
+  "execution": "Captured from the pre-fix compiled dataset module before rebuilding modified source. All changes were in a temporary dataset copy, removed after execution.",
+  "observedBeforeFix": {
+    "baselineAccepted": true,
+    "sealCreated": true,
+    "labelsPrinted": false
+  },
+  "regressionTest": "test/semantic-split-audit.test.ts: renaming case IDs and family labels cannot seal a dev scenario copied into holdout",
+  "expectedAfterFix": {
+    "publicLoadRejected": true,
+    "sealRejected": true,
+    "sealCreated": false
+  },
+  "fixtureMutation": false,
+  "apiCalls": 0,
+  "limitations": "This reproduces renamed lexical scenario leakage only. It does not establish semantic independence, human review, holdout freshness, or model quality."
+}

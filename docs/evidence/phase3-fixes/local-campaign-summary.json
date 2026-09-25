@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "semantic-campaign-report/2",
+  "campaignId": "semantic-local-v2-fixes",
+  "assurance": "mock",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "configDigest": "sha256:d10238b04352bc68b3594188b8463677d7370ebffa11731b6ff25c3dcd33aa90",
+  "implementationDigest": "sha256:dc0026e10d987c8dbe6421fe5a1106b0c5587b19fb8378949ac45d376ad1d5d5",
+  "stoppedReason": null,
+  "configAndSourceStable": true,
+  "reviewEvidenceStable": true,
+  "providerIdentityStable": true,
+  "campaignIntegrityStable": true,
+  "modelQualityMeasured": false,
+  "phaseGate": "Not evaluated",
+  "budget": {
+    "capMicros": 0,
+    "chargedMicros": 0,
+    "reservedAttempts": 0,
+    "uncertainAttempts": 0,
+    "frozen": false
+  },
+  "comparisonCoverage": {
+    "trials": 960,
+    "prepared": 960,
+    "contextBlocked": 240,
+    "tokenBlocked": 90,
+    "readerRequested": 630,
+    "scored": 630,
+    "unscored": 330,
+    "byAnswerability": {
+      "answerable": {
+        "trials": 720,
+        "prepared": 720,
+        "contextBlocked": 0,
+        "tokenBlocked": 90,
+        "readerRequested": 630,
+        "scored": 630,
+        "unscored": 90
+      },
+      "unanswerable": {
+        "trials": 144,
+        "prepared": 144,
+        "contextBlocked": 144,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 144
+      },
+      "conflict": {
+        "trials": 96,
+        "prepared": 96,
+        "contextBlocked": 96,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 96
+      },
+      "unknown": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      }
+    },
+    "byTaskClass": {
+      "infrastructure.operations": {
+        "trials": 960,
+        "prepared": 960,
+        "contextBlocked": 240,
+        "tokenBlocked": 90,
+        "readerRequested": 630,
+        "scored": 630,
+        "unscored": 330
+      }
+    },
+    "readerStrictPass": 0,
+    "readerStrictPassRate": 0,
+    "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+    "abstentionAndConflictReaderCoverage": false
+  },
+  "controlCoverage": {
+    "trials": 120,
+    "prepared": 120,
+    "contextBlocked": 30,
+    "tokenBlocked": 0,
+    "readerRequested": 90,
+    "scored": 90,
+    "unscored": 30,
+    "byAnswerability": {
+      "answerable": {
+        "trials": 90,
+        "prepared": 90,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "readerRequested": 90,
+        "scored": 90,
+        "unscored": 0
+      },
+      "unanswerable": {
+        "trials": 18,
+        "prepared": 18,
+        "contextBlocked": 18,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 18
+      },
+      "conflict": {
+        "trials": 12,
+        "prepared": 12,
+        "contextBlocked": 12,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 12
+      },
+      "unknown": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      }
+    },
+    "byTaskClass": {
+      "infrastructure.operations": {
+        "trials": 120,
+        "prepared": 120,
+        "contextBlocked": 30,
+        "tokenBlocked": 0,
+        "readerRequested": 90,
+        "scored": 90,
+        "unscored": 30
+      }
+    },
+    "readerStrictPass": 0,
+    "readerStrictPassRate": 0,
+    "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+    "abstentionAndConflictReaderCoverage": false
+  },
+  "splitAudit": {
+    "policy": {
+      "version": "semantic-split-audit/1",
+      "normalization": "NFKC + lowercase + Unicode letter/number tokens",
+      "similarity": "set Dice over tokens and adjacent token bigrams",
+      "minimumNearQuestionTokens": 6,
+      "minimumNearHistoryTokens": 6,
+      "nearQuestionTokenDice": 0.85,
+      "nearQuestionBigramDice": 0.65,
+      "nearHistoryBigramDice": 0.85,
+      "reviewQuestionTokenDice": 0.65,
+      "reviewQuestionBigramDice": 0.35,
+      "reviewHistoryBigramDice": 0.5
+    },
+    "publicCaseDigest": "sha256:8025e8ac4fa6abd2be0abbf1959e7da7c9c5b4c740e61a088df9bcc99c053b2d",
+    "status": "clear",
+    "comparedPairs": 200,
+    "suspectedPairs": [],
+    "humanSemanticReviewRequired": true,
+    "auditDigest": "sha256:38e8179940c47a327cb713164beea61efd8d748bf2d3b1904e78728ec8f14f7b"
+  },
+  "reportPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/semantic-local-v2-fixes-run1/report.json",
+  "reportSha256": "4a316f4dd93ab9aebaf7895f04fcef4b8b08f1273cfd82179932d965682a0e38",
+  "plannedMain": 960,
+  "plannedControls": 120,
+  "main": {
+    "trials": 960,
+    "outcomes": {
+      "completed": 630,
+      "token-budget-blocked": 90,
+      "context-blocked": 240
+    },
+    "strictPass": 0,
+    "canonicalLoss": 0,
+    "retrieved": {
+      "evaluated": 960,
+      "requiredCases": 816,
+      "noRequiredCases": 144,
+      "sufficientCases": 816,
+      "meanRecall": 1.0,
+      "meanPrecision": 0.484375,
+      "precisionDenominator": 960
+    },
+    "selected": {
+      "evaluated": 960,
+      "requiredCases": 816,
+      "noRequiredCases": 144,
+      "sufficientCases": 816,
+      "meanRecall": 1.0,
+      "meanPrecision": 0.4824479166666656,
+      "precisionDenominator": 960
+    }
+  },
+  "controls": {
+    "trials": 120,
+    "outcomes": {
+      "completed": 90,
+      "context-blocked": 30
+    },
+    "strictPass": 0,
+    "canonicalLoss": 0,
+    "retrieved": {
+      "evaluated": 120,
+      "requiredCases": 102,
+      "noRequiredCases": 18,
+      "sufficientCases": 102,
+      "meanRecall": 1.0,
+      "meanPrecision": 1.0,
+      "precisionDenominator": 102
+    },
+    "selected": {
+      "evaluated": 120,
+      "requiredCases": 102,
+      "noRequiredCases": 18,
+      "sufficientCases": 102,
+      "meanRecall": 1.0,
+      "meanPrecision": 1.0,
+      "precisionDenominator": 102
+    }
+  },
+  "mockGenerationCalls": 1350,
+  "providerCalls": 0,
+  "trialJournalEntries": 1080,
+  "callJournalEntries": 2790,
+  "allActualProviderTokensAndCostNull": true
+}

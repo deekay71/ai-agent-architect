@@ -112,7 +112,8 @@ export function createOpenAIProvider(options: OpenAIProviderOptions = {}): Model
   const maxRequestBytes = boundedOption(options.maxRequestBytes ?? 1_048_576, 20_971_520);
   const maxResponseBytes = boundedOption(options.maxResponseBytes ?? 2_097_152, 20_971_520);
   const assurance = options.fetch === undefined ? 'provider' : 'mock';
-  const counts = new Map<string, number>();
+  // Each object is a distinct admission generation, including while its count is pending.
+  const counts = new Map<string, { inputTokens: number | null }>();
 
   async function post(path: '' | '/input_tokens', body: string): Promise<{ raw: unknown; requestId: string | null }> {
     const controller = new AbortController();
@@ -169,18 +170,29 @@ export function createOpenAIProvider(options: OpenAIProviderOptions = {}): Model
     id: 'openai-responses/1', assurance,
     async countInput(request): Promise<InputTokenCount> {
       const pinned = snapshotRequest(request, maxRequestBytes);
+      const admission: { inputTokens: number | null } = { inputTokens: null };
+      // A recount revokes prior admission synchronously, before yielding to transport.
       counts.delete(pinned.requestDigest);
-      const { raw } = await post('/input_tokens', pinned.countBody);
-      if (!object(raw) || raw.object !== 'response.input_tokens' || !integer(raw.input_tokens)) failure('OPENAI_COUNT_INVALID');
       // Bound process-local admission evidence. Eviction requires recount, never a guessed count.
       if (counts.size >= 10_000) counts.delete(counts.keys().next().value!);
-      counts.set(pinned.requestDigest, raw.input_tokens);
-      return { inputTokens: raw.input_tokens, requestDigest: pinned.requestDigest, counterId: `${assurance}:openai:responses.input_tokens/1` };
+      counts.set(pinned.requestDigest, admission);
+      try {
+        const { raw } = await post('/input_tokens', pinned.countBody);
+        if (!object(raw) || raw.object !== 'response.input_tokens' || !integer(raw.input_tokens)) failure('OPENAI_COUNT_INVALID');
+        // A later count or eviction owns admission now; a late success cannot revive it.
+        if (counts.get(pinned.requestDigest) !== admission) failure('OPENAI_COUNT_SUPERSEDED');
+        admission.inputTokens = raw.input_tokens;
+        return { inputTokens: raw.input_tokens, requestDigest: pinned.requestDigest, counterId: `${assurance}:openai:responses.input_tokens/1` };
+      } catch (error) {
+        // An older failure must not revoke a newer successful count.
+        if (counts.get(pinned.requestDigest) === admission) counts.delete(pinned.requestDigest);
+        throw error;
+      }
     },
     async respond(request): Promise<ModelResult> {
       const pinned = snapshotRequest(request, maxRequestBytes);
-      const counted = counts.get(pinned.requestDigest);
-      if (counted === undefined) failure('OPENAI_COUNT_REQUIRED');
+      const counted = counts.get(pinned.requestDigest)?.inputTokens;
+      if (counted === undefined || counted === null) failure('OPENAI_COUNT_REQUIRED');
       const started = performance.now();
       const { raw, requestId } = await post('', pinned.responseBody);
       if (!object(raw) || raw.object !== 'response' || !responseId(raw.id) ||

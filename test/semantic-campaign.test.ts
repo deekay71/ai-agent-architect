@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { digest } from '../src/contracts/canonical.js';
-import { runSemanticCampaign, campaignPreflight } from '../src/evaluation/campaign.js';
+import { runSemanticCampaign, campaignPreflight, summarizeTrials } from '../src/evaluation/campaign.js';
 import { createSandboxMockProvider } from '../src/evaluation/mock-provider.js';
 import type { ModelProvider, ModelRequest } from '../src/providers/types.js';
 
@@ -56,6 +56,32 @@ test('complete local campaign counts earlier compactions, separates reader contr
     assert.ok(report.trials.every(t => t.providerTokens === null && t.costMicros === null));
     assert.ok(report.trials.every(t => t.canonicalPreserved));
     assert.ok(report.trials.some(t => t.status === 'context-blocked'));
+    assert.ok(report.trials.every(t => t.gathering !== null), 'gathering is scored even when reader is blocked');
+    const sufficientButAbstained = report.trials.filter(t => t.gathering?.selected.sufficient === true && t.answer?.disposition === 'abstain');
+    assert.ok(sufficientButAbstained.length > 0);
+    assert.ok(sufficientButAbstained.every(t => t.score?.strictPass === false));
+    assert.equal(report.comparisonCoverage.trials, preflight.plannedTrials);
+    assert.equal(report.comparisonCoverage.prepared, preflight.plannedTrials);
+    assert.equal(report.comparisonCoverage.scored + report.comparisonCoverage.unscored, preflight.plannedTrials);
+    assert.ok(report.comparisonCoverage.contextBlocked > 0);
+    assert.ok(report.comparisonCoverage.tokenBlocked > 0);
+    assert.equal(report.comparisonCoverage.abstentionAndConflictReaderCoverage, false);
+    for (const kind of ['unanswerable', 'conflict']) assert.equal(report.comparisonCoverage.byAnswerability[kind]!.scored, 0);
+    for (const group of report.summaries) {
+      assert.equal(group.gathering.evaluatedTrials, group.trials);
+      assert.equal(group.gathering.selected.requiredCases + group.gathering.selected.noRequiredCases, group.trials);
+      assert.equal(group.strictPassRateDenominator, 'all-trials-including-blocked');
+      assert.equal(group.coverage.readerStrictPassRate, group.coverage.scored ? 0 : null);
+    }
+    assert.equal(report.campaignIntegrityStable, true);
+    assert.equal(report.reviewEvidenceStable, true);
+    assert.equal(report.splitAudit.status, 'clear');
+    assert.equal(report.comparisonCoverage.byTaskClass['infrastructure.operations']!.trials, preflight.plannedTrials);
+    const sample = report.trials.find(t => t.score !== null)!;
+    const mixedClasses = summarizeTrials([sample, { ...sample, taskClass: 'infrastructure.recovery', score: null, answer: null }], preflight.config);
+    assert.equal(mixedClasses.length, 2, 'different task classes never share score denominators');
+    assert.equal(mixedClasses[0]!.coverage.scored, 1);
+    assert.equal(mixedClasses[1]!.coverage.scored, 0);
     for (const r of requests) for (const forbidden of ['acceptableAlternatives', 'expectedConstraints', 'requiredEvidenceIds', 'answerability']) {
       assert.equal(r.input.includes(`\"${forbidden}\"`), false);
     }

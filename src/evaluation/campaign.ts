@@ -8,10 +8,11 @@ import type { ModelProvider, ModelRequest, ModelResult } from '../providers/type
 import { estimateCostMicros, reserveCostMicros, isValidModelUsage } from '../providers/pricing.js';
 import { CampaignBudget } from './budget.js';
 import { CampaignConfigSchema, modelConfigVersion, type CampaignConfig, type ModelProfile } from './config.js';
-import { loadPublicDataset, loadEvaluatorOracle, loadHumanCalibrationReview, verifyDatasetSeal, SemanticAnswerSchema, type SemanticAnswer, type SemanticCase, type SemanticDocument } from './dataset.js';
-import { scoreSemanticAnswer, type SemanticScore } from './scoring.js';
+import { loadPublicDataset, loadEvaluatorOracle, loadHumanCalibrationReview, verifyDatasetSeal, SemanticAnswerSchema, type HumanCalibrationStatus, type SemanticAnswer, type SemanticCase, type SemanticDocument, type SemanticGold } from './dataset.js';
+import { scoreSemanticAnswer, scoreGatheringEvidence, type SemanticScore, type GatheringEvidenceScore } from './scoring.js';
 import { applyCompaction, prepareContext, type ContextArm } from './context-arms.js';
 import { wilsonInterval } from '../benchmark/engine.js';
+import { sanitizeCampaignError, type CampaignErrorReceipt, type CallBoundary } from './error-receipt.js';
 
 export const ANSWER_SCHEMA: Record<string, unknown> = { type: 'object', additionalProperties: false,
   properties: { disposition: { type: 'string', enum: ['answer', 'abstain'] }, answer: { type: ['string', 'null'] },
@@ -32,14 +33,17 @@ export function parseReaderAnswer(value: unknown): SemanticAnswer {
 export interface CampaignCall {
   stage: string; requestDigest: string; countedInputTokens: number | null; counterId: string | null;
   result: ModelResult | null; status: string; reservedMicros: number | null; measuredMicros: number | null;
+  error: CampaignErrorReceipt | null; errorDigest: string | null;
 }
 export interface SemanticTrial {
-  trialId: string; caseId: string; family: string; split: string; profileId: string; role: string; model: string;
+  trialId: string; caseId: string; family: string; taskClass: string; split: string; profileId: string; role: string; model: string;
   arm: ContextArm | 'oracle-evidence'; compactionRounds: number; distractors: number; totalTokenBudget: number; repeat: number;
   status: string; calls: CampaignCall[]; unitsUsed: number; providerTokens: number | null; costMicros: number | null;
   latencyMs: number; windowDigests: string[]; selectedIds: string[]; eligibleIds: string[]; retrievedIds: string[];
   eligibleInputDigest: string; actualDistractors: number;
   canonicalPreserved: boolean; answer: SemanticAnswer | null; answerDigest: string | null; score: SemanticScore | null;
+  gathering: { retrieved: GatheringEvidenceScore; selected: GatheringEvidenceScore } | null;
+  evaluatorAnswerability: SemanticGold['answerability'] | null;
 }
 const json = (file: string, value: unknown) => writeFileSync(file, JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
 function append(file: string, value: unknown): void {
@@ -55,6 +59,13 @@ export function implementationPins(root: string): Record<string, string> {
   walk('src'); paths.push('fixtures/contracts.ts', 'package.json', 'pnpm-lock.yaml', 'tsconfig.json');
   return Object.fromEntries(paths.sort().map(p => [p, 'sha256:' + createHash('sha256').update(readFileSync(path.join(root, p))).digest('hex')]));
 }
+function pinHumanReview(status: HumanCalibrationStatus) {
+  const review = status.status === 'reviewed' ? status.review : null;
+  return { status: status.status, reviewDigest: status.status === 'reviewed' ? status.reviewDigest : null,
+    reviewerId: review?.reviewerId ?? null, reviewerKind: review?.reviewerKind ?? null,
+    method: review?.method ?? null, reviewedAt: review?.reviewedAt ?? null,
+    caseIds: review?.caseIds ?? [], evidenceRefs: review?.evidenceRefs ?? [] };
+}
 export function campaignPreflight(datasetRoot: string, configInput: unknown) {
   const config = CampaignConfigSchema.parse(configInput), datasetSealDigest = verifyDatasetSeal(datasetRoot);
   const dataset = loadPublicDataset(datasetRoot), review = loadHumanCalibrationReview(datasetRoot);
@@ -62,7 +73,7 @@ export function campaignPreflight(datasetRoot: string, configInput: unknown) {
   const reviewCoversSelectedCases = review.status === 'reviewed' && cases.every(c => review.review.caseIds.includes(c.id));
   return { config, configDigest: digest(config), datasetId: dataset.datasetId, datasetSealDigest,
     caseCount: cases.length, plannedControlTrials: cases.length * config.profiles.length * config.repeats * config.totalTokenBudgets.length, plannedTrials: cases.length * config.profiles.length * config.repeats * config.totalTokenBudgets.length * config.distractorLimits.length * (2 + config.compactionRounds.length),
-    datasetReview: review.status, reviewCoversSelectedCases,
+    datasetReview: review.status, reviewCoversSelectedCases, humanReview: pinHumanReview(review), splitAudit: dataset.splitAudit,
     liveReady: config.provider === 'openai' && reviewCoversSelectedCases && config.thresholds.calibrationStatus === 'human-calibrated',
     dispatchAuthorized: false as const, phaseGate: 'Not evaluated' as const };
 }
@@ -74,7 +85,11 @@ export async function runSemanticCampaign(options: {
   const preflight = campaignPreflight(options.datasetRoot, options.config), config = preflight.config;
   const provider = options.provider, providerId = provider.id, assurance = provider.assurance;
   const countMethod = provider.countInput, respondMethod = provider.respond;
-  const providerStable = () => provider.id === providerId && provider.assurance === assurance && provider.countInput === countMethod && provider.respond === respondMethod;
+  let providerDriftObserved = false;
+  const providerStable = () => {
+    if (provider.id !== providerId || provider.assurance !== assurance || provider.countInput !== countMethod || provider.respond !== respondMethod) providerDriftObserved = true;
+    return !providerDriftObserved;
+  };
   if ((config.provider === 'openai') !== (assurance === 'provider')) throw new Error('PROVIDER_ASSURANCE_MISMATCH');
   // No smoke run may silently expose a holdout. A separate operator review is required first.
   if (config.split === 'holdout' && !preflight.reviewCoversSelectedCases) throw new Error('HOLDOUT_REQUIRES_INDEPENDENT_REVIEW');
@@ -86,32 +101,47 @@ export async function runSemanticCampaign(options: {
   json(path.join(options.outputRoot, 'campaign-lock.json'), lock);
   const budget = new CampaignBudget(options.spendRoot, { ...config.authorization, assurance });
   const trials: SemanticTrial[] = [], journal = path.join(options.outputRoot, 'trials.jsonl'), callsFile = path.join(options.outputRoot, 'calls.jsonl');
+  let sourceDriftObserved = false, reviewDriftObserved = false;
   const sourceAndDatasetStable = () => {
-    try { return digest(implementationPins(options.repositoryRoot)) === digest(sourcePins) && verifyDatasetSeal(options.datasetRoot) === preflight.datasetSealDigest; }
-    catch { return false; }
+    try { if (digest(implementationPins(options.repositoryRoot)) !== digest(sourcePins) || verifyDatasetSeal(options.datasetRoot) !== preflight.datasetSealDigest) sourceDriftObserved = true; }
+    catch { sourceDriftObserved = true; }
+    return !sourceDriftObserved;
+  };
+  const reviewEvidenceStable = () => {
+    try { if (digest(pinHumanReview(loadHumanCalibrationReview(options.datasetRoot))) !== digest(preflight.humanReview)) reviewDriftObserved = true; }
+    catch { reviewDriftObserved = true; }
+    return !reviewDriftObserved;
+  };
+  const assertBindings = () => {
+    if (!providerStable()) throw new Error('CAMPAIGN_PROVIDER_DRIFT');
+    if (!sourceAndDatasetStable()) throw new Error('CAMPAIGN_BINDING_DRIFT');
+    if (!reviewEvidenceStable()) throw new Error('CAMPAIGN_HUMAN_REVIEW_DRIFT');
   };
   let stoppedReason: string | null = null;
   async function invoke(request: ModelRequest, profile: ModelProfile, trial: SemanticTrial, stage: string): Promise<ModelResult | null> {
     const call: CampaignCall = { stage, requestDigest: digest(request), countedInputTokens: null, counterId: null,
-      result: null, status: 'pending', reservedMicros: null, measuredMicros: null };
+      result: null, status: 'pending', reservedMicros: null, measuredMicros: null, error: null, errorDigest: null };
     trial.calls.push(call); const attemptId = `${config.campaignId}:${trial.trialId}:${stage}`;
-    let reserved = false;
+    let reserved = false; let boundary: CallBoundary = 'admission';
     try {
-      if (!providerStable() || !sourceAndDatasetStable()) throw new Error('CAMPAIGN_BINDING_DRIFT');
+      assertBindings(); boundary = 'count';
       const count = await countMethod.call(provider, structuredClone(request));
-      if (!providerStable() || !sourceAndDatasetStable()) throw new Error('CAMPAIGN_BINDING_DRIFT');
+      boundary = 'admission'; assertBindings();
       if (count.requestDigest !== call.requestDigest || !Number.isSafeInteger(count.inputTokens) || count.inputTokens < 0) throw new Error('COUNT_PIN_INVALID');
       call.countedInputTokens = count.inputTokens; call.counterId = count.counterId;
       if (count.inputTokens > profile.inputTokenLimit || trial.unitsUsed + count.inputTokens + request.maxOutputTokens + config.headroomTokens > trial.totalTokenBudget) {
         call.status = 'token-budget-blocked'; trial.status = call.status; return null;
       }
       call.reservedMicros = assurance === 'provider' ? reserveCostMicros(count.inputTokens, request.maxOutputTokens, profile.pricing) : 0;
+      boundary = 'reservation';
       budget.reserve(attemptId, call.requestDigest, call.reservedMicros); reserved = true;
       append(callsFile, { trialId: trial.trialId, attemptId, ...call, event: 'reserved-before-request' });
+      boundary = 'generation';
       const result = await respondMethod.call(provider, structuredClone(request)); call.result = result;
       const bound = providerStable() && result.requestDigest === call.requestDigest && result.model === request.model;
       const usage = bound && result.usage && isValidModelUsage(result.usage) ? result.usage : null;
       call.measuredMicros = usage ? (assurance === 'provider' ? estimateCostMicros(usage, profile.pricing) : 0) : null;
+      boundary = 'settlement';
       budget.settle(attemptId, call.requestDigest, call.measuredMicros, digest(result)); reserved = false;
       if (usage) trial.unitsUsed += usage.totalTokens;
       if (!usage) { stoppedReason = 'usage-or-response-binding-unknown'; call.status = 'usage-unknown'; }
@@ -120,23 +150,26 @@ export async function runSemanticCampaign(options: {
       }
       else call.status = result.status;
       if (!sourceAndDatasetStable()) { call.status = 'source-or-dataset-drift'; stoppedReason = call.status; }
+      if (!reviewEvidenceStable()) { call.status = 'human-review-drift'; stoppedReason = call.status; }
       if (budget.snapshot().frozen) stoppedReason ??= 'budget-frozen';
       if (call.status !== 'completed') { trial.status = call.status; return null; }
       return result;
-    } catch {
-      if (reserved) budget.settle(attemptId, call.requestDigest, null, 'request-error-billing-unknown');
+    } catch (error) {
+      call.error = sanitizeCampaignError(error, boundary); call.errorDigest = digest(call.error);
+      if (reserved) budget.settle(attemptId, call.requestDigest, null, call.errorDigest);
       call.status = reserved ? 'request-error-usage-unknown' : 'preflight-or-budget-error';
+      if (call.error.code === 'CAMPAIGN_HUMAN_REVIEW_DRIFT') call.status = 'human-review-drift';
       trial.status = call.status; stoppedReason = call.status; return null;
     } finally { append(callsFile, { trialId: trial.trialId, attemptId, ...call, event: 'request-outcome' }); }
   }
   async function executeTrial(task: SemanticCase, profile: ModelProfile, totalTokenBudget: number, distractors: number,
     repeat: number, arm: SemanticTrial['arm'], rounds: number, documents: SemanticDocument[]) {
     const start = performance.now(), trialId = `trial-${trials.length.toString().padStart(5, '0')}`;
-    const trial: SemanticTrial = { trialId, caseId: task.id, family: task.family, split: config.split, profileId: profile.id,
+    const trial: SemanticTrial = { trialId, caseId: task.id, family: task.family, taskClass: task.taskClass, split: config.split, profileId: profile.id,
       role: profile.role, model: profile.model, arm, compactionRounds: rounds, distractors, totalTokenBudget, repeat,
       status: 'pending', calls: [], unitsUsed: 0, providerTokens: null, costMicros: null, latencyMs: 0,
       windowDigests: [], selectedIds: [], eligibleIds: [], retrievedIds: [], eligibleInputDigest: digest([]), actualDistractors: 0,
-      canonicalPreserved: false, answer: null, answerDigest: null, score: null };
+      canonicalPreserved: false, answer: null, answerDigest: null, score: null, gathering: null, evaluatorAnswerability: null };
     try {
       let p = await prepareContext({ root: path.join(options.outputRoot, `memory-${trialId}`), documents, task, arm: arm === 'oracle-evidence' ? 'full' : arm,
         role: profile.role, modelConfigVersion: modelConfigVersion(profile), distractors, topK: config.topK, trialId });
@@ -193,42 +226,93 @@ export async function runSemanticCampaign(options: {
             if (stoppedReason) break controls;
           }
       }
-      for (const trial of trials) if (trial.answer) {
-        trial.score = scoreSemanticAnswer(gold.find(g => g.caseId === trial.caseId)!, trial.answer,
-          dataset.documents.filter(d => trial.selectedIds.includes(d.id)));
+      for (const trial of trials) {
+        const expected = gold.find(g => g.caseId === trial.caseId)!;
+        trial.evaluatorAnswerability = expected.answerability;
+        if (trial.windowDigests.length) trial.gathering = {
+          retrieved: scoreGatheringEvidence(expected, trial.retrievedIds, dataset.documents),
+          selected: scoreGatheringEvidence(expected, trial.selectedIds, dataset.documents),
+        };
+        if (trial.answer) trial.score = scoreSemanticAnswer(expected, trial.answer, dataset.documents.filter(d => trial.selectedIds.includes(d.id)));
       }
     } catch { stoppedReason = 'evaluator-or-dataset-integrity-error'; }
     const configAndSourceStable = sourceAndDatasetStable();
     if (!configAndSourceStable) stoppedReason = 'source-or-dataset-drift';
+    const humanReviewStable = reviewEvidenceStable(), providerIdentityStable = providerStable();
+    if (!humanReviewStable) stoppedReason = 'human-review-drift';
+    if (!providerIdentityStable) stoppedReason ??= 'provider-identity-drift';
     const comparisonTrials = trials.filter(t => t.arm !== 'oracle-evidence'), controls = trials.filter(t => t.arm === 'oracle-evidence');
     const summaries = summarizeTrials(comparisonTrials, config), controlSummaries = summarizeTrials(controls, config);
     const diagnostics = comparisonTrials.map(t => {
       const control = controls.find(c => c.caseId === t.caseId && c.profileId === t.profileId && c.totalTokenBudget === t.totalTokenBudget && c.repeat === t.repeat);
       return { trialId: t.trialId, controlTrialId: control?.trialId ?? null,
-        diagnosis: !t.score || !control?.score ? 'not-evaluated' : t.score.strictPass ? 'pass'
-          : !control.score.strictPass ? 'reader-or-fixture-failure' : 'context-or-retrieval-failure',
+        gatheringSufficient: t.gathering?.selected.sufficient ?? null,
+        diagnosis: t.gathering?.selected.sufficient === false ? 'gathering-insufficient'
+          : !t.score ? 'reader-not-evaluated' : t.score.strictPass ? 'pass'
+          : !control?.score ? 'reader-failed-control-not-evaluated'
+          : !control.score.strictPass ? 'reader-or-fixture-failure' : 'context-presentation-or-reader-failure',
         assurance: assurance === 'mock' ? 'fixture-only' : 'provider-observation-needs-human-review' };
     });
-    const report = { schemaVersion: 'semantic-campaign-report/1', campaignId: config.campaignId, datasetSealDigest: preflight.datasetSealDigest,
+    const report = { schemaVersion: 'semantic-campaign-report/2', campaignId: config.campaignId, datasetSealDigest: preflight.datasetSealDigest,
       configDigest: preflight.configDigest, implementationDigest: lock.implementationDigest, providerId, assurance,
+      humanReview: preflight.humanReview, reviewEvidenceStable: humanReviewStable, providerIdentityStable,
+      campaignIntegrityStable: configAndSourceStable && humanReviewStable && providerIdentityStable, splitAudit: preflight.splitAudit,
       datasetClassification: config.split === 'dev' ? 'DEVELOPMENT_EXPOSED_SET' : 'HOLDOUT_EVALUATED_NOW_EXPOSED',
       completedTrials: comparisonTrials.length, plannedTrials: preflight.plannedTrials,
       completedControlTrials: controls.length, plannedControlTrials: preflight.plannedControlTrials,
       stoppedReason, configAndSourceStable, summaries, controlSummaries, diagnostics,
+      comparisonCoverage: summarizeCoverage(comparisonTrials), controlCoverage: summarizeCoverage(controls),
       budget: budget.snapshot(), costBasis: 'usage-times-pinned-rates-not-an-invoice', modelQualityMeasured: assurance === 'provider' && trials.some(t => t.answer !== null),
       phaseGate: assurance === 'provider' && (stoppedReason || summaries.some(s => !s.thresholdsMet)) ? 'Replan' : 'Not evaluated',
-      missingAcceptance: ['Independent human task-outcome judgments/calibration', 'Fresh reviewed holdout with full matrix', 'Gate Controller admission and dependent T14 handoff review'],
-      limitations: ['Mock counter/reader are conformance fixtures, not model/token evidence', 'Conservative accepted-answer alternatives are not general semantic grading', 'Local broker/evaluator trusted; raw labels never enter provider payloads', 'Source freshness fixture is pinned; no production/Unity certification'],
+      missingAcceptance: ['Independent human task-outcome judgments/calibration', 'Fresh reviewed holdout with full matrix', 'Reader abstention/conflict coverage on independently reviewed admissible cases', 'Gate Controller admission and dependent T14 handoff review'],
+      limitations: ['Mock counter/reader are conformance fixtures, not model/token evidence', 'Conservative accepted-answer alternatives are not general semantic grading', 'Local broker/evaluator trusted; raw labels never enter provider payloads', 'Split similarity audit is heuristic; independent semantic review remains required', 'Reader-only pass rates are diagnostic; the provisional acceptance floor still uses all trials', 'Source freshness fixture is pinned; no production/Unity certification'],
       trials };
     json(path.join(options.outputRoot, 'report.json'), report);
     return report;
   } finally { budget.close(); }
 }
 
+export function summarizeCoverage(trials: readonly SemanticTrial[]) {
+  const counts = (group: readonly SemanticTrial[]) => ({
+    trials: group.length, prepared: group.filter(t => t.gathering !== null).length,
+    contextBlocked: group.filter(t => t.status === 'context-blocked').length,
+    tokenBlocked: group.filter(t => t.status === 'token-budget-blocked').length,
+    readerRequested: group.filter(t => t.calls.some(c => c.stage === 'reader' && c.reservedMicros !== null && c.status !== 'preflight-or-budget-error')).length,
+    scored: group.filter(t => t.score !== null).length, unscored: group.filter(t => t.score === null).length,
+  });
+  const byAnswerability = Object.fromEntries(['answerable', 'unanswerable', 'conflict', 'unknown'].map(kind => [kind,
+    counts(trials.filter(t => (t.evaluatorAnswerability ?? 'unknown') === kind))]));
+  const scored = trials.filter(t => t.score !== null), strictPass = scored.filter(t => t.score!.strictPass).length;
+  const byTaskClass = Object.fromEntries([...new Set(trials.map(t => t.taskClass))].sort().map(taskClass => [taskClass,
+    counts(trials.filter(t => t.taskClass === taskClass))]));
+  return { ...counts(trials), byAnswerability, byTaskClass, readerStrictPass: strictPass,
+    readerStrictPassRate: scored.length ? strictPass / scored.length : null,
+    readerRateDenominator: 'scored-trials-only-diagnostic-not-acceptance',
+    abstentionAndConflictReaderCoverage: ['unanswerable', 'conflict'].every(kind => trials.some(t => t.evaluatorAnswerability === kind && t.score !== null)),
+  };
+}
+
+function summarizeGathering(trials: readonly SemanticTrial[]) {
+  const evaluated = trials.filter(t => t.gathering !== null);
+  const summarize = (stage: 'retrieved' | 'selected') => {
+    const scores = evaluated.map(t => t.gathering![stage]);
+    const recall = scores.flatMap(s => s.recall === null ? [] : [s.recall]);
+    const precision = scores.flatMap(s => s.precision === null ? [] : [s.precision]);
+    return { requiredCases: recall.length, noRequiredCases: scores.length - recall.length,
+      sufficientCases: scores.filter(s => s.sufficient === true).length,
+      meanRecall: recall.length ? recall.reduce((a, b) => a + b, 0) / recall.length : null,
+      meanPrecision: precision.length ? precision.reduce((a, b) => a + b, 0) / precision.length : null,
+      precisionDenominator: precision.length };
+  };
+  return { evaluatedTrials: evaluated.length, notEvaluatedTrials: trials.length - evaluated.length,
+    retrieved: summarize('retrieved'), selected: summarize('selected') };
+}
+
 export function summarizeTrials(trials: readonly SemanticTrial[], config: CampaignConfig) {
-  const keys = [...new Set(trials.map(t => canonicalJson([t.profileId, t.arm, t.compactionRounds, t.distractors, t.totalTokenBudget])))];
+  const groupKey = (t: SemanticTrial) => canonicalJson([t.profileId, t.arm, t.compactionRounds, t.distractors, t.totalTokenBudget, t.taskClass]);
+  const keys = [...new Set(trials.map(groupKey))];
   return keys.map(key => {
-    const group = trials.filter(t => canonicalJson([t.profileId, t.arm, t.compactionRounds, t.distractors, t.totalTokenBudget]) === key);
+    const group = trials.filter(t => groupKey(t) === key);
     const unique = group.filter(t => t.repeat === 0), passed = unique.filter(t => t.score?.strictPass).length;
     const falseAcceptance = group.filter(t => t.score?.falseAcceptance).length;
     const constraintLoss = group.filter(t => !t.canonicalPreserved || t.score?.constraintsPreserved === false).length;
@@ -239,6 +323,7 @@ export function summarizeTrials(trials: readonly SemanticTrial[], config: Campai
     return { dimensions: JSON.parse(key) as unknown, trials: group.length, successfulReaderCalls: scored.length, falseAcceptance,
       outcomes: Object.fromEntries([...new Set(group.map(t => t.status))].map(status => [status, group.filter(t => t.status === status).length])),
       falseRejection: group.filter(t => t.score?.falseRejection).length, constraintLoss, invalidCitations, strictPassRate,
+      strictPassRateDenominator: 'all-trials-including-blocked', coverage: summarizeCoverage(group), gathering: summarizeGathering(group),
       uniqueCaseUncertainty: { cases: unique.length, strictPass: passed, wilson95: wilsonInterval(passed, unique.length), note: 'Authored cases are not a random population sample; repeats are not independent cases' },
       brierScore: brier, latencyP50Ms: percentile(.5), latencyP95Ms: percentile(.95),
       thresholdsMet: falseAcceptance <= config.thresholds.maxFalseAcceptance && constraintLoss <= config.thresholds.maxConstraintLoss

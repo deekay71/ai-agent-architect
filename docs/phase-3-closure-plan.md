@@ -12,6 +12,14 @@ Người dùng đã chọn dùng model OpenAI/ChatGPT, cấu hình chất lượ
 - T14 có promotion/review/invalidation code và tests, nhưng full handoff chờ T19 và evidence gate liên quan; không đóng task bằng implementation readiness.
 - Active release chỉ `runtime.fixture`. Roslyn/Unity/live source-fetch adapter vẫn không được suy là đã có.
 
+## S1 bổ sung sau review local
+
+Người dùng đã yêu cầu sửa các findings; phần này thuộc S1, không cần mở live/API. Gói sửa bao gồm error receipts có mã lỗi/HTTP status/request ID đã lọc; count generation chống request cũ cấp lại admission; pin/revalidate human review và external evidence; gathering scores tách khỏi reader, coverage theo answerability; audit exact/near-clone trên public question/history giữa các split. [Báo cáo sửa lỗi](phase-3-fixes-report.md) ghi source pins, tests và campaign mới; số 384 tests và 960/120 trials ở mục actual cuối là lịch sử trước bản sửa.
+
+Điều kiện đóng gói sửa: repro âm bị chặn, trường hợp hợp lệ vẫn chạy, report v2 giữ null/unknown đúng nghĩa và không giấu blocked trials; review/source/config pins ổn định; source sạch chạy suite và mock campaign phù hợp trên version mới. Các diagnostics không thay đổi quality floor hoặc tự cấp gate. Split audit lexical không thay human semantic/provenance review; khả năng reader trên nhóm context-blocked tiếp tục là chưa đo.
+
+Actual đợt sửa: **422/422 tests, 0 fail/skip**; campaign `semantic-local-v2-fixes` hoàn tất 960 main +120 G, 1.350 mock calls/0 provider calls, source/review/provider integrity ổn định. Review cuối không còn P1/P2; logs/pins và coverage chi tiết ở báo cáo sửa lỗi. S1 bổ sung đã được xác minh local; S2–S4 vẫn chưa thực hiện.
+
 ## Các gói công việc có thể chạy song song
 
 | Gói / owner | Đầu ra cần bàn giao | Đo nghiệm thu | Dependency / điểm dừng |
@@ -61,9 +69,9 @@ GitHub/Drive/Notion là nơi đồng bộ artifact, không thay nguồn chuẩn 
 
 Chưa có live benchmark mới hoặc quyết định PASS mới được tạo bởi tài liệu này. Trạng thái thực thi mới phải lấy từ report và artifacts trên đúng source pin sau khi run.
 
-## Actual scope local đã bàn giao — 25/09/2026
+## Actual scope local đã bàn giao trước review — 25/09/2026
 
-**S1 và mock campaign đã hoàn tất** theo yêu cầu hiện tại. [Clean-source evidence](evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-summary.json) đạt 384/384 tests, 0 fail/skip; source giữ nguyên trong run. Các lỗi reviewer về density giả, source dependency ngoài manifest và partial review mở holdout đã được sửa và có regression.
+**S1 và mock campaign đã hoàn tất tại lần bàn giao trước review**. [Clean-source evidence](evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-summary.json) đạt 384/384 tests, 0 fail/skip; source giữ nguyên trong run. Các lỗi reviewer về density giả, source dependency ngoài manifest và partial review mở holdout đã được sửa và có regression.
 
 [Local campaign](evidence/phase3-closure/local-campaign-summary.json) chạy đủ 960 main +120 G controls, source/config stable, không bị dừng lỗi. Main có 630 reader outputs, 90 token-budget blocks và 240 critical-context blocks; G có 90 outputs và 30 context blocks. Tổng 1.350 sandbox mock generation calls, 0 real-provider call, 0 canonical loss; cap/charged 0 và không còn usage reservation chưa giải quyết.
 

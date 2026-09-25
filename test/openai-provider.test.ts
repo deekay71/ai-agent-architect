@@ -31,6 +31,16 @@ function mock(...replies: unknown[]) {
   return { provider: createOpenAIProvider({ apiKey: 'unit-test-not-a-key', fetch: transport }), calls };
 }
 
+function deferredTransport() {
+  const calls: { url: string; resolve: (value: Response) => void }[] = [];
+  const transport: typeof fetch = async url => new Promise<Response>(resolve => { calls.push({ url: String(url), resolve }); });
+  const provider = createOpenAIProvider({ apiKey: 'unit-test-not-a-key', fetch: transport });
+  const release = (index: number, body: unknown, status = 200): void => {
+    calls[index]!.resolve(new Response(JSON.stringify(body), { status, headers: { 'x-request-id': 'req_count_race' } }));
+  };
+  return { provider, calls, release };
+}
+
 test('OpenAI adapter pins every input-bearing field in count and response, with no storage or truncation', async () => {
   const { provider, calls } = mock(count, response());
   assert.equal(provider.assurance, 'mock');
@@ -85,6 +95,92 @@ test('request snapshots do not race caller mutations during count', async () => 
   assert.equal((await pending).requestDigest, expected);
   await assert.rejects(provider.respond(mutable), /OPENAI_COUNT_REQUIRED/);
   assert.equal(calls, 1);
+});
+
+test('older count success cannot admit generation while a newer recount is pending or after it fails', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const older = assert.rejects(provider.countInput(request), /OPENAI_COUNT_SUPERSEDED/);
+  const newer = assert.rejects(provider.countInput(request), /OPENAI_HTTP_ERROR/);
+  release(0, count);
+  await older;
+  await assert.rejects(provider.respond(request), /OPENAI_COUNT_REQUIRED/);
+  release(1, { error: 'private body' }, 429);
+  await newer;
+  await assert.rejects(provider.respond(request), /OPENAI_COUNT_REQUIRED/);
+  assert.equal(calls.length, 2);
+});
+
+test('newer recount failure cannot be undone by a late older count success', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const older = assert.rejects(provider.countInput(request), /OPENAI_COUNT_SUPERSEDED/);
+  const newer = assert.rejects(provider.countInput(request), /OPENAI_HTTP_ERROR/);
+  release(1, { error: 'private body' }, 429);
+  await newer;
+  release(0, count);
+  await older;
+  await assert.rejects(provider.respond(request), /OPENAI_COUNT_REQUIRED/);
+  assert.equal(calls.length, 2);
+});
+
+test('a late older count cannot overwrite the count used for the latest successful admission', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const older = assert.rejects(provider.countInput(request), /OPENAI_COUNT_SUPERSEDED/);
+  const newer = provider.countInput(request);
+  release(1, { ...count, input_tokens: 31 });
+  assert.equal((await newer).inputTokens, 31);
+  release(0, count);
+  await older;
+  const generation = provider.respond(request);
+  release(2, response({ usage: { input_tokens: 31, input_tokens_details: { cached_tokens: 10 }, output_tokens: 20, output_tokens_details: { reasoning_tokens: 5 }, total_tokens: 51 } }));
+  assert.equal((await generation).status, 'completed');
+  assert.equal(calls.length, 3);
+});
+
+test('an older count failure cannot remove a newer successful admission', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const older = assert.rejects(provider.countInput(request), /OPENAI_HTTP_ERROR/);
+  const newer = provider.countInput(request);
+  release(1, count);
+  await newer;
+  release(0, { error: 'private body' }, 429);
+  await older;
+  const generation = provider.respond(request);
+  release(2, response());
+  assert.equal((await generation).status, 'completed');
+  assert.equal(calls.length, 3);
+});
+
+test('a recount revokes prior admission immediately and its completion restores exact sequential admission', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const initial = provider.countInput(request);
+  release(0, count);
+  await initial;
+  const recount = provider.countInput(request);
+  await assert.rejects(provider.respond(request), /OPENAI_COUNT_REQUIRED/);
+  release(1, count);
+  await recount;
+  const generation = provider.respond(request);
+  release(2, response());
+  assert.equal((await generation).status, 'completed');
+  assert.equal(calls.length, 3);
+});
+
+test('independent request counts remain concurrent and do not revoke each other', async () => {
+  const { provider, calls, release } = deferredTransport();
+  const different = { ...request, input: 'An independent request.' };
+  const pending = assert.rejects(provider.countInput(request), /OPENAI_HTTP_ERROR/);
+  const independent = provider.countInput(different);
+  assert.equal(calls.length, 2, 'both count requests dispatch before either completes');
+  release(1, count);
+  await independent;
+  const generation = provider.respond(different);
+  assert.equal(calls.length, 3, 'independent generation is admitted while the first count is pending');
+  release(2, response());
+  assert.equal((await generation).status, 'completed');
+  release(0, { error: 'private body' }, 429);
+  await pending;
+  await assert.rejects(provider.respond(request), /OPENAI_COUNT_REQUIRED/);
+  assert.equal(calls.length, 3);
 });
 
 test('malformed requests, non-JSON values, and extra provider capabilities fail before network', async () => {

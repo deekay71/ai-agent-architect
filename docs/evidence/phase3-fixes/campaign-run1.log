@@ -1,0 +1,29 @@
+{"semanticTrialsCompleted":100,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":200,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":300,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":400,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":500,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":600,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":700,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":800,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":900,"semanticTrialsPlanned":1080}
+{"semanticTrialsCompleted":1000,"semanticTrialsPlanned":1080}
+{
+  "report": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/semantic-local-v2-fixes-run1/report.json",
+  "campaignId": "semantic-local-v2-fixes",
+  "assurance": "mock",
+  "completedTrials": 960,
+  "plannedTrials": 960,
+  "completedControlTrials": 120,
+  "plannedControlTrials": 120,
+  "stoppedReason": null,
+  "modelQualityMeasured": false,
+  "phaseGate": "Not evaluated",
+  "budget": {
+    "capMicros": 0,
+    "chargedMicros": 0,
+    "reservedAttempts": 0,
+    "uncertainAttempts": 0,
+    "frozen": false
+  }
+}

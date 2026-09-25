@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "fix-review/1",
+  "baselineCommit": "e82b42954cf291b369171069b652d1864365b63c",
+  "sourceManifestDigest": "sha256:c6c570ee9f31705dd6443e61bc435267c68af379f26943031830d39fcbc63f3b",
+  "standards": {
+    "reviewer": "fix_dataset_split",
+    "actionableFindings": 0,
+    "sources": [
+      "docs/architecture.md",
+      "CONTEXT.md",
+      "docs/current-context.md",
+      "docs/phase-3-test-plan.md"
+    ],
+    "note": "Trust boundaries, fail-closed behavior, vocabulary, local-only scope and evidence preservation reviewed; no actionable new code smell."
+  },
+  "spec": {
+    "reviewer": "fix_count_race",
+    "remainingP1P2": 0,
+    "requirements": [
+      "R1 safe diagnostics",
+      "R2 overlapping counts",
+      "R3 human-review evidence pins",
+      "R4 gathering independent of reader",
+      "split content audit",
+      "answerability and task-class coverage"
+    ],
+    "minorFindingClosed": "Added taskClass to trial, summary dimensions and coverage plus regression before clean run."
+  },
+  "additionalFix": "Optional expectedRevision sources do not become mandatory citations; every cited/required revision stays checked. Four regression tests.",
+  "verification": {
+    "tests": 422,
+    "pass": 422,
+    "fail": 0,
+    "skip": 0,
+    "mainTrials": 960,
+    "controls": 120,
+    "providerCalls": 0
+  },
+  "limitations": [
+    "Local code review is not independent human dataset acceptance",
+    "No real-model quality measured; T19/T14 Not evaluated and T11 Replan"
+  ]
+}

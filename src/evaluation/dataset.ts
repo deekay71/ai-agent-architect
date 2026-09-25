@@ -3,6 +3,7 @@ import { existsSync, lstatSync, readFileSync, realpathSync, writeFileSync } from
 import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { z } from 'zod';
 import { canonicalJson, digest, digestOmitting } from '../contracts/canonical.js';
+import { auditSemanticSplits, type SemanticSplitAudit } from './split-audit.js';
 
 const text = z.string().trim().min(1);
 const hash = z.string().regex(/^sha256:[a-f0-9]{64}$/);
@@ -79,7 +80,7 @@ function rawDigest(bytes: Uint8Array): string { return `sha256:${createHash('sha
 function uniqueIds(items: { id: string }[], label: string): void {
   if (new Set(items.map(x => x.id)).size !== items.length) fail(`duplicate ${label} identifiers`);
 }
-function readPublic(root: string): { documents: SemanticDocument[]; cases: SemanticCase[]; datasetId: string } {
+function readPublic(root: string): { documents: SemanticDocument[]; cases: SemanticCase[]; datasetId: string; splitAudit: SemanticSplitAudit } {
   const manifest = ManifestSchema.parse(readJson(root, 'manifest.json'));
   const documents = z.array(SemanticDocumentSchema).min(1).parse(readJson(root, 'public/documents.json'));
   const cases = z.array(SemanticCaseSchema).parse(readJson(root, 'public/cases.json'));
@@ -90,7 +91,12 @@ function readPublic(root: string): { documents: SemanticDocument[]; cases: Seman
   const devFamilies = new Set(cases.filter(c => c.split === 'dev').map(c => c.family));
   if (cases.some(c => c.split === 'holdout' && devFamilies.has(c.family))) fail('scenario family leakage across splits');
   for (const c of cases) { uniqueIds(c.constraints, 'constraint'); uniqueIds(c.unknowns, 'unknown'); }
-  return { documents, cases, datasetId: manifest.datasetId };
+  const splitAudit = auditSemanticSplits(cases);
+  if (splitAudit.status === 'rejected') {
+    const pairs = splitAudit.suspectedPairs.filter(p => p.classification !== 'semantic-review');
+    fail(`scenario content leakage across splits (${splitAudit.policy.version}): ${canonicalJson(pairs)}`);
+  }
+  return { documents, cases, datasetId: manifest.datasetId, splitAudit };
 }
 function readOracle(root: string, data: ReturnType<typeof readPublic>): SemanticGold[] {
   const gold = z.array(SemanticGoldSchema).parse(readJson(root, 'evaluator/oracle.json'));

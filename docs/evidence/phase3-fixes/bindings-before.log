@@ -1,0 +1,222 @@
+✖ review evidence changed during counting blocks dispatch and preserves pinned reviewer evidence (916.153458ms)
+✖ review drift after provider response rejects the answer but retains known usage settlement (828.108667ms)
+✖ review removal after last trial prevents an integrity-clean final report (854.763083ms)
+✖ generation failure OPENAI_HTTP_ERROR/401 retains sanitized diagnostics and unknown reservation (39.514083ms)
+✖ generation failure OPENAI_HTTP_ERROR/429 retains sanitized diagnostics and unknown reservation (32.818667ms)
+✖ generation failure OPENAI_HTTP_ERROR/503 retains sanitized diagnostics and unknown reservation (32.912792ms)
+✖ generation failure OPENAI_TIMEOUT/null retains sanitized diagnostics and unknown reservation (33.273625ms)
+✖ count failure records safe diagnostics without creating a billed generation attempt (28.327292ms)
+✖ untrusted exception payloads never enter error receipts or report (31.121166ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 0
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2870.539166
+
+✖ failing tests:
+
+test at dist/test/semantic-campaign-bindings.test.js:48:1
+✖ review evidence changed during counting blocks dispatch and preserves pinned reviewer evidence (916.153458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  35 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:56:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:71:1
+✖ review drift after provider response rejects the answer but retains known usage settlement (828.108667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  35 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:76:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:87:1
+✖ review removal after last trial prevents an integrity-clean final report (854.763083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + null
+  - 'human-review-drift'
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:95:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'human-review-drift',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:104:5
+✖ generation failure OPENAI_HTTP_ERROR/401 retains sanitized diagnostics and unknown reservation (39.514083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'generation',
+  -   code: 'OPENAI_HTTP_ERROR',
+  -   httpStatus: 401,
+  -   kind: 'provider',
+  -   requestId: 'req_local_fixture'
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:112:20)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_HTTP_ERROR', httpStatus: 401, requestId: 'req_local_fixture', boundary: 'generation' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:104:5
+✖ generation failure OPENAI_HTTP_ERROR/429 retains sanitized diagnostics and unknown reservation (32.818667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'generation',
+  -   code: 'OPENAI_HTTP_ERROR',
+  -   httpStatus: 429,
+  -   kind: 'provider',
+  -   requestId: 'req_local_fixture'
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:112:20)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_HTTP_ERROR', httpStatus: 429, requestId: 'req_local_fixture', boundary: 'generation' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:104:5
+✖ generation failure OPENAI_HTTP_ERROR/503 retains sanitized diagnostics and unknown reservation (32.912792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'generation',
+  -   code: 'OPENAI_HTTP_ERROR',
+  -   httpStatus: 503,
+  -   kind: 'provider',
+  -   requestId: 'req_local_fixture'
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:112:20)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_HTTP_ERROR', httpStatus: 503, requestId: 'req_local_fixture', boundary: 'generation' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:104:5
+✖ generation failure OPENAI_TIMEOUT/null retains sanitized diagnostics and unknown reservation (33.273625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'generation',
+  -   code: 'OPENAI_TIMEOUT',
+  -   httpStatus: null,
+  -   kind: 'provider',
+  -   requestId: 'req_local_fixture'
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:112:20)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_TIMEOUT', httpStatus: null, requestId: 'req_local_fixture', boundary: 'generation' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:120:1
+✖ count failure records safe diagnostics without creating a billed generation attempt (28.327292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'count',
+  -   code: 'OPENAI_HTTP_ERROR',
+  -   httpStatus: 429,
+  -   kind: 'provider',
+  -   requestId: 'req_count_fixture'
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:132:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_HTTP_ERROR', httpStatus: 429, requestId: 'req_count_fixture', boundary: 'count' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at dist/test/semantic-campaign-bindings.test.js:138:1
+✖ untrusted exception payloads never enter error receipts or report (31.121166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   boundary: 'generation',
+  -   code: 'OPENAI_ERROR',
+  -   httpStatus: null,
+  -   kind: 'provider',
+  -   requestId: null
+  - }
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/semantic-campaign-bindings.test.js:146:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { kind: 'provider', code: 'OPENAI_ERROR', httpStatus: null, requestId: null, boundary: 'generation' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,25 @@
+✖ newer recount failure cannot be undone by a late older count success (8.775625ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44.292416
+
+✖ failing tests:
+
+test at dist/test/openai-provider.test.js:108:1
+✖ newer recount failure cannot be undone by a late older count success (8.775625ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/openai-provider.test.js:115:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /OPENAI_COUNT_SUPERSEDED/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
