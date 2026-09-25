@@ -1,0 +1,17 @@
+{
+  "bundlePath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-dev-smoke-run2-review/review-bundle.json",
+  "markdownPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-dev-smoke-run2-review/review.md",
+  "decisionsPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-dev-smoke-run2-review/pending-decisions.json",
+  "coverage": {
+    "observedTrials": 1,
+    "completedAnswers": 0,
+    "partialOrFailed": [
+      {
+        "trialId": "codex-00001",
+        "status": "unknown-usage"
+      }
+    ]
+  },
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

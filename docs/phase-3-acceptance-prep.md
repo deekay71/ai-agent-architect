@@ -1,5 +1,7 @@
 # Phase 3 — Chuẩn bị nghiệm thu trước Phase 4
 
+> Lịch sử: đề xuất API/key-check/cap 5 USD trong tài liệu này đã được thay bằng [đường DEV Codex subscription được owner duyệt](phase-3-codex-benchmark.md). Không chạy cấu hình API đề xuất hoặc hỏi lại quyền này để thực hiện Codex smoke. Kết quả 466 tests/mock bên dưới giữ nguyên ở source lịch sử.
+
 Ngày 25/09/2026. Quyết định mới của owner: **hoàn tất nghiệm thu Phase 3 trước**, chưa triển khai Phase 4. Bản này tiếp nối mốc [422 tests và mock matrix](phase-3-fixes-report.md); các bằng chứng cũ vẫn giữ nguyên. Phase 3 chưa PASS: T09/T10 Pass local, T19/T14 Not evaluated, T11 Replan.
 
 ## Phần đã bổ sung

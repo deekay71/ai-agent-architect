@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "codex-protocol-offline-review/1",
+  "inspectedAt": "2026-09-25T10:15:53.963Z",
+  "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+  "binarySha256": "sha256:93169e745735930598e867ad837abf3fdc50774a3ad7e7aa89c0d0c51b0189a5",
+  "sources": [
+    {
+      "url": "https://github.com/openai/codex/blob/main/codex-rs/exec/src/exec_events.rs",
+      "gitBlobSha": "06565c097b28d3bf2ad592943cc30c776b45e236",
+      "scope": "current primary-source schema; not attested as exact installed source revision"
+    },
+    {
+      "kind": "installed-binary-static-strings",
+      "scope": "corroborates variant and usage field names without executing a model"
+    }
+  ],
+  "topLevelTypes": [
+    "thread.started",
+    "turn.started",
+    "turn.completed",
+    "turn.failed",
+    "item.started",
+    "item.updated",
+    "item.completed",
+    "error"
+  ],
+  "usageFields": [
+    "input_tokens",
+    "cached_input_tokens",
+    "cache_write_input_tokens",
+    "output_tokens",
+    "reasoning_output_tokens"
+  ],
+  "nonfatalErrorItemType": "error",
+  "observedFailureClassification": "CODEX_EVENT_UNKNOWN; actual event identifier unavailable in historical receipt",
+  "inferenceFromObservedFailure": null,
+  "modelInferenceInvocations": 0,
+  "ledgerMutated": false,
+  "limitations": [
+    "Static protocol inspection cannot identify the discarded live event or prove that no provider usage occurred.",
+    "No newly discovered event is admitted silently; unsupported events continue to fail closed.",
+    "Metadata diagnostics apply to future receipts only and do not reconstruct prior events."
+  ],
+  "reviewedAt": "2026-09-25T10:16:44.353Z",
+  "findings": [
+    {
+      "code": "KNOWN_ZERO_CACHE_WRITE_FIELD",
+      "evidence": "Primary source Usage serializes cache_write_input_tokens with serde default; field name also present in installed binary.",
+      "change": "Admit optional cache_write_input_tokens exactly numeric 0. Nonzero, negative, string, null or boolean remains unknown usage.",
+      "observedFailureExplanation": false
+    },
+    {
+      "code": "EVENT_DIAGNOSTICS_LOSS",
+      "evidence": "Historical failed receipt retained only CODEX_EVENT_UNKNOWN, without the rejected type identifier.",
+      "change": "Optional bounded identifier-only eventDiagnostics added for future receipts; event acceptance policy unchanged.",
+      "observedFailureExplanation": false
+    }
+  ],
+  "protocolComparison": {
+    "topLevelVariants": "All eight documented variants already recognized; additional item categories intentionally denied.",
+    "usageCounters": "Known zero cache-write field fixed; other integer/total/reasoning constraints remain strict.",
+    "itemLifecycle": "One thread/turn and one final JSON answer still required; tool and nonfatal-error items are not silently admitted."
+  },
+  "verification": {
+    "focusedTests": 17,
+    "passed": 17,
+    "modelInferenceInvocations": 0,
+    "ledgerMutated": false
+  }
+}

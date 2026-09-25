@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "codex-offline-cli-config-check/1",
+  "checkedAt": "2026-09-25T10:04:38.509Z",
+  "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+  "launchPolicyDigest": "sha256:a349888aef2a751fb520084a5affb82ef4a8c74283f9be230e6f6f9856cf7eb2",
+  "command": "codex features list with all pinned launch -c and --disable overrides; allowlisted environment; empty temporary working directory",
+  "exitCode": 0,
+  "stderrBytes": 0,
+  "status": "passed",
+  "observedFeatures": {
+    "shell_tool": "false",
+    "unified_exec": "true",
+    "plugins": "false",
+    "apps": "false",
+    "memories": "false",
+    "multi_agent": "false",
+    "skip_host_skill_discovery": "true",
+    "browser_use": "false",
+    "computer_use": "false",
+    "image_generation": "false",
+    "view_image": "false",
+    "sleep_tool": "false",
+    "unbounded_connection_retries": "false"
+  },
+  "modelInferenceInvocations": 0,
+  "credentialsReadByHarness": false,
+  "authenticationChecked": false,
+  "rawOutputPersisted": false,
+  "limitations": [
+    "features list loads normal configuration and cannot use exec --ignore-user-config; this check validates override parsing and feature names, not exact exec startup.",
+    "features list does not support --strict-config; no strict runtime or effective filesystem sandbox claim.",
+    "No provider model availability, output schema support, or generation was tested.",
+    "CLI internal provider retries remain CLI-managed; invocation caps are not provider-request caps."
+  ],
+  "launchBlockersCorrected": [
+    "Removed model_providers.openai retry overrides because the built-in provider name is reserved.",
+    "Used a TOML inline table for permission filesystem special keys because quoted dotted override segments were treated as literal path names."
+  ]
+}

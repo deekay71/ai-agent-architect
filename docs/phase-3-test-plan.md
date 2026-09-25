@@ -1,5 +1,11 @@
 # Phase 3 — Test plan và bằng chứng nghiệm thu
 
+## Quyết định hiện hành — Codex subscription, 25/09/2026
+
+Owner đã duyệt chạy DEV benchmark qua **Codex CLI đăng nhập ChatGPT**, dùng quota Codex hiện có. Không cần API key và không áp dụng đề xuất cap API 5 USD. Giữ cấu hình Astra/high cho planning và Luna/medium cho execution; đây là requested profiles, chưa phải chứng nhận model hoặc phân vai. Đợt đầu giới hạn một dev case, 6 comparison trials +2 G, tối đa 10 invocations. Runbook và actual nằm trong [báo cáo Codex](phase-3-codex-benchmark.md). **Actual: hai attempts, 0 valid model answers; một local startup failure đã reconcile có evidence, một started-thread attempt còn unknown usage và ledger frozen. Smoke chưa đạt; không chạy lại hoặc reset allowance tự động.**
+
+Bản bàn giao cuối đạt **527/527 clean tests**, source/compiled pins ổn định; hai attempts live vẫn không có output hợp lệ. Đường đo này ghi reported usage sau call, không có exact provider pre-count hoặc hard output cap, không suy quota thành USD. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Cần calibration độc lập, protocol/holdout mới và adjudication/handoff. Các đề xuất API và đoạn scope chỉ local bên dưới là lịch sử, không phải việc đang chờ owner duyệt nữa.
+
 ## Bổ sung chuẩn bị S2 — 25/09/2026
 
 Runbook mới ở [gói nghiệm thu](phase-3-acceptance-prep.md). Kiểm thêm: legacy/provisional config không giả calibration; explicit DEV case selection đúng split; exact model context boundary; generation forecast bao gồm compaction/G/rounding; paired missing/unscored/model-context-blocked và case weighting; review gắn actual answer/request/context/report; thay packet đồng thời cập nhật window hash vẫn phải bị chặn vì request không khớp; pending/partial/duplicate/drifted judgments bị từ chối; synthetic mock review không cấp Pass. Chạy CLI end-to-end có guard cấm đọc credential và cấm network. Source sạch phải build/test mới trước delivery; historical 422 là baseline cũ.

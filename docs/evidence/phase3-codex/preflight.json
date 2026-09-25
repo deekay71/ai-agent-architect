@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "codex-semantic-preflight/1",
+  "config": {
+    "schemaVersion": "codex-semantic-config/1",
+    "campaignId": "codex-chatgpt-dev-smoke-20260925",
+    "provider": "codex-chatgpt",
+    "purpose": "dev-smoke",
+    "split": "dev",
+    "caseIds": [
+      "sem-001"
+    ],
+    "profiles": [
+      {
+        "id": "executor-luna-medium",
+        "role": "executor",
+        "model": "gpt-6-luna",
+        "reasoningEffort": "medium"
+      },
+      {
+        "id": "planner-astra-high",
+        "role": "planner",
+        "model": "gpt-6-astra",
+        "reasoningEffort": "high"
+      }
+    ],
+    "distractorLimits": [
+      0
+    ],
+    "compactionRounds": [
+      1
+    ],
+    "repeats": 1,
+    "topK": 8,
+    "outputTokenHint": 4000,
+    "maxVisibleRequestBytes": 100000,
+    "perTrialReportedTokenStop": 100000,
+    "perCallTimeoutMs": 90000,
+    "authorization": {
+      "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+      "maxInvocations": 10,
+      "maxReportedTokens": 400000,
+      "maxWallTimeMs": 600000
+    }
+  },
+  "configDigest": "sha256:105857823961d571ce25c6e899730c605fd77a4b693304234606376329756f8d",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "selectedCaseIds": [
+    "sem-001"
+  ],
+  "splitAudit": {
+    "policy": {
+      "version": "semantic-split-audit/1",
+      "normalization": "NFKC + lowercase + Unicode letter/number tokens",
+      "similarity": "set Dice over tokens and adjacent token bigrams",
+      "minimumNearQuestionTokens": 6,
+      "minimumNearHistoryTokens": 6,
+      "nearQuestionTokenDice": 0.85,
+      "nearQuestionBigramDice": 0.65,
+      "nearHistoryBigramDice": 0.85,
+      "reviewQuestionTokenDice": 0.65,
+      "reviewQuestionBigramDice": 0.35,
+      "reviewHistoryBigramDice": 0.5
+    },
+    "publicCaseDigest": "sha256:8025e8ac4fa6abd2be0abbf1959e7da7c9c5b4c740e61a088df9bcc99c053b2d",
+    "status": "clear",
+    "comparedPairs": 200,
+    "suspectedPairs": [],
+    "humanSemanticReviewRequired": true,
+    "auditDigest": "sha256:38e8179940c47a327cb713164beea61efd8d748bf2d3b1904e78728ec8f14f7b"
+  },
+  "plannedTrials": 6,
+  "plannedControls": 2,
+  "maxInvocations": 10,
+  "invocationCapFitsMatrix": true,
+  "billing": "chatgpt-subscription-quota",
+  "apiCostMicros": null,
+  "exactInputCount": null,
+  "budgetBasis": "invocation-hard-cap-and-post-call-reported-token-stop",
+  "modelAvailabilityVerified": false,
+  "technicalConfigurationReady": true,
+  "dispatchAuthorized": false,
+  "acceptanceReady": false,
+  "phaseGate": "Not evaluated"
+}

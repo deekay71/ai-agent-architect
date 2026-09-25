@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "codex-startup-reconciliation/1",
+  "operator": "Codex implementation operator",
+  "at": "2026-09-25T10:11:22.953Z",
+  "attemptId": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+  "evidencePath": "docs/evidence/phase3-codex/startup-no-inference-diagnosis.json",
+  "evidenceDigest": "sha256:6e5adec236b09fc57f95f12867b7202505002912ddfa47db8f01d06a554e83f2",
+  "before": {
+    "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+    "maxInvocations": 10,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 600000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 1,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": true,
+    "stopReason": "unknown-usage",
+    "startedAt": 1790330814412,
+    "deadlineAt": 1790331414412,
+    "timeRemainingMs": 331459
+  },
+  "after": {
+    "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+    "maxInvocations": 10,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 600000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 1,
+    "reconciliationEvidenceDigests": [
+      "sha256:6e5adec236b09fc57f95f12867b7202505002912ddfa47db8f01d06a554e83f2"
+    ],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790330814412,
+    "deadlineAt": 1790331414412,
+    "timeRemainingMs": 331459
+  },
+  "assurance": "operator-attestation-based-on-deterministic-local-config-error-reproduction-not-provider-receipt",
+  "scope": "Original attempt remains spent; no new allowance, no extended deadline, no API use or credit action."
+}

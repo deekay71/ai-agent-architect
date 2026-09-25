@@ -59,7 +59,11 @@ async function main(args: string[]): Promise<void> {
       'semantic-preflight <dataset> <config.json>', 'semantic-run <dataset> <config.json> <new-output-directory> <spend-directory> [--live]',
       'semantic-review-import <dataset> <external-review.json>',
       'semantic-review-export <campaign> <new-review-directory>',
-      'semantic-outcome-review-import <campaign> <decisions.json> <new-reviewed-file>'],
+      'semantic-outcome-review-import <campaign> <decisions.json> <new-reviewed-file>',
+      'semantic-codex-preflight <dataset> <config.json>',
+      'semantic-codex-run <dataset> <config.json> <new-output-directory> --live',
+      'semantic-codex-review-export <campaign> <new-review-directory>',
+      'semantic-codex-review-import <campaign> <decisions.json> <new-reviewed-file>'],
       scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
   } else if (command?.startsWith('semantic-')) {
     if (!await runEvaluationCli(args)) throw new Error('Unknown semantic command');

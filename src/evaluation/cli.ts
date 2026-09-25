@@ -6,6 +6,7 @@ import { campaignPreflight, runSemanticCampaign } from './campaign.js';
 import { importHumanCalibrationReview } from './dataset.js';
 import { createSandboxMockProvider } from './mock-provider.js';
 import { exportOutcomeReview, importOutcomeReview } from './outcome-review.js';
+import { runCodexEvaluationCli } from './codex-cli.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../../', import.meta.url));
 const output = (value: unknown): void => { process.stdout.write(`${JSON.stringify(value, null, 2)}\n`); };
@@ -35,6 +36,7 @@ function newOutputPath(requested: string): string {
 
 /** CLI adapter only. It never reads credentials or constructs a live provider during preflight/mock work. */
 export async function runEvaluationCli(args: string[]): Promise<boolean> {
+  if (await runCodexEvaluationCli(args)) return true;
   const command = args[0];
   if (!command || !['semantic-preflight', 'semantic-run', 'semantic-review-import', 'semantic-review-export', 'semantic-outcome-review-import'].includes(command)) return false;
   if (command === 'semantic-review-export') {

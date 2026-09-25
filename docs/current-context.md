@@ -1,5 +1,11 @@
 # AI Agent Architect — Bối cảnh hiện hành R2
 
+## Quyết định hiện hành — Codex subscription, 25/09/2026
+
+Owner đã duyệt chạy DEV benchmark qua **Codex CLI đăng nhập ChatGPT**, dùng quota Codex hiện có. Không cần API key và không áp dụng đề xuất cap API 5 USD. Giữ cấu hình Astra/high cho planning và Luna/medium cho execution; đây là requested profiles, chưa phải chứng nhận model hoặc phân vai. Đợt đầu giới hạn một dev case, 6 comparison trials +2 G, tối đa 10 invocations. Runbook và actual nằm trong [báo cáo Codex](phase-3-codex-benchmark.md). **Actual: hai attempts, 0 valid model answers; một local startup failure đã reconcile có evidence, một started-thread attempt còn unknown usage và ledger frozen. Smoke chưa đạt; không chạy lại hoặc reset allowance tự động.**
+
+Bản bàn giao cuối đạt **527/527 clean tests**, source/compiled pins ổn định; hai attempts live vẫn không có output hợp lệ. Đường đo này ghi reported usage sau call, không có exact provider pre-count hoặc hard output cap, không suy quota thành USD. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Cần calibration độc lập, protocol/holdout mới và adjudication/handoff. Các đề xuất API và đoạn scope chỉ local bên dưới là lịch sử, không phải việc đang chờ owner duyệt nữa.
+
 ## Quyết định tiếp tục — 25/09/2026
 
 Owner chọn **hoàn tất nghiệm thu Phase 3 trước**, chưa mở Phase 4. Đã bổ sung DEV readiness, chọn case và forecast, model capacity admission, paired diagnostics và review actual outputs. Fresh-copy build/check đạt **466/466 tests, 0 fail/skip**; mirror hoàn tất 12 main +4 G với 20 mock generations, export đủ 16 review outputs; 0 provider calls, source ổn định. Hai finding review đã sửa. [Gói chuẩn bị nghiệm thu](phase-3-acceptance-prep.md) có cấu hình smoke 2 case, Astra/Luna, tối đa 20 generation calls, generation upper bound 4,242980 USD và đề xuất cap 5 USD. **Chưa nhận phê duyệt chi phí/key-check; chưa gọi API hoặc đọc key.** Smoke không thay calibration/fresh holdout/protocol/adjudication và T14. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Những đoạn scope “chỉ local, S2–S4 để sau” bên dưới là lịch sử trước quyết định tiếp tục này.

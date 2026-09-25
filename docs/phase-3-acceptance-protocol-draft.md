@@ -1,5 +1,11 @@
 # Phase 3 — Đề xuất protocol nghiệm thu S2 → S3 → S4
 
+## Quyết định hiện hành — Codex subscription, 25/09/2026
+
+Owner đã duyệt chạy DEV benchmark qua **Codex CLI đăng nhập ChatGPT**, dùng quota Codex hiện có. Không cần API key và không áp dụng đề xuất cap API 5 USD. Giữ cấu hình Astra/high cho planning và Luna/medium cho execution; đây là requested profiles, chưa phải chứng nhận model hoặc phân vai. Đợt đầu giới hạn một dev case, 6 comparison trials +2 G, tối đa 10 invocations. Runbook và actual nằm trong [báo cáo Codex](phase-3-codex-benchmark.md). **Actual: hai attempts, 0 valid model answers; một local startup failure đã reconcile có evidence, một started-thread attempt còn unknown usage và ledger frozen. Smoke chưa đạt; không chạy lại hoặc reset allowance tự động.**
+
+Đường đo này ghi reported usage sau call, không có exact provider pre-count hoặc hard output cap, không suy quota thành USD. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Cần calibration độc lập, protocol/holdout mới và adjudication/handoff. Các đề xuất API và đoạn scope chỉ local bên dưới là lịch sử, không phải việc đang chờ owner duyệt nữa.
+
 Ngày lập: 25/09/2026. **DRAFT — chưa được owner phê duyệt, chưa đóng băng, không cấp quyền chạy API hoặc chi phí.** Tài liệu này là đầu vào để review và calibration; không phải `PolicyRelease`, `GateReport` hoặc bằng chứng có human review. Các giá trị đề xuất bên dưới chưa được dùng để nghiệm thu.
 
 Trạng thái vẫn là T09/T10 Pass local; T19/T14 Not evaluated; T11 Replan; toàn Phase 3 chưa Pass. Mục tiêu là hoàn tất nghiệm thu Phase 3 trước Phase 4. Nguồn AC: [test plan](phase-3-test-plan.md), [closure plan](phase-3-closure-plan.md), [báo cáo sửa lỗi](phase-3-fixes-report.md). Giữ Forecast R2 và các campaign cũ làm lịch sử.

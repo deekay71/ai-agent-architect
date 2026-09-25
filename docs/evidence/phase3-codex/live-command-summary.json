@@ -1,0 +1,37 @@
+{
+  "report": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-dev-smoke-run1/report.json",
+  "campaignId": "codex-chatgpt-dev-smoke-20260925",
+  "assurance": "codex-chatgpt",
+  "comparisonCoverage": {
+    "observed": 1,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {
+      "unknown-usage": 1
+    }
+  },
+  "controlCoverage": {
+    "observed": 0,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {}
+  },
+  "budget": {
+    "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+    "maxInvocations": 10,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 600000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 1,
+    "frozen": true,
+    "stopReason": "unknown-usage",
+    "startedAt": 1790330814412,
+    "deadlineAt": 1790331414412,
+    "timeRemainingMs": 599922
+  },
+  "stoppedReason": "unknown-usage",
+  "modelOutputsObserved": false,
+  "phaseGate": "Not evaluated"
+}

@@ -32,6 +32,10 @@ export function buildReaderRequest(input: string, profile: Pick<ModelProfile, 'm
   return { model: profile.model, reasoningEffort: profile.reasoningEffort, instructions: INSTRUCTIONS,
     input, maxOutputTokens, schema: ANSWER_SCHEMA, schemaName: 'evidence_answer' };
 }
+export function buildSummaryRequest(input: string, profile: Pick<ModelProfile, 'model' | 'reasoningEffort'>, maxOutputTokens: number): ModelRequest {
+  return { model: profile.model, reasoningEffort: profile.reasoningEffort, instructions: SUMMARY_INSTRUCTIONS,
+    input, maxOutputTokens, schema: SUMMARY_SCHEMA, schemaName: 'context_summary' };
+}
 const wireAnswer = z.strictObject({ disposition: z.enum(['answer', 'abstain']), answer: z.string().nullable(), evidenceIds: z.array(z.string()),
   revisions: z.array(z.strictObject({ sourceId: z.string(), revision: z.string() })), constraints: z.array(z.string()), confidence: z.number() });
 export function parseReaderAnswer(value: unknown): SemanticAnswer {
@@ -205,8 +209,7 @@ export async function runSemanticCampaign(options: {
       const save = () => { trial.windowDigests.push(p.window.windowDigest); json(path.join(options.outputRoot, 'packets', `${trialId}-${p.window.packet.generation}.json`), p.window); };
       save();
       for (let round = 0; round < rounds && p.window.status === 'ready'; round++) {
-        const summary = await invoke({ model: profile.model, reasoningEffort: profile.reasoningEffort, instructions: SUMMARY_INSTRUCTIONS,
-          input: serializeContextPacket(p.window), maxOutputTokens: config.maxOutputTokens, schema: SUMMARY_SCHEMA, schemaName: 'context_summary' }, profile, trial, `compact-${round}`);
+        const summary = await invoke(buildSummaryRequest(serializeContextPacket(p.window), profile, config.maxOutputTokens), profile, trial, `compact-${round}`);
         if (!summary) break;
         const parsed = z.strictObject({ summary: z.string().max(500_000) }).safeParse(summary.output);
         if (!parsed.success) { trial.status = 'malformed-summary'; break; }

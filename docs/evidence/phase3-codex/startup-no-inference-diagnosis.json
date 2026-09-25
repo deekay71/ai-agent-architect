@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "codex-startup-diagnostic/1",
+  "diagnosedAt": "2026-09-25T10:09:55.237Z",
+  "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+  "binaryPath": "/Applications/ChatGPT.app/Contents/Resources/codex",
+  "binarySha256": "sha256:93169e745735930598e867ad837abf3fdc50774a3ad7e7aa89c0d0c51b0189a5",
+  "priorLaunchPolicyDigest": "sha256:a349888aef2a751fb520084a5affb82ef4a8c74283f9be230e6f6f9856cf7eb2",
+  "correctedLaunchPolicyDigest": "sha256:671e62f18eeb1dca18a044e78540e8134fca4dab2a6c5327578866a84bbe0784",
+  "unsupportedConfigurationField": "model_post_turn_compact_threshold_percent",
+  "observations": [
+    {
+      "mode": "previous-unsupported-setting",
+      "exitCode": 1,
+      "stopReason": null,
+      "stdoutBytes": 0,
+      "stderrMatchesExpected": true,
+      "classification": "pre-model-configuration-error",
+      "sanitizedError": "Error loading config.toml: unknown configuration field `model_post_turn_compact_threshold_percent` in -c/--config override",
+      "stdinBytes": 0,
+      "outputSchemaExists": false
+    },
+    {
+      "mode": "corrected-policy",
+      "exitCode": 1,
+      "stopReason": null,
+      "stdoutBytes": 0,
+      "stderrMatchesExpected": true,
+      "classification": "configuration-parsed-empty-prompt-rejected",
+      "sanitizedError": "No prompt provided via stdin.",
+      "stdinBytes": 0,
+      "outputSchemaExists": false
+    }
+  ],
+  "priorCampaign": {
+    "reportPath": ".local/codex-dev-smoke-run1/report.json",
+    "reportRawDigest": "sha256:55a30939fb74d6054b5cd563e7d9b8ad0406c4329ff4363e2259d021721c0183",
+    "lockPath": ".local/codex-dev-smoke-run1/campaign-lock.json",
+    "lockRawDigest": "sha256:1a16b1bac61acc18817821f2d5dd24e32beed9077a5a292530d47791a304aa4a",
+    "launchPolicyDigest": "sha256:a349888aef2a751fb520084a5affb82ef4a8c74283f9be230e6f6f9856cf7eb2",
+    "attemptId": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+    "requestDigest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+    "recordedIssues": [
+      "CODEX_TURN_INCOMPLETE",
+      "CODEX_PROCESS_FAILED"
+    ],
+    "recordedThreadId": null
+  },
+  "modelInferenceInvocations": 0,
+  "credentialsReadByHarness": false,
+  "authenticationChecked": false,
+  "rawStderrPersisted": false,
+  "ledgerMutated": false,
+  "automaticReconciliation": false,
+  "limitations": [
+    "Empty stdin is rejected before the nonexistent schema is opened; this validates config parsing, not schema/model capability.",
+    "A prior missing-usage receipt alone does not prove zero provider consumption. Reproduction is explicit operator evidence, not automatic no-dispatch attestation.",
+    "Binary SHA256 is measured at diagnosis time; the supported version is checked separately.",
+    "Any reconciliation must preserve the original attempted invocation, authorization limits and deadline."
+  ],
+  "originalLaunchPolicyDigest": "sha256:a349888aef2a751fb520084a5affb82ef4a8c74283f9be230e6f6f9856cf7eb2",
+  "originalErrorCode": "CODEX_CONFIG_UNKNOWN_FIELD",
+  "originalErrorField": "model_post_turn_compact_threshold_percent",
+  "originalTestExitCode": 1,
+  "correctedExpectedError": "No prompt provided via stdin.",
+  "correctedTestExitCode": 1,
+  "requestDigest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+  "configDigest": "sha256:105857823961d571ce25c6e899730c605fd77a4b693304234606376329756f8d",
+  "configurationDigest": "sha256:4ec8b9256e2870b18a59e54bd4028be0c9dfd308ca967892021bf71a3b69f2f0",
+  "attemptId": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+  "evidenceKind": "local-deterministic-startup-reproduction-not-provider-receipt",
+  "sourceFailedAttempt": {
+    "path": ".local/codex-dev-smoke-run1/calls.jsonl",
+    "callLogRawDigest": "sha256:e1c69ca4b05f9b5d2fc399dc08f8f97990096eea7e08b746627e2d8f4da966d5",
+    "attemptId": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+    "requestDigest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+    "configDigest": "sha256:105857823961d571ce25c6e899730c605fd77a4b693304234606376329756f8d",
+    "configurationDigest": "sha256:4ec8b9256e2870b18a59e54bd4028be0c9dfd308ca967892021bf71a3b69f2f0"
+  }
+}

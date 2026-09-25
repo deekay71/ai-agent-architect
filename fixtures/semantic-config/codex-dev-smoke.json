@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "codex-semantic-config/1",
+  "campaignId": "codex-chatgpt-dev-smoke-20260925",
+  "provider": "codex-chatgpt",
+  "purpose": "dev-smoke",
+  "split": "dev",
+  "caseIds": ["sem-001"],
+  "profiles": [
+    {"id": "executor-luna-medium", "role": "executor", "model": "gpt-6-luna", "reasoningEffort": "medium"},
+    {"id": "planner-astra-high", "role": "planner", "model": "gpt-6-astra", "reasoningEffort": "high"}
+  ],
+  "distractorLimits": [0],
+  "compactionRounds": [1],
+  "repeats": 1,
+  "topK": 8,
+  "outputTokenHint": 4000,
+  "maxVisibleRequestBytes": 100000,
+  "perTrialReportedTokenStop": 100000,
+  "perCallTimeoutMs": 90000,
+  "authorization": {
+    "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+    "maxInvocations": 10,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 600000
+  }
+}

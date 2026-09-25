@@ -3,14 +3,16 @@ import type { SemanticTrial } from './campaign.js';
 
 export interface Comparator { arm: 'retrieval' | 'compaction'; compactionRounds: number }
 export interface Dimensions { profileId: string; totalTokenBudget: number; distractors: number; taskClass: string }
+export type PairableTrial = Pick<SemanticTrial, 'profileId' | 'totalTokenBudget' | 'distractors' | 'taskClass' | 'arm' | 'repeat' | 'compactionRounds' | 'caseId' | 'trialId' | 'status' | 'score'>;
 const key = (value: unknown) => canonicalJson(value);
 const systemBlockedStatuses = ['context-blocked', 'token-budget-blocked', 'model-context-blocked'] as const;
-const blocked = (trial: SemanticTrial | undefined) => trial !== undefined && systemBlockedStatuses.some(status => status === trial.status);
 const mean = (values: readonly number[]): number | null => values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
 
 /** Conditional reader diagnostics only. Planned matrix coverage and acceptance remain separate responsibilities. */
-export function summarizePairedTrials(trials: readonly SemanticTrial[]) {
-  const dimensions = new Map<string, { value: Dimensions; arms: Map<string, Map<string, SemanticTrial>> }>();
+export function summarizePairedTrials(trials: readonly PairableTrial[], additionalBlockedStatuses: readonly string[] = []) {
+  const statuses = [...systemBlockedStatuses, ...additionalBlockedStatuses];
+  const blocked = (trial: PairableTrial | undefined) => trial !== undefined && statuses.includes(trial.status);
+  const dimensions = new Map<string, { value: Dimensions; arms: Map<string, Map<string, PairableTrial>> }>();
   const comparators = new Map<string, Comparator>();
   const baselineKey = key(['full', 0]);
   let comparisonTrials = 0, excludedControlTrials = 0;
@@ -34,8 +36,8 @@ export function summarizePairedTrials(trials: readonly SemanticTrial[]) {
   }
   const groups = [...dimensions.entries()].sort(([a], [b]) => a.localeCompare(b)).flatMap(([, group]) =>
     [...comparators.entries()].sort(([a], [b]) => a.localeCompare(b)).flatMap(([armKey, comparator]) => {
-      const baseline = group.arms.get(baselineKey) ?? new Map<string, SemanticTrial>();
-      const candidate = group.arms.get(armKey) ?? new Map<string, SemanticTrial>();
+      const baseline = group.arms.get(baselineKey) ?? new Map<string, PairableTrial>();
+      const candidate = group.arms.get(armKey) ?? new Map<string, PairableTrial>();
       if (!baseline.size && !candidate.size) return [];
       const pairKeys = [...new Set([...baseline.keys(), ...candidate.keys()])].sort();
       const pairs = pairKeys.map(pairKey => {
@@ -82,7 +84,7 @@ export function summarizePairedTrials(trials: readonly SemanticTrial[]) {
   return { schemaVersion: 'semantic-paired-diagnostics/1' as const, interpretation: 'descriptive-only' as const,
     acceptanceDecision: null, comparisonTrials, excludedControlTrials, observedComparatorCount: comparators.size,
     denominator: 'Both reader outputs scored; repeats averaged within each unique case, then cases equally weighted' as const,
-    systemBlockedStatuses,
+    systemBlockedStatuses: statuses,
     limitations: ['Missing/unscored/system-blocked counts are overlapping diagnostics, not mutually exclusive outcomes',
       'Entirely absent comparator arms or cases cannot be inferred from observed trials; use planned matrix coverage',
       'Evaluator strictPass is a diagnostic score, not an independent semantic truth label or phase acceptance'], groups };

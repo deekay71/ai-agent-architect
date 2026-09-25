@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "codex-delivery-verification/1",
+  "status": "implemented-local-verified-live-smoke-blocked",
+  "preRunCleanVerification": {
+    "schemaVersion": "clean-source-verification/1",
+    "runId": "clean-codex-20260925T101121Z",
+    "startedAt": "2026-09-25T10:11:21.399742+00:00",
+    "finishedAt": "2026-09-25T10:11:35.840958+00:00",
+    "repositoryRoot": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect",
+    "cleanRoot": "/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/ai-agent-architect-clean-codex-20260925T101121Z-uplg2r6z",
+    "os": "macOS-26.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "sourceDigest": "sha256:8c0106541f7fcdad7f6b0257262a9a46b0b8f03df4a47316335d7e9853566b7d",
+    "sourceFileCount": 147,
+    "sourceUnchanged": true,
+    "install": {
+      "command": [
+        "./scripts/dev.sh",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts"
+      ],
+      "exitCode": 0,
+      "seconds": 0.817,
+      "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-codex/clean-codex-20260925T101121Z-install.log"
+    },
+    "check": {
+      "command": [
+        "./scripts/dev.sh",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.521,
+      "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-codex/clean-codex-20260925T101121Z-check.log"
+    },
+    "testCounts": {
+      "tests": 525,
+      "suites": 0,
+      "pass": 525,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "builtJsDigest": "sha256:4ed916e343a5988bec814d6e9ff2f76c120b0ce4d4b2662afa82bcf56decd9e9",
+    "builtJsFileCount": 105,
+    "scope": "Independent fresh copy, frozen dependency install, local tests only, no model calls",
+    "passed": true
+  },
+  "runs": [
+    {
+      "path": ".local/codex-dev-smoke-run1",
+      "reportRawDigest": "sha256:55a30939fb74d6054b5cd563e7d9b8ad0406c4329ff4363e2259d021721c0183",
+      "lockRawDigest": "sha256:1a16b1bac61acc18817821f2d5dd24e32beed9077a5a292530d47791a304aa4a",
+      "campaignId": "codex-chatgpt-dev-smoke-20260925",
+      "implementationDigest": "sha256:2ac4aaa1dac65560cfa4648caaa66f0e9be12262492ffdc933a87f8dda3f347c",
+      "compiledDigest": "sha256:948af1e200bd2e73635688d334363c1ee7d23e08f00fa94bbce047ff410b4281",
+      "launchPolicyDigest": "sha256:a349888aef2a751fb520084a5affb82ef4a8c74283f9be230e6f6f9856cf7eb2",
+      "integrityStable": true,
+      "stoppedReason": "unknown-usage",
+      "comparisonCoverage": {
+        "observed": 1,
+        "scored": 0,
+        "strictPass": 0,
+        "outcomes": {
+          "unknown-usage": 1
+        }
+      },
+      "controlCoverage": {
+        "observed": 0,
+        "scored": 0,
+        "strictPass": 0,
+        "outcomes": {}
+      },
+      "budget": {
+        "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+        "maxInvocations": 10,
+        "maxReportedTokens": 400000,
+        "maxWallTimeMs": 600000,
+        "usedInvocations": 1,
+        "reportedTokens": 0,
+        "pendingAttempts": 0,
+        "unknownAttempts": 1,
+        "frozen": true,
+        "stopReason": "unknown-usage",
+        "startedAt": 1790330814412,
+        "deadlineAt": 1790331414412,
+        "timeRemainingMs": 599922
+      },
+      "modelOutputsObserved": false,
+      "issues": [
+        [
+          "CODEX_TURN_INCOMPLETE",
+          "CODEX_PROCESS_FAILED"
+        ]
+      ]
+    },
+    {
+      "path": ".local/codex-dev-smoke-run2",
+      "reportRawDigest": "sha256:8b933cc3ab680e370ce45795c974f941315e597d23b87904d61900dd2767adc8",
+      "lockRawDigest": "sha256:7316a61252449f9b37672f08eda0cdd045682f0b8f75f5bb5c9f2a55e44ad47a",
+      "campaignId": "codex-chatgpt-dev-smoke-20260925-startup-fixed",
+      "implementationDigest": "sha256:7305749d049c7c1205efccf2c3897c368447ddc503f6aae5301ef139153b692d",
+      "compiledDigest": "sha256:c29317f2288cd2323907a78073af92c9850000f5721db2e41875fd698c56f7cc",
+      "launchPolicyDigest": "sha256:671e62f18eeb1dca18a044e78540e8134fca4dab2a6c5327578866a84bbe0784",
+      "integrityStable": true,
+      "stoppedReason": "unknown-usage",
+      "comparisonCoverage": {
+        "observed": 1,
+        "scored": 0,
+        "strictPass": 0,
+        "outcomes": {
+          "unknown-usage": 1
+        }
+      },
+      "controlCoverage": {
+        "observed": 0,
+        "scored": 0,
+        "strictPass": 0,
+        "outcomes": {}
+      },
+      "budget": {
+        "authorizationId": "owner-approved-chatgpt-switch-20260925-initial-smoke",
+        "maxInvocations": 10,
+        "maxReportedTokens": 400000,
+        "maxWallTimeMs": 600000,
+        "usedInvocations": 2,
+        "reportedTokens": 0,
+        "pendingAttempts": 0,
+        "unknownAttempts": 1,
+        "notDispatchedAttempts": 1,
+        "reconciliationEvidenceDigests": [
+          "sha256:6e5adec236b09fc57f95f12867b7202505002912ddfa47db8f01d06a554e83f2"
+        ],
+        "frozen": true,
+        "stopReason": "unknown-usage",
+        "startedAt": 1790330814412,
+        "deadlineAt": 1790331414412,
+        "timeRemainingMs": 308793
+      },
+      "modelOutputsObserved": false,
+      "issues": [
+        [
+          "CODEX_EVENT_UNKNOWN",
+          "CODEX_EVENT_REJECTED",
+          "CODEX_PROCESS_FAILED"
+        ]
+      ]
+    }
+  ],
+  "totalAttemptedInvocations": 2,
+  "validModelAnswers": 0,
+  "usageStatus": "one pre-model failure operator-reconciled; one started-thread attempt remains unknown and frozen",
+  "humanReview": "pending-no-decisions-fabricated",
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "limitations": [
+    "No valid model quality or latency distribution measured",
+    "Reported tokens zero means no valid usage received, not measured zero consumption",
+    "No API key, API billing, credits/reset or provider fallback used",
+    "Actual runs pin their original source; later diagnostics code requires a separately authorized and accounted rerun"
+  ],
+  "finalDeliveryCleanVerification": {
+    "schemaVersion": "clean-source-verification/1",
+    "runId": "clean-codex-20260925T101720Z",
+    "startedAt": "2026-09-25T10:17:20.717230+00:00",
+    "finishedAt": "2026-09-25T10:17:34.943872+00:00",
+    "repositoryRoot": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect",
+    "cleanRoot": "/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/ai-agent-architect-clean-codex-20260925T101720Z-gssoioa3",
+    "os": "macOS-26.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "sourceDigest": "sha256:2b2a1feecba3f5b43476da44ac723d3826c6305cb09bbc43a152ca40e6574940",
+    "sourceFileCount": 147,
+    "sourceUnchanged": true,
+    "install": {
+      "command": [
+        "./scripts/dev.sh",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts"
+      ],
+      "exitCode": 0,
+      "seconds": 0.809,
+      "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-codex/clean-codex-20260925T101720Z-install.log"
+    },
+    "check": {
+      "command": [
+        "./scripts/dev.sh",
+        "check"
+      ],
+      "exitCode": 0,
+      "seconds": 13.328,
+      "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-codex/clean-codex-20260925T101720Z-check.log"
+    },
+    "testCounts": {
+      "tests": 527,
+      "suites": 0,
+      "pass": 527,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "builtJsDigest": "sha256:553619710a4780f31f677edf5e90695b8d0fbbec77bb24f095c5c59629fb8cf5",
+    "builtJsFileCount": 105,
+    "scope": "Independent fresh copy, frozen dependency install, local tests only, no model calls",
+    "passed": true
+  },
+  "finalCompiledMatchesClean": true
+}

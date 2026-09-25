@@ -1,0 +1,18 @@
+✓ Lockfile passes supply-chain policies (verified 1d ago)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +4
+++++
+Packages are cloned from the content-addressable store to the virtual store.
+  Content-addressable store is at: /Users/dmobin/Library/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 4, reused 4, downloaded 0, added 4, done
+
+dependencies:
++ zod 4.1.12
+
+devDependencies:
++ @types/node 24.10.1
++ typescript 5.9.3
+
+Done in 287ms using pnpm v11.19.0
