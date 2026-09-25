@@ -1,5 +1,9 @@
 # Phase 3 — DEV benchmark qua Codex CLI
 
+## Phân vai model mới — 25/09/2026
+
+Owner chọn **Terra (`gpt-5.6-terra`) cho execution; Sol (`gpt-6-sol`) cho suy nghĩ mức vừa; Astra (`gpt-6-astra`) cho suy nghĩ sâu**. Effort mặc định tương ứng medium / medium / high. [Quy tắc và profiles](model-routing.md) áp dụng cho cấu hình tác vụ mới; Luna trong kết quả/campaign cũ là lịch sử. Đây chưa phải tự động chuyển model của phiên đang chạy hoặc mở lại benchmark frozen.
+
 Ngày 25/09/2026. Owner đã đồng ý chuyển đợt DEV benchmark sang **Codex CLI dùng phiên đăng nhập ChatGPT subscription hiện có**, thay cho phương án OpenAI API key và dự toán API trong [gói chuẩn bị nghiệm thu](phase-3-acceptance-prep.md). Quyết định này cho phép chạy smoke có giới hạn qua Codex; không cấp quyền tạo key, mua credit, đổi tài khoản, chuyển sang API billing hoặc mở rộng ma trận tự động. Đề xuất API 5 USD trước đó không phải authorization cho đường chạy này.
 
 **Đã triển khai route và thử live; smoke hiện bị chặn, chưa có câu trả lời model hợp lệ.** Hai attempts được giữ nguyên: lần đầu lỗi config trước model, lần hai khởi tạo thread rồi parser từ chối sự kiện chưa hỗ trợ, không có usage. Không báo 0 usage như bằng chứng không dùng quota. [Actual và pins](evidence/phase3-codex/verification-summary.json) tách từng source/version và failed run.

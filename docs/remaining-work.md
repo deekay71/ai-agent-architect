@@ -1,5 +1,9 @@
 # Công việc còn lại sau triển khai local Phase 3
 
+## Phân vai model mới — 25/09/2026
+
+Owner chọn **Terra (`gpt-5.6-terra`) cho execution; Sol (`gpt-6-sol`) cho suy nghĩ mức vừa; Astra (`gpt-6-astra`) cho suy nghĩ sâu**. Effort mặc định tương ứng medium / medium / high. [Quy tắc và profiles](model-routing.md) áp dụng cho cấu hình tác vụ mới; Luna trong kết quả/campaign cũ là lịch sử. Đây chưa phải tự động chuyển model của phiên đang chạy hoặc mở lại benchmark frozen.
+
 ## Quyết định hiện hành — Codex subscription, 25/09/2026
 
 Owner đã duyệt chạy DEV benchmark qua **Codex CLI đăng nhập ChatGPT**, dùng quota Codex hiện có. Không cần API key và không áp dụng đề xuất cap API 5 USD. Giữ cấu hình Astra/high cho planning và Luna/medium cho execution; đây là requested profiles, chưa phải chứng nhận model hoặc phân vai. Đợt đầu giới hạn một dev case, 6 comparison trials +2 G, tối đa 10 invocations. Runbook và actual nằm trong [báo cáo Codex](phase-3-codex-benchmark.md). **Actual: hai attempts, 0 valid model answers; một local startup failure đã reconcile có evidence, một started-thread attempt còn unknown usage và ledger frozen. Smoke chưa đạt; không chạy lại hoặc reset allowance tự động.**

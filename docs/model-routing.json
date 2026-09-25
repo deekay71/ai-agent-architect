@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "project-model-routing/1",
+  "status": "owner-selected",
+  "effectiveDate": "2026-09-25",
+  "profiles": [
+    {
+      "id": "executor-terra-medium",
+      "role": "executor",
+      "model": "gpt-5.6-terra",
+      "reasoningEffort": "medium"
+    },
+    {
+      "id": "reasoning-sol-medium",
+      "role": "planner",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "medium"
+    },
+    {
+      "id": "reasoning-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "high"
+    }
+  ],
+  "purposeByProfile": {
+    "executor-terra-medium": "execution",
+    "reasoning-sol-medium": "medium-reasoning",
+    "reasoning-astra-high": "deep-reasoning"
+  },
+  "executionNote": "Selected profiles for future task/campaign configuration; not an automatic runtime router or a live campaign authorization."
+}
