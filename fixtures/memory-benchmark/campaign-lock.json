@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "benchmark-lock/1",
+  "lockedAt": "2026-09-25T04:32:21.491Z",
+  "pins": {
+    "corpus/code/BuildReceipt.cs": "sha256:93abe6952d97edb96cb417ca62b687d4c852108477acce0d7c31e3e447c5d44f",
+    "corpus/code/DispatchBroker.cs": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15",
+    "corpus/code/Infrastructure.csproj": "sha256:dfb15367c50f9bc35fca38db93c7eec37fe6b791cd0ebfa5c578c423ff1805fa",
+    "corpus/code/ReceiptLedger.cs": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b",
+    "corpus/code/WindowHydrator.cs": "sha256:f2497967b2ffcf10881e61acaccb84c7bf455ef789b5caec33d2d697b30a5697",
+    "corpus/documents.json": "sha256:f0a1b0b48925c7cf9dd7163289506a0e6934d40bfe6c175cb2c4c061197f65c5",
+    "oracle/gold.json": "sha256:6b95e813b6fd7ebaae06e81479428c5cf7e736f2eba8d63c8e404d55ded2f12c",
+    "protocol.json": "sha256:7c0d915e508641e30e1552b6fad8882e3dedd43b86ce6279ba42654606ab72ad",
+    "questions.json": "sha256:0f497d857ad962182b4853f65fc4142ebe3398ef89d55a41af84a9a87f2ffb0a",
+    "README.md": "sha256:5391f8ff6228af93eb7bfe053e257eb1598bb63c8d2ad5ff7ec6051f992aaebd"
+  },
+  "digest": "sha256:9ec570f05eb07a0a9c2f2559dfd161a0bd46cf35094aad78f95d2835e4c14079"
+}

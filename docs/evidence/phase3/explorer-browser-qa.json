@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-25",
+  "browser": "Codex in-app browser",
+  "url": "http://127.0.0.1:4318/",
+  "fixture": "local synthetic infrastructure, final regenerated snapshot",
+  "verified": [
+    "force graph 14 nodes/14 edges",
+    "node drag changes layout only",
+    "double click opens readonly full note and backlinks",
+    "global/local neighborhood, freshness filter",
+    "context trace three windows, exact local packet loaded proof",
+    "edge filter justified_by reduces visible relationships from14 to3",
+    "proposal JSON visible with promotionAuthorized:false and correct memory:14",
+    "browser console no error/warning in final check"
+  ],
+  "limitations": [
+    "IAB automatic file download not confirmed; visible JSON copy fallback verified",
+    "No real provider/model consumption or production knowledge ingestion",
+    "No Obsidian plugin/vault sync",
+    "Performance microbenchmark is projector CPU, not browser FPS"
+  ]
+}

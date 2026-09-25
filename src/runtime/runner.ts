@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
 import { canonicalJson, digest } from '../contracts/canonical.js';
+import { assertRuntimeContextGuard, evaluateRuntimeContextGuard, parseContextGuardPin, type ContextGuardPin, type RuntimeContextGuard } from '../context/runtime-guard.js';
 import { parseContract, SCHEMA_VERSION, type Checkpoint, type CheckResult, type OperationRecord, type ToolCall, type SkillBinding } from '../contracts/schemas.js';
 import { isWithinScope } from '../foundation/permissions.js';
 import { createSkillBinding, discoverSkills, loadSkillCatalog, loadSkillResource, resolveSkill,
@@ -30,6 +31,8 @@ export interface RuntimeConfig {
   limits: { maxDispatches: number; maxAttemptsPerOperation: number; maxReplans: number; maxPlannerAttempts: number; timeoutMs: number };
   /** Operator-owned catalog registration. Skills are inert guidance; they never broaden tool permissions. */
   skill?: { catalog: LoadSkillCatalogOptions; context: SkillResolutionContext; skillId: string; version: string; resources: string[]; bindingDigest: string };
+  /** Operator-installed requirement. Candidate runs cannot replace or remove it. */
+  contextGuard?: ContextGuardPin;
 }
 export type RunState = 'queued' | 'running' | 'paused' | 'blocked' | 'cancelled' | 'completed';
 export interface RunRecord {
@@ -37,6 +40,8 @@ export interface RunRecord {
   workflowVersion: string; schemaVersion: typeof SCHEMA_VERSION; requestDigest: string; request: RunRequest;
   state: RunState; reason: string | null; checkpointRef: string | null; workspaceDigest: string;
   cancelRequested: boolean; createdAt: string; updatedAt: string;
+  /** Absent only for historical Phase 2 fixture records. Null explicitly means limited fixture mode. */
+  contextGuardPin?: ContextGuardPin | null;
 }
 interface LedgerEntry { payloadDigest: string; baselineRef: string; skillBindingRef: string | null; call: ToolCall; record: OperationRecord }
 interface LineageBudget { dispatches: number; replans: number; plannerAttempts: number }
@@ -63,6 +68,7 @@ export class PersistentWorkflowRunner {
   readonly lockRoot: string;
   private queue: Promise<unknown> = Promise.resolve();
   private active = new Map<string, AbortController>();
+  private contextGuard: RuntimeContextGuard | undefined;
   constructor(workspace: string, controlRoot: string) {
     this.workspace = realpathSync(workspace);
     mkdirSync(controlRoot, { recursive: true, mode: 0o700 });
@@ -86,9 +92,12 @@ export class PersistentWorkflowRunner {
     this.queue = next.catch(() => undefined); return next;
   }
   async recoverOwnership(): Promise<{ recovered: boolean }> { return recoverProjectLock(this.lockRoot); }
+  /** Trusted host-only attachment; never deserialized from candidate input. */
+  attachContextGuard(guard: RuntimeContextGuard): void { assertRuntimeContextGuard(guard); this.contextGuard = guard; }
   /** Installation is a trusted operator action, separate from run submission. Updates invalidate old gates. */
   async configure(config: RuntimeConfig): Promise<void> {
     canonicalJson(config);
+    if (config.contextGuard !== undefined) parseContextGuardPin(config.contextGuard);
     if (config.schemaVersion !== 'runtime-config/1' || config.authority.schemaVersion !== 'runtime-authority/1' ||
       Object.values(config.limits).some(x => !Number.isSafeInteger(x) || x <= 0) || config.limits.timeoutMs > 3_600_000 ||
       config.toolDigest !== bytesDigest(readFileSync(toolScript)) || config.verifierDigest !== bytesDigest(readFileSync(verifierScript))) throw new Error('CONFIG_INVALID');
@@ -176,7 +185,7 @@ export class PersistentWorkflowRunner {
     const budget = this.store.read<LineageBudget>('budget', lineageId) ?? { dispatches: 0, replans: 0, plannerAttempts: 0 };
     if (mode === 'replan' && ++budget.replans > config.limits.maxReplans) throw new Error('REPLAN_BUDGET_EXHAUSTED');
     const run: RunRecord = { runId: request.runId, lineageId, parentRunId: parent?.runId ?? null, mode, workflowVersion: WORKFLOW_VERSION, schemaVersion: SCHEMA_VERSION,
-      requestDigest: digest(request), request, state: 'queued', reason: null, checkpointRef: null, workspaceDigest: workspaceDigest(this.workspace), cancelRequested: false, createdAt: now(), updatedAt: now() };
+      requestDigest: digest(request), request, contextGuardPin: config.contextGuard ?? null, state: 'queued', reason: null, checkpointRef: null, workspaceDigest: workspaceDigest(this.workspace), cancelRequested: false, createdAt: now(), updatedAt: now() };
     this.store.transaction(() => { this.store.insert('run', run.runId, run); this.store.write('budget', lineageId, budget); this.checkpoint(run); });
     return this.status(run.runId);
   }
@@ -200,7 +209,19 @@ export class PersistentWorkflowRunner {
   }
   private async worker(lock: ProjectLock, options: Parameters<typeof runIsolated>[0]): Promise<IsolatedRunResult> {
     await lock.beginWorker();
-    const result = await runIsolated({ ...options, onSpawn: pid => lock.registerWorker(pid) });
+    let registered: number | undefined;
+    let result: IsolatedRunResult;
+    try {
+      result = await runIsolated({ ...options, onSpawn: async pid => {
+        await lock.registerWorker(pid); registered = pid;
+        await options.onSpawn?.(pid); // Admission completes before the fixed worker receives stdin.
+      } });
+    } catch (error) {
+      // runIsolated rejects a failed handshake only after reaping the child. clearWorker
+      // independently verifies PID/process-group absence; uncertain ownership stays quarantined.
+      if (registered !== undefined) await lock.clearWorker(registered);
+      throw error;
+    }
     if (!result.stopped) throw new Error('WORKER_NOT_STOPPED');
     await lock.clearWorker(result.pid); return result;
   }
@@ -222,6 +243,18 @@ export class PersistentWorkflowRunner {
     const descriptor = discoverSkills(catalog).find(x => x.skillId === binding.skillId && x.version === binding.skillVersion)!;
     if (this.store.artifact(descriptor) !== binding.descriptorDigest || this.store.artifact(skill.context.projectProfile) !== binding.projectProfileDigest) throw new Error('SKILL_ARTIFACT_DRIFT');
     this.store.artifact(binding); return binding;
+  }
+  private async currentContext(run: RunRecord, config: RuntimeConfig): Promise<ContextGuardPin | null> {
+    const required = run.contextGuardPin ?? null;
+    if (digest(required) !== digest(config.contextGuard ?? null)) throw new Error('CONTEXT_GUARD_CONFIG_DRIFT');
+    if (!required) return null; // Legacy Phase 2 mechanical fixture; no live Memory admission claim.
+    if (!this.contextGuard) throw new Error('CONTEXT_GUARD_MISSING');
+    const result = await evaluateRuntimeContextGuard(this.contextGuard, required, run.request.records);
+    if (result.status !== 'ready') {
+      this.store.event(run.runId, { kind: 'context-blocked', reasonCodes: result.issues.map(x => x.code) });
+      throw new Error(result.issues[0]?.code.startsWith('CONTEXT_GUARD_') ? result.issues[0].code : 'CONTEXT_NOT_READY');
+    }
+    return required;
   }
   private gate(run: RunRecord, stage: EvaluationStage, subject: string, evidence: unknown, skill: SkillBinding | null = null): StageGateEnvelope {
     const config = this.config(), authority = structuredClone(config.authority), at = now();
@@ -273,6 +306,7 @@ export class PersistentWorkflowRunner {
   }
   private async commitEffect(lock: ProjectLock, run: RunRecord, op: RuntimeOperation, entry: LedgerEntry, config: RuntimeConfig, options: ExecutionOptions): Promise<void> {
     // A postcondition is stronger than the candidate's claimed exit code/receipt. Recovery never trusts stdout.
+    await this.currentContext(run, config);
     const target = workspacePath(this.workspace, op.target, run.request.records.task.allowedPaths);
     const currentSkill = await this.skill(config, run);
     if ((currentSkill ? digest(currentSkill) : null) !== entry.skillBindingRef) throw new Error('SKILL_BINDING_DRIFT');
@@ -286,8 +320,9 @@ export class PersistentWorkflowRunner {
     const snapshot = digest(after), subject = digest({ runId: run.runId, operationId: op.operationId, snapshot, argumentsHash: entry.call.argumentsHash });
     const verification = await this.verify(lock, run, op, subject, config);
     const boundSkill = entry.skillBindingRef ? parseContract('SkillBinding', this.store.artifactValue(entry.skillBindingRef)) : null;
-    const gate = this.gate(run, 'post-execution', subject, verification, boundSkill);
     await options.observe?.('before-commit', op.operationId);
+    await this.currentContext(run, config);
+    const gate = this.gate(run, 'post-execution', subject, verification, boundSkill);
     this.store.transaction(() => {
       const receiptRef = this.store.artifact(verification.receipt), reportRef = this.store.artifact(verification.report), gateRef = this.store.artifact(gate);
       const last = entry.record.attempts.at(-1)!;
@@ -305,6 +340,7 @@ export class PersistentWorkflowRunner {
       const signal = options.signal ? AbortSignal.any([abort.signal, options.signal]) : abort.signal;
       try {
         const config = this.config();
+        await this.currentContext(run, config);
         if (this.store.read<LineageBudget>('budget', run.lineageId)!.plannerAttempts > 0) throw new Error('PLANNER_USAGE_UNMETERED');
         if (evaluatePlanningReadiness(run.request.records, config.authority.planning).outcome !== 'pass') throw new Error('PLAN_NOT_READY');
         this.gate(run, 'planning', run.request.records.plan.hash, { readiness: 'pass', inputs: planningInputs(run.request.records) });
@@ -324,8 +360,9 @@ export class PersistentWorkflowRunner {
           const skillBindingRef = skill ? digest(skill) : null;
           if (entry && entry.skillBindingRef !== skillBindingRef) throw new Error('SKILL_BINDING_DRIFT');
           const call = entry?.call ?? this.call(run, op, config);
-          const subject = digest({ planHash: run.request.records.plan.hash, call, workspace: run.workspaceDigest, skillBindingRef });
-          this.gate(run, 'pre-dispatch', subject, { readiness: 'pass', callDigest: digest(call), workspace: run.workspaceDigest, skillBindingRef }, skill);
+          const contextGuardPin = await this.currentContext(run, config);
+          const subject = digest({ planHash: run.request.records.plan.hash, call, workspace: run.workspaceDigest, skillBindingRef, contextGuardPin });
+          this.gate(run, 'pre-dispatch', subject, { readiness: 'pass', callDigest: digest(call), workspace: run.workspaceDigest, skillBindingRef, contextGuardPin }, skill);
           const budget = this.store.read<LineageBudget>('budget', run.lineageId)!;
           if (budget.dispatches >= config.limits.maxDispatches) throw new Error('DISPATCH_BUDGET_EXHAUSTED');
           if (!entry) {
@@ -334,15 +371,16 @@ export class PersistentWorkflowRunner {
             this.store.insert('operation', op.operationId, entry);
           }
           await options.observe?.('prepared', op.operationId);
+          await this.currentContext(run, config);
           if (entry.record.attempts.length >= config.limits.maxAttemptsPerOperation) throw new Error('ATTEMPT_BUDGET_EXHAUSTED');
           this.store.transaction(() => {
             budget.dispatches++; this.store.write('budget', run.lineageId, budget);
             entry!.record.state = 'STARTED'; entry!.record.attempts.push({ attemptId: call.attemptId, callId: call.callId, startedAt: now(), status: 'started' });
             this.store.write('operation', op.operationId, entry); this.checkpoint(run);
           });
-          await options.observe?.('started', op.operationId);
           const target = workspacePath(this.workspace, op.target, run.request.records.task.allowedPaths);
           const result = await this.worker(lock, { scriptPath: toolScript, workspace: this.workspace, readRoots: [], writeRoots: [path.dirname(target)], timeoutMs: call.timeoutMs, signal,
+            onSpawn: async () => { await options.observe?.('started', op.operationId); await this.currentContext(run, config); },
             input: canonicalJson({ tool: 'fixture.write-once', target, content: op.content, operationId: op.operationId, ...(options.fixtureFault ? { fault: options.fixtureFault } : {}) }) });
           await options.observe?.('after-worker', op.operationId);
           const attempt = entry.record.attempts.at(-1)!; attempt.finishedAt = now();

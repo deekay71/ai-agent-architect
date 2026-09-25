@@ -1,0 +1,24 @@
+{
+  "version": "phase3-mechanical-v1",
+  "budgets": [
+    256,
+    512,
+    1024
+  ],
+  "budgetUnit": "utf8-bytes/1",
+  "topK": 10,
+  "repeats": 3,
+  "modes": [
+    "lexical",
+    "explicit-graph"
+  ],
+  "trialOrder": "split dev then holdout; repeat ascending; budget ascending; case id ascending; alternate mode first by repeat+case index parity",
+  "reader": "structured-fact-exact-match-v1",
+  "thresholds": {
+    "maxFalseAcceptance": 0,
+    "maxIneligibleRetrieved": 0,
+    "maxOracleLeaks": 0,
+    "minimumHoldoutRecallAtLargestBudget": 0.75
+  },
+  "thresholdNotes": "Predeclared local mechanical thresholds. Graph improvement descriptive, no minimum delta. No live model/token/cost calibration."
+}

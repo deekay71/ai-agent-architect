@@ -1,0 +1,242 @@
+[
+  {
+    "id": "case-01",
+    "split": "dev",
+    "family": "direct",
+    "query": "ReceiptLedger operation storage",
+    "subject": "ReceiptLedger",
+    "predicate": "storage"
+  },
+  {
+    "id": "case-02",
+    "split": "dev",
+    "family": "direct",
+    "query": "ReceiptLedger receipt key",
+    "subject": "ReceiptLedger",
+    "predicate": "key"
+  },
+  {
+    "id": "case-03",
+    "split": "dev",
+    "family": "direct",
+    "query": "Workspace ownership lock",
+    "subject": "workspace",
+    "predicate": "ownership"
+  },
+  {
+    "id": "case-04",
+    "split": "dev",
+    "family": "direct",
+    "query": "Timeout effect next action",
+    "subject": "timeout",
+    "predicate": "action"
+  },
+  {
+    "id": "case-05",
+    "split": "dev",
+    "family": "direct",
+    "query": "Cancellation action pause worker",
+    "subject": "cancel",
+    "predicate": "action"
+  },
+  {
+    "id": "case-06",
+    "split": "dev",
+    "family": "graph",
+    "query": "DispatchBroker entry point",
+    "subject": "ReceiptLedger",
+    "predicate": "storage"
+  },
+  {
+    "id": "case-07",
+    "split": "dev",
+    "family": "graph",
+    "query": "DispatchBroker dispatch validation",
+    "subject": "receipt",
+    "predicate": "started"
+  },
+  {
+    "id": "case-08",
+    "split": "dev",
+    "family": "graph",
+    "query": "ReceiptLedger durable operations",
+    "subject": "receipt",
+    "predicate": "committed"
+  },
+  {
+    "id": "case-09",
+    "split": "dev",
+    "family": "graph",
+    "query": "Catalog metadata discovery",
+    "subject": "recipe",
+    "predicate": "load"
+  },
+  {
+    "id": "case-10",
+    "split": "dev",
+    "family": "direct",
+    "query": "Catalog discovery metadata recipe",
+    "subject": "catalog",
+    "predicate": "discovery"
+  },
+  {
+    "id": "case-11",
+    "split": "dev",
+    "family": "revision",
+    "query": "Retry policy limit current revision",
+    "subject": "retry",
+    "predicate": "limit"
+  },
+  {
+    "id": "case-12",
+    "split": "dev",
+    "family": "revision",
+    "query": "Three retries former limit",
+    "subject": "retry",
+    "predicate": "limit"
+  },
+  {
+    "id": "case-13",
+    "split": "dev",
+    "family": "revocation",
+    "query": "Credential inline secret policy",
+    "subject": "credential",
+    "predicate": "inline"
+  },
+  {
+    "id": "case-14",
+    "split": "dev",
+    "family": "revocation",
+    "query": "Revoked credential allowed inline",
+    "subject": "credential",
+    "predicate": "inline"
+  },
+  {
+    "id": "case-15",
+    "split": "dev",
+    "family": "staleness",
+    "query": "Storage encryption status audit",
+    "subject": "storage",
+    "predicate": "encryption"
+  },
+  {
+    "id": "case-16",
+    "split": "dev",
+    "family": "distractor",
+    "query": "Retry retry retries guideline limit",
+    "subject": "retry",
+    "predicate": "limit"
+  },
+  {
+    "id": "case-17",
+    "split": "dev",
+    "family": "distractor",
+    "query": "Ledger committed receipt glossary",
+    "subject": "receipt",
+    "predicate": "committed"
+  },
+  {
+    "id": "case-18",
+    "split": "dev",
+    "family": "missing-premise",
+    "query": "Linux production runtime certified",
+    "subject": "linuxRuntime",
+    "predicate": "certified"
+  },
+  {
+    "id": "case-19",
+    "split": "dev",
+    "family": "missing-premise",
+    "query": "Memory throughput million records measured",
+    "subject": "memory",
+    "predicate": "throughput"
+  },
+  {
+    "id": "case-20",
+    "split": "dev",
+    "family": "direct",
+    "query": "Source identity revision content digest",
+    "subject": "source",
+    "predicate": "identity"
+  },
+  {
+    "id": "case-21",
+    "split": "holdout",
+    "family": "compaction",
+    "query": "WindowHydrator summary pinned compaction",
+    "subject": "compaction",
+    "predicate": "constraints"
+  },
+  {
+    "id": "case-22",
+    "split": "holdout",
+    "family": "compaction",
+    "query": "Compaction critical unknowns",
+    "subject": "compaction",
+    "predicate": "criticalUnknowns"
+  },
+  {
+    "id": "case-23",
+    "split": "holdout",
+    "family": "build-distinction",
+    "query": "BuildReceipt compile fixture succeeded",
+    "subject": "fixture",
+    "predicate": "androidBuild"
+  },
+  {
+    "id": "case-24",
+    "split": "holdout",
+    "family": "build-distinction",
+    "query": "Android compile build success tutorial",
+    "subject": "fixture",
+    "predicate": "androidCertified"
+  },
+  {
+    "id": "case-25",
+    "split": "holdout",
+    "family": "authority-boundary",
+    "query": "Tool output policy authority",
+    "subject": "toolOutput",
+    "predicate": "authority"
+  },
+  {
+    "id": "case-26",
+    "split": "holdout",
+    "family": "scope",
+    "query": "Memory Explorer project path access",
+    "subject": "explorer",
+    "predicate": "access"
+  },
+  {
+    "id": "case-27",
+    "split": "holdout",
+    "family": "conflicting-sources",
+    "query": "Retention policy days conflict",
+    "subject": "retention",
+    "predicate": "days"
+  },
+  {
+    "id": "case-28",
+    "split": "holdout",
+    "family": "trust-state",
+    "query": "Unreviewed imported external note authority",
+    "subject": "externalNote",
+    "predicate": "authority"
+  },
+  {
+    "id": "case-29",
+    "split": "holdout",
+    "family": "budget-retention",
+    "query": "Context mandatory constraints byte budget",
+    "subject": "budget",
+    "predicate": "mandatory"
+  },
+  {
+    "id": "case-30",
+    "split": "holdout",
+    "family": "certification",
+    "query": "Skill eligible compatibility certification",
+    "subject": "skill",
+    "predicate": "eligible"
+  }
+]

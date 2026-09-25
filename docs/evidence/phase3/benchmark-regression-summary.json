@@ -1,0 +1,49 @@
+{
+  "classification": "REGRESSION_EXPOSED_SET",
+  "t11Status": "REPLAN",
+  "evaluationPolicy": {
+    "version": "critical-coverage/2",
+    "classification": "REGRESSION_EXPOSED_SET",
+    "scope": "structured facts in retrieved top-10 only",
+    "budgetScope": "source content bytes; coverage metadata reported separately"
+  },
+  "sourceFiles": {
+    "benchmark-results.json": "sha256:f24f2699bd4a848e2eee785894307af98025ec0cdc76b787b4a633b5f2d54eaa",
+    "benchmark-results-r2.json": "sha256:01b697b724e6db6be974e0a6f1c3a7f59fc18503d053aa93904993c656c56e5a"
+  },
+  "originalFalseAcceptance": 6,
+  "regressionFalseAcceptance": 0,
+  "regressionFalseRejection": 78,
+  "blockedTrials": 186,
+  "blockedUniqueCases": 14,
+  "blockerCodeOccurrences": {
+    "CRITICAL_EVIDENCE_EXCLUDED": 48,
+    "NO_RETRIEVED_SUPPORT": 126,
+    "CONFLICTING_RETRIEVED_FACTS": 18
+  },
+  "budgetLostCoverageTrials": 48,
+  "budgetLostCoverageCaseIds": [
+    "case-06",
+    "case-07",
+    "case-08",
+    "case-09",
+    "case-17",
+    "case-21",
+    "case-22",
+    "case-23",
+    "case-27"
+  ],
+  "budgetLostCoverageRefs": 48,
+  "metadataBytesRange": [
+    184,
+    512
+  ],
+  "retrievalIdsAndBytesUnchanged": true,
+  "remaining": [
+    "fresh independently sealed holdout",
+    "real model/provider reader",
+    "provider tokenizer/usage/cost accounting",
+    "semantic/human calibration",
+    "global conflict/evidence completeness beyond retrieved top10"
+  ]
+}

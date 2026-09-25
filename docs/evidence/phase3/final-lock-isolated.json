@@ -1,0 +1,68 @@
+{
+  "ranAt": "2026-09-25T05:07:29.987864+00:00",
+  "kind": "isolated-original-test-no-source-edits",
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 3,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 4,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 5,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 6,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 7,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 8,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 9,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 10,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 11,
+      "exitCode": 0,
+      "quarantine": false
+    },
+    {
+      "run": 12,
+      "exitCode": 0,
+      "quarantine": false
+    }
+  ],
+  "passes": 12,
+  "failures": 0
+}

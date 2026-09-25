@@ -10,6 +10,7 @@ import { createFixtureWorkflow } from './foundation/workflow.js';
 import { createSkillBinding, discoverSkills, loadSkillCatalog, loadSkillResource, resolveSkill } from './skills/catalog.js';
 import type { SkillResolutionContext } from './skills/catalog.js';
 import { runtimeCommand } from './runtime/cli.js';
+import { memoryCommand } from './explorer/cli.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
 const output = (value: unknown) => process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
@@ -52,8 +53,11 @@ async function main(args: string[]): Promise<void> {
   if (command === '--help' || command === 'help' || args.length === 0) {
     output({ name: 'AI Agent Architect', commands: ['demo [--tamper]', 'skills-demo', 'contracts', 'validate <ContractName> <file.json>', 'schemas <output-directory>',
       'runtime-demo <new-directory>', 'runtime-submit <workspace> <control> <request.json>', 'runtime-resume <workspace> <control> <run-id>',
-      'runtime-status <workspace> <control> <run-id>', 'runtime-reconcile <workspace> <control> <run-id>', 'runtime-recover <workspace> <control>'],
-      scope: 'Phase 1 conformance plus Phase 2 macOS mechanical fixture runtime; no production/Unity authorization' });
+      'runtime-status <workspace> <control> <run-id>', 'runtime-reconcile <workspace> <control> <run-id>', 'runtime-recover <workspace> <control>',
+      'memory-demo <new-directory>', 'memory-view <snapshot.json> <scope.json> [port] [context-windows.json]'],
+      scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
+  } else if (command?.startsWith('memory-')) {
+    await memoryCommand(args);
   } else if (command?.startsWith('runtime-')) {
     await runtimeCommand(args);
   } else if (command === 'contracts' && args.length === 1) {

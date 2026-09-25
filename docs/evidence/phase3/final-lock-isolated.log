@@ -1,0 +1,132 @@
+
+Run 1
+✔ paused owner cannot be replaced and resumes with the same lock (339.463792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 370.0905
+
+Run 2
+✔ paused owner cannot be replaced and resumes with the same lock (335.346875ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 366.441125
+
+Run 3
+✔ paused owner cannot be replaced and resumes with the same lock (333.964334ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 364.54725
+
+Run 4
+✔ paused owner cannot be replaced and resumes with the same lock (337.284875ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.697875
+
+Run 5
+✔ paused owner cannot be replaced and resumes with the same lock (338.586667ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 369.866875
+
+Run 6
+✔ paused owner cannot be replaced and resumes with the same lock (335.887959ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.841792
+
+Run 7
+✔ paused owner cannot be replaced and resumes with the same lock (336.787291ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.468375
+
+Run 8
+✔ paused owner cannot be replaced and resumes with the same lock (337.659583ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 368.212958
+
+Run 9
+✔ paused owner cannot be replaced and resumes with the same lock (338.418792ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 370.662
+
+Run 10
+✔ paused owner cannot be replaced and resumes with the same lock (337.403208ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 368.7595
+
+Run 11
+✔ paused owner cannot be replaced and resumes with the same lock (336.394542ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.463834
+
+Run 12
+✔ paused owner cannot be replaced and resumes with the same lock (336.791292ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 367.801625

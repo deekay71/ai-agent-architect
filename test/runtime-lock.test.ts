@@ -23,8 +23,9 @@ async function owner(root: string, withWorker = false, pending = false): Promise
       worker = spawn(process.execPath, ['-e', 'setInterval(()=>{},1000)'], {detached:true,stdio:'ignore'});
       await lock.registerWorker(worker.pid);
     }
-    console.log(JSON.stringify({ready:true,workerPid:worker?.pid}));
     process.on('SIGTERM', async () => { await lock.release(); process.exit(0); });
+    // Ready promises that shutdown handlers are installed before the parent can stop/resume us.
+    console.log(JSON.stringify({ready:true,workerPid:worker?.pid}));
     setInterval(()=>{},1000);
   `;
   const child = spawn(process.execPath, ['--input-type=module', '-e', source, root], { stdio: ['pipe', 'pipe', 'pipe'] });
@@ -75,6 +76,7 @@ test('paused owner cannot be replaced and resumes with the same lock', { skip: !
     await assert.rejects(acquireProjectLock(root, { timeoutMs: 100 }), { code: 'LOCK_BUSY' });
     a.child.kill('SIGCONT');
     await stop(a.child, 'SIGTERM');
+    assert.equal(a.child.exitCode, 0, 'A ready owner must handle SIGTERM and release cleanly');
     const b = await acquireProjectLock(root); await b.release();
   } finally { a.child.kill('SIGCONT'); await stop(a.child); await rm(root, { recursive: true, force: true }); }
 });

@@ -1,10 +1,14 @@
-# AI Agent Architect — foundation và local runtime
+# AI Agent Architect — runtime, Memory và Context local
 
-Repo có foundation **Phase 1 (T17/T06/T23)** và runtime **Phase 2 (T07/T18/T15)**. Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằng sandbox macOS, giữ khóa OS theo project và cấp gate theo từng stage. Tool hiện tại chỉ ghi một file fixture có giới hạn rồi kiểm lại bằng một verifier process độc lập.
+Repo có foundation **Phase 1**, runtime **Phase 2** và phần Memory/Context local của **Phase 3**. T09/T10 đạt Done / Pass trong phạm vi local; **T19 Doing / Not evaluated, T11 Doing / Replan, T14 Doing / Not evaluated; toàn Phase 3 chưa PASS**. Context mechanics và Memory promotion đã có code/tests, nhưng T19 còn AC chất lượng/token thật; handoff T14 chờ T19 được nghiệm thu đầy đủ. Chưa mở Phase 4 hoặc gameplay. Xem [báo cáo Phase 3](docs/phase-3-report.md).
+
+Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằng sandbox macOS, giữ khóa OS theo project và cấp gate theo từng stage. Memory bổ sung nguồn/claim có provenance, freshness và selective invalidation; Context tách window theo agent, hydrate constraints/acceptance sau compaction và kiểm source hiện hành trước dispatch/commit. Tool hiện tại chỉ ghi một file fixture có giới hạn rồi kiểm lại bằng một verifier process độc lập.
 
 Phạm vi gồm 26 contracts phiên bản `0.5.0`, canonical hashing, audit liên kết giữa records, mô hình phân quyền actor/store và catalog có pin nội dung. CLI có demo offline và thử lựa chọn skill theo metadata. Các record policy, evidence và verdict trong demo đều là dữ liệu tổng hợp của fixture.
 
-Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; chưa chọn/call paid provider. Memory, multi-planning có critic/calibration, Unity và game thuộc các phase sau. `demo` Phase 1 vẫn giữ `dispatchAuthorized: false`.
+Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; chưa chọn/call paid provider. Multi-planning có critic/calibration, Unity và game vẫn chưa triển khai. `demo` Phase 1 giữ `dispatchAuthorized: false`.
+
+Explorer local có graph/backlinks và panel kiểu Obsidian, chỉ đọc snapshot đã lọc scope; góp ý được tải thành proposal, không ghi Memory chuẩn. Benchmark R1 giữ nguyên 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials, nhưng là regression trên bộ đã lộ. Cần holdout độc lập mới cùng provider/model/tokenizer/cost/calibration trước khi đóng T11. Final clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](docs/evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Không suy test count thành quality gate.
 
 ## Thiết lập
 
@@ -17,7 +21,7 @@ Cần Node.js **24.x**, pnpm **11.19.0**; runtime tests cần macOS có `/usr/bi
 
 Lệnh đầu cài đúng lockfile và bỏ lifecycle scripts của dependencies. Bước cài có thể cần mạng để tải dependencies; các demo bên dưới chạy offline. `scripts/dev.sh` dùng Node/pnpm có trong `PATH`; nếu chưa tìm thấy Node, script có thể dùng runtime Node đi kèm Codex trên máy này. Script không cài hay thay Node hệ thống.
 
-`check` chạy TypeScript build rồi bộ tests. Dependencies trực tiếp được pin gồm TypeScript `5.9.3` và Zod `4.1.12`; danh sách đầy đủ nằm trong `package.json` và lockfile. Không cần API key, Unity Editor hay model server để chạy phạm vi Phase 1.
+`check` chạy TypeScript build rồi bộ tests. Dependencies trực tiếp được pin gồm TypeScript `5.9.3` và Zod `4.1.12`; danh sách đầy đủ nằm trong `package.json` và lockfile. Không cần API key, Unity Editor hay model server để chạy các fixture local hiện có.
 
 ## Chạy CLI
 
@@ -31,6 +35,10 @@ mkdir -p .local
 # Đọc trạng thái/tiếp tục từ durable checkpoint
 ./scripts/dev.sh exec node dist/src/cli.js runtime-status .local/phase2-demo/candidate .local/phase2-demo/control fixture-run
 ./scripts/dev.sh exec node dist/src/cli.js runtime-resume .local/phase2-demo/candidate .local/phase2-demo/control fixture-run
+
+# Memory/Context fixture và inspector local chỉ đọc; dùng thư mục demo mới
+./scripts/dev.sh exec node dist/src/cli.js memory-demo .local/phase3-memory-demo
+./scripts/dev.sh exec node dist/src/cli.js memory-view .local/phase3-memory-demo/snapshot.json .local/phase3-memory-demo/scope.json 0 .local/phase3-memory-demo/context-windows.json
 
 # Workflow giả lập: fixture plan, read-only inspection và audit records
 ./scripts/dev.sh demo
@@ -72,11 +80,15 @@ mkdir -p .local
 | `src/runtime/evaluation.ts` | Stage readiness, policy release validation, verifier semantics và protected gate lookup |
 | `src/runtime/store.ts` | SQLite WAL/FULL, immutable artifacts và atomic checkpoints |
 | `src/runtime/isolation.ts`, `lock.ts` | Sandbox executor/verifier, OS flock, stop confirmation và quarantine |
+| `src/memory/` | SQLite/FTS, source/claim lifecycle, independent promotion, dependency invalidation và Markdown export |
+| `src/context/` | Window/manifest, progressive skill loading, budget/compaction và current-source runtime guard |
+| `src/explorer/` | Graph/trace projection đã lọc scope, loopback HTTP chỉ đọc và proposal download |
+| `src/benchmark/` | Retrieval/reader/context fixture benchmark, oracle riêng và C# syntax spike giới hạn |
 | `src/cli.ts` | CLI và các demo fixture |
 | `fixtures/` | Dữ liệu thử, authority tổng hợp và resource skill trơ |
 | `test/` | Kiểm schema, liên kết, negative cases, catalog và CLI |
 
-Đọc [báo cáo Phase 2](docs/phase-2-report.md), [hướng dẫn runtime](docs/runtime.md), [framework spikes](docs/phase-2-framework-spikes.md), [contracts v0.5](docs/contracts-v0.5.md) và [kiến trúc](docs/architecture.md).
+Đọc [báo cáo Phase 3](docs/phase-3-report.md), [hướng dẫn Memory/Context/Explorer](docs/memory-context.md), [benchmark và phần T11 còn mở](docs/phase3-benchmark.md), [hướng dẫn runtime](docs/runtime.md) và [kiến trúc](docs/architecture.md). [Báo cáo Phase 2](docs/phase-2-report.md), [framework spikes](docs/phase-2-framework-spikes.md) và [contracts v0.5](docs/contracts-v0.5.md) được giữ làm nguồn đối chiếu.
 
 ## Ranh giới trust
 
@@ -84,4 +96,8 @@ mkdir -p .local
 
 Trong Phase 2, executor là process bị sandbox, không truy cập kho authority/evidence/verdict hoặc code verifier. Policy owner, verifier coordinator và Gate Controller là các vai trò trong trusted broker; chưa tách thành service/tài khoản riêng. Cấu hình operator và máy chủ tin cậy nằm ngoài threat model của candidate. Khóa không có TTL takeover; kết quả không rõ phải reconcile hoặc giữ UNKNOWN/quarantine.
 
-LangGraph và Promptfoo được pin/cài trong `spikes/phase2`, tách khỏi dependencies runtime chính. Chạy spike bằng `sh spikes/phase2/run.sh install --frozen-lockfile` rồi `sh spikes/phase2/run.sh run check`; chỉ native build `better-sqlite3` được cho phép. Kết quả fixture không chứng minh model quality. Các phase sau bổ sung Memory/Context, planning/calibration, Unity/T22, rồi gameplay.
+Context receipts chỉ chứng minh byte nằm trong packet local; chưa chứng minh provider đã nhận/đọc. Accounting mặc định dùng byte UTF-8 local, không phải token provider. `revalidateBeforeUse` vẫn UNKNOWN nếu chưa có fetch adapter thật. Explorer không mở database để ghi và file import không được tự nhận là kết nối live.
+
+LangGraph và Promptfoo được pin/cài trong `spikes/phase2`, tách khỏi dependencies runtime chính. Chạy spike bằng `sh spikes/phase2/run.sh install --frozen-lockfile` rồi `sh spikes/phase2/run.sh run check`; chỉ native build `better-sqlite3` được cho phép. Kết quả fixture không chứng minh model quality. Sau khi đóng gate Phase 3 mới tiếp tục planning/calibration, Unity/T22, rồi gameplay.
+
+Mốc đồng bộ hiện tại: remote `main` còn ở Phase 1; Phase 2 và thay đổi Phase 3 đang local, chưa push. Snapshot/report lịch sử được giữ riêng; commit và liên kết cloud cuối sẽ được cập nhật sau xác minh.

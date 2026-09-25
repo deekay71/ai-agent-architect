@@ -1,0 +1,284 @@
+[
+  {
+    "id": "case-01",
+    "expected": "SQLite",
+    "relevantIds": [
+      "ledger"
+    ],
+    "criticalIds": [
+      "ledger"
+    ]
+  },
+  {
+    "id": "case-02",
+    "expected": "operationId",
+    "relevantIds": [
+      "ledger"
+    ],
+    "criticalIds": [
+      "ledger"
+    ]
+  },
+  {
+    "id": "case-03",
+    "expected": "exclusive canonical lock",
+    "relevantIds": [
+      "lock"
+    ],
+    "criticalIds": [
+      "lock"
+    ]
+  },
+  {
+    "id": "case-04",
+    "expected": "reconcile",
+    "relevantIds": [
+      "timeout"
+    ],
+    "criticalIds": [
+      "timeout"
+    ]
+  },
+  {
+    "id": "case-05",
+    "expected": "pause",
+    "relevantIds": [
+      "cancel"
+    ],
+    "criticalIds": [
+      "cancel"
+    ]
+  },
+  {
+    "id": "case-06",
+    "expected": "SQLite",
+    "relevantIds": [
+      "ledger"
+    ],
+    "criticalIds": [
+      "ledger"
+    ]
+  },
+  {
+    "id": "case-07",
+    "expected": "reconcile",
+    "relevantIds": [
+      "receipt-state"
+    ],
+    "criticalIds": [
+      "receipt-state"
+    ]
+  },
+  {
+    "id": "case-08",
+    "expected": "reuse",
+    "relevantIds": [
+      "receipt-state"
+    ],
+    "criticalIds": [
+      "receipt-state"
+    ]
+  },
+  {
+    "id": "case-09",
+    "expected": "digest verified",
+    "relevantIds": [
+      "recipe"
+    ],
+    "criticalIds": [
+      "recipe"
+    ]
+  },
+  {
+    "id": "case-10",
+    "expected": "metadata only",
+    "relevantIds": [
+      "metadata"
+    ],
+    "criticalIds": [
+      "metadata"
+    ]
+  },
+  {
+    "id": "case-11",
+    "expected": "2",
+    "relevantIds": [
+      "revision-current"
+    ],
+    "criticalIds": [
+      "revision-current"
+    ]
+  },
+  {
+    "id": "case-12",
+    "expected": "2",
+    "relevantIds": [
+      "revision-current"
+    ],
+    "criticalIds": [
+      "revision-current"
+    ]
+  },
+  {
+    "id": "case-13",
+    "expected": "prohibited",
+    "relevantIds": [
+      "credential"
+    ],
+    "criticalIds": [
+      "credential"
+    ]
+  },
+  {
+    "id": "case-14",
+    "expected": "prohibited",
+    "relevantIds": [
+      "credential"
+    ],
+    "criticalIds": [
+      "credential"
+    ]
+  },
+  {
+    "id": "case-15",
+    "expected": null,
+    "relevantIds": [],
+    "criticalIds": []
+  },
+  {
+    "id": "case-16",
+    "expected": "2",
+    "relevantIds": [
+      "revision-current"
+    ],
+    "criticalIds": [
+      "revision-current"
+    ]
+  },
+  {
+    "id": "case-17",
+    "expected": "reuse",
+    "relevantIds": [
+      "receipt-state"
+    ],
+    "criticalIds": [
+      "receipt-state"
+    ]
+  },
+  {
+    "id": "case-18",
+    "expected": null,
+    "relevantIds": [],
+    "criticalIds": []
+  },
+  {
+    "id": "case-19",
+    "expected": null,
+    "relevantIds": [],
+    "criticalIds": []
+  },
+  {
+    "id": "case-20",
+    "expected": "sourceId revision digest",
+    "relevantIds": [
+      "pin"
+    ],
+    "criticalIds": [
+      "pin"
+    ]
+  },
+  {
+    "id": "case-21",
+    "expected": "reload pinned",
+    "relevantIds": [
+      "compaction"
+    ],
+    "criticalIds": [
+      "compaction"
+    ]
+  },
+  {
+    "id": "case-22",
+    "expected": "preserved",
+    "relevantIds": [
+      "compaction"
+    ],
+    "criticalIds": [
+      "compaction"
+    ]
+  },
+  {
+    "id": "case-23",
+    "expected": "unmeasured",
+    "relevantIds": [
+      "android-status"
+    ],
+    "criticalIds": [
+      "android-status"
+    ]
+  },
+  {
+    "id": "case-24",
+    "expected": null,
+    "relevantIds": [],
+    "criticalIds": []
+  },
+  {
+    "id": "case-25",
+    "expected": "none",
+    "relevantIds": [
+      "authority"
+    ],
+    "criticalIds": [
+      "authority"
+    ]
+  },
+  {
+    "id": "case-26",
+    "expected": "scope filtered",
+    "relevantIds": [
+      "view"
+    ],
+    "criticalIds": [
+      "view"
+    ]
+  },
+  {
+    "id": "case-27",
+    "expected": null,
+    "relevantIds": [
+      "conflict-a",
+      "conflict-b"
+    ],
+    "criticalIds": [
+      "conflict-a",
+      "conflict-b"
+    ]
+  },
+  {
+    "id": "case-28",
+    "expected": null,
+    "relevantIds": [],
+    "criticalIds": []
+  },
+  {
+    "id": "case-29",
+    "expected": "block on overflow",
+    "relevantIds": [
+      "budget"
+    ],
+    "criticalIds": [
+      "budget"
+    ]
+  },
+  {
+    "id": "case-30",
+    "expected": "not certified",
+    "relevantIds": [
+      "release"
+    ],
+    "criticalIds": [
+      "release"
+    ]
+  }
+]

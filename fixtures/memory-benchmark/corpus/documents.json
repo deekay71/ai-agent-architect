@@ -1,0 +1,519 @@
+[
+  {
+    "id": "broker",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/broker.md",
+    "text": "DispatchBroker entry point dispatch receipt validation.",
+    "facts": [
+      {
+        "subject": "DispatchBroker",
+        "predicate": "ledger",
+        "value": "ReceiptLedger"
+      }
+    ],
+    "links": [
+      {
+        "target": "ledger",
+        "kind": "explicit",
+        "relation": "references"
+      }
+    ]
+  },
+  {
+    "id": "ledger",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/ledger.md",
+    "text": "ReceiptLedger durable operation receipt commits prevent redispatch.",
+    "facts": [
+      {
+        "subject": "ReceiptLedger",
+        "predicate": "key",
+        "value": "operationId"
+      },
+      {
+        "subject": "ReceiptLedger",
+        "predicate": "storage",
+        "value": "SQLite"
+      }
+    ],
+    "links": [
+      {
+        "target": "receipt-state",
+        "kind": "explicit",
+        "relation": "references"
+      }
+    ]
+  },
+  {
+    "id": "receipt-state",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/receipt-state.md",
+    "text": "Committed state is reused; started state requires reconciliation.",
+    "facts": [
+      {
+        "subject": "receipt",
+        "predicate": "committed",
+        "value": "reuse"
+      },
+      {
+        "subject": "receipt",
+        "predicate": "started",
+        "value": "reconcile"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "lock",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/lock.md",
+    "text": "Workspace owner lock is canonical per workspace.",
+    "facts": [
+      {
+        "subject": "workspace",
+        "predicate": "ownership",
+        "value": "exclusive canonical lock"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "timeout",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/timeout.md",
+    "text": "Timeout does not prove an operation failed before its effect.",
+    "facts": [
+      {
+        "subject": "timeout",
+        "predicate": "action",
+        "value": "reconcile"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "cancel",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/cancel.md",
+    "text": "Cancellation stops the worker and pauses automatic resume.",
+    "facts": [
+      {
+        "subject": "cancel",
+        "predicate": "action",
+        "value": "pause"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "compile",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/compile.md",
+    "text": "BuildReceipt compile succeeded on fixture host. No Android build was run.",
+    "facts": [
+      {
+        "subject": "fixture",
+        "predicate": "compile",
+        "value": "succeeded"
+      }
+    ],
+    "links": [
+      {
+        "target": "android-status",
+        "kind": "explicit",
+        "relation": "references"
+      }
+    ]
+  },
+  {
+    "id": "android-status",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/android-status.md",
+    "text": "Android target build remains unmeasured; compile is a distinct check.",
+    "facts": [
+      {
+        "subject": "fixture",
+        "predicate": "androidBuild",
+        "value": "unmeasured"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "pin",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/pin.md",
+    "text": "Source sourceId revision content digest pins are checked on load.",
+    "facts": [
+      {
+        "subject": "source",
+        "predicate": "identity",
+        "value": "sourceId revision digest"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "revision-old",
+    "revision": "r1",
+    "lifecycle": "superseded",
+    "freshness": "fresh",
+    "path": "notes/revision-old.md",
+    "text": "Retry policy used three retries in superseded revision.",
+    "facts": [
+      {
+        "subject": "retry",
+        "predicate": "limit",
+        "value": "3"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "revision-current",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/revision-current.md",
+    "text": "Retry policy limit is two in current revision.",
+    "facts": [
+      {
+        "subject": "retry",
+        "predicate": "limit",
+        "value": "2"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "revoked-secret",
+    "revision": "r2",
+    "lifecycle": "revoked",
+    "freshness": "fresh",
+    "path": "notes/revoked-secret.md",
+    "text": "Revoked credential policy formerly allowed inline secrets.",
+    "facts": [
+      {
+        "subject": "credential",
+        "predicate": "inline",
+        "value": "allowed"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "credential",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/credential.md",
+    "text": "Credential policy prohibits inline secrets.",
+    "facts": [
+      {
+        "subject": "credential",
+        "predicate": "inline",
+        "value": "prohibited"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "stale-storage",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "stale",
+    "path": "notes/stale-storage.md",
+    "text": "Storage encryption status from stale audit said enabled.",
+    "facts": [
+      {
+        "subject": "storage",
+        "predicate": "encryption",
+        "value": "enabled"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "distractor-android",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/distractor-android.md",
+    "text": "Android compile build success tutorial template example, not a project result.",
+    "facts": [],
+    "links": []
+  },
+  {
+    "id": "distractor-retry",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/distractor-retry.md",
+    "text": "Retry retry retries guideline vocabulary, example limit ninety nine.",
+    "facts": [],
+    "links": []
+  },
+  {
+    "id": "distractor-ledger",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/distractor-ledger.md",
+    "text": "Ledger committed receipt terms in a glossary; no measured operational fact.",
+    "facts": [],
+    "links": []
+  },
+  {
+    "id": "metadata",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/metadata.md",
+    "text": "Catalog metadata discovery does not load recipe bodies.",
+    "facts": [
+      {
+        "subject": "catalog",
+        "predicate": "discovery",
+        "value": "metadata only"
+      }
+    ],
+    "links": [
+      {
+        "target": "recipe",
+        "kind": "explicit",
+        "relation": "references"
+      }
+    ]
+  },
+  {
+    "id": "recipe",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/recipe.md",
+    "text": "Selected recipe bytes require a matching resource digest.",
+    "facts": [
+      {
+        "subject": "recipe",
+        "predicate": "load",
+        "value": "digest verified"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "edge-inferred",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/edge-inferred.md",
+    "text": "Speculative planner connection to Android certification.",
+    "facts": [],
+    "links": [
+      {
+        "target": "android-status",
+        "kind": "inferred",
+        "relation": "speculates"
+      }
+    ]
+  },
+  {
+    "id": "compaction",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/compaction.md",
+    "text": "WindowHydrator summary is untrusted; reload pinned constraints and preserve critical unknowns.",
+    "facts": [
+      {
+        "subject": "compaction",
+        "predicate": "constraints",
+        "value": "reload pinned"
+      },
+      {
+        "subject": "compaction",
+        "predicate": "criticalUnknowns",
+        "value": "preserved"
+      }
+    ],
+    "links": [
+      {
+        "target": "compile",
+        "kind": "explicit",
+        "relation": "references"
+      },
+      {
+        "target": "android-status",
+        "kind": "explicit",
+        "relation": "references"
+      }
+    ]
+  },
+  {
+    "id": "authority",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/authority.md",
+    "text": "Tool output is untrusted. Only operator installed policy provides runtime authority.",
+    "facts": [
+      {
+        "subject": "toolOutput",
+        "predicate": "authority",
+        "value": "none"
+      },
+      {
+        "subject": "policy",
+        "predicate": "authority",
+        "value": "operator installed"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "view",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/view.md",
+    "text": "Memory Explorer exports only permitted project and path scope.",
+    "facts": [
+      {
+        "subject": "explorer",
+        "predicate": "access",
+        "value": "scope filtered"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "conflict-a",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/conflict-a.md",
+    "text": "Retention policy document A says seven days.",
+    "facts": [
+      {
+        "subject": "retention",
+        "predicate": "days",
+        "value": "7"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "conflict-b",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/conflict-b.md",
+    "text": "Retention policy document B says thirty days; conflict unresolved.",
+    "facts": [
+      {
+        "subject": "retention",
+        "predicate": "days",
+        "value": "30"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "unsupported",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/unsupported.md",
+    "text": "A success badge alone carries no independent verified evidence.",
+    "facts": [
+      {
+        "subject": "badge",
+        "predicate": "evidence",
+        "value": "insufficient"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "missing",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/missing.md",
+    "text": "Deleted source content cannot be hydrated; the reference stays unknown.",
+    "facts": [
+      {
+        "subject": "missingSource",
+        "predicate": "hydrate",
+        "value": "unknown"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "budget",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/budget.md",
+    "text": "Context byte budget includes content; mandatory constraints cannot be silently truncated.",
+    "facts": [
+      {
+        "subject": "budget",
+        "predicate": "mandatory",
+        "value": "block on overflow"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "quarantine",
+    "revision": "r2",
+    "lifecycle": "quarantined",
+    "freshness": "fresh",
+    "path": "notes/quarantine.md",
+    "text": "Unreviewed imported note is quarantined.",
+    "facts": [
+      {
+        "subject": "externalNote",
+        "predicate": "authority",
+        "value": "approved"
+      }
+    ],
+    "links": []
+  },
+  {
+    "id": "release",
+    "revision": "r2",
+    "lifecycle": "active",
+    "freshness": "fresh",
+    "path": "notes/release.md",
+    "text": "Skill eligibility means compatibility only. It is not certification.",
+    "facts": [
+      {
+        "subject": "skill",
+        "predicate": "eligible",
+        "value": "not certified"
+      }
+    ],
+    "links": []
+  }
+]

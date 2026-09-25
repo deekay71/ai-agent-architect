@@ -1,0 +1,53 @@
+{
+  "mode": "local-synthetic-infrastructure-fixture",
+  "windows": [
+    {
+      "windowId": "window:planner-1",
+      "initialStatus": "ready",
+      "currentValidation": {
+        "status": "blocked",
+        "issues": [
+          {
+            "code": "context.resourceStale",
+            "ref": "source:8aa51e57544b5fa8c64cbd71014a3980cb264dc2ae4bba24d431dd823182a62b",
+            "message": "Loaded resource changed, was revoked or moved outside namespace"
+          }
+        ]
+      },
+      "packetUnits": 9428
+    },
+    {
+      "windowId": "window:planner-2",
+      "initialStatus": "ready",
+      "currentValidation": {
+        "status": "blocked",
+        "issues": [
+          {
+            "code": "context.resourceStale",
+            "ref": "source:8aa51e57544b5fa8c64cbd71014a3980cb264dc2ae4bba24d431dd823182a62b",
+            "message": "Loaded resource changed, was revoked or moved outside namespace"
+          }
+        ]
+      },
+      "packetUnits": 8190
+    },
+    {
+      "windowId": "window:critic-1",
+      "initialStatus": "ready",
+      "currentValidation": {
+        "status": "ready",
+        "issues": []
+      },
+      "packetUnits": 8072
+    }
+  ],
+  "compaction": {
+    "before": 9428,
+    "after": 8190,
+    "constraintsPreserved": true
+  },
+  "memoryVersion": "memory:14",
+  "unityInvoked": false,
+  "actualProviderTokens": null,
+  "modelQualityGate": "not-evaluated"
+}

@@ -1,0 +1,59 @@
+{
+  "format": "clean-source-verification/1",
+  "startedAt": "2026-09-25T05:06:05.222884+00:00",
+  "finishedAt": "2026-09-25T05:06:16.919064+00:00",
+  "cleanDirectory": "/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/architect-phase3-clean-z0a3ms_y/ai-agent-architect",
+  "copiedRoots": [
+    "src",
+    "test",
+    "fixtures",
+    "scripts",
+    "package.json",
+    "pnpm-lock.yaml",
+    "tsconfig.json",
+    ".node-version",
+    ".gitignore"
+  ],
+  "excluded": [
+    ".git",
+    "node_modules",
+    "dist",
+    ".local",
+    "docs/evidence",
+    ".runtime",
+    ".env*"
+  ],
+  "dependencyInstallScriptsEnabled": false,
+  "steps": [
+    {
+      "name": "install",
+      "command": [
+        "./scripts/dev.sh",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.873,
+      "log": "docs/evidence/phase3/final-install.log"
+    },
+    {
+      "name": "check",
+      "command": [
+        "./scripts/dev.sh",
+        "check"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 10.778,
+      "log": "docs/evidence/phase3/final-check.log"
+    }
+  ],
+  "sourceManifestDigest": "sha256:c068be4d77958a6cd9b4ea8c0b460843febc177d080d1853b66b4009dc6431eb",
+  "sourceUnchangedAfterRun": true,
+  "cleanSourceUnchangedAfterRun": true,
+  "sourceFiles": 85,
+  "logs": {
+    "final-install.log": "sha256:f890fa48fa166fca4524e491f094e8b32f94920c7b018a41e065ee7a757349b2",
+    "final-check.log": "sha256:a70a825928f8c0444af784312c81a3032a91f792607f48e2203923a4d1c82a79"
+  }
+}

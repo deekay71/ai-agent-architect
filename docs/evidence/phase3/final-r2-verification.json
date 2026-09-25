@@ -1,0 +1,72 @@
+{
+  "format": "clean-source-verification/1",
+  "startedAt": "2026-09-25T05:09:57.796366+00:00",
+  "finishedAt": "2026-09-25T05:10:08.784685+00:00",
+  "cleanDirectory": "/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/architect-phase3-clean-r2-11fwf47n/ai-agent-architect",
+  "copiedRoots": [
+    "src",
+    "test",
+    "fixtures",
+    "scripts",
+    "package.json",
+    "pnpm-lock.yaml",
+    "tsconfig.json",
+    ".node-version",
+    ".gitignore"
+  ],
+  "excluded": [
+    ".git",
+    "node_modules",
+    "dist",
+    ".local",
+    "docs/evidence",
+    ".runtime",
+    ".env*"
+  ],
+  "dependencyInstallScriptsEnabled": false,
+  "steps": [
+    {
+      "name": "install",
+      "command": [
+        "./scripts/dev.sh",
+        "install",
+        "--frozen-lockfile",
+        "--ignore-scripts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.583,
+      "log": "docs/evidence/phase3/final-r2-install.log"
+    },
+    {
+      "name": "check",
+      "command": [
+        "./scripts/dev.sh",
+        "check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 10.374,
+      "log": "docs/evidence/phase3/final-r2-check.log"
+    }
+  ],
+  "testCounts": {
+    "tests": 327,
+    "pass": 327,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceManifestDigest": "sha256:bfc489445f010030718daf26c3da8ea9b70dee7f144dc73bd8a13873c4e587b5",
+  "sourceUnchangedAfterRun": true,
+  "cleanSourceUnchangedAfterRun": true,
+  "sourceFiles": 85,
+  "changedSinceFirstRun": [
+    "test/runtime-lock.test.ts"
+  ],
+  "firstRunPreserved": "docs/evidence/phase3/final-verification.json",
+  "reasonForRerun": "Deterministically reproduced ready-before-SIGTERM-handler fixture race; install handler before announcing ready. Runtime logic unchanged.",
+  "logs": {
+    "final-r2-install.log": "sha256:33af269464a426bf16fb5bb7acca16de44bb8401bfcd90ceeaa5efb329c1c1af",
+    "final-r2-check.log": "sha256:543cf0d640aef2f01ac84dfc5ed7ce6aa41862c203dfde922f4345bfac4d0e3d"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-09-25T04:52:44.663Z",
+  "fixtureLockDigest": "sha256:9ec570f05eb07a0a9c2f2559dfd161a0bd46cf35094aad78f95d2835e4c14079",
+  "implementationPins": {
+    "fixtures/contracts.ts": "sha256:e45c964c518968cbb02f48deef97a40f6b82611e149db34d13ee3f376505273d",
+    "package.json": "sha256:5fe0a4d9bd0ff28d3d6f2faca6fd5df89f80f3b543266416df4ca164a772d429",
+    "pnpm-lock.yaml": "sha256:0e8f9db3a5ba6de2d9f8270fec66fff3683f90292021e0ca3fde77c1d9a67fd6",
+    "src/benchmark/cli.ts": "sha256:4fa2a3f9944dbd685c5d05f247887fe15dea22b55fa2e55d7c95f1bbcb85e184",
+    "src/benchmark/context-probe.ts": "sha256:9d09310f1f235b930b3c3523d13eef2c02d5ddf8ca179cb97631da2017ec548f",
+    "src/benchmark/engine.ts": "sha256:cf64dac8109e55e0a4383b8a49732446fe8672d747a8479d6fd6180e2f0fad44",
+    "src/benchmark/memory-adapter.ts": "sha256:24b06956cbb2866bbff900ec954787453816a65c8cd1dc037f6c7df192b5108d",
+    "src/benchmark/parser.ts": "sha256:1fe4cc0c2ceacbf38111a8ce8931c54d34421f40cd298f357950c65be2959a31",
+    "src/context/engine.ts": "sha256:3efd2fe2027485b3e6286efe67b84ccf2ce5ad2dce1fd1af31380f73d2438398",
+    "src/context/runtime-guard.ts": "sha256:2fc8c499f02cf8fadef27a7b01569d7909ee8caa70fc19cd90a658f51c542fc8",
+    "src/context/skills.ts": "sha256:bc812dfc9eaebf07a18063495ed4affd06dc330d4a43c2a4c80eb4d88da553ad",
+    "src/contracts/canonical.ts": "sha256:ca63cec7f35446e159a8354c16a7ffd819654b181604aa8b32b4ed12cbda36c7",
+    "src/contracts/schemas.ts": "sha256:e878ad12596dae43f8a5eb9796ea69f28ff1728f557735118a8113860b229d4b",
+    "src/foundation/permissions.ts": "sha256:4eb7c0cd3f22c89a9245f15c3c532d336ca6c60024a59820d4a1299e24f53765",
+    "src/memory/index.ts": "sha256:c084d9e35039c8d79de6657a2091f2b42f55051321919dd3cb951348a63caf90",
+    "src/memory/store.ts": "sha256:76d90fb20da0c820c861b84293746839e0f98173b50550084e937734c4de8477",
+    "src/memory/types.ts": "sha256:69ecefa5a3a1fef38431696c8b5dc24b1d9b6489ff3e265649e13409e57dd6b4",
+    "src/skills/catalog.ts": "sha256:bd1b6983623ae06985f67e8e2489aede943dcd1ba1554894ffc3affb277d335f",
+    "tsconfig.json": "sha256:fac5ce5399eb6bcf0c88ca96312a06ed4d6209b43b51a101652ff9d001136ca8"
+  },
+  "implementationDigest": "sha256:d570a5c7da033bb3bc56250ff864b63786c21eb906563a6bd0d80ed7fe263fa8",
+  "holdoutPolicy": "No tuning after holdout; preserve every run including failed thresholds."
+}

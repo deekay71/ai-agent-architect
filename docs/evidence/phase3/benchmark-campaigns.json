@@ -1,0 +1,30 @@
+{
+  "fixtureLockDigest": "sha256:9ec570f05eb07a0a9c2f2559dfd161a0bd46cf35094aad78f95d2835e4c14079",
+  "campaigns": [
+    {
+      "file": "benchmark-results.json",
+      "measuredAt": "2026-09-25T04:52:46.229Z",
+      "implementationDigest": "sha256:d570a5c7da033bb3bc56250ff864b63786c21eb906563a6bd0d80ed7fe263fa8",
+      "status": "superseded-by-source-scope-fix",
+      "reason": "Later Memory ingest guard rejects narrower-scope revision replacing hidden source head; original run unchanged and valid for its recorded source pins.",
+      "trials": 540,
+      "mechanicalThresholdsMet": false
+    },
+    {
+      "file": "benchmark-results-r2.json",
+      "measuredAt": "2026-09-25T04:58:23.477Z",
+      "implementationDigest": "sha256:c3cf50b0c5c5a7ec32e8534ef933138a28cfbf3c046848befc5774e59f8a67d4",
+      "status": "REGRESSION_EXPOSED_SET",
+      "reason": "Memory scope guard and oracle-independent critical coverage reader policy2; no new independent holdout claim.",
+      "trials": 540,
+      "mechanicalThresholdsMet": true,
+      "t11Status": "REPLAN"
+    }
+  ],
+  "revisionPolicy": {
+    "immutable": "Corpus, labels, protocol, thresholds and split remain unchanged.",
+    "changedAfterExposure": "Reader policy critical-coverage/2 adds oracle-independent pinned conflict/coverage guard; Memory source-scope guard also fixed.",
+    "classification": "REGRESSION_EXPOSED_SET",
+    "independentHoldoutClaim": false
+  }
+}

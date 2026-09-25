@@ -1,0 +1,277 @@
+{
+  "observedAt": "2026-09-25T04:50:23.465Z",
+  "parserImplementationDigest": "sha256:1fe4cc0c2ceacbf38111a8ce8931c54d34421f40cd298f357950c65be2959a31",
+  "sourcePins": {
+    "corpus/code/BuildReceipt.cs": "sha256:93abe6952d97edb96cb417ca62b687d4c852108477acce0d7c31e3e447c5d44f",
+    "corpus/code/DispatchBroker.cs": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15",
+    "corpus/code/ReceiptLedger.cs": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b",
+    "corpus/code/WindowHydrator.cs": "sha256:f2497967b2ffcf10881e61acaccb84c7bf455ef789b5caec33d2d697b30a5697"
+  },
+  "parser": "bounded-csharp-syntax/1",
+  "declarations": [
+    {
+      "id": "corpus/code/BuildReceipt.cs:41:BuildReceipt",
+      "path": "corpus/code/BuildReceipt.cs",
+      "kind": "class",
+      "name": "BuildReceipt",
+      "line": 3,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:93abe6952d97edb96cb417ca62b687d4c852108477acce0d7c31e3e447c5d44f"
+    },
+    {
+      "id": "corpus/code/BuildReceipt.cs:66:CompileSucceeded",
+      "path": "corpus/code/BuildReceipt.cs",
+      "kind": "method",
+      "name": "CompileSucceeded",
+      "line": 5,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:93abe6952d97edb96cb417ca62b687d4c852108477acce0d7c31e3e447c5d44f"
+    },
+    {
+      "id": "corpus/code/BuildReceipt.cs:118:AndroidBuildVerified",
+      "path": "corpus/code/BuildReceipt.cs",
+      "kind": "method",
+      "name": "AndroidBuildVerified",
+      "line": 6,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:93abe6952d97edb96cb417ca62b687d4c852108477acce0d7c31e3e447c5d44f"
+    },
+    {
+      "id": "corpus/code/DispatchBroker.cs:41:DispatchBroker",
+      "path": "corpus/code/DispatchBroker.cs",
+      "kind": "class",
+      "name": "DispatchBroker",
+      "line": 3,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15"
+    },
+    {
+      "id": "corpus/code/DispatchBroker.cs:185:CanDispatch",
+      "path": "corpus/code/DispatchBroker.cs",
+      "kind": "method",
+      "name": "CanDispatch",
+      "line": 7,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15"
+    },
+    {
+      "id": "corpus/code/DispatchBroker.cs:278:Complete",
+      "path": "corpus/code/DispatchBroker.cs",
+      "kind": "method",
+      "name": "Complete",
+      "line": 8,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15"
+    },
+    {
+      "id": "corpus/code/DispatchBroker.cs:428:Explain",
+      "path": "corpus/code/DispatchBroker.cs",
+      "kind": "method",
+      "name": "Explain",
+      "line": 10,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:6e1107d8149a0f8e150bda42c16ff27f399c86369ae77d62b8c8a8e490039a15"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:34:IReceiptStore",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "interface",
+      "name": "IReceiptStore",
+      "line": 3,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:153:ReceiptLedger",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "class",
+      "name": "ReceiptLedger",
+      "line": 9,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:291:IsCommitted",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "method",
+      "name": "IsCommitted",
+      "line": 13,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:379:Record",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "method",
+      "name": "Record",
+      "line": 14,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    },
+    {
+      "id": "corpus/code/WindowHydrator.cs:41:WindowHydrator",
+      "path": "corpus/code/WindowHydrator.cs",
+      "kind": "class",
+      "name": "WindowHydrator",
+      "line": 3,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:f2497967b2ffcf10881e61acaccb84c7bf455ef789b5caec33d2d697b30a5697"
+    },
+    {
+      "id": "corpus/code/WindowHydrator.cs:68:LoadPinned",
+      "path": "corpus/code/WindowHydrator.cs",
+      "kind": "method",
+      "name": "LoadPinned",
+      "line": 5,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:f2497967b2ffcf10881e61acaccb84c7bf455ef789b5caec33d2d697b30a5697"
+    },
+    {
+      "id": "corpus/code/WindowHydrator.cs:163:Compact",
+      "path": "corpus/code/WindowHydrator.cs",
+      "kind": "method",
+      "name": "Compact",
+      "line": 6,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:f2497967b2ffcf10881e61acaccb84c7bf455ef789b5caec33d2d697b30a5697"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:64:Contains",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "method",
+      "name": "Contains",
+      "line": 5,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    },
+    {
+      "id": "corpus/code/ReceiptLedger.cs:103:Commit",
+      "path": "corpus/code/ReceiptLedger.cs",
+      "kind": "method",
+      "name": "Commit",
+      "line": 6,
+      "assertion": "explicit",
+      "sourceDigest": "sha256:3c5c905177eeaa9b86f7fab2982519d5d673e2eb69f8db259623ac444c5c729b"
+    }
+  ],
+  "references": [
+    {
+      "path": "corpus/code/DispatchBroker.cs",
+      "name": "ledger.IsCommitted",
+      "line": 7,
+      "syntax": "qualified-call",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:291:IsCommitted"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/DispatchBroker.cs",
+      "name": "ledger.Record",
+      "line": 8,
+      "syntax": "qualified-call",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:379:Record"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/DispatchBroker.cs",
+      "name": "ReceiptLedger",
+      "line": 5,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:153:ReceiptLedger"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/DispatchBroker.cs",
+      "name": "DispatchBroker",
+      "line": 6,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/DispatchBroker.cs:41:DispatchBroker"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/DispatchBroker.cs",
+      "name": "ReceiptLedger",
+      "line": 6,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:153:ReceiptLedger"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/ReceiptLedger.cs",
+      "name": "store.Contains",
+      "line": 13,
+      "syntax": "qualified-call",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:64:Contains"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/ReceiptLedger.cs",
+      "name": "store.Commit",
+      "line": 14,
+      "syntax": "qualified-call",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:103:Commit"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/ReceiptLedger.cs",
+      "name": "IReceiptStore",
+      "line": 11,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:34:IReceiptStore"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/ReceiptLedger.cs",
+      "name": "ReceiptLedger",
+      "line": 12,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:153:ReceiptLedger"
+      ],
+      "semanticBinding": "unverified"
+    },
+    {
+      "path": "corpus/code/ReceiptLedger.cs",
+      "name": "IReceiptStore",
+      "line": 12,
+      "syntax": "type-name",
+      "assertion": "inferred",
+      "targetCandidates": [
+        "corpus/code/ReceiptLedger.cs:34:IReceiptStore"
+      ],
+      "semanticBinding": "unverified"
+    }
+  ],
+  "limitations": [
+    "No Roslyn compilation, namespace/type binding, overload resolution, extension methods or dynamic dispatch.",
+    "Method references are name candidates only; they never become explicit dependency edges.",
+    "Fixture subset only; raw strings and preprocessor directives fail closed; generics/attributes/records are not claimed complete.",
+    "C# compile and Android build are unmeasured; syntax extraction is not either check."
+  ],
+  "compile": "NOT_RUN",
+  "androidBuild": "NOT_RUN"
+}

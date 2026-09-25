@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: benchmark adapter ingests only corpus and uses real revision/revoke/quarantine eligibility
+ok 1 - benchmark adapter ingests only corpus and uses real revision/revoke/quarantine eligibility
+  ---
+  duration_ms: 64.881584
+  type: 'test'
+  ...
+# Subtest: actual explicit graph adds linked evidence while inferred references stay unexpanded
+ok 2 - actual explicit graph adds linked evidence while inferred references stay unexpanded
+  ---
+  duration_ms: 42.950959
+  type: 'test'
+  ...
+# Subtest: 30 gold cases have family-separated dev/holdout and oracle only references corpus
+ok 3 - 30 gold cases have family-separated dev/holdout and oracle only references corpus
+  ---
+  duration_ms: 2.299958
+  type: 'test'
+  ...
+# Subtest: locked corpus, questions, oracle and protocol reject any changed bytes
+ok 4 - locked corpus, questions, oracle and protocol reject any changed bytes
+  ---
+  duration_ms: 15.42375
+  type: 'test'
+  ...
+# Subtest: equal byte packing cap never truncates source content
+ok 5 - equal byte packing cap never truncates source content
+  ---
+  duration_ms: 0.464708
+  type: 'test'
+  ...
+# Subtest: reader has no oracle and abstains for absent, conflicting or unusable facts
+ok 6 - reader has no oracle and abstains for absent, conflicting or unusable facts
+  ---
+  duration_ms: 0.576542
+  type: 'test'
+  ...
+# Subtest: compile support cannot be read as Android certification
+ok 7 - compile support cannot be read as Android certification
+  ---
+  duration_ms: 0.327125
+  type: 'test'
+  ...
+# Subtest: retrieval metrics use fixed precision@10 and critical miss list
+ok 8 - retrieval metrics use fixed precision@10 and critical miss list
+  ---
+  duration_ms: 0.096583
+  type: 'test'
+  ...
+# Subtest: bounded C\# scanner ignores comments and strings, does not certify name matches
+ok 9 - bounded C\# scanner ignores comments and strings, does not certify name matches
+  ---
+  duration_ms: 0.6775
+  type: 'test'
+  ...
+# Subtest: unsupported parser constructs fail closed
+ok 10 - unsupported parser constructs fail closed
+  ---
+  duration_ms: 0.076458
+  type: 'test'
+  ...
+# Subtest: fixture pins include code, protocol and oracle; no generated results
+ok 11 - fixture pins include code, protocol and oracle; no generated results
+  ---
+  duration_ms: 0.87025
+  type: 'test'
+  ...
+# Subtest: real Context compaction retains compile scope, constraints and Android unknown even under poisoned summary
+ok 12 - real Context compaction retains compile scope, constraints and Android unknown even under poisoned summary
+  ---
+  duration_ms: 25.542667
+  type: 'test'
+  ...
+# Subtest: interface declarations produce method candidates without inventing semantic binding
+ok 13 - interface declarations produce method candidates without inventing semantic binding
+  ---
+  duration_ms: 0.293667
+  type: 'test'
+  ...
+# Subtest: evaluator-only gold evidence distinguishes retrieval omission from full-evidence reader behavior
+ok 14 - evaluator-only gold evidence distinguishes retrieval omission from full-evidence reader behavior
+  ---
+  duration_ms: 0.642083
+  type: 'test'
+  ...
+# Subtest: Wilson interval counts unique cases and remains uncertain for perfect small sample
+ok 15 - Wilson interval counts unique cases and remains uncertain for perfect small sample
+  ---
+  duration_ms: 0.057292
+  type: 'test'
+  ...
+# Subtest: synthetic harness control keeps paired order, journals every trial and excludes repeats from uncertainty
+ok 16 - synthetic harness control keeps paired order, journals every trial and excludes repeats from uncertainty
+  ---
+  duration_ms: 2.317125
+  type: 'test'
+  ...
+# Subtest: new synthetic conflict cannot become support when budget removes one member
+ok 17 - new synthetic conflict cannot become support when budget removes one member
+  ---
+  duration_ms: 0.137417
+  type: 'test'
+  ...
+# Subtest: dropping sole supporting source records critical unknown; unrelated exclusion does not block
+ok 18 - dropping sole supporting source records critical unknown; unrelated exclusion does not block
+  ---
+  duration_ms: 0.112875
+  type: 'test'
+  ...
+# Subtest: loaded source substitution cannot satisfy a pinned coverage member
+ok 19 - loaded source substitution cannot satisfy a pinned coverage member
+  ---
+  duration_ms: 0.05475
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 183.344458

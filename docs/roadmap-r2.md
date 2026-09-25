@@ -1,8 +1,14 @@
 # 07 — Roadmap triển khai R2: hạ tầng trước, game sau
 
+## Kết quả thực hiện Phase 3 — 25/09/2026
+
+**T09/T10 Done / Pass trong phạm vi local; T19 Doing / Not evaluated; T11 Doing / Replan; T14 Doing / Not evaluated; toàn Phase 3 chưa PASS.** SQLite/FTS Memory, provenance/freshness/promotion/invalidation, per-agent Context/hydration/progressive skills và current-source runtime guard đã triển khai. T19 còn AC task quality/loss/latency/tokens với provider thật; T14 có implementation/tests nhưng full handoff gate chờ nghiệm thu T19. Explorer graph/backlinks kiểu Obsidian được duyệt bổ sung vào scope và đã có inspector loopback chỉ đọc; proposal không ghi Memory chuẩn. Xem [báo cáo Phase 3](phase-3-report.md), [hướng dẫn](memory-context.md) và [benchmark](phase3-benchmark.md).
+
+R1 giữ nguyên 6 false accepts. R2 có 0 false accepts và 78 false rejects trên 540 trials, chỉ là regression trên bộ đã lộ; cần fresh independent holdout, provider/model/tokenizer/usage/cost và semantic calibration. Final clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Không hạ AC để mở Phase 4 hoặc gameplay. Tổng 8 task Done, 3 Doing, 14 chưa mở. Forecast R2 bên dưới giữ nguyên baseline; actual Phase 3 local là 25/09/2026.
+
 ## Kết quả thực hiện Phase 2 — 25/09/2026
 
-**T07/T18/T15 Done / Pass cho runtime cơ học local trên macOS**: 209/209 tests từ source sạch, 0 skip; ledger/checkpoint, protected authority, stage gates, OS ownership/sandbox và crash recovery. LangGraph/Promptfoo spikes đã chạy, quyết định giữ broker SQLite và benchmark adapter độc lập. Xem [báo cáo Phase 2](phase-2-report.md). Active release chỉ `runtime.fixture`; model/Unity/T22 chưa PASS. Tổng 6 task Done, 19 task còn lại. Phase 3 là bước tiếp theo; Memory Explorer/Obsidian chưa thêm vào scope. Forecast bên dưới vẫn là baseline lịch sử, actual Phase 2 là 25/09/2026.
+**T07/T18/T15 Done / Pass cho runtime cơ học local trên macOS**: 209/209 tests từ source sạch, 0 skip; ledger/checkpoint, protected authority, stage gates, OS ownership/sandbox và crash recovery. LangGraph/Promptfoo spikes đã chạy, quyết định giữ broker SQLite và benchmark adapter độc lập. Xem [báo cáo Phase 2](phase-2-report.md). Active release chỉ `runtime.fixture`; model/Unity/T22 chưa PASS. Tại mốc Phase 2 có 6 task Done, 19 task còn lại; Explorer lúc đó chưa thuộc scope. Forecast bên dưới vẫn là baseline lịch sử, actual Phase 2 là 25/09/2026; trạng thái mới lấy phần Phase 3 phía trên.
 
 ## Kết quả thực hiện Phase 1 — 24/09/2026
 
@@ -90,6 +96,6 @@ Sau mỗi phiên ghi artifact/check versions, actual touch/tool/agent time, queu
 
 ## Trạng thái và nguồn
 
-R2 đã được áp dụng. **T17/T06/T23 Done và Pass trong phạm vi foundation bootstrap** theo phase-1-report.md và independent review. Sau Phase 2, tổng 6 task Done / Pass; 19 task còn lại Todo / Not evaluated. Active release chỉ runtime.fixture; chưa T22 PASS, game chưa mở. Không suy phần trăm tiến độ tổng thể từ số task hoặc tests.
+R2 đã được áp dụng. Foundation T17/T06/T23, local runtime T07/T18/T15 và local Memory T09/T10 đã Done / Pass trong phạm vi riêng được báo cáo. T19 và T14 Doing / Not evaluated; T11 Doing / Replan; 14 task còn lại chưa mở. Active release chỉ `runtime.fixture`; chưa gate toàn Phase 3 hoặc T22 PASS, Phase 4/game chưa mở. Không suy phần trăm tiến độ tổng thể từ số task hoặc tests. Remote `main` còn Phase 1; Phase 2/3 đang local chưa push, commit/cloud links cuối sẽ được cập nhật sau xác minh.
 
 Nguồn chuẩn: contracts/architecture v0.4; plan/schedule R1 ngày24/09; execution-skills-proposal và bốn source reviews đã pin ngày24/09. Đi kèm: `plan-r2.md` (scope, estimates, Phase1 AC matrix), `schedule-r2.json` (25tasks/dependencies/calendar/capacity). R1 nằm ở thư mục lịch sử riêng và không bị ghi đè.

@@ -1,0 +1,61 @@
+{
+  "diagnostic": "ready announcement before SIGTERM handler registration",
+  "controlledDelayMs": 500,
+  "results": [
+    {
+      "handlerBeforeReady": false,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": null,
+        "signal": "SIGTERM"
+      },
+      "next": "LOCK_QUARANTINED"
+    },
+    {
+      "handlerBeforeReady": true,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "next": "acquired"
+    },
+    {
+      "handlerBeforeReady": false,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": null,
+        "signal": "SIGTERM"
+      },
+      "next": "LOCK_QUARANTINED"
+    },
+    {
+      "handlerBeforeReady": true,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "next": "acquired"
+    },
+    {
+      "handlerBeforeReady": false,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": null,
+        "signal": "SIGTERM"
+      },
+      "next": "LOCK_QUARANTINED"
+    },
+    {
+      "handlerBeforeReady": true,
+      "contender": "LOCK_BUSY",
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "next": "acquired"
+    }
+  ],
+  "confirmed": true
+}
