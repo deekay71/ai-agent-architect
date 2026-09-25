@@ -1,14 +1,14 @@
-# AI Agent Architect — nền tảng Phase 1
+# AI Agent Architect — foundation và local runtime
 
-Repo triển khai **Phase 1 của R2, tương ứng P0 của R1**: T17 (khởi tạo repo và ranh giới module), T06 (contracts và validators), T23 (catalog và resolver skill cơ bản). Mục tiêu hiện tại là kiểm tính nhất quán của dữ liệu bằng schema, fixture và workflow giả lập chạy local.
+Repo có foundation **Phase 1 (T17/T06/T23)** và runtime **Phase 2 (T07/T18/T15)**. Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằng sandbox macOS, giữ khóa OS theo project và cấp gate theo từng stage. Tool hiện tại chỉ ghi một file fixture có giới hạn rồi kiểm lại bằng một verifier process độc lập.
 
 Phạm vi gồm 26 contracts phiên bản `0.5.0`, canonical hashing, audit liên kết giữa records, mô hình phân quyền actor/store và catalog có pin nội dung. CLI có demo offline và thử lựa chọn skill theo metadata. Các record policy, evidence và verdict trong demo đều là dữ liệu tổng hợp của fixture.
 
-Repo chưa cung cấp quyền dispatch production, process/OS isolation, workflow có persistence/recovery, kết nối model hoặc dịch vụ, Unity adapter, game hay benchmark hiệu quả. `dispatchAuthorized` của demo luôn là `false`. Kết quả `eligible` của resolver chỉ cho biết metadata tương thích; không chứng nhận skill và không cấp quyền chạy.
+Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; chưa chọn/call paid provider. Memory, multi-planning có critic/calibration, Unity và game thuộc các phase sau. `demo` Phase 1 vẫn giữ `dispatchAuthorized: false`.
 
 ## Thiết lập
 
-Cần Node.js **24.x** và pnpm **11.19.0**. Chạy trong thư mục repo:
+Cần Node.js **24.x**, pnpm **11.19.0**; runtime tests cần macOS có `/usr/bin/sandbox-exec` và `/usr/bin/python3`. Chạy trong thư mục repo:
 
 ```sh
 ./scripts/dev.sh install --frozen-lockfile --ignore-scripts
@@ -24,6 +24,14 @@ Lệnh đầu cài đúng lockfile và bỏ lifecycle scripts của dependencies
 Sau `check` hoặc `./scripts/dev.sh build`:
 
 ```sh
+# Runtime ghi fixture thật, chỉ dùng thư mục mới; không cần model key/Unity
+mkdir -p .local
+./scripts/dev.sh exec node dist/src/cli.js runtime-demo .local/phase2-demo
+
+# Đọc trạng thái/tiếp tục từ durable checkpoint
+./scripts/dev.sh exec node dist/src/cli.js runtime-status .local/phase2-demo/candidate .local/phase2-demo/control fixture-run
+./scripts/dev.sh exec node dist/src/cli.js runtime-resume .local/phase2-demo/candidate .local/phase2-demo/control fixture-run
+
 # Workflow giả lập: fixture plan, read-only inspection và audit records
 ./scripts/dev.sh demo
 
@@ -60,14 +68,20 @@ Sau `check` hoặc `./scripts/dev.sh build`:
 | `src/foundation/permissions.ts` | Mô hình actor/store và scope đường dẫn |
 | `src/foundation/workflow.ts` | Interfaces và workflow mock, không có scheduler production |
 | `src/skills/catalog.ts` | Pin catalog/resources, resolver và draft binding |
+| `src/runtime/runner.ts` | Trusted broker, state machine, lineage budgets, dispatch/reconcile và fan-out primitives |
+| `src/runtime/evaluation.ts` | Stage readiness, policy release validation, verifier semantics và protected gate lookup |
+| `src/runtime/store.ts` | SQLite WAL/FULL, immutable artifacts và atomic checkpoints |
+| `src/runtime/isolation.ts`, `lock.ts` | Sandbox executor/verifier, OS flock, stop confirmation và quarantine |
 | `src/cli.ts` | CLI và các demo fixture |
 | `fixtures/` | Dữ liệu thử, authority tổng hợp và resource skill trơ |
 | `test/` | Kiểm schema, liên kết, negative cases, catalog và CLI |
 
-Đọc [contracts v0.5](docs/contracts-v0.5.md), [kiến trúc và giới hạn trust](docs/architecture.md), [tiêu chí nghiệm thu Phase 1](docs/phase-1-acceptance.md) và [quy ước catalog fixture](fixtures/skill-catalog/README.md).
+Đọc [báo cáo Phase 2](docs/phase-2-report.md), [hướng dẫn runtime](docs/runtime.md), [framework spikes](docs/phase-2-framework-spikes.md), [contracts v0.5](docs/contracts-v0.5.md) và [kiến trúc](docs/architecture.md).
 
 ## Ranh giới trust
 
 `AuditAuthority` là dữ liệu fixture được caller inject riêng với candidate bundle. Demo kiểm records đối chiếu với snapshot này; tên actor, hash hay một chuỗi `PASS` do candidate tự khai không tạo ra authority. Cấu hình đó chưa phải nguồn trust được bảo vệ bằng process, tài khoản hoặc filesystem trong production.
 
-Phase 2 phải triển khai protected stores, isolation, dispatch-time authorization, operation/checkpoint persistence và recovery thật. Các phase sau mới bổ sung Memory/Context, multi-planning và benchmark, Unity conformance/T22, rồi gameplay. Kết quả conformance của Phase 1 không thay các gate đó. Tình trạng nghiệm thu được ghi riêng sau review và chạy kiểm tra tích hợp; README này không công bố PASS hay một test count cố định.
+Trong Phase 2, executor là process bị sandbox, không truy cập kho authority/evidence/verdict hoặc code verifier. Policy owner, verifier coordinator và Gate Controller là các vai trò trong trusted broker; chưa tách thành service/tài khoản riêng. Cấu hình operator và máy chủ tin cậy nằm ngoài threat model của candidate. Khóa không có TTL takeover; kết quả không rõ phải reconcile hoặc giữ UNKNOWN/quarantine.
+
+LangGraph và Promptfoo được pin/cài trong `spikes/phase2`, tách khỏi dependencies runtime chính. Chạy spike bằng `sh spikes/phase2/run.sh install --frozen-lockfile` rồi `sh spikes/phase2/run.sh run check`; chỉ native build `better-sqlite3` được cho phép. Kết quả fixture không chứng minh model quality. Các phase sau bổ sung Memory/Context, planning/calibration, Unity/T22, rồi gameplay.

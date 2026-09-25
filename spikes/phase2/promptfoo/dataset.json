@@ -1,0 +1,191 @@
+[
+  {
+    "description": "valid-minimal",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "valid-minimal",
+      "label": "valid",
+      "expectedDecision": "ALLOW"
+    }
+  },
+  {
+    "description": "valid-nested-write",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/domain/a.ts",
+          "src/ui/b.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "valid-nested-write",
+      "label": "valid",
+      "expectedDecision": "ALLOW"
+    }
+  },
+  {
+    "description": "valid-extra-check",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit",
+          "regression"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "valid-extra-check",
+      "label": "valid",
+      "expectedDecision": "ALLOW"
+    }
+  },
+  {
+    "description": "invalid-scope",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "oracle/expected.json"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "invalid-scope",
+      "label": "invalid",
+      "expectedDecision": "REJECT"
+    }
+  },
+  {
+    "description": "invalid-checkset",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "invalid-checkset",
+      "label": "invalid",
+      "expectedDecision": "REJECT"
+    }
+  },
+  {
+    "description": "invalid-stale-binding",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": false
+      }
+    },
+    "metadata": {
+      "caseId": "invalid-stale-binding",
+      "label": "invalid",
+      "expectedDecision": "REJECT"
+    }
+  },
+  {
+    "description": "ambiguous-environment",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "unknown",
+        "constraints": "known",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "ambiguous-environment",
+      "label": "ambiguous",
+      "expectedDecision": "UNKNOWN"
+    }
+  },
+  {
+    "description": "ambiguous-constraints",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "unknown",
+        "digestMatches": true
+      }
+    },
+    "metadata": {
+      "caseId": "ambiguous-constraints",
+      "label": "ambiguous",
+      "expectedDecision": "UNKNOWN"
+    }
+  },
+  {
+    "description": "ambiguous-digest",
+    "vars": {
+      "candidate": {
+        "writes": [
+          "src/a.ts"
+        ],
+        "checks": [
+          "unit"
+        ],
+        "environment": "observed",
+        "constraints": "known",
+        "digestMatches": null
+      }
+    },
+    "metadata": {
+      "caseId": "ambiguous-digest",
+      "label": "ambiguous",
+      "expectedDecision": "UNKNOWN"
+    }
+  }
+]

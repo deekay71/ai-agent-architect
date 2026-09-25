@@ -1,0 +1,23 @@
+{
+  "mode": "local-mechanical-fixture",
+  "runId": "fixture-run",
+  "state": "completed",
+  "reason": null,
+  "budget": {
+    "dispatches": 1,
+    "plannerAttempts": 0,
+    "replans": 0
+  },
+  "operations": [
+    {
+      "operationId": "fixture-run:write",
+      "state": "COMMITTED",
+      "attempts": 1
+    }
+  ],
+  "checkpointId": "3b29593a-7c1d-4a70-8fcf-ee315b783ee7",
+  "unityInvoked": false,
+  "productionAuthorized": false,
+  "workspace": "/private/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/architect-phase2-clean-ntwglrmr/runtime-smoke/candidate",
+  "control": "/private/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/architect-phase2-clean-ntwglrmr/runtime-smoke/control"
+}

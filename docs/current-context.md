@@ -1,6 +1,7 @@
 # AI Agent Architect — Bối cảnh hiện hành R2
 
 ## Trạng thái làm việc hiện tại
+Ngày 25/09/2026, Phase 2 T07/T18/T15 đã đạt nghiệm thu runtime cơ học local trên macOS: clean source 209/209 tests, 0 skip; protected store/sandbox/OS lock, stage gates, recovery và skill bindings. Active release chỉ runtime.fixture. Tổng 6 task Done, 19 task còn lại; chưa T22/model/Unity PASS. Xem [báo cáo Phase 2](phase-2-report.md). Đoạn Phase 1 dưới đây là mốc lịch sử.
 R2 ngày 24/09/2026 đã áp dụng execution skill layer theo yêu cầu điều chỉnh kế hoạch và triển khai Phase 1. Repo hạ tầng riêng đã có 26 executable contracts 0.5.0, static conformance, catalog/resolver và CLI offline. T17/T06/T23 đã Done / Pass trong phạm vi foundation bootstrap: 105 tests đạt từ clean checkout, bốn findings review đã đóng, 12 repro gốc và ba ca bổ sung bị chặn; chưa có production gate, active PolicyRelease, Unity benchmark hoặc game.
 Kế hoạch và nghiệm thu hiện hành: [Tài liệu liên quan](https://app.notion.com/p/3e5a6c16b3dc81a5b1d7e1e71bbad748). R1 được giữ làm baseline lịch sử. Nghiên cứu đa nguồn: [Tài liệu liên quan](https://app.notion.com/p/3e5a6c16b3dc81a4973ff86951f2cb48). Upstream skills/bridges chưa được cài hoặc certified; package đang chạy là fixture nội bộ.
 ## Mục tiêu và thứ tự bắt buộc
@@ -16,7 +17,7 @@ Xây hạ tầng AI Agent Architect trước, nghiệm thu T22 rồi mới dùng
 8. Phân biệt resume, retryAttempt, replay/fork và replan; giữ workflow/checkpoint versions và kết quả đã commit. Benchmark có negative cases, answerability/unsupported premise, retrieval/reader đối chứng, nhiều trials và mọi failed attempts.
 ## Những điểm vẫn cần đo hoặc spike
 - 85/100, điểm sàn 3/4, tối đa hai replan, context budgets/fan-out và retry budgets là cấu hình khởi đầu chưa calibration. Tạo artifact version mới không reset lineage budget.
-- LangGraph embedded/persistent checkpointer và Promptfoo là ứng viên spike; chưa chốt dependency, chưa cài. Domain contracts/gate/Unity safety thuộc ứng dụng. Không dựng Temporal/Redis/vector/graph DB theo mặc định.
+- LangGraph embedded SQLite và Promptfoo đã được pin/cài/chạy trong package spike riêng. Runtime chính chọn broker SQLite hẹp; checkpoints framework không thay operation ledger/ownership/policy. Promptfoo là benchmark adapter, không có authority. Xem ADR 0002 và framework spike report. Không thêm Temporal/Redis/vector/graph DB.
 - TypeScript orchestration và C# Unity/domain là hướng dự kiến; model/provider, cost cap và target mobile chưa chốt; team là bạn + AI agents, số giờ mỗi tuần chưa xác nhận.
 - R2 thay forecast R1: low/base/high khoảng 14/21/34 tuần làm việc khả dụng; base tới T22 ngày 22/01/2027 và pilot 19/02/2027. 20 giờ/tuần của bạn chưa xác nhận; lịch có điều kiện, chưa đặt dịch vụ agents chạy nền. Workload tham chiếu 59.25/96/156 đơn vị 8 giờ khác owner touch-time 75/140/248 giờ. Giữ baseline, cập nhật actual riêng và reforecast sau spike; không extrapolate tốc độ foundation sang runtime/Unity.
 - Đã xác nhận team: bạn + AI agents. Backlog có 25 task, Forecast R2/Actual/Acceptance evidence và hai views R2. Ngày bắt đầu actual: 24/09/2026; status/evidence Phase 1 được cập nhật trong plan R2.
@@ -28,7 +29,7 @@ Phase 4 (P3 cũ): T12/T20/T24 — multi-planning, calibration và controlled ski
 Phase 5 (P4 cũ): T21/T08/T25/T22 — Unity fixture, một đường thao tác, trusted runner, recipes/conformance, platform acceptance.
 Phase 6 (P5 cũ): T01–T05/T13/T16 — Block Puzzle sau T22 PASS đủ task classes.
 ## Công việc tiếp theo
-Phase 1 đã nghiệm thu ngày 24/09/2026. Gói việc tiếp theo là T07 runtime vertical slice, sau đó T18/T15; chưa tự khởi chạy Phase 2 hoặc agent chạy nền. Source và logs lưu trong [Drive R2/Phase 1](https://drive.google.com/drive/folders/1ybTIegTfXXhuW-mZ6yzW16dbcnu8rHjG). Các tests foundation dùng fake authority và offline tools; không coi chúng là OS enforcement, model benchmark hoặc active runtime release. Phase 2 phải tách readiness/pre-dispatch/post-execution theo stage, không đòi evidence của thao tác chưa chạy để cấp quyền bắt đầu nó.
+Phase 2 đã nghiệm thu ngày 25/09/2026 trong phạm vi đã khai báo. Tiếp theo là Phase 3 T09/T10/T19/T11/T14: Memory/provenance, freshness/invalidation và context partition/progressive loading/hydrate. Memory Explorer/Obsidian vẫn là đề xuất chưa duyệt vào scope. Không có dịch vụ agents tự chạy sau phiên. Source Phase 1 trên Drive là snapshot lịch sử; bản Phase 2 có report và source hashes riêng. Giữ forecast R2 baseline, reforecast theo owner capacity và evidence Memory, không dùng tốc độ fixtures suy ra deadline Unity.
 Catalog skill khác runtime: eligibility chỉ xác định ứng viên tương thích. Script phải qua capability/permission/ledger; skill không tự đổi policy hoặc cấp PASS. Mỗi agent/window vẫn có budget/context riêng; skill body/reference cần ghi actual loaded bindings và hydrate bản pin ở T19.
 ## Nguồn chuẩn và cách dùng
 Contracts/tên fields chuẩn: [Tài liệu liên quan](https://app.notion.com/p/3e3a6c16b3dc816ab47fc95ef0ab630b).

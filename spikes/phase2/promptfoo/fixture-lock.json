@@ -1,0 +1,16 @@
+{
+  "lockedBeforeEvaluationAt": "2026-09-25T03:09:36.460Z",
+  "files": {
+    "promptfoo/dataset.json": "sha256:0e7bdb0aacd9f50260f78c171741e1212bb94f9692cb1b59c25c76797ddf9578",
+    "promptfoo/assertion.cjs": "sha256:2d0611e4f2a790ecbc6db67940fcdceda417ee76946ee3653c99dcb20776d282",
+    "promptfoo/provider.cjs": "sha256:085727a6ca93adc080e51d07b086d8ebbcb93761c89e2ed36134b2b3c9e2755c",
+    "promptfoo/promptfooconfig.json": "sha256:5f7af591caddc1298698bb5e4665c8598a3e68d645e2dc534f570c9d09b31b56"
+  },
+  "expectedCases": 9,
+  "classes": {
+    "valid": 3,
+    "invalid": 3,
+    "ambiguous": 3
+  },
+  "oraclePolicy": "Only valid cases may ALLOW; ambiguous remains UNKNOWN and never passes"
+}

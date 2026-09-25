@@ -1,5 +1,9 @@
 # 07 — Roadmap triển khai R2: hạ tầng trước, game sau
 
+## Kết quả thực hiện Phase 2 — 25/09/2026
+
+**T07/T18/T15 Done / Pass cho runtime cơ học local trên macOS**: 209/209 tests từ source sạch, 0 skip; ledger/checkpoint, protected authority, stage gates, OS ownership/sandbox và crash recovery. LangGraph/Promptfoo spikes đã chạy, quyết định giữ broker SQLite và benchmark adapter độc lập. Xem [báo cáo Phase 2](phase-2-report.md). Active release chỉ `runtime.fixture`; model/Unity/T22 chưa PASS. Tổng 6 task Done, 19 task còn lại. Phase 3 là bước tiếp theo; Memory Explorer/Obsidian chưa thêm vào scope. Forecast bên dưới vẫn là baseline lịch sử, actual Phase 2 là 25/09/2026.
+
 ## Kết quả thực hiện Phase 1 — 24/09/2026
 
 **T17/T06/T23 đã hoàn tất và PASS nghiệm thu foundation**: 26 executable contracts 0.5.0, catalog/resolver và CLI offline; 105 automated tests pass từ clean checkout, independent review đóng bốn findings; 12 repro gốc và 3 follow-up cases bị chặn. Báo cáo đầy đủ: `phase-1-report.md`; source/test evidence ở snapshot Drive. Không có active runtime PolicyRelease, Unity benchmark hoặc T22 PASS.
@@ -29,7 +33,7 @@ Thực hiện bằng bootstrap development: user+AI coding tools hiện có xây
 
 **T07 → T18 → T15**, sau Phase 1. State machine/checkpoints, operation ledger, ownership/OS lock/queue, actor/store boundaries, model/fake tool adapters; evaluation harness, Gate Controller và release controls.
 
-Skill activation dùng bindings của T23, revalidate trước dispatch; không tạo ledger mới. Exit: fake/stale/missing PASS, inactive policy, wrong scope/digest/issuer không dispatch; crash-after-effect không duplicate; owner cũ còn sống không takeover; tampered report/oracle bị chặn tại boundary thật. Fake/deterministic fixtures chứng minh cơ chế, chưa chứng minh judge semantic đủ chính xác. LangGraph/Promptfoo chỉ là ứng viên spike trên cùng acceptance suite.
+Skill activation dùng bindings của T23, revalidate trước dispatch; không tạo ledger mới. Exit: fake/stale/missing PASS, inactive policy, wrong scope/digest/issuer không dispatch; crash-after-effect không duplicate; owner cũ còn sống không takeover; tampered report/oracle bị chặn tại boundary thật. Fake/deterministic fixtures chứng minh cơ chế, chưa chứng minh judge semantic đủ chính xác. LangGraph/Promptfoo đã chạy executable spike; kết quả và quyết định ở report Phase 2/ADR 0002.
 
 ## Phase 3 — Memory, Context và baseline (P2 cũ)
 
@@ -86,6 +90,6 @@ Sau mỗi phiên ghi artifact/check versions, actual touch/tool/agent time, queu
 
 ## Trạng thái và nguồn
 
-R2 đã được áp dụng. **T17/T06/T23 Done và Pass trong phạm vi foundation bootstrap** theo phase-1-report.md và independent review. 22 task còn lại Todo / Not evaluated. Chưa active runtime PolicyRelease, chưa T22 PASS; game vẫn chưa mở. Không suy phần trăm tiến độ tổng thể từ số task hoặc tests.
+R2 đã được áp dụng. **T17/T06/T23 Done và Pass trong phạm vi foundation bootstrap** theo phase-1-report.md và independent review. Sau Phase 2, tổng 6 task Done / Pass; 19 task còn lại Todo / Not evaluated. Active release chỉ runtime.fixture; chưa T22 PASS, game chưa mở. Không suy phần trăm tiến độ tổng thể từ số task hoặc tests.
 
 Nguồn chuẩn: contracts/architecture v0.4; plan/schedule R1 ngày24/09; execution-skills-proposal và bốn source reviews đã pin ngày24/09. Đi kèm: `plan-r2.md` (scope, estimates, Phase1 AC matrix), `schedule-r2.json` (25tasks/dependencies/calendar/capacity). R1 nằm ở thư mục lịch sử riêng và không bị ghi đè.

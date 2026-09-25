@@ -1,0 +1,103 @@
+{
+  "executedAt": "2026-09-25T03:33:47.661Z",
+  "node": "v24.19.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "command": "node --test --test-reporter=tap dist/test/runtime-recovery.test.js",
+  "buildCommand": "./scripts/dev.sh build",
+  "status": 0,
+  "elapsedMs": 7087,
+  "counts": {
+    "tests": 10,
+    "pass": 10,
+    "fail": 0,
+    "skipped": 0
+  },
+  "testNames": [
+    "hard process crash at prepared recovers in a fresh process without repeating a committed effect",
+    "hard process crash at after-worker recovers in a fresh process without repeating a committed effect",
+    "hard process crash at before-commit recovers in a fresh process without repeating a committed effect",
+    "successful planner branch survives a hard crash and is reused by a fresh owner",
+    "queued checkpoint resumes after clean process restart and rejects workflow version mismatch",
+    "another control directory cannot bypass the canonical workspace OS lock",
+    "timeout after effect pauses, then reconciles without redispatch",
+    "cancel kills an active worker and durably forbids automatic resume",
+    "workspace drift before dispatch blocks execution",
+    "reconciliation must not bless unrelated workspace changes made after effect/crash"
+  ],
+  "sourcePins": [
+    {
+      "path": "test/runtime-recovery.test.ts",
+      "sha256": "21cfbbcb9c52b97aedc27d667ed41094e837f5e9a8ffdb99fe835240553e2e40"
+    },
+    {
+      "path": "fixtures/runtime-crash-child.ts",
+      "sha256": "7a76ff100391b81ff6a19c63de334f47666115ff5f35c24c0792b12753f48ecb"
+    },
+    {
+      "path": "src/runtime/runner.ts",
+      "sha256": "d803fb50e00e4a45a1dff306d76279fcd3d69540b954182e56b839ee239191b8"
+    },
+    {
+      "path": "src/runtime/store.ts",
+      "sha256": "6d4ea8b567bf604dd805aeab1417d2835a6c3817f0ef663a1025bf3a1fa04e33"
+    },
+    {
+      "path": "src/runtime/lock.ts",
+      "sha256": "7d09bb078e7b0c97d16989db20a3c971fdbf4d8288d07095c4f468e052759809"
+    },
+    {
+      "path": "src/runtime/isolation.ts",
+      "sha256": "63dd679cb468daa6b8734f8e43de7135f345d48d8283dd18a9cd3ac2ab89b997"
+    },
+    {
+      "path": "src/runtime/evaluation.ts",
+      "sha256": "160d0e2a8fd25aceb980e304a1a27aa9b30c60e71fcda53f0fad5fa855c766c9"
+    },
+    {
+      "path": "src/runtime/tool-worker.ts",
+      "sha256": "83ffe1f7cd3c7ed45ad0289e474cd0b0c65e225b44fd7247e32334fe8512cb8a"
+    },
+    {
+      "path": "src/runtime/verifier-worker.ts",
+      "sha256": "3ed340e65461fce0b0bc022243a70703cdde5fc9fa85aa3d40aff7e2dfaa0ab8"
+    }
+  ],
+  "comparisonScenarios": [
+    {
+      "id": "restart-checkpoint",
+      "evidenceTests": [
+        "hard process crash at prepared recovers in a fresh process without repeating a committed effect",
+        "hard process crash at after-worker recovers in a fresh process without repeating a committed effect",
+        "hard process crash at before-commit recovers in a fresh process without repeating a committed effect",
+        "queued checkpoint resumes after clean process restart and rejects workflow version mismatch"
+      ],
+      "observed": true
+    },
+    {
+      "id": "successful-sibling-reuse",
+      "evidenceTests": [
+        "successful planner branch survives a hard crash and is reused by a fresh owner"
+      ],
+      "observed": true,
+      "assertion": "Fresh owner returns durable branch a; callback would throw if committed branch were rerun; plannerAttempts=3"
+    },
+    {
+      "id": "ambiguous-effect-naive-duplicate",
+      "observed": null,
+      "reason": "Native runner intentionally always has a ledger; no unsafe native mode is introduced for comparison"
+    },
+    {
+      "id": "ambiguous-effect-ledger-block-reconcile",
+      "evidenceTests": [
+        "hard process crash at after-worker recovers in a fresh process without repeating a committed effect",
+        "hard process crash at before-commit recovers in a fresh process without repeating a committed effect",
+        "timeout after effect pauses, then reconciles without redispatch",
+        "reconciliation must not bless unrelated workspace changes made after effect/crash"
+      ],
+      "observed": true,
+      "assertion": "Fresh-process after-effect recovery has dispatches=1, attempts=1, unchanged output inode; unrelated post-crash workspace drift blocks commitment"
+    }
+  ],
+  "limits": "Deterministic macOS file-write fixture and trusted broker; not Unity, arbitrary tools, a paid judge, power-loss testing, or hosted CI execution"
+}

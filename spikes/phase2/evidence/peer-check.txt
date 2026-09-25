@@ -1,0 +1,13 @@
+Issues with peer dependencies found
+
+✕ unmet peer chokidar
+  Installed: 5.0.0
+  Wanted:
+    ^3.3.0:
+      nunjucks@3.2.4
+
+✕ unmet peer gcp-metadata
+  Installed: 9.0.4
+  Wanted:
+    ^7.0.1:
+      mongodb@7.6.0

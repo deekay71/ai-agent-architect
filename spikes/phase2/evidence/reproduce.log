@@ -1,0 +1,63 @@
+$ node langgraph/run.mjs && node promptfoo/run.mjs
+{
+  "scenarios": [
+    {
+      "id": "restart-checkpoint",
+      "observed": true,
+      "firstPid": 3339,
+      "resumedPid": 3340,
+      "persistedCheckpointId": "1f1b88f4-655a-6c90-8000-bcd85b8aacb1"
+    },
+    {
+      "id": "successful-sibling-reuse",
+      "observed": true,
+      "stableExecutions": 1,
+      "failingBranchExecutions": 2,
+      "note": "Successful sibling pending writes survive failed super-step; not an operation-ledger commit."
+    },
+    {
+      "id": "ambiguous-effect-naive-duplicate",
+      "observed": true,
+      "physicalEffects": 2,
+      "confirms": "Checkpoint alone does not guarantee exactly-once external effects."
+    },
+    {
+      "id": "ambiguous-effect-ledger-block-reconcile",
+      "observed": true,
+      "blockedBeforeReconcile": true,
+      "physicalEffects": 1,
+      "receiptReused": true
+    }
+  ],
+  "evidence": "evidence/langgraph-results.json"
+}
+{
+  "reports": [
+    {
+      "mode": "api",
+      "metrics": {
+        "total": 9,
+        "acceptedValid": 3,
+        "rejectedInvalid": 3,
+        "ambiguousNotAccepted": 3,
+        "falseAccepts": 0,
+        "falseRejects": 0,
+        "ambiguousAccepts": 0
+      }
+    },
+    {
+      "mode": "cli",
+      "metrics": {
+        "total": 9,
+        "acceptedValid": 3,
+        "rejectedInvalid": 3,
+        "ambiguousNotAccepted": 3,
+        "falseAccepts": 0,
+        "falseRejects": 0,
+        "ambiguousAccepts": 0
+      }
+    }
+  ],
+  "rawCliExitCode": 100,
+  "evidence": "evidence/promptfoo-results.json"
+}

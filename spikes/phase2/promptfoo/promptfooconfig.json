@@ -1,0 +1,11 @@
+{
+  "description": "Phase 2 deterministic adapter spike; intentionally rejects invalid and ambiguous fixtures",
+  "prompts": ["Inspect the supplied candidate fixture"],
+  "providers": ["file://./provider.cjs"],
+  "tests": "file://./dataset.json",
+  "defaultTest": {
+    "assert": [{ "type": "javascript", "value": "file://./assertion.cjs" }]
+  },
+  "sharing": false,
+  "writeLatestResults": false
+}

@@ -1,0 +1,277 @@
+{
+  "executedAt": "2026-09-25T03:14:55.107Z",
+  "node": "v24.19.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "framework": "promptfoo@0.123.1",
+  "fixtureLockDigest": "sha256:d4e246074b06534fcf6290d7154056ee3ef73cea3f4175af16055e62d4ae1c9c",
+  "reports": [
+    {
+      "mode": "api",
+      "stats": {
+        "successes": 3,
+        "failures": 6,
+        "errors": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 9,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "durationMs": 16,
+        "evaluationDurationMs": 16
+      },
+      "metrics": {
+        "total": 9,
+        "acceptedValid": 3,
+        "rejectedInvalid": 3,
+        "ambiguousNotAccepted": 3,
+        "falseAccepts": 0,
+        "falseRejects": 0,
+        "ambiguousAccepts": 0
+      },
+      "rows": [
+        {
+          "caseId": "valid-minimal",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "valid-nested-write",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "valid-extra-check",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "invalid-scope",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: write outside allowed scope"
+        },
+        {
+          "caseId": "invalid-checkset",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: missing check or stale binding"
+        },
+        {
+          "caseId": "invalid-stale-binding",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: missing check or stale binding"
+        },
+        {
+          "caseId": "ambiguous-environment",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        },
+        {
+          "caseId": "ambiguous-constraints",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        },
+        {
+          "caseId": "ambiguous-digest",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        }
+      ]
+    },
+    {
+      "mode": "cli",
+      "stats": {
+        "successes": 3,
+        "failures": 6,
+        "errors": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 9,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "durationMs": 20,
+        "evaluationDurationMs": 20
+      },
+      "metrics": {
+        "total": 9,
+        "acceptedValid": 3,
+        "rejectedInvalid": 3,
+        "ambiguousNotAccepted": 3,
+        "falseAccepts": 0,
+        "falseRejects": 0,
+        "ambiguousAccepts": 0
+      },
+      "rows": [
+        {
+          "caseId": "valid-minimal",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "valid-nested-write",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "valid-extra-check",
+          "label": "valid",
+          "expectedDecision": "ALLOW",
+          "decision": "ALLOW",
+          "accepted": true,
+          "reason": "ALLOW: deterministic fixture checks satisfied"
+        },
+        {
+          "caseId": "invalid-scope",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: write outside allowed scope"
+        },
+        {
+          "caseId": "invalid-checkset",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: missing check or stale binding"
+        },
+        {
+          "caseId": "invalid-stale-binding",
+          "label": "invalid",
+          "expectedDecision": "REJECT",
+          "decision": "REJECT",
+          "accepted": false,
+          "reason": "REJECT: missing check or stale binding"
+        },
+        {
+          "caseId": "ambiguous-environment",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        },
+        {
+          "caseId": "ambiguous-constraints",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        },
+        {
+          "caseId": "ambiguous-digest",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN",
+          "decision": "UNKNOWN",
+          "accepted": false,
+          "reason": "UNKNOWN: required observation absent"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "name": "node-api",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 663,
+      "stdout": "[Evaluation] Starting 9 test cases...\n[Evaluation] ✓ Complete! 9/9 tests in 0s\n{\"stats\":{\"successes\":3,\"failures\":6,\"errors\":0,\"tokenUsage\":{\"prompt\":0,\"completion\":0,\"cached\":0,\"total\":0,\"numRequests\":9,\"completionDetails\":{\"reasoning\":0,\"acceptedPrediction\":0,\"rejectedPrediction\":0,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0},\"assertions\":{\"total\":0,\"prompt\":0,\"completion\":0,\"cached\":0,\"numRequests\":0,\"completionDetails\":{\"reasoning\":0,\"acceptedPrediction\":0,\"rejectedPrediction\":0,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":0}}},\"durationMs\":16,\"evaluationDurationMs\":16},\"cases\":9}\n",
+      "stderr": "(node:3349) ExperimentalWarning: DecompressInterceptor is experimental and subject to change\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "name": "cli-ci",
+      "status": 100,
+      "signal": null,
+      "elapsedMs": 697,
+      "stdout": "Cache is disabled.\nStarting evaluation eval-IJU-2026-09-25T03:14:55\n[Evaluation] Starting 9 test cases...\nRunning 9 test cases (up to 1 at a time)...\n[Evaluation] ✓ Complete! 9/9 tests in 0s\n✓ Eval complete\n\n\nResults:\n  ✓ 3 passed (33.33%)\n  ✗ 6 failed (66.67%)\n  0 errors (0%)\nDuration: 0s (concurrency: 1)\n\nWriting output to evidence/promptfoo-cli-results.json\n",
+      "stderr": "(node:3350) ExperimentalWarning: DecompressInterceptor is experimental and subject to change\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    }
+  ],
+  "modelCalls": 0,
+  "modelTokens": 0,
+  "modelCost": 0,
+  "unityCalls": 0,
+  "rawCliExitCode": 100,
+  "wrapperMeaning": "Exit 0 means fixed oracle labels matched, not all candidate plans were accepted",
+  "limits": "Nine deterministic wiring fixtures, no semantic model evaluation or release-reliability estimate; API network guard is not an OS sandbox"
+}

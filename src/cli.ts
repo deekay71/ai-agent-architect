@@ -9,6 +9,7 @@ import { createFoundationScenario } from '../fixtures/foundation.js';
 import { createFixtureWorkflow } from './foundation/workflow.js';
 import { createSkillBinding, discoverSkills, loadSkillCatalog, loadSkillResource, resolveSkill } from './skills/catalog.js';
 import type { SkillResolutionContext } from './skills/catalog.js';
+import { runtimeCommand } from './runtime/cli.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
 const output = (value: unknown) => process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
@@ -49,8 +50,12 @@ async function skillsDemo(): Promise<unknown> {
 async function main(args: string[]): Promise<void> {
   const command = args[0];
   if (command === '--help' || command === 'help' || args.length === 0) {
-    output({ name: 'AI Agent Architect foundation', commands: ['demo [--tamper]', 'skills-demo', 'contracts', 'validate <ContractName> <file.json>', 'schemas <output-directory>'],
-      scope: 'Phase 1: local conformance only; no production dispatch or Unity execution' });
+    output({ name: 'AI Agent Architect', commands: ['demo [--tamper]', 'skills-demo', 'contracts', 'validate <ContractName> <file.json>', 'schemas <output-directory>',
+      'runtime-demo <new-directory>', 'runtime-submit <workspace> <control> <request.json>', 'runtime-resume <workspace> <control> <run-id>',
+      'runtime-status <workspace> <control> <run-id>', 'runtime-reconcile <workspace> <control> <run-id>', 'runtime-recover <workspace> <control>'],
+      scope: 'Phase 1 conformance plus Phase 2 macOS mechanical fixture runtime; no production/Unity authorization' });
+  } else if (command?.startsWith('runtime-')) {
+    await runtimeCommand(args);
   } else if (command === 'contracts' && args.length === 1) {
     output({ schemaVersion: SCHEMA_VERSION, contracts: Object.keys(schemas) });
   } else if (command === 'validate' && args.length === 3) {

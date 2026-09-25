@@ -5,3 +5,4 @@ coverage/
 .DS_Store
 *.log
 !docs/evidence/*.log
+!docs/evidence/**/*.log

@@ -1,0 +1,94 @@
+{
+  "checkedAt": "2026-09-25T03:04:43.837Z",
+  "node": "v24.19.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "packages": [
+    {
+      "name": "@langchain/core",
+      "version": "1.2.12",
+      "source": "https://registry.npmjs.org/%40langchain%2Fcore/1.2.12",
+      "engines": {
+        "node": ">=20"
+      },
+      "peerDependencies": {},
+      "repository": {
+        "url": "git+ssh://git@github.com/langchain-ai/langchainjs.git",
+        "type": "git"
+      },
+      "gitHead": null,
+      "integrity": "sha512-DvNsrN5Gz+bgEy/B/kK1AvxxcrwdrflI8hZJxqo/DtA17FMUeWM5k0o1c6G8ChH8+sIakV2UsDudFmNZJp1ugQ==",
+      "tarball": "https://registry.npmjs.org/@langchain/core/-/core-1.2.12.tgz"
+    },
+    {
+      "name": "@langchain/langgraph",
+      "version": "1.4.17",
+      "source": "https://registry.npmjs.org/%40langchain%2Flanggraph/1.4.17",
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "zod": "^3.25.32 || ^4.2.0",
+        "@langchain/core": "^1.1.48"
+      },
+      "repository": {
+        "url": "git+ssh://git@github.com/langchain-ai/langgraphjs.git",
+        "type": "git",
+        "directory": "libs/langgraph-core"
+      },
+      "gitHead": null,
+      "integrity": "sha512-gkd34M42D5SdRaaHS6NSD+zTuZBgmEqecld3BenVlql11WshvarKH/2ZQbNmQQ0knbHgtaQEg3VeH0bUFt2B1Q==",
+      "tarball": "https://registry.npmjs.org/@langchain/langgraph/-/langgraph-1.4.17.tgz"
+    },
+    {
+      "name": "@langchain/langgraph-checkpoint-sqlite",
+      "version": "1.0.4",
+      "source": "https://registry.npmjs.org/%40langchain%2Flanggraph-checkpoint-sqlite/1.0.4",
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@langchain/core": "^1.1.44",
+        "@langchain/langgraph-checkpoint": "^1.1.4"
+      },
+      "repository": {
+        "url": "git+ssh://git@github.com/langchain-ai/langgraphjs.git",
+        "type": "git",
+        "directory": "libs/checkpoint-sqlite"
+      },
+      "gitHead": null,
+      "integrity": "sha512-tcfDU6mwy9Su7BQKjGLTrWPL2CZzaGwb5XzEttqRRhcI3g4P6a/S7qFoJf6jcP/vP71bere7JRDZPTzahhHqog==",
+      "tarball": "https://registry.npmjs.org/@langchain/langgraph-checkpoint-sqlite/-/langgraph-checkpoint-sqlite-1.0.4.tgz"
+    },
+    {
+      "name": "promptfoo",
+      "version": "0.123.1",
+      "source": "https://registry.npmjs.org/promptfoo/0.123.1",
+      "engines": {
+        "node": ">=22.22.0"
+      },
+      "peerDependencies": {},
+      "repository": {
+        "url": "git+https://github.com/promptfoo/promptfoo.git",
+        "type": "git"
+      },
+      "gitHead": "34f74d34e140b5e17d23770dfb2340057b1936b8",
+      "integrity": "sha512-9WzFeH6L+5E49R6CTulBo/WzmVPNcMpvgUZAyEsNlaKgpfmF9vV82jKUG1rQ+QH79P7gYAaxeY3TvLDV+x0Cbg==",
+      "tarball": "https://registry.npmjs.org/promptfoo/-/promptfoo-0.123.1.tgz"
+    },
+    {
+      "name": "zod",
+      "version": "4.3.6",
+      "source": "https://registry.npmjs.org/zod/4.3.6",
+      "engines": null,
+      "peerDependencies": {},
+      "repository": {
+        "url": "git+https://github.com/colinhacks/zod.git",
+        "type": "git"
+      },
+      "gitHead": "ca3c8629c0c2715571f70b44c2433cad3db7fe4e",
+      "integrity": "sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==",
+      "tarball": "https://registry.npmjs.org/zod/-/zod-4.3.6.tgz"
+    }
+  ]
+}

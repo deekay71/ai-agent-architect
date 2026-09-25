@@ -1,0 +1,1464 @@
+{
+  "version": 3,
+  "timestamp": "2026-09-25T03:14:54.385Z",
+  "prompts": [
+    {
+      "id": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "raw": "Inspect the supplied candidate fixture",
+      "label": "Inspect the supplied candidate fixture",
+      "provider": "phase2-local-fixture",
+      "metrics": {
+        "score": 3,
+        "testPassCount": 3,
+        "testFailCount": 6,
+        "testErrorCount": 0,
+        "assertPassCount": 3,
+        "assertFailCount": 6,
+        "totalLatencyMs": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 9,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "namedScores": {},
+        "namedScoresCount": {},
+        "namedScoreWeights": {},
+        "cost": 0
+      }
+    }
+  ],
+  "results": [
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "ALLOW: deterministic fixture checks satisfied",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "793ccbe7-a644-4af2-8e2b-a81b3f1d5e2e",
+      "latencyMs": 1,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "description": "valid-minimal",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "valid-minimal",
+          "label": "valid",
+          "expectedDecision": "ALLOW"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "valid-minimal",
+        "label": "valid",
+        "expectedDecision": "ALLOW",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    },
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "ALLOW: deterministic fixture checks satisfied",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "541d4ddd-9b96-4eb3-875a-6309540c6ea4",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/domain/a.ts\",\"src/ui/b.ts\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "description": "valid-nested-write",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/domain/a.ts",
+              "src/ui/b.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "valid-nested-write",
+          "label": "valid",
+          "expectedDecision": "ALLOW"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 1,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/domain/a.ts",
+            "src/ui/b.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "valid-nested-write",
+        "label": "valid",
+        "expectedDecision": "ALLOW",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    },
+    {
+      "cost": 0,
+      "gradingResult": {
+        "pass": true,
+        "score": 1,
+        "reason": "All assertions passed",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": true,
+            "score": 1,
+            "reason": "ALLOW: deterministic fixture checks satisfied",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "06441e39-a736-4621-9adb-072738a0fc74",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\",\"regression\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 1,
+      "success": true,
+      "testCase": {
+        "description": "valid-extra-check",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit",
+              "regression"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "valid-extra-check",
+          "label": "valid",
+          "expectedDecision": "ALLOW"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 2,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit",
+            "regression"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "valid-extra-check",
+        "label": "valid",
+        "expectedDecision": "ALLOW",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 0
+    },
+    {
+      "cost": 0,
+      "error": "REJECT: write outside allowed scope",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "REJECT: write outside allowed scope",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "REJECT: write outside allowed scope",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "c503cef0-d6d5-4907-95d7-d08f9c04e4d3",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"oracle/expected.json\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "invalid-scope",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "oracle/expected.json"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "invalid-scope",
+          "label": "invalid",
+          "expectedDecision": "REJECT"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 3,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "oracle/expected.json"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "invalid-scope",
+        "label": "invalid",
+        "expectedDecision": "REJECT",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    },
+    {
+      "cost": 0,
+      "error": "REJECT: missing check or stale binding",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "REJECT: missing check or stale binding",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "REJECT: missing check or stale binding",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "bf85772e-3ba4-4feb-acb7-618af42d35da",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "invalid-checkset",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "invalid-checkset",
+          "label": "invalid",
+          "expectedDecision": "REJECT"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 4,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "invalid-checkset",
+        "label": "invalid",
+        "expectedDecision": "REJECT",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    },
+    {
+      "cost": 0,
+      "error": "REJECT: missing check or stale binding",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "REJECT: missing check or stale binding",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "REJECT: missing check or stale binding",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "6dfd62f3-6761-4eb5-b403-8e3f4d370d5d",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":false}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "invalid-stale-binding",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": false
+          }
+        },
+        "metadata": {
+          "caseId": "invalid-stale-binding",
+          "label": "invalid",
+          "expectedDecision": "REJECT"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 5,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": false
+        }
+      },
+      "metadata": {
+        "caseId": "invalid-stale-binding",
+        "label": "invalid",
+        "expectedDecision": "REJECT",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    },
+    {
+      "cost": 0,
+      "error": "UNKNOWN: required observation absent",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "UNKNOWN: required observation absent",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "UNKNOWN: required observation absent",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "bb8da04a-bc00-4cf4-85fe-3471448c2f77",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\"],\"environment\":\"unknown\",\"constraints\":\"known\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "ambiguous-environment",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "unknown",
+            "constraints": "known",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "ambiguous-environment",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 6,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "unknown",
+          "constraints": "known",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "ambiguous-environment",
+        "label": "ambiguous",
+        "expectedDecision": "UNKNOWN",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    },
+    {
+      "cost": 0,
+      "error": "UNKNOWN: required observation absent",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "UNKNOWN: required observation absent",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "UNKNOWN: required observation absent",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "6620ff14-0349-42cc-83b0-a8a306c3034c",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"unknown\",\"digestMatches\":true}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "ambiguous-constraints",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "unknown",
+            "digestMatches": true
+          }
+        },
+        "metadata": {
+          "caseId": "ambiguous-constraints",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 7,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "unknown",
+          "digestMatches": true
+        }
+      },
+      "metadata": {
+        "caseId": "ambiguous-constraints",
+        "label": "ambiguous",
+        "expectedDecision": "UNKNOWN",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    },
+    {
+      "cost": 0,
+      "error": "UNKNOWN: required observation absent",
+      "gradingResult": {
+        "pass": false,
+        "score": 0,
+        "reason": "UNKNOWN: required observation absent",
+        "namedScores": {},
+        "tokensUsed": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0
+        },
+        "componentResults": [
+          {
+            "pass": false,
+            "score": 0,
+            "reason": "UNKNOWN: required observation absent",
+            "assertion": {
+              "type": "javascript",
+              "value": "file://./assertion.cjs"
+            }
+          }
+        ]
+      },
+      "id": "945915dc-e004-4ac6-80b7-ec78956eb66e",
+      "latencyMs": 0,
+      "namedScores": {},
+      "prompt": {
+        "raw": "Inspect the supplied candidate fixture",
+        "label": "Inspect the supplied candidate fixture",
+        "config": {}
+      },
+      "promptId": "1a9abed300b3e2d9f69ca081a4aa233db8adeca3b966286f5e4880153e519905",
+      "promptIdx": 0,
+      "provider": {
+        "id": "phase2-local-fixture",
+        "label": ""
+      },
+      "response": {
+        "output": "{\"writes\":[\"src/a.ts\"],\"checks\":[\"unit\"],\"environment\":\"observed\",\"constraints\":\"known\",\"digestMatches\":null}",
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "cost": 0
+      },
+      "score": 0,
+      "success": false,
+      "testCase": {
+        "description": "ambiguous-digest",
+        "vars": {
+          "candidate": {
+            "writes": [
+              "src/a.ts"
+            ],
+            "checks": [
+              "unit"
+            ],
+            "environment": "observed",
+            "constraints": "known",
+            "digestMatches": null
+          }
+        },
+        "metadata": {
+          "caseId": "ambiguous-digest",
+          "label": "ambiguous",
+          "expectedDecision": "UNKNOWN"
+        },
+        "assert": [
+          {
+            "type": "javascript",
+            "value": "file://./assertion.cjs"
+          }
+        ],
+        "options": {}
+      },
+      "testIdx": 8,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 1,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "vars": {
+        "candidate": {
+          "writes": [
+            "src/a.ts"
+          ],
+          "checks": [
+            "unit"
+          ],
+          "environment": "observed",
+          "constraints": "known",
+          "digestMatches": null
+        }
+      },
+      "metadata": {
+        "caseId": "ambiguous-digest",
+        "label": "ambiguous",
+        "expectedDecision": "UNKNOWN",
+        "_promptfooFileMetadata": {}
+      },
+      "failureReason": 1
+    }
+  ],
+  "stats": {
+    "successes": 3,
+    "failures": 6,
+    "errors": 0,
+    "tokenUsage": {
+      "prompt": 0,
+      "completion": 0,
+      "cached": 0,
+      "total": 0,
+      "numRequests": 9,
+      "completionDetails": {
+        "reasoning": 0,
+        "acceptedPrediction": 0,
+        "rejectedPrediction": 0,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0
+      },
+      "assertions": {
+        "total": 0,
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        }
+      }
+    },
+    "durationMs": 16,
+    "evaluationDurationMs": 16
+  }
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: hard process crash at prepared recovers in a fresh process without repeating a committed effect
+ok 1 - hard process crash at prepared recovers in a fresh process without repeating a committed effect
+  ---
+  duration_ms: 979.174208
+  type: 'test'
+  ...
+# Subtest: hard process crash at after-worker recovers in a fresh process without repeating a committed effect
+ok 2 - hard process crash at after-worker recovers in a fresh process without repeating a committed effect
+  ---
+  duration_ms: 929.255333
+  type: 'test'
+  ...
+# Subtest: hard process crash at before-commit recovers in a fresh process without repeating a committed effect
+ok 3 - hard process crash at before-commit recovers in a fresh process without repeating a committed effect
+  ---
+  duration_ms: 969.507958
+  type: 'test'
+  ...
+# Subtest: successful planner branch survives a hard crash and is reused by a fresh owner
+ok 4 - successful planner branch survives a hard crash and is reused by a fresh owner
+  ---
+  duration_ms: 597.755
+  type: 'test'
+  ...
+# Subtest: queued checkpoint resumes after clean process restart and rejects workflow version mismatch
+ok 5 - queued checkpoint resumes after clean process restart and rejects workflow version mismatch
+  ---
+  duration_ms: 668.309959
+  type: 'test'
+  ...
+# Subtest: another control directory cannot bypass the canonical workspace OS lock
+ok 6 - another control directory cannot bypass the canonical workspace OS lock
+  ---
+  duration_ms: 636.078291
+  type: 'test'
+  ...
+# Subtest: timeout after effect pauses, then reconciles without redispatch
+ok 7 - timeout after effect pauses, then reconciles without redispatch
+  ---
+  duration_ms: 823.581583
+  type: 'test'
+  ...
+# Subtest: cancel kills an active worker and durably forbids automatic resume
+ok 8 - cancel kills an active worker and durably forbids automatic resume
+  ---
+  duration_ms: 468.408916
+  type: 'test'
+  ...
+# Subtest: workspace drift before dispatch blocks execution
+ok 9 - workspace drift before dispatch blocks execution
+  ---
+  duration_ms: 262.511958
+  type: 'test'
+  ...
+# Subtest: reconciliation must not bless unrelated workspace changes made after effect/crash
+ok 10 - reconciliation must not bless unrelated workspace changes made after effect/crash
+  ---
+  duration_ms: 653.60125
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7059.354542

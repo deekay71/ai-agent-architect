@@ -1,0 +1,20 @@
+{
+  "name": "phase2-framework-spikes",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.0.0 <25" },
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "langgraph": "node langgraph/run.mjs",
+    "promptfoo": "node promptfoo/run.mjs",
+    "check": "node langgraph/run.mjs && node promptfoo/run.mjs"
+  },
+  "dependencies": {
+    "@langchain/core": "1.2.12",
+    "@langchain/langgraph": "1.4.17",
+    "@langchain/langgraph-checkpoint-sqlite": "1.0.4",
+    "promptfoo": "0.123.1",
+    "zod": "4.3.6"
+  }
+}

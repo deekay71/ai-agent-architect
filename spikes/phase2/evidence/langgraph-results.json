@@ -1,0 +1,239 @@
+{
+  "executedAt": "2026-09-25T03:14:53.719Z",
+  "node": "v24.19.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "framework": "@langchain/langgraph@1.4.17",
+  "checkpointer": "@langchain/langgraph-checkpoint-sqlite@1.0.4",
+  "durability": "sync",
+  "scenarios": [
+    {
+      "id": "restart-checkpoint",
+      "observed": true,
+      "firstPid": 3339,
+      "resumedPid": 3340,
+      "persistedCheckpointId": "1f1b88f4-655a-6c90-8000-bcd85b8aacb1"
+    },
+    {
+      "id": "successful-sibling-reuse",
+      "observed": true,
+      "stableExecutions": 1,
+      "failingBranchExecutions": 2,
+      "note": "Successful sibling pending writes survive failed super-step; not an operation-ledger commit."
+    },
+    {
+      "id": "ambiguous-effect-naive-duplicate",
+      "observed": true,
+      "physicalEffects": 2,
+      "confirms": "Checkpoint alone does not guarantee exactly-once external effects."
+    },
+    {
+      "id": "ambiguous-effect-ledger-block-reconcile",
+      "observed": true,
+      "blockedBeforeReconcile": true,
+      "physicalEffects": 1,
+      "receiptReused": true
+    }
+  ],
+  "modelCalls": 0,
+  "unityCalls": 0,
+  "networkGuard": "Node API fixture guard loaded in children; not OS isolation",
+  "runs": [
+    {
+      "scenario": "branches",
+      "stage": "first",
+      "status": 31,
+      "signal": null,
+      "elapsedMs": 329,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "branches",
+      "stage": "resume",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 188,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "naive",
+      "stage": "crash",
+      "status": null,
+      "signal": "SIGKILL",
+      "elapsedMs": 179,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "naive",
+      "stage": "resume",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 183,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "guarded",
+      "stage": "crash",
+      "status": null,
+      "signal": "SIGKILL",
+      "elapsedMs": 184,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "guarded",
+      "stage": "resume",
+      "status": 31,
+      "signal": null,
+      "elapsedMs": 180,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "scenario": "guarded",
+      "stage": "after-reconcile",
+      "status": 0,
+      "signal": null,
+      "elapsedMs": 183,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "branchEvents": [
+    {
+      "name": "process-start",
+      "pid": 3339,
+      "stage": "first",
+      "checkpointPresent": false,
+      "next": []
+    },
+    {
+      "name": "flaky-ran",
+      "pid": 3339,
+      "stage": "first"
+    },
+    {
+      "name": "stable-ran",
+      "pid": 3339,
+      "stage": "first"
+    },
+    {
+      "name": "process-start",
+      "pid": 3340,
+      "stage": "resume",
+      "checkpointPresent": true,
+      "next": [
+        "flakyBranch"
+      ]
+    },
+    {
+      "name": "flaky-ran",
+      "pid": 3340,
+      "stage": "resume"
+    },
+    {
+      "name": "join-ran",
+      "pid": 3340,
+      "stage": "resume"
+    }
+  ],
+  "naiveEvents": [
+    {
+      "name": "process-start",
+      "pid": 3341,
+      "stage": "crash",
+      "checkpointPresent": false,
+      "next": []
+    },
+    {
+      "name": "effect-node-entered",
+      "pid": 3341,
+      "stage": "crash"
+    },
+    {
+      "name": "external-effect-applied",
+      "pid": 3341,
+      "stage": "crash"
+    },
+    {
+      "name": "process-start",
+      "pid": 3342,
+      "stage": "resume",
+      "checkpointPresent": true,
+      "next": [
+        "performEffect"
+      ]
+    },
+    {
+      "name": "effect-node-entered",
+      "pid": 3342,
+      "stage": "resume"
+    },
+    {
+      "name": "external-effect-applied",
+      "pid": 3342,
+      "stage": "resume"
+    }
+  ],
+  "guardedEvents": [
+    {
+      "name": "process-start",
+      "pid": 3343,
+      "stage": "crash",
+      "checkpointPresent": false,
+      "next": []
+    },
+    {
+      "name": "effect-node-entered",
+      "pid": 3343,
+      "stage": "crash"
+    },
+    {
+      "name": "external-effect-applied",
+      "pid": 3343,
+      "stage": "crash"
+    },
+    {
+      "name": "process-start",
+      "pid": 3346,
+      "stage": "resume",
+      "checkpointPresent": true,
+      "next": [
+        "performEffect"
+      ]
+    },
+    {
+      "name": "effect-node-entered",
+      "pid": 3346,
+      "stage": "resume"
+    },
+    {
+      "name": "reconciliation-required",
+      "pid": 3346,
+      "stage": "resume"
+    },
+    {
+      "name": "process-start",
+      "pid": 3347,
+      "stage": "after-reconcile",
+      "checkpointPresent": true,
+      "next": [
+        "performEffect"
+      ]
+    },
+    {
+      "name": "effect-node-entered",
+      "pid": 3347,
+      "stage": "after-reconcile"
+    },
+    {
+      "name": "receipt-reused",
+      "pid": 3347,
+      "stage": "after-reconcile"
+    }
+  ]
+}

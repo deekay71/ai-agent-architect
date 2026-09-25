@@ -1,5 +1,10 @@
 # AI Agent Architect — Kế hoạch triển khai R2
 
+## Actual Phase 2 — 25/09/2026
+
+T07/T18/T15 đã nghiệm thu phạm vi local mechanical runtime: 209/209 tests sạch, independent review và framework spikes. [Báo cáo Phase 2](phase-2-report.md) chứa AC/evidence/giới hạn; [remaining work](remaining-work.md) bàn giao Phase 3. Giữ estimates/forecast R2 bên dưới làm baseline. Model/semantic/Unity release chưa đạt; không thay T22 bằng kết quả fixture.
+
+
 ## Kết quả thực hiện Phase 1 — 24/09/2026
 
 **T17/T06/T23 đã hoàn tất và PASS nghiệm thu foundation**: 26 executable contracts 0.5.0, catalog/resolver và CLI offline; 105 automated tests pass từ clean checkout, independent review đóng bốn findings; 12 repro gốc và 3 follow-up cases bị chặn. Báo cáo đầy đủ: `phase-1-report.md`; source/test evidence ở snapshot Drive. Không có active runtime PolicyRelease, Unity benchmark hoặc T22 PASS.
