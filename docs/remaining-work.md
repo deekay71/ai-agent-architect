@@ -1,5 +1,9 @@
 # Công việc còn lại sau triển khai local Phase 3
 
+## Quyết định tiếp tục — 25/09/2026
+
+Owner chọn **hoàn tất nghiệm thu Phase 3 trước**, chưa mở Phase 4. Đã bổ sung DEV readiness, chọn case và forecast, model capacity admission, paired diagnostics và review actual outputs. Fresh-copy build/check đạt **466/466 tests, 0 fail/skip**; mirror hoàn tất 12 main +4 G với 20 mock generations, export đủ 16 review outputs; 0 provider calls, source ổn định. Hai finding review đã sửa. [Gói chuẩn bị nghiệm thu](phase-3-acceptance-prep.md) có cấu hình smoke 2 case, Astra/Luna, tối đa 20 generation calls, generation upper bound 4,242980 USD và đề xuất cap 5 USD. **Chưa nhận phê duyệt chi phí/key-check; chưa gọi API hoặc đọc key.** Smoke không thay calibration/fresh holdout/protocol/adjudication và T14. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Những đoạn scope “chỉ local, S2–S4 để sau” bên dưới là lịch sử trước quyết định tiếp tục này.
+
 T09/T10 đã Done / Pass trong phạm vi Memory local. Context mechanics T19 và Memory promotion T14 đã có implementation/tests nhưng **T19/T14 Doing / Not evaluated**: T19 thiếu AC chất lượng/token thật; full handoff T14 chờ dependency T19. **T11 Doing / Replan; toàn Phase 3 chưa PASS**, chưa mở Phase 4 hoặc gameplay. Tổng 8 Done, 3 Doing, 14 Todo. Xem [báo cáo Phase 3](phase-3-report.md), [hướng dẫn Memory/Context/Explorer](memory-context.md) và [benchmark](phase3-benchmark.md).
 
 Runtime demo vẫn chỉ có active release `runtime.fixture`. Không có release model/semantic/Unity, Unity project hoặc T22 PASS. Baseline clean-source suite 327 tests; lần bàn giao tiếp nối 384/384; bản sửa review mới đạt **422/422 tests, 0 fail/skip**, chạy đủ 960 main +120 G bằng mock và không gọi provider. Historical evidence và failed attempts đều giữ lại. Remote `main` còn Phase 1; Phase 2 và Phase 3 đang local chưa push.

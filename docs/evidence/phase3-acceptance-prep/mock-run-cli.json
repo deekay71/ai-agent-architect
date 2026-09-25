@@ -1,0 +1,19 @@
+{
+  "report": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/acceptance-prep-mock-run1/report.json",
+  "campaignId": "semantic-acceptance-prep-local-mirror",
+  "assurance": "mock",
+  "completedTrials": 12,
+  "plannedTrials": 12,
+  "completedControlTrials": 4,
+  "plannedControlTrials": 4,
+  "stoppedReason": null,
+  "modelQualityMeasured": false,
+  "phaseGate": "Not evaluated",
+  "budget": {
+    "capMicros": 0,
+    "chargedMicros": 0,
+    "reservedAttempts": 0,
+    "uncertainAttempts": 0,
+    "frozen": false
+  }
+}

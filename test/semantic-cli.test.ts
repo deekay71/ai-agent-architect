@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 import test from 'node:test';
 import { runEvaluationCli } from '../src/evaluation/cli.js';
 import { CampaignConfigSchema } from '../src/evaluation/config.js';
+import { createHash } from 'node:crypto';
 
 const fixture = path.resolve('fixtures/semantic-benchmark');
 const configPath = path.resolve('fixtures/semantic-config/local.json');
@@ -90,4 +91,37 @@ test('mock run exercises local CLI accounting under a blocking token budget with
   assert.equal(summary.completedTrials, 60); assert.equal(summary.completedControlTrials, 20);
   assert.ok(readdirSync(root).every(name => !name.startsWith('.semantic-mock-worker-')), 'Private scratch workspace must be removed');
   assert.match(run(['semantic-run', fixture, file, target, path.join(root, 'spend')]).stdout, /SEMANTIC_OUTPUT_MUST_BE_NEW/);
+});
+
+test('CLI binds output review to a local campaign and never promotes it to phase acceptance', t => {
+  const root = temporary(t), file = path.join(root, 'smoke.json');
+  const c = CampaignConfigSchema.parse(JSON.parse(readFileSync('fixtures/semantic-config/dev-smoke-draft.json', 'utf8')));
+  c.provider = 'mock'; c.authorization.maxCostMicros = 0; c.campaignId = 'cli-review-fixture';
+  c.caseIds = ['sem-001']; c.profiles = [c.profiles[0]!];
+  writeFileSync(file, JSON.stringify(c));
+  const campaign = path.join(root, 'campaign'), reviewDir = path.join(root, 'review');
+  const result = run(['semantic-run', fixture, file, campaign, path.join(root, 'spend')]);
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const report = JSON.parse(readFileSync(path.join(campaign, 'report.json'), 'utf8'));
+  assert.equal(report.pairedDiagnostics.groups.length, 2);
+  assert.equal(report.pairedDiagnostics.excludedControlTrials, 1);
+  assert.equal(report.pairedDiagnostics.acceptanceDecision, null);
+  assert.ok(report.pairedDiagnostics.groups.every((g: { scoredPairs: number; uniqueCaseCount: number }) => g.scoredPairs === 1 && g.uniqueCaseCount === 1));
+  const exported = run(['semantic-review-export', campaign, reviewDir]);
+  assert.equal(exported.status, 0, exported.stdout + exported.stderr);
+  const pendingPath = path.join(reviewDir, 'pending-decisions.json');
+  const denied = run(['semantic-outcome-review-import', campaign, pendingPath, path.join(root, 'denied.json')]);
+  assert.equal(denied.status, 1); assert.equal(existsSync(path.join(root, 'denied.json')), false);
+  const evidence = path.join(root, 'fixture-evidence.txt');
+  writeFileSync(evidence, 'Synthetic CLI test attestation only; not an actual human review.');
+  const decisions = JSON.parse(readFileSync(pendingPath, 'utf8'));
+  Object.assign(decisions, { reviewerId: 'test-human-fixture', reviewedAt: new Date().toISOString(),
+    evidenceRefs: [{ path: evidence, digest: `sha256:${createHash('sha256').update(readFileSync(evidence)).digest('hex')}` }],
+    judgments: decisions.judgments.map((j: { trialId: string; answerDigest: string }) => ({ ...j, judgment: 'reject', rationale: 'Synthetic test only.' })) });
+  const decisionsPath = path.join(root, 'test-decisions.json'); writeFileSync(decisionsPath, JSON.stringify(decisions));
+  const imported = run(['semantic-outcome-review-import', campaign, decisionsPath, path.join(root, 'reviewed.json')]);
+  assert.equal(imported.status, 0, imported.stdout + imported.stderr);
+  const summary = JSON.parse(imported.stdout);
+  assert.equal(summary.acceptanceStatus, 'not-acceptance-mock-provider');
+  assert.equal(summary.releaseEligible, false); assert.equal(summary.phaseGate, 'Not evaluated');
 });

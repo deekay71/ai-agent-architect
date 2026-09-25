@@ -5,6 +5,7 @@ import { createOpenAIProvider } from '../providers/openai.js';
 import { campaignPreflight, runSemanticCampaign } from './campaign.js';
 import { importHumanCalibrationReview } from './dataset.js';
 import { createSandboxMockProvider } from './mock-provider.js';
+import { exportOutcomeReview, importOutcomeReview } from './outcome-review.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../../', import.meta.url));
 const output = (value: unknown): void => { process.stdout.write(`${JSON.stringify(value, null, 2)}\n`); };
@@ -18,6 +19,8 @@ function usage(command: string): never {
     'semantic-preflight': 'semantic-preflight <dataset> <config>',
     'semantic-run': 'semantic-run <dataset> <config> <new-output> <spend> [--live]',
     'semantic-review-import': 'semantic-review-import <dataset> <review>',
+    'semantic-review-export': 'semantic-review-export <campaign> <new-review-directory>',
+    'semantic-outcome-review-import': 'semantic-outcome-review-import <campaign> <decisions.json> <new-reviewed-file>',
   };
   throw new Error(`SEMANTIC_CLI_USAGE: ${syntax[command]}`);
 }
@@ -33,7 +36,19 @@ function newOutputPath(requested: string): string {
 /** CLI adapter only. It never reads credentials or constructs a live provider during preflight/mock work. */
 export async function runEvaluationCli(args: string[]): Promise<boolean> {
   const command = args[0];
-  if (!command || !['semantic-preflight', 'semantic-run', 'semantic-review-import'].includes(command)) return false;
+  if (!command || !['semantic-preflight', 'semantic-run', 'semantic-review-import', 'semantic-review-export', 'semantic-outcome-review-import'].includes(command)) return false;
+  if (command === 'semantic-review-export') {
+    if (args.length !== 3) usage(command);
+    const result = exportOutcomeReview(path.resolve(args[1]!), path.resolve(args[2]!));
+    output({ bundlePath: result.bundlePath, markdownPath: result.markdownPath, decisionsPath: result.decisionsPath,
+      coverage: result.bundle.coverage, releaseEligible: false, phaseGate: 'Not evaluated' }); return true;
+  }
+  if (command === 'semantic-outcome-review-import') {
+    if (args.length !== 4) usage(command);
+    const artifact = importOutcomeReview(path.resolve(args[1]!), jsonFile(args[2]!), path.resolve(args[3]!));
+    output({ status: artifact.status, artifactDigest: artifact.artifactDigest, acceptanceStatus: artifact.acceptanceStatus,
+      releaseEligible: artifact.releaseEligible, phaseGate: artifact.phaseGate }); return true;
+  }
   if (command === 'semantic-preflight') {
     if (args.length !== 3) usage(command);
     output(campaignPreflight(path.resolve(args[1]!), jsonFile(args[2]!)));

@@ -1,0 +1,12 @@
+{
+  "bundlePath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/acceptance-prep-mock-review1/review-bundle.json",
+  "markdownPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/acceptance-prep-mock-review1/review.md",
+  "decisionsPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/acceptance-prep-mock-review1/pending-decisions.json",
+  "coverage": {
+    "totalTrials": 16,
+    "requiredOutputs": 16,
+    "excludedTrials": []
+  },
+  "releaseEligible": false,
+  "phaseGate": "Not evaluated"
+}

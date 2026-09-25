@@ -21,7 +21,8 @@ function setup() {
   for (const file of ['package.json', 'pnpm-lock.yaml', 'tsconfig.json']) writeFileSync(path.join(repositoryRoot, file), '{}\n');
   const config = {
     schemaVersion: 'semantic-campaign-config/1', campaignId: 'review-local-only', provider: 'openai', split: 'dev',
-    profiles: [{ id: 'reader', role: 'executor', model: 'review-test-model', inputTokenLimit: 100_000, reasoningEffort: 'low',
+    purpose: 'dev-calibration', caseIds: loadPublicDataset(datasetRoot).cases.filter(c => c.split === 'dev').map(c => c.id),
+    profiles: [{ id: 'reader', role: 'executor', model: 'review-test-model', inputTokenLimit: 100_000, modelContextLimit: 100_000, maxModelOutputTokens: 4000, reasoningEffort: 'low',
       pricing: { model: 'review-test-model', inputPerMillionUsd: 1, cachedInputPerMillionUsd: 1, outputPerMillionUsd: 1,
         source: 'https://developers.openai.com/api/docs/pricing', observedAt: '2026-09-25' } }],
     totalTokenBudgets: [100_000], distractorLimits: [0], compactionRounds: [1], repeats: 1, topK: 10,
@@ -93,7 +94,7 @@ test('independent review: review of one development case cannot open the entire 
       caseIds: [dev.id], evidenceRefs: [{ path: evidence, digest: `sha256:${createHash('sha256').update(readFileSync(evidence)).digest('hex')}` }],
       judgments: [{ caseId: dev.id, answerDigest: digest('test-only-manual-answer'), judgment: 'accept', rationale: 'Local test attestation, not a real calibration.' }],
     });
-    const config = { ...context.config, split: 'holdout', thresholds: { ...context.config.thresholds, calibrationStatus: 'human-calibrated' } };
+    const config = { ...context.config, split: 'holdout', purpose: 'acceptance', caseIds: loadPublicDataset(context.datasetRoot).cases.filter(c => c.split === 'holdout').map(c => c.id), thresholds: { ...context.config.thresholds, calibrationStatus: 'human-calibrated' } };
     assert.equal(campaignPreflight(context.datasetRoot, config).liveReady, false, 'review must cover the selected holdout cases');
     const provider: ModelProvider = { id: 'review', assurance: 'provider',
       async countInput(request) { calls++; return { inputTokens: 100, requestDigest: digest(request), counterId: 'mock' }; },

@@ -1,0 +1,38 @@
+✔ independent review: provider identity/assurance drift cannot replace a priced reservation with a free mock call (54.841041ms)
+✔ independent review: source pin drift during counting blocks generation before side effects (40.352292ms)
+✔ independent review: review of one development case cannot open the entire holdout (38.660792ms)
+✔ independent review: rejected response binding retains unknown trial totals instead of reporting zero billed usage (57.144916ms)
+✔ independent review: a broken provider token ceiling stops later calls even when cache discounts avoid cost overrun (61.454959ms)
+✔ independent review: mock usage must obey the same arithmetic invariant as provider usage (56.476042ms)
+✔ independent review: dataset drift after a response preserves partial journals and a nonpassing report (38.427167ms)
+✔ independent review: oracle-evidence control runs after comparison arms, stays separate, and shares counted spend (2338.98875ms)
+✔ semantic CLI declines unrelated commands and rejects malformed known commands (0.54925ms)
+✔ local configuration pins the requested mock-only model routing and provisional matrix (1.699542ms)
+✔ semantic preflight reads no credential and makes no network call (76.534959ms)
+✔ live opt-in and independent review are checked before reading credentials or creating output (151.292959ms)
+✔ mock configuration cannot be promoted with a live flag or expose unreviewed holdout (148.952708ms)
+✔ mock run exercises local CLI accounting under a blocking token budget with no credential access (2165.576416ms)
+✔ explicit dev smoke does not require pretending that human calibration has finished (9.590916ms)
+✔ declaring human-calibrated on a legacy config cannot open provider dispatch (11.937916ms)
+✔ case selection must resolve every ID in the frozen split (12.24ms)
+✔ profile context capacity includes reserved output independently of a large task budget (118.275917ms)
+✔ exact model capacity boundary admits selected dev cases and preserves complete counted costs (152.947458ms)
+✔ legacy local configuration parses without changing its pinned content digest (3.028ms)
+✔ explicit DEV stages require an exact nonempty distinct case selection and the dev split (1.525125ms)
+✔ acceptance configurations require holdout but parsing does not grant acceptance or dispatch (0.547209ms)
+✔ live DEV stages require both reviewed model capability caps (0.199541ms)
+✔ model output and context caps include the output reserve and headroom (0.159458ms)
+✔ explicit stages reject a trial budget unable to reserve one request output and headroom (0.10825ms)
+✔ draft smoke forecasts every F/R/C and G request within the proposed five-dollar tariff cap (0.18875ms)
+✔ forecast retains all original matrix cells, repeat counts and gold controls (0.198833ms)
+✔ forecast rejects empty, fractional, unsafe or mismatched selected-case counts (0.474625ms)
+✔ forecast bounds low-output expensive-input requests and request-level rounding (0.174458ms)
+✔ forecast never prices more tokens than a cumulative trial budget even across compaction calls (0.104ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2765.154333

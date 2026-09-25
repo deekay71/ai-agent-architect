@@ -1,0 +1,3941 @@
+{
+  "schemaVersion": "semantic-campaign-report/2",
+  "campaignId": "semantic-acceptance-prep-local-mirror",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "purpose": "dev-smoke",
+  "selectedCaseIds": [
+    "sem-001",
+    "sem-002"
+  ],
+  "acceptanceReady": false,
+  "configDigest": "sha256:ccfaa0ad88bb057cb9728117f0e737b01372c8b95817b3af752021cc797afa9d",
+  "implementationDigest": "sha256:8310abb1e98accae59a98f80c8191b1de39f89dd3dd7436fd76c51d9a449d486",
+  "providerId": "sandbox-abstaining-fixture/1",
+  "assurance": "mock",
+  "humanReview": {
+    "status": "pending",
+    "reviewDigest": null,
+    "reviewerId": null,
+    "reviewerKind": null,
+    "method": null,
+    "reviewedAt": null,
+    "caseIds": [],
+    "evidenceRefs": []
+  },
+  "reviewEvidenceStable": true,
+  "providerIdentityStable": true,
+  "campaignIntegrityStable": true,
+  "splitAudit": {
+    "policy": {
+      "version": "semantic-split-audit/1",
+      "normalization": "NFKC + lowercase + Unicode letter/number tokens",
+      "similarity": "set Dice over tokens and adjacent token bigrams",
+      "minimumNearQuestionTokens": 6,
+      "minimumNearHistoryTokens": 6,
+      "nearQuestionTokenDice": 0.85,
+      "nearQuestionBigramDice": 0.65,
+      "nearHistoryBigramDice": 0.85,
+      "reviewQuestionTokenDice": 0.65,
+      "reviewQuestionBigramDice": 0.35,
+      "reviewHistoryBigramDice": 0.5
+    },
+    "publicCaseDigest": "sha256:8025e8ac4fa6abd2be0abbf1959e7da7c9c5b4c740e61a088df9bcc99c053b2d",
+    "status": "clear",
+    "comparedPairs": 200,
+    "suspectedPairs": [],
+    "humanSemanticReviewRequired": true,
+    "auditDigest": "sha256:38e8179940c47a327cb713164beea61efd8d748bf2d3b1904e78728ec8f14f7b"
+  },
+  "datasetClassification": "DEVELOPMENT_EXPOSED_SET",
+  "completedTrials": 12,
+  "plannedTrials": 12,
+  "completedControlTrials": 4,
+  "plannedControlTrials": 4,
+  "stoppedReason": null,
+  "configAndSourceStable": true,
+  "summaries": [
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 57.175124999999994,
+      "latencyP95Ms": 57.175124999999994,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 55.115208000000024,
+      "latencyP95Ms": 55.115208000000024,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 98.974042,
+      "latencyP95Ms": 98.974042,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 48.221541,
+      "latencyP95Ms": 48.221541,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.016583000000026,
+      "latencyP95Ms": 47.016583000000026,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 96.200084,
+      "latencyP95Ms": 96.200084,
+      "thresholdsMet": false
+    }
+  ],
+  "controlSummaries": [
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "oracle-evidence",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.972999999999956,
+      "latencyP95Ms": 47.972999999999956,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "oracle-evidence",
+        0,
+        0,
+        32768,
+        "infrastructure.operations"
+      ],
+      "trials": 2,
+      "successfulReaderCalls": 2,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 2
+      },
+      "falseRejection": 2,
+      "constraintLoss": 0,
+      "invalidCitations": 2,
+      "strictPassRate": 0,
+      "strictPassRateDenominator": "all-trials-including-blocked",
+      "coverage": {
+        "trials": 2,
+        "prepared": 2,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 2,
+        "scored": 2,
+        "unscored": 0,
+        "byAnswerability": {
+          "answerable": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          },
+          "unanswerable": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "conflict": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          },
+          "unknown": {
+            "trials": 0,
+            "prepared": 0,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 0,
+            "scored": 0,
+            "unscored": 0
+          }
+        },
+        "byTaskClass": {
+          "infrastructure.operations": {
+            "trials": 2,
+            "prepared": 2,
+            "contextBlocked": 0,
+            "tokenBlocked": 0,
+            "modelContextBlocked": 0,
+            "readerRequested": 2,
+            "scored": 2,
+            "unscored": 0
+          }
+        },
+        "readerStrictPass": 0,
+        "readerStrictPassRate": 0,
+        "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+        "abstentionAndConflictReaderCoverage": false
+      },
+      "gathering": {
+        "evaluatedTrials": 2,
+        "notEvaluatedTrials": 0,
+        "retrieved": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        },
+        "selected": {
+          "requiredCases": 2,
+          "noRequiredCases": 0,
+          "sufficientCases": 2,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "precisionDenominator": 2
+        }
+      },
+      "uniqueCaseUncertainty": {
+        "cases": 2,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.6576197724933469
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.974791000000096,
+      "latencyP95Ms": 52.974791000000096,
+      "thresholdsMet": false
+    }
+  ],
+  "diagnostics": [
+    {
+      "trialId": "trial-00000",
+      "controlTrialId": "trial-00012",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00001",
+      "controlTrialId": "trial-00012",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00002",
+      "controlTrialId": "trial-00012",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00003",
+      "controlTrialId": "trial-00013",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00004",
+      "controlTrialId": "trial-00013",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00005",
+      "controlTrialId": "trial-00013",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00006",
+      "controlTrialId": "trial-00014",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00007",
+      "controlTrialId": "trial-00014",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00008",
+      "controlTrialId": "trial-00014",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00009",
+      "controlTrialId": "trial-00015",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00010",
+      "controlTrialId": "trial-00015",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    },
+    {
+      "trialId": "trial-00011",
+      "controlTrialId": "trial-00015",
+      "gatheringSufficient": true,
+      "diagnosis": "reader-or-fixture-failure",
+      "assurance": "fixture-only"
+    }
+  ],
+  "pairedDiagnostics": {
+    "schemaVersion": "semantic-paired-diagnostics/1",
+    "interpretation": "descriptive-only",
+    "acceptanceDecision": null,
+    "comparisonTrials": 12,
+    "excludedControlTrials": 4,
+    "observedComparatorCount": 2,
+    "denominator": "Both reader outputs scored; repeats averaged within each unique case, then cases equally weighted",
+    "systemBlockedStatuses": [
+      "context-blocked",
+      "token-budget-blocked",
+      "model-context-blocked"
+    ],
+    "limitations": [
+      "Missing/unscored/system-blocked counts are overlapping diagnostics, not mutually exclusive outcomes",
+      "Entirely absent comparator arms or cases cannot be inferred from observed trials; use planned matrix coverage",
+      "Evaluator strictPass is a diagnostic score, not an independent semantic truth label or phase acceptance"
+    ],
+    "groups": [
+      {
+        "dimensions": {
+          "profileId": "executor-luna-medium",
+          "totalTokenBudget": 32768,
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "compaction",
+            "compactionRounds": 1
+          }
+        },
+        "observedPairKeys": 2,
+        "observedUniqueCaseCount": 2,
+        "completePairs": 2,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 2,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 2,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "trial-00003",
+            "comparatorTrialId": "trial-00005",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "repeat": 0,
+            "baselineTrialId": "trial-00011",
+            "comparatorTrialId": "trial-00009",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "executor-luna-medium",
+          "totalTokenBudget": 32768,
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "retrieval",
+            "compactionRounds": 0
+          }
+        },
+        "observedPairKeys": 2,
+        "observedUniqueCaseCount": 2,
+        "completePairs": 2,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 2,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 2,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "trial-00003",
+            "comparatorTrialId": "trial-00004",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "repeat": 0,
+            "baselineTrialId": "trial-00011",
+            "comparatorTrialId": "trial-00010",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "planner-astra-high",
+          "totalTokenBudget": 32768,
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "compaction",
+            "compactionRounds": 1
+          }
+        },
+        "observedPairKeys": 2,
+        "observedUniqueCaseCount": 2,
+        "completePairs": 2,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 2,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 2,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "trial-00000",
+            "comparatorTrialId": "trial-00002",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "repeat": 0,
+            "baselineTrialId": "trial-00008",
+            "comparatorTrialId": "trial-00006",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "planner-astra-high",
+          "totalTokenBudget": 32768,
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "retrieval",
+            "compactionRounds": 0
+          }
+        },
+        "observedPairKeys": 2,
+        "observedUniqueCaseCount": 2,
+        "completePairs": 2,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 2,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 2,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "trial-00000",
+            "comparatorTrialId": "trial-00001",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          },
+          {
+            "caseId": "sem-002",
+            "repeat": 0,
+            "baselineTrialId": "trial-00008",
+            "comparatorTrialId": "trial-00007",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      }
+    ]
+  },
+  "comparisonCoverage": {
+    "trials": 12,
+    "prepared": 12,
+    "contextBlocked": 0,
+    "tokenBlocked": 0,
+    "modelContextBlocked": 0,
+    "readerRequested": 12,
+    "scored": 12,
+    "unscored": 0,
+    "byAnswerability": {
+      "answerable": {
+        "trials": 12,
+        "prepared": 12,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 12,
+        "scored": 12,
+        "unscored": 0
+      },
+      "unanswerable": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      },
+      "conflict": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      },
+      "unknown": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      }
+    },
+    "byTaskClass": {
+      "infrastructure.operations": {
+        "trials": 12,
+        "prepared": 12,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 12,
+        "scored": 12,
+        "unscored": 0
+      }
+    },
+    "readerStrictPass": 0,
+    "readerStrictPassRate": 0,
+    "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+    "abstentionAndConflictReaderCoverage": false
+  },
+  "controlCoverage": {
+    "trials": 4,
+    "prepared": 4,
+    "contextBlocked": 0,
+    "tokenBlocked": 0,
+    "modelContextBlocked": 0,
+    "readerRequested": 4,
+    "scored": 4,
+    "unscored": 0,
+    "byAnswerability": {
+      "answerable": {
+        "trials": 4,
+        "prepared": 4,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 4,
+        "scored": 4,
+        "unscored": 0
+      },
+      "unanswerable": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      },
+      "conflict": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      },
+      "unknown": {
+        "trials": 0,
+        "prepared": 0,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 0,
+        "scored": 0,
+        "unscored": 0
+      }
+    },
+    "byTaskClass": {
+      "infrastructure.operations": {
+        "trials": 4,
+        "prepared": 4,
+        "contextBlocked": 0,
+        "tokenBlocked": 0,
+        "modelContextBlocked": 0,
+        "readerRequested": 4,
+        "scored": 4,
+        "unscored": 0
+      }
+    },
+    "readerStrictPass": 0,
+    "readerStrictPassRate": 0,
+    "readerRateDenominator": "scored-trials-only-diagnostic-not-acceptance",
+    "abstentionAndConflictReaderCoverage": false
+  },
+  "budget": {
+    "capMicros": 0,
+    "chargedMicros": 0,
+    "reservedAttempts": 0,
+    "uncertainAttempts": 0,
+    "frozen": false
+  },
+  "costBasis": "usage-times-pinned-rates-not-an-invoice",
+  "modelQualityMeasured": false,
+  "phaseGate": "Not evaluated",
+  "missingAcceptance": [
+    "Independent human task-outcome judgments/calibration",
+    "Fresh reviewed holdout with full matrix",
+    "Reader abstention/conflict coverage on independently reviewed admissible cases",
+    "Gate Controller admission and dependent T14 handoff review"
+  ],
+  "limitations": [
+    "Mock counter/reader are conformance fixtures, not model/token evidence",
+    "Conservative accepted-answer alternatives are not general semantic grading",
+    "Local broker/evaluator trusted; raw labels never enter provider payloads",
+    "Split similarity audit is heuristic; independent semantic review remains required",
+    "Reader-only pass rates are diagnostic; the provisional acceptance floor still uses all trials",
+    "Source freshness fixture is pinned; no production/Unity certification"
+  ],
+  "trials": [
+    {
+      "trialId": "trial-00000",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:9729c83b11ef2d8939dc0e41636fb9ec391b3d83d6512d8ffd7217da3794b7e0",
+          "countedInputTokens": 1922,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:4e579f1380ec08255041b4055d0951b6217315bc0f3e8ed5fc55b0df563c5a5f",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1922,
+              "outputTokens": 30,
+              "totalTokens": 1952,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 28.145708000000013,
+            "requestDigest": "sha256:9729c83b11ef2d8939dc0e41636fb9ec391b3d83d6512d8ffd7217da3794b7e0",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1952,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 57.175124999999994,
+      "windowDigests": [
+        "sha256:118a9b973ed435a38b547562afca562f887ddad0e4ade42eb184b3fd712b5422"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00001",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:38049a1697ce7e11f26043d7b28966c9f1bb8d39348f46e5b9a24c54cd2cb3f0",
+          "countedInputTokens": 1922,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:09ef670097709d19cfedbfd574f970d8fad4a013184a0cea912aa7ad604a9228",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1922,
+              "outputTokens": 30,
+              "totalTokens": 1952,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 28.869666999999993,
+            "requestDigest": "sha256:38049a1697ce7e11f26043d7b28966c9f1bb8d39348f46e5b9a24c54cd2cb3f0",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1952,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 55.115208000000024,
+      "windowDigests": [
+        "sha256:6882ceb815e81d1255891cac7b6c7fa1fdfa1586848b7fc51b60c5b9b4de7aa8"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00002",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestDigest": "sha256:d32021d87ebfba49bf3d4fa5d1cecfff4d6466b053f624f78a8313829ae4068d",
+          "countedInputTokens": 1759,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "[UNTRUSTED LOCAL FIXTURE SUMMARY] An operator is reviewing the workload identity infras"
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:5bd77cc89f2e91d00d58222740a470dd970dda98cae6ae124e8842063717d18a",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1759,
+              "outputTokens": 26,
+              "totalTokens": 1785,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.86458300000001,
+            "requestDigest": "sha256:d32021d87ebfba49bf3d4fa5d1cecfff4d6466b053f624f78a8313829ae4068d",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        },
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:c368c79f6e5811e6632dc8ee6accb8768604ea0972582621cdf1477860a6e962",
+          "countedInputTokens": 1935,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:76682034ac3581616eb5f5cb8bd5169021b3935a9f4ccb4a0dc3dc5928779e0b",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1935,
+              "outputTokens": 30,
+              "totalTokens": 1965,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 27.572000000000003,
+            "requestDigest": "sha256:c368c79f6e5811e6632dc8ee6accb8768604ea0972582621cdf1477860a6e962",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 3750,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 98.974042,
+      "windowDigests": [
+        "sha256:5e966cae2d9646bd8b4661d9dec6c06045e6bc56d9f69b2e08e97049aad7d2bc",
+        "sha256:c563219ae4c6b35da89372c2c492a4ce9dce4dfb07061018e9db70ee3c91ad70"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00003",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:35f1385f45fd422804f937c3a02a395ba51c2cf53308a75cb904f2c22b39fc2c",
+          "countedInputTokens": 1923,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:629fa61ac757323f3bf66397f05364af93d6e2d17266d06c857a2035cbe7163b",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1923,
+              "outputTokens": 30,
+              "totalTokens": 1953,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.749833000000024,
+            "requestDigest": "sha256:35f1385f45fd422804f937c3a02a395ba51c2cf53308a75cb904f2c22b39fc2c",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1953,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 47.86620799999997,
+      "windowDigests": [
+        "sha256:4defc29fb4b1ce4f44e792e5c6beaf11d2518b97cc6026f17c3c36fe47c6fac7"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00004",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:24db74a0b3f945ed0b10c1ff6c74dcdaa4c2f21dc910b0eb90dc06b985837ef2",
+          "countedInputTokens": 1923,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:afdc9d99bf346b129a1f1367556b43c52cde1cc1da914d45b3c0db2cd95d73da",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1923,
+              "outputTokens": 30,
+              "totalTokens": 1953,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.64304100000004,
+            "requestDigest": "sha256:24db74a0b3f945ed0b10c1ff6c74dcdaa4c2f21dc910b0eb90dc06b985837ef2",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1953,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 47.016583000000026,
+      "windowDigests": [
+        "sha256:bfdd5e9ec598ef19589067e490c9a9aa2a33bae52f02d7f8c60c0d91b353b7fb"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00005",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestDigest": "sha256:15735e344e3fecc8361aa33f979dcd3c026fbac5a3589433aa32c0a7d2bb20d1",
+          "countedInputTokens": 1760,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "[UNTRUSTED LOCAL FIXTURE SUMMARY] An operator is reviewing the workload identity infras"
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:e8f13340dab3f3072aacb2951ed035ddc11c0be800a93eb6e4fc4cbcdc21e9d8",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1760,
+              "outputTokens": 26,
+              "totalTokens": 1786,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.733041000000014,
+            "requestDigest": "sha256:15735e344e3fecc8361aa33f979dcd3c026fbac5a3589433aa32c0a7d2bb20d1",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        },
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:f0ef509c284d5befef52cf4eb875335e056dcec754a698a6e25fd4dd4c36143a",
+          "countedInputTokens": 1936,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:2a7010316f503c5ea002f98b844d3dafaa1204692611057f510f57f3a9dd70b7",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1936,
+              "outputTokens": 30,
+              "totalTokens": 1966,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.457290999999998,
+            "requestDigest": "sha256:f0ef509c284d5befef52cf4eb875335e056dcec754a698a6e25fd4dd4c36143a",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 3752,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 96.200084,
+      "windowDigests": [
+        "sha256:3accd3193e2a1edb876846166b84ce228403eee2ccf29bacddf17d0902070f03",
+        "sha256:082dfbd54214b5f919db9cb3cc64154596b629c533e316dce5b9e920f304d4ec"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00006",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestDigest": "sha256:710708c59a567506a0aebcaba9a9e05ab51ef79a4a78f2aa4b76a7e5a74974d7",
+          "countedInputTokens": 1762,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "[UNTRUSTED LOCAL FIXTURE SUMMARY] An operator is reviewing the archive integrity infras"
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:093753766cc828e024eda360a9a418df7917f4517944083db9dc489fd77b0dde",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1762,
+              "outputTokens": 26,
+              "totalTokens": 1788,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.315582999999947,
+            "requestDigest": "sha256:710708c59a567506a0aebcaba9a9e05ab51ef79a4a78f2aa4b76a7e5a74974d7",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        },
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:d1197a7561829953b5a73fbcc513fc44047bc87f9c255a893b04e15cff3446c3",
+          "countedInputTokens": 1939,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:24c1a9da00b32183d1be042898d16f29bfc3a28beaa80d991b66ba67cd89ce77",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1939,
+              "outputTokens": 30,
+              "totalTokens": 1969,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.125208000000043,
+            "requestDigest": "sha256:d1197a7561829953b5a73fbcc513fc44047bc87f9c255a893b04e15cff3446c3",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 3757,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 92.07379200000003,
+      "windowDigests": [
+        "sha256:344e16166df04e424006f2d2bf42157b15e451ea03a35d712099692ef8c82190",
+        "sha256:13ff0f3f5e1b582e3309c1e2b8e12a882ee7a59273093103fc964eb983c33a5f"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00007",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:ce8a78889af33a42071eed6f505eafdd5b93b21f872925a8e391ad01f2933358",
+          "countedInputTokens": 1926,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:f6aa43cafdfba5f482b3ba6bc9c1e231323400fe3c9fc5565ea81f01696b3cac",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1926,
+              "outputTokens": 30,
+              "totalTokens": 1956,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.072167000000036,
+            "requestDigest": "sha256:ce8a78889af33a42071eed6f505eafdd5b93b21f872925a8e391ad01f2933358",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1956,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 46.08079099999998,
+      "windowDigests": [
+        "sha256:bbdd41685cfb8283be18b56d741359941734690132124f8ff8b18367fde0663b"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00008",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:80b184e2ce4439a89dd53acf8b2edfd43f3d28d7b347281af27564d2dda3e511",
+          "countedInputTokens": 1926,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:9c08b81e54923712ff138bb69224d16cb5b0fde88799e5547cedf0d7ca352cfe",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1926,
+              "outputTokens": 30,
+              "totalTokens": 1956,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.062584000000015,
+            "requestDigest": "sha256:80b184e2ce4439a89dd53acf8b2edfd43f3d28d7b347281af27564d2dda3e511",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1956,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 48.011540999999966,
+      "windowDigests": [
+        "sha256:2f060965bc42938ecfa116d5e64d7a6e6733e8e10f122f729212d0f7b6817652"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00009",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestDigest": "sha256:5c922e18393cd0e85f480c087bb960c2bbb8060508864711f74eb74326dffd63",
+          "countedInputTokens": 1764,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "[UNTRUSTED LOCAL FIXTURE SUMMARY] An operator is reviewing the archive integrity infras"
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:961dbceed9e5cb9f31c43384c6d7576d290309e4927bf3bc0b35f5214a8135ad",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1764,
+              "outputTokens": 26,
+              "totalTokens": 1790,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.807124999999928,
+            "requestDigest": "sha256:5c922e18393cd0e85f480c087bb960c2bbb8060508864711f74eb74326dffd63",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        },
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:3a26ab2df0dcc026af4dd66c4d12a2faa98791945ffd4b045bc2801fbb8198c2",
+          "countedInputTokens": 1940,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:1ddfa3a6b0e4cd2baae2f0b28b1c3d7957f400d685cf86a53f1f0acd0b59cf95",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1940,
+              "outputTokens": 30,
+              "totalTokens": 1970,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.011124999999993,
+            "requestDigest": "sha256:3a26ab2df0dcc026af4dd66c4d12a2faa98791945ffd4b045bc2801fbb8198c2",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 3760,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 92.99566700000003,
+      "windowDigests": [
+        "sha256:eb7db12a8798aef105a026d2301acadc1c5dbe5b7a13d2485e52f8ba1f7b8d2b",
+        "sha256:c8677a2d8d47dc3a30c71f8c6f068bacd5531197a66d567482903ccd1b2baa85"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00010",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:8dd3fd82bde79476a0190d4a061a6d19aed5e70e272b7c507b4915c5d56f853c",
+          "countedInputTokens": 1927,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:49482533c33baf039026a9705e05eff091b33584a59e2899a7729b2b29721ffa",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1927,
+              "outputTokens": 30,
+              "totalTokens": 1957,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.082041000000004,
+            "requestDigest": "sha256:8dd3fd82bde79476a0190d4a061a6d19aed5e70e272b7c507b4915c5d56f853c",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1957,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 46.912874999999985,
+      "windowDigests": [
+        "sha256:c59948cc019b45a0550cab776b889e092b44ad1d873d760263dab6feccc66ef9"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00011",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:8553ca1b316a56e82a7ce698ffd77ac9354359ca8330e9872cd456b546752a25",
+          "countedInputTokens": 1927,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:903b3d283b4451c775ab1d40bc5464ea99b466ce33a2e4cea56a16dd22f988ea",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1927,
+              "outputTokens": 30,
+              "totalTokens": 1957,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.148582999999917,
+            "requestDigest": "sha256:8553ca1b316a56e82a7ce698ffd77ac9354359ca8330e9872cd456b546752a25",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1957,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 48.221541,
+      "windowDigests": [
+        "sha256:77cc0eac3e4aa60c9f5e3d8cd5aa0afff3d056618e03c03d76335fd4d818d8cc"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00012",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:b4d117b2fd8cd8cd5c12730155399fa58e3cac1652fa65a9e6bc319c39ea27ff",
+          "countedInputTokens": 1922,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:ef32ef31d732e556638524bc4222173d7456380f4249bb1fdc63794e0b61925f",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1922,
+              "outputTokens": 30,
+              "totalTokens": 1952,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.881459000000063,
+            "requestDigest": "sha256:b4d117b2fd8cd8cd5c12730155399fa58e3cac1652fa65a9e6bc319c39ea27ff",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1952,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 46.030167000000006,
+      "windowDigests": [
+        "sha256:50c5b94580a7977c2cd8c710cea5c2a985f74d5d44739ce2ab70b0eca2fc136e"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00013",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:0b5ff0c0df4618717459ed456803285e8cfe22db7b7e8a48086e06d869b0958f",
+          "countedInputTokens": 1923,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-001-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:a41bd619f8a597e376db7c1e9899bb496ba0ec75ec3d5ea1ac74ceee8b033082",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1923,
+              "outputTokens": 30,
+              "totalTokens": 1953,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 29.172500000000014,
+            "requestDigest": "sha256:0b5ff0c0df4618717459ed456803285e8cfe22db7b7e8a48086e06d869b0958f",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1953,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 52.974791000000096,
+      "windowDigests": [
+        "sha256:cbc730d206e9f712355bbd47efdbe4aaee1006202fd2958f1c99dfd78024a554"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleInputDigest": "sha256:9128480bb7116946e9486b7f84d92b2ffe689e2908a313c3e84c204b5778807b",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-001-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:81fb2b51468d489e47b4fae8565314f7e5853efce53401c295fbd69e3510ae9d",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00014",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:c1826fe7392cbe5d764c9f60f68d2f77c40f8597ed517be4b8be452c2e0b3038",
+          "countedInputTokens": 1926,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-astra",
+            "responseId": "mock:sha256:557eeabc67f0dca9d6c885f3cc235c998e4b65391ea5b7529d4a723d22981b89",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1926,
+              "outputTokens": 30,
+              "totalTokens": 1956,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 26.45770800000014,
+            "requestDigest": "sha256:c1826fe7392cbe5d764c9f60f68d2f77c40f8597ed517be4b8be452c2e0b3038",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1956,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 47.972999999999956,
+      "windowDigests": [
+        "sha256:a4871111d93c3d03ad54d71525bba4b7dc6848f0d478b28408e7f62b40aa7c79"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    },
+    {
+      "trialId": "trial-00015",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "taskClass": "infrastructure.operations",
+      "split": "dev",
+      "profileId": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "totalTokenBudget": 32768,
+      "repeat": 0,
+      "status": "completed",
+      "calls": [
+        {
+          "stage": "reader",
+          "requestDigest": "sha256:076a8dc9329ad98e899d46ed3293facc30a9a27445365c3f992d88f4ded67a40",
+          "countedInputTokens": 1927,
+          "counterId": "mock-byte-div4-NOT-tokenizer",
+          "result": {
+            "status": "completed",
+            "output": {
+              "disposition": "abstain",
+              "answer": null,
+              "evidenceIds": [],
+              "revisions": [],
+              "constraints": [
+                "sem-002-c1"
+              ],
+              "confidence": 0.5
+            },
+            "model": "gpt-6-luna",
+            "responseId": "mock:sha256:387b3d38e72a94455b7ce987c32363bd6b9c6bae94963569e627822d90663368",
+            "requestId": null,
+            "usage": {
+              "inputTokens": 1927,
+              "outputTokens": 30,
+              "totalTokens": 1957,
+              "cachedInputTokens": 0,
+              "reasoningTokens": 0
+            },
+            "latencyMs": 25.88158300000009,
+            "requestDigest": "sha256:076a8dc9329ad98e899d46ed3293facc30a9a27445365c3f992d88f4ded67a40",
+            "issues": [
+              "MOCK_NOT_MODEL_EVIDENCE"
+            ]
+          },
+          "status": "completed",
+          "reservedMicros": 0,
+          "measuredMicros": 0,
+          "error": null,
+          "errorDigest": null
+        }
+      ],
+      "unitsUsed": 1957,
+      "providerTokens": null,
+      "costMicros": null,
+      "latencyMs": 47.09941600000002,
+      "windowDigests": [
+        "sha256:e9ec0d28acc9c4cb3d2a0a7ffe157b00fe4d135688b732e84522b6ad3ead5e5b"
+      ],
+      "selectedIds": [
+        "doc-002-a"
+      ],
+      "eligibleIds": [
+        "doc-002-a"
+      ],
+      "retrievedIds": [
+        "doc-002-a"
+      ],
+      "eligibleInputDigest": "sha256:c191d59c64d7e3eb7b0a61ca1a8b83ad4017cb78206599aeefe0d492473a7e9c",
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "abstain",
+        "answer": null,
+        "evidenceIds": [],
+        "revisions": {},
+        "constraints": [
+          "sem-002-c1"
+        ],
+        "confidence": 0.5
+      },
+      "answerDigest": "sha256:0ca2c9ab19d01dc7a36bbe99c05068d8289c7d7afa8d7cf0bdffc8fe38742014",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": false,
+        "revisionCorrect": false,
+        "constraintsPreserved": true,
+        "falseAcceptance": false,
+        "falseRejection": true,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-evidence-missing-or-citation-ineligible",
+          "revision-missing-stale-or-unbound"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "evaluatorAnswerability": "answerable"
+    }
+  ]
+}

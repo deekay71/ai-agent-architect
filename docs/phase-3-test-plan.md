@@ -1,5 +1,11 @@
 # Phase 3 — Test plan và bằng chứng nghiệm thu
 
+## Bổ sung chuẩn bị S2 — 25/09/2026
+
+Runbook mới ở [gói nghiệm thu](phase-3-acceptance-prep.md). Kiểm thêm: legacy/provisional config không giả calibration; explicit DEV case selection đúng split; exact model context boundary; generation forecast bao gồm compaction/G/rounding; paired missing/unscored/model-context-blocked và case weighting; review gắn actual answer/request/context/report; thay packet đồng thời cập nhật window hash vẫn phải bị chặn vì request không khớp; pending/partial/duplicate/drifted judgments bị từ chối; synthetic mock review không cấp Pass. Chạy CLI end-to-end có guard cấm đọc credential và cấm network. Source sạch phải build/test mới trước delivery; historical 422 là baseline cũ.
+
+Chỉ sau phê duyệt chi phí mới chạy dev smoke thật. Tiếp tục giữ protocol/holdout/independent outcome labels/T14 là acceptance còn mở, không dùng test xanh để thay.
+
 Trạng thái tài liệu: kế hoạch kiểm thử phần còn lại, ngày 25/09/2026. Người dùng đã chọn các model OpenAI/ChatGPT: model chất lượng cao cho planning, model ít tốn chi phí hơn cho execution; sau đó xác nhận **“Chỉ hoàn thiện và chạy test local trước”**. Phạm vi thực thi hiện tại là code, mock campaign, tests và test plan local; không gọi provider thật hoặc kiểm API key. Các phần real-model/human acceptance dưới đây là kế hoạch cho lần thực hiện sau, giữ gate mở. Tài liệu không ghi nhận một lần gọi model thật hoặc một kết quả PASS mới.
 
 Baseline đã xác minh: [327/327 tests từ source sạch](evidence/phase3/final-clean-verification.md), T09/T10 Pass trong phạm vi local; T19 và T14 Not evaluated; T11 Replan. Campaign R1 có 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials nhưng chỉ là exposed-set regression. Giữ nguyên toàn bộ [evidence lịch sử](phase3-benchmark.md). Test suite xanh không thay nghiệm thu model, token, calibration hoặc handoff.

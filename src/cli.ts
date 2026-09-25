@@ -57,7 +57,9 @@ async function main(args: string[]): Promise<void> {
       'runtime-status <workspace> <control> <run-id>', 'runtime-reconcile <workspace> <control> <run-id>', 'runtime-recover <workspace> <control>',
       'memory-demo <new-directory>', 'memory-view <snapshot.json> <scope.json> [port] [context-windows.json]',
       'semantic-preflight <dataset> <config.json>', 'semantic-run <dataset> <config.json> <new-output-directory> <spend-directory> [--live]',
-      'semantic-review-import <dataset> <external-review.json>'],
+      'semantic-review-import <dataset> <external-review.json>',
+      'semantic-review-export <campaign> <new-review-directory>',
+      'semantic-outcome-review-import <campaign> <decisions.json> <new-reviewed-file>'],
       scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
   } else if (command?.startsWith('semantic-')) {
     if (!await runEvaluationCli(args)) throw new Error('Unknown semantic command');

@@ -1,5 +1,9 @@
 # AI Agent Architect — Bối cảnh hiện hành R2
 
+## Quyết định tiếp tục — 25/09/2026
+
+Owner chọn **hoàn tất nghiệm thu Phase 3 trước**, chưa mở Phase 4. Đã bổ sung DEV readiness, chọn case và forecast, model capacity admission, paired diagnostics và review actual outputs. Fresh-copy build/check đạt **466/466 tests, 0 fail/skip**; mirror hoàn tất 12 main +4 G với 20 mock generations, export đủ 16 review outputs; 0 provider calls, source ổn định. Hai finding review đã sửa. [Gói chuẩn bị nghiệm thu](phase-3-acceptance-prep.md) có cấu hình smoke 2 case, Astra/Luna, tối đa 20 generation calls, generation upper bound 4,242980 USD và đề xuất cap 5 USD. **Chưa nhận phê duyệt chi phí/key-check; chưa gọi API hoặc đọc key.** Smoke không thay calibration/fresh holdout/protocol/adjudication và T14. T19/T14 vẫn Not evaluated, T11 Replan; Phase 3 chưa PASS. Những đoạn scope “chỉ local, S2–S4 để sau” bên dưới là lịch sử trước quyết định tiếp tục này.
+
 ## Trạng thái làm việc hiện tại
 Ngày 25/09/2026, phần Memory/Context local của Phase 3 đã triển khai: **T09/T10 Done / Pass trong phạm vi local; T19 Doing / Not evaluated; T11 Doing / Replan; T14 Doing / Not evaluated; toàn Phase 3 chưa PASS**. Tổng 8 task Done, 3 Doing, 14 task chưa mở. T19 có cơ chế context đã kiểm nhưng thiếu AC so sánh task quality/loss/latency/tokens với provider thật; T14 đã có implementation/tests nhưng full handoff gate chờ T19 được nghiệm thu. Không thu hẹp AC để đổi trạng thái thành Done. Chưa mở Phase 4, Unity, T22 hoặc gameplay. Baseline clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Xem [báo cáo Phase 3](phase-3-report.md), [Memory/Context/Explorer](memory-context.md) và [benchmark](phase3-benchmark.md).
 

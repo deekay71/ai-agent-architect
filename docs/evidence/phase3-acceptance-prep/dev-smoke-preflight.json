@@ -1,0 +1,230 @@
+{
+  "config": {
+    "schemaVersion": "semantic-campaign-config/1",
+    "campaignId": "semantic-dev-smoke-proposal",
+    "provider": "openai",
+    "profiles": [
+      {
+        "id": "planner-astra-high",
+        "role": "planner",
+        "model": "gpt-6-astra",
+        "inputTokenLimit": 100000,
+        "modelContextLimit": 100000,
+        "maxModelOutputTokens": 4000,
+        "reasoningEffort": "high",
+        "pricing": {
+          "model": "gpt-6-astra",
+          "inputPerMillionUsd": 10,
+          "cachedInputPerMillionUsd": 1,
+          "outputPerMillionUsd": 50,
+          "source": "https://developers.openai.com/api/docs/pricing",
+          "observedAt": "2026-09-25"
+        }
+      },
+      {
+        "id": "executor-luna-medium",
+        "role": "executor",
+        "model": "gpt-6-luna",
+        "inputTokenLimit": 100000,
+        "modelContextLimit": 100000,
+        "maxModelOutputTokens": 4000,
+        "reasoningEffort": "medium",
+        "pricing": {
+          "model": "gpt-6-luna",
+          "inputPerMillionUsd": 0.1,
+          "cachedInputPerMillionUsd": 0.01,
+          "outputPerMillionUsd": 0.5,
+          "source": "https://developers.openai.com/api/docs/pricing",
+          "observedAt": "2026-09-25"
+        }
+      }
+    ],
+    "purpose": "dev-smoke",
+    "caseIds": [
+      "sem-001",
+      "sem-002"
+    ],
+    "split": "dev",
+    "totalTokenBudgets": [
+      32768
+    ],
+    "distractorLimits": [
+      0
+    ],
+    "compactionRounds": [
+      1
+    ],
+    "repeats": 1,
+    "topK": 8,
+    "maxOutputTokens": 4000,
+    "headroomTokens": 256,
+    "authorization": {
+      "authorizationId": "proposal-not-owner-approved-dev-smoke-5usd",
+      "maxCostMicros": 5000000
+    },
+    "thresholds": {
+      "maxFalseAcceptance": 0,
+      "maxConstraintLoss": 0,
+      "maxInvalidCitations": 0,
+      "minimumStrictPassRate": 0.9,
+      "calibrationStatus": "provisional"
+    }
+  },
+  "configDigest": "sha256:73e23d14dec9b5ca9867157f21c6864e8b47c29f8d4c9de368eba55f8ae05bf9",
+  "datasetId": "infrastructure-semantic-candidate-2026-09-25-v2",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "purpose": "dev-smoke",
+  "selectedCaseIds": [
+    "sem-001",
+    "sem-002"
+  ],
+  "forecast": {
+    "schemaVersion": "semantic-campaign-forecast/1",
+    "selectedCaseCount": 2,
+    "plannedTrials": 12,
+    "plannedControlTrials": 4,
+    "maxGenerationCalls": 20,
+    "maxCountCalls": 20,
+    "totalGenerationCostUpperBoundMicros": 4242980,
+    "configuredCapMicros": 5000000,
+    "generationTariffFitsConfiguredCap": true,
+    "referenceOnly": true,
+    "dispatchAuthorized": false,
+    "basis": "cumulative-trial-token-ceiling-pinned-standard-tariffs-no-cache-discount",
+    "exclusions": [
+      "Count-endpoint charges if any",
+      "Taxes, external tools and provider surcharges",
+      "Pricing or capabilities not verified by this forecast"
+    ],
+    "limitations": [
+      "Planned calls are maxima; context/token/budget admission may block earlier",
+      "Per-request integer-micro rounding is included conservatively",
+      "Bounds assume provider input usage matches admission counts and output respects the request limit",
+      "Mock forecasts describe hypothetical provider tariffs, not mock spend"
+    ],
+    "rows": [
+      {
+        "profileId": "planner-astra-high",
+        "arm": "full",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 485120,
+        "generationCostUpperBoundMicros": 970240
+      },
+      {
+        "profileId": "planner-astra-high",
+        "arm": "retrieval",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 485120,
+        "generationCostUpperBoundMicros": 970240
+      },
+      {
+        "profileId": "planner-astra-high",
+        "arm": "compaction",
+        "compactionRounds": 1,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 2,
+        "generationCostUpperBoundPerTrialMicros": 645121,
+        "generationCostUpperBoundMicros": 1290242
+      },
+      {
+        "profileId": "planner-astra-high",
+        "arm": "oracle-evidence",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 485120,
+        "generationCostUpperBoundMicros": 970240
+      },
+      {
+        "profileId": "executor-luna-medium",
+        "arm": "full",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 4852,
+        "generationCostUpperBoundMicros": 9704
+      },
+      {
+        "profileId": "executor-luna-medium",
+        "arm": "retrieval",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 4852,
+        "generationCostUpperBoundMicros": 9704
+      },
+      {
+        "profileId": "executor-luna-medium",
+        "arm": "compaction",
+        "compactionRounds": 1,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 2,
+        "generationCostUpperBoundPerTrialMicros": 6453,
+        "generationCostUpperBoundMicros": 12906
+      },
+      {
+        "profileId": "executor-luna-medium",
+        "arm": "oracle-evidence",
+        "compactionRounds": 0,
+        "totalTokenBudget": 32768,
+        "trials": 2,
+        "maxGenerationCallsPerTrial": 1,
+        "generationCostUpperBoundPerTrialMicros": 4852,
+        "generationCostUpperBoundMicros": 9704
+      }
+    ]
+  },
+  "caseCount": 2,
+  "plannedControlTrials": 4,
+  "plannedTrials": 12,
+  "datasetReview": "pending",
+  "reviewCoversSelectedCases": false,
+  "humanReview": {
+    "status": "pending",
+    "reviewDigest": null,
+    "reviewerId": null,
+    "reviewerKind": null,
+    "method": null,
+    "reviewedAt": null,
+    "caseIds": [],
+    "evidenceRefs": []
+  },
+  "splitAudit": {
+    "policy": {
+      "version": "semantic-split-audit/1",
+      "normalization": "NFKC + lowercase + Unicode letter/number tokens",
+      "similarity": "set Dice over tokens and adjacent token bigrams",
+      "minimumNearQuestionTokens": 6,
+      "minimumNearHistoryTokens": 6,
+      "nearQuestionTokenDice": 0.85,
+      "nearQuestionBigramDice": 0.65,
+      "nearHistoryBigramDice": 0.85,
+      "reviewQuestionTokenDice": 0.65,
+      "reviewQuestionBigramDice": 0.35,
+      "reviewHistoryBigramDice": 0.5
+    },
+    "publicCaseDigest": "sha256:8025e8ac4fa6abd2be0abbf1959e7da7c9c5b4c740e61a088df9bcc99c053b2d",
+    "status": "clear",
+    "comparedPairs": 200,
+    "suspectedPairs": [],
+    "humanSemanticReviewRequired": true,
+    "auditDigest": "sha256:38e8179940c47a327cb713164beea61efd8d748bf2d3b1904e78728ec8f14f7b"
+  },
+  "liveReady": true,
+  "liveBlockers": [],
+  "acceptanceReady": false,
+  "readinessScope": "dev-provider-measurement-not-phase-acceptance",
+  "dispatchAuthorized": false,
+  "phaseGate": "Not evaluated"
+}
