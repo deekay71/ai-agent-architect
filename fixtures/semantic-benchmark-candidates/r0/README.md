@@ -1,0 +1,13 @@
+# Fresh semantic candidate — unreviewed
+
+This synthetic infrastructure candidate contains 20 development cases and 10 holdout cases from disjoint scenario families. It was authored without reading the old Phase 3 evaluator oracle. That statement records author provenance; it does not establish independence or quality of the labels. No gameplay work or phase acceptance is enabled.
+
+Reader inputs are `public/documents.json` and `public/cases.json`. The latter contains questions, scope, constraints, history and unknowns, with no oracle answer or evidence fields. `evaluator/oracle.json` belongs exclusively to evaluator code. Never send it to a model, embed it, ingest it into Memory, or use holdout labels for tuning. Repository file separation is an application boundary, not an OS access-control boundary.
+
+`manifest.json` records candidate-new / unreviewed status. `dataset.lock.json` pins the exact bytes of all four input files. The seal is created with exclusive write, refuses overwrite after drift, and is not a signature or independent review. Any content correction requires a new dataset identity and separately preserved campaign history.
+
+Each public source is natural text with repository, path, task class, revision, lifecycle and freshness metadata. The corpus includes obsolete, revoked and unrelated-repository distractors. Oracle records include evidence, enumerated answer alternatives, answerability, revision bindings and preserved constraint IDs. Some cases require abstention for unavailable authorization or an unresolved conflict.
+
+The deterministic scorer recognizes explicitly listed answer alternatives after conservative whitespace, case and typography normalization. It rejects guessed answers, unsupported citations, stale revisions and dropped constraints. Unlisted but valid paraphrases can be false rejections and must be calibrated by an independent human; a green test suite is not model quality evidence.
+
+Human calibration remains pending until an operator imports an external manual review through `importHumanCalibrationReview`. A review names an independent human reviewer, pins the dataset seal and each judged answer digest, and references nonempty, byte-pinned evidence files outside this candidate directory. The API rejects an author reviewing their own candidate and detects evidence drift. It cannot authenticate a person's identity or prove the review occurred; the operator must establish those facts externally. Imported review records are exclusive-write and never issue a release or phase gate PASS. Test reviews exist only in temporary copied datasets.

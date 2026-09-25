@@ -11,6 +11,7 @@ import { createSkillBinding, discoverSkills, loadSkillCatalog, loadSkillResource
 import type { SkillResolutionContext } from './skills/catalog.js';
 import { runtimeCommand } from './runtime/cli.js';
 import { memoryCommand } from './explorer/cli.js';
+import { runEvaluationCli } from './evaluation/cli.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
 const output = (value: unknown) => process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
@@ -54,8 +55,12 @@ async function main(args: string[]): Promise<void> {
     output({ name: 'AI Agent Architect', commands: ['demo [--tamper]', 'skills-demo', 'contracts', 'validate <ContractName> <file.json>', 'schemas <output-directory>',
       'runtime-demo <new-directory>', 'runtime-submit <workspace> <control> <request.json>', 'runtime-resume <workspace> <control> <run-id>',
       'runtime-status <workspace> <control> <run-id>', 'runtime-reconcile <workspace> <control> <run-id>', 'runtime-recover <workspace> <control>',
-      'memory-demo <new-directory>', 'memory-view <snapshot.json> <scope.json> [port] [context-windows.json]'],
+      'memory-demo <new-directory>', 'memory-view <snapshot.json> <scope.json> [port] [context-windows.json]',
+      'semantic-preflight <dataset> <config.json>', 'semantic-run <dataset> <config.json> <new-output-directory> <spend-directory> [--live]',
+      'semantic-review-import <dataset> <external-review.json>'],
       scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
+  } else if (command?.startsWith('semantic-')) {
+    if (!await runEvaluationCli(args)) throw new Error('Unknown semantic command');
   } else if (command?.startsWith('memory-')) {
     await memoryCommand(args);
   } else if (command?.startsWith('runtime-')) {

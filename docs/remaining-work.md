@@ -2,7 +2,11 @@
 
 T09/T10 đã Done / Pass trong phạm vi Memory local. Context mechanics T19 và Memory promotion T14 đã có implementation/tests nhưng **T19/T14 Doing / Not evaluated**: T19 thiếu AC chất lượng/token thật; full handoff T14 chờ dependency T19. **T11 Doing / Replan; toàn Phase 3 chưa PASS**, chưa mở Phase 4 hoặc gameplay. Tổng 8 Done, 3 Doing, 14 Todo. Xem [báo cáo Phase 3](phase-3-report.md), [hướng dẫn Memory/Context/Explorer](memory-context.md) và [benchmark](phase3-benchmark.md).
 
-Runtime demo vẫn chỉ có active release `runtime.fixture`. Không có release model/semantic/Unity, Unity project hoặc T22 PASS. Final clean-source suite đạt327/327 tests,0fail/0skip; evidence giữ cả lần đầu lỗi fixture và bản sửa. Remote `main` còn Phase 1; Phase 2 và Phase 3 đang local chưa push.
+Runtime demo vẫn chỉ có active release `runtime.fixture`. Không có release model/semantic/Unity, Unity project hoặc T22 PASS. Baseline clean-source suite327tests; đợt local mới đạt384/384 tests,0fail/0skip. Historical evidence và failed attempts đều giữ lại. Remote `main` còn Phase 1; Phase 2 và Phase 3 đang local chưa push.
+
+## Đợt local tiếp theo đã triển khai
+
+Theo xác nhận của owner, chỉ hoàn thiện và test local; không gọi API hoặc kiểm key. Có OpenAI adapter/counting/usage + spend ledger, F/R/C cùng tổng budget, G control tách riêng, compaction 1/3 lần và density0/8, dataset candidate v2, human-review import và CLI. Xem [báo cáo local mới](phase-3-closure-report.md) và [test plan có IDs](phase-3-test-plan.md). Model role config đã chốt tham chiếu Astra cho planning, Luna cho execution; model measurement/calibration còn mở. Những bước “chuẩn bị/nối” bên dưới nay có implementation local; phần review độc lập và provider nghiệm thu vẫn chưa thực hiện.
 
 ## Việc cần làm để đóng Phase 3
 

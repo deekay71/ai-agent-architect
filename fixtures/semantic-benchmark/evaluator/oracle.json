@@ -1,0 +1,474 @@
+[
+  {
+    "caseId": "sem-001",
+    "requiredEvidenceIds": [
+      "doc-001-a"
+    ],
+    "acceptableAlternatives": [
+      "Use the workload identity token; do not place a static key in CI.",
+      "Use a short-lived workload identity token, not a static service key."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-001-a": "r3"
+    },
+    "expectedConstraints": [
+      "sem-001-c1"
+    ]
+  },
+  {
+    "caseId": "sem-002",
+    "requiredEvidenceIds": [
+      "doc-002-a"
+    ],
+    "acceptableAlternatives": [
+      "Verify the SHA-256 manifest before extracting the archive.",
+      "Check the archive against its SHA-256 manifest before extraction."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-002-a": "r4"
+    },
+    "expectedConstraints": [
+      "sem-002-c1"
+    ]
+  },
+  {
+    "caseId": "sem-003",
+    "requiredEvidenceIds": [
+      "doc-003-a"
+    ],
+    "acceptableAlternatives": [
+      "Retry with the original idempotency key and unchanged payload.",
+      "Reuse the original idempotency key with the same payload."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-003-a": "r5"
+    },
+    "expectedConstraints": [
+      "sem-003-c1"
+    ]
+  },
+  {
+    "caseId": "sem-004",
+    "requiredEvidenceIds": [
+      "doc-004-a"
+    ],
+    "acceptableAlternatives": [
+      "Use a 90-second visibility lease.",
+      "The indexing lease is 90 seconds."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-004-a": "r6"
+    },
+    "expectedConstraints": [
+      "sem-004-c1"
+    ]
+  },
+  {
+    "caseId": "sem-005",
+    "requiredEvidenceIds": [
+      "doc-005-a"
+    ],
+    "acceptableAlternatives": [
+      "Check cancellation immediately before commit and leave the manifest uncommitted if cancelled.",
+      "A cancelled upload must not commit the manifest; check cancellation immediately before commit."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-005-a": "r7"
+    },
+    "expectedConstraints": [
+      "sem-005-c1"
+    ]
+  },
+  {
+    "caseId": "sem-006",
+    "requiredEvidenceIds": [],
+    "acceptableAlternatives": [],
+    "answerability": "unanswerable",
+    "expectedRevision": {},
+    "expectedConstraints": [
+      "sem-006-c1"
+    ]
+  },
+  {
+    "caseId": "sem-007",
+    "requiredEvidenceIds": [
+      "doc-007-a",
+      "doc-007-b"
+    ],
+    "acceptableAlternatives": [],
+    "answerability": "conflict",
+    "expectedRevision": {
+      "doc-007-a": "r2",
+      "doc-007-b": "r2"
+    },
+    "expectedConstraints": [
+      "sem-007-c1"
+    ]
+  },
+  {
+    "caseId": "sem-008",
+    "requiredEvidenceIds": [
+      "doc-008-a"
+    ],
+    "acceptableAlternatives": [
+      "Add the replacement nullable column before backfilling; retain the old column until readers have migrated.",
+      "First add the new nullable column, then backfill, and keep the old column until reader migration is verified."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-008-a": "r3"
+    },
+    "expectedConstraints": [
+      "sem-008-c1"
+    ]
+  },
+  {
+    "caseId": "sem-009",
+    "requiredEvidenceIds": [
+      "doc-009-a"
+    ],
+    "acceptableAlternatives": [
+      "Encrypt snapshot data with a data key and wrap that key with the vault backup wrapping key.",
+      "Use envelope encryption with a data key wrapped by the vault backup wrapping key."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-009-a": "r4"
+    },
+    "expectedConstraints": [
+      "sem-009-c1"
+    ]
+  },
+  {
+    "caseId": "sem-010",
+    "requiredEvidenceIds": [
+      "doc-010-a"
+    ],
+    "acceptableAlternatives": [
+      "Install offline from the pinned dependency mirror using the committed lockfile.",
+      "Use the committed lockfile and pinned mirror for an offline installation."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-010-a": "r5"
+    },
+    "expectedConstraints": [
+      "sem-010-c1"
+    ]
+  },
+  {
+    "caseId": "sem-011",
+    "requiredEvidenceIds": [
+      "doc-011-a"
+    ],
+    "acceptableAlternatives": [
+      "Keep the authentication scheme and redact the credential value.",
+      "Retain only the scheme; replace the credential with [REDACTED]."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-011-a": "r6"
+    },
+    "expectedConstraints": [
+      "sem-011-c1"
+    ]
+  },
+  {
+    "caseId": "sem-012",
+    "requiredEvidenceIds": [
+      "doc-012-a"
+    ],
+    "acceptableAlternatives": [
+      "Require an observed zero exit status and the expected artifact digest.",
+      "Success needs exit code zero plus the expected artifact digest."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-012-a": "r7"
+    },
+    "expectedConstraints": [
+      "sem-012-c1"
+    ]
+  },
+  {
+    "caseId": "sem-013",
+    "requiredEvidenceIds": [
+      "doc-013-a"
+    ],
+    "acceptableAlternatives": [
+      "Quarantine the event and request clock reconciliation while retaining both timestamps.",
+      "Keep the original and ingest timestamps, quarantine the event, and reconcile the clock."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-013-a": "r8"
+    },
+    "expectedConstraints": [
+      "sem-013-c1"
+    ]
+  },
+  {
+    "caseId": "sem-014",
+    "requiredEvidenceIds": [
+      "doc-014-a"
+    ],
+    "acceptableAlternatives": [
+      "Require a live controller lease and a current fencing token for promotion.",
+      "Promote only with an unexpired lease and a non-stale fencing token."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-014-a": "r2"
+    },
+    "expectedConstraints": [
+      "sem-014-c1"
+    ]
+  },
+  {
+    "caseId": "sem-015",
+    "requiredEvidenceIds": [
+      "doc-015-a"
+    ],
+    "acceptableAlternatives": [
+      "Allow credentialed requests only when the complete origin exactly matches the approved list.",
+      "Require an exact full-origin match in the approved allowlist for credentialed requests."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-015-a": "r3"
+    },
+    "expectedConstraints": [
+      "sem-015-c1"
+    ]
+  },
+  {
+    "caseId": "sem-016",
+    "requiredEvidenceIds": [],
+    "acceptableAlternatives": [],
+    "answerability": "unanswerable",
+    "expectedRevision": {},
+    "expectedConstraints": [
+      "sem-016-c1"
+    ]
+  },
+  {
+    "caseId": "sem-017",
+    "requiredEvidenceIds": [
+      "doc-017-a",
+      "doc-017-b"
+    ],
+    "acceptableAlternatives": [],
+    "answerability": "conflict",
+    "expectedRevision": {
+      "doc-017-a": "r5",
+      "doc-017-b": "r5"
+    },
+    "expectedConstraints": [
+      "sem-017-c1"
+    ]
+  },
+  {
+    "caseId": "sem-018",
+    "requiredEvidenceIds": [
+      "doc-018-a"
+    ],
+    "acceptableAlternatives": [
+      "Verify the signature over the raw body bytes and timestamp before parsing JSON, and reject expired timestamps.",
+      "Before JSON parsing, validate the raw-body signature and timestamp replay window."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-018-a": "r6"
+    },
+    "expectedConstraints": [
+      "sem-018-c1"
+    ]
+  },
+  {
+    "caseId": "sem-019",
+    "requiredEvidenceIds": [],
+    "acceptableAlternatives": [],
+    "answerability": "unanswerable",
+    "expectedRevision": {},
+    "expectedConstraints": [
+      "sem-019-c1"
+    ]
+  },
+  {
+    "caseId": "sem-020",
+    "requiredEvidenceIds": [
+      "doc-020-a"
+    ],
+    "acceptableAlternatives": [
+      "Write and fsync a temporary manifest, verify its artifacts, then atomically rename it to the final path.",
+      "Publish by atomic rename after fsyncing the temporary manifest and verifying referenced artifacts."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-020-a": "r8"
+    },
+    "expectedConstraints": [
+      "sem-020-c1"
+    ]
+  },
+  {
+    "caseId": "sem-021",
+    "requiredEvidenceIds": [
+      "doc-021-a"
+    ],
+    "acceptableAlternatives": [
+      "Validate the certificate chain against configured roots and match the exact service identity.",
+      "Require both a valid chain to configured trust roots and an exact service-identity match."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-021-a": "r2"
+    },
+    "expectedConstraints": [
+      "sem-021-c1"
+    ]
+  },
+  {
+    "caseId": "sem-022",
+    "requiredEvidenceIds": [
+      "doc-022-a"
+    ],
+    "acceptableAlternatives": [
+      "Restore into a clean database and compare verification queries with the recorded baseline.",
+      "A clean-database restore with baseline query verification establishes restorability."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-022-a": "r3"
+    },
+    "expectedConstraints": [
+      "sem-022-c1"
+    ]
+  },
+  {
+    "caseId": "sem-023",
+    "requiredEvidenceIds": [
+      "doc-023-a"
+    ],
+    "acceptableAlternatives": [
+      "Include tenant identity, permission-scope digest, and configuration revision.",
+      "The cache key must bind the tenant, permission scope digest, and configuration revision."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-023-a": "r4"
+    },
+    "expectedConstraints": [
+      "sem-023-c1"
+    ]
+  },
+  {
+    "caseId": "sem-024",
+    "requiredEvidenceIds": [
+      "doc-024-a"
+    ],
+    "acceptableAlternatives": [
+      "Carry forward the logical operation ledger and consume only its remaining attempts.",
+      "Reuse the original attempt ledger; retries may spend only the remaining allowance."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-024-a": "r5"
+    },
+    "expectedConstraints": [
+      "sem-024-c1"
+    ]
+  },
+  {
+    "caseId": "sem-025",
+    "requiredEvidenceIds": [],
+    "acceptableAlternatives": [],
+    "answerability": "unanswerable",
+    "expectedRevision": {},
+    "expectedConstraints": [
+      "sem-025-c1"
+    ]
+  },
+  {
+    "caseId": "sem-026",
+    "requiredEvidenceIds": [
+      "doc-026-a",
+      "doc-026-b"
+    ],
+    "acceptableAlternatives": [],
+    "answerability": "conflict",
+    "expectedRevision": {
+      "doc-026-a": "r7",
+      "doc-026-b": "r7"
+    },
+    "expectedConstraints": [
+      "sem-026-c1"
+    ]
+  },
+  {
+    "caseId": "sem-027",
+    "requiredEvidenceIds": [
+      "doc-027-a"
+    ],
+    "acceptableAlternatives": [
+      "Do not mount the privileged control socket into worker namespaces; use the scoped request endpoint.",
+      "Workers must use the scoped request endpoint without access to the privileged control socket."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-027-a": "r8"
+    },
+    "expectedConstraints": [
+      "sem-027-c1"
+    ]
+  },
+  {
+    "caseId": "sem-028",
+    "requiredEvidenceIds": [
+      "doc-028-a"
+    ],
+    "acceptableAlternatives": [
+      "Enforce the timeout with the monotonic clock and use wall-clock time only for audit.",
+      "Use monotonic elapsed time for the timeout; retain wall-clock timestamps for auditing."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-028-a": "r2"
+    },
+    "expectedConstraints": [
+      "sem-028-c1"
+    ]
+  },
+  {
+    "caseId": "sem-029",
+    "requiredEvidenceIds": [],
+    "acceptableAlternatives": [],
+    "answerability": "unanswerable",
+    "expectedRevision": {},
+    "expectedConstraints": [
+      "sem-029-c1"
+    ]
+  },
+  {
+    "caseId": "sem-030",
+    "requiredEvidenceIds": [
+      "doc-030-a"
+    ],
+    "acceptableAlternatives": [
+      "Verify stream identity, sequence continuity, and the previous event digest before accepting later events.",
+      "Resume only after checking the checkpoint stream identity, sequence, and prior event digest."
+    ],
+    "answerability": "answerable",
+    "expectedRevision": {
+      "doc-030-a": "r4"
+    },
+    "expectedConstraints": [
+      "sem-030-c1"
+    ]
+  }
+]

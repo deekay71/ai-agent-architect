@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "semantic-candidate-v1",
+  "datasetId": "infrastructure-semantic-candidate-2026-09-25-v2",
+  "status": "candidate-new",
+  "reviewStatus": "unreviewed",
+  "authorIds": [
+    "codex:semantic-candidate-author"
+  ],
+  "provenance": "Fresh synthetic infrastructure scenarios authored for this candidate without reading or reusing the prior Phase 3 oracle. Candidate provenance is an author attestation, not independent review. Revision v2 preserves the original unreviewed v1 candidate at fixtures/semantic-benchmark-candidates/r0 with seal sha256:d70cabc064ef483982f33be1a0dad682053fec589343ed4bfcd935672713551d. Before any benchmark run, reviewer feedback identified that all original distractors were excluded by source eligibility, making density settings equivalent. This revision adds eight fresh active in-scope distractors per case, retaining original labels and scope/lifecycle negatives. It is a corrected candidate revision, not a new independent holdout claim.",
+  "createdAt": "2026-09-25T01:00:00Z",
+  "splitCounts": {
+    "dev": 20,
+    "holdout": 10
+  },
+  "releaseEligible": false,
+  "limitations": [
+    "Labels and scenario independence require external human review before an acceptance campaign.",
+    "No model consumption, provider reliability, human adjudication, or phase gate PASS is established by fixture generation or tests.",
+    "Public holdout questions are separated from evaluator-only labels; repository access is not a confidentiality boundary.",
+    "Answer alternatives are explicit conservative lexical rubric entries and need human calibration for unlisted semantically valid phrasing.",
+    "Eligible distractor density was corrected before any campaign run; scenario labels are inherited from the preserved unreviewed candidate and still require independent human review."
+  ]
+}

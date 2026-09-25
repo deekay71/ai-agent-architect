@@ -1,0 +1,852 @@
+[
+  {
+    "id": "sem-001",
+    "family": "workload-identity",
+    "split": "dev",
+    "question": "Which credential should the CI release worker use?",
+    "query": "release worker credential workload identity",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/workload-identity"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-001-c1",
+        "description": "Do not disclose or persist credential values.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the workload identity infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-001-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-002",
+    "family": "archive-integrity",
+    "split": "dev",
+    "question": "What must happen before extracting a fetched build archive?",
+    "query": "build archive extraction integrity manifest",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/archive-integrity"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-002-c1",
+        "description": "Do not execute or extract an unverified download.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the archive integrity infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-002-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-003",
+    "family": "request-deduplication",
+    "split": "dev",
+    "question": "How should an uncertain create request be retried?",
+    "query": "uncertain create request retry idempotency",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/request-deduplication"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-003-c1",
+        "description": "Do not create a second logical operation when the first outcome is unknown.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the request deduplication infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-003-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-004",
+    "family": "queue-lease",
+    "split": "dev",
+    "question": "Which lease duration applies to indexing jobs in the current queue?",
+    "query": "indexing jobs queue lease duration",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/queue-lease"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-004-c1",
+        "description": "Preserve the queue configuration revision when reporting the duration.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the queue lease infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-004-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-005",
+    "family": "cancel-commit",
+    "split": "dev",
+    "question": "What should a cancelled upload worker do before committing its manifest?",
+    "query": "cancelled upload worker commit manifest",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/cancel-commit"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-005-c1",
+        "description": "Never publish a manifest for a cancelled upload.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the cancel commit infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-005-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-006",
+    "family": "region-authorization",
+    "split": "dev",
+    "question": "Can this repository choose its production data residency region from the provided records?",
+    "query": "production data residency approved region",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/region-authorization"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-006-c1",
+        "description": "Do not substitute a sandbox or another repository for production authorization.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the region authorization infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-006-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-006-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-007",
+    "family": "trace-retention-conflict",
+    "split": "dev",
+    "question": "What is the authoritative retention period for raw traces?",
+    "query": "raw trace retention authoritative period",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/trace-retention-conflict"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-007-c1",
+        "description": "Do not resolve conflicting active policies by arbitrary preference.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the trace retention conflict infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-007-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-007-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-008",
+    "family": "expand-contract",
+    "split": "dev",
+    "question": "Which database change comes first when replacing an event field?",
+    "query": "event field database migration expand contract",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/expand-contract"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-008-c1",
+        "description": "Do not drop the old column before the reader migration is verified.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the expand contract infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-008-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-009",
+    "family": "snapshot-encryption",
+    "split": "dev",
+    "question": "How is the database backup encrypted?",
+    "query": "database backup snapshot encryption key",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/snapshot-encryption"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-009-c1",
+        "description": "Do not write plaintext keys into the snapshot index.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the snapshot encryption infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-009-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-010",
+    "family": "dependency-offline",
+    "split": "dev",
+    "question": "How does the verification job install dependencies without external access?",
+    "query": "verification job offline dependency installation",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/dependency-offline"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-010-c1",
+        "description": "External network fallback must remain disabled.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the dependency offline infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-010-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-011",
+    "family": "log-redaction",
+    "split": "dev",
+    "question": "What should the request logger retain from an authorization header?",
+    "query": "request logger authorization header redaction",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/log-redaction"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-011-c1",
+        "description": "Never log the credential value, including in debug failures.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the log redaction infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-011-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-012",
+    "family": "process-outcome",
+    "split": "dev",
+    "question": "When may a completed child process count as a successful build?",
+    "query": "child process successful build completion exit status",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/process-outcome"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-012-c1",
+        "description": "Do not infer process success from output text or stream closure.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the process outcome infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-012-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-013",
+    "family": "timestamp-skew",
+    "split": "dev",
+    "question": "How does the audit ingester handle a timestamp outside the allowed clock-skew window?",
+    "query": "audit ingester timestamp clock skew window",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/timestamp-skew"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-013-c1",
+        "description": "Preserve the original timestamp rather than silently rewriting it.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the timestamp skew infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-013-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-014",
+    "family": "rollout-lease",
+    "split": "dev",
+    "question": "What prevents two rollout controllers from promoting simultaneously?",
+    "query": "rollout controllers simultaneous promotion lease fencing",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/rollout-lease"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-014-c1",
+        "description": "Reject stale fencing tokens even if an old controller is still running.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the rollout lease infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-014-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-015",
+    "family": "origin-allowlist",
+    "split": "dev",
+    "question": "Which browser origins may call the internal status API with credentials?",
+    "query": "status API credentials browser origin allowlist",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/origin-allowlist"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-015-c1",
+        "description": "Do not use wildcard or suffix matching for credentialed origins.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the origin allowlist infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-015-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-016",
+    "family": "quota-approval",
+    "split": "dev",
+    "question": "What is the approved production concurrency quota?",
+    "query": "production concurrency approved quota",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/quota-approval"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-016-c1",
+        "description": "Do not present a proposal as an approved production quota.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the quota approval infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-016-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-016-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-017",
+    "family": "resolver-order-conflict",
+    "split": "dev",
+    "question": "Which resolver should the service use first?",
+    "query": "service DNS resolver primary order",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/resolver-order-conflict"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-017-c1",
+        "description": "Preserve unresolved policy conflict rather than silently choosing a resolver.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the resolver order conflict infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-017-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-017-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-018",
+    "family": "webhook-authenticity",
+    "split": "dev",
+    "question": "How should an inbound webhook be authenticated?",
+    "query": "inbound webhook signature raw bytes timestamp",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/webhook-authenticity"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-018-c1",
+        "description": "Do not authenticate a re-serialized representation of the body.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the webhook authenticity infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-018-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-019",
+    "family": "revoked-endpoint",
+    "split": "dev",
+    "question": "Which currently authorized endpoint can be used for the metrics export?",
+    "query": "metrics export currently authorized endpoint",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/revoked-endpoint"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-019-c1",
+        "description": "Do not use a revoked export destination.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the revoked endpoint infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-019-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-019-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-020",
+    "family": "manifest-publication",
+    "split": "dev",
+    "question": "How should an artifact manifest become visible to readers?",
+    "query": "artifact manifest publish atomic visibility",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/manifest-publication"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-020-c1",
+        "description": "Readers must not observe a partially written manifest.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the manifest publication infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-020-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-021",
+    "family": "certificate-chain",
+    "split": "holdout",
+    "question": "What certificate checks are required before opening the service channel?",
+    "query": "service channel certificate chain peer identity",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/certificate-chain"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-021-c1",
+        "description": "A trusted certificate chain must not bypass peer identity validation.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the certificate chain infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-021-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-022",
+    "family": "restore-drill",
+    "split": "holdout",
+    "question": "What establishes that a backup is restorable?",
+    "query": "backup restorable restore drill verification",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/restore-drill"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-022-c1",
+        "description": "Do not use upload success alone as evidence of recoverability.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the restore drill infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-022-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-023",
+    "family": "cache-tenancy",
+    "split": "holdout",
+    "question": "What must be included in the cache key for an authenticated configuration read?",
+    "query": "authenticated configuration cache key tenancy scope",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/cache-tenancy"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-023-c1",
+        "description": "Do not reuse cached configuration across tenants or permission scopes.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the cache tenancy infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-023-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-024",
+    "family": "retry-budget",
+    "split": "holdout",
+    "question": "How may a retried orchestration step spend its attempt budget?",
+    "query": "orchestration retry attempt budget lineage",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/retry-budget"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-024-c1",
+        "description": "A worker restart or replan must not reset the attempt budget.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the retry budget infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-024-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-025",
+    "family": "package-trust",
+    "split": "holdout",
+    "question": "Is the supplied mirror entry sufficient to authorize a new package version?",
+    "query": "new package version mirror provenance authorization",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/package-trust"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-025-c1",
+        "description": "Do not equate a matching download checksum with maintainer authorization.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the package trust infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-025-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-025-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-026",
+    "family": "storage-erasure-conflict",
+    "split": "holdout",
+    "question": "When should the encrypted incident archive be erased?",
+    "query": "encrypted incident archive erase retention",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/storage-erasure-conflict"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-026-c1",
+        "description": "Do not erase or retain under a silently chosen conflicting policy.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the storage erasure conflict infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-026-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-026-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-027",
+    "family": "socket-permissions",
+    "split": "holdout",
+    "question": "What permission should a worker have on the privileged broker socket?",
+    "query": "worker privileged broker socket permission",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/socket-permissions"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-027-c1",
+        "description": "Worker-controlled processes must not gain operator socket access.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the socket permissions infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-027-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-028",
+    "family": "monotonic-deadline",
+    "split": "holdout",
+    "question": "Which clock should enforce the local operation timeout?",
+    "query": "local operation timeout monotonic clock",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/monotonic-deadline"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-028-c1",
+        "description": "Wall-clock adjustments must not extend or prematurely expire an operation timeout.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the monotonic deadline infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-028-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  },
+  {
+    "id": "sem-029",
+    "family": "ownership-transfer",
+    "split": "holdout",
+    "question": "Who may approve the handoff of the production signing role?",
+    "query": "production signing role handoff approval owner",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/ownership-transfer"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-029-c1",
+        "description": "Do not infer the successor from an informal conversation or an unapproved proposal.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the ownership transfer infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-029-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      },
+      {
+        "id": "sem-029-u2",
+        "description": "The requested authoritative decision is unresolved in the available records.",
+        "critical": true
+      }
+    ]
+  },
+  {
+    "id": "sem-030",
+    "family": "cursor-integrity",
+    "split": "holdout",
+    "question": "How should the audit reader resume after its cursor checkpoint?",
+    "query": "audit reader resume cursor checkpoint integrity",
+    "repoId": "infra-lab",
+    "allowedPaths": [
+      "infrastructure/cursor-integrity"
+    ],
+    "taskClass": "infrastructure.operations",
+    "constraints": [
+      {
+        "id": "sem-030-c1",
+        "description": "Halt for reconciliation if the checkpoint does not match stream continuity.",
+        "revision": "policy-r1"
+      }
+    ],
+    "history": "An operator is reviewing the cursor integrity infrastructure procedure. No operation has been dispatched.",
+    "unknowns": [
+      {
+        "id": "sem-030-u1",
+        "description": "No live production operation has been observed during this review.",
+        "critical": false
+      }
+    ]
+  }
+]

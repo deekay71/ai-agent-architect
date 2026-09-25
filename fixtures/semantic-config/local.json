@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "semantic-campaign-config/1",
+  "campaignId": "semantic-local-v2",
+  "provider": "mock",
+  "split": "dev",
+  "profiles": [
+    {
+      "id": "planner-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "inputTokenLimit": 100000,
+      "reasoningEffort": "high",
+      "pricing": {
+        "model": "gpt-6-astra",
+        "inputPerMillionUsd": 10,
+        "cachedInputPerMillionUsd": 1,
+        "outputPerMillionUsd": 50,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "observedAt": "2026-09-25"
+      }
+    },
+    {
+      "id": "executor-luna-medium",
+      "role": "executor",
+      "model": "gpt-6-luna",
+      "inputTokenLimit": 100000,
+      "reasoningEffort": "medium",
+      "pricing": {
+        "model": "gpt-6-luna",
+        "inputPerMillionUsd": 0.1,
+        "cachedInputPerMillionUsd": 0.01,
+        "outputPerMillionUsd": 0.5,
+        "source": "https://developers.openai.com/api/docs/pricing",
+        "observedAt": "2026-09-25"
+      }
+    }
+  ],
+  "totalTokenBudgets": [8192, 16384, 32768],
+  "distractorLimits": [0, 8],
+  "compactionRounds": [1, 3],
+  "repeats": 1,
+  "topK": 8,
+  "maxOutputTokens": 512,
+  "headroomTokens": 256,
+  "authorization": {
+    "authorizationId": "semantic-local-mock-zero-spend",
+    "maxCostMicros": 0
+  },
+  "thresholds": {
+    "maxFalseAcceptance": 0,
+    "maxConstraintLoss": 0,
+    "maxInvalidCitations": 0,
+    "minimumStrictPassRate": 0.9,
+    "calibrationStatus": "provisional"
+  }
+}

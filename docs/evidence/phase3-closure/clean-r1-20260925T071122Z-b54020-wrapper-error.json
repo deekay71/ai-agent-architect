@@ -1,0 +1,11 @@
+{
+  "status": "metadata-wrapper-error-after-tests",
+  "reason": "Node version JSON parsing failed from pre-install capture. Original logs and manifests preserved; a new independent clean verification rerun captures exit codes before metadata assembly.",
+  "reportedTestCounts": {
+    "tests": 384,
+    "pass": 384,
+    "fail": 0,
+    "skipped": 0
+  },
+  "notUsedAsFinalVerification": true
+}

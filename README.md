@@ -6,9 +6,22 @@ Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằn
 
 Phạm vi gồm 26 contracts phiên bản `0.5.0`, canonical hashing, audit liên kết giữa records, mô hình phân quyền actor/store và catalog có pin nội dung. CLI có demo offline và thử lựa chọn skill theo metadata. Các record policy, evidence và verdict trong demo đều là dữ liệu tổng hợp của fixture.
 
-Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; chưa chọn/call paid provider. Multi-planning có critic/calibration, Unity và game vẫn chưa triển khai. `demo` Phase 1 giữ `dispatchAuthorized: false`.
+Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; đã có OpenAI adapter và phân vai Astra/Luna nhưng chưa gọi provider thật. Multi-planning có critic/calibration, Unity và game vẫn chưa triển khai. `demo` Phase 1 giữ `dispatchAuthorized: false`.
 
-Explorer local có graph/backlinks và panel kiểu Obsidian, chỉ đọc snapshot đã lọc scope; góp ý được tải thành proposal, không ghi Memory chuẩn. Benchmark R1 giữ nguyên 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials, nhưng là regression trên bộ đã lộ. Cần holdout độc lập mới cùng provider/model/tokenizer/cost/calibration trước khi đóng T11. Final clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](docs/evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Không suy test count thành quality gate.
+Explorer local có graph/backlinks và panel kiểu Obsidian, chỉ đọc snapshot đã lọc scope; góp ý được tải thành proposal, không ghi Memory chuẩn. Benchmark R1 giữ nguyên 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials, nhưng là regression trên bộ đã lộ. Cần holdout độc lập mới cùng provider/model/tokenizer/cost/calibration trước khi đóng T11. Baseline clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](docs/evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Không suy test count thành quality gate.
+
+## Benchmark và test plan Phase 3
+
+Đợt tiếp theo theo quyết định **chỉ chạy local** đã đạt **384/384 tests**, chạy đủ 960 comparison +120 control trials với mock: [test plan](docs/phase-3-test-plan.md), [kế hoạch đóng gate](docs/phase-3-closure-plan.md), [báo cáo và evidence mới](docs/phase-3-closure-report.md). Adapter OpenAI có token-count/structured output/usage accounting và spend ledger; profiles planning dùng `gpt-6-astra`, execution dùng `gpt-6-luna`. Phân vai này mới là cấu hình khởi điểm, chưa đo chất lượng model.
+
+```sh
+./scripts/dev.sh build
+./scripts/dev.sh exec node dist/src/cli.js semantic-preflight fixtures/semantic-benchmark fixtures/semantic-config/local.json
+mkdir -p .local
+./scripts/dev.sh exec node dist/src/cli.js semantic-run fixtures/semantic-benchmark fixtures/semantic-config/local.json .local/semantic-dev-first .local/semantic-spend-first
+```
+
+Lệnh mẫu dùng mock sandbox không đọc API key hoặc gọi mạng. Dùng output directory mới mỗi run, giữ cùng spend directory cho cùng authorization để không reset budget. Mock counter là byte/4, reader luôn abstain; số token/quality model thật vẫn chưa đo. Chạy build ngay trước CLI, giữ hash build/source đi cùng evidence. Live chỉ được mở ở một đợt được cấp budget riêng, sau review/khóa protocol; không bật trong đợt local này.
 
 ## Thiết lập
 

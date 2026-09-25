@@ -1,0 +1,1842 @@
+{
+  "schemaVersion": "semantic-campaign-report/1",
+  "campaignId": "semantic-local-v2",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "configDigest": "sha256:d13369e1653c4b8befff4f81b0580cc96de7b4b9eac05bac7c82d8e6d9fef629",
+  "implementationDigest": "sha256:1f8ae54cc224e7da7fd180ef366bb54c5523125e62dfdabae8dd01f9c4cff3c8",
+  "providerId": "sandbox-abstaining-fixture/1",
+  "assurance": "mock",
+  "datasetClassification": "DEVELOPMENT_EXPOSED_SET",
+  "completedTrials": 960,
+  "plannedTrials": 960,
+  "completedControlTrials": 120,
+  "plannedControlTrials": 120,
+  "stoppedReason": null,
+  "configAndSourceStable": true,
+  "summaries": [
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.995458999997936,
+      "latencyP95Ms": 97.28870900000038,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.8648749999993,
+      "latencyP95Ms": 82.46229100000346,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 89.76554199999373,
+      "latencyP95Ms": 175.15108399999735,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 179.9275409999973,
+      "latencyP95Ms": 354.00683299999946,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 53.94874999999956,
+      "latencyP95Ms": 117.27974999999424,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.98033299999952,
+      "latencyP95Ms": 121.77720799999952,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 67.95499999999993,
+      "latencyP95Ms": 138.29262500000186,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 65.46708299999955,
+      "latencyP95Ms": 136.03679199999897,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.8357909999977,
+      "latencyP95Ms": 102.07854200000293,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.13166599999386,
+      "latencyP95Ms": 87.18224999999802,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 90.04441599998972,
+      "latencyP95Ms": 167.9362919999985,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 178.14750000000004,
+      "latencyP95Ms": 343.05683300000237,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.937375000008615,
+      "latencyP95Ms": 100.0783750000046,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 53.03179199999977,
+      "latencyP95Ms": 101.15004200000112,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 100.98441599999933,
+      "latencyP95Ms": 240.0203330000004,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 112.50112499999523,
+      "latencyP95Ms": 230.4118329999983,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.02812500000073,
+      "latencyP95Ms": 118.11320800000249,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.002707999999984,
+      "latencyP95Ms": 142.17454100000032,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 90.98450000000594,
+      "latencyP95Ms": 168.14433300000383,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 178.16275000000314,
+      "latencyP95Ms": 317.1879590000026,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "full",
+        0,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 53.01249999999709,
+      "latencyP95Ms": 111.12975000000006,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "retrieval",
+        0,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.10216700000092,
+      "latencyP95Ms": 139.07712500000343,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        1,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 98.9967089999991,
+      "latencyP95Ms": 210.08904099999927,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "compaction",
+        3,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 195.07016699999804,
+      "latencyP95Ms": 371.3553749999992,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.88129199999821,
+      "latencyP95Ms": 81.13583300000028,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 45.91679199999635,
+      "latencyP95Ms": 75.12325000000419,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 89.10633400000006,
+      "latencyP95Ms": 148.11091700000543,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 179.88762499998847,
+      "latencyP95Ms": 303.17987500000163,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 53.88770799999929,
+      "latencyP95Ms": 65.1180830000012,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.899665999997524,
+      "latencyP95Ms": 69.03379100000166,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 66.95945799999754,
+      "latencyP95Ms": 81.62445800000023,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        8,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 66.24795799999993,
+      "latencyP95Ms": 84.10512500000004,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 45.01045900000099,
+      "latencyP95Ms": 67.94462500000009,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.17774999999983,
+      "latencyP95Ms": 58.264292000000296,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 90.94991600000503,
+      "latencyP95Ms": 119.15387500000361,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 177.17237499999464,
+      "latencyP95Ms": 228.1210409999985,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.263582999999926,
+      "latencyP95Ms": 69.53516599999966,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 52.980374999999185,
+      "latencyP95Ms": 67.08924999999726,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 98.81920799999716,
+      "latencyP95Ms": 128.1264999999985,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        8,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 0,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "token-budget-blocked": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 0,
+      "constraintLoss": 0,
+      "invalidCitations": 0,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": null,
+      "latencyP50Ms": 116.31033299999945,
+      "latencyP95Ms": 141.9477079999997,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.13508300000103,
+      "latencyP95Ms": 56.02379199999996,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 45.95962500000314,
+      "latencyP95Ms": 57.985625000001164,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 89.09808299999986,
+      "latencyP95Ms": 113.1483339999977,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 179.8941250000007,
+      "latencyP95Ms": 244.10462499999903,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "full",
+        0,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 54.06154199999946,
+      "latencyP95Ms": 110.21420800000487,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "retrieval",
+        0,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 53.016499999997905,
+      "latencyP95Ms": 93.39195800000016,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        1,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 99.19225000000006,
+      "latencyP95Ms": 227.46470799999952,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "compaction",
+        3,
+        8,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 192.9772079999966,
+      "latencyP95Ms": 389.5115000000005,
+      "thresholdsMet": false
+    }
+  ],
+  "controlSummaries": [
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "oracle-evidence",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 48.03237499999523,
+      "latencyP95Ms": 51.70579199999338,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "oracle-evidence",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 46.9816659999924,
+      "latencyP95Ms": 53.21229199999652,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "planner-astra-high",
+        "oracle-evidence",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.01674999999523,
+      "latencyP95Ms": 51.016665999995894,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "oracle-evidence",
+        0,
+        0,
+        8192
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.139832999993814,
+      "latencyP95Ms": 51.0916670000006,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "oracle-evidence",
+        0,
+        0,
+        16384
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 48.06845799999428,
+      "latencyP95Ms": 52.122292000000016,
+      "thresholdsMet": false
+    },
+    {
+      "dimensions": [
+        "executor-luna-medium",
+        "oracle-evidence",
+        0,
+        0,
+        32768
+      ],
+      "trials": 20,
+      "successfulReaderCalls": 15,
+      "falseAcceptance": 0,
+      "outcomes": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "falseRejection": 15,
+      "constraintLoss": 0,
+      "invalidCitations": 15,
+      "strictPassRate": 0,
+      "uniqueCaseUncertainty": {
+        "cases": 20,
+        "strictPass": 0,
+        "wilson95": {
+          "low": 0,
+          "high": 0.16112515805281938
+        },
+        "note": "Authored cases are not a random population sample; repeats are not independent cases"
+      },
+      "brierScore": 0.25,
+      "latencyP50Ms": 47.926416999995126,
+      "latencyP95Ms": 54.07025000000431,
+      "thresholdsMet": false
+    }
+  ],
+  "budget": {
+    "capMicros": 0,
+    "chargedMicros": 0,
+    "reservedAttempts": 0,
+    "uncertainAttempts": 0,
+    "frozen": false
+  },
+  "costBasis": "usage-times-pinned-rates-not-an-invoice",
+  "modelQualityMeasured": false,
+  "phaseGate": "Not evaluated",
+  "missingAcceptance": [
+    "Independent human task-outcome judgments/calibration",
+    "Fresh reviewed holdout with full matrix",
+    "Gate Controller admission and dependent T14 handoff review"
+  ],
+  "limitations": [
+    "Mock counter/reader are conformance fixtures, not model/token evidence",
+    "Conservative accepted-answer alternatives are not general semantic grading",
+    "Local broker/evaluator trusted; raw labels never enter provider payloads",
+    "Source freshness fixture is pinned; no production/Unity certification"
+  ],
+  "outcomes": {
+    "completed": 720,
+    "token-budget-blocked": 90,
+    "context-blocked": 270
+  },
+  "comparisonOutcomes": {
+    "completed": 630,
+    "token-budget-blocked": 90,
+    "context-blocked": 240
+  },
+  "controlOutcomes": {
+    "completed": 90,
+    "context-blocked": 30
+  },
+  "actualGenerationCalls": 1350,
+  "realProviderCalls": 0,
+  "canonicalLoss": 0,
+  "fullReportSha256": "fda854e2567fa79ea8c07a3927f98737eeb837a022f98321d296b37546e17be7",
+  "diagnosticNote": "Always-abstaining fixture; semantic results, synthetic usage and latency do not measure models."
+}

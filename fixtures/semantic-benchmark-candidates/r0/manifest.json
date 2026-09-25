@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "semantic-candidate-v1",
+  "datasetId": "infrastructure-semantic-candidate-2026-09-25-v1",
+  "status": "candidate-new",
+  "reviewStatus": "unreviewed",
+  "authorIds": [
+    "codex:semantic-candidate-author"
+  ],
+  "provenance": "Fresh synthetic infrastructure scenarios authored for this candidate without reading or reusing the prior Phase 3 oracle. Candidate provenance is an author attestation, not independent review.",
+  "createdAt": "2026-09-25T00:00:00Z",
+  "splitCounts": {
+    "dev": 20,
+    "holdout": 10
+  },
+  "releaseEligible": false,
+  "limitations": [
+    "Labels and scenario independence require external human review before an acceptance campaign.",
+    "No model consumption, provider reliability, human adjudication, or phase gate PASS is established by fixture generation or tests.",
+    "Public holdout questions are separated from evaluator-only labels; repository access is not a confidentiality boundary.",
+    "Answer alternatives are explicit conservative lexical rubric entries and need human calibration for unlisted semantically valid phrasing."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "clean-source-verification/1",
+  "runId": "clean-r1-20260925T071254Z-d760e9",
+  "startedAt": "2026-09-25T07:12:54.277067+00:00",
+  "finishedAt": "2026-09-25T07:13:06.622027+00:00",
+  "repositoryRoot": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect",
+  "cleanRoot": "/tmp/ai-agent-architect-clean-r1-20260925T071254Z-d760e9-88_rlm7a",
+  "os": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "node": {
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "versions": {
+      "node": "24.19.0",
+      "acorn": "8.17.0",
+      "ada": "3.4.4",
+      "amaro": "1.1.10",
+      "ares": "1.34.6",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "137",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.69.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "3.5.7",
+      "simdjson": "4.6.4",
+      "simdutf": "6.4.0",
+      "sqlite": "3.53.3",
+      "tz": "2026b",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "13.6.233.17-node.51",
+      "zlib": "1.3.2.1-motley-3246f1b",
+      "zstd": "1.5.7"
+    }
+  },
+  "pnpm": "11.19.0",
+  "sourceDigest": "sha256:363c73a580b5ae90d5322b35cd224fafb59a7f904905c45d449153acae796103",
+  "sourceFileCount": 119,
+  "sourceUnchanged": true,
+  "install": {
+    "command": [
+      "./scripts/dev.sh",
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "exitCode": 0,
+    "seconds": 0.593,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-install.log"
+  },
+  "check": {
+    "command": [
+      "./scripts/dev.sh",
+      "check"
+    ],
+    "exitCode": 0,
+    "seconds": 11.265,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-check.log"
+  },
+  "testCounts": {
+    "tests": 384,
+    "suites": 0,
+    "pass": 384,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "builtJsDigest": "sha256:a1058e9499a79312f835621f888e660c7b60945e15ee31ca2f697079f707e24e",
+  "builtJsFileCount": 81,
+  "scope": "Independent fresh copy and frozen dependency install; local tests only; no live model calls",
+  "artifacts": {
+    "source-before.json": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-source-before.json",
+    "source-copied.json": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-source-copied.json",
+    "install.log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-install.log",
+    "check.log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-check.log",
+    "execution-results.json": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-execution-results.json",
+    "source-after.json": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-source-after.json",
+    "built-js.json": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-closure/clean-r1-20260925T071254Z-d760e9-built-js.json"
+  },
+  "passed": true
+}
