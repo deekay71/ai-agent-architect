@@ -1,0 +1,16 @@
+{
+  "judge": {
+    "id": "sol-independent-judge",
+    "role": "planner",
+    "model": "gpt-6-sol",
+    "reasoningEffort": "medium"
+  },
+  "maxRequestBytes": 100000,
+  "timeoutMs": 120000,
+  "authorization": {
+    "authorizationId": "phase3-dev-judge-20260928-user-completion",
+    "maxInvocations": 40,
+    "maxReportedTokens": 1200000,
+    "maxWallTimeMs": 3600000
+  }
+}

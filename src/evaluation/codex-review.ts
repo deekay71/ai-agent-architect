@@ -73,7 +73,7 @@ const resultSchema = z.strictObject({ status: z.enum(['completed', 'incomplete',
     rejectionCategory: z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/).nullable(), truncated: z.boolean() }).optional() });
 
 /** Reads only campaign artifacts and public packets; never opens a dataset or evaluator path. */
-function bundleFor(campaignRoot: string) {
+export function loadCodexReviewBundle(campaignRoot: string) {
   const root = rootPath(campaignRoot), reportFile = readJson(confined(root, 'report.json')), lockFile = readJson(confined(root, 'campaign-lock.json'));
   const report = reportSchema.parse(reportFile.value), lock = lockSchema.parse(lockFile.value);
   if (report.campaignId !== lock.config.campaignId || digest(lock.config) !== lock.configDigest || report.configDigest !== lock.configDigest
@@ -150,7 +150,7 @@ function bundleFor(campaignRoot: string) {
     limitations: report.limitations, artifactPins, items, releaseEligible: false as const, phaseGate: 'Not evaluated' as const };
   return { ...body, bundleDigest: digest(body) };
 }
-export type CodexReviewBundle = ReturnType<typeof bundleFor>;
+export type CodexReviewBundle = ReturnType<typeof loadCodexReviewBundle>;
 function revalidate(root: string, bundle: CodexReviewBundle): void {
   for (const [file, expected] of Object.entries(bundle.artifactPins)) if (readJson(confined(root, file)).rawDigest !== expected) reject('CAMPAIGN_DRIFT');
 }
@@ -165,7 +165,7 @@ export const CodexReviewInputSchema = z.strictObject({ schemaVersion: z.literal(
 export type CodexReviewInput = z.infer<typeof CodexReviewInputSchema>;
 
 export function exportCodexReview(campaignRoot: string, outputRoot: string) {
-  const bundle = bundleFor(campaignRoot), root = rootPath(campaignRoot), output = externalOutput(root, outputRoot);
+  const bundle = loadCodexReviewBundle(campaignRoot), root = rootPath(campaignRoot), output = externalOutput(root, outputRoot);
   revalidate(root, bundle); mkdirSync(output, { mode: 0o700 });
   const bundlePath = path.join(output, 'review-bundle.json'), decisionsPath = path.join(output, 'pending-decisions.json'), markdownPath = path.join(output, 'review.md');
   writeNew(bundlePath, bundle);
@@ -183,7 +183,7 @@ export function exportCodexReview(campaignRoot: string, outputRoot: string) {
 /** Imports an external attestation; this neither authenticates identity nor opens a phase gate. */
 export function importCodexReview(campaignRoot: string, decisionsPath: string, outputPath: string) {
   const reviewFile = readJson(decisionsPath, 16 * 1024 * 1024), review = CodexReviewInputSchema.parse(reviewFile.value);
-  const bundle = bundleFor(campaignRoot), root = rootPath(campaignRoot), output = externalOutput(root, outputPath);
+  const bundle = loadCodexReviewBundle(campaignRoot), root = rootPath(campaignRoot), output = externalOutput(root, outputPath);
   if (review.bundleDigest !== bundle.bundleDigest || digest(review.campaign) !== digest(bundle.campaign)) reject('CAMPAIGN_DRIFT');
   if (new Set(review.judgments.map(j => j.trialId)).size !== review.judgments.length || review.judgments.length !== bundle.items.length
     || bundle.items.some(i => !review.judgments.some(j => j.trialId === i.trialId && j.itemDigest === i.itemDigest && j.answerDigest === i.answerDigest))) reject('JUDGMENT_COVERAGE');

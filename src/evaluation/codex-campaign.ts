@@ -13,6 +13,8 @@ import { loadEvaluatorOracle, loadPublicDataset, verifyDatasetSeal, type Semanti
 import { scoreGatheringEvidence, scoreSemanticAnswer, type GatheringEvidenceScore, type SemanticScore } from './scoring.js';
 import { summarizePairedTrials } from './paired-statistics.js';
 import { SubscriptionBudget } from './subscription-budget.js';
+import { CodexReceiptSchema, validCodexTokens } from './codex-receipt.js';
+import { ExposureRegistry, caseExposureFingerprint } from './exposure.js';
 
 export interface CodexCampaignCall {
   stage: string; requestPath: string; requestDigest: string; attemptId: string | null;
@@ -32,23 +34,6 @@ function append(file: string, value: unknown): void {
   const fd = openSync(file, 'a', 0o600);
   try { appendFileSync(fd, JSON.stringify(value) + '\n'); fsyncSync(fd); } finally { closeSync(fd); }
 }
-const counter = z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER);
-const hash = z.string().regex(/^sha256:[a-f0-9]{64}$/);
-const eventIdentifier = z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/);
-const eventDiagnostics = z.strictObject({ eventCount: counter, eventTypes: z.array(eventIdentifier).max(16), itemTypes: z.array(eventIdentifier).max(16),
-  rejectedEventType: eventIdentifier.nullable(), rejectedItemType: eventIdentifier.nullable(), rejectionCategory: eventIdentifier.nullable(), truncated: z.boolean() });
-const ReceiptSchema = z.strictObject({ status: z.enum(['completed', 'incomplete', 'failed']), output: z.unknown(),
-  requestedModel: z.string(), requestDigest: hash, renderedRequestDigest: hash, launchPolicyDigest: hash, configurationDigest: hash,
-  usage: z.strictObject({ inputTokens: counter, cachedInputTokens: counter, outputTokens: counter, totalTokens: counter,
-    reasoningTokens: counter.nullable() }).nullable(), elapsedMs: z.number().finite().nonnegative(), cliVersion: z.string().nullable(),
-  threadId: z.string().regex(/^[a-zA-Z0-9_-]{1,128}$/).nullable(), issues: z.array(z.string().regex(/^CODEX_[A-Z0-9_]+$/)),
-  apiCostMicros: z.null(), exactInputCount: z.null(), modelIdentityAssurance: z.literal('requested-only'),
-  maxOutputTokensEnforced: z.literal(false), isolationAssurance: z.literal('capability-flags-and-event-audit'), eventDiagnostics: eventDiagnostics.optional() });
-const validTokens = (result: CodexResult) => result.usage !== null
-  && Number.isSafeInteger(result.usage.inputTokens + result.usage.outputTokens)
-  && result.usage.totalTokens === result.usage.inputTokens + result.usage.outputTokens
-  && result.usage.cachedInputTokens <= result.usage.inputTokens
-  && (result.usage.reasoningTokens === null || result.usage.reasoningTokens <= result.usage.outputTokens);
 const contains = (parent: string, child: string) => child === parent || child.startsWith(`${parent}${path.sep}`);
 function canonicalDestination(file: string): string {
   const absolute = path.resolve(file);
@@ -95,8 +80,10 @@ export async function runCodexCampaign(options: {
   const dataset = loadPublicDataset(options.datasetRoot), cases = config.caseIds.map(id => dataset.cases.find(c => c.id === id)!);
   // Acquire durable authorization before creating a campaign or exposing any input.
   const budget = new SubscriptionBudget(options.usageRoot, config.authorization);
+  let exposure: ExposureRegistry | undefined;
   const trials: CodexTrial[] = []; let stoppedReason: string | null = null;
   try {
+    exposure = new ExposureRegistry(options.usageRoot);
     mkdirSync(options.outputRoot, { recursive: false, mode: 0o700 });
     for (const name of ['packets', 'requests']) mkdirSync(path.join(options.outputRoot, name));
     const lock = { ...preflight, schemaVersion: 'codex-semantic-lock/1', sourcePins, implementationDigest, compiledPins, compiledDigest,
@@ -119,17 +106,21 @@ export async function runCodexCampaign(options: {
       // Count APIs are not used. Record exposure BEFORE the first possible CLI request, including uncertain failures.
       append(path.join(options.outputRoot, 'exposure.jsonl'), { datasetSealDigest: preflight.datasetSealDigest, split: 'dev',
         caseId: trial.caseId, requestDigest, attemptId: call.attemptId, at: new Date().toISOString(), status: 'possibly-exposed', assurance });
+      const exposedTask = cases.find(c => c.id === trial.caseId)!;
+      exposure!.record({ datasetSealDigest: preflight.datasetSealDigest, split: 'dev', caseId: trial.caseId,
+        family: exposedTask.family, contentFingerprint: caseExposureFingerprint(exposedTask), campaignId: config.campaignId,
+        requestDigest, attemptId: call.attemptId, at: new Date().toISOString(), assurance });
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), Math.max(1, Math.min(config.perCallTimeoutMs, snapshot.timeRemainingMs)));
       try {
-        const parsed = ReceiptSchema.safeParse(await respond(structuredClone(request), controller.signal));
+        const parsed = CodexReceiptSchema.safeParse(await respond(structuredClone(request), controller.signal));
         if (!parsed.success) { budget.markUnknown(call.attemptId, 'invalid-receipt'); call.status = trial.status = stoppedReason = 'receipt-binding-error'; return null; }
         const result = parsed.data as CodexResult;
         // Only a validated transport receipt can settle usage; never count undefined usage as zero.
         const binding = result.requestDigest === requestDigest && result.requestedModel === request.model
           && result.renderedRequestDigest === digest(renderCodexRequest(request)) && result.launchPolicyDigest === launchPolicyDigest
           && result.configurationDigest === expectedConfigurationDigest;
-        const known = binding && validTokens(result);
+        const known = binding && validCodexTokens(result);
         if (known) { budget.settle(call.attemptId, result.usage!.totalTokens); trial.reportedTokens += result.usage!.totalTokens; }
         else budget.markUnknown(call.attemptId, 'unknown-or-unbound-usage');
         call.result = binding ? result : null;
@@ -221,5 +212,5 @@ export async function runCodexCampaign(options: {
         'Capability flags and event auditing are not proof of absolute oracle isolation',
         'Fresh independent holdout, human calibration, frozen protocol and T14 remain open'] };
     json(path.join(options.outputRoot, 'report.json'), report); return report;
-  } finally { budget.close(); }
+  } finally { try { exposure?.close(); } finally { budget.close(); } }
 }

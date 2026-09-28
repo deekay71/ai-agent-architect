@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "codex-semantic-config/1",
+  "campaignId": "phase3-dev-coverage-20260928",
+  "provider": "codex-chatgpt",
+  "purpose": "dev-calibration",
+  "split": "dev",
+  "caseIds": [
+    "sem-001",
+    "sem-002",
+    "sem-003",
+    "sem-004",
+    "sem-005",
+    "sem-006",
+    "sem-007",
+    "sem-008",
+    "sem-009",
+    "sem-010",
+    "sem-011",
+    "sem-012",
+    "sem-013",
+    "sem-014",
+    "sem-015",
+    "sem-016",
+    "sem-017",
+    "sem-018",
+    "sem-019",
+    "sem-020"
+  ],
+  "profiles": [
+    {
+      "id": "terra-execution",
+      "role": "executor",
+      "model": "gpt-5.6-terra",
+      "reasoningEffort": "medium"
+    }
+  ],
+  "distractorLimits": [
+    8
+  ],
+  "compactionRounds": [
+    1,
+    3
+  ],
+  "repeats": 1,
+  "topK": 10,
+  "outputTokenHint": 4000,
+  "maxVisibleRequestBytes": 100000,
+  "perTrialReportedTokenStop": 100000,
+  "perCallTimeoutMs": 120000,
+  "authorization": {
+    "authorizationId": "phase3-dev-coverage-20260928-user-completion",
+    "maxInvocations": 180,
+    "maxReportedTokens": 2000000,
+    "maxWallTimeMs": 3600000
+  }
+}

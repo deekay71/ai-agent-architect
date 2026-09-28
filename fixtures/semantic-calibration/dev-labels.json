@@ -1,0 +1,509 @@
+{
+  "schemaVersion": "dev-control-labels/1",
+  "authorId": "codex-root",
+  "reviewStatus": "unreviewed",
+  "humanReviewed": false,
+  "releaseEligible": false,
+  "limitations": [
+    "Synthetic authored controls, not independently reviewed truth labels or fresh holdout",
+    "Variant controls within each family are dependent",
+    "Rubric frozen before model calls; no tuning on calibration-check outputs"
+  ],
+  "labels": [
+    {
+      "id": "item-001",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-002",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-003",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-004",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-005",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-006",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-007",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-008",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-009",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-010",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-011",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-012",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-013",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-014",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-015",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-016",
+      "caseId": "sem-006",
+      "family": "region-authorization",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-017",
+      "caseId": "sem-006",
+      "family": "region-authorization",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-018",
+      "caseId": "sem-007",
+      "family": "trace-retention-conflict",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-019",
+      "caseId": "sem-007",
+      "family": "trace-retention-conflict",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-020",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-021",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-022",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-023",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-024",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-025",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-026",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "canonical-positive",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-027",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "fabricated-execution",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-028",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "missing-constraint-id",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-029",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-030",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-031",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-032",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-033",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-034",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-035",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-036",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-037",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-038",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-039",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-040",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-041",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-042",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-043",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-044",
+      "caseId": "sem-016",
+      "family": "quota-approval",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-045",
+      "caseId": "sem-016",
+      "family": "quota-approval",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-046",
+      "caseId": "sem-017",
+      "family": "resolver-order-conflict",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-047",
+      "caseId": "sem-017",
+      "family": "resolver-order-conflict",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-048",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-049",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-050",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-051",
+      "caseId": "sem-019",
+      "family": "revoked-endpoint",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-052",
+      "caseId": "sem-019",
+      "family": "revoked-endpoint",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-053",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "canonical-positive",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-054",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "fabricated-execution",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-055",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "missing-constraint-id",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    }
+  ]
+}
