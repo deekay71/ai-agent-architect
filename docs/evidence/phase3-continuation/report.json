@@ -1,0 +1,2545 @@
+{
+  "schemaVersion": "codex-semantic-report/1",
+  "campaignId": "codex-terra-sol-astra-post-fix-20260928",
+  "purpose": "dev-smoke",
+  "configDigest": "sha256:e7f17129cc7ed6967adb306d1704b3a4e3ea88235b4ef60d41afff65a6b74df7",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "implementationDigest": "sha256:b730670d763e077d43001f39832df0b70178ce29fbd725279cb298b3daaebd20",
+  "compiledDigest": "sha256:c8deb5422d5a76d897c6c1d718c7219f22456e4db5fd1b865a4d46d2047cd2c1",
+  "transportId": "codex-chatgpt-exec/1",
+  "assurance": "codex-chatgpt",
+  "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+  "billing": "chatgpt-subscription-quota",
+  "apiCostMicros": null,
+  "exactInputCount": null,
+  "maxOutputTokensEnforced": false,
+  "modelIdentityAssurance": "requested-only",
+  "budgetBasis": "invocation-hard-cap-and-post-call-reported-token-stop",
+  "integrityStable": true,
+  "stoppedReason": null,
+  "modelOutputsObserved": true,
+  "plannedTrials": 9,
+  "plannedControls": 3,
+  "comparisonCoverage": {
+    "observed": 9,
+    "scored": 9,
+    "strictPass": 0,
+    "outcomes": {
+      "completed": 9
+    }
+  },
+  "controlCoverage": {
+    "observed": 3,
+    "scored": 3,
+    "strictPass": 0,
+    "outcomes": {
+      "completed": 3
+    }
+  },
+  "pairedDiagnostics": {
+    "schemaVersion": "codex-paired-diagnostics/1",
+    "interpretation": "descriptive-only",
+    "acceptanceDecision": null,
+    "comparisonTrials": 9,
+    "excludedControlTrials": 3,
+    "observedComparatorCount": 2,
+    "denominator": "Both reader outputs scored; repeats averaged within each unique case, then cases equally weighted",
+    "systemBlockedStatuses": [
+      "context-blocked",
+      "token-budget-blocked",
+      "model-context-blocked",
+      "visible-request-blocked",
+      "reported-token-stop",
+      "subscription-budget-stopped"
+    ],
+    "limitations": [
+      "Missing/unscored/system-blocked counts are overlapping diagnostics, not mutually exclusive outcomes",
+      "Entirely absent comparator arms or cases cannot be inferred from observed trials; use planned matrix coverage",
+      "Evaluator strictPass is a diagnostic score, not an independent semantic truth label or phase acceptance"
+    ],
+    "groups": [
+      {
+        "dimensions": {
+          "profileId": "executor-terra-medium",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "compaction",
+            "compactionRounds": 1
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00001",
+            "comparatorTrialId": "codex-00003",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "executor-terra-medium",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "retrieval",
+            "compactionRounds": 0
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00001",
+            "comparatorTrialId": "codex-00002",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "reasoning-astra-high",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "compaction",
+            "compactionRounds": 1
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00007",
+            "comparatorTrialId": "codex-00009",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "reasoning-astra-high",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "retrieval",
+            "compactionRounds": 0
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00007",
+            "comparatorTrialId": "codex-00008",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "reasoning-sol-medium",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "compaction",
+            "compactionRounds": 1
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00004",
+            "comparatorTrialId": "codex-00006",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      },
+      {
+        "dimensions": {
+          "profileId": "reasoning-sol-medium",
+          "distractors": 0,
+          "taskClass": "infrastructure.operations",
+          "comparator": {
+            "arm": "retrieval",
+            "compactionRounds": 0
+          },
+          "reportedTokenStop": 100000
+        },
+        "observedPairKeys": 1,
+        "observedUniqueCaseCount": 1,
+        "completePairs": 1,
+        "missingBaselinePairs": 0,
+        "missingComparatorPairs": 0,
+        "scoredPairs": 1,
+        "unscoredCompletePairs": 0,
+        "baselinePresentUnscored": 0,
+        "comparatorPresentUnscored": 0,
+        "systemBlockedPairs": 0,
+        "baselineSystemBlockedTrials": 0,
+        "comparatorSystemBlockedTrials": 0,
+        "uniqueCaseCount": 1,
+        "caseWeightedReaderDelta": 0,
+        "caseWeightedBaselineStrictPassRate": 0,
+        "caseWeightedComparatorStrictPassRate": 0,
+        "interval": null,
+        "intervalReason": "Authored cases are not a random population sample; an acceptance uncertainty protocol is not frozen",
+        "pairedCaseDeltas": [
+          {
+            "caseId": "sem-001",
+            "pairedRepeats": 1,
+            "baselineStrictPassRate": 0,
+            "comparatorStrictPassRate": 0,
+            "delta": 0
+          }
+        ],
+        "pairs": [
+          {
+            "caseId": "sem-001",
+            "repeat": 0,
+            "baselineTrialId": "codex-00004",
+            "comparatorTrialId": "codex-00005",
+            "baselinePresent": true,
+            "comparatorPresent": true,
+            "baselineStatus": "completed",
+            "comparatorStatus": "completed",
+            "baselineScored": true,
+            "comparatorScored": true,
+            "baselineSystemBlocked": false,
+            "comparatorSystemBlocked": false,
+            "baselineStrictPass": false,
+            "comparatorStrictPass": false,
+            "readerDelta": 0
+          }
+        ]
+      }
+    ],
+    "accountingBasis": "same-post-call-stop-rule-not-equal-hard-provider-token-budget"
+  },
+  "budget": {
+    "authorizationId": "owner-adjust-20260928-post-startup-fix",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000,
+    "usedInvocations": 15,
+    "reportedTokens": 141613,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": "invocation-limit",
+    "startedAt": 1790571577883,
+    "deadlineAt": 1790573377883,
+    "timeRemainingMs": 1671274
+  },
+  "trials": [
+    {
+      "trialId": "codex-00001",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "executor-terra-medium",
+      "role": "executor",
+      "requestedModel": "gpt-5.6-terra",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 8976,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 6674.857166,
+      "windowDigests": [
+        "sha256:05d41e8f3e8847a0d3e0dd7d7fbd24ba76e95d8771b0cddb01fc542c5a972a10"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service for the `artifacts.internal` audience. Static service keys are prohibited in CI. No credential value is disclosed. [doc-001-a, r3]",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:79a7885abce31bde9d86b53b22b6c6a8b43db9a53e834da9f58326b1db2d96fe",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00001-reader.json",
+          "requestDigest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+          "attemptId": "7e20083e-bd21-40d1-8c4e-c3f67787f007",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service for the `artifacts.internal` audience. Static service keys are prohibited in CI. No credential value is disclosed. [doc-001-a, r3]",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+            "renderedRequestDigest": "sha256:ba39df8733363677e4a1d032e07aa461d64f205de52ebf63e8f9018dcb6bd5cf",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+            "usage": {
+              "inputTokens": 8821,
+              "cachedInputTokens": 0,
+              "outputTokens": 155,
+              "totalTokens": 8976,
+              "reasoningTokens": 39
+            },
+            "elapsedMs": 6630.832292,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-04ea-7651-8c6b-256779f9bfab",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00002",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "executor-terra-medium",
+      "role": "executor",
+      "requestedModel": "gpt-5.6-terra",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 8978,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 7293.610291,
+      "windowDigests": [
+        "sha256:f43df45d0e0c3535dd93dd3acb04d2e3a9ac6db185341846e940c314dd5ed52a"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service for the `artifacts.internal` audience. Static service keys are prohibited in CI.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:834c11e7d111a6e34a4c352768bdf8811608f830d95ab48437ed0b7bd6493a87",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00002-reader.json",
+          "requestDigest": "sha256:1db691d417f3dc23e6316f06306c568e62f46fb4c3e92ba017136e61cc2b7be6",
+          "attemptId": "e88f1147-3ca6-4dde-962d-d47c980dc44f",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service for the `artifacts.internal` audience. Static service keys are prohibited in CI.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:1db691d417f3dc23e6316f06306c568e62f46fb4c3e92ba017136e61cc2b7be6",
+            "renderedRequestDigest": "sha256:e8e00f652dd6d9ab839b62aa7446feca46693068604d944fd5e2557679201946",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+            "usage": {
+              "inputTokens": 8829,
+              "cachedInputTokens": 0,
+              "outputTokens": 149,
+              "totalTokens": 8978,
+              "reasoningTokens": 49
+            },
+            "elapsedMs": 7250.372833,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-1ea5-7c10-8b58-4b406519442f",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00003",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "executor-terra-medium",
+      "role": "executor",
+      "requestedModel": "gpt-5.6-terra",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 17793,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 13445.845584,
+      "windowDigests": [
+        "sha256:4488a37b1870dbd991695e641cd10ee2020159b5d437d43e77cd670a106cfac9",
+        "sha256:77d1fa431b9d98725d39976ba57085c2fc539918a553b7ace36da94eea21c8d5"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service with audience `artifacts.internal`. Static service keys are prohibited. [doc-001-a, r3]",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:850c6ff683bf92dc9b46608c75d09a361b7b15401f558b33a55b08d60a1f6685",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestPath": "requests/codex-00003-compact-0.json",
+          "requestDigest": "sha256:7e1e27ae59ebbc95e3fd675e2291e40270784b8c9f35685e73a49dbeea0f9546",
+          "attemptId": "c99e6575-2483-4df6-88c4-1b96d6bad6b7",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "An operator is reviewing the workload identity infrastructure procedure. No operation has been dispatched."
+            },
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:7e1e27ae59ebbc95e3fd675e2291e40270784b8c9f35685e73a49dbeea0f9546",
+            "renderedRequestDigest": "sha256:99a9ae29568eccd727b5c58310177e967eb6151731632ee3eec2aa4ebcd2e300",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+            "usage": {
+              "inputTokens": 8710,
+              "cachedInputTokens": 0,
+              "outputTokens": 88,
+              "totalTokens": 8798,
+              "reasoningTokens": 56
+            },
+            "elapsedMs": 5120.734916999998,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-3b26-7cf0-8ab1-3cbef3f483d4",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        },
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00003-reader.json",
+          "requestDigest": "sha256:5b24077a4168e7e44398fcf7c12d9f1ea8f48d38fc478844da2bbf8f7010b8e4",
+          "attemptId": "d351ac39-9443-4345-a9f0-eea26c5566d8",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, exchanged with the artifact service with audience `artifacts.internal`. Static service keys are prohibited. [doc-001-a, r3]",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:5b24077a4168e7e44398fcf7c12d9f1ea8f48d38fc478844da2bbf8f7010b8e4",
+            "renderedRequestDigest": "sha256:997576737954dc4a75ea1c8ed7fa0b62329553f936a46b85aaae69dbe3786ef9",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+            "usage": {
+              "inputTokens": 8850,
+              "cachedInputTokens": 0,
+              "outputTokens": 145,
+              "totalTokens": 8995,
+              "reasoningTokens": 39
+            },
+            "elapsedMs": 8246.157667,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-4f4a-7502-b6cd-c0c7251cd10b",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00004",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-sol-medium",
+      "role": "planner",
+      "requestedModel": "gpt-6-sol",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 9496,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 11574.087375,
+      "windowDigests": [
+        "sha256:3246a09a7ca75593b9df056686b0d8c1353c8b24708c0e3831a10baec738df68"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to authenticate with the artifact service. Static service keys are prohibited in CI.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:88e2e3dfb4fdff98f1cb4b9744e3e6cc97dad4c5fd6c045a807018ac49ccf37c",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00004-reader.json",
+          "requestDigest": "sha256:c6bdb309f2e7ddc87fb4503250665c9ffad814aba63c0438e051dc727dc209f4",
+          "attemptId": "616ca42d-a2b6-4007-a44e-067d813ff7b2",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to authenticate with the artifact service. Static service keys are prohibited in CI.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-sol",
+            "requestDigest": "sha256:c6bdb309f2e7ddc87fb4503250665c9ffad814aba63c0438e051dc727dc209f4",
+            "renderedRequestDigest": "sha256:f5f111e38d9e3e6d6c98927a8e872c5eb26f09c410504dde8e80743dce1ebeb4",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+            "usage": {
+              "inputTokens": 9327,
+              "cachedInputTokens": 0,
+              "outputTokens": 169,
+              "totalTokens": 9496,
+              "reasoningTokens": 71
+            },
+            "elapsedMs": 11535.007208000003,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-6fab-7e71-867c-01e09742d4fc",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00005",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-sol-medium",
+      "role": "planner",
+      "requestedModel": "gpt-6-sol",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 9494,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 8039.547666000006,
+      "windowDigests": [
+        "sha256:c39ad5ca72011aaff6dbc6b2c4bf62da9a9770ccd782fef76f40b6ef5772bb2e"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use a short-lived workload identity token with audience artifacts.internal to authenticate to the artifact service. Static service keys are prohibited in CI.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:322045cf949366dce61ff8e89cb31fbb19790be94e38ef4dc16640cd1cd5bfe7",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00005-reader.json",
+          "requestDigest": "sha256:309dcf21caca5bfc2aa94db5ef250baeddcd2ac1daf9a43a8f348ecf054e1b33",
+          "attemptId": "dcb2c41a-609b-401d-956b-171a238c3e51",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use a short-lived workload identity token with audience artifacts.internal to authenticate to the artifact service. Static service keys are prohibited in CI.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-sol",
+            "requestDigest": "sha256:309dcf21caca5bfc2aa94db5ef250baeddcd2ac1daf9a43a8f348ecf054e1b33",
+            "renderedRequestDigest": "sha256:5337b86a23c8fd55abcf321994a030afff5be90f9039c8f927d014433aaa502a",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+            "usage": {
+              "inputTokens": 9323,
+              "cachedInputTokens": 0,
+              "outputTokens": 171,
+              "totalTokens": 9494,
+              "reasoningTokens": 75
+            },
+            "elapsedMs": 7998.673416999998,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-9ce6-7f83-a5a6-33e8ab198042",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00006",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-sol-medium",
+      "role": "planner",
+      "requestedModel": "gpt-6-sol",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 18759,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 12901.394834000006,
+      "windowDigests": [
+        "sha256:3b59f9e8c67023456e1be218602ed094b35e18d26ed6a97d1a3bedd63c713c3f",
+        "sha256:cd83357c671d2fcd5271228850febf984d546986cf43090866a4585642459fe8"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token to authenticate with the artifact service, with audience artifacts.internal. Static service keys are prohibited in CI.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:5d9027c691e22b88b426f67b7890bc1f87bb7e71079f740f5176f689240432bd",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestPath": "requests/codex-00006-compact-0.json",
+          "requestDigest": "sha256:064eaebb974d0c0997e923dcbe2e303d6cbbdc5b272e3d8cdf977c13149213fb",
+          "attemptId": "654a74ec-b06f-4ec5-9c05-9a172919f24f",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "An operator is reviewing the workload identity infrastructure procedure. No operation has been dispatched."
+            },
+            "requestedModel": "gpt-6-sol",
+            "requestDigest": "sha256:064eaebb974d0c0997e923dcbe2e303d6cbbdc5b272e3d8cdf977c13149213fb",
+            "renderedRequestDigest": "sha256:86fc2506ddc95cdad52d10d8b12817ddaa923450dd1f63fc66d495d8eec9678d",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+            "usage": {
+              "inputTokens": 9216,
+              "cachedInputTokens": 0,
+              "outputTokens": 45,
+              "totalTokens": 9261,
+              "reasoningTokens": 13
+            },
+            "elapsedMs": 5611.283875000001,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-bc54-7451-8272-1aa0d9678935",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        },
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00006-reader.json",
+          "requestDigest": "sha256:a4d5eac078919a098d59b01f8a9f3092a5da45ba5044cb0a69e9cc65319c970e",
+          "attemptId": "9e4b4267-f609-4d29-a406-205d699e60b8",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token to authenticate with the artifact service, with audience artifacts.internal. Static service keys are prohibited in CI.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-sol",
+            "requestDigest": "sha256:a4d5eac078919a098d59b01f8a9f3092a5da45ba5044cb0a69e9cc65319c970e",
+            "renderedRequestDigest": "sha256:8626cd3427bff206af4976ed6a13dd433981ab99603c17676f7fe74e8ff2f8e6",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+            "usage": {
+              "inputTokens": 9364,
+              "cachedInputTokens": 0,
+              "outputTokens": 134,
+              "totalTokens": 9498,
+              "reasoningTokens": 37
+            },
+            "elapsedMs": 7201.988792000004,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-d26d-7b10-8a22-ea3517ba9134",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00007",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-astra-high",
+      "role": "planner",
+      "requestedModel": "gpt-6-astra",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 9934,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 9957.260999999991,
+      "windowDigests": [
+        "sha256:bec1780309a93baddc540a2517eb160037ce114d5072c8f948ae259c96564923"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to exchange with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:a50dbf11cc00a6efee2396d4b4abfa1bc42170af2513c3e0c9348edc8b16a3f8",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00007-reader.json",
+          "requestDigest": "sha256:81684c485a60961af6d53ff6bfafb61b27332e733cf1fac35afca528dfd40164",
+          "attemptId": "c81814f9-edba-4bfc-9dce-d1629269bb67",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to exchange with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-astra",
+            "requestDigest": "sha256:81684c485a60961af6d53ff6bfafb61b27332e733cf1fac35afca528dfd40164",
+            "renderedRequestDigest": "sha256:978b8dd6523755da87669159c76a367c4faf962a646b53b6dac64172469ee5e3",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+            "usage": {
+              "inputTokens": 9780,
+              "cachedInputTokens": 0,
+              "outputTokens": 154,
+              "totalTokens": 9934,
+              "reasoningTokens": 45
+            },
+            "elapsedMs": 9911.819625000004,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e662-eec6-7492-9d07-5527cd705054",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00008",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-astra-high",
+      "role": "planner",
+      "requestedModel": "gpt-6-astra",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 9983,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 10520.150584000003,
+      "windowDigests": [
+        "sha256:7a17a4dff2c7edc572dfb6f54c58f0474434b7df7883525dcfd8b6be2c43969d"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to exchange with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:a50dbf11cc00a6efee2396d4b4abfa1bc42170af2513c3e0c9348edc8b16a3f8",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00008-reader.json",
+          "requestDigest": "sha256:6b41edc43d2d81e2723edc374b8b0d01ed963e2d2d9b072fb4f4d676ec65a609",
+          "attemptId": "7c8a5f63-8695-4370-aaf1-00486265f1a0",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, to exchange with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-astra",
+            "requestDigest": "sha256:6b41edc43d2d81e2723edc374b8b0d01ed963e2d2d9b072fb4f4d676ec65a609",
+            "renderedRequestDigest": "sha256:c405f7bc9a47aed5638a46c39c634c940a6ef32b535a5057ac69ea3abc8bc3ad",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+            "usage": {
+              "inputTokens": 9781,
+              "cachedInputTokens": 0,
+              "outputTokens": 202,
+              "totalTokens": 9983,
+              "reasoningTokens": 93
+            },
+            "elapsedMs": 10477.370874999993,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-15b8-7572-8ecc-30ae58846c95",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00009",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-astra-high",
+      "role": "planner",
+      "requestedModel": "gpt-6-astra",
+      "arm": "compaction",
+      "compactionRounds": 1,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 19734,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 17017.505208000002,
+      "windowDigests": [
+        "sha256:47bb59aff15cd2dbc406bbdedd8fb1f9c0050c5b6d0abef2752995cfd368a5b1",
+        "sha256:2d600383bcfb3d7fe43d364faf6c346951f3588631b595b72b9a219bc949f113"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, and exchange it with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review, so successful execution is unverified.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:5114fc4cc33a6f0be28346108882327e11c58bc0e697ed48343b1236c5d1be6e",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "compact-0",
+          "requestPath": "requests/codex-00009-compact-0.json",
+          "requestDigest": "sha256:f6b519e7a9f0361afc84055e2cde0e2e9d06701b0cb6457627c09d7110fd31ba",
+          "attemptId": "6b560c2c-ca45-4a2d-bcd4-9db3a3cee0e6",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+          "result": {
+            "status": "completed",
+            "output": {
+              "summary": "An operator is reviewing the workload identity infrastructure procedure. No operation has been dispatched."
+            },
+            "requestedModel": "gpt-6-astra",
+            "requestDigest": "sha256:f6b519e7a9f0361afc84055e2cde0e2e9d06701b0cb6457627c09d7110fd31ba",
+            "renderedRequestDigest": "sha256:1635e0473a2996fef758ad157bdf8dd61a0d0ceecdfc8dd6811db3510d79fc59",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+            "usage": {
+              "inputTokens": 9660,
+              "cachedInputTokens": 0,
+              "outputTokens": 46,
+              "totalTokens": 9706,
+              "reasoningTokens": 14
+            },
+            "elapsedMs": 6102.55816700001,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-3ece-7900-9afd-9b41d4a472d5",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        },
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00009-reader.json",
+          "requestDigest": "sha256:cf0d13a3ab374ee92faef74e569fd91e2b0e89b98e8b45d180f97de605359f7d",
+          "attemptId": "6922b173-604f-4f65-881b-389575b90ad2",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token, with audience artifacts.internal, and exchange it with the artifact service. Static service keys are prohibited in CI. No live production operation has been observed during this review, so successful execution is unverified.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-astra",
+            "requestDigest": "sha256:cf0d13a3ab374ee92faef74e569fd91e2b0e89b98e8b45d180f97de605359f7d",
+            "renderedRequestDigest": "sha256:39bf833476131b794be0b0803d46e1ad06e0d49c04c26fb6080983de737243a4",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+            "usage": {
+              "inputTokens": 9816,
+              "cachedInputTokens": 0,
+              "outputTokens": 212,
+              "totalTokens": 10028,
+              "reasoningTokens": 95
+            },
+            "elapsedMs": 10838.911250000005,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-56c0-7fe0-8595-d1aa1f161428",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00010",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "executor-terra-medium",
+      "role": "executor",
+      "requestedModel": "gpt-5.6-terra",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 8982,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 7161.51333300001,
+      "windowDigests": [
+        "sha256:4e444717d021c3d80bb3117a6012e29542973b9d3798de9bb98a9b90989313f4"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token to exchange with the artifact service, with audience `artifacts.internal`. Do not use static service keys. No credential value is disclosed. [doc-001-a, r3]",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:99b3e3c6a6e8b4909bc7eeb1acde5d2f239192d7dab4f75c11f3ed3c70f9bc59",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00010-reader.json",
+          "requestDigest": "sha256:6fc587f9380651e30e178425f4073e157472e8429eeb103b1c0753fdbca26321",
+          "attemptId": "c07e1714-d78b-477e-aabd-d124a341cc84",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token to exchange with the artifact service, with audience `artifacts.internal`. Do not use static service keys. No credential value is disclosed. [doc-001-a, r3]",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:6fc587f9380651e30e178425f4073e157472e8429eeb103b1c0753fdbca26321",
+            "renderedRequestDigest": "sha256:b4e1aa639d75491de954c81f11875b910dec1738386bd05973fe9418e42ef21b",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:74a2535f799c343a28942389c78967605e241591a59d8a266364c18f78371617",
+            "usage": {
+              "inputTokens": 8815,
+              "cachedInputTokens": 5888,
+              "outputTokens": 167,
+              "totalTokens": 8982,
+              "reasoningTokens": 53
+            },
+            "elapsedMs": 7122.886750000005,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-814a-7510-b3d3-b747cd6af066",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00011",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-sol-medium",
+      "role": "planner",
+      "requestedModel": "gpt-6-sol",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 9479,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 11959.109457999992,
+      "windowDigests": [
+        "sha256:24a121abc7f33494b1f5563e7e1fd60f95ce86e02eb6cd91fa0b13216d28310f"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token with audience `artifacts.internal` to authenticate with the artifact service. Static service keys are prohibited in CI.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:e1682cfc2a6e38bbea8e5d44fe5b69563638f286d4362ec512c57112f92a1b0f",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00011-reader.json",
+          "requestDigest": "sha256:3cca8c7041daa31882e374b3ffb2af5e9d054de546030c2eafd83d2b9db334b9",
+          "attemptId": "ab25935a-d5b6-414d-b7b9-aad8453d1eff",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token with audience `artifacts.internal` to authenticate with the artifact service. Static service keys are prohibited in CI.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-sol",
+            "requestDigest": "sha256:3cca8c7041daa31882e374b3ffb2af5e9d054de546030c2eafd83d2b9db334b9",
+            "renderedRequestDigest": "sha256:28de4c6f0009ab829f79b4b9e66548e173be5093d1276ec5bf497d77af83a6ce",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:800e9407cfdb49d452e0ecde24fec4d51ce7397f5e308a8ae6082353de49cca1",
+            "usage": {
+              "inputTokens": 9328,
+              "cachedInputTokens": 6272,
+              "outputTokens": 151,
+              "totalTokens": 9479,
+              "reasoningTokens": 52
+            },
+            "elapsedMs": 11915.452082999996,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-9d6b-7ad2-aea7-497c6008c9b5",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trialId": "codex-00012",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "reasoning-astra-high",
+      "role": "planner",
+      "requestedModel": "gpt-6-astra",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "completed",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 10005,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 12079.596707999997,
+      "windowDigests": [
+        "sha256:1ce8e5b73a5b237404e1fb936831af7d35846c9d23c38cefa0b6741c43cbcd9d"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": {
+        "disposition": "answer",
+        "answer": "The CI release worker should use its short-lived workload identity token with audience artifacts.internal, exchanging it with the artifact service. No live production operation has been observed during this review.",
+        "evidenceIds": [
+          "doc-001-a"
+        ],
+        "revisions": {
+          "doc-001-a": "r3"
+        },
+        "constraints": [
+          "Do not disclose or persist credential values.",
+          "Static service keys are prohibited in CI."
+        ],
+        "confidence": 0.99
+      },
+      "answerDigest": "sha256:31afe40502d4b189f6df537b40fda4d31c5c9af7c23f529ced84ce505e98ed78",
+      "score": {
+        "answerCorrect": false,
+        "evidenceSatisfied": true,
+        "revisionCorrect": true,
+        "constraintsPreserved": false,
+        "falseAcceptance": true,
+        "falseRejection": false,
+        "strictPass": false,
+        "reasons": [
+          "answer-missing-or-not-an-accepted-alternative",
+          "required-constraint-dropped"
+        ]
+      },
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00012-reader.json",
+          "requestDigest": "sha256:c00a4959dd5601594540398b89586ffd0a226686027b09f88ca3ee78c5e2a319",
+          "attemptId": "032a1b4b-ec37-4d8f-8956-701ba8d73536",
+          "status": "completed",
+          "expectedConfigurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+          "result": {
+            "status": "completed",
+            "output": {
+              "answer": "The CI release worker should use its short-lived workload identity token with audience artifacts.internal, exchanging it with the artifact service. No live production operation has been observed during this review.",
+              "confidence": 0.99,
+              "constraints": [
+                "Do not disclose or persist credential values.",
+                "Static service keys are prohibited in CI."
+              ],
+              "disposition": "answer",
+              "evidenceIds": [
+                "doc-001-a"
+              ],
+              "revisions": [
+                {
+                  "revision": "r3",
+                  "sourceId": "doc-001-a"
+                }
+              ]
+            },
+            "requestedModel": "gpt-6-astra",
+            "requestDigest": "sha256:c00a4959dd5601594540398b89586ffd0a226686027b09f88ca3ee78c5e2a319",
+            "renderedRequestDigest": "sha256:1a3ea954825edb4c7c9852e04cd5716c4730a65c3b0661919181712479d6b005",
+            "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+            "configurationDigest": "sha256:7b78c7ad52244904e0b70351431e805a9a56f1a9d7efa02d9bdf2ef05b5ac404",
+            "usage": {
+              "inputTokens": 9766,
+              "cachedInputTokens": 0,
+              "outputTokens": 239,
+              "totalTokens": 10005,
+              "reasoningTokens": 131
+            },
+            "elapsedMs": 12044.399915999995,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e663-cc03-7291-bd1b-935634f852fe",
+            "issues": [],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 5,
+              "eventTypes": [
+                "thread.started",
+                "item.completed",
+                "turn.started",
+                "turn.completed"
+              ],
+              "itemTypes": [
+                "error",
+                "agent_message"
+              ],
+              "rejectedEventType": null,
+              "rejectedItemType": null,
+              "rejectionCategory": null,
+              "truncated": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "limitations": [
+    "DEV pipeline measurement includes Codex system context and CLI behavior, not raw Responses API parity",
+    "Reported token stops are post-call and can overshoot within one invocation; no dollar or exact quota conversion",
+    "Requested model/effort and CLI policy are pinned; backend model identity is not independently attested",
+    "Capability flags and event auditing are not proof of absolute oracle isolation",
+    "Fresh independent holdout, human calibration, frozen protocol and T14 remain open"
+  ]
+}

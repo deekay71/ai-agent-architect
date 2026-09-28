@@ -1,0 +1,68 @@
+{
+  "scope": "DEV sem-001 only; descriptive diagnostic, no release authority",
+  "campaignId": "codex-terra-sol-astra-post-fix-20260928",
+  "transportCompleted": true,
+  "knownUsage": true,
+  "invocations": 15,
+  "readerAnswers": 12,
+  "reportedTokens": 141613,
+  "profiles": [
+    {
+      "profileId": "executor-terra-medium",
+      "requestedModel": "gpt-5.6-terra",
+      "reasoningEffort": "medium",
+      "invocations": 5,
+      "reportedTokens": 44729,
+      "tokensByArm": {
+        "full": 8976,
+        "retrieval": 8978,
+        "compaction": 17793,
+        "oracle-evidence": 8982
+      },
+      "compactionToFullRatio": 1.9822860962566844,
+      "strictPass": 0,
+      "gatheringSufficient": 4
+    },
+    {
+      "profileId": "reasoning-sol-medium",
+      "requestedModel": "gpt-6-sol",
+      "reasoningEffort": "medium",
+      "invocations": 5,
+      "reportedTokens": 47228,
+      "tokensByArm": {
+        "full": 9496,
+        "retrieval": 9494,
+        "compaction": 18759,
+        "oracle-evidence": 9479
+      },
+      "compactionToFullRatio": 1.9754633529907328,
+      "strictPass": 0,
+      "gatheringSufficient": 4
+    },
+    {
+      "profileId": "reasoning-astra-high",
+      "requestedModel": "gpt-6-astra",
+      "reasoningEffort": "high",
+      "invocations": 5,
+      "reportedTokens": 49656,
+      "tokensByArm": {
+        "full": 9934,
+        "retrieval": 9983,
+        "compaction": 19734,
+        "oracle-evidence": 10005
+      },
+      "compactionToFullRatio": 1.9865109724179586,
+      "strictPass": 0,
+      "gatheringSufficient": 4
+    }
+  ],
+  "allGatheringEvidenceAndRevisionsCorrect": true,
+  "priorLedgerBytesUnchanged": true,
+  "priorAttempts": 5,
+  "cumulativeAttempts": 20,
+  "historicalUnknownAttempts": 4,
+  "smokeSourceSnapshotVerified": true,
+  "humanReview": "pending",
+  "phaseGate": "Not evaluated",
+  "postSmokePromptChange": "Explicit canonical constraint IDs, tested locally, no further live calls"
+}

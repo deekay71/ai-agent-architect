@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "operator-continuation-record/1",
+  "ownerInstruction": "th\u1ef1c hi\u1ec7n \u0111i\u1ec1u ch\u1ec9nh \u0111i",
+  "reason": "Post-fix validation after exact disabled Code Mode startup advisory fix in 17ae09c",
+  "scope": "DEV sem-001 only, F/R/C/G for Terra medium, Sol medium, Astra high",
+  "newAuthorization": {
+    "authorizationId": "owner-adjust-20260928-post-startup-fix",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000
+  },
+  "priorLedgerSnapshots": [
+    {
+      "file": "subscription-3e06b98e7ae1691bf8b46ad1aedd9019cd9fa8dec896db55800b0f78ecbbef72.sqlite",
+      "sha256": "22439363da149041bc6551990f797415391d74759d9a34aefed9b82f85fcac81",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:f6fd38b86b6b7c5463d1e2a2b348b33fc2fa5332574ba0e54f9ee887a48c4b07",
+          "started_at": 1790330814412,
+          "deadline_at": 1790331414412,
+          "last_observed_at": 1790331105619,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+          "request_digest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+          "state": "not-dispatched",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": "sha256:6e5adec236b09fc57f95f12867b7202505002912ddfa47db8f01d06a554e83f2"
+        },
+        {
+          "id": "2dd25da7-c704-43f3-a0b1-f2f0167a84a7",
+          "request_digest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-48cedaff2a47012ad925d8b2b1f95fdb195d9d8cfb550c7c746d5fc3bbcae639.sqlite",
+      "sha256": "7f4c8379cb2fa51c667542a136ac42aaaa2962be285ae33c24e929d7e0d962de",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:67c4b9058daa716bedd6b054a36d5527eba02510c922e6d1b3c0c91b6752d8b3",
+          "started_at": 1790566242859,
+          "deadline_at": 1790566422859,
+          "last_observed_at": 1790566243702,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "bb3784ec-dd2f-4cd3-86e3-e4785153b613",
+          "request_digest": "sha256:ebf7d732a49e3168ad238915755cef4aa191b05734f50a7ef8e75cd327cb0aa7",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "diagnostic-usage-not-received",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-89c9a142cda52aafabd8b6b4b691dd5f27e9b99fb3722dd2eef09eca24f00369.sqlite",
+      "sha256": "7a54714929b7987c10583f0c7608310eefe209fda1c11047369606aa3fe01d79",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:7a21b58446ef97e8ddb6b5a76a776a76b178738ed22a4f70d001c428bc445e49",
+          "started_at": 1790566326743,
+          "deadline_at": 1790566506743,
+          "last_observed_at": 1790566327452,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "a4a526db-c6b1-4e19-ad43-c827b5cdc9a9",
+          "request_digest": "sha256:ebf7d732a49e3168ad238915755cef4aa191b05734f50a7ef8e75cd327cb0aa7",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "diagnostic-usage-not-received",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-c5ce46819198853d357e66c290ea8ae86e4248fe1c618f9d9fdfbd98dc21f19e.sqlite",
+      "sha256": "7dc007300275cb606f0865be48eb2223bc080b3a1ed65a79e38fc7fe935d5568",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:cc52219ef95a85c34c37cb7e9926ca2878f9969004faaa527ad87c916de3c6ae",
+          "started_at": 1790566706856,
+          "deadline_at": 1790568506856,
+          "last_observed_at": 1790566707637,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "e849088b-8b15-4768-9f56-393c46f22ba3",
+          "request_digest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    }
+  ],
+  "oldLedgers": "Preserved frozen, no reconcile/refund/deadline reset",
+  "maximumCumulativeAttemptsIncludingPrior": 20,
+  "recordTiming": "Config and owner-facing allowance fixed before dispatch; read-only historical DB inventory saved after campaign start after correcting readonly SQLite open mode",
+  "noAutomaticRetry": true,
+  "apiBilling": false,
+  "phaseGate": "Not evaluated"
+}

@@ -1,0 +1,22 @@
+{
+  "install": {
+    "command": [
+      "./scripts/dev.sh",
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "exitCode": 0,
+    "seconds": 0.872,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-continuation/clean-continuation-20260928T050351Z-install.log"
+  },
+  "check": {
+    "command": [
+      "./scripts/dev.sh",
+      "check"
+    ],
+    "exitCode": 0,
+    "seconds": 12.962,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/docs/evidence/phase3-continuation/clean-continuation-20260928T050351Z-check.log"
+  }
+}

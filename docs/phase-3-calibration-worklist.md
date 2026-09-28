@@ -1,5 +1,10 @@
 # Phase 3 — Bàn giao chuẩn bị calibration (DRAFT)
 
+## Actual mới nhất — DEV sau sửa CLI, 28/09/2026
+
+**15/15 calls hoàn tất trên Terra/Sol/Astra, 12 valid answers, 141.613 reported tokens,0unknown trong đợt mới.** Ledger lịch sử giữ nguyên. Transport/usage đã kiểm chứng; strictPass vẫn0/12 vì output constraint ID/mô tả và lexical scoring. Đã làm rõ prompt/schema constraint IDs,530/530 clean tests Pass; prompt mới chưa chạy live lại. [Actual và điều chỉnh](phase-3-post-fix-smoke-report.md); [12 outputs chờ review](phase-3-dev-output-review.md). Phase3 chưaPass: R1 done; R2 quality Replan; R3 calibration/review tiếp theo; T19/T14 Not evaluated,T11 Replan. Các đoạn frozen/chưa chạySol/Astra bên dưới mô tả lịch sử trước đợt này.
+
+
 Phụ thuộc: [actual 28/09](phase-3-routing-execution-report.md), [protocol DRAFT](phase-3-acceptance-protocol-draft.md). Đây là phân công tiếp theo, không phải bằng chứng các model đã review hoặc human đã duyệt.
 
 | Gói | Model mục tiêu | Đầu ra bắt buộc | Điều kiện đi tiếp |
@@ -12,4 +17,4 @@ Phụ thuộc: [actual 28/09](phase-3-routing-execution-report.md), [protocol DR
 
 Checklist trước freeze: exact requested model/effort; launch/source/prompt/schema pins; split/family audit; exposure history; independent labels; admissible unanswerable/conflict cases; threshold/uncertainty/missing-pair policy; invocation/token/time accounting; owner decision. Các mục này còn pending, không có ngày nghiệm thu chắc chắn.
 
-Review export hiện có chỉ chứa một failed observation, không có đáp án để chấm ngữ nghĩa. Không yêu cầu owner chấm chất lượng cho output không tồn tại. Source snapshot và unknown receipts được giữ để audit kỹ thuật.
+Review export mới có12 actual answers; [bản đọc](phase-3-dev-output-review.md) chờ reviewer thực. Bản failed observation cũ giữ làm lịch sử. C1 đã kiểm transport/usage, quality Replan. C2 ưu tiên contract IDs và equivalence/semantic rubric; C3 thêm phản biện compaction chi phí≈2× trên case ngắn; C4/C5 chưa mở acceptance.

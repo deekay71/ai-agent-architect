@@ -1,5 +1,10 @@
 # Phase 3 — Kế hoạch đóng phần còn lại
 
+## Actual mới nhất — DEV sau sửa CLI, 28/09/2026
+
+**15/15 calls hoàn tất trên Terra/Sol/Astra, 12 valid answers, 141.613 reported tokens,0unknown trong đợt mới.** Ledger lịch sử giữ nguyên. Transport/usage đã kiểm chứng; strictPass vẫn0/12 vì output constraint ID/mô tả và lexical scoring. Đã làm rõ prompt/schema constraint IDs,530/530 clean tests Pass; prompt mới chưa chạy live lại. [Actual và điều chỉnh](phase-3-post-fix-smoke-report.md); [12 outputs chờ review](phase-3-dev-output-review.md). Phase3 chưaPass: R1 done; R2 quality Replan; R3 calibration/review tiếp theo; T19/T14 Not evaluated,T11 Replan. Các đoạn frozen/chưa chạySol/Astra bên dưới mô tả lịch sử trước đợt này.
+
+
 ## Actual hiện hành — 28/09/2026
 
 Terra medium / Sol medium / Astra high đã áp dụng vào [plan](phase-3-execution-plan-2026-09-28.md) và config smoke mới. **530/530 clean tests Pass**; sửa exact Code Mode startup notice đã kiểm offline. 3 live attempts mới đều chưa có output/usage hợp lệ; ledgers frozen, không retry. Sol/Astra chưa chạy. [Báo cáo và evidence](phase-3-routing-execution-report.md); [bàn giao calibration](phase-3-calibration-worklist.md). Phase 3 chưa Pass, T19/T14 Not evaluated, T11 Replan. Các mốc 25/09 và profiles Luna phía dưới là lịch sử.

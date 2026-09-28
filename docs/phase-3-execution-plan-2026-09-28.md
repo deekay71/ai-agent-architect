@@ -1,5 +1,10 @@
 # Phase 3 — Kế hoạch thực thi tiếp ngày 28/09/2026
 
+## Actual mới nhất — DEV sau sửa CLI, 28/09/2026
+
+**15/15 calls hoàn tất trên Terra/Sol/Astra, 12 valid answers, 141.613 reported tokens,0unknown trong đợt mới.** Ledger lịch sử giữ nguyên. Transport/usage đã kiểm chứng; strictPass vẫn0/12 vì output constraint ID/mô tả và lexical scoring. Đã làm rõ prompt/schema constraint IDs,530/530 clean tests Pass; prompt mới chưa chạy live lại. [Actual và điều chỉnh](phase-3-post-fix-smoke-report.md); [12 outputs chờ review](phase-3-dev-output-review.md). Phase3 chưaPass: R1 done; R2 quality Replan; R3 calibration/review tiếp theo; T19/T14 Not evaluated,T11 Replan. Các đoạn frozen/chưa chạySol/Astra bên dưới mô tả lịch sử trước đợt này.
+
+
 Owner yêu cầu “apply vào plan. Thực thi tiếp đi”. Tiếp tục đường Codex đăng nhập ChatGPT đã duyệt, áp dụng Terra/Sol/Astra; không dùng API key. Quyết định mới cấp scope tiếp tục có giới hạn dưới đây, không xóa/reconcile usage chưa biết hoặc gia hạn ledger ngày 25/09.
 
 | Bước | Phân vai mục tiêu | Đầu ra / gate | Thời gian dự kiến |
