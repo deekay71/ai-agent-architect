@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "codex-starter-acceptance-result/1",
+  "scope": "finite-authored-infrastructure-starter",
+  "protocolDigest": "sha256:d2837dc693f6ec9f154c56f684aee06d1be093e46942e0e00e91f4eef2399c67",
+  "campaign": {
+    "campaignId": "acceptance-d2837dc693f6ec9f",
+    "reportRawDigest": "sha256:599c590e20fd0be71b6f8bf69ffb30c4a75bd498d7d29669bf5d478bcd6b2c47",
+    "lockRawDigest": "sha256:9fa9a7dcce33298e4510fc9634ebb0d197fabb02d300e46a9353e53984328f4d",
+    "configDigest": "sha256:1f4d8943ebb4d8466ca4a9114ba6b95104e322c9eaab7f22cb25d2e1daa3491c",
+    "datasetSealDigest": "sha256:ca8ebf5f14f5ff4a50732396f93fa40ed1742215c7de8c557c6b1b3d6c0be311",
+    "implementationDigest": "sha256:ef749955efbc81035f0abb70b2d4b40d5d27528f8d3fc0b46e270e684867a201",
+    "compiledDigest": "sha256:2fd8bf9b10fabd4e48a60cf86fa2e61cdb280edbeef4e9e9dc27459222eeb97f",
+    "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+    "promptDigest": "sha256:18465ad900d39dc6a1a62b127dffc06d3fd9c42ee282bd1ec0436b78f6aca7b9",
+    "transportId": "codex-chatgpt-exec/1",
+    "assurance": "codex-chatgpt",
+    "integrityStable": true,
+    "stoppedReason": null
+  },
+  "judgmentEvidenceDigest": "sha256:f69b7399dbbf8f6405a92462b2909eae09c679ccc1b630d3abb0581ac5faf7a2",
+  "nativeEvidence": true,
+  "quality": {
+    "strata": [
+      {
+        "arm": "F",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "F",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "F",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      }
+    ],
+    "planned": 300,
+    "observed": 300,
+    "missing": 0,
+    "mainPassed": 15,
+    "controlsPassed": 0,
+    "controlsPlanned": 60,
+    "hardGateFailures": 9,
+    "pass": false,
+    "intervalInterpretation": "Descriptive reference for ten authored families, not a population reliability estimate"
+  },
+  "humanAttestation": null,
+  "reviewerKind": "ai",
+  "t19": "Replan",
+  "t11": "Replan",
+  "phaseGate": "Not evaluated",
+  "t14": "Not evaluated",
+  "releaseEligible": false,
+  "limitations": [
+    "Finite authored baseline only; no population or production claim",
+    "Requested model identity; backend version unknown",
+    "AI reviews are not human attestations",
+    "Local file and principal trust; hashes do not authenticate the host operator"
+  ],
+  "artifactDigest": "sha256:86b1fb8400e56ed9c80af5c8971b5d3546b1b6a4660b1e9a941b45573189a5d2"
+}

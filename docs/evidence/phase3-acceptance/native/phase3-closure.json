@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "phase3-starter-closure/1",
+  "scope": "finite-authored-infrastructure-starter",
+  "protocolDigest": "sha256:d2837dc693f6ec9f154c56f684aee06d1be093e46942e0e00e91f4eef2399c67",
+  "acceptanceDigest": "sha256:86b1fb8400e56ed9c80af5c8971b5d3546b1b6a4660b1e9a941b45573189a5d2",
+  "t19": "Replan",
+  "t11": "Replan",
+  "t14": "Not evaluated",
+  "t14Digest": null,
+  "phaseGate": "Replan",
+  "reviewerKind": "ai",
+  "humanAttestation": null,
+  "measuredStarterGate": "Replan",
+  "ownerOutputReview": "not-claimed",
+  "scopeDecision": "Pinned protocol records the current user instruction to implement five closure items and close the finite starter scope",
+  "releaseEligible": false,
+  "gameExecutionAuthorized": false,
+  "artifactDigest": "sha256:d78c3b07571de3e3b57d7780de6c108d2814ec7f679103275cca9fe98302f1f5"
+}

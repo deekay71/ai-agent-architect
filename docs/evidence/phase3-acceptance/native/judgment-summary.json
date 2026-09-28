@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "codex-semantic-judge-report/1",
+  "inputDigest": "sha256:7a25ead785fb0bbc0704e767c147308542f454f4f680669ae8514c72490508d9",
+  "pinDigest": "sha256:3f169e6317447b6795ce3ec0c844b71a777c8b158553ff858d0819984e73acf7",
+  "rubricDigest": "sha256:f37c459a66fdd7fd6a464f6a8849c719d94a36668bc53fe1918e09ffab0075c7",
+  "judge": {
+    "id": "sol-judge",
+    "role": "planner",
+    "model": "gpt-6-sol",
+    "reasoningEffort": "medium"
+  },
+  "assurance": "codex-chatgpt",
+  "planned": 300,
+  "assessed": 24,
+  "stoppedReason": "invalid-judge-output",
+  "budget": {
+    "authorizationId": "phase3-starter-acceptance-20260928-v1",
+    "maxInvocations": 604,
+    "maxReportedTokens": 10000000,
+    "maxWallTimeMs": 10800000,
+    "usedInvocations": 551,
+    "reportedTokens": 6987769,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790589529255,
+    "deadlineAt": 1790600329255,
+    "timeRemainingMs": 6597811
+  },
+  "independentModel": true,
+  "humanReviewed": false,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "limitations": [
+    "Model judgments require independent calibration and adjudication",
+    "Batch judgments may be correlated",
+    "Subscription reported usage; no API dollar cost or exact pre-count",
+    "Independent requested model is not independent human review"
+  ],
+  "advisoryPassed": 15,
+  "hardCheckFailures": 9,
+  "unassessed": 276,
+  "malformedBatchIndex": 4,
+  "expectedBatchItems": 6,
+  "returnedBatchItems": 5
+}

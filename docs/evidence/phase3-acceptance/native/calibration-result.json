@@ -1,0 +1,41 @@
+{
+  "reviewDigest": "sha256:013e70b9e9da0fc4287c425e1fe9efc706e779db80799633eb0b69c0713ac86e",
+  "replayDigest": "sha256:2ca4c80c1a688065e38098fa5f9d9745914086114bfddd6713d1e2875619908d",
+  "summary": {
+    "planned": 32,
+    "judged": 32,
+    "unknowns": 0,
+    "uniqueFamilies": 8,
+    "positiveLabels": 16,
+    "negativeLabels": 16,
+    "falseAccepts": 0,
+    "falseRejects": 0,
+    "falseAcceptanceRate": 0,
+    "falseRejectionRate": 0,
+    "agreement": 1,
+    "interval": null,
+    "intervalReason": "Authored calibration controls; mutations within a family are dependent",
+    "readyForIndependentReview": true,
+    "releaseEligible": false
+  },
+  "positiveAgreement": 16,
+  "negativeAgreement": 16,
+  "criticalFalseAccepts": 0,
+  "categories": {
+    "paraphrase": 10,
+    "unsupported-execution": 3,
+    "false-premise": 4,
+    "conflict": 4,
+    "missing-source": 5,
+    "revision": 2,
+    "constraint-meaning": 10,
+    "correct-abstention": 6
+  },
+  "correctAbstentions": 6,
+  "correctAbstentionsPassed": 6,
+  "criteriaPass": true,
+  "assurance": "codex-chatgpt",
+  "pass": true,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

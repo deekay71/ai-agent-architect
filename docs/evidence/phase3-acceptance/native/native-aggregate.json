@@ -1,0 +1,463 @@
+{
+  "schemaVersion": "phase3-native-aggregate/1",
+  "createdAt": "2026-09-28T11:11:54.678Z",
+  "sourceReportRawDigest": "sha256:599c590e20fd0be71b6f8bf69ffb30c4a75bd498d7d29669bf5d478bcd6b2c47",
+  "assurance": "codex-chatgpt",
+  "integrityStable": true,
+  "stoppedReason": null,
+  "budget": {
+    "authorizationId": "phase3-starter-acceptance-20260928-v1",
+    "maxInvocations": 604,
+    "maxReportedTokens": 10000000,
+    "maxWallTimeMs": 10800000,
+    "usedInvocations": 546,
+    "reportedTokens": 6866396,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790589529255,
+    "deadlineAt": 1790600329255,
+    "timeRemainingMs": 6734812
+  },
+  "arms": [
+    {
+      "arm": "F",
+      "trials": 60,
+      "completed": 60,
+      "calls": 60,
+      "reportedTokens": 996123,
+      "meanReportedTokens": 16602.05,
+      "latencyMs": {
+        "mean": 7501.314863200018,
+        "p95": 9655.122083000373
+      },
+      "summaryCalls": 0,
+      "summaryReportedTokens": 0,
+      "gathering": {
+        "retrieved10": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 0.5822222222222221,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "retrieved": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        },
+        "selected": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 0.5822222222222221,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        }
+      },
+      "retrievalMs": {
+        "scope": "fresh-sqlite-connection-not-os-cold",
+        "coldConnectionMean": 0.35909521668185673,
+        "warmMean": 0.2704541555566872
+      }
+    },
+    {
+      "arm": "R",
+      "trials": 60,
+      "completed": 60,
+      "calls": 60,
+      "reportedTokens": 858474,
+      "meanReportedTokens": 14307.9,
+      "latencyMs": {
+        "mean": 7270.928480466672,
+        "p95": 9136.132541000028
+      },
+      "summaryCalls": 0,
+      "summaryReportedTokens": 0,
+      "gathering": {
+        "retrieved10": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 0.5822222222222221,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "retrieved": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        },
+        "selected": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        }
+      },
+      "retrievalMs": {
+        "scope": "fresh-sqlite-connection-not-os-cold",
+        "coldConnectionMean": 0.34949028335527144,
+        "warmMean": 0.26175789443019415
+      }
+    },
+    {
+      "arm": "C1",
+      "trials": 60,
+      "completed": 60,
+      "calls": 120,
+      "reportedTokens": 1461014,
+      "meanReportedTokens": 24350.233333333334,
+      "latencyMs": {
+        "mean": 14438.381928383324,
+        "p95": 16640.353292
+      },
+      "summaryCalls": 60,
+      "summaryReportedTokens": 840931,
+      "gathering": {
+        "retrieved10": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 0.5822222222222221,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "retrieved": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        },
+        "selected": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        }
+      },
+      "retrievalMs": {
+        "scope": "fresh-sqlite-connection-not-os-cold",
+        "coldConnectionMean": 0.342461083339064,
+        "warmMean": 0.26959357222444347
+      }
+    },
+    {
+      "arm": "C3",
+      "trials": 60,
+      "completed": 60,
+      "calls": 240,
+      "reportedTokens": 2659917,
+      "meanReportedTokens": 44331.95,
+      "latencyMs": {
+        "mean": 27250.666461099987,
+        "p95": 31961.42720799998
+      },
+      "summaryCalls": 180,
+      "summaryReportedTokens": 2040614,
+      "gathering": {
+        "retrieved10": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 0.5822222222222221,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "retrieved": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        },
+        "selected": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 0.9,
+          "meanPrecision": 0.7,
+          "insufficient": 12,
+          "criticalMissingSources": 12
+        }
+      },
+      "retrievalMs": {
+        "scope": "fresh-sqlite-connection-not-os-cold",
+        "coldConnectionMean": 0.3322263833268759,
+        "warmMean": 0.2772596833417588
+      }
+    },
+    {
+      "arm": "G",
+      "trials": 60,
+      "completed": 60,
+      "calls": 60,
+      "reportedTokens": 829815,
+      "meanReportedTokens": 13830.25,
+      "latencyMs": {
+        "mean": 7389.25553398331,
+        "p95": 9095.53737499984
+      },
+      "summaryCalls": 0,
+      "summaryReportedTokens": 0,
+      "gathering": {
+        "retrieved10": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "retrieved": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        },
+        "selected": {
+          "observed": 60,
+          "required": 60,
+          "meanRecall": 1,
+          "meanPrecision": 1,
+          "insufficient": 0,
+          "criticalMissingSources": 0
+        }
+      },
+      "retrievalMs": {
+        "scope": "fresh-sqlite-connection-not-os-cold",
+        "coldConnectionMean": 0.18168809996762622,
+        "warmMean": 0.11933009441579795
+      }
+    }
+  ],
+  "quality": {
+    "strata": [
+      {
+        "arm": "F",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 64000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "F",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 80000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "F",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "R",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C1",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      },
+      {
+        "arm": "C3",
+        "visibleByteAllowance": 160000,
+        "planned": 20,
+        "missing": 0,
+        "uniqueCases": 10,
+        "passedCases": 0,
+        "requiredAbstentionCases": 4,
+        "passedAbstentionCases": 0,
+        "successRate": 0,
+        "interval": {
+          "low": 0,
+          "high": 0.2775327998628892
+        },
+        "pass": false
+      }
+    ],
+    "planned": 300,
+    "observed": 300,
+    "missing": 0,
+    "mainPassed": 15,
+    "controlsPassed": 0,
+    "controlsPlanned": 60,
+    "hardGateFailures": 9,
+    "pass": false,
+    "intervalInterpretation": "Descriptive reference for ten authored families, not a population reliability estimate"
+  },
+  "notes": [
+    "Descriptive authored sample; repeated trials are not independent population samples",
+    "All compaction summary calls and reported tokens are included",
+    "Retrieval metrics repeat across trials; counts are not unique cases",
+    "API cost and exact provider input count remain null; backend identity is requested-only"
+  ]
+}

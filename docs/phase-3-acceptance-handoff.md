@@ -49,6 +49,12 @@ Run commands from the repository root after building the current source. Every o
 
 The order matters. Calibration must complete with its frozen reviewed inputs and the shared authorization before freeze. Freeze validates the sealed dataset, source/build/prompt pins, protocol criteria, independent review, and calibration result. The campaign records all 240 comparisons and 60 G controls, subject to the 540 Terra-call ceiling. Sol receives blinded task/context/answer inputs; labels and gold remain host-only. Closing recomputes the evidence, applies all-planned denominators, and runs T14 only if the finite gate produces verified evidence.
 
+## V1 actual handoff status
+
+All five implementation items were exercised in v1: protocol/calibration, campaign, blind judgment dispatch, closure evaluation, and the bounded T14 bridge. The gate did not close. Terra completed 240 main trials and 60 G controls. Sol’s fifth batch returned 5 of 6 required IDs, producing `invalid-judge-output`; only 24 of 300 assessments were valid and 276 remained unassessed. The closure recorded T19 `Replan`, T11 `Replan`, T14 `Not evaluated`, and Phase `Replan`.
+
+The v1 frozen protocol has no valid resume or adjudication consumer for the incomplete judgment output. Preserve all v1 receipts, logs, locks, ledger history, and closure artifact. Do not relabel the missing item, retry selected work, or use a local T14 pass as native evidence. Recovery requires a new version with DEV regression, exact coverage schema, checkpoint/resume behavior, adjudication bindings, and fresh verification before a new freeze.
+
 Stop and preserve all outputs if any command returns a nonzero exit status, reports `stoppedReason`, detects drift, rejects an exposure, or cannot complete its planned coverage. Do not alter thresholds, inputs, lock files, output receipts, or the ledger to continue. Create a new protocol and retain the failed artifacts only after the cause is understood and the authorized scope is explicitly updated.
 
 The finite gate requires the pinned calibration criteria, all planned main strata, required correct abstentions, zero hard-gate violations, native receipt evidence, and the linked T14 promotion/revocation trace. A successful closure records AI reviewer provenance and `humanAttestation: null`; it remains `releaseEligible: false`. The next phase requires a separate scope decision and T22 before any game or runtime execution.

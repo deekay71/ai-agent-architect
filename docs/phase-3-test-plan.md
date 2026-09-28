@@ -1,6 +1,18 @@
 # Phase 3 — Test plan và bằng chứng nghiệm thu
 
-## Actual mới nhất — test và sửa lỗi 28/09/2026
+## Actual mới nhất — nghiệm thu 5 hạng mục, 28/09/2026
+
+**Phase 3 = Replan; chưa đóng phase.** Source `c902676` đạt 570/570 tests ở repo và fresh copy. Protocol đã freeze (`d2837dc693f6ec9f154c56f684aee06d1be093e46942e0e00e91f4eef2399c67`); calibration Sol native đạt 32/32, 0 false accept/reject/unknown. Terra chạy đủ 300/300 trials (240 main +60 G), 540 calls, integrity ổn định.
+
+Blind Sol judgment dừng sau 5 calls: batch index 4 trả 5/6 IDs, bị exact-coverage validator từ chối. Có 24/300 assessments hợp lệ: 15 advisory Pass, 9 hard-check failures; 276 chưa được chấm. Không coi 300 completed là semantic PASS hoặc tỷ lệ 15/24 là chất lượng toàn bộ holdout. Tổng authorization: **551 calls / 6.987.769 reported tokens**, 0 pending/unknown mới; không gồm coordination và không quy thành USD.
+
+Closure chính thức: **T19 Replan, T11 Replan, T14 Not evaluated**; T14 local integration đã kiểm nhưng không được chạy trên dependency chưa đạt. Protocol/source/build/thresholds và mọi failed artifacts giữ nguyên. Holdout đã lộ, không còn là fresh holdout cho lần sửa tiếp. Ràng buộc T22 trước game và scope chưa mở Phase 4 giữ nguyên.
+
+Bước tiếp theo: sửa trên DEV các lỗi evidence/revision; thêm schema exact coverage và checkpoint/resume/adjudication có binding, ledger chung và immutable failed attempts; review độc lập, tạo protocol/lock phiên bản mới trước bất kỳ lần đo tiếp theo. Runner frozen v1 không có recovery consumer hợp lệ; tám call reserve không phải quyền retry hoặc sửa kết quả cũ. [Báo cáo nghiệm thu](phase-3-native-acceptance-report.md), [bàn giao](phase-3-acceptance-handoff.md), [Notion](https://app.notion.com/p/3e9a6c16b3dc8107bd6ae3e72403fd53), [thư mục bàn giao Drive](https://drive.google.com/drive/folders/1__1dG3VaKmAL412xQ98Lj-F8q_TpiQHo).
+
+Các mốc bên dưới là lịch sử; Forecast R2 và bằng chứng cũ giữ nguyên.
+
+## Lịch sử — test và sửa lỗi trước nghiệm thu 28/09/2026
 
 **554/554 clean tests Pass.** Đợt native trên 20 DEV cases ghi đủ 100 trials: 74 đáp án hợp lệ, 25 context-blocked, 1 output sai contract. Sol chấm 70/74 advisory Pass; bốn bất đồng cùng case CORS mơ hồ đã được Astra adjudicate. Đã sửa hướng dẫn abstain/null và tách hai DEV regressions rõ nghĩa: 10/10 outputs hợp lệ, 10/10 advisory Pass; sáu controls sửa câu hỏi khớp nhãn 6/6. Không thay dataset hoặc score cũ.
 
@@ -34,9 +46,9 @@ Bản bàn giao cuối đạt **527/527 clean tests**, source/compiled pins ổn
 
 Runbook mới ở [gói nghiệm thu](phase-3-acceptance-prep.md). Kiểm thêm: legacy/provisional config không giả calibration; explicit DEV case selection đúng split; exact model context boundary; generation forecast bao gồm compaction/G/rounding; paired missing/unscored/model-context-blocked và case weighting; review gắn actual answer/request/context/report; thay packet đồng thời cập nhật window hash vẫn phải bị chặn vì request không khớp; pending/partial/duplicate/drifted judgments bị từ chối; synthetic mock review không cấp Pass. Chạy CLI end-to-end có guard cấm đọc credential và cấm network. Source sạch phải build/test mới trước delivery; historical 422 là baseline cũ.
 
-Chỉ sau phê duyệt chi phí mới chạy dev smoke thật. Tiếp tục giữ protocol/holdout/independent outcome labels/T14 là acceptance còn mở, không dùng test xanh để thay.
+Mốc 25/09 trước quyết định dùng Codex subscription: chỉ sau phê duyệt chi phí mới chạy dev smoke thật. Tiếp tục giữ protocol/holdout/independent outcome labels/T14 là acceptance còn mở, không dùng test xanh để thay.
 
-Trạng thái tài liệu: kế hoạch kiểm thử phần còn lại, ngày 25/09/2026. Người dùng đã chọn các model OpenAI/ChatGPT: model chất lượng cao cho planning, model ít tốn chi phí hơn cho execution; sau đó xác nhận **“Chỉ hoàn thiện và chạy test local trước”**. Phạm vi thực thi hiện tại là code, mock campaign, tests và test plan local; không gọi provider thật hoặc kiểm API key. Các phần real-model/human acceptance dưới đây là kế hoạch cho lần thực hiện sau, giữ gate mở. Tài liệu không ghi nhận một lần gọi model thật hoặc một kết quả PASS mới.
+Trạng thái lịch sử ngày 25/09/2026, đã được thay bởi actual ở đầu trang: kế hoạch kiểm thử phần còn lại. Người dùng đã chọn các model OpenAI/ChatGPT: model chất lượng cao cho planning, model ít tốn chi phí hơn cho execution; sau đó xác nhận **“Chỉ hoàn thiện và chạy test local trước”**. Phạm vi thực thi hiện tại là code, mock campaign, tests và test plan local; không gọi provider thật hoặc kiểm API key. Các phần real-model/human acceptance dưới đây là kế hoạch cho lần thực hiện sau, giữ gate mở. Tài liệu không ghi nhận một lần gọi model thật hoặc một kết quả PASS mới.
 
 Baseline đã xác minh: [327/327 tests từ source sạch](evidence/phase3/final-clean-verification.md), T09/T10 Pass trong phạm vi local; T19 và T14 Not evaluated; T11 Replan. Campaign R1 có 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials nhưng chỉ là exposed-set regression. Giữ nguyên toàn bộ [evidence lịch sử](phase3-benchmark.md). Test suite xanh không thay nghiệm thu model, token, calibration hoặc handoff.
 
