@@ -504,6 +504,411 @@
       "partition": "calibration-check",
       "expectedPass": false,
       "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+    },
+    {
+      "id": "item-056",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-057",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-058",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-059",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-060",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-061",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-062",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-063",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-064",
+      "caseId": "sem-003",
+      "family": "request-deduplication",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-065",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-066",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-067",
+      "caseId": "sem-004",
+      "family": "queue-lease",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-068",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-069",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-070",
+      "caseId": "sem-005",
+      "family": "cancel-commit",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-071",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-072",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-073",
+      "caseId": "sem-008",
+      "family": "expand-contract",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-074",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-075",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-076",
+      "caseId": "sem-009",
+      "family": "snapshot-encryption",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-077",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "contradicted-procedure",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-078",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "equivalent-alternative",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-079",
+      "caseId": "sem-010",
+      "family": "dependency-offline",
+      "category": "false-abstention",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-080",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-081",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-082",
+      "caseId": "sem-011",
+      "family": "log-redaction",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-083",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-084",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-085",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-086",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-087",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-088",
+      "caseId": "sem-013",
+      "family": "timestamp-skew",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-089",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-090",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-091",
+      "caseId": "sem-014",
+      "family": "rollout-lease",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-092",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-093",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-094",
+      "caseId": "sem-015",
+      "family": "origin-allowlist",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-095",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-096",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-097",
+      "caseId": "sem-018",
+      "family": "webhook-authenticity",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-098",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "contradicted-procedure",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-099",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "equivalent-alternative",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-100",
+      "caseId": "sem-020",
+      "family": "manifest-publication",
+      "category": "false-abstention",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
     }
   ]
 }
