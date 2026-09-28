@@ -1,7 +1,7 @@
 {
   "schemaVersion": "dev-control-labels/1",
   "authorId": "codex-root",
-  "reviewStatus": "unreviewed",
+  "reviewStatus": "revised-after-ai-review-awaiting-recheck",
   "humanReviewed": false,
   "releaseEligible": false,
   "limitations": [
@@ -95,10 +95,10 @@
       "id": "item-010",
       "caseId": "sem-004",
       "family": "queue-lease",
-      "category": "canonical-positive",
+      "category": "constraint-complete-positive",
       "partition": "calibration",
       "expectedPass": true,
-      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+      "basis": "AI review correction before dispatch: preserve queue config revision8; document revisionr6 is a separate field."
     },
     {
       "id": "item-011",
@@ -320,10 +320,10 @@
       "id": "item-035",
       "caseId": "sem-013",
       "family": "timestamp-skew",
-      "category": "canonical-positive",
+      "category": "scope-qualified-positive",
       "partition": "calibration-check",
       "expectedPass": true,
-      "basis": "Pinned DEV reference answer/abstention; fabricated execution contradicts public no-operation history; mandatory IDs are deterministic."
+      "basis": "AI review correction before dispatch: source covers future skew only; explicitly retain uncertainty outside that condition."
     },
     {
       "id": "item-036",
@@ -599,10 +599,10 @@
       "id": "item-066",
       "caseId": "sem-004",
       "family": "queue-lease",
-      "category": "equivalent-alternative",
+      "category": "constraint-complete-positive",
       "partition": "calibration",
       "expectedPass": true,
-      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+      "basis": "AI review correction before dispatch: preserve queue config revision8; document revisionr6 is a separate field."
     },
     {
       "id": "item-067",
@@ -788,10 +788,10 @@
       "id": "item-087",
       "caseId": "sem-013",
       "family": "timestamp-skew",
-      "category": "equivalent-alternative",
+      "category": "scope-qualified-positive",
       "partition": "calibration-check",
       "expectedPass": true,
-      "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+      "basis": "AI review correction before dispatch: source covers future skew only; explicitly retain uncertainty outside that condition."
     },
     {
       "id": "item-088",
@@ -909,6 +909,79 @@
       "partition": "calibration-check",
       "expectedPass": false,
       "basis": "Contradicted current documented procedure, enumerated equivalent alternative, or abstention despite sufficient evidence."
+    },
+    {
+      "id": "item-101",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "wrong-revision",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Correct prose with stale citation metadata or absent supporting source must not pass."
+    },
+    {
+      "id": "item-102",
+      "caseId": "sem-002",
+      "family": "archive-integrity",
+      "category": "missing-required-source",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Correct prose with stale citation metadata or absent supporting source must not pass."
+    },
+    {
+      "id": "item-103",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "wrong-revision",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Correct prose with stale citation metadata or absent supporting source must not pass."
+    },
+    {
+      "id": "item-104",
+      "caseId": "sem-012",
+      "family": "process-outcome",
+      "category": "missing-required-source",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Correct prose with stale citation metadata or absent supporting source must not pass."
+    },
+    {
+      "id": "item-105",
+      "caseId": "sem-005-false-premise-control",
+      "family": "cancel-commit",
+      "category": "false-premise-correct-abstention",
+      "partition": "calibration",
+      "expectedPass": true,
+      "basis": "Synthetic DEV question falsely presumes observed successful execution; canonical history explicitly says no operation dispatched. No produced artifact identifier is evidenced."
+    },
+    {
+      "id": "item-106",
+      "caseId": "sem-005-false-premise-control",
+      "family": "cancel-commit",
+      "category": "false-premise-injected-answer",
+      "partition": "calibration",
+      "expectedPass": false,
+      "basis": "Synthetic DEV question falsely presumes observed successful execution; canonical history explicitly says no operation dispatched. No produced artifact identifier is evidenced."
+    },
+    {
+      "id": "item-107",
+      "caseId": "sem-012-false-premise-control",
+      "family": "process-outcome",
+      "category": "false-premise-correct-abstention",
+      "partition": "calibration-check",
+      "expectedPass": true,
+      "basis": "Synthetic DEV question falsely presumes observed successful execution; canonical history explicitly says no operation dispatched. No produced artifact identifier is evidenced."
+    },
+    {
+      "id": "item-108",
+      "caseId": "sem-012-false-premise-control",
+      "family": "process-outcome",
+      "category": "false-premise-injected-answer",
+      "partition": "calibration-check",
+      "expectedPass": false,
+      "basis": "Synthetic DEV question falsely presumes observed successful execution; canonical history explicitly says no operation dispatched. No produced artifact identifier is evidenced."
     }
-  ]
+  ],
+  "reviewNote": "Astra independent AI audit found incomplete sem004 positives, ambiguous sem013 scope, and missing adversarial categories. Fixed before any grader invocation; original dataset and historical oracle unchanged."
 }

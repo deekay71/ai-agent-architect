@@ -57,6 +57,7 @@ export function parseBatchedJudgments(inputs: readonly JudgmentInput[], output: 
 /** Oracle alternatives, expected labels, reader model identity and scores never reach the judge. */
 export function buildSemanticJudgmentRequest(input: JudgmentInput, judge: CodexProfile): ModelRequest {
   const i = JudgmentInputSchema.parse(input);
+  if (i.task.split !== 'dev') throw Error('SEMANTIC_JUDGMENT_DEV_ONLY');
   if (i.readerModel === judge.model) throw Error('SEMANTIC_SELF_JUDGMENT_DENIED');
   return { model: judge.model, reasoningEffort: judge.reasoningEffort, instructions: INSTRUCTIONS,
     input: canonicalJson({ question: i.task.question, constraints: i.task.constraints, unknowns: i.task.unknowns,

@@ -8,6 +8,7 @@ import { CODEX_CLI_VERSION, CODEX_LAUNCH_POLICY_DIGEST, renderCodexRequest, type
 import { runCodexJudgments } from '../src/evaluation/codex-judgment.js';
 import { loadEvaluatorOracle, loadPublicDataset } from '../src/evaluation/dataset.js';
 import { SubscriptionBudget } from '../src/evaluation/subscription-budget.js';
+import { ExposureRegistry } from '../src/evaluation/exposure.js';
 import type { JudgmentInput } from '../src/evaluation/semantic-judgment.js';
 
 const data = loadPublicDataset('fixtures/semantic-benchmark'), task = data.cases.find(c => c.id === 'sem-001')!;
@@ -83,4 +84,25 @@ test('self review and byte-cap failure refuse before transport calls', async t =
   await assert.rejects(runCodexJudgments({ ...w.options, inputs: [{ ...w.options.inputs[0]!, readerModel: 'gpt-6-sol' }], transport: f.transport }), /SELF_JUDGMENT/);
   await assert.rejects(runCodexJudgments({ ...w.options, maxRequestBytes: 1024, transport: f.transport }), /PREFLIGHT_LIMIT/);
   assert.equal(f.count(), 0);
+});
+test('holdout is denied and judge exposure is durable before the first transport call', async t => {
+  const w = setup(t);
+  const f = fake(() => {
+    const registry = new ExposureRegistry(w.options.usageRoot);
+    try { assert.equal(registry.inspect(task).reusableAsFresh, false); } finally { registry.close(); }
+  });
+  await assert.rejects(runCodexJudgments({ ...w.options, inputs: [{ ...w.options.inputs[0]!, task: { ...task, split: 'holdout' } }], transport: f.transport }), /DEV_ONLY/);
+  assert.equal(f.count(), 0);
+  const r = await runCodexJudgments({ ...w.options, transport: f.transport });
+  assert.equal(r.stoppedReason, null);
+  const registry = new ExposureRegistry(w.options.usageRoot);
+  try { assert.equal(registry.inspect({ ...task, id: 'renamed', family: 'changed', split: 'holdout' }).reusableAsFresh, false); }
+  finally { registry.close(); }
+});
+test('changing timeout or authorization after one batch stops subsequent dispatch', async t => {
+  const w = setup(t), f = fake();
+  const options = { ...w.options, inputs: Array.from({ length: 7 }, (_, n) => ({ ...w.options.inputs[0]!, id: `x-${n}` })), transport: f.transport,
+    onProgress() { options.timeoutMs++; } };
+  const r = await runCodexJudgments(options);
+  assert.equal(f.count(), 1); assert.equal(r.stoppedReason, 'binding-drift'); assert.equal(r.assessed, 6);
 });

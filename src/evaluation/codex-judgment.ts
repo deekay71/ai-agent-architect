@@ -8,6 +8,7 @@ import { CodexProfileSchema, type CodexProfile } from './codex-config.js';
 import { CodexReceiptSchema, validCodexTokens } from './codex-receipt.js';
 import { SubscriptionBudget, type SubscriptionAuthorization } from './subscription-budget.js';
 import { JudgmentInputSchema, SEMANTIC_RUBRIC_DIGEST, buildBatchedJudgmentRequest, parseBatchedJudgments, type JudgmentInput } from './semantic-judgment.js';
+import { ExposureRegistry, caseExposureFingerprint } from './exposure.js';
 
 function writeNew(file: string, value: unknown) { writeFileSync(file, JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); }
 function journal(file: string, value: unknown) {
@@ -39,7 +40,9 @@ export async function runCodexJudgments(options: { inputs: readonly JudgmentInpu
     return { source, compiled };
   };
   const pins = runtimePins(), inputDigest = digest(inputs), pinDigest = digest(pins);
+  const limitsDigest = digest({ authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs });
   const stable = () => { try { return digest(runtimePins()) === pinDigest && digest(options.inputs) === inputDigest
+    && digest({ authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs }) === limitsDigest
     && digest(options.judge) === digest(judge) && transport.respond === respond && transport.configurationDigest === configurationDigest
     && transport.assurance === assurance && transport.id === 'codex-chatgpt-exec/1' && transport.launchPolicyDigest === CODEX_LAUNCH_POLICY_DIGEST;
   } catch { return false; } };
@@ -51,9 +54,11 @@ export async function runCodexJudgments(options: { inputs: readonly JudgmentInpu
     authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs,
     batchSize: 6, createdAt: new Date().toISOString(), purpose: 'advisory-dev-calibration', releaseEligible: false });
   const budget = new SubscriptionBudget(options.usageRoot, options.authorization);
+  let exposure: ExposureRegistry | undefined;
   const assessments: ReturnType<typeof parseBatchedJudgments> = [];
   let stoppedReason: string | null = null;
   try {
+    exposure = new ExposureRegistry(options.usageRoot);
     for (const [index, request] of requests.entries()) {
       if (!stable()) { stoppedReason = 'binding-drift'; break; }
       const snapshot = budget.snapshot();
@@ -62,6 +67,10 @@ export async function runCodexJudgments(options: { inputs: readonly JudgmentInpu
       writeNew(path.join(options.outputRoot, `request-${index}.json`), request);
       const attemptId = budget.reserve(requestDigest);
       journal(path.join(options.outputRoot, 'exposure.jsonl'), { index, attemptId, requestDigest, inputIds: batches[index]!.map(i => i.id), status: 'possibly-exposed', at: new Date().toISOString() });
+      const cases = new Map(batches[index]!.map(i => [caseExposureFingerprint(i.task), i.task]));
+      for (const [fingerprint, task] of cases) exposure.record({ attemptId: `${attemptId}:${fingerprint.slice(7)}`,
+        requestDigest, datasetSealDigest: null, inputSnapshotDigest: inputDigest, campaignId: `judge:${inputDigest}`,
+        caseId: task.id, family: task.family, contentFingerprint: fingerprint, split: task.split, assurance, at: new Date().toISOString() });
       const controller = new AbortController(), timer = setTimeout(() => controller.abort(), Math.min(options.timeoutMs, snapshot.timeRemainingMs));
       try {
         const parsed = CodexReceiptSchema.safeParse(await respond(structuredClone(request), controller.signal));
@@ -95,5 +104,5 @@ export async function runCodexJudgments(options: { inputs: readonly JudgmentInpu
       limitations: ['Model judgments require independent calibration and adjudication', 'Batch judgments may be correlated',
         'Subscription reported usage; no API dollar cost or exact pre-count', 'Independent requested model is not independent human review'] };
     writeNew(path.join(options.outputRoot, 'report.json'), report); return report;
-  } finally { budget.close(); }
+  } finally { try { exposure?.close(); } finally { budget.close(); } }
 }

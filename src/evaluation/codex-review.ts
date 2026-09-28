@@ -1,3 +1,4 @@
+import { CodexReceiptSchema, validCodexTokens } from './codex-receipt.js';
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -56,21 +57,7 @@ const lockSchema = z.object({ schemaVersion: z.literal('codex-semantic-lock/1'),
   configDigest: hash, datasetSealDigest: hash, implementationDigest: hash, sourcePins: z.record(text, hash), promptDigest: hash,
   compiledPins: z.record(text, hash), compiledDigest: hash, launchPolicyDigest: hash,
   transportId: text, assurance: z.enum(['mock', 'codex-chatgpt']) }).passthrough();
-const counter = z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER);
-const usageSchema = z.strictObject({ inputTokens: counter, outputTokens: counter, cachedInputTokens: counter,
-  totalTokens: counter, reasoningTokens: counter.nullable() }).refine(u => Number.isSafeInteger(u.inputTokens + u.outputTokens)
-    && u.totalTokens === u.inputTokens + u.outputTokens && u.cachedInputTokens <= u.inputTokens
-    && (u.reasoningTokens === null || u.reasoningTokens <= u.outputTokens));
-const resultSchema = z.strictObject({ status: z.enum(['completed', 'incomplete', 'failed']), output: z.unknown().nullable(),
-  requestedModel: text, requestDigest: hash, renderedRequestDigest: hash, launchPolicyDigest: hash, configurationDigest: hash,
-  usage: usageSchema.nullable(), elapsedMs: z.number().finite().nonnegative(), cliVersion: text.nullable(),
-  threadId: z.string().regex(/^[a-zA-Z0-9_-]{1,128}$/).nullable(), issues: z.array(z.string().regex(/^CODEX_[A-Z0-9_]+$/)),
-  modelIdentityAssurance: z.literal('requested-only'), apiCostMicros: z.null(), exactInputCount: z.null(),
-  maxOutputTokensEnforced: z.literal(false), isolationAssurance: z.literal('capability-flags-and-event-audit'),
-  eventDiagnostics: z.strictObject({ eventCount: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER),
-    eventTypes: z.array(z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/)).max(16), itemTypes: z.array(z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/)).max(16),
-    rejectedEventType: z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/).nullable(), rejectedItemType: z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/).nullable(),
-    rejectionCategory: z.string().regex(/^[a-zA-Z][a-zA-Z0-9_.:-]{0,79}$/).nullable(), truncated: z.boolean() }).optional() });
+const resultSchema = CodexReceiptSchema.refine(r => r.usage === null || validCodexTokens(r), 'Malformed usage totals');
 
 /** Reads only campaign artifacts and public packets; never opens a dataset or evaluator path. */
 export function loadCodexReviewBundle(campaignRoot: string) {

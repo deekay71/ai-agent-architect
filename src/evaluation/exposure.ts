@@ -6,9 +6,10 @@ import { digest } from '../contracts/canonical.js';
 import { SemanticCaseSchema, type SemanticCase } from './dataset.js';
 
 const text = z.string().trim().min(1), hash = z.string().regex(/^sha256:[a-f0-9]{64}$/);
-const ExposureSchema = z.strictObject({ attemptId: text, requestDigest: hash, datasetSealDigest: hash,
+const ExposureSchema = z.strictObject({ attemptId: text, requestDigest: hash, datasetSealDigest: hash.nullable(), inputSnapshotDigest: hash.optional(),
   campaignId: text, caseId: text, family: text, contentFingerprint: hash, split: z.enum(['dev', 'holdout']),
-  assurance: z.enum(['mock', 'codex-chatgpt']), at: z.iso.datetime() });
+  assurance: z.enum(['mock', 'codex-chatgpt']), at: z.iso.datetime() }).refine(r => r.datasetSealDigest !== null || r.inputSnapshotDigest !== undefined,
+    'Exposure requires a dataset seal or explicitly unsealed input snapshot');
 type Exposure = z.infer<typeof ExposureSchema>;
 const normalize = (s: string) => s.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 
