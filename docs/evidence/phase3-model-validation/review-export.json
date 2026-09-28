@@ -1,0 +1,12 @@
+{
+  "bundlePath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-constraint-id-validation-20260928-review/review-bundle.json",
+  "markdownPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-constraint-id-validation-20260928-review/review.md",
+  "decisionsPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-constraint-id-validation-20260928-review/pending-decisions.json",
+  "coverage": {
+    "observedTrials": 12,
+    "completedAnswers": 12,
+    "partialOrFailed": []
+  },
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

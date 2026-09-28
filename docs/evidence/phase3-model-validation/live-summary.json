@@ -1,0 +1,41 @@
+{
+  "report": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-constraint-id-validation-20260928/report.json",
+  "campaignId": "codex-constraint-id-validation-20260928",
+  "assurance": "codex-chatgpt",
+  "comparisonCoverage": {
+    "observed": 9,
+    "scored": 9,
+    "strictPass": 0,
+    "outcomes": {
+      "completed": 9
+    }
+  },
+  "controlCoverage": {
+    "observed": 3,
+    "scored": 3,
+    "strictPass": 0,
+    "outcomes": {
+      "completed": 3
+    }
+  },
+  "budget": {
+    "authorizationId": "owner-real-model-validation-20260928-constraint-ids",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000,
+    "usedInvocations": 15,
+    "reportedTokens": 142013,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": "invocation-limit",
+    "startedAt": 1790577842369,
+    "deadlineAt": 1790579642369,
+    "timeRemainingMs": 1680095
+  },
+  "stoppedReason": null,
+  "modelOutputsObserved": true,
+  "phaseGate": "Not evaluated"
+}

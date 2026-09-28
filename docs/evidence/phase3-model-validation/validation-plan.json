@@ -1,0 +1,265 @@
+{
+  "schemaVersion": "operator-continuation-record/1",
+  "ownerInstruction": "ki\u1ec3m ch\u1ee9ng model th\u1eadt \u0111i",
+  "scope": "DEV sem-001, F/R/C/G in Terra medium, Sol medium, Astra high; validate revised canonical constraint-ID output contract",
+  "sourceCommit": "2d9d4404b78bd89036b12d2453a7a9942f3fa553",
+  "newAuthorization": {
+    "authorizationId": "owner-real-model-validation-20260928-constraint-ids",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000
+  },
+  "acceptanceBeforeRun": {
+    "transport": "15 completed calls with valid bound terminal usage and no new unknowns",
+    "constraintIdContract": "exact set equality to public task.constraints[].id in all 12 reader outputs, no prose or extra IDs",
+    "evidence": "separate revision/citation/gathering diagnostics",
+    "semanticQuality": "historical lexical scorer unchanged; independent semantic/human acceptance still pending"
+  },
+  "priorLedgerSnapshots": [
+    {
+      "file": "subscription-3e06b98e7ae1691bf8b46ad1aedd9019cd9fa8dec896db55800b0f78ecbbef72.sqlite",
+      "sha256": "22439363da149041bc6551990f797415391d74759d9a34aefed9b82f85fcac81",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:f6fd38b86b6b7c5463d1e2a2b348b33fc2fa5332574ba0e54f9ee887a48c4b07",
+          "started_at": 1790330814412,
+          "deadline_at": 1790331414412,
+          "last_observed_at": 1790331105619,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "cc860d35-c850-4d61-b3ee-b3be56a4f69e",
+          "request_digest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+          "state": "not-dispatched",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": "sha256:6e5adec236b09fc57f95f12867b7202505002912ddfa47db8f01d06a554e83f2"
+        },
+        {
+          "id": "2dd25da7-c704-43f3-a0b1-f2f0167a84a7",
+          "request_digest": "sha256:c3fc1d304ae4d29811b0ac86ecf7820e1cca1ccb69d8db9db5fe81126ce75211",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-48cedaff2a47012ad925d8b2b1f95fdb195d9d8cfb550c7c746d5fc3bbcae639.sqlite",
+      "sha256": "7f4c8379cb2fa51c667542a136ac42aaaa2962be285ae33c24e929d7e0d962de",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:67c4b9058daa716bedd6b054a36d5527eba02510c922e6d1b3c0c91b6752d8b3",
+          "started_at": 1790566242859,
+          "deadline_at": 1790566422859,
+          "last_observed_at": 1790566243702,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "bb3784ec-dd2f-4cd3-86e3-e4785153b613",
+          "request_digest": "sha256:ebf7d732a49e3168ad238915755cef4aa191b05734f50a7ef8e75cd327cb0aa7",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "diagnostic-usage-not-received",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-89c9a142cda52aafabd8b6b4b691dd5f27e9b99fb3722dd2eef09eca24f00369.sqlite",
+      "sha256": "7a54714929b7987c10583f0c7608310eefe209fda1c11047369606aa3fe01d79",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:7a21b58446ef97e8ddb6b5a76a776a76b178738ed22a4f70d001c428bc445e49",
+          "started_at": 1790566326743,
+          "deadline_at": 1790566506743,
+          "last_observed_at": 1790566327452,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "a4a526db-c6b1-4e19-ad43-c827b5cdc9a9",
+          "request_digest": "sha256:ebf7d732a49e3168ad238915755cef4aa191b05734f50a7ef8e75cd327cb0aa7",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "diagnostic-usage-not-received",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-c5ce46819198853d357e66c290ea8ae86e4248fe1c618f9d9fdfbd98dc21f19e.sqlite",
+      "sha256": "7dc007300275cb606f0865be48eb2223bc080b3a1ed65a79e38fc7fe935d5568",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:cc52219ef95a85c34c37cb7e9926ca2878f9969004faaa527ad87c916de3c6ae",
+          "started_at": 1790566706856,
+          "deadline_at": 1790568506856,
+          "last_observed_at": 1790566707637,
+          "frozen": 1
+        }
+      ],
+      "attempts": [
+        {
+          "id": "e849088b-8b15-4768-9f56-393c46f22ba3",
+          "request_digest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+          "state": "unknown",
+          "reported_tokens": 0,
+          "unknown_reason": "unknown-or-unbound-usage",
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    },
+    {
+      "file": "subscription-dc58ffa6fc98167cb3f2baa75d5b51ff5319050c78d5669ba47d97c8550c5a7e.sqlite",
+      "sha256": "981417f2eb2057a871b5385195e326b48f9ab571e3968bbcb85450c5577012c5",
+      "config": [
+        {
+          "id": 1,
+          "authorization_digest": "sha256:d33362ce3ee1f1f745e48f4d049ef31076553ad13883c6d26404c4a511b2b496",
+          "started_at": 1790571577883,
+          "deadline_at": 1790573377883,
+          "last_observed_at": 1790571706609,
+          "frozen": 0
+        }
+      ],
+      "attempts": [
+        {
+          "id": "7e20083e-bd21-40d1-8c4e-c3f67787f007",
+          "request_digest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+          "state": "settled",
+          "reported_tokens": 8976,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "e88f1147-3ca6-4dde-962d-d47c980dc44f",
+          "request_digest": "sha256:1db691d417f3dc23e6316f06306c568e62f46fb4c3e92ba017136e61cc2b7be6",
+          "state": "settled",
+          "reported_tokens": 8978,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "c99e6575-2483-4df6-88c4-1b96d6bad6b7",
+          "request_digest": "sha256:7e1e27ae59ebbc95e3fd675e2291e40270784b8c9f35685e73a49dbeea0f9546",
+          "state": "settled",
+          "reported_tokens": 8798,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "d351ac39-9443-4345-a9f0-eea26c5566d8",
+          "request_digest": "sha256:5b24077a4168e7e44398fcf7c12d9f1ea8f48d38fc478844da2bbf8f7010b8e4",
+          "state": "settled",
+          "reported_tokens": 8995,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "616ca42d-a2b6-4007-a44e-067d813ff7b2",
+          "request_digest": "sha256:c6bdb309f2e7ddc87fb4503250665c9ffad814aba63c0438e051dc727dc209f4",
+          "state": "settled",
+          "reported_tokens": 9496,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "dcb2c41a-609b-401d-956b-171a238c3e51",
+          "request_digest": "sha256:309dcf21caca5bfc2aa94db5ef250baeddcd2ac1daf9a43a8f348ecf054e1b33",
+          "state": "settled",
+          "reported_tokens": 9494,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "654a74ec-b06f-4ec5-9c05-9a172919f24f",
+          "request_digest": "sha256:064eaebb974d0c0997e923dcbe2e303d6cbbdc5b272e3d8cdf977c13149213fb",
+          "state": "settled",
+          "reported_tokens": 9261,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "9e4b4267-f609-4d29-a406-205d699e60b8",
+          "request_digest": "sha256:a4d5eac078919a098d59b01f8a9f3092a5da45ba5044cb0a69e9cc65319c970e",
+          "state": "settled",
+          "reported_tokens": 9498,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "c81814f9-edba-4bfc-9dce-d1629269bb67",
+          "request_digest": "sha256:81684c485a60961af6d53ff6bfafb61b27332e733cf1fac35afca528dfd40164",
+          "state": "settled",
+          "reported_tokens": 9934,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "7c8a5f63-8695-4370-aaf1-00486265f1a0",
+          "request_digest": "sha256:6b41edc43d2d81e2723edc374b8b0d01ed963e2d2d9b072fb4f4d676ec65a609",
+          "state": "settled",
+          "reported_tokens": 9983,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "6b560c2c-ca45-4a2d-bcd4-9db3a3cee0e6",
+          "request_digest": "sha256:f6b519e7a9f0361afc84055e2cde0e2e9d06701b0cb6457627c09d7110fd31ba",
+          "state": "settled",
+          "reported_tokens": 9706,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "6922b173-604f-4f65-881b-389575b90ad2",
+          "request_digest": "sha256:cf0d13a3ab374ee92faef74e569fd91e2b0e89b98e8b45d180f97de605359f7d",
+          "state": "settled",
+          "reported_tokens": 10028,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "c07e1714-d78b-477e-aabd-d124a341cc84",
+          "request_digest": "sha256:6fc587f9380651e30e178425f4073e157472e8429eeb103b1c0753fdbca26321",
+          "state": "settled",
+          "reported_tokens": 8982,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "ab25935a-d5b6-414d-b7b9-aad8453d1eff",
+          "request_digest": "sha256:3cca8c7041daa31882e374b3ffb2af5e9d054de546030c2eafd83d2b9db334b9",
+          "state": "settled",
+          "reported_tokens": 9479,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        },
+        {
+          "id": "032a1b4b-ec37-4d8f-8956-701ba8d73536",
+          "request_digest": "sha256:c00a4959dd5601594540398b89586ffd0a226686027b09f88ca3ee78c5e2a319",
+          "state": "settled",
+          "reported_tokens": 10005,
+          "unknown_reason": null,
+          "reconciliation_evidence_digest": null
+        }
+      ]
+    }
+  ],
+  "priorAttemptCount": 20,
+  "verifiedSourceAndBuildMatchCleanRun": "clean-continuation-20260928T050351Z",
+  "noAutomaticRetry": true,
+  "noApiBilling": true,
+  "phaseGate": "Not evaluated"
+}

@@ -12,5 +12,5 @@ Quyết định mới của owner ngày 25/09/2026 thay phân vai Luna trước 
 
 Model do owner chọn; effort là mặc định triển khai. [Profiles máy đọc được](model-routing.json) dùng khi cấu hình tác vụ/campaign mới. Đây là phân vai dự án, chưa phải automatic runtime router hoặc thay model đang chạy của cuộc hội thoại. Vai trò critic/verifier vẫn cần context và quyền độc lập; chọn Astra không tự cấp PASS. Những config/receipts Luna của campaign cũ giữ nguyên để truy vết. Không tự mở lại ledger đang frozen hoặc tạo quyền benchmark mới từ thay đổi phân vai.
 
-Model IDs đối chiếu danh sách trên host và [OpenAI Models](https://learn.chatgpt.com/docs/models), ngày 25/09/2026. Không suy khả dụng thực tế hoặc chất lượng đã đo từ tên model; đợt DEV 28/09 đã hoàn tất15calls trên cả ba profiles, nhưng quality/calibration chưaPass; xem [actual sau sửa](phase-3-post-fix-smoke-report.md).
+Model IDs đối chiếu danh sách trên host và [OpenAI Models](https://learn.chatgpt.com/docs/models), ngày 25/09/2026. Không suy khả dụng thực tế hoặc chất lượng đã đo từ tên model; đợt kiểm chứng prompt đã sửa hoàn tất 15 calls trên cả ba profiles, đạt 12/12 constraint-ID checks; semantic calibration chưa Pass. Xem [kiểm chứng model thật](phase-3-model-validation.md).
 

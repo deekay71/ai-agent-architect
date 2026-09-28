@@ -1,0 +1,232 @@
+{
+  "scope": "DEV sem-001 only; one answerable case and one repeat; no holdout/human acceptance",
+  "campaignId": "codex-constraint-id-validation-20260928",
+  "sourceMatchesVerifiedBuild": "clean-continuation-20260928T050351Z",
+  "sourcePathsChangedSincePreviousSmoke": [
+    "src/evaluation/campaign.ts"
+  ],
+  "datasetSealUnchanged": true,
+  "integrityStable": true,
+  "stoppedReason": null,
+  "invocations": 15,
+  "readerAnswers": 12,
+  "newUnknownAttempts": 0,
+  "pendingAttempts": 0,
+  "reportedTokens": 142013,
+  "beforeConstraintPass": 0,
+  "afterConstraintPass": 12,
+  "strictPass": 0,
+  "oldLedgerBytesUnchanged": true,
+  "priorAttemptCount": 20,
+  "cumulativeAttempts": 35,
+  "profiles": [
+    {
+      "profileId": "executor-terra-medium",
+      "model": "gpt-5.6-terra",
+      "effort": "medium",
+      "readerAnswers": 4,
+      "constraintIdsPassed": 4,
+      "citationAndRevisionPassed": 4,
+      "strictPass": 0,
+      "reportedTokens": 44875,
+      "tokensByArm": {
+        "full": 9026,
+        "retrieval": 9019,
+        "compaction": 17822,
+        "oracle-evidence": 9008
+      }
+    },
+    {
+      "profileId": "reasoning-sol-medium",
+      "model": "gpt-6-sol",
+      "effort": "medium",
+      "readerAnswers": 4,
+      "constraintIdsPassed": 4,
+      "citationAndRevisionPassed": 4,
+      "strictPass": 0,
+      "reportedTokens": 47391,
+      "tokensByArm": {
+        "full": 9531,
+        "retrieval": 9514,
+        "compaction": 18824,
+        "oracle-evidence": 9522
+      }
+    },
+    {
+      "profileId": "reasoning-astra-high",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "readerAnswers": 4,
+      "constraintIdsPassed": 4,
+      "citationAndRevisionPassed": 4,
+      "strictPass": 0,
+      "reportedTokens": 49747,
+      "tokensByArm": {
+        "full": 9996,
+        "retrieval": 9991,
+        "compaction": 19770,
+        "oracle-evidence": 9990
+      }
+    }
+  ],
+  "checks": [
+    {
+      "trialId": "codex-00001",
+      "profileId": "executor-terra-medium",
+      "arm": "full",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:27b7e38db677206c6510d2b7b81725c20d18f69a47b527009c8665464bc23f9a"
+    },
+    {
+      "trialId": "codex-00002",
+      "profileId": "executor-terra-medium",
+      "arm": "retrieval",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:a66f134c3f5295df0fa0f6cda36dbf285902cbc38aaf5148d26fc3b3f64dba89"
+    },
+    {
+      "trialId": "codex-00003",
+      "profileId": "executor-terra-medium",
+      "arm": "compaction",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:27b3244035d71fe084e569fedaf7f3fb80d0087fee2df2676dc462570a41d00e"
+    },
+    {
+      "trialId": "codex-00004",
+      "profileId": "reasoning-sol-medium",
+      "arm": "full",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:6df91d77cb22eb9fb6c92f8e74c23f220626a4e0267b82494082c9da33d12a9d"
+    },
+    {
+      "trialId": "codex-00005",
+      "profileId": "reasoning-sol-medium",
+      "arm": "retrieval",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:ed4c4c822caf86f6de4607ec1e77ff1e0a51a65c877b926288d6fdca99a10013"
+    },
+    {
+      "trialId": "codex-00006",
+      "profileId": "reasoning-sol-medium",
+      "arm": "compaction",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:ef687c3e7dd3d5039b548f90b209b06f9197b7d0180a4a520f6ab0f16041652e"
+    },
+    {
+      "trialId": "codex-00007",
+      "profileId": "reasoning-astra-high",
+      "arm": "full",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:4ea84545f348ad89ad28ca0abdcc354567035f30630513994fc5d3bfc03d131f"
+    },
+    {
+      "trialId": "codex-00008",
+      "profileId": "reasoning-astra-high",
+      "arm": "retrieval",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:7aa0d6496fbb6187d3de2d1528a6a859b918abd502794909d05a42391617d758"
+    },
+    {
+      "trialId": "codex-00009",
+      "profileId": "reasoning-astra-high",
+      "arm": "compaction",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:10007d644e639644d7198e8ab4890be93c3b3755bf6ac3b37bf0de1bee96dd59"
+    },
+    {
+      "trialId": "codex-00010",
+      "profileId": "executor-terra-medium",
+      "arm": "oracle-evidence",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:b8e81adf827da4de55eaf4f02473eacf36bfb5d5b5d5886f765dfd8b5ed4e152"
+    },
+    {
+      "trialId": "codex-00011",
+      "profileId": "reasoning-sol-medium",
+      "arm": "oracle-evidence",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:6976758518eee0eeba2671c5ca04e5506cb724d5451751b1eb343f9635d09a95"
+    },
+    {
+      "trialId": "codex-00012",
+      "profileId": "reasoning-astra-high",
+      "arm": "oracle-evidence",
+      "expectedIds": [
+        "sem-001-c1"
+      ],
+      "actualIds": [
+        "sem-001-c1"
+      ],
+      "exactConstraintIdSet": true,
+      "itemDigest": "sha256:74593dcbe085d9b06c41e3e0b61b00763e6bc309503bcb42b50fa6fe0adbb3b7"
+    }
+  ],
+  "humanReview": "pending",
+  "phaseGate": "Not evaluated"
+}
