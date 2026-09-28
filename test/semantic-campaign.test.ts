@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { digest } from '../src/contracts/canonical.js';
-import { runSemanticCampaign, campaignPreflight, summarizeTrials } from '../src/evaluation/campaign.js';
+import { runSemanticCampaign, campaignPreflight, summarizeTrials, buildReaderRequest, parseReaderAnswer } from '../src/evaluation/campaign.js';
 import { createSandboxMockProvider } from '../src/evaluation/mock-provider.js';
 import type { ModelProvider, ModelRequest } from '../src/providers/types.js';
 
@@ -17,6 +17,23 @@ const config = {
   maxOutputTokens: 512, headroomTokens: 0, authorization: { authorizationId: 'local-pipeline', maxCostMicros: 0 },
   thresholds: { maxFalseAcceptance: 0, maxConstraintLoss: 0, maxInvalidCitations: 0, minimumStrictPassRate: .9, calibrationStatus: 'provisional' },
 };
+
+test('reader boundary rejects abstention prose and requires null without losing available evidence', () => {
+  const wire = { disposition: 'abstain', answer: null, evidenceIds: ['policy'], revisions: [{ sourceId: 'policy', revision: 'r3' }], constraints: ['exact-origin'], confidence: .99 };
+  assert.deepEqual(parseReaderAnswer(wire), { ...wire, revisions: { policy: 'r3' } });
+  assert.throws(() => parseReaderAnswer({ ...wire, answer: 'Cannot identify origins: the list is not supplied.' }), /abstention requires null/);
+  assert.throws(() => parseReaderAnswer({ ...wire, disposition: 'answer' }), /Answer disposition requires text/);
+  assert.throws(() => parseReaderAnswer({ ...wire, disposition: 'answer', answer: '  ' }));
+  assert.equal(parseReaderAnswer({ ...wire, disposition: 'answer', answer: 'Match the complete Origin exactly against the approved list.' }).disposition, 'answer');
+});
+
+test('reader request communicates the disposition contract in both instructions and schema', () => {
+  const request = buildReaderRequest('{}', { model: 'mock', reasoningEffort: 'medium' }, 512);
+  assert.match(request.instructions, /When disposition is abstain, answer must be null/);
+  assert.match(request.instructions, /When disposition is answer, answer must be non-empty supported text/);
+  assert.match(request.instructions, /cite available applicable evidence even when abstaining/);
+  assert.match(JSON.stringify(request.schema), /Exactly null when disposition is abstain/);
+});
 
 test('complete local campaign counts earlier compactions, separates reader controls, preserves immutable evidence and never claims model PASS', async () => {
   const root = mkdtempSync(path.join(tmpdir(), 'semantic-pipeline-'));
