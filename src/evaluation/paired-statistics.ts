@@ -2,8 +2,8 @@ import { canonicalJson } from '../contracts/canonical.js';
 import type { SemanticTrial } from './campaign.js';
 
 export interface Comparator { arm: 'retrieval' | 'compaction'; compactionRounds: number }
-export interface Dimensions { profileId: string; totalTokenBudget: number; distractors: number; taskClass: string }
-export type PairableTrial = Pick<SemanticTrial, 'profileId' | 'totalTokenBudget' | 'distractors' | 'taskClass' | 'arm' | 'repeat' | 'compactionRounds' | 'caseId' | 'trialId' | 'status' | 'score'>;
+export interface Dimensions { profileId: string; totalTokenBudget: number; distractors: number; taskClass: string; visibleByteAllowance?: number }
+export type PairableTrial = Pick<SemanticTrial, 'profileId' | 'totalTokenBudget' | 'distractors' | 'taskClass' | 'arm' | 'repeat' | 'compactionRounds' | 'caseId' | 'trialId' | 'status' | 'score'> & { visibleByteAllowance?: number };
 const key = (value: unknown) => canonicalJson(value);
 const systemBlockedStatuses = ['context-blocked', 'token-budget-blocked', 'model-context-blocked'] as const;
 const mean = (values: readonly number[]): number | null => values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
@@ -23,7 +23,8 @@ export function summarizePairedTrials(trials: readonly PairableTrial[], addition
         (trial.arm !== 'compaction' && trial.compactionRounds !== 0) ||
         (trial.arm === 'compaction' && trial.compactionRounds === 0)) throw new Error('PAIRED_TRIAL_DIMENSION_INVALID');
     comparisonTrials++;
-    const value = { profileId: trial.profileId, totalTokenBudget: trial.totalTokenBudget, distractors: trial.distractors, taskClass: trial.taskClass };
+    const value = { profileId: trial.profileId, totalTokenBudget: trial.totalTokenBudget, distractors: trial.distractors, taskClass: trial.taskClass,
+      ...(trial.visibleByteAllowance === undefined ? {} : { visibleByteAllowance: trial.visibleByteAllowance }) };
     const dimensionKey = key(value), armKey = key([trial.arm, trial.compactionRounds]);
     if (trial.arm !== 'full') comparators.set(armKey, { arm: trial.arm, compactionRounds: trial.compactionRounds });
     let group = dimensions.get(dimensionKey);

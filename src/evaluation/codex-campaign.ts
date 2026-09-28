@@ -15,6 +15,7 @@ import { summarizePairedTrials } from './paired-statistics.js';
 import { SubscriptionBudget } from './subscription-budget.js';
 import { CodexReceiptSchema, validCodexTokens } from './codex-receipt.js';
 import { ExposureRegistry, caseExposureFingerprint } from './exposure.js';
+import { freezeCodexAcceptanceProtocol, preflightFrozenCodexAcceptance, frozenAcceptanceCampaignConfig, type FrozenCodexAcceptanceProtocol } from './acceptance-runner.js';
 
 export interface CodexCampaignCall {
   stage: string; requestPath: string; requestDigest: string; attemptId: string | null;
@@ -25,8 +26,10 @@ export interface CodexTrial {
   arm: ContextArm | 'oracle-evidence'; compactionRounds: number; distractors: number; repeat: number; status: string;
   reportedTokenStop: number; reportedTokens: number; reportedTokenStopExceeded: boolean; latencyMs: number;
   windowDigests: string[]; selectedIds: string[]; retrievedIds: string[]; eligibleIds: string[]; actualDistractors: number;
+  retrievalDiagnostics: { retrieved10Ids: string[]; connectionColdMs: number; warmMs: number[]; cacheScope: 'fresh-sqlite-connection-not-os-cold' } | null;
   canonicalPreserved: boolean; answer: SemanticAnswer | null; answerDigest: string | null; score: SemanticScore | null;
-  gathering: { selected: GatheringEvidenceScore; retrieved: GatheringEvidenceScore } | null;
+  gathering: { selected: GatheringEvidenceScore; retrieved: GatheringEvidenceScore; retrieved10: GatheringEvidenceScore } | null;
+  visibleByteAllowance?: number;
   calls: CodexCampaignCall[];
 }
 function json(file: string, value: unknown): void { writeFileSync(file, JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); }
@@ -35,6 +38,19 @@ function append(file: string, value: unknown): void {
   try { appendFileSync(fd, JSON.stringify(value) + '\n'); fsyncSync(fd); } finally { closeSync(fd); }
 }
 const contains = (parent: string, child: string) => child === parent || child.startsWith(`${parent}${path.sep}`);
+export function neutralAcceptanceHistory(): string {
+  let value = '';
+  for (let n = 0; Buffer.byteLength(value) < 20_480; n++) value += `Administrative observation ${String(n).padStart(5, '0')}: a routine interval was recorded in a synthetic notebook.\n`;
+  return value.slice(0, 20_480);
+}
+/** Frozen, semantic-free placement rotation. The same transformed task/documents are used for every arm and repeat. */
+export function transformAcceptanceInput(task: SemanticCase, documents: readonly SemanticDocument[], orderedCaseIds: readonly string[]) {
+  const sorted = [...orderedCaseIds].sort((a, b) => digest(a).localeCompare(digest(b))), index = sorted.indexOf(task.id);
+  if (index < 0) throw Error('CODEX_ACCEPTANCE_CASE_ORDER_BINDING');
+  const placement = index % 3;
+  return { task: { ...task, history: `${task.history}\n${neutralAcceptanceHistory()}` }, documents: [...documents],
+    placement: ['start', 'middle', 'end'][placement] as 'start' | 'middle' | 'end' };
+}
 function canonicalDestination(file: string): string {
   const absolute = path.resolve(file);
   if (existsSync(absolute)) {
@@ -47,14 +63,34 @@ function canonicalDestination(file: string): string {
 /** Separate measurement route: Codex context and reported usage cannot impersonate API pre-count or billing. */
 export async function runCodexCampaign(options: {
   datasetRoot: string; repositoryRoot: string; outputRoot: string; usageRoot: string; config: unknown;
-  transport: ReturnType<typeof createCodexTransport>; onProgress?: (completed: number, planned: number) => void;
+  transport: ReturnType<typeof createCodexTransport>; frozenAcceptance?: FrozenCodexAcceptanceProtocol; acceptanceProtocolFile?: string;
+  onProgress?: (completed: number, planned: number) => void;
 }) {
   const datasetPath = realpathSync(options.datasetRoot), outputPath = canonicalDestination(options.outputRoot), usagePath = canonicalDestination(options.usageRoot);
   if (existsSync(outputPath)) throw Error('CODEX_OUTPUT_MUST_BE_NEW');
   if (contains(datasetPath, outputPath) || contains(outputPath, datasetPath) || contains(datasetPath, usagePath)
     || contains(usagePath, datasetPath) || contains(outputPath, usagePath) || contains(usagePath, outputPath)) throw Error('CODEX_PATH_OVERLAP');
   options = { ...options, datasetRoot: datasetPath, outputRoot: outputPath, usageRoot: usagePath };
-  const preflight = codexCampaignPreflight(options.datasetRoot, options.config), config = preflight.config;
+  const acceptance = options.frozenAcceptance;
+  if (acceptance) {
+    if (!options.acceptanceProtocolFile) throw Error('CODEX_ACCEPTANCE_PROTOCOL_FILE_REQUIRED');
+    const reread = freezeCodexAcceptanceProtocol(options.acceptanceProtocolFile);
+    if (digest(reread) !== digest(acceptance) || realpathSync(options.repositoryRoot) !== realpathSync(acceptance.protocol.repositoryRoot)
+      || datasetPath !== realpathSync(acceptance.protocol.datasetRoot) || digest(options.config) !== digest(frozenAcceptanceCampaignConfig(acceptance))) throw Error('CODEX_ACCEPTANCE_FREEZE_DRIFT');
+    preflightFrozenCodexAcceptance(options.acceptanceProtocolFile, acceptance, options.usageRoot);
+  }
+  const preflight = codexCampaignPreflight(options.datasetRoot, options.config, acceptance !== undefined), config = preflight.config;
+  if (config.purpose === 'acceptance') {
+    if (!acceptance || acceptance.datasetSealDigest !== preflight.datasetSealDigest
+      || digest(acceptance.protocol.caseIds) !== digest(config.caseIds) || digest(acceptance.protocol.visibleByteAllowances) !== digest(config.visibleByteAllowances)
+      || digest(acceptance.protocol.reader) !== digest(config.profiles[0])) throw Error('CODEX_ACCEPTANCE_FREEZE_BINDING');
+    if (realpathSync(options.usageRoot) !== realpathSync(acceptance.protocol.usageRoot)) throw Error('CODEX_ACCEPTANCE_USAGE_ROOT_BINDING');
+    if ((acceptance.protocol.measurementMode === 'native' && options.transport.assurance !== 'codex-chatgpt')
+      || (acceptance.protocol.measurementMode === 'local-regression' && options.transport.assurance !== 'mock')) throw Error('CODEX_ACCEPTANCE_TRANSPORT_MODE_BINDING');
+  } else if (acceptance) throw Error('CODEX_DEV_ACCEPTANCE_CAPABILITY_DENIED');
+  const stressHistory = config.purpose === 'acceptance' ? neutralAcceptanceHistory() : null;
+  if (stressHistory && (`sha256:${createHash('sha256').update(stressHistory).digest('hex')}` !== 'sha256:24e404677ad2fd8ba247af0a7045555c6c81cc5d07c6677e371a21b3096cc72b'
+    || digest(stressHistory) !== 'sha256:b270da49414b81c4605d5009876d48664c46a29d48ad28fd46fd06c13954a0c0')) throw Error('CODEX_ACCEPTANCE_HISTORY_PIN_DRIFT');
   const configDigest = preflight.configDigest, sourcePins = implementationPins(options.repositoryRoot), implementationDigest = digest(sourcePins);
   const transportId = options.transport.id, assurance = options.transport.assurance, launchPolicyDigest = options.transport.launchPolicyDigest;
   const respond = options.transport.respond, configurationDigest = options.transport.configurationDigest;
@@ -67,13 +103,15 @@ export async function runCodexCampaign(options: {
     return [[compiled, `sha256:${createHash('sha256').update(readFileSync(file)).digest('hex')}`]];
   }));
   const compiledPins = runtimePins(), compiledDigest = digest(compiledPins);
+  const acceptanceDigest = acceptance ? digest(acceptance) : null;
   let driftObserved = false;
   const stable = () => {
     try { if (!(digest(options.config) === configDigest && digest(implementationPins(options.repositoryRoot)) === implementationDigest
       && verifyDatasetSeal(options.datasetRoot) === preflight.datasetSealDigest
       && options.transport.id === transportId && options.transport.assurance === assurance
       && options.transport.launchPolicyDigest === launchPolicyDigest && options.transport.respond === respond
-      && options.transport.configurationDigest === configurationDigest && digest(runtimePins()) === compiledDigest)) driftObserved = true;
+      && options.transport.configurationDigest === configurationDigest && digest(runtimePins()) === compiledDigest
+      && (!acceptance || (digest(acceptance) === acceptanceDigest && digest(freezeCodexAcceptanceProtocol(options.acceptanceProtocolFile!)) === acceptanceDigest)))) driftObserved = true;
     } catch { driftObserved = true; }
     return !driftObserved;
   };
@@ -83,11 +121,15 @@ export async function runCodexCampaign(options: {
   let exposure: ExposureRegistry | undefined;
   const trials: CodexTrial[] = []; let stoppedReason: string | null = null;
   try {
+    // Recheck after acquiring the shared owner lock, closing the race with an earlier campaign.
+    if (acceptance) preflightFrozenCodexAcceptance(options.acceptanceProtocolFile!, acceptance, options.usageRoot);
     exposure = new ExposureRegistry(options.usageRoot);
     mkdirSync(options.outputRoot, { recursive: false, mode: 0o700 });
     for (const name of ['packets', 'requests']) mkdirSync(path.join(options.outputRoot, name));
     const lock = { ...preflight, schemaVersion: 'codex-semantic-lock/1', sourcePins, implementationDigest, compiledPins, compiledDigest,
-      promptDigest: campaignPromptDigest(), transportId, assurance, launchPolicyDigest, createdAt: new Date().toISOString() };
+      promptDigest: campaignPromptDigest(), transportId, assurance, launchPolicyDigest,
+      ...(acceptance ? { frozenAcceptanceDigest: acceptance.freezeDigest, trialManifest: acceptance.trialManifest,
+        historyStress: { bytes: Buffer.byteLength(stressHistory!), rawDigest: `sha256:${createHash('sha256').update(stressHistory!).digest('hex')}`, canonicalDigest: digest(stressHistory!) } } : {}), createdAt: new Date().toISOString() };
     json(path.join(options.outputRoot, 'campaign-lock.json'), lock);
     async function invoke(request: ModelRequest, trial: CodexTrial, stage: string): Promise<CodexResult | null> {
       const requestPath = `requests/${trial.trialId}-${stage}.json`, requestDigest = digest(request);
@@ -95,7 +137,8 @@ export async function runCodexCampaign(options: {
       trial.calls.push(call); json(path.join(options.outputRoot, requestPath), request);
       const blocked = (status: string): null => { call.status = trial.status = status; append(path.join(options.outputRoot, 'calls.jsonl'), call); return null; };
       if (!stable()) { stoppedReason = 'binding-drift'; return blocked(stoppedReason); }
-      if (Math.max(Buffer.byteLength(canonicalJson(request)), Buffer.byteLength(renderCodexRequest(request))) > config.maxVisibleRequestBytes) return blocked('visible-request-blocked');
+      const visibleLimit = trial.visibleByteAllowance ?? config.maxVisibleRequestBytes;
+      if (Math.max(Buffer.byteLength(canonicalJson(request)), Buffer.byteLength(renderCodexRequest(request))) > visibleLimit) return blocked('visible-request-blocked');
       if (trial.reportedTokens >= config.perTrialReportedTokenStop) return blocked('reported-token-stop');
       const snapshot = budget.snapshot();
       if (snapshot.stopReason) { stoppedReason = snapshot.stopReason; return blocked('subscription-budget-stopped'); }
@@ -104,10 +147,10 @@ export async function runCodexCampaign(options: {
       try { call.attemptId = budget.reserve(requestDigest); }
       catch { stoppedReason = 'subscription-budget-admission'; return blocked('subscription-budget-stopped'); }
       // Count APIs are not used. Record exposure BEFORE the first possible CLI request, including uncertain failures.
-      append(path.join(options.outputRoot, 'exposure.jsonl'), { datasetSealDigest: preflight.datasetSealDigest, split: 'dev',
+      append(path.join(options.outputRoot, 'exposure.jsonl'), { datasetSealDigest: preflight.datasetSealDigest, split: config.split,
         caseId: trial.caseId, requestDigest, attemptId: call.attemptId, at: new Date().toISOString(), status: 'possibly-exposed', assurance });
       const exposedTask = cases.find(c => c.id === trial.caseId)!;
-      exposure!.record({ datasetSealDigest: preflight.datasetSealDigest, split: 'dev', caseId: trial.caseId,
+      exposure!.record({ datasetSealDigest: preflight.datasetSealDigest, split: config.split, caseId: trial.caseId,
         family: exposedTask.family, contentFingerprint: caseExposureFingerprint(exposedTask), campaignId: config.campaignId,
         requestDigest, attemptId: call.attemptId, at: new Date().toISOString(), assurance });
       const controller = new AbortController();
@@ -136,17 +179,20 @@ export async function runCodexCampaign(options: {
         call.status = trial.status = 'transport-error'; stoppedReason = call.status; return null;
       } finally { clearTimeout(timer); append(path.join(options.outputRoot, 'calls.jsonl'), call); }
     }
-    async function execute(task: SemanticCase, profile: CodexProfile, arm: CodexTrial['arm'], rounds: number, distractors: number, repeat: number, documents: SemanticDocument[]) {
+    async function execute(task: SemanticCase, profile: CodexProfile, arm: CodexTrial['arm'], rounds: number, distractors: number, repeat: number, documents: SemanticDocument[], visibleByteAllowance?: number) {
       const started = performance.now(), trialId = `codex-${String(trials.length + 1).padStart(5, '0')}`;
       const trial: CodexTrial = { trialId, caseId: task.id, family: task.family, taskClass: task.taskClass, profileId: profile.id, role: profile.role,
         requestedModel: profile.model, arm, compactionRounds: rounds, distractors, repeat, status: 'pending',
         reportedTokenStop: config.perTrialReportedTokenStop, reportedTokens: 0, reportedTokenStopExceeded: false, latencyMs: 0,
         windowDigests: [], selectedIds: [], retrievedIds: [], eligibleIds: [], actualDistractors: 0, canonicalPreserved: false,
-        answer: null, answerDigest: null, score: null, gathering: null, calls: [] };
+        answer: null, answerDigest: null, score: null, gathering: null, retrievalDiagnostics: null, calls: [], ...(visibleByteAllowance === undefined ? {} : { visibleByteAllowance }) };
       try {
-        let p = await prepareContext({ root: path.join(options.outputRoot, 'memory', trialId), documents, task,
-          arm: arm === 'oracle-evidence' ? 'full' : arm, role: profile.role, modelConfigVersion: digest(profile), distractors, topK: config.topK, trialId });
+        const transformed = stressHistory === null ? { task, documents, placement: undefined } : transformAcceptanceInput(task, documents, config.caseIds);
+        let p = await prepareContext({ root: path.join(options.outputRoot, 'memory', trialId), documents: transformed.documents, task: transformed.task,
+          arm: arm === 'oracle-evidence' ? 'full' : arm, role: profile.role, modelConfigVersion: digest(profile), distractors, topK: config.topK, trialId,
+          ...(transformed.placement ? { evidencePlacement: transformed.placement } : {}) });
         trial.selectedIds = p.selected.map(d => d.id); trial.retrievedIds = p.retrievedIds; trial.eligibleIds = p.eligibleIds;
+        trial.retrievalDiagnostics = p.retrievalDiagnostics;
         trial.actualDistractors = documents.filter(d => p.eligibleIds.includes(d.id) && d.distractor).length;
         const canonical = digest({ task: p.window.packet.task, unknowns: p.window.packet.bundle.unknowns });
         const save = () => { trial.windowDigests.push(p.window.windowDigest); json(path.join(options.outputRoot, 'packets', `${trialId}-${p.window.packet.generation}.json`), p.window); };
@@ -171,27 +217,41 @@ export async function runCodexCampaign(options: {
       append(path.join(options.outputRoot, 'trials.jsonl'), trial);
       options.onProgress?.(trials.length, preflight.plannedTrials + preflight.plannedControls);
     }
-    outer: for (let repeat = 0; repeat < config.repeats; repeat++) for (const task of cases) for (const profile of config.profiles) for (const density of config.distractorLimits) {
+    const allowanceValues = config.purpose === 'acceptance' ? config.visibleByteAllowances! : config.distractorLimits;
+    const controlAllowances = config.purpose === 'acceptance' ? config.visibleByteAllowances! : [undefined];
+    // Exactly half receive each density. Sorting the opaque ID hashes is stable and does not inspect task semantics.
+    const acceptanceDensity = new Map(cases.map(c => c.id).sort((a, b) => digest(a).localeCompare(digest(b)))
+      .map((id, index) => [id, index < Math.floor(cases.length / 2) ? 0 : 8] as const));
+    const densityFor = (task: SemanticCase) => config.purpose === 'acceptance' ? acceptanceDensity.get(task.id)! : null;
+    outer: for (let repeat = 0; repeat < config.repeats; repeat++) for (const task of cases) for (const profile of config.profiles) for (const allowance of allowanceValues) {
+      const density = densityFor(task) ?? allowance;
       const arms = [{ arm: 'full' as const, rounds: 0 }, { arm: 'retrieval' as const, rounds: 0 }, ...config.compactionRounds.map(rounds => ({ arm: 'compaction' as const, rounds }))];
       if ((repeat + cases.indexOf(task)) % 2) arms.reverse();
-      for (const a of arms) { await execute(task, profile, a.arm, a.rounds, density, repeat, dataset.documents); if (stoppedReason) break outer; }
+      for (const a of arms) { await execute(task, profile, a.arm, a.rounds, density, repeat, dataset.documents, config.purpose === 'acceptance' ? allowance : undefined); if (stoppedReason) break outer; }
     }
     try {
       const oracle = loadEvaluatorOracle(options.datasetRoot);
       if (!stoppedReason) {
-        controls: for (let repeat = 0; repeat < config.repeats; repeat++) for (const task of cases) for (const profile of config.profiles) {
+        controls: for (let repeat = 0; repeat < config.repeats; repeat++) for (const task of cases) for (const profile of config.profiles) for (const allowance of controlAllowances) {
           const required = oracle.find(g => g.caseId === task.id)!.requiredEvidenceIds;
-          await execute(task, profile, 'oracle-evidence', 0, 0, repeat, dataset.documents.filter(d => required.includes(d.id)));
+          await execute(task, profile, 'oracle-evidence', 0, 0, repeat, dataset.documents.filter(d => required.includes(d.id)), config.purpose === 'acceptance' ? allowance : undefined);
           if (stoppedReason) break controls;
         }
       }
       for (const t of trials) {
         const gold = oracle.find(g => g.caseId === t.caseId)!;
-        if (t.windowDigests.length) t.gathering = { retrieved: scoreGatheringEvidence(gold, t.retrievedIds, dataset.documents), selected: scoreGatheringEvidence(gold, t.selectedIds, dataset.documents) };
+        if (t.windowDigests.length) t.gathering = { retrieved: scoreGatheringEvidence(gold, t.retrievedIds, dataset.documents),
+          retrieved10: scoreGatheringEvidence(gold, t.retrievalDiagnostics?.retrieved10Ids ?? [], dataset.documents), selected: scoreGatheringEvidence(gold, t.selectedIds, dataset.documents) };
         if (t.answer) t.score = scoreSemanticAnswer(gold, t.answer, dataset.documents.filter(d => t.selectedIds.includes(d.id)));
       }
     } catch { stoppedReason = 'evaluator-integrity-error'; }
     const integrityStable = stable(); if (!integrityStable) stoppedReason = 'binding-drift';
+    if (acceptance) {
+      const observed = trials.map(t => ({ caseId: t.caseId, visibleByteAllowance: t.visibleByteAllowance, repeat: t.repeat,
+        arm: t.arm === 'full' ? 'F' : t.arm === 'retrieval' ? 'R' : t.arm === 'oracle-evidence' ? 'G' : t.compactionRounds === 1 ? 'C1' : 'C3', compactionRounds: t.compactionRounds }));
+      const planned = acceptance.trialManifest.map(({ caseId, visibleByteAllowance, repeat, arm, compactionRounds }) => ({ caseId, visibleByteAllowance, repeat, arm, compactionRounds }));
+      if (digest(observed) !== digest(planned.slice(0, observed.length))) { stoppedReason = 'acceptance-manifest-drift'; driftObserved = true; }
+    }
     const paired = summarizePairedTrials(trials.map(t => ({ ...t, totalTokenBudget: t.reportedTokenStop })), ['visible-request-blocked', 'reported-token-stop', 'subscription-budget-stopped']);
     const pairedDiagnostics = { ...paired, schemaVersion: 'codex-paired-diagnostics/1',
       accountingBasis: 'same-post-call-stop-rule-not-equal-hard-provider-token-budget',

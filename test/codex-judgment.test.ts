@@ -10,6 +10,7 @@ import { loadEvaluatorOracle, loadPublicDataset } from '../src/evaluation/datase
 import { SubscriptionBudget } from '../src/evaluation/subscription-budget.js';
 import { ExposureRegistry } from '../src/evaluation/exposure.js';
 import type { JudgmentInput } from '../src/evaluation/semantic-judgment.js';
+import { replayCodexJudgments } from '../src/evaluation/acceptance-evidence.js';
 
 const data = loadPublicDataset('fixtures/semantic-benchmark'), task = data.cases.find(c => c.id === 'sem-001')!;
 const gold = loadEvaluatorOracle('fixtures/semantic-benchmark').find(g => g.caseId === task.id)!;
@@ -53,6 +54,22 @@ test('advisory native runner binds every request/output, charges usage and write
   assert.equal(report.humanReviewed, false); assert.equal(report.releaseEligible, false); assert.equal(report.stoppedReason, null);
   assert.equal(readFileSync(path.join(w.options.outputRoot, 'exposure.jsonl'), 'utf8').trim().split('\n').length, 2);
   await assert.rejects(runCodexJudgments({ ...w.options, transport: f.transport })); assert.equal(f.count(), 2);
+});
+test('judgment replay reconstructs requests and ignores fabricated report pass flags', async t => {
+  const w = setup(t), f = fake();
+  const report = await runCodexJudgments({ ...w.options, transport: f.transport });
+  const replayOptions = { root: w.options.outputRoot, inputs: w.options.inputs, judge: w.options.judge,
+    pinDigest: report.pinDigest, authorization: w.options.authorization };
+  const replay = replayCodexJudgments(replayOptions);
+  assert.equal(replay.complete, true); assert.equal(replay.assessments[0]!.assessment.advisoryPass, true);
+  const reportFile = path.join(w.options.outputRoot, 'report.json');
+  const altered = structuredClone(report); altered.assessments[0]!.assessment.advisoryPass = false;
+  writeFileSync(reportFile, JSON.stringify(altered));
+  assert.throws(() => replayCodexJudgments(replayOptions), /ASSESSMENT_DRIFT/);
+  writeFileSync(reportFile, JSON.stringify(report));
+  const requestFile = path.join(w.options.outputRoot, 'request-0.json');
+  const request = JSON.parse(readFileSync(requestFile, 'utf8')) as { input: string }; request.input += ' '; writeFileSync(requestFile, JSON.stringify(request));
+  assert.throws(() => replayCodexJudgments(replayOptions), /REQUEST_DRIFT/);
 });
 test('unbound or missing usage freezes the authorization; a renamed output cannot retry', async t => {
   const w = setup(t), f = fake(r => { r.requestDigest = digest('forged'); });

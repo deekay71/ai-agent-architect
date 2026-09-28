@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { loadEvaluatorOracle, loadPublicDataset } from '../src/evaluation/dataset.js';
-import { assessSemanticJudgment, buildBatchedJudgmentRequest, buildSemanticJudgmentRequest, parseBatchedJudgments, summarizeCalibration, summarizeCaseQuality, type JudgmentInput, type SemanticJudgment } from '../src/evaluation/semantic-judgment.js';
+import { assessSemanticJudgment, buildBatchedFrozenHoldoutJudgmentRequest, buildBatchedJudgmentRequest, buildFrozenHoldoutJudgmentRequest, buildSemanticJudgmentRequest, parseBatchedJudgments, summarizeCalibration, summarizeCaseQuality, type JudgmentInput, type SemanticJudgment } from '../src/evaluation/semantic-judgment.js';
 
 const data = loadPublicDataset('fixtures/semantic-benchmark'), gold = loadEvaluatorOracle('fixtures/semantic-benchmark');
 const judge = { id: 'independent-sol', model: 'gpt-6-sol', role: 'planner' as const, reasoningEffort: 'medium' as const };
@@ -65,6 +65,14 @@ test('scope and oracle mismatches are rejected before a judgment request', () =>
   const i = structuredClone(input()); i.documents[0]!.path = 'private/secret';
   assert.throws(() => buildSemanticJudgmentRequest(i, judge), /binding mismatch/);
   assert.throws(() => buildSemanticJudgmentRequest({ ...input(), gold: { ...input().gold, caseId: 'other' } }, judge), /binding mismatch/);
+});
+test('frozen holdout serialization remains blind and cannot use the DEV capability', () => {
+  const holdout = structuredClone(input()); holdout.task.split = 'holdout';
+  const frozen = 'sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+  const request = buildFrozenHoldoutJudgmentRequest(holdout, judge, frozen);
+  assert.equal(request.input.includes('acceptableAlternatives'), false);
+  assert.throws(() => buildFrozenHoldoutJudgmentRequest(input(), judge, frozen), /HOLDOUT_ONLY/);
+  assert.equal(buildBatchedFrozenHoldoutJudgmentRequest([holdout], judge, frozen).schemaName, 'evidence_meaning_batch');
 });
 test('missing judgments remain unknown, not agreement or true rejection; synthetic mutations do not create independent samples', () => {
   const r = summarizeCalibration([{ id: 'p', family: 'one', expectedPass: true, actualPass: null }, { id: 'n', family: 'one', expectedPass: false, actualPass: false }]);

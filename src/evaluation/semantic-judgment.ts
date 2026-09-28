@@ -46,6 +46,15 @@ export function buildBatchedJudgmentRequest(inputs: readonly JudgmentInput[], ju
     maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: BATCH_SCHEMA };
 }
 
+/** Six-item maximum preserves bounded native judgment calls while retaining the frozen holdout guard per item. */
+export function buildBatchedFrozenHoldoutJudgmentRequest(inputs: readonly JudgmentInput[], judge: CodexProfile, frozenProtocolDigest: string): ModelRequest {
+  if (!inputs.length || inputs.length > 6 || new Set(inputs.map(i => i.id)).size !== inputs.length) throw Error('JUDGMENT_BATCH_INVALID');
+  const single = inputs.map(i => buildFrozenHoldoutJudgmentRequest(i, judge, frozenProtocolDigest));
+  return { ...single[0]!, instructions: `${INSTRUCTIONS} ${BATCH_INSTRUCTIONS}`,
+    input: canonicalJson({ items: inputs.map((i, n) => ({ id: i.id, ...JSON.parse(single[n]!.input) as object })) }),
+    maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: BATCH_SCHEMA };
+}
+
 export function parseBatchedJudgments(inputs: readonly JudgmentInput[], output: unknown) {
   const parsed = z.strictObject({ judgments: z.array(SemanticJudgmentSchema.extend({ id: text })) }).parse(output);
   if (parsed.judgments.length !== inputs.length || new Set(parsed.judgments.map(j => j.id)).size !== inputs.length
@@ -59,6 +68,18 @@ export function buildSemanticJudgmentRequest(input: JudgmentInput, judge: CodexP
   const i = JudgmentInputSchema.parse(input);
   if (i.task.split !== 'dev') throw Error('SEMANTIC_JUDGMENT_DEV_ONLY');
   if (i.readerModel === judge.model) throw Error('SEMANTIC_SELF_JUDGMENT_DENIED');
+  return judgmentRequest(i, judge);
+}
+
+/** Holdout judging is available only to a frozen protocol caller. Gold remains host-only and is never serialized. */
+export function buildFrozenHoldoutJudgmentRequest(input: JudgmentInput, judge: CodexProfile, frozenProtocolDigest: string): ModelRequest {
+  const i = JudgmentInputSchema.parse(input);
+  if (!/^sha256:[a-f0-9]{64}$/.test(frozenProtocolDigest)) throw Error('SEMANTIC_FROZEN_PROTOCOL_DIGEST_INVALID');
+  if (i.task.split !== 'holdout') throw Error('SEMANTIC_JUDGMENT_HOLDOUT_ONLY');
+  if (i.readerModel === judge.model) throw Error('SEMANTIC_SELF_JUDGMENT_DENIED');
+  return judgmentRequest(i, judge);
+}
+function judgmentRequest(i: JudgmentInput, judge: CodexProfile): ModelRequest {
   return { model: judge.model, reasoningEffort: judge.reasoningEffort, instructions: INSTRUCTIONS,
     input: canonicalJson({ question: i.task.question, constraints: i.task.constraints, unknowns: i.task.unknowns,
       history: i.task.history, documents: i.documents.filter(d => d.lifecycle === 'active' && d.freshness === 'fresh')

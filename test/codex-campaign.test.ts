@@ -72,6 +72,21 @@ function assertNoEvaluatorFields(value: unknown): void {
   else if (value !== null && typeof value === 'object') for (const item of Object.values(value)) assertNoEvaluatorFields(item);
 }
 
+test('DEV preserves every distractor density while running G only once per profile', async () => {
+  const w = workspace(), fake = fakeTransport(), c = config();
+  c.distractorLimits = [0, 8]; c.authorization.maxInvocations = 30;
+  try {
+    const report = await runCodexCampaign({ ...w, datasetRoot, config: c, transport: fake.transport });
+    assert.equal(report.stoppedReason, null);
+    assert.equal(report.comparisonCoverage.observed, report.plannedTrials);
+    assert.equal(report.controlCoverage.observed, report.plannedControls);
+    const main = report.trials.filter(t => t.arm !== 'oracle-evidence');
+    assert.deepEqual([...new Set(main.map(t => t.distractors))].sort(), [0, 8]);
+    assert.equal(report.controlCoverage.observed, c.profiles.length * c.repeats);
+    assert.equal(fake.requests.length, 18);
+  } finally { rmSync(w.root, { recursive: true, force: true }); }
+});
+
 test('one selected dev case and two profiles produce six comparisons then two G controls with ten bound calls', async () => {
   const w = workspace(), c = config(), fake = fakeTransport();
   try {

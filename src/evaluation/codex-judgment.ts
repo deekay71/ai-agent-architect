@@ -1,4 +1,5 @@
 import { appendFileSync, closeSync, fsyncSync, mkdirSync, openSync, readFileSync, writeFileSync } from 'node:fs';
+import { realpathSync } from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { canonicalJson, digest } from '../contracts/canonical.js';
@@ -7,8 +8,10 @@ import { implementationPins } from './campaign.js';
 import { CodexProfileSchema, type CodexProfile } from './codex-config.js';
 import { CodexReceiptSchema, validCodexTokens } from './codex-receipt.js';
 import { SubscriptionBudget, type SubscriptionAuthorization } from './subscription-budget.js';
-import { JudgmentInputSchema, SEMANTIC_RUBRIC_DIGEST, buildBatchedJudgmentRequest, parseBatchedJudgments, type JudgmentInput } from './semantic-judgment.js';
+import { JudgmentInputSchema, SEMANTIC_RUBRIC_DIGEST, buildBatchedJudgmentRequest, buildBatchedFrozenHoldoutJudgmentRequest, parseBatchedJudgments, type JudgmentInput } from './semantic-judgment.js';
 import { ExposureRegistry, caseExposureFingerprint } from './exposure.js';
+import { freezeCodexAcceptanceProtocol, type FrozenCodexAcceptanceProtocol } from './acceptance-runner.js';
+import { loadReviewedCalibration, prepareAcceptanceJudgmentInputs } from './acceptance-evidence.js';
 
 function writeNew(file: string, value: unknown) { writeFileSync(file, JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); }
 function journal(file: string, value: unknown) {
@@ -19,13 +22,35 @@ function journal(file: string, value: unknown) {
 /** Separate advisory evaluator. It never imports human decisions or changes reader/gate evidence. */
 export async function runCodexJudgments(options: { inputs: readonly JudgmentInput[]; judge: CodexProfile;
   repositoryRoot: string; outputRoot: string; usageRoot: string; authorization: SubscriptionAuthorization;
-  transport: CodexTransport; maxRequestBytes: number; timeoutMs: number; onProgress?: (done: number, total: number) => void }) {
+  transport: CodexTransport; maxRequestBytes: number; timeoutMs: number; frozenAcceptance?: { protocolFile: string; frozen: FrozenCodexAcceptanceProtocol; campaignRoot: string };
+  calibrationCheck?: { calibrationRoot: string; reviewPath: string };
+  onProgress?: (done: number, total: number) => void }) {
   const inputs = options.inputs.map(i => JudgmentInputSchema.parse(i)), judge = CodexProfileSchema.parse(options.judge);
   if (!inputs.length || new Set(inputs.map(i => i.id)).size !== inputs.length) throw Error('JUDGMENT_INPUT_COVERAGE');
   if (!Number.isSafeInteger(options.maxRequestBytes) || options.maxRequestBytes < 1024 || options.maxRequestBytes > 1_000_000
     || !Number.isSafeInteger(options.timeoutMs) || options.timeoutMs < 1000 || options.timeoutMs > 120_000) throw Error('JUDGMENT_LIMIT_INVALID');
+  const acceptance = options.frozenAcceptance;
+  const calibration = options.calibrationCheck ? loadReviewedCalibration(options.calibrationCheck) : null;
+  if (acceptance && calibration) throw Error('JUDGMENT_CALIBRATION_ACCEPTANCE_EXCLUSIVE');
+  if (calibration && (digest(inputs) !== digest(calibration.inputs) || inputs.some(i => i.task.split !== 'dev'))) throw Error('JUDGMENT_CALIBRATION_INPUT_BINDING');
+  const acceptanceDigest = acceptance ? digest(acceptance.frozen) : null;
+  let campaignPins: Record<string, string> = {};
+  if (acceptance) {
+    const reread = freezeCodexAcceptanceProtocol(acceptance.protocolFile);
+    if (digest(reread) !== acceptanceDigest || digest(judge) !== digest(acceptance.frozen.protocol.judge)
+      || inputs.some(i => i.task.split !== 'holdout' || !acceptance.frozen.protocol.caseIds.includes(i.task.id))) throw Error('JUDGMENT_ACCEPTANCE_FREEZE_BINDING');
+    if (realpathSync(options.usageRoot) !== realpathSync(acceptance.frozen.protocol.usageRoot)
+      || realpathSync(options.repositoryRoot) !== realpathSync(acceptance.frozen.protocol.repositoryRoot)
+      || options.maxRequestBytes !== 1_000_000 || options.timeoutMs !== acceptance.frozen.protocol.perCallTimeoutMs
+      || digest(options.authorization) !== digest(acceptance.frozen.protocol.authorization)) throw Error('JUDGMENT_ACCEPTANCE_AUTHORIZATION_BINDING');
+    if ((acceptance.frozen.protocol.measurementMode === 'native' && options.transport.assurance !== 'codex-chatgpt')
+      || (acceptance.frozen.protocol.measurementMode === 'local-regression' && options.transport.assurance !== 'mock')) throw Error('JUDGMENT_ACCEPTANCE_TRANSPORT_MODE_BINDING');
+    const prepared = prepareAcceptanceJudgmentInputs(acceptance.campaignRoot, acceptance.frozen);
+    if (digest(prepared.inputs) !== digest(inputs)) throw Error('JUDGMENT_ACCEPTANCE_CAMPAIGN_INPUT_BINDING');
+    campaignPins = prepared.bundle.artifactPins;
+  } else if (inputs.some(i => i.task.split !== 'dev')) throw Error('JUDGMENT_DEV_ONLY');
   const batches = Array.from({ length: Math.ceil(inputs.length / 6) }, (_, n) => inputs.slice(n * 6, n * 6 + 6));
-  const requests = batches.map(batch => buildBatchedJudgmentRequest(batch, judge));
+  const requests = batches.map(batch => acceptance ? buildBatchedFrozenHoldoutJudgmentRequest(batch, judge, acceptance.frozen.freezeDigest) : buildBatchedJudgmentRequest(batch, judge));
   if (requests.length > options.authorization.maxInvocations || requests.some(r =>
     Math.max(Buffer.byteLength(canonicalJson(r)), Buffer.byteLength(renderCodexRequest(r))) > options.maxRequestBytes)) throw Error('JUDGMENT_PREFLIGHT_LIMIT');
   const { transport } = options, { respond, configurationDigest, assurance } = transport;
@@ -41,24 +66,32 @@ export async function runCodexJudgments(options: { inputs: readonly JudgmentInpu
   };
   const pins = runtimePins(), inputDigest = digest(inputs), pinDigest = digest(pins);
   const limitsDigest = digest({ authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs });
+  const calibrationDigest = calibration ? digest(calibration.review) : null, calibrationPins = calibration?.pins ?? {};
   const stable = () => { try { return digest(runtimePins()) === pinDigest && digest(options.inputs) === inputDigest
     && digest({ authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs }) === limitsDigest
     && digest(options.judge) === digest(judge) && transport.respond === respond && transport.configurationDigest === configurationDigest
-    && transport.assurance === assurance && transport.id === 'codex-chatgpt-exec/1' && transport.launchPolicyDigest === CODEX_LAUNCH_POLICY_DIGEST;
+    && transport.assurance === assurance && transport.id === 'codex-chatgpt-exec/1' && transport.launchPolicyDigest === CODEX_LAUNCH_POLICY_DIGEST
+    && (!acceptance || (digest(acceptance.frozen) === acceptanceDigest && digest(freezeCodexAcceptanceProtocol(acceptance.protocolFile)) === acceptanceDigest
+      && Object.entries(campaignPins).every(([file, expected]) => `sha256:${createHash('sha256').update(readFileSync(path.join(acceptance.campaignRoot, file))).digest('hex')}` === expected)))
+    && (!calibration || (digest(loadReviewedCalibration(options.calibrationCheck!).review) === calibrationDigest
+      && digest(loadReviewedCalibration(options.calibrationCheck!).pins) === digest(calibrationPins)));
   } catch { return false; } };
   // Creating the output first rejects reuse before opening the shared authorization ledger.
   mkdirSync(options.outputRoot, { recursive: false, mode: 0o700 });
-  writeNew(path.join(options.outputRoot, 'inputs.json'), inputs);
-  writeNew(path.join(options.outputRoot, 'lock.json'), { schemaVersion: 'codex-semantic-judge-lock/1', pins, pinDigest, inputDigest,
-    rubricDigest: SEMANTIC_RUBRIC_DIGEST, requestDigests: requests.map(digest), judge, assurance,
-    authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs,
-    batchSize: 6, createdAt: new Date().toISOString(), purpose: 'advisory-dev-calibration', releaseEligible: false });
   const budget = new SubscriptionBudget(options.usageRoot, options.authorization);
   let exposure: ExposureRegistry | undefined;
   const assessments: ReturnType<typeof parseBatchedJudgments> = [];
   let stoppedReason: string | null = null;
   try {
     exposure = new ExposureRegistry(options.usageRoot);
+    if (calibration && inputs.some(i => exposure!.inspect(i.task).recordedExposures !== 0)) throw Error('JUDGMENT_CALIBRATION_PREVIOUSLY_EXPOSED');
+    writeNew(path.join(options.outputRoot, 'inputs.json'), inputs);
+    writeNew(path.join(options.outputRoot, 'lock.json'), { schemaVersion: 'codex-semantic-judge-lock/1', pins, pinDigest, inputDigest,
+      rubricDigest: SEMANTIC_RUBRIC_DIGEST, requestDigests: requests.map(digest), judge, assurance, usageRoot: realpathSync(options.usageRoot),
+      authorization: options.authorization, maxRequestBytes: options.maxRequestBytes, timeoutMs: options.timeoutMs,
+      batchSize: 6, createdAt: new Date().toISOString(), purpose: acceptance ? 'advisory-frozen-holdout' : calibration ? 'fresh-independent-calibration' : 'advisory-dev-calibration',
+      ...(acceptance ? { frozenAcceptanceDigest: acceptance.frozen.freezeDigest } : {}),
+      ...(calibration ? { calibrationAdmission: { schemaVersion: 'fresh-calibration-admission/1', reviewDigest: calibrationDigest, preparationPins: calibrationPins, priorExposureMatches: 0 } } : {}), releaseEligible: false });
     for (const [index, request] of requests.entries()) {
       if (!stable()) { stoppedReason = 'binding-drift'; break; }
       const snapshot = budget.snapshot();

@@ -9,16 +9,30 @@ export type ContextArm = 'full' | 'retrieval' | 'compaction';
 export interface PreparedContext {
   window: ContextWindow; authority: ContextAuthority; selected: SemanticDocument[];
   eligibleIds: string[]; retrievedIds: string[]; sourceByRef: Map<string, SemanticDocument>;
+  retrievalDiagnostics: { retrieved10Ids: string[]; connectionColdMs: number; warmMs: number[]; cacheScope: 'fresh-sqlite-connection-not-os-cold' };
 }
 export function eligibleDocuments(documents: readonly SemanticDocument[], task: SemanticCase, distractors: number): SemanticDocument[] {
   let used = 0;
   return documents.filter(d => d.repoId === task.repoId && d.taskClass === task.taskClass && isWithinScope(d.path, task.allowedPaths)
     && d.lifecycle === 'active' && d.freshness === 'fresh' && (!d.distractor || used++ < distractors));
 }
+/** Shared construction lets acceptance recheck every stored generation against the canonical task. */
+export function semanticTaskSpec(task: SemanticCase, modelConfigVersion: string) {
+  const canonical = createContractFixtures().TaskSpec;
+  canonical.taskId = task.id; canonical.repoId = task.repoId; canonical.taskClass = task.taskClass;
+  canonical.allowedPaths = task.allowedPaths; canonical.baseRevision = 'sealed-semantic-candidate'; canonical.goal = task.question;
+  canonical.constraints = task.constraints.map(c => ({ id: c.id, description: c.description, sourceRevision: c.revision,
+    contentHash: digest(c.description), applicability: { taskClasses: [task.taskClass], required: true, reason: 'Canonical public task constraint' } }));
+  canonical.acceptanceCriteria = [{ criterionId: 'evidence-grounded-answer', description: 'Answer only with applicable fresh evidence; preserve constraints and abstain on unresolved evidence.', checkRefs: ['semantic-score', 'independent-human-review'] }];
+  canonical.budget = { schemaVersion: '0.5.0', modelConfigVersion, inputLimit: 1_000_000, outputReserve: 1000, headroom: 1000,
+    tokenAccountingPolicy: { version: 'local-wire-safety/1', tokenizer: 'utf8-bytes/1', includeToolOutputs: true }, taskSpendLimit: { amount: 0, currency: 'USD' } };
+  return canonical;
+}
 /** Corpus-only Memory ingestion. The oracle and answer labels cannot cross this interface. */
 export async function prepareContext(options: {
   root: string; documents: readonly SemanticDocument[]; task: SemanticCase; arm: ContextArm;
   role: 'planner' | 'executor'; modelConfigVersion: string; distractors: number; topK: number; trialId: string;
+  evidencePlacement?: 'start' | 'middle' | 'end';
 }): Promise<PreparedContext> {
   const { task } = options;
   const eligible = eligibleDocuments(options.documents, task, options.distractors);
@@ -34,18 +48,26 @@ export async function prepareContext(options: {
       content: d.text, namespace, provenance: { kind: 'primary', originId: d.id }, purpose: 'knowledge' }, 'fixture-importer');
       sourceByRef.set(n.id, d);
     }
-    const retrieved = memory.query({ namespace, text: task.query, limit: options.topK, expandHops: 0 });
-    const selected = options.arm === 'full' ? eligible : retrieved.map(n => sourceByRef.get(n.id)!);
-    const canonical = createContractFixtures().TaskSpec;
-    canonical.taskId = task.id; canonical.repoId = task.repoId; canonical.taskClass = task.taskClass;
-    canonical.allowedPaths = task.allowedPaths; canonical.baseRevision = 'sealed-semantic-candidate'; canonical.goal = task.question;
-    canonical.constraints = task.constraints.map(c => ({ id: c.id, description: c.description, sourceRevision: c.revision,
-      contentHash: digest(c.description), applicability: { taskClasses: [task.taskClass], required: true, reason: 'Canonical public task constraint' } }));
-    canonical.acceptanceCriteria = [{ criterionId: 'evidence-grounded-answer', description: 'Answer only with applicable fresh evidence; preserve constraints and abstain on unresolved evidence.', checkRefs: ['semantic-score', 'independent-human-review'] }];
-    // A local safety ceiling only. Exact provider counting of the whole wire payload happens before every request.
-    canonical.budget = { schemaVersion: '0.5.0', modelConfigVersion: options.modelConfigVersion,
-      inputLimit: 1_000_000, outputReserve: 1000, headroom: 1000,
-      tokenAccountingPolicy: { version: 'local-wire-safety/1', tokenizer: 'utf8-bytes/1', includeToolOutputs: true }, taskSpendLimit: { amount: 0, currency: 'USD' } };
+    // Measure a fresh read connection separately from warm queries. No OS cache claim is made.
+    const reader = new MemoryStore(options.root, { namespaces: [namespace], principals: [{ id: 'fixture-importer', role: 'memoryPromoter', projectIds: [task.repoId] }] });
+    let retrieved: ReturnType<MemoryStore['query']>;
+    let retrievalDiagnostics: PreparedContext['retrievalDiagnostics'];
+    try {
+      const started = performance.now(), first = reader.query({ namespace, text: task.query, limit: 10, expandHops: 0 });
+      const connectionColdMs = performance.now() - started, warmMs: number[] = [];
+      for (let n = 0; n < 3; n++) { const start = performance.now(); reader.query({ namespace, text: task.query, limit: 10, expandHops: 0 }); warmMs.push(performance.now() - start); }
+      retrieved = reader.query({ namespace, text: task.query, limit: options.topK, expandHops: 0 });
+      retrievalDiagnostics = { retrieved10Ids: first.map(n => sourceByRef.get(n.id)!.id), connectionColdMs, warmMs, cacheScope: 'fresh-sqlite-connection-not-os-cold' };
+    } finally { reader.close(); }
+    let selected = options.arm === 'full' ? eligible : retrieved.map(n => sourceByRef.get(n.id)!);
+    if (options.evidencePlacement) {
+      const evidence = selected.filter(d => !d.distractor), noise = selected.filter(d => d.distractor);
+      if (evidence.length) {
+        const pivot = options.evidencePlacement === 'start' ? 0 : options.evidencePlacement === 'middle' ? Math.ceil(noise.length / 2) : noise.length;
+        selected = [...noise.slice(0, pivot), ...evidence, ...noise.slice(pivot)];
+      }
+    }
+    const canonical = semanticTaskSpec(task, options.modelConfigVersion);
     const scope = { repoId: namespace.repoId, allowedPaths: namespace.allowedPaths, taskClasses: namespace.taskClasses };
     const authority: ContextAuthority = { task: canonical, contextPolicyVersion: 'semantic-context-comparison/1',
       snapshotId: digest(eligible), memoryVersion: memory.memoryVersion,
@@ -57,7 +79,7 @@ export async function prepareContext(options: {
     };
     const window = await buildContextWindow(authority, { windowId: `${options.trialId}:window:0`, agentId: options.role,
       resourceRefs: selected.map(d => ({ ref: d.id, required: true })), history: task.history }, p => selected.find(d => d.id === p.ref)!.text);
-    return { window, authority, selected, eligibleIds: eligible.map(d => d.id), retrievedIds: retrieved.map(n => sourceByRef.get(n.id)!.id), sourceByRef };
+    return { window, authority, selected, eligibleIds: eligible.map(d => d.id), retrievedIds: retrieved.map(n => sourceByRef.get(n.id)!.id), sourceByRef, retrievalDiagnostics };
   } finally { memory.close(); }
 }
 
