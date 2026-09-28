@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "sem015-regression-judgments/1",
+  "campaigns": [
+    {
+      "kind": "policy",
+      "bundleDigest": "sha256:325f69c3a6de0eb46d4572f62b4e72ef50a7a46fb2743110c7c9eb2a23850292",
+      "campaign": {
+        "campaignId": "phase3-sem015-policy-regression-20260928",
+        "reportRawDigest": "sha256:43bab06f82b5995855efc9065fefbac9306bbc5a863dde976ceec067845a0fda",
+        "lockRawDigest": "sha256:2eff3e261c45aaad49c6c23cb82a823504b23ce39340ddf822b53c8e2c25370d",
+        "configDigest": "sha256:7883bb248f8a602c132882a8f4ded9e714e4a37da0aa060e479e49fcbba8b1b5",
+        "datasetSealDigest": "sha256:78f8e37f0dabdcaff23b2f1d62b8281183fc925ac0a9c8d546ad99b06a68d7b9",
+        "implementationDigest": "sha256:5a6266afac753b716c39657b72373f982b4231ca311838dc7fa3858cc4441dec",
+        "compiledDigest": "sha256:3b60eda5634db34b1d011849ea512655b32c9f5d875c962a99ecdf03cd279914",
+        "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+        "promptDigest": "sha256:18465ad900d39dc6a1a62b127dffc06d3fd9c42ee282bd1ec0436b78f6aca7b9",
+        "transportId": "codex-chatgpt-exec/1",
+        "assurance": "codex-chatgpt",
+        "integrityStable": true,
+        "stoppedReason": null
+      }
+    },
+    {
+      "kind": "enumeration",
+      "bundleDigest": "sha256:9eaa31cf359331bcf51483b49d42e04dcac8227a64efa57f3fdafb0460d55cb8",
+      "campaign": {
+        "campaignId": "phase3-sem015-enumeration-regression-20260928",
+        "reportRawDigest": "sha256:9088c35d1e676f9d035d41f3e83b9c251cd6bdf533bd247e264663db2eeec06a",
+        "lockRawDigest": "sha256:fcc03e1b83be64d62252a26422cd00a2dc4450cf3739923fe2f40b38a8d231c7",
+        "configDigest": "sha256:ab4771ef5209b39ae554bc2b4b6a38a1e61fdac1e263b2c75b4d70d6cf7a2743",
+        "datasetSealDigest": "sha256:15a5e9069b291b60d7628a8b536c53dff61a5bb8b66b1b165eaccfd84d721f1d",
+        "implementationDigest": "sha256:5a6266afac753b716c39657b72373f982b4231ca311838dc7fa3858cc4441dec",
+        "compiledDigest": "sha256:3b60eda5634db34b1d011849ea512655b32c9f5d875c962a99ecdf03cd279914",
+        "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+        "promptDigest": "sha256:18465ad900d39dc6a1a62b127dffc06d3fd9c42ee282bd1ec0436b78f6aca7b9",
+        "transportId": "codex-chatgpt-exec/1",
+        "assurance": "codex-chatgpt",
+        "integrityStable": true,
+        "stoppedReason": null
+      }
+    }
+  ],
+  "mapping": [
+    {
+      "kind": "policy",
+      "trialId": "codex-00001",
+      "status": "completed",
+      "judgmentId": "regression-001",
+      "itemDigest": "sha256:c4835028d2761984bf6763c7a554059e71a57ede86275aea8d4e1758798150c6",
+      "answerDigest": "sha256:3c51e3b767570970ecaee161041428f407c3476b910c83daa00c668df39bcb7f",
+      "windowDigest": "sha256:c120aa47e8988a7fa9d500f15e6f8f72c6b59cdd9cc7eae907174dfffccaf0e8"
+    },
+    {
+      "kind": "policy",
+      "trialId": "codex-00002",
+      "status": "completed",
+      "judgmentId": "regression-002",
+      "itemDigest": "sha256:f9896bcef85dfa18bae04e8d08c8831d1a1ab856dd3b1e6804b90bb8757d0a6e",
+      "answerDigest": "sha256:876a09cfaeb150246cbddf070fa7f865cf69b5cff72599e159065a2cd2e7bb2a",
+      "windowDigest": "sha256:c605bcee64b664ff2bf26fc300b5c34fba273ef827614b33b7983a81b77521b7"
+    },
+    {
+      "kind": "policy",
+      "trialId": "codex-00003",
+      "status": "completed",
+      "judgmentId": "regression-003",
+      "itemDigest": "sha256:0785c062ab88e4217bd75736464649fab65f806d86558d2fa28798ac13e8a48f",
+      "answerDigest": "sha256:fbdc8c30c67b1eb0bd303c3b081d691550da12b044a877cd4a133ee02ed74e15",
+      "windowDigest": "sha256:ec586be8dc808a04dcbf5afaab3c7411936e264f5bb286e56d93fa1b6c2bd436"
+    },
+    {
+      "kind": "policy",
+      "trialId": "codex-00004",
+      "status": "completed",
+      "judgmentId": "regression-004",
+      "itemDigest": "sha256:35318695154be29cbcf92f502a8994969a1a10252a83fb2130a8057340076594",
+      "answerDigest": "sha256:e407b557abd0890579b4d264de0f40b60e10f5c8b25f749e4843c9c22d009413",
+      "windowDigest": "sha256:07ebf7a991365cfc27415e7d3f2b6333bc0fe1bb301e75aadece8acf2bfa1bc3"
+    },
+    {
+      "kind": "policy",
+      "trialId": "codex-00005",
+      "status": "completed",
+      "judgmentId": "regression-005",
+      "itemDigest": "sha256:8f4c159a6a9df0636381d8347465e839b3bb08ee080e833b7bd9e1ba82dd3f2a",
+      "answerDigest": "sha256:1d85978dba1ff6a480204a1ddd16ec20e5a1d7827325c70791429e163c139e50",
+      "windowDigest": "sha256:bc6cf73899c3f53e3a59fc816402c1451a712c0f52793dc15733ac348d18b393"
+    },
+    {
+      "kind": "enumeration",
+      "trialId": "codex-00001",
+      "status": "completed",
+      "judgmentId": "regression-006",
+      "itemDigest": "sha256:937240535933ed2bf46aab07074799cdfc5eb6b50b9b14fb97c6c4e6044bc055",
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "windowDigest": "sha256:0d8435d54b26799426545642b2a3ff2cd2c611f8a07caf18d4bcedfda8df8227"
+    },
+    {
+      "kind": "enumeration",
+      "trialId": "codex-00002",
+      "status": "completed",
+      "judgmentId": "regression-007",
+      "itemDigest": "sha256:1380b2c296a03e8d780cad8f2918a0ee3960909185718dd208ba8802647954ca",
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "windowDigest": "sha256:087c0c300a2a9beff6822962cbcdaccb3e508fcd98ed9967763f41fd527efd62"
+    },
+    {
+      "kind": "enumeration",
+      "trialId": "codex-00003",
+      "status": "completed",
+      "judgmentId": "regression-008",
+      "itemDigest": "sha256:bc3780f1b6a956551dcac4b888bac9582240ff4e817ede50b14c9ab9f4355f39",
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "windowDigest": "sha256:bf050395b4634fd6beba3e6641d8dabf9522fd864aed6070837aefa322e26c55"
+    },
+    {
+      "kind": "enumeration",
+      "trialId": "codex-00004",
+      "status": "completed",
+      "judgmentId": "regression-009",
+      "itemDigest": "sha256:0710e00bd350f33e138f1c22ebf773b428e56072b53383f2d39be5cf76feb2aa",
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "windowDigest": "sha256:fa8f0d9114d4c9e6d61006d1cd8c9d0267f5ba57db5515d38379db9b5d18f2eb"
+    },
+    {
+      "kind": "enumeration",
+      "trialId": "codex-00005",
+      "status": "completed",
+      "judgmentId": "regression-010",
+      "itemDigest": "sha256:b42e1b32e8b7c0c981743e78198e3350e438b552d7d822479aa9397194d3e2c9",
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "windowDigest": "sha256:fcdd02656288304a1299522a33c473ad20a0e5ec3891811c63db22c1e8e04f9f"
+    }
+  ],
+  "labels": [
+    {
+      "id": "regression-011",
+      "originalId": "item-041",
+      "expectedPass": true,
+      "partition": "exposed-regression-only"
+    },
+    {
+      "id": "regression-012",
+      "originalId": "item-042",
+      "expectedPass": false,
+      "partition": "exposed-regression-only"
+    },
+    {
+      "id": "regression-013",
+      "originalId": "item-043",
+      "expectedPass": false,
+      "partition": "exposed-regression-only"
+    },
+    {
+      "id": "regression-014",
+      "originalId": "item-092",
+      "expectedPass": false,
+      "partition": "exposed-regression-only"
+    },
+    {
+      "id": "regression-015",
+      "originalId": "item-093",
+      "expectedPass": true,
+      "partition": "exposed-regression-only"
+    },
+    {
+      "id": "regression-016",
+      "originalId": "item-094",
+      "expectedPass": false,
+      "partition": "exposed-regression-only"
+    }
+  ],
+  "inputDigest": "sha256:c75696c343441d18a43cbd9a351ae13d919fb2203b83c0de1b8c6e0b561cc002",
+  "humanReviewed": false,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

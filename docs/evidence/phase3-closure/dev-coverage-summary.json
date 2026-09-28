@@ -1,0 +1,416 @@
+{
+  "schemaVersion": "phase3-dev-closure-summary/1",
+  "reportDigest": "sha256:aa4bc950da771458cba5c12a3e7bd0b54b6daacce0a6b5c2ac092a3b65daf62e",
+  "judgmentReportDigest": "sha256:e6d96dd589ca562a029275658e5a07ad872ca073c3e00f4d314f924f6f6d01e8",
+  "bindingDigest": "sha256:062b1975060b52493bdd52593c5dfc8be501da490d77543ace96da2b8a1fbf29",
+  "source": {
+    "campaignId": "phase3-dev-coverage-20260928",
+    "reportRawDigest": "sha256:953c8ab454b7e428e27557dd51404b4143fd35cad0319e6d21658520314b263a",
+    "lockRawDigest": "sha256:181de39753ea9bd6c5c6a1f6f5fb7a7d7e09b046e36a50c4d3e374557e93d810",
+    "configDigest": "sha256:6fd7ff3ddef6d362a8cd3979a490bbaa4b82459dea4ebebd2c5fbfdbf6603075",
+    "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+    "implementationDigest": "sha256:b9694abf41c3b2ce5f3ab7d7ce00d13a7f6c65a56d8689cd057e65d6433a8fd5",
+    "compiledDigest": "sha256:a99d8cb70c192136bd22e55bedcbf3f647da1d115bfc970b6ad1029e31df3634",
+    "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+    "promptDigest": "sha256:113086082c7c730083cfb1fddf9a3a39a5d7d3d7851da572eea9b4f72ce922c8",
+    "transportId": "codex-chatgpt-exec/1",
+    "assurance": "codex-chatgpt",
+    "integrityStable": true,
+    "stoppedReason": null
+  },
+  "planned": 100,
+  "observed": 100,
+  "validAnswers": 74,
+  "judged": 74,
+  "advisoryPass": 70,
+  "canonicalPreserved": 100,
+  "readerBudget": {
+    "authorizationId": "phase3-dev-coverage-20260928-user-completion",
+    "maxInvocations": 180,
+    "maxReportedTokens": 2000000,
+    "maxWallTimeMs": 3600000,
+    "usedInvocations": 135,
+    "reportedTokens": 1900736,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790579791644,
+    "deadlineAt": 1790583391644,
+    "timeRemainingMs": 2708052
+  },
+  "judgeBudget": {
+    "authorizationId": "phase3-dev-judge-20260928-user-completion",
+    "maxInvocations": 40,
+    "maxReportedTokens": 1200000,
+    "maxWallTimeMs": 3600000,
+    "usedInvocations": 31,
+    "reportedTokens": 325248,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790579791642,
+    "deadlineAt": 1790583391642,
+    "timeRemainingMs": 2353773
+  },
+  "groups": [
+    {
+      "arm": "F",
+      "planned": 20,
+      "observed": 20,
+      "judged": 15,
+      "advisoryPassed": 14,
+      "advisoryFailed": 1,
+      "statuses": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "allPlannedPassFraction": 0.7,
+      "judgedOnlyPassFraction": 0.9333333333333333,
+      "recallAt10": null,
+      "selectedSupportingPrecision": 0.1215686274509804,
+      "requiredSourceCases": 17,
+      "selectedCriticalMisses": 0,
+      "invocations": 15,
+      "reportedTokens": 222245,
+      "compactionInvocations": 0,
+      "compactionReportedTokens": 0,
+      "allTrialLatencyMs": {
+        "median": 6403.429457999999,
+        "p95": 8742.526249999999
+      },
+      "completedTrialLatencyMs": {
+        "median": 7197.205583999981,
+        "p95": 9392.454625000013
+      },
+      "failures": [
+        {
+          "trialId": "codex-00057",
+          "caseId": "sem-015",
+          "assessment": {
+            "inputDigest": "sha256:5a481f30d0b7763c17bd4e0f659deccc05ff426fccf7800e673028ac4eaefbb5",
+            "answerDigest": "sha256:f02c573ed95555dc1711e94c2030b964844d5283cdf1c8716e97d9f1630f4793",
+            "rubricDigest": "sha256:f37c459a66fdd7fd6a464f6a8849c719d94a36668bc53fe1918e09ffab0075c7",
+            "lexical": {
+              "answerCorrect": false,
+              "evidenceSatisfied": true,
+              "revisionCorrect": true,
+              "constraintsPreserved": true,
+              "falseAcceptance": false,
+              "falseRejection": true,
+              "strictPass": false,
+              "reasons": [
+                "answer-missing-or-not-an-accepted-alternative"
+              ]
+            },
+            "judgment": {
+              "addressesQuestion": false,
+              "supportedByEvidence": true,
+              "respectsConstraintMeaning": true,
+              "abstentionAppropriate": true,
+              "rationale": "The document describes exact matching against an approved origin list but does not identify any origins on that list, so the question cannot be answered specifically.",
+              "unsupportedClaims": [],
+              "violatedConstraintIds": []
+            },
+            "judgmentConsistent": true,
+            "hardChecksPass": true,
+            "dispositionCorrect": false,
+            "meaningCorrect": true,
+            "advisoryPass": false,
+            "authority": "model-advisory-only",
+            "phaseGate": "Not evaluated",
+            "releaseEligible": false
+          }
+        }
+      ]
+    },
+    {
+      "arm": "R",
+      "planned": 20,
+      "observed": 20,
+      "judged": 15,
+      "advisoryPassed": 14,
+      "advisoryFailed": 1,
+      "statuses": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "allPlannedPassFraction": 0.7,
+      "judgedOnlyPassFraction": 0.9333333333333333,
+      "recallAt10": 1,
+      "selectedSupportingPrecision": 0.1215686274509804,
+      "requiredSourceCases": 17,
+      "selectedCriticalMisses": 0,
+      "invocations": 15,
+      "reportedTokens": 222217,
+      "compactionInvocations": 0,
+      "compactionReportedTokens": 0,
+      "allTrialLatencyMs": {
+        "median": 6626.3572919999715,
+        "p95": 8016.361417000007
+      },
+      "completedTrialLatencyMs": {
+        "median": 6854.529290999984,
+        "p95": 8292.535708999989
+      },
+      "failures": [
+        {
+          "trialId": "codex-00058",
+          "caseId": "sem-015",
+          "assessment": {
+            "inputDigest": "sha256:2d50211938d193dc4c5230e01a0da37d38714d17a3e90478848aedab55c1643f",
+            "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+            "rubricDigest": "sha256:f37c459a66fdd7fd6a464f6a8849c719d94a36668bc53fe1918e09ffab0075c7",
+            "lexical": {
+              "answerCorrect": false,
+              "evidenceSatisfied": true,
+              "revisionCorrect": true,
+              "constraintsPreserved": true,
+              "falseAcceptance": false,
+              "falseRejection": true,
+              "strictPass": false,
+              "reasons": [
+                "answer-missing-or-not-an-accepted-alternative"
+              ]
+            },
+            "judgment": {
+              "addressesQuestion": false,
+              "supportedByEvidence": true,
+              "respectsConstraintMeaning": true,
+              "abstentionAppropriate": true,
+              "rationale": "The document gives the matching rule but does not provide the approved origins. Abstaining is appropriate.",
+              "unsupportedClaims": [],
+              "violatedConstraintIds": []
+            },
+            "judgmentConsistent": true,
+            "hardChecksPass": true,
+            "dispositionCorrect": false,
+            "meaningCorrect": true,
+            "advisoryPass": false,
+            "authority": "model-advisory-only",
+            "phaseGate": "Not evaluated",
+            "releaseEligible": false
+          }
+        }
+      ]
+    },
+    {
+      "arm": "C1",
+      "planned": 20,
+      "observed": 20,
+      "judged": 14,
+      "advisoryPassed": 14,
+      "advisoryFailed": 0,
+      "statuses": {
+        "completed": 14,
+        "context-blocked": 5,
+        "malformed-answer": 1
+      },
+      "allPlannedPassFraction": 0.7,
+      "judgedOnlyPassFraction": 1,
+      "recallAt10": 1,
+      "selectedSupportingPrecision": 0.1215686274509804,
+      "requiredSourceCases": 17,
+      "selectedCriticalMisses": 0,
+      "invocations": 30,
+      "reportedTokens": 441370,
+      "compactionInvocations": 15,
+      "compactionReportedTokens": 218657,
+      "allTrialLatencyMs": {
+        "median": 11978.951417000004,
+        "p95": 14977.187750000041
+      },
+      "completedTrialLatencyMs": {
+        "median": 12582.942082999973,
+        "p95": 15479.930958000012
+      },
+      "failures": []
+    },
+    {
+      "arm": "C3",
+      "planned": 20,
+      "observed": 20,
+      "judged": 15,
+      "advisoryPassed": 14,
+      "advisoryFailed": 1,
+      "statuses": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "allPlannedPassFraction": 0.7,
+      "judgedOnlyPassFraction": 0.9333333333333333,
+      "recallAt10": 1,
+      "selectedSupportingPrecision": 0.1215686274509804,
+      "requiredSourceCases": 17,
+      "selectedCriticalMisses": 0,
+      "invocations": 60,
+      "reportedTokens": 879733,
+      "compactionInvocations": 45,
+      "compactionReportedTokens": 656997,
+      "allTrialLatencyMs": {
+        "median": 24098.890290999996,
+        "p95": 26186.87150000001
+      },
+      "completedTrialLatencyMs": {
+        "median": 24885.377416000003,
+        "p95": 27607.881749999942
+      },
+      "failures": [
+        {
+          "trialId": "codex-00060",
+          "caseId": "sem-015",
+          "assessment": {
+            "inputDigest": "sha256:83e4b197be9f0a779a110ba0a762cabb4ed8865b7981382586ae941ae8aa0cfa",
+            "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+            "rubricDigest": "sha256:f37c459a66fdd7fd6a464f6a8849c719d94a36668bc53fe1918e09ffab0075c7",
+            "lexical": {
+              "answerCorrect": false,
+              "evidenceSatisfied": true,
+              "revisionCorrect": true,
+              "constraintsPreserved": true,
+              "falseAcceptance": false,
+              "falseRejection": true,
+              "strictPass": false,
+              "reasons": [
+                "answer-missing-or-not-an-accepted-alternative"
+              ]
+            },
+            "judgment": {
+              "addressesQuestion": false,
+              "supportedByEvidence": true,
+              "respectsConstraintMeaning": true,
+              "abstentionAppropriate": true,
+              "rationale": "No eligible document names the approved origins; the matching rule alone cannot identify which origins may call the API.",
+              "unsupportedClaims": [],
+              "violatedConstraintIds": []
+            },
+            "judgmentConsistent": true,
+            "hardChecksPass": true,
+            "dispositionCorrect": false,
+            "meaningCorrect": true,
+            "advisoryPass": false,
+            "authority": "model-advisory-only",
+            "phaseGate": "Not evaluated",
+            "releaseEligible": false
+          }
+        }
+      ]
+    },
+    {
+      "arm": "G",
+      "planned": 20,
+      "observed": 20,
+      "judged": 15,
+      "advisoryPassed": 14,
+      "advisoryFailed": 1,
+      "statuses": {
+        "completed": 15,
+        "context-blocked": 5
+      },
+      "allPlannedPassFraction": 0.7,
+      "judgedOnlyPassFraction": 0.9333333333333333,
+      "recallAt10": null,
+      "selectedSupportingPrecision": 1,
+      "requiredSourceCases": 17,
+      "selectedCriticalMisses": 0,
+      "invocations": 15,
+      "reportedTokens": 135171,
+      "compactionInvocations": 0,
+      "compactionReportedTokens": 0,
+      "allTrialLatencyMs": {
+        "median": 6743.142499999958,
+        "p95": 8230.115499999956
+      },
+      "completedTrialLatencyMs": {
+        "median": 7089.814708000049,
+        "p95": 8614.254292000085
+      },
+      "failures": [
+        {
+          "trialId": "codex-00095",
+          "caseId": "sem-015",
+          "assessment": {
+            "inputDigest": "sha256:937b533680f2d4423f723a778aaa1b74e3b7b8443cb37caf0777631d73bdbae2",
+            "answerDigest": "sha256:f02c573ed95555dc1711e94c2030b964844d5283cdf1c8716e97d9f1630f4793",
+            "rubricDigest": "sha256:f37c459a66fdd7fd6a464f6a8849c719d94a36668bc53fe1918e09ffab0075c7",
+            "lexical": {
+              "answerCorrect": false,
+              "evidenceSatisfied": true,
+              "revisionCorrect": true,
+              "constraintsPreserved": true,
+              "falseAcceptance": false,
+              "falseRejection": true,
+              "strictPass": false,
+              "reasons": [
+                "answer-missing-or-not-an-accepted-alternative"
+              ]
+            },
+            "judgment": {
+              "addressesQuestion": false,
+              "supportedByEvidence": true,
+              "respectsConstraintMeaning": true,
+              "abstentionAppropriate": true,
+              "rationale": "The document specifies exact matching against an approved origin list but does not identify which origins are on that list.",
+              "unsupportedClaims": [],
+              "violatedConstraintIds": []
+            },
+            "judgmentConsistent": true,
+            "hardChecksPass": true,
+            "dispositionCorrect": false,
+            "meaningCorrect": true,
+            "advisoryPass": false,
+            "authority": "model-advisory-only",
+            "phaseGate": "Not evaluated",
+            "releaseEligible": false
+          }
+        }
+      ]
+    }
+  ],
+  "paired": [
+    {
+      "arm": "R",
+      "plannedCases": 20,
+      "pairedJudgedCases": 15,
+      "excludedCases": 5,
+      "meanAdvisoryDelta": 0,
+      "interval": null,
+      "reason": "Authored DEV cases, one repeat, incomplete coverage; descriptive only"
+    },
+    {
+      "arm": "C1",
+      "plannedCases": 20,
+      "pairedJudgedCases": 14,
+      "excludedCases": 6,
+      "meanAdvisoryDelta": 0,
+      "interval": null,
+      "reason": "Authored DEV cases, one repeat, incomplete coverage; descriptive only"
+    },
+    {
+      "arm": "C3",
+      "plannedCases": 20,
+      "pairedJudgedCases": 15,
+      "excludedCases": 5,
+      "meanAdvisoryDelta": 0,
+      "interval": null,
+      "reason": "Authored DEV cases, one repeat, incomplete coverage; descriptive only"
+    }
+  ],
+  "measurementScope": "DEV, Terra medium executor; Sol medium blinded advisory meaning review plus deterministic guards; same authored cases, one repeat, one request-byte allowance",
+  "missing": [
+    "Fresh holdout acceptance",
+    "Frozen owner-approved acceptance protocol",
+    "Actual human review/adjudication",
+    "Multiple context allowances",
+    "Independent cold/warm retrieval timing",
+    "T14 accepted dependency handoff"
+  ],
+  "apiCostMicros": null,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

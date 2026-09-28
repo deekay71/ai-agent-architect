@@ -29,3 +29,9 @@ Fresh holdout is authored and reviewed outside the implementer/tuner context. Da
 Implement and test advisory meaning assessment with deterministic evidence/revision/constraint guards. Preserve the lexical scorer. Run a bounded DEV campaign and synthetic adversarial calibration, recording label provenance as unreviewed until an independent review is obtained. Prepare dependency checks and the T14 trace. These actions do not require claiming the proposal has already been approved.
 
 No automatic Phase 4, Unity, game or active-release expansion follows this proposal. T22 remains required before game execution.
+
+## DEV findings available before freeze
+
+Implementation now b5e08e7 with554 clean tests. Full DEV20 matrix recorded100trials,74valid outputs,25context-blocked,1malformed output. Sem-015 ambiguity required separate versioned policy/enumeration regression, both reviewed before dispatch;10/10native outputs passed the advisory semantic checks. Six affected calibration controls were rechecked6/6 as exposed regression; original108/108agreement is not sufficient independent calibration evidence. See [actual report](phase-3-closure-tests-2026-09-28.md).
+
+Local retrieval feasibility recommends testing topK3 before freeze: it retains required sources on17DEVcases while topK1/2 miss4/1sources. No acceptance threshold or actual matrix value is frozen by that observation. Compaction1/3 used approximately1.99×/3.96×full-arm tokens in the short-context DEVset. The new10-family holdout has independent AI design review and has not been dispatched; its copied DEVsem-015 still needs an explicit derivative revision before freeze, without opening or changing the10freshholdout cases.

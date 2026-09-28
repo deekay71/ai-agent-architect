@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "historical-exposure-backfill/1",
+  "imported": 33,
+  "receipts": [
+    {
+      "campaign": "codex-constraint-id-validation-20260928",
+      "lockDigest": "sha256:b938c5df554e6bd6debb9593230eb2af5d21ee4f22787904f2ad30583af5d9a2",
+      "exposureDigest": "sha256:bd1275678090d71d8753c85b26d229674cf7244e4d46b67b35764a2fcf5acc8a"
+    },
+    {
+      "campaign": "codex-dev-smoke-run1",
+      "lockDigest": "sha256:1a16b1bac61acc18817821f2d5dd24e32beed9077a5a292530d47791a304aa4a",
+      "exposureDigest": "sha256:eba7b297335c4e15078c3cc1ef008384de5b52d437b9b299a8330fc723fdb8ee"
+    },
+    {
+      "campaign": "codex-dev-smoke-run2",
+      "lockDigest": "sha256:7316a61252449f9b37672f08eda0cdd045682f0b8f75f5bb5c9f2a55e44ad47a",
+      "exposureDigest": "sha256:abd9581a8098a766672e41bc67e84f3ff2aa59d013193433d5dd3634e90bb4f7"
+    },
+    {
+      "campaign": "codex-terra-sol-astra-dev-20260928",
+      "lockDigest": "sha256:e90091fd7bc89a3117f397e0c801bc13725d0b418bc56bc9773e070bbc4f1b2b",
+      "exposureDigest": "sha256:6021e208351cf03b027d46eb0197b9c7187ab1abcf19383472bb048f0b264d9b"
+    },
+    {
+      "campaign": "codex-terra-sol-astra-post-fix-20260928",
+      "lockDigest": "sha256:a33ce757bb46f5148fad0afcf7c784129c6703e4a5cf06aaa0cbbfbce9c3ae57",
+      "exposureDigest": "sha256:6a4315f4272bc6a95c979f40ee7448ce37c20cb8cb85428960d5a509123f700a"
+    }
+  ],
+  "historicalFilesUnchanged": true,
+  "limitation": "Only existing native campaign exposure journals were imported; no claim to globally observe activity outside this repository."
+}

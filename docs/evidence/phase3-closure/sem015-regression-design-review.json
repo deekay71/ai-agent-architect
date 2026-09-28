@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "dev-regression-design-ai-review/1",
+  "reviewerId": "phase3_spec_review",
+  "reviewerKind": "ai-model",
+  "reviewedAt": "2026-09-28T07:41:39.659889+00:00",
+  "humanReviewed": false,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "authority": "advisory-design-review-only",
+  "reviewedDesign": {
+    "path": "docs/evidence/phase3-closure/sem015-regression-design.json",
+    "rawDigest": "sha256:06b5d43c4995e218976de51ca45e73f9fefe110cb34ae02a4123afaa8b68cc7d"
+  },
+  "parentDataset": {
+    "root": "fixtures/semantic-benchmark",
+    "sealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+    "sealAndFileHashesVerified": true
+  },
+  "decision": "No actionable finding in the two proposed exposed DEV regression designs. Both are suitable for the bounded validation scope, subject to the predeclared pinned run protocol; this is not acceptance certification.",
+  "derivatives": [
+    {
+      "kind": "policy",
+      "root": ".local/phase3-sem015-policy-dataset-20260928",
+      "datasetId": "infrastructure-dev-sem015-policy-regression-20260928",
+      "sealDigest": "sha256:78f8e37f0dabdcaff23b2f1d62b8281183fc925ac0a9c8d546ad99b06a68d7b9",
+      "sealAndFileHashesVerified": true,
+      "exactScenarioChanges": {
+        "task": [
+          "question"
+        ],
+        "gold": []
+      },
+      "question": "What origin-matching rule must be applied to credentialed browser requests to the internal status API? Describe the rule, not the individual origins in the list.",
+      "expectedAnswerability": "answerable",
+      "documentsByteIdentical": true,
+      "constraintsAndUnknownsCanonicalByteIdentical": true,
+      "otherCasesAndOracleEntriesDeepEqual": true,
+      "historicalOracleByteIdentical": true,
+      "designBeforeAfterMatchesActual": true,
+      "allNonMetadataFileChanges": [
+        "public/cases.json"
+      ],
+      "config": {
+        "path": "fixtures/semantic-config/codex-phase3-sem015-policy.json",
+        "rawDigest": "sha256:387cf00f216286711e74fa22b00c4f26e9a5ec9d56d010a0aacde2bab3513af1",
+        "plannedTrials": 5,
+        "plannedCalls": 9,
+        "arms": [
+          "full",
+          "retrieval",
+          "compaction-1",
+          "compaction-3",
+          "oracle-evidence"
+        ]
+      },
+      "semanticReview": "Sound: public question explicitly requests the supported exact-match rule; retained policy gold is applicable."
+    },
+    {
+      "kind": "enumeration",
+      "root": ".local/phase3-sem015-enumeration-dataset-20260928",
+      "datasetId": "infrastructure-dev-sem015-enumeration-regression-20260928",
+      "sealDigest": "sha256:15a5e9069b291b60d7628a8b536c53dff61a5bb8b66b1b165eaccfd84d721f1d",
+      "sealAndFileHashesVerified": true,
+      "exactScenarioChanges": {
+        "task": [
+          "question"
+        ],
+        "gold": [
+          "acceptableAlternatives",
+          "answerability"
+        ]
+      },
+      "question": "List the specific browser origin URLs currently on the approved allowlist for credentialed requests to the internal status API. The matching policy alone does not identify those URLs.",
+      "expectedAnswerability": "unanswerable",
+      "documentsByteIdentical": true,
+      "constraintsAndUnknownsCanonicalByteIdentical": true,
+      "otherCasesAndOracleEntriesDeepEqual": true,
+      "historicalOracleByteIdentical": false,
+      "designBeforeAfterMatchesActual": true,
+      "allNonMetadataFileChanges": [
+        "evaluator/oracle.json",
+        "public/cases.json"
+      ],
+      "config": {
+        "path": "fixtures/semantic-config/codex-phase3-sem015-enumeration.json",
+        "rawDigest": "sha256:134a5f8c72a56f380e6975d3c5fcdac5929e0fff4a95b52ea4c6c98a8529058a",
+        "plannedTrials": 5,
+        "plannedCalls": 9,
+        "arms": [
+          "full",
+          "retrieval",
+          "compaction-1",
+          "compaction-3",
+          "oracle-evidence"
+        ]
+      },
+      "semanticReview": "Sound: public question explicitly requests concrete origin URLs absent from supplied documents; unanswerable with null abstention is appropriate. Required source/revision and constraint preservation remain enforced."
+    }
+  ],
+  "sharedAuthorization": {
+    "authorizationId": "phase3-sem015-regressions-20260928-user-completion",
+    "maxInvocations": 18,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000
+  },
+  "matrixArithmetic": "Per derivative: full 1 + retrieval 1 + C1 (1 summary + 1 reader) + C3 (3 summaries + 1 reader) + G 1 = 9 calls and 5 trials. Two derivatives total 18 calls and 10 trials. Same authorization ID/caps require the same shared usage ledger. The 18-call ceiling leaves no retry allowance.",
+  "protocolConditions": [
+    "Use distinct new campaign output roots and the same shared subscription usage ledger; keep both declared configurations and all errors/unknowns visible.",
+    "Pin the committed implementation, compiled build, changed reader prompt and the derivative seals before dispatch. Native results from earlier pins remain historical.",
+    "Both datasets are exposed DEV derivatives of the same family; do not count their repeated arms or two questions as independent population samples. Retained inherited holdout entries are unchanged and must not be dispatched.",
+    "Keep old sem-015 dataset, labels, scores, calibration report and malformed output unchanged. New results answer a clarified DEV question and cannot retroactively prove the original question unambiguous.",
+    "Grade the policy answer and explicit-enumeration abstention under their own derivative gold bindings; verify the abstention answer remains null with required source/revision/constraints. Preserve wrong or malformed responses as failures."
+  ],
+  "oldQuestionExtraRun": "Not required for this bounded regression: the pair covers supported answering and warranted abstention. An additional old-question run would measure persistent ambiguity, not resolve historical labels, and would need a separately declared allowance beyond the current 18 calls.",
+  "verificationScope": "Mechanical file/seal/hash and exact-field comparisons plus independent AI semantic review. Inherited holdout records were compared programmatically without displaying or semantically reviewing their content. No provider calls, edits to source/datasets/configs, or tests were run by this reviewer.",
+  "limitations": [
+    "The dataset lock status candidate-new is a schema status, not a claim of fresh independent holdout; manifests explicitly disclose exposed DEV derivation.",
+    "Reported-token caps are local post-call accounting stops, not hard provider output limits.",
+    "No human attestation, model-quality acceptance, Phase 3 PASS or release authority is asserted."
+  ]
+}

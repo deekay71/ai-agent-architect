@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "phase3-native-closure-usage/1",
+  "readerInvocations": 153,
+  "judgeInvocations": 34,
+  "totalInvocations": 187,
+  "reportedTokens": 2515297,
+  "newUnknownAttempts": 0,
+  "newPendingAttempts": 0,
+  "billing": "chatgpt-subscription-quota",
+  "apiCostMicros": null,
+  "backendIdentity": "requested-only",
+  "includes": "Native harness reader/compactor/judge only; excludes root chat and collaboration-agent usage",
+  "historicalUnknownsRemain": 4,
+  "historicalLedgersReset": false
+}

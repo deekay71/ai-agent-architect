@@ -1,0 +1,55 @@
+{
+  "at": "2026-09-28",
+  "sourceCommit": "a9bd7e5",
+  "url": "http://127.0.0.1:4318/",
+  "surface": "Codex in-app browser",
+  "fixture": "phase3-ui-qa-20260928",
+  "memoryVersion": "memory:14",
+  "canonicalUnchanged": true,
+  "before": {
+    "context-windows.json": "3ef247289f2fed1bb7f833a497b2d3cbe43bb3a0ef828bf3a52b63270bae66ba",
+    "report.json": "1c034e30eed4d522195716f022cae3a8e14b8774d2d663b1db8c2efe2a525102",
+    "scope.json": "7bad06843ef1649333f501aa08b73738d575a8f0735a77ff98e5bddb2ac2bc18",
+    "snapshot.json": "c44567557e4a973285804a820137ec60ebbd9daf1a0d8ed450e6bc1f9a2001b9",
+    "canonical/memory.db": "97e13e86d0590065f7821b536aa5982c44de4963abb5f5087defebd5758038bb",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-b2054d7affad02abd0b6f79900c145decf036d248bc874cee153f79a2fff217a.md": "fb27fadf559947def0797a63f5c1b8bab9224ec4f67c4f7d09fad95ff18c6c22",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-27d303f2f224f3c5ae4f2a8ee25fbb66d3a7596532f3efb621874dfb09a51c0f.md": "6b3a144890d22b18d96f4c9129fda7fa50af0b7f98479d25de4df128321523fe",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-3c4aa9da86f4ef58f50e161a466ed69672ba1c6298bea8cee349b6997a72a84e.md": "d4a091bdb0c09e3090f337ec902f20cb2c056a6090cd0150ba5c3e88debde4f0",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-27f6b27f8720f8e54a67876d7296fc146a313605f41394d00b6f33bf68b9f0a7.md": "31159717bbfe2799e01f745cb64e67591bc22fc43be395862f745eaacab769e7",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-4202ce0492e5797ae72f7bffc41dc9a60b70b3bf884bec2a1ae484ae43778a08.md": "cb30f51faa908ae062935fcf7bb2353e6bc934911c17e2dcc3185aad9764fc6b",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-d7a416d94f954dcbca5a6f598bd310fbbd416010ddd6e71b7de1e8956bdaf270.md": "88788243b90e01ead31bd73a9a5291a2ad45b90a9d570cb081bb1d3ffb036003",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-1c1322786cf30a43398348d311c6c010877e3d2d6a1a203a0671b38625daf042.md": "2fde1739e85a7a3462e4508ea3f714dfd0ae707536ab7b5a044281dc4768b43a",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-f0eb48e73f29c833297287d9313b7ed3ba900da4bf199bfe887621004aca096d.md": "1d461858999f64815ebd3f9aff9ab856d346754e2ce19491087429ce5f64ba04"
+  },
+  "after": {
+    "context-windows.json": "3ef247289f2fed1bb7f833a497b2d3cbe43bb3a0ef828bf3a52b63270bae66ba",
+    "report.json": "1c034e30eed4d522195716f022cae3a8e14b8774d2d663b1db8c2efe2a525102",
+    "scope.json": "7bad06843ef1649333f501aa08b73738d575a8f0735a77ff98e5bddb2ac2bc18",
+    "snapshot.json": "c44567557e4a973285804a820137ec60ebbd9daf1a0d8ed450e6bc1f9a2001b9",
+    "canonical/memory.db": "97e13e86d0590065f7821b536aa5982c44de4963abb5f5087defebd5758038bb",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-b2054d7affad02abd0b6f79900c145decf036d248bc874cee153f79a2fff217a.md": "fb27fadf559947def0797a63f5c1b8bab9224ec4f67c4f7d09fad95ff18c6c22",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-27d303f2f224f3c5ae4f2a8ee25fbb66d3a7596532f3efb621874dfb09a51c0f.md": "6b3a144890d22b18d96f4c9129fda7fa50af0b7f98479d25de4df128321523fe",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/wiki/claim-3c4aa9da86f4ef58f50e161a466ed69672ba1c6298bea8cee349b6997a72a84e.md": "d4a091bdb0c09e3090f337ec902f20cb2c056a6090cd0150ba5c3e88debde4f0",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-27f6b27f8720f8e54a67876d7296fc146a313605f41394d00b6f33bf68b9f0a7.md": "31159717bbfe2799e01f745cb64e67591bc22fc43be395862f745eaacab769e7",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-4202ce0492e5797ae72f7bffc41dc9a60b70b3bf884bec2a1ae484ae43778a08.md": "cb30f51faa908ae062935fcf7bb2353e6bc934911c17e2dcc3185aad9764fc6b",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-d7a416d94f954dcbca5a6f598bd310fbbd416010ddd6e71b7de1e8956bdaf270.md": "88788243b90e01ead31bd73a9a5291a2ad45b90a9d570cb081bb1d3ffb036003",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-1c1322786cf30a43398348d311c6c010877e3d2d6a1a203a0671b38625daf042.md": "2fde1739e85a7a3462e4508ea3f714dfd0ae707536ab7b5a044281dc4768b43a",
+    "canonical/knowledge/6460fd1b181b75f6c48b1bba457ca648d42de6f20fdf31f07948fa2566256583/raw/source-f0eb48e73f29c833297287d9313b7ed3ba900da4bf199bfe887621004aca096d.md": "1d461858999f64815ebd3f9aff9ab856d346754e2ce19491087429ce5f64ba04"
+  },
+  "observations": [
+    "14 records and14directed edges initially visible",
+    "Search Compile returns3records and1relation",
+    "Full note opens with claim/source status and backlinks area",
+    "Context trace lists3agentwindows;criticwindow shows2loaded sources,8072UTF8byteunits andproviderusageunknown",
+    "Wheel changes visibleSVGtransform scale1to1.1",
+    "Localgraph displays8nodes9relations;Fit remainsavailable",
+    "ProposalJSON includes expectedMemoryVersion memory:14,target context:window:critic-1,status proposed,promotionAuthorized false",
+    "Copy fallback verified by parsingclipboard JSON from generatedtestproposal"
+  ],
+  "downloadStatus": "Not confirmed: download event timed out in IAB; visible fallback JSON and copy confirmed",
+  "limitations": [
+    "Fixture browser smoke, not production rollout",
+    "No screenshotfile persisted; screenshot was visually inspected in conversation",
+    "Drag/pan and responsive layouts not rerun in this smoke"
+  ]
+}

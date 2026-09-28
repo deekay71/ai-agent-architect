@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "independent-ai-holdout-label-review/1",
+  "reviewerId": "codex:phase3_standards_review",
+  "sealDigest": "sha256:e8fdedb9542d1925adbb89d0e0cc503219d55ab0b31a88d49a7c2ac3dc0e5806",
+  "status": "pass-ai-design-review",
+  "humanReviewed": false,
+  "releaseEligible": false,
+  "phaseGate": "Not evaluated",
+  "modelCalls": 0,
+  "sealedFilesChanged": false,
+  "reviewedHoldoutCases": 10,
+  "devCasesPreserved": 20,
+  "sourceProvenancePins": "pass",
+  "sealIntegrity": "pass",
+  "issueCount": 0,
+  "affectedCaseCount": 0,
+  "issueTypes": [],
+  "coverageLabels": [
+    "answerable",
+    "unanswerable",
+    "conflict",
+    "false-premise",
+    "unsupported-execution",
+    "exact-interface",
+    "source-version",
+    "revocation",
+    "multi-source-composition",
+    "units-and-calculation"
+  ],
+  "answerabilityCounts": {
+    "answerable": 6,
+    "unanswerable": 2,
+    "conflict": 2
+  },
+  "eligibleFreshDistractorCount": 80,
+  "registeredExposureMatches": 0,
+  "nativeRegistryRowsInspected": 190,
+  "semanticDomainFamilySeparation": "pass",
+  "reviewPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/phase3-fresh-holdout-design-20260928-r1/evaluator/ai-label-review.json",
+  "coordinatorContentDisclosure": false,
+  "parentSealDigest": "sha256:b1acf4f7b29fc89a1de1494f3465d7969611498ff530292dde18f3ee32dc18f6",
+  "resolvedIssueCount": 1,
+  "resolvedAffectedCaseCount": 4,
+  "unintendedSealedChanges": 0,
+  "parentSealPreserved": true,
+  "documentsAndOracleByteIdenticalToParent": true,
+  "blockers": [
+    "protocol-freeze-and-owner-scope-decision-pending",
+    "ai-review-is-not-human-attestation"
+  ],
+  "distractorInterpretation": "Contextually related non-gold support notes; not uniformly adversarial or wholly unrelated."
+}

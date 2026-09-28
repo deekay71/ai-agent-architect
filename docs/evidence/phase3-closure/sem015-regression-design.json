@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "dev-regression-design/1",
+  "changes": [
+    {
+      "kind": "policy",
+      "root": ".local/phase3-sem015-policy-dataset-20260928",
+      "originalSeal": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+      "newSeal": "sha256:78f8e37f0dabdcaff23b2f1d62b8281183fc925ac0a9c8d546ad99b06a68d7b9",
+      "before": {
+        "task": {
+          "id": "sem-015",
+          "family": "origin-allowlist",
+          "split": "dev",
+          "question": "Which browser origins may call the internal status API with credentials?",
+          "query": "status API credentials browser origin allowlist",
+          "repoId": "infra-lab",
+          "allowedPaths": [
+            "infrastructure/origin-allowlist"
+          ],
+          "taskClass": "infrastructure.operations",
+          "constraints": [
+            {
+              "id": "sem-015-c1",
+              "description": "Do not use wildcard or suffix matching for credentialed origins.",
+              "revision": "policy-r1"
+            }
+          ],
+          "history": "An operator is reviewing the origin allowlist infrastructure procedure. No operation has been dispatched.",
+          "unknowns": [
+            {
+              "id": "sem-015-u1",
+              "description": "No live production operation has been observed during this review.",
+              "critical": false
+            }
+          ]
+        },
+        "gold": {
+          "caseId": "sem-015",
+          "requiredEvidenceIds": [
+            "doc-015-a"
+          ],
+          "acceptableAlternatives": [
+            "Allow credentialed requests only when the complete origin exactly matches the approved list.",
+            "Require an exact full-origin match in the approved allowlist for credentialed requests."
+          ],
+          "answerability": "answerable",
+          "expectedRevision": {
+            "doc-015-a": "r3"
+          },
+          "expectedConstraints": [
+            "sem-015-c1"
+          ]
+        }
+      },
+      "after": {
+        "task": {
+          "id": "sem-015",
+          "family": "origin-allowlist",
+          "split": "dev",
+          "question": "What origin-matching rule must be applied to credentialed browser requests to the internal status API? Describe the rule, not the individual origins in the list.",
+          "query": "status API credentials browser origin allowlist",
+          "repoId": "infra-lab",
+          "allowedPaths": [
+            "infrastructure/origin-allowlist"
+          ],
+          "taskClass": "infrastructure.operations",
+          "constraints": [
+            {
+              "id": "sem-015-c1",
+              "description": "Do not use wildcard or suffix matching for credentialed origins.",
+              "revision": "policy-r1"
+            }
+          ],
+          "history": "An operator is reviewing the origin allowlist infrastructure procedure. No operation has been dispatched.",
+          "unknowns": [
+            {
+              "id": "sem-015-u1",
+              "description": "No live production operation has been observed during this review.",
+              "critical": false
+            }
+          ]
+        },
+        "gold": {
+          "caseId": "sem-015",
+          "requiredEvidenceIds": [
+            "doc-015-a"
+          ],
+          "acceptableAlternatives": [
+            "Allow credentialed requests only when the complete origin exactly matches the approved list.",
+            "Require an exact full-origin match in the approved allowlist for credentialed requests."
+          ],
+          "answerability": "answerable",
+          "expectedRevision": {
+            "doc-015-a": "r3"
+          },
+          "expectedConstraints": [
+            "sem-015-c1"
+          ]
+        }
+      },
+      "documentsUnchanged": true,
+      "otherCasesUnchanged": true,
+      "sourceInputDigest": "sha256:750b3342f834c7c60009afff34fe7ced80bb70e58388cec4151db2cc52405456"
+    },
+    {
+      "kind": "enumeration",
+      "root": ".local/phase3-sem015-enumeration-dataset-20260928",
+      "originalSeal": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+      "newSeal": "sha256:15a5e9069b291b60d7628a8b536c53dff61a5bb8b66b1b165eaccfd84d721f1d",
+      "before": {
+        "task": {
+          "id": "sem-015",
+          "family": "origin-allowlist",
+          "split": "dev",
+          "question": "Which browser origins may call the internal status API with credentials?",
+          "query": "status API credentials browser origin allowlist",
+          "repoId": "infra-lab",
+          "allowedPaths": [
+            "infrastructure/origin-allowlist"
+          ],
+          "taskClass": "infrastructure.operations",
+          "constraints": [
+            {
+              "id": "sem-015-c1",
+              "description": "Do not use wildcard or suffix matching for credentialed origins.",
+              "revision": "policy-r1"
+            }
+          ],
+          "history": "An operator is reviewing the origin allowlist infrastructure procedure. No operation has been dispatched.",
+          "unknowns": [
+            {
+              "id": "sem-015-u1",
+              "description": "No live production operation has been observed during this review.",
+              "critical": false
+            }
+          ]
+        },
+        "gold": {
+          "caseId": "sem-015",
+          "requiredEvidenceIds": [
+            "doc-015-a"
+          ],
+          "acceptableAlternatives": [
+            "Allow credentialed requests only when the complete origin exactly matches the approved list.",
+            "Require an exact full-origin match in the approved allowlist for credentialed requests."
+          ],
+          "answerability": "answerable",
+          "expectedRevision": {
+            "doc-015-a": "r3"
+          },
+          "expectedConstraints": [
+            "sem-015-c1"
+          ]
+        }
+      },
+      "after": {
+        "task": {
+          "id": "sem-015",
+          "family": "origin-allowlist",
+          "split": "dev",
+          "question": "List the specific browser origin URLs currently on the approved allowlist for credentialed requests to the internal status API. The matching policy alone does not identify those URLs.",
+          "query": "status API credentials browser origin allowlist",
+          "repoId": "infra-lab",
+          "allowedPaths": [
+            "infrastructure/origin-allowlist"
+          ],
+          "taskClass": "infrastructure.operations",
+          "constraints": [
+            {
+              "id": "sem-015-c1",
+              "description": "Do not use wildcard or suffix matching for credentialed origins.",
+              "revision": "policy-r1"
+            }
+          ],
+          "history": "An operator is reviewing the origin allowlist infrastructure procedure. No operation has been dispatched.",
+          "unknowns": [
+            {
+              "id": "sem-015-u1",
+              "description": "No live production operation has been observed during this review.",
+              "critical": false
+            }
+          ]
+        },
+        "gold": {
+          "caseId": "sem-015",
+          "requiredEvidenceIds": [
+            "doc-015-a"
+          ],
+          "acceptableAlternatives": [],
+          "answerability": "unanswerable",
+          "expectedRevision": {
+            "doc-015-a": "r3"
+          },
+          "expectedConstraints": [
+            "sem-015-c1"
+          ]
+        }
+      },
+      "documentsUnchanged": true,
+      "otherCasesUnchanged": true,
+      "sourceInputDigest": "sha256:750b3342f834c7c60009afff34fe7ced80bb70e58388cec4151db2cc52405456"
+    }
+  ],
+  "humanReviewed": false,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

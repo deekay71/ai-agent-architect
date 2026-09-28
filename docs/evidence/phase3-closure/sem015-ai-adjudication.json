@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "semantic-case-ai-adjudication/1",
+  "caseId": "sem-015",
+  "reviewedAt": "2026-09-28T07:38:41.923810+00:00",
+  "reviewerId": "phase3_spec_review",
+  "reviewerKind": "ai-model",
+  "authority": "advisory-only",
+  "humanReviewed": false,
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "scope": "Independent read-only review of sem-015 public task, applicable documents, historical oracle and five bound native outputs. Only this adjudication report was written; no model calls, source/build changes, historical relabeling or fresh holdout access.",
+  "campaign": {
+    "campaignId": "phase3-dev-coverage-20260928",
+    "reportRawDigest": "sha256:953c8ab454b7e428e27557dd51404b4143fd35cad0319e6d21658520314b263a",
+    "lockRawDigest": "sha256:181de39753ea9bd6c5c6a1f6f5fb7a7d7e09b046e36a50c4d3e374557e93d810",
+    "configDigest": "sha256:6fd7ff3ddef6d362a8cd3979a490bbaa4b82459dea4ebebd2c5fbfdbf6603075",
+    "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+    "implementationDigest": "sha256:b9694abf41c3b2ce5f3ab7d7ce00d13a7f6c65a56d8689cd057e65d6433a8fd5",
+    "compiledDigest": "sha256:a99d8cb70c192136bd22e55bedcbf3f647da1d115bfc970b6ad1029e31df3634",
+    "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+    "promptDigest": "sha256:113086082c7c730083cfb1fddf9a3a39a5d7d3d7851da572eea9b4f72ce922c8",
+    "transportId": "codex-chatgpt-exec/1",
+    "assurance": "codex-chatgpt",
+    "integrityStable": true,
+    "stoppedReason": null
+  },
+  "bundleDigest": "sha256:d76ea3e5968ef9068f5ea2e834006d0714a375317c0a0ef4f762e8c4f974a5e7",
+  "judgmentInputsDigest": "sha256:74c16f3ae596584e5676e04e682caa6b982959689bcc13334624304ae73941b4",
+  "evidence": [
+    {
+      "path": "fixtures/semantic-benchmark/public/cases.json",
+      "rawDigest": "sha256:2fe503c4cb99a53cfefe1dd603e1fb1f4828d9711d678eb654e371a1ffff16e3"
+    },
+    {
+      "path": "fixtures/semantic-benchmark/public/documents.json",
+      "rawDigest": "sha256:f8285875f8e7a7414514db434a931002f0f0780c4e1dfd1bf41af0c8dc0c0b41"
+    },
+    {
+      "path": "fixtures/semantic-benchmark/evaluator/oracle.json",
+      "rawDigest": "sha256:d440f4e94bc0c281f7a5f3ac4b32b72ee87ee679a5064f4b1a2d36c51bfabc5b"
+    },
+    {
+      "path": ".local/phase3-dev-outputs-judgment-inputs.json",
+      "rawDigest": "sha256:01d5c33bd3b8095037f93922119cfdee0b19540b2849db4d86b13e5c8b3847b0"
+    },
+    {
+      "path": "docs/evidence/phase3-closure/actual-output-judgment-bindings.json",
+      "rawDigest": "sha256:6d1ddc97952ee22b442b4e6f5eebe77b17461bbd9f1194b4b4a1617715b73a31"
+    },
+    {
+      "path": ".local/phase3-dev-coverage-20260928/report.json",
+      "rawDigest": "sha256:953c8ab454b7e428e27557dd51404b4143fd35cad0319e6d21658520314b263a"
+    },
+    {
+      "path": ".local/phase3-dev-coverage-20260928/requests/codex-00059-reader.json",
+      "rawDigest": "sha256:702b99d0b73d5583e12aa8ba769ad18e319ebde8f4f94f20135614261225a2f3"
+    },
+    {
+      "path": "fixtures/semantic-calibration/dev-controls.json",
+      "rawDigest": "sha256:9ed5b3555411f9ad8f6b5d33ce7aeda8e301eddafc876f8e6b004c9e834760d8"
+    },
+    {
+      "path": "fixtures/semantic-calibration/dev-labels.json",
+      "rawDigest": "sha256:f5c7e5aa27c68ad677ef4d41d7c5e01cfbf87050ef726aa6b49bf694a604e85b"
+    }
+  ],
+  "question": "Which browser origins may call the internal status API with credentials?",
+  "sourceFinding": {
+    "sourceId": "doc-015-a",
+    "revision": "r3",
+    "finding": "The source defines complete-Origin exact matching against an approved list and prohibits wildcard/suffix matching. It contains no concrete approved origins. Other supplied sem-015 documents do not supply that list."
+  },
+  "datasetAdjudication": {
+    "classification": "ambiguous-question-versus-policy-gold",
+    "finding": "The question can ask for concrete allowed origins or for the general authorization rule. Historical gold marks answerable and accepts the rule; a concrete-origin reading requires abstention. Treat the disagreement as a DEV dataset defect needing versioned clarification, not conclusive evidence of reader semantic failure or judge error. The G control also abstains with the sole gold source, so missing retrieval evidence is not an adequate explanation.",
+    "historicalScores": "Preserve all original scores, denominators, attempts and binding digests. This advisory adjudication does not turn historical failures into passes."
+  },
+  "validOutputs": [
+    {
+      "judgmentId": "observed-049",
+      "trialId": "codex-00057",
+      "arm": "full",
+      "compactionRounds": 0,
+      "answerDigest": "sha256:f02c573ed95555dc1711e94c2030b964844d5283cdf1c8716e97d9f1630f4793",
+      "requestDigest": "sha256:32b6c3f7bde52569c12efcc1660082ca3c32ef316d2b49a57edc55589ac9f8a9",
+      "windowDigest": "sha256:39138bfc67076105ce283a7d14510a872a29c78b920155d421f1303829ddebc2",
+      "outputContract": "valid abstain with null answer",
+      "historicalStrictPass": false,
+      "aiAdjudication": "Defensible abstention if the question asks for concrete origin values; the supplied source gives only the matching policy. No reader rationale is inferred from a null answer."
+    },
+    {
+      "judgmentId": "observed-050",
+      "trialId": "codex-00058",
+      "arm": "retrieval",
+      "compactionRounds": 0,
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "requestDigest": "sha256:7c2b941103ba0bc82b2c702bae75051ee534b99b78ba1f9e66e17a5fca2bdc06",
+      "windowDigest": "sha256:c1463fc75ee9d4cf3ae29c656aaf54dd6305e9b9205d71cb9860a4eee4055b8f",
+      "outputContract": "valid abstain with null answer",
+      "historicalStrictPass": false,
+      "aiAdjudication": "Defensible abstention if the question asks for concrete origin values; the supplied source gives only the matching policy. No reader rationale is inferred from a null answer."
+    },
+    {
+      "judgmentId": "observed-051",
+      "trialId": "codex-00060",
+      "arm": "compaction",
+      "compactionRounds": 3,
+      "answerDigest": "sha256:0de4fa8e3a45b05430d877bdd9e53c6d924e75503309824d8865be01fab5de03",
+      "requestDigest": "sha256:9165a1b0c3fb2586359a96f1d5a94a66224dd7af705efbe504200ec0a925f33f",
+      "windowDigest": "sha256:934f705d5f924398b9851fe1808fb0bee8ba109401c1f82de4b3b9f192fccbb7",
+      "outputContract": "valid abstain with null answer",
+      "historicalStrictPass": false,
+      "aiAdjudication": "Defensible abstention if the question asks for concrete origin values; the supplied source gives only the matching policy. No reader rationale is inferred from a null answer."
+    },
+    {
+      "judgmentId": "observed-072",
+      "trialId": "codex-00095",
+      "arm": "oracle-evidence",
+      "compactionRounds": 0,
+      "answerDigest": "sha256:f02c573ed95555dc1711e94c2030b964844d5283cdf1c8716e97d9f1630f4793",
+      "requestDigest": "sha256:c22a79c97eb94adfb5ef7e699046202ca6841841efefde632b36843b2847d82d",
+      "windowDigest": "sha256:bb7fd717fd1a5a1fe0c2d5b8f4717666f82fa2bfccfa16ee7dfd7eba399d0a03",
+      "outputContract": "valid abstain with null answer",
+      "historicalStrictPass": false,
+      "aiAdjudication": "Defensible abstention if the question asks for concrete origin values; the supplied source gives only the matching policy. No reader rationale is inferred from a null answer."
+    }
+  ],
+  "malformedOutput": {
+    "trialId": "codex-00059",
+    "arm": "compaction",
+    "compactionRounds": 1,
+    "status": "malformed-answer",
+    "requestDigest": "sha256:5bb91f2b95fba982251c34e880c2d85da6526dd56646d574b76f402e8db781dc",
+    "rawOutputDigest": "sha256:79d6f9f78a4e4f82ec4d15b43acee9b4e0ea4a8df1f99386467de4f8e3ec160a",
+    "rawOutput": {
+      "answer": "Cannot determine the specific browser origins from the supplied evidence: it states that credentialed status-API requests are allowed only when the complete Origin header exactly matches the approved origin list, but does not provide that list.",
+      "confidence": 0.99,
+      "constraints": [
+        "sem-015-c1"
+      ],
+      "disposition": "abstain",
+      "evidenceIds": [
+        "doc-015-a"
+      ],
+      "revisions": [
+        {
+          "revision": "r3",
+          "sourceId": "doc-015-a"
+        }
+      ]
+    },
+    "aiAdjudication": "The prose correctly notes the absent concrete allowlist, but disposition=abstain with a non-null answer violates the reader contract. Preserve malformed-answer and exclusion from valid judgment inputs; do not coerce or salvage this output. This failure is independent of dataset ambiguity.",
+    "requestBoundaryObservation": "The dispatched JSON schema permits string or null independently of disposition, and its instructions do not explicitly require answer=null for abstain. Strengthen the next version of the reader instructions and, where supported, the wire schema without weakening the deterministic parser."
+  },
+  "proposedVersionedDevCorrection": {
+    "status": "proposal-only-not-applied",
+    "derivation": "Exposed DEV revision of sem-015; preserve origin-allowlist family and parent dataset provenance. Never call this fresh holdout.",
+    "policyCase": {
+      "suggestedCaseId": "sem-015-policy-v2",
+      "question": "What matching rule must the internal status API apply to the Origin header before allowing a credentialed browser request?",
+      "answerability": "answerable",
+      "sourceChange": "None; retain doc-015-a r3.",
+      "expectedMeaning": "Require an exact match of the complete Origin header in the approved origin list; deny unlisted origins; do not use wildcard or suffix matching.",
+      "constraintChange": "None."
+    },
+    "companionMissingListCase": {
+      "suggestedCaseId": "sem-015-origin-values-v2",
+      "question": "What are the exact browser origin strings in the currently approved allowlist for credentialed requests to the internal status API?",
+      "answerability": "unanswerable",
+      "expectedDisposition": "abstain",
+      "answer": null,
+      "rationale": "Concrete origin values are absent. Keep source and constraints; declare the missing list in the versioned case metadata if required by the canonical unknown policy. Any resulting admission block stays visible rather than being bypassed."
+    }
+  },
+  "protocolActions": [
+    "Allow the currently running judge to finish on its existing pins; do not mutate its source, build, inputs, rubric or old dataset.",
+    "Archive this disagreement alongside the completed campaign. Keep sem-015 in the historical denominator and retain codex-00059 as malformed-answer.",
+    "After the current run ends, author a new exposed DEV dataset/protocol version with parent seal, corrected question, independently reviewed labels and a new seal; keep the historical dataset/oracle unchanged.",
+    "Version any reader prompt/schema fix, rebuild, pin implementation/build/prompt/config and rerun a predeclared DEV scope covering both clarified questions and relevant contract controls. Do not replace historical failed attempts with selected reruns.",
+    "Record calibration/output adjudication as AI review. Owner scope approval, human requirements and fresh holdout acceptance remain separate; no phase or release authority follows."
+  ],
+  "requiredChecks": [
+    "Contract regression: abstain with text is rejected; abstain with null and valid bindings is accepted structurally; answer with null is rejected. Verify the rendered native request explicitly describes the disposition/answer relation.",
+    "Dataset/label regression: clarified policy question plus doc-015-a is answerable; exact-origin question with no list is unanswerable. Fabricated origin values, wildcard/suffix rules, missing evidence and wrong revisions cannot pass.",
+    "Seal/provenance regression: new exposed DEV version has a new seal and retained family/parent provenance; original dataset, oracle, report, scores and attempt journals keep their recorded digests.",
+    "Coverage regression: all original sem-015 trials remain reported, the malformed trial remains unjudged rather than passing, and any context-blocked companion trial remains visible.",
+    "Run the corrected DEV checks across declared arms and the gold-evidence control with predeclared repeats; report new results separately and retain uncertainty from dependent variants."
+  ],
+  "limitations": [
+    "Adjudication evaluates evidence meaning and contract validity; it cannot reconstruct the rationale for null abstentions.",
+    "No human attestation, Phase 3 PASS, release approval or fresh holdout result is asserted."
+  ],
+  "calibrationImpact": {
+    "affectedControlIds": [
+      "item-041",
+      "item-042",
+      "item-043",
+      "item-092",
+      "item-093",
+      "item-094"
+    ],
+    "classification": "historical-label-agreement-does-not-resolve-question-ambiguity",
+    "analysis": "item-041 and item-093 provide the policy interpretation and are defensible answers, but do not prove concrete-origin answerability. item-094 labels a null abstention false; that label is not unambiguously sound under the concrete-origin interpretation. item-042 remains negative for fabricated execution, item-043 for missing mandatory constraint IDs, and item-092 for prohibited suffix matching. The reported 108/108 agreement is agreement with authored historical labels, not independent evidence that all sem-015 labels are semantically sound.",
+    "action": "Retain the historical calibration report and all six labels unchanged. In a new exposed DEV version, derive and independently review policy-question and exact-origin-question controls separately; preserve parent IDs/provenance and do not promote agreement on the old ambiguous labels to calibration acceptance."
+  },
+  "followupPatchReview": {
+    "baseCommit": "a9bd7e5",
+    "files": [
+      {
+        "path": "src/evaluation/campaign.ts",
+        "rawDigest": "sha256:0c54a353512d352a6cb28dfe7048b68c54553e188f70a02287cc39c612b5e751"
+      },
+      {
+        "path": "test/semantic-campaign.test.ts",
+        "rawDigest": "sha256:518de228008fec6ab7a5fb83a442cde39358b8745c298ad08cee3b3f448c3c08"
+      }
+    ],
+    "scope": "Read-only review of the disposition-contract patch after the original native runs completed; no tests executed by this reviewer.",
+    "finding": "No actionable issue found. The instructions and JSON-schema descriptions explicitly require null on abstention, non-empty text on answers and preservation of applicable evidence. The deterministic parser is not weakened. Added tests exercise valid abstention, invalid abstention prose, invalid null/blank answers and preservation of evidence metadata; request tests verify communication of the contract.",
+    "limitation": "Descriptions are model guidance, not a structural conditional constraint in the JSON schema. Local parsing remains the enforcement boundary. The changed prompt/schema must receive new prompt/source/build pins for any follow-up campaign; historical malformed output remains failed."
+  }
+}

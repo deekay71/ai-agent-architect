@@ -1,14 +1,24 @@
 # AI Agent Architect — runtime, Memory và Context local
 
-Repo có foundation **Phase 1**, runtime **Phase 2** và phần Memory/Context local của **Phase 3**. T09/T10 đạt Done / Pass trong phạm vi local; **T19 Doing / Not evaluated, T11 Doing / Replan, T14 Doing / Not evaluated; toàn Phase 3 chưa PASS**. Context mechanics và Memory promotion đã có code/tests, nhưng T19 còn AC chất lượng/token thật; handoff T14 chờ T19 được nghiệm thu đầy đủ. Chưa mở Phase 4 hoặc gameplay. Xem [báo cáo Phase 3](docs/phase-3-report.md).
+Repo có foundation **Phase 1**, runtime **Phase 2** và phần Memory/Context local của **Phase 3**. T09/T10 đạt Done / Pass trong phạm vi local; **T19 Doing / Not evaluated, T11 Doing / Replan, T14 Doing / Not evaluated; toàn Phase 3 chưa PASS**. Context mechanics và Memory promotion đã có code/tests, nhưng T19 còn AC chất lượng/token thật; handoff T14 chờ T19/T11 được nghiệm thu đầy đủ. Chưa mở Phase 4 hoặc gameplay. Xem [báo cáo Phase 3](docs/phase-3-report.md).
 
 Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằng sandbox macOS, giữ khóa OS theo project và cấp gate theo từng stage. Memory bổ sung nguồn/claim có provenance, freshness và selective invalidation; Context tách window theo agent, hydrate constraints/acceptance sau compaction và kiểm source hiện hành trước dispatch/commit. Tool hiện tại chỉ ghi một file fixture có giới hạn rồi kiểm lại bằng một verifier process độc lập.
 
 Phạm vi gồm 26 contracts phiên bản `0.5.0`, canonical hashing, audit liên kết giữa records, mô hình phân quyền actor/store và catalog có pin nội dung. CLI có demo offline và thử lựa chọn skill theo metadata. Các record policy, evidence và verdict trong demo đều là dữ liệu tổng hợp của fixture.
 
-Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local; đã có OpenAI adapter và phân vai Astra/Luna nhưng chưa gọi provider thật. Multi-planning có critic/calibration, Unity và game vẫn chưa triển khai. `demo` Phase 1 giữ `dispatchAuthorized: false`.
+Runtime chỉ hỗ trợ macOS đã kiểm chứng; host khác từ chối chạy. Active policy của demo chỉ bao phủ `runtime.fixture`, chưa cấp quyền production/Unity. HTTP model adapter là cổng JSON tùy chọn, được test với server local. Đường đo hiện hành dùng Codex đăng nhập ChatGPT: Terra medium execute, Sol medium đánh giá và Astra high suy nghĩ sâu; đã có kết quả model thật trên DEV. API adapter vẫn là đường tùy chọn, chưa dùng API key cho các đợt này. Multi-planning có critic/calibration, Unity và game vẫn chưa triển khai. `demo` Phase 1 giữ `dispatchAuthorized: false`.
 
 Explorer local có graph/backlinks và panel kiểu Obsidian, chỉ đọc snapshot đã lọc scope; góp ý được tải thành proposal, không ghi Memory chuẩn. Benchmark R1 giữ nguyên 6 false accepts; R2 có 0 false accepts và 78 false rejects trên 540 trials, nhưng là regression trên bộ đã lộ. Cần holdout độc lập mới cùng provider/model/tokenizer/cost/calibration trước khi đóng T11. Baseline clean-source check đạt **327/327 tests, 0 fail, 0 skip**; [evidence](docs/evidence/phase3/final-clean-verification.md) giữ cả lần đầu lỗi fixture timing. Không suy test count thành quality gate.
+
+## Actual mới nhất — test và sửa lỗi 28/09/2026
+
+**554/554 clean tests Pass.** Đợt native trên 20 DEV cases ghi đủ 100 trials: 74 đáp án hợp lệ, 25 context-blocked, 1 output sai contract. Sol chấm 70/74 advisory Pass; bốn bất đồng cùng case CORS mơ hồ đã được Astra adjudicate. Đã sửa hướng dẫn abstain/null và tách hai DEV regressions rõ nghĩa: 10/10 outputs hợp lệ, 10/10 advisory Pass; sáu controls sửa câu hỏi khớp nhãn 6/6. Không thay dataset hoặc score cũ.
+
+Calibration 108/108 agreement vẫn thiếu bảo đảm nhãn: sáu controls CORS bị ambiguity; không dùng con số này đóng gate. Có 10 fresh holdout families được AI author/reviewer độc lập chuẩn bị, chưa dispatch. Native harness dùng 187 calls / 2.515.297 reported tokens, không unknown mới; số này không bao gồm lượt chat/collaboration và không suy ra USD.
+
+Compaction context ngắn tốn khoảng 1,99×/3,96× token của F ở C1/C3, chưa tăng quality. Chưa bật mặc định. Retrieval local với topK3 giữ recall=1 trên 17 cases có required sources, đang là DEV feasibility. **T19/T14 Not evaluated, T11 Replan, Phase 3 chưa PASS**: còn protocol freeze, calibration/acceptance runner, fresh holdout matrix và full handoff. Đây không chỉ là thiếu owner approval. [Báo cáo và phần còn lại](docs/phase-3-closure-tests-2026-09-28.md); [protocol đề xuất](docs/phase-3-subscription-acceptance-proposal.md); [cloud evidence](https://drive.google.com/drive/folders/1fJQhs5ral9Pr3NdGJJMWpYaw7gu8O03G).
+
+Các mốc, profile và giới hạn scope bên dưới là lịch sử; giữ nguyên evidence và Forecast R2 để đối chiếu.
 
 ## Benchmark và test plan Phase 3
 

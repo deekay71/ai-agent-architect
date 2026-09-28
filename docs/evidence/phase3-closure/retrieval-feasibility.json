@@ -1,0 +1,4458 @@
+{
+  "schemaVersion": "dev-retrieval-feasibility/1",
+  "sourceCommit": "b5e08e7",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "cases": 20,
+  "distractors": 8,
+  "firstQueryAfterReconnectMs": {
+    "median": 0.4455829999999992,
+    "p95": 0.657291999999984
+  },
+  "groups": [
+    {
+      "topK": 1,
+      "requiredCases": 17,
+      "meanRecall": 0.8529411764705882,
+      "meanSupportingPrecision": 0.8823529411764706,
+      "missingRequiredCount": 4,
+      "latencyMs": {
+        "median": 0.37545799999998053,
+        "p95": 0.7558329999999955
+      }
+    },
+    {
+      "topK": 2,
+      "requiredCases": 17,
+      "meanRecall": 0.9705882352941176,
+      "meanSupportingPrecision": 0.5294117647058824,
+      "missingRequiredCount": 1,
+      "latencyMs": {
+        "median": 0.37104200000001697,
+        "p95": 0.9403750000000031
+      }
+    },
+    {
+      "topK": 3,
+      "requiredCases": 17,
+      "meanRecall": 1,
+      "meanSupportingPrecision": 0.3725490196078431,
+      "missingRequiredCount": 0,
+      "latencyMs": {
+        "median": 0.37929099999999494,
+        "p95": 0.6062080000000094
+      }
+    },
+    {
+      "topK": 5,
+      "requiredCases": 17,
+      "meanRecall": 1,
+      "meanSupportingPrecision": 0.22352941176470592,
+      "missingRequiredCount": 0,
+      "latencyMs": {
+        "median": 0.3705410000000029,
+        "p95": 0.6300420000000031
+      }
+    },
+    {
+      "topK": 10,
+      "requiredCases": 17,
+      "meanRecall": 1,
+      "meanSupportingPrecision": 0.1215686274509804,
+      "missingRequiredCount": 0,
+      "latencyMs": {
+        "median": 0.37837500000000546,
+        "p95": 0.5950829999999883
+      }
+    }
+  ],
+  "rows": [
+    {
+      "caseId": "sem-001",
+      "firstQuery": {
+        "elapsedMs": 0.9098329999999919,
+        "ids": [
+          "doc-001-a",
+          "doc-001-noise-3",
+          "doc-001-noise-4",
+          "doc-001-noise-5",
+          "doc-001-noise-1",
+          "doc-001-noise-8",
+          "doc-001-noise-2",
+          "doc-001-noise-6",
+          "doc-001-noise-7"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.43524999999999636,
+            0.7085829999999902,
+            0.5249160000000046,
+            0.45187500000000114,
+            0.4362919999999946
+          ],
+          "ids": [
+            "doc-001-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.4494590000000045,
+            0.47945799999999394,
+            0.45958399999999244,
+            0.9403750000000031,
+            0.4855830000000054
+          ],
+          "ids": [
+            "doc-001-a",
+            "doc-001-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-001-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-001-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.47750000000000625,
+            0.3935420000000107,
+            0.41825000000000045,
+            0.38645800000000463,
+            0.3702910000000088
+          ],
+          "ids": [
+            "doc-001-a",
+            "doc-001-noise-3",
+            "doc-001-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.38358300000000156,
+            0.3746670000000023,
+            0.5390000000000015,
+            0.5724579999999975,
+            0.6300420000000031
+          ],
+          "ids": [
+            "doc-001-a",
+            "doc-001-noise-3",
+            "doc-001-noise-4",
+            "doc-001-noise-5",
+            "doc-001-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4",
+              "doc-001-noise-5",
+              "doc-001-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4",
+              "doc-001-noise-5",
+              "doc-001-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            1.4306669999999997,
+            0.4336669999999998,
+            0.38674999999999216,
+            0.36924999999999386,
+            0.39529199999999776
+          ],
+          "ids": [
+            "doc-001-a",
+            "doc-001-noise-3",
+            "doc-001-noise-4",
+            "doc-001-noise-5",
+            "doc-001-noise-1",
+            "doc-001-noise-8",
+            "doc-001-noise-2",
+            "doc-001-noise-6",
+            "doc-001-noise-7"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4",
+              "doc-001-noise-5",
+              "doc-001-noise-1",
+              "doc-001-noise-8",
+              "doc-001-noise-2",
+              "doc-001-noise-6",
+              "doc-001-noise-7"
+            ],
+            "ineligibleIds": [
+              "doc-001-noise-3",
+              "doc-001-noise-4",
+              "doc-001-noise-5",
+              "doc-001-noise-1",
+              "doc-001-noise-8",
+              "doc-001-noise-2",
+              "doc-001-noise-6",
+              "doc-001-noise-7"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-002",
+      "firstQuery": {
+        "elapsedMs": 0.47229099999999846,
+        "ids": [
+          "doc-002-a",
+          "doc-002-noise-5",
+          "doc-002-noise-1",
+          "doc-002-noise-8",
+          "doc-002-noise-3",
+          "doc-002-noise-2",
+          "doc-002-noise-6",
+          "doc-002-noise-7",
+          "doc-002-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.7558329999999955,
+            0.3810000000000002,
+            0.35575000000000045,
+            0.3779169999999965,
+            0.3742079999999959
+          ],
+          "ids": [
+            "doc-002-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3669170000000008,
+            0.3660409999999956,
+            0.3692080000000004,
+            0.41208299999999554,
+            0.37725000000000364
+          ],
+          "ids": [
+            "doc-002-a",
+            "doc-002-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-002-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-002-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3810420000000079,
+            0.49483299999999986,
+            0.8321669999999983,
+            0.37170799999999815,
+            0.3620829999999984
+          ],
+          "ids": [
+            "doc-002-a",
+            "doc-002-noise-5",
+            "doc-002-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.39074999999999704,
+            0.37570800000000304,
+            0.3872080000000011,
+            0.3639579999999967,
+            0.4565419999999989
+          ],
+          "ids": [
+            "doc-002-a",
+            "doc-002-noise-5",
+            "doc-002-noise-1",
+            "doc-002-noise-8",
+            "doc-002-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1",
+              "doc-002-noise-8",
+              "doc-002-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1",
+              "doc-002-noise-8",
+              "doc-002-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.39633399999999597,
+            0.3663749999999908,
+            0.3773750000000007,
+            0.35737499999999045,
+            0.38033299999999315
+          ],
+          "ids": [
+            "doc-002-a",
+            "doc-002-noise-5",
+            "doc-002-noise-1",
+            "doc-002-noise-8",
+            "doc-002-noise-3",
+            "doc-002-noise-2",
+            "doc-002-noise-6",
+            "doc-002-noise-7",
+            "doc-002-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1",
+              "doc-002-noise-8",
+              "doc-002-noise-3",
+              "doc-002-noise-2",
+              "doc-002-noise-6",
+              "doc-002-noise-7",
+              "doc-002-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-002-noise-5",
+              "doc-002-noise-1",
+              "doc-002-noise-8",
+              "doc-002-noise-3",
+              "doc-002-noise-2",
+              "doc-002-noise-6",
+              "doc-002-noise-7",
+              "doc-002-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-003",
+      "firstQuery": {
+        "elapsedMs": 0.46504199999999685,
+        "ids": [
+          "doc-003-a",
+          "doc-003-noise-3",
+          "doc-003-noise-5",
+          "doc-003-noise-1",
+          "doc-003-noise-8",
+          "doc-003-noise-2",
+          "doc-003-noise-6",
+          "doc-003-noise-7",
+          "doc-003-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3715829999999869,
+            0.36412500000000136,
+            0.42025000000001,
+            0.40491600000000005,
+            0.4349589999999921
+          ],
+          "ids": [
+            "doc-003-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.4222080000000119,
+            0.4533750000000083,
+            0.4775839999999931,
+            0.39620800000000145,
+            0.4319580000000087
+          ],
+          "ids": [
+            "doc-003-a",
+            "doc-003-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-003-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-003-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.4269170000000031,
+            0.4193329999999946,
+            0.4596250000000026,
+            0.4325410000000005,
+            0.4050419999999946
+          ],
+          "ids": [
+            "doc-003-a",
+            "doc-003-noise-3",
+            "doc-003-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.43754199999999344,
+            0.44045900000000415,
+            1.1948340000000144,
+            0.4250419999999906,
+            0.4262080000000026
+          ],
+          "ids": [
+            "doc-003-a",
+            "doc-003-noise-3",
+            "doc-003-noise-5",
+            "doc-003-noise-1",
+            "doc-003-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5",
+              "doc-003-noise-1",
+              "doc-003-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5",
+              "doc-003-noise-1",
+              "doc-003-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.36350000000001614,
+            0.35958400000001234,
+            0.3842499999999802,
+            0.40662500000001955,
+            0.38008299999998485
+          ],
+          "ids": [
+            "doc-003-a",
+            "doc-003-noise-3",
+            "doc-003-noise-5",
+            "doc-003-noise-1",
+            "doc-003-noise-8",
+            "doc-003-noise-2",
+            "doc-003-noise-6",
+            "doc-003-noise-7",
+            "doc-003-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5",
+              "doc-003-noise-1",
+              "doc-003-noise-8",
+              "doc-003-noise-2",
+              "doc-003-noise-6",
+              "doc-003-noise-7",
+              "doc-003-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-003-noise-3",
+              "doc-003-noise-5",
+              "doc-003-noise-1",
+              "doc-003-noise-8",
+              "doc-003-noise-2",
+              "doc-003-noise-6",
+              "doc-003-noise-7",
+              "doc-003-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-004",
+      "firstQuery": {
+        "elapsedMs": 0.5220829999999808,
+        "ids": [
+          "doc-004-a",
+          "doc-004-noise-5",
+          "doc-004-noise-1",
+          "doc-004-noise-8",
+          "doc-004-noise-3",
+          "doc-004-noise-6",
+          "doc-004-noise-2",
+          "doc-004-noise-7",
+          "doc-004-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.433290999999997,
+            0.43437500000001705,
+            0.43012500000000387,
+            0.41387500000001864,
+            0.4005420000000015
+          ],
+          "ids": [
+            "doc-004-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3836250000000234,
+            0.3856669999999838,
+            0.3849170000000015,
+            0.43029200000000856,
+            1.0795419999999751
+          ],
+          "ids": [
+            "doc-004-a",
+            "doc-004-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-004-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-004-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3527909999999963,
+            0.3839580000000069,
+            0.46887499999999704,
+            0.3894170000000088,
+            0.34549999999998704
+          ],
+          "ids": [
+            "doc-004-a",
+            "doc-004-noise-5",
+            "doc-004-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.35362499999999386,
+            0.3694160000000011,
+            0.36716599999999744,
+            0.373958000000016,
+            0.35387499999998795
+          ],
+          "ids": [
+            "doc-004-a",
+            "doc-004-noise-5",
+            "doc-004-noise-1",
+            "doc-004-noise-8",
+            "doc-004-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1",
+              "doc-004-noise-8",
+              "doc-004-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1",
+              "doc-004-noise-8",
+              "doc-004-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.374416999999994,
+            0.3710000000000093,
+            0.42320900000001416,
+            0.4641249999999957,
+            0.35695799999999167
+          ],
+          "ids": [
+            "doc-004-a",
+            "doc-004-noise-5",
+            "doc-004-noise-1",
+            "doc-004-noise-8",
+            "doc-004-noise-3",
+            "doc-004-noise-6",
+            "doc-004-noise-2",
+            "doc-004-noise-7",
+            "doc-004-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1",
+              "doc-004-noise-8",
+              "doc-004-noise-3",
+              "doc-004-noise-6",
+              "doc-004-noise-2",
+              "doc-004-noise-7",
+              "doc-004-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-004-noise-5",
+              "doc-004-noise-1",
+              "doc-004-noise-8",
+              "doc-004-noise-3",
+              "doc-004-noise-6",
+              "doc-004-noise-2",
+              "doc-004-noise-7",
+              "doc-004-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-005",
+      "firstQuery": {
+        "elapsedMs": 0.43933300000000486,
+        "ids": [
+          "doc-005-a",
+          "doc-005-noise-3",
+          "doc-005-noise-5",
+          "doc-005-noise-1",
+          "doc-005-noise-8",
+          "doc-005-noise-2",
+          "doc-005-noise-6",
+          "doc-005-noise-7",
+          "doc-005-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.9415830000000085,
+            0.37216699999999037,
+            0.3607080000000167,
+            0.31733399999998824,
+            0.33950000000001523
+          ],
+          "ids": [
+            "doc-005-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.35829200000000583,
+            0.34541600000000017,
+            0.3467500000000143,
+            0.3440829999999835,
+            0.3569170000000099
+          ],
+          "ids": [
+            "doc-005-a",
+            "doc-005-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-005-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-005-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.40712500000000773,
+            0.4368340000000046,
+            0.41191600000001927,
+            0.38829099999998107,
+            0.3987500000000068
+          ],
+          "ids": [
+            "doc-005-a",
+            "doc-005-noise-3",
+            "doc-005-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.4138749999999902,
+            0.39962500000001455,
+            0.3512920000000008,
+            0.35566699999998264,
+            0.3563749999999857
+          ],
+          "ids": [
+            "doc-005-a",
+            "doc-005-noise-3",
+            "doc-005-noise-5",
+            "doc-005-noise-1",
+            "doc-005-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5",
+              "doc-005-noise-1",
+              "doc-005-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5",
+              "doc-005-noise-1",
+              "doc-005-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.3923330000000078,
+            0.3845829999999921,
+            0.39229100000000017,
+            0.3713339999999903,
+            0.36599999999998545
+          ],
+          "ids": [
+            "doc-005-a",
+            "doc-005-noise-3",
+            "doc-005-noise-5",
+            "doc-005-noise-1",
+            "doc-005-noise-8",
+            "doc-005-noise-2",
+            "doc-005-noise-6",
+            "doc-005-noise-7",
+            "doc-005-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5",
+              "doc-005-noise-1",
+              "doc-005-noise-8",
+              "doc-005-noise-2",
+              "doc-005-noise-6",
+              "doc-005-noise-7",
+              "doc-005-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-005-noise-3",
+              "doc-005-noise-5",
+              "doc-005-noise-1",
+              "doc-005-noise-8",
+              "doc-005-noise-2",
+              "doc-005-noise-6",
+              "doc-005-noise-7",
+              "doc-005-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-006",
+      "firstQuery": {
+        "elapsedMs": 0.4186249999999916,
+        "ids": [
+          "doc-006-a",
+          "doc-006-noise-5",
+          "doc-006-noise-2",
+          "doc-006-noise-7",
+          "doc-006-noise-1",
+          "doc-006-noise-3",
+          "doc-006-noise-8",
+          "doc-006-noise-6",
+          "doc-006-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3618749999999977,
+            0.3865000000000123,
+            0.3573340000000087,
+            0.35087500000000205,
+            0.34687499999998295
+          ],
+          "ids": [
+            "doc-006-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-006-a"
+            ],
+            "ineligibleIds": [
+              "doc-006-a"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3717499999999916,
+            0.6130829999999889,
+            0.4031669999999963,
+            0.3576659999999947,
+            0.4250419999999906
+          ],
+          "ids": [
+            "doc-006-a",
+            "doc-006-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-006-a",
+              "doc-006-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-006-a",
+              "doc-006-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3642499999999984,
+            0.37341599999999175,
+            0.38495899999998073,
+            0.3599999999999852,
+            0.35224999999999795
+          ],
+          "ids": [
+            "doc-006-a",
+            "doc-006-noise-5",
+            "doc-006-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.35020900000000665,
+            0.3762920000000065,
+            1.144582999999983,
+            0.42695900000001075,
+            0.3454579999999794
+          ],
+          "ids": [
+            "doc-006-a",
+            "doc-006-noise-5",
+            "doc-006-noise-2",
+            "doc-006-noise-7",
+            "doc-006-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2",
+              "doc-006-noise-7",
+              "doc-006-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2",
+              "doc-006-noise-7",
+              "doc-006-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.3631249999999966,
+            0.40237499999997794,
+            0.37733299999999304,
+            0.35141699999999787,
+            0.353917000000024
+          ],
+          "ids": [
+            "doc-006-a",
+            "doc-006-noise-5",
+            "doc-006-noise-2",
+            "doc-006-noise-7",
+            "doc-006-noise-1",
+            "doc-006-noise-3",
+            "doc-006-noise-8",
+            "doc-006-noise-6",
+            "doc-006-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2",
+              "doc-006-noise-7",
+              "doc-006-noise-1",
+              "doc-006-noise-3",
+              "doc-006-noise-8",
+              "doc-006-noise-6",
+              "doc-006-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-006-a",
+              "doc-006-noise-5",
+              "doc-006-noise-2",
+              "doc-006-noise-7",
+              "doc-006-noise-1",
+              "doc-006-noise-3",
+              "doc-006-noise-8",
+              "doc-006-noise-6",
+              "doc-006-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-007",
+      "firstQuery": {
+        "elapsedMs": 0.46462499999998386,
+        "ids": [
+          "doc-007-a",
+          "doc-007-b",
+          "doc-007-noise-7",
+          "doc-007-noise-5",
+          "doc-007-noise-1",
+          "doc-007-noise-8",
+          "doc-007-noise-3",
+          "doc-007-noise-6",
+          "doc-007-noise-2",
+          "doc-007-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.5180000000000007,
+            0.46333300000000577,
+            0.46358299999999986,
+            0.4322920000000181,
+            0.4283749999999884
+          ],
+          "ids": [
+            "doc-007-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 2,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 0.5,
+            "precision": 1,
+            "sufficient": false,
+            "missingRequiredIds": [
+              "doc-007-b"
+            ],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3893329999999935,
+            0.3935830000000067,
+            1.75162499999999,
+            0.37145900000001575,
+            0.37104200000001697
+          ],
+          "ids": [
+            "doc-007-a",
+            "doc-007-b"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.38879199999999514,
+            0.3797919999999806,
+            0.37929099999999494,
+            0.3862500000000182,
+            0.38120799999998667
+          ],
+          "ids": [
+            "doc-007-a",
+            "doc-007-b",
+            "doc-007-noise-7"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.6666666666666666,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-007-noise-7"
+            ],
+            "ineligibleIds": [
+              "doc-007-noise-7"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.37862499999999955,
+            0.3814580000000092,
+            0.3820829999999944,
+            0.3809579999999926,
+            0.38016599999997425
+          ],
+          "ids": [
+            "doc-007-a",
+            "doc-007-b",
+            "doc-007-noise-7",
+            "doc-007-noise-5",
+            "doc-007-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.4,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-007-noise-7",
+              "doc-007-noise-5",
+              "doc-007-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-007-noise-7",
+              "doc-007-noise-5",
+              "doc-007-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.41237499999999727,
+            0.4236659999999972,
+            0.4193750000000023,
+            0.3737499999999727,
+            0.3555409999999881
+          ],
+          "ids": [
+            "doc-007-a",
+            "doc-007-b",
+            "doc-007-noise-7",
+            "doc-007-noise-5",
+            "doc-007-noise-1",
+            "doc-007-noise-8",
+            "doc-007-noise-3",
+            "doc-007-noise-6",
+            "doc-007-noise-2",
+            "doc-007-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 10,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-007-noise-7",
+              "doc-007-noise-5",
+              "doc-007-noise-1",
+              "doc-007-noise-8",
+              "doc-007-noise-3",
+              "doc-007-noise-6",
+              "doc-007-noise-2",
+              "doc-007-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-007-noise-7",
+              "doc-007-noise-5",
+              "doc-007-noise-1",
+              "doc-007-noise-8",
+              "doc-007-noise-3",
+              "doc-007-noise-6",
+              "doc-007-noise-2",
+              "doc-007-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-008",
+      "firstQuery": {
+        "elapsedMs": 0.510832999999991,
+        "ids": [
+          "doc-008-noise-4",
+          "doc-008-a",
+          "doc-008-noise-3",
+          "doc-008-noise-5",
+          "doc-008-noise-1",
+          "doc-008-noise-8",
+          "doc-008-noise-2",
+          "doc-008-noise-6",
+          "doc-008-noise-7"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3942920000000072,
+            0.4008750000000134,
+            0.3927089999999964,
+            0.42479099999999903,
+            0.3952079999999967
+          ],
+          "ids": [
+            "doc-008-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": 0,
+            "precision": 0,
+            "sufficient": false,
+            "missingRequiredIds": [
+              "doc-008-a"
+            ],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-008-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-008-noise-4"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.40808299999997644,
+            0.397625000000005,
+            0.413250000000005,
+            0.38954100000000835,
+            0.3850830000000087
+          ],
+          "ids": [
+            "doc-008-noise-4",
+            "doc-008-a"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-008-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-008-noise-4"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.4119579999999985,
+            0.3942920000000072,
+            0.3933749999999918,
+            0.39987500000000864,
+            0.39091700000000174
+          ],
+          "ids": [
+            "doc-008-noise-4",
+            "doc-008-a",
+            "doc-008-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.4415000000000191,
+            0.4012920000000122,
+            0.4137499999999932,
+            0.39408299999999485,
+            0.4302500000000009
+          ],
+          "ids": [
+            "doc-008-noise-4",
+            "doc-008-a",
+            "doc-008-noise-3",
+            "doc-008-noise-5",
+            "doc-008-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3",
+              "doc-008-noise-5",
+              "doc-008-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3",
+              "doc-008-noise-5",
+              "doc-008-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.43062499999999204,
+            0.43129200000001333,
+            0.40691699999999287,
+            0.4389590000000112,
+            0.4002079999999921
+          ],
+          "ids": [
+            "doc-008-noise-4",
+            "doc-008-a",
+            "doc-008-noise-3",
+            "doc-008-noise-5",
+            "doc-008-noise-1",
+            "doc-008-noise-8",
+            "doc-008-noise-2",
+            "doc-008-noise-6",
+            "doc-008-noise-7"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3",
+              "doc-008-noise-5",
+              "doc-008-noise-1",
+              "doc-008-noise-8",
+              "doc-008-noise-2",
+              "doc-008-noise-6",
+              "doc-008-noise-7"
+            ],
+            "ineligibleIds": [
+              "doc-008-noise-4",
+              "doc-008-noise-3",
+              "doc-008-noise-5",
+              "doc-008-noise-1",
+              "doc-008-noise-8",
+              "doc-008-noise-2",
+              "doc-008-noise-6",
+              "doc-008-noise-7"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-009",
+      "firstQuery": {
+        "elapsedMs": 0.4455829999999992,
+        "ids": [
+          "doc-009-a",
+          "doc-009-noise-2",
+          "doc-009-noise-5",
+          "doc-009-noise-1",
+          "doc-009-noise-3",
+          "doc-009-noise-8",
+          "doc-009-noise-6",
+          "doc-009-noise-7",
+          "doc-009-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            1.2264160000000004,
+            0.4306669999999997,
+            0.36658299999999144,
+            0.35879099999999653,
+            0.34933300000000145
+          ],
+          "ids": [
+            "doc-009-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.40354100000001836,
+            4.8537919999999986,
+            0.4323750000000075,
+            0.8038330000000258,
+            1.537415999999979
+          ],
+          "ids": [
+            "doc-009-a",
+            "doc-009-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-009-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-009-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.4077920000000006,
+            1.498958000000016,
+            0.6932500000000061,
+            0.6151250000000061,
+            0.6062080000000094
+          ],
+          "ids": [
+            "doc-009-a",
+            "doc-009-noise-2",
+            "doc-009-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.34950000000000614,
+            0.4064999999999941,
+            0.3619170000000054,
+            0.3785840000000178,
+            0.3777499999999918
+          ],
+          "ids": [
+            "doc-009-a",
+            "doc-009-noise-2",
+            "doc-009-noise-5",
+            "doc-009-noise-1",
+            "doc-009-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5",
+              "doc-009-noise-1",
+              "doc-009-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5",
+              "doc-009-noise-1",
+              "doc-009-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.4006250000000193,
+            1.9700409999999806,
+            0.5950829999999883,
+            0.47758300000000986,
+            0.4925829999999962
+          ],
+          "ids": [
+            "doc-009-a",
+            "doc-009-noise-2",
+            "doc-009-noise-5",
+            "doc-009-noise-1",
+            "doc-009-noise-3",
+            "doc-009-noise-8",
+            "doc-009-noise-6",
+            "doc-009-noise-7",
+            "doc-009-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5",
+              "doc-009-noise-1",
+              "doc-009-noise-3",
+              "doc-009-noise-8",
+              "doc-009-noise-6",
+              "doc-009-noise-7",
+              "doc-009-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-009-noise-2",
+              "doc-009-noise-5",
+              "doc-009-noise-1",
+              "doc-009-noise-3",
+              "doc-009-noise-8",
+              "doc-009-noise-6",
+              "doc-009-noise-7",
+              "doc-009-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-010",
+      "firstQuery": {
+        "elapsedMs": 0.657291999999984,
+        "ids": [
+          "doc-010-a",
+          "doc-010-noise-5",
+          "doc-010-noise-1",
+          "doc-010-noise-8",
+          "doc-010-noise-3",
+          "doc-010-noise-6",
+          "doc-010-noise-2",
+          "doc-010-noise-7",
+          "doc-010-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.4300829999999678,
+            0.498833999999988,
+            0.5975839999999835,
+            0.44595800000001873,
+            0.8244589999999903
+          ],
+          "ids": [
+            "doc-010-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            1.5809579999999528,
+            0.7226660000000038,
+            0.7303750000000377,
+            0.5044579999999996,
+            0.45799999999997
+          ],
+          "ids": [
+            "doc-010-a",
+            "doc-010-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-010-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-010-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.4018750000000182,
+            0.5860000000000127,
+            2.3139170000000036,
+            0.4691659999999729,
+            0.5165000000000077
+          ],
+          "ids": [
+            "doc-010-a",
+            "doc-010-noise-5",
+            "doc-010-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.6996660000000361,
+            0.4090829999999528,
+            0.3999579999999696,
+            0.4379999999999882,
+            0.3919999999999959
+          ],
+          "ids": [
+            "doc-010-a",
+            "doc-010-noise-5",
+            "doc-010-noise-1",
+            "doc-010-noise-8",
+            "doc-010-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1",
+              "doc-010-noise-8",
+              "doc-010-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1",
+              "doc-010-noise-8",
+              "doc-010-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.4252079999999978,
+            0.6738339999999994,
+            0.4982500000000414,
+            0.4225829999999746,
+            0.37629200000003493
+          ],
+          "ids": [
+            "doc-010-a",
+            "doc-010-noise-5",
+            "doc-010-noise-1",
+            "doc-010-noise-8",
+            "doc-010-noise-3",
+            "doc-010-noise-6",
+            "doc-010-noise-2",
+            "doc-010-noise-7",
+            "doc-010-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1",
+              "doc-010-noise-8",
+              "doc-010-noise-3",
+              "doc-010-noise-6",
+              "doc-010-noise-2",
+              "doc-010-noise-7",
+              "doc-010-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-010-noise-5",
+              "doc-010-noise-1",
+              "doc-010-noise-8",
+              "doc-010-noise-3",
+              "doc-010-noise-6",
+              "doc-010-noise-2",
+              "doc-010-noise-7",
+              "doc-010-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-011",
+      "firstQuery": {
+        "elapsedMs": 0.43587500000001,
+        "ids": [
+          "doc-011-a",
+          "doc-011-noise-3",
+          "doc-011-noise-5",
+          "doc-011-noise-1",
+          "doc-011-noise-8",
+          "doc-011-noise-6",
+          "doc-011-noise-2",
+          "doc-011-noise-7",
+          "doc-011-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.45420799999999417,
+            0.4738749999999641,
+            0.4182909999999538,
+            0.384208000000001,
+            0.37783300000000963
+          ],
+          "ids": [
+            "doc-011-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3761250000000018,
+            0.37024999999999864,
+            0.36862500000000864,
+            0.3744580000000042,
+            0.358791999999994
+          ],
+          "ids": [
+            "doc-011-a",
+            "doc-011-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-011-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-011-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.47858300000001464,
+            0.5205829999999878,
+            0.3966660000000388,
+            0.3719590000000039,
+            0.3482919999999581
+          ],
+          "ids": [
+            "doc-011-a",
+            "doc-011-noise-3",
+            "doc-011-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.35641600000002427,
+            0.394916999999964,
+            0.37262500000002774,
+            0.3877920000000472,
+            0.35720799999995734
+          ],
+          "ids": [
+            "doc-011-a",
+            "doc-011-noise-3",
+            "doc-011-noise-5",
+            "doc-011-noise-1",
+            "doc-011-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5",
+              "doc-011-noise-1",
+              "doc-011-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5",
+              "doc-011-noise-1",
+              "doc-011-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.41679200000004357,
+            0.37229200000001583,
+            0.4349160000000438,
+            0.38541600000002063,
+            0.5451249999999845
+          ],
+          "ids": [
+            "doc-011-a",
+            "doc-011-noise-3",
+            "doc-011-noise-5",
+            "doc-011-noise-1",
+            "doc-011-noise-8",
+            "doc-011-noise-6",
+            "doc-011-noise-2",
+            "doc-011-noise-7",
+            "doc-011-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5",
+              "doc-011-noise-1",
+              "doc-011-noise-8",
+              "doc-011-noise-6",
+              "doc-011-noise-2",
+              "doc-011-noise-7",
+              "doc-011-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-011-noise-3",
+              "doc-011-noise-5",
+              "doc-011-noise-1",
+              "doc-011-noise-8",
+              "doc-011-noise-6",
+              "doc-011-noise-2",
+              "doc-011-noise-7",
+              "doc-011-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-012",
+      "firstQuery": {
+        "elapsedMs": 0.49716699999999037,
+        "ids": [
+          "doc-012-a",
+          "doc-012-noise-5",
+          "doc-012-noise-1",
+          "doc-012-noise-3",
+          "doc-012-noise-8",
+          "doc-012-noise-2",
+          "doc-012-noise-6",
+          "doc-012-noise-7",
+          "doc-012-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.39845900000000256,
+            0.37216699999999037,
+            0.32816700000000765,
+            0.3514579999999796,
+            0.3534999999999968
+          ],
+          "ids": [
+            "doc-012-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3886250000000473,
+            0.3569999999999709,
+            0.35833299999995916,
+            0.35562500000003183,
+            0.349583999999993
+          ],
+          "ids": [
+            "doc-012-a",
+            "doc-012-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-012-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-012-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.36266599999999016,
+            0.3495420000000422,
+            0.3495420000000422,
+            0.34933300000000145,
+            0.34995799999995825
+          ],
+          "ids": [
+            "doc-012-a",
+            "doc-012-noise-5",
+            "doc-012-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.35137500000001864,
+            0.34970799999996416,
+            0.36079200000000355,
+            0.3627089999999953,
+            0.36345899999997755
+          ],
+          "ids": [
+            "doc-012-a",
+            "doc-012-noise-5",
+            "doc-012-noise-1",
+            "doc-012-noise-3",
+            "doc-012-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1",
+              "doc-012-noise-3",
+              "doc-012-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1",
+              "doc-012-noise-3",
+              "doc-012-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.364750000000015,
+            0.37383299999999053,
+            0.37883399999998346,
+            0.3807499999999777,
+            0.37874999999996817
+          ],
+          "ids": [
+            "doc-012-a",
+            "doc-012-noise-5",
+            "doc-012-noise-1",
+            "doc-012-noise-3",
+            "doc-012-noise-8",
+            "doc-012-noise-2",
+            "doc-012-noise-6",
+            "doc-012-noise-7",
+            "doc-012-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1",
+              "doc-012-noise-3",
+              "doc-012-noise-8",
+              "doc-012-noise-2",
+              "doc-012-noise-6",
+              "doc-012-noise-7",
+              "doc-012-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-012-noise-5",
+              "doc-012-noise-1",
+              "doc-012-noise-3",
+              "doc-012-noise-8",
+              "doc-012-noise-2",
+              "doc-012-noise-6",
+              "doc-012-noise-7",
+              "doc-012-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-013",
+      "firstQuery": {
+        "elapsedMs": 0.4915839999999889,
+        "ids": [
+          "doc-013-a",
+          "doc-013-noise-4",
+          "doc-013-noise-2",
+          "doc-013-noise-5",
+          "doc-013-noise-1",
+          "doc-013-noise-3",
+          "doc-013-noise-8",
+          "doc-013-noise-6",
+          "doc-013-noise-7"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.38724999999999454,
+            0.37545799999998053,
+            0.3399589999999648,
+            0.37570900000002894,
+            0.36370799999997416
+          ],
+          "ids": [
+            "doc-013-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.36579100000000153,
+            0.35266699999999673,
+            0.360917000000029,
+            0.354959000000008,
+            0.3704999999999927
+          ],
+          "ids": [
+            "doc-013-a",
+            "doc-013-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-013-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-013-noise-4"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3670410000000288,
+            0.3591250000000059,
+            0.36112500000001546,
+            0.3799579999999878,
+            0.36958299999997735
+          ],
+          "ids": [
+            "doc-013-a",
+            "doc-013-noise-4",
+            "doc-013-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.37400000000002365,
+            0.3761250000000018,
+            1.3064170000000104,
+            0.35725000000002183,
+            0.35316599999998743
+          ],
+          "ids": [
+            "doc-013-a",
+            "doc-013-noise-4",
+            "doc-013-noise-2",
+            "doc-013-noise-5",
+            "doc-013-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2",
+              "doc-013-noise-5",
+              "doc-013-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2",
+              "doc-013-noise-5",
+              "doc-013-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.369624999999985,
+            0.36149999999997817,
+            0.3549579999999537,
+            0.4161250000000223,
+            0.36275000000000546
+          ],
+          "ids": [
+            "doc-013-a",
+            "doc-013-noise-4",
+            "doc-013-noise-2",
+            "doc-013-noise-5",
+            "doc-013-noise-1",
+            "doc-013-noise-3",
+            "doc-013-noise-8",
+            "doc-013-noise-6",
+            "doc-013-noise-7"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2",
+              "doc-013-noise-5",
+              "doc-013-noise-1",
+              "doc-013-noise-3",
+              "doc-013-noise-8",
+              "doc-013-noise-6",
+              "doc-013-noise-7"
+            ],
+            "ineligibleIds": [
+              "doc-013-noise-4",
+              "doc-013-noise-2",
+              "doc-013-noise-5",
+              "doc-013-noise-1",
+              "doc-013-noise-3",
+              "doc-013-noise-8",
+              "doc-013-noise-6",
+              "doc-013-noise-7"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-014",
+      "firstQuery": {
+        "elapsedMs": 0.489750000000015,
+        "ids": [
+          "doc-014-a",
+          "doc-014-noise-5",
+          "doc-014-noise-1",
+          "doc-014-noise-3",
+          "doc-014-noise-8",
+          "doc-014-noise-2",
+          "doc-014-noise-6",
+          "doc-014-noise-7",
+          "doc-014-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.39229199999999764,
+            0.36508299999997007,
+            0.3638750000000073,
+            0.34091699999999037,
+            0.3259580000000142
+          ],
+          "ids": [
+            "doc-014-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.34670799999997826,
+            0.376166000000012,
+            0.3580840000000194,
+            0.45216699999997445,
+            0.3607499999999959
+          ],
+          "ids": [
+            "doc-014-a",
+            "doc-014-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-014-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-014-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.38400000000001455,
+            0.3642089999999598,
+            0.3368330000000128,
+            0.35720799999995734,
+            0.34679199999999355
+          ],
+          "ids": [
+            "doc-014-a",
+            "doc-014-noise-5",
+            "doc-014-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.3426249999999982,
+            0.3577910000000202,
+            0.3575000000000159,
+            0.36220800000000963,
+            0.34166699999997263
+          ],
+          "ids": [
+            "doc-014-a",
+            "doc-014-noise-5",
+            "doc-014-noise-1",
+            "doc-014-noise-3",
+            "doc-014-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1",
+              "doc-014-noise-3",
+              "doc-014-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1",
+              "doc-014-noise-3",
+              "doc-014-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.36025000000000773,
+            0.34804100000002336,
+            0.35412500000001046,
+            0.3520000000000323,
+            0.4243749999999977
+          ],
+          "ids": [
+            "doc-014-a",
+            "doc-014-noise-5",
+            "doc-014-noise-1",
+            "doc-014-noise-3",
+            "doc-014-noise-8",
+            "doc-014-noise-2",
+            "doc-014-noise-6",
+            "doc-014-noise-7",
+            "doc-014-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1",
+              "doc-014-noise-3",
+              "doc-014-noise-8",
+              "doc-014-noise-2",
+              "doc-014-noise-6",
+              "doc-014-noise-7",
+              "doc-014-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-014-noise-5",
+              "doc-014-noise-1",
+              "doc-014-noise-3",
+              "doc-014-noise-8",
+              "doc-014-noise-2",
+              "doc-014-noise-6",
+              "doc-014-noise-7",
+              "doc-014-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-015",
+      "firstQuery": {
+        "elapsedMs": 0.42491699999999355,
+        "ids": [
+          "doc-015-a",
+          "doc-015-noise-2",
+          "doc-015-noise-5",
+          "doc-015-noise-1",
+          "doc-015-noise-8",
+          "doc-015-noise-3",
+          "doc-015-noise-6",
+          "doc-015-noise-7",
+          "doc-015-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3618329999999901,
+            0.3586249999999609,
+            1.5833340000000362,
+            0.3530410000000188,
+            0.3462499999999977
+          ],
+          "ids": [
+            "doc-015-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.356583999999998,
+            0.3560000000000514,
+            0.3546660000000088,
+            0.354959000000008,
+            0.39458300000001145
+          ],
+          "ids": [
+            "doc-015-a",
+            "doc-015-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-015-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-015-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3812920000000304,
+            0.34545799999995097,
+            0.3473339999999894,
+            0.3599169999999958,
+            0.35283300000003237
+          ],
+          "ids": [
+            "doc-015-a",
+            "doc-015-noise-2",
+            "doc-015-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.3549160000000029,
+            0.3569170000000099,
+            0.35491700000000037,
+            0.35499999999996135,
+            0.3560420000000022
+          ],
+          "ids": [
+            "doc-015-a",
+            "doc-015-noise-2",
+            "doc-015-noise-5",
+            "doc-015-noise-1",
+            "doc-015-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5",
+              "doc-015-noise-1",
+              "doc-015-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5",
+              "doc-015-noise-1",
+              "doc-015-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.352374999999995,
+            0.4618749999999636,
+            0.41979099999997516,
+            0.3607090000000426,
+            0.3482500000000073
+          ],
+          "ids": [
+            "doc-015-a",
+            "doc-015-noise-2",
+            "doc-015-noise-5",
+            "doc-015-noise-1",
+            "doc-015-noise-8",
+            "doc-015-noise-3",
+            "doc-015-noise-6",
+            "doc-015-noise-7",
+            "doc-015-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5",
+              "doc-015-noise-1",
+              "doc-015-noise-8",
+              "doc-015-noise-3",
+              "doc-015-noise-6",
+              "doc-015-noise-7",
+              "doc-015-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-015-noise-2",
+              "doc-015-noise-5",
+              "doc-015-noise-1",
+              "doc-015-noise-8",
+              "doc-015-noise-3",
+              "doc-015-noise-6",
+              "doc-015-noise-7",
+              "doc-015-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-016",
+      "firstQuery": {
+        "elapsedMs": 0.41841599999997925,
+        "ids": [
+          "doc-016-a",
+          "doc-016-noise-2",
+          "doc-016-noise-7",
+          "doc-016-noise-5",
+          "doc-016-noise-1",
+          "doc-016-noise-8",
+          "doc-016-noise-3",
+          "doc-016-noise-6",
+          "doc-016-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3489579999999819,
+            0.31649999999996226,
+            0.33379200000001674,
+            0.35566699999998264,
+            0.35241600000000517
+          ],
+          "ids": [
+            "doc-016-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-016-a"
+            ],
+            "ineligibleIds": [
+              "doc-016-a"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.35316599999998743,
+            0.3667499999999677,
+            0.32575000000002774,
+            0.3267089999999939,
+            0.3521250000000009
+          ],
+          "ids": [
+            "doc-016-a",
+            "doc-016-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-016-a",
+              "doc-016-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-016-a",
+              "doc-016-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.34099999999995134,
+            0.3312090000000012,
+            0.32808299999999235,
+            0.3433329999999728,
+            0.3262910000000261
+          ],
+          "ids": [
+            "doc-016-a",
+            "doc-016-noise-2",
+            "doc-016-noise-7"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7"
+            ],
+            "ineligibleIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.37599999999997635,
+            0.39125000000001364,
+            0.35220899999995936,
+            0.33741599999996197,
+            0.3252499999999827
+          ],
+          "ids": [
+            "doc-016-a",
+            "doc-016-noise-2",
+            "doc-016-noise-7",
+            "doc-016-noise-5",
+            "doc-016-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7",
+              "doc-016-noise-5",
+              "doc-016-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7",
+              "doc-016-noise-5",
+              "doc-016-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.32995799999997644,
+            0.4162499999999909,
+            1.5350419999999758,
+            0.37837500000000546,
+            0.3688329999999951
+          ],
+          "ids": [
+            "doc-016-a",
+            "doc-016-noise-2",
+            "doc-016-noise-7",
+            "doc-016-noise-5",
+            "doc-016-noise-1",
+            "doc-016-noise-8",
+            "doc-016-noise-3",
+            "doc-016-noise-6",
+            "doc-016-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7",
+              "doc-016-noise-5",
+              "doc-016-noise-1",
+              "doc-016-noise-8",
+              "doc-016-noise-3",
+              "doc-016-noise-6",
+              "doc-016-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-016-a",
+              "doc-016-noise-2",
+              "doc-016-noise-7",
+              "doc-016-noise-5",
+              "doc-016-noise-1",
+              "doc-016-noise-8",
+              "doc-016-noise-3",
+              "doc-016-noise-6",
+              "doc-016-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-017",
+      "firstQuery": {
+        "elapsedMs": 0.41729200000003175,
+        "ids": [
+          "doc-017-noise-6",
+          "doc-017-b",
+          "doc-017-a",
+          "doc-017-noise-3",
+          "doc-017-noise-2",
+          "doc-017-noise-8",
+          "doc-017-noise-5",
+          "doc-017-noise-1",
+          "doc-017-noise-7",
+          "doc-017-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3987079999999992,
+            0.40104199999996126,
+            0.36708300000003646,
+            0.39037499999994907,
+            0.3799579999999878
+          ],
+          "ids": [
+            "doc-017-noise-6"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 2,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": 0,
+            "precision": 0,
+            "sufficient": false,
+            "missingRequiredIds": [
+              "doc-017-a",
+              "doc-017-b"
+            ],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-017-noise-6"
+            ],
+            "ineligibleIds": [
+              "doc-017-noise-6"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.38141600000000153,
+            0.391791000000012,
+            0.3664999999999736,
+            0.38320800000002464,
+            0.37391600000000835
+          ],
+          "ids": [
+            "doc-017-noise-6",
+            "doc-017-b"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 2,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 0.5,
+            "precision": 0.5,
+            "sufficient": false,
+            "missingRequiredIds": [
+              "doc-017-a"
+            ],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-017-noise-6"
+            ],
+            "ineligibleIds": [
+              "doc-017-noise-6"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.38208399999996345,
+            0.48654099999998834,
+            0.39562499999999545,
+            0.41124999999999545,
+            0.35762499999998454
+          ],
+          "ids": [
+            "doc-017-noise-6",
+            "doc-017-b",
+            "doc-017-a"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.6666666666666666,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-017-noise-6"
+            ],
+            "ineligibleIds": [
+              "doc-017-noise-6"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.35045900000000074,
+            0.3621249999999918,
+            0.39541600000001154,
+            0.3705410000000029,
+            0.3622919999999681
+          ],
+          "ids": [
+            "doc-017-noise-6",
+            "doc-017-b",
+            "doc-017-a",
+            "doc-017-noise-3",
+            "doc-017-noise-2"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.4,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-017-noise-6",
+              "doc-017-noise-3",
+              "doc-017-noise-2"
+            ],
+            "ineligibleIds": [
+              "doc-017-noise-6",
+              "doc-017-noise-3",
+              "doc-017-noise-2"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.38037499999995816,
+            0.38933299999996507,
+            0.4059159999999906,
+            0.37574999999998226,
+            0.36937500000004775
+          ],
+          "ids": [
+            "doc-017-noise-6",
+            "doc-017-b",
+            "doc-017-a",
+            "doc-017-noise-3",
+            "doc-017-noise-2",
+            "doc-017-noise-8",
+            "doc-017-noise-5",
+            "doc-017-noise-1",
+            "doc-017-noise-7",
+            "doc-017-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 10,
+            "requiredCount": 2,
+            "requiredMatchedCount": 2,
+            "eligibleMatchedCount": 2,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-017-noise-6",
+              "doc-017-noise-3",
+              "doc-017-noise-2",
+              "doc-017-noise-8",
+              "doc-017-noise-5",
+              "doc-017-noise-1",
+              "doc-017-noise-7",
+              "doc-017-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-017-noise-6",
+              "doc-017-noise-3",
+              "doc-017-noise-2",
+              "doc-017-noise-8",
+              "doc-017-noise-5",
+              "doc-017-noise-1",
+              "doc-017-noise-7",
+              "doc-017-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-018",
+      "firstQuery": {
+        "elapsedMs": 0.3912920000000213,
+        "ids": [
+          "doc-018-a",
+          "doc-018-noise-5",
+          "doc-018-noise-1",
+          "doc-018-noise-3",
+          "doc-018-noise-8",
+          "doc-018-noise-6",
+          "doc-018-noise-2",
+          "doc-018-noise-7",
+          "doc-018-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.3636250000000132,
+            0.3490419999999972,
+            0.33958300000000463,
+            2.618083000000013,
+            0.348041999999964
+          ],
+          "ids": [
+            "doc-018-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3486670000000345,
+            0.36358300000000554,
+            0.3426659999999515,
+            0.3594580000000178,
+            0.3456249999999841
+          ],
+          "ids": [
+            "doc-018-a",
+            "doc-018-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-018-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-018-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.34062499999998863,
+            0.3386249999999791,
+            0.3455409999999688,
+            0.3462499999999977,
+            0.344333000000006
+          ],
+          "ids": [
+            "doc-018-a",
+            "doc-018-noise-5",
+            "doc-018-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.34287499999999227,
+            0.33925000000004957,
+            0.33779200000003584,
+            0.34474999999997635,
+            0.3445830000000001
+          ],
+          "ids": [
+            "doc-018-a",
+            "doc-018-noise-5",
+            "doc-018-noise-1",
+            "doc-018-noise-3",
+            "doc-018-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1",
+              "doc-018-noise-3",
+              "doc-018-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1",
+              "doc-018-noise-3",
+              "doc-018-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.3423339999999939,
+            0.33416699999997945,
+            0.36354199999999537,
+            0.3468749999999545,
+            0.34645899999998164
+          ],
+          "ids": [
+            "doc-018-a",
+            "doc-018-noise-5",
+            "doc-018-noise-1",
+            "doc-018-noise-3",
+            "doc-018-noise-8",
+            "doc-018-noise-6",
+            "doc-018-noise-2",
+            "doc-018-noise-7",
+            "doc-018-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1",
+              "doc-018-noise-3",
+              "doc-018-noise-8",
+              "doc-018-noise-6",
+              "doc-018-noise-2",
+              "doc-018-noise-7",
+              "doc-018-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-018-noise-5",
+              "doc-018-noise-1",
+              "doc-018-noise-3",
+              "doc-018-noise-8",
+              "doc-018-noise-6",
+              "doc-018-noise-2",
+              "doc-018-noise-7",
+              "doc-018-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-019",
+      "firstQuery": {
+        "elapsedMs": 0.3778750000000173,
+        "ids": [
+          "doc-019-a",
+          "doc-019-noise-8",
+          "doc-019-noise-5",
+          "doc-019-noise-1",
+          "doc-019-noise-3",
+          "doc-019-noise-6",
+          "doc-019-noise-2",
+          "doc-019-noise-7",
+          "doc-019-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.369542000000024,
+            0.33654200000000856,
+            0.33762500000000273,
+            0.325458000000026,
+            0.32566600000001245
+          ],
+          "ids": [
+            "doc-019-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-019-a"
+            ],
+            "ineligibleIds": [
+              "doc-019-a"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3250409999999988,
+            0.32716699999997445,
+            0.33191700000003266,
+            0.3472499999999741,
+            0.332458000000031
+          ],
+          "ids": [
+            "doc-019-a",
+            "doc-019-noise-8"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-019-a",
+              "doc-019-noise-8"
+            ],
+            "ineligibleIds": [
+              "doc-019-a",
+              "doc-019-noise-8"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3355830000000424,
+            0.3300420000000486,
+            0.3252499999999827,
+            0.33104100000002745,
+            0.33654200000000856
+          ],
+          "ids": [
+            "doc-019-a",
+            "doc-019-noise-8",
+            "doc-019-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.3575000000000159,
+            0.3352909999999838,
+            0.6786250000000109,
+            0.441332999999986,
+            0.4323750000000359
+          ],
+          "ids": [
+            "doc-019-a",
+            "doc-019-noise-8",
+            "doc-019-noise-5",
+            "doc-019-noise-1",
+            "doc-019-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5",
+              "doc-019-noise-1",
+              "doc-019-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5",
+              "doc-019-noise-1",
+              "doc-019-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.4230000000000018,
+            1.4500830000000065,
+            0.3466670000000249,
+            0.3302919999999858,
+            0.33412500000002865
+          ],
+          "ids": [
+            "doc-019-a",
+            "doc-019-noise-8",
+            "doc-019-noise-5",
+            "doc-019-noise-1",
+            "doc-019-noise-3",
+            "doc-019-noise-6",
+            "doc-019-noise-2",
+            "doc-019-noise-7",
+            "doc-019-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 0,
+            "requiredMatchedCount": 0,
+            "eligibleMatchedCount": 0,
+            "recall": null,
+            "precision": 0,
+            "sufficient": null,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5",
+              "doc-019-noise-1",
+              "doc-019-noise-3",
+              "doc-019-noise-6",
+              "doc-019-noise-2",
+              "doc-019-noise-7",
+              "doc-019-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-019-a",
+              "doc-019-noise-8",
+              "doc-019-noise-5",
+              "doc-019-noise-1",
+              "doc-019-noise-3",
+              "doc-019-noise-6",
+              "doc-019-noise-2",
+              "doc-019-noise-7",
+              "doc-019-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "sem-020",
+      "firstQuery": {
+        "elapsedMs": 0.3862500000000182,
+        "ids": [
+          "doc-020-a",
+          "doc-020-noise-5",
+          "doc-020-noise-1",
+          "doc-020-noise-8",
+          "doc-020-noise-3",
+          "doc-020-noise-6",
+          "doc-020-noise-2",
+          "doc-020-noise-7",
+          "doc-020-noise-4"
+        ]
+      },
+      "warm": [
+        {
+          "topK": 1,
+          "latencyMs": [
+            0.33424999999999727,
+            0.35866699999996854,
+            0.323332999999991,
+            0.3293750000000273,
+            0.3310000000000173
+          ],
+          "ids": [
+            "doc-020-a"
+          ],
+          "score": {
+            "gatheredCount": 1,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 1,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [],
+            "ineligibleIds": [],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 2,
+          "latencyMs": [
+            0.3376670000000104,
+            0.353541000000007,
+            0.3614170000000172,
+            0.310416000000032,
+            0.33875000000000455
+          ],
+          "ids": [
+            "doc-020-a",
+            "doc-020-noise-5"
+          ],
+          "score": {
+            "gatheredCount": 2,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.5,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-020-noise-5"
+            ],
+            "ineligibleIds": [
+              "doc-020-noise-5"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 3,
+          "latencyMs": [
+            0.3057499999999891,
+            0.3282920000000331,
+            0.32512499999995725,
+            0.33837500000004184,
+            0.31979100000000926
+          ],
+          "ids": [
+            "doc-020-a",
+            "doc-020-noise-5",
+            "doc-020-noise-1"
+          ],
+          "score": {
+            "gatheredCount": 3,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.3333333333333333,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1"
+            ],
+            "ineligibleIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 5,
+          "latencyMs": [
+            0.3684999999999832,
+            0.3437919999999508,
+            0.33933300000001054,
+            0.36387499999995043,
+            0.32712500000002365
+          ],
+          "ids": [
+            "doc-020-a",
+            "doc-020-noise-5",
+            "doc-020-noise-1",
+            "doc-020-noise-8",
+            "doc-020-noise-3"
+          ],
+          "score": {
+            "gatheredCount": 5,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.2,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1",
+              "doc-020-noise-8",
+              "doc-020-noise-3"
+            ],
+            "ineligibleIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1",
+              "doc-020-noise-8",
+              "doc-020-noise-3"
+            ],
+            "unknownIds": []
+          }
+        },
+        {
+          "topK": 10,
+          "latencyMs": [
+            0.3366669999999772,
+            0.334083000000021,
+            0.3342920000000049,
+            0.34308400000003303,
+            0.33587499999998727
+          ],
+          "ids": [
+            "doc-020-a",
+            "doc-020-noise-5",
+            "doc-020-noise-1",
+            "doc-020-noise-8",
+            "doc-020-noise-3",
+            "doc-020-noise-6",
+            "doc-020-noise-2",
+            "doc-020-noise-7",
+            "doc-020-noise-4"
+          ],
+          "score": {
+            "gatheredCount": 9,
+            "requiredCount": 1,
+            "requiredMatchedCount": 1,
+            "eligibleMatchedCount": 1,
+            "recall": 1,
+            "precision": 0.1111111111111111,
+            "sufficient": true,
+            "missingRequiredIds": [],
+            "staleIds": [],
+            "revokedIds": [],
+            "revisionMismatchIds": [],
+            "unsupportedIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1",
+              "doc-020-noise-8",
+              "doc-020-noise-3",
+              "doc-020-noise-6",
+              "doc-020-noise-2",
+              "doc-020-noise-7",
+              "doc-020-noise-4"
+            ],
+            "ineligibleIds": [
+              "doc-020-noise-5",
+              "doc-020-noise-1",
+              "doc-020-noise-8",
+              "doc-020-noise-3",
+              "doc-020-noise-6",
+              "doc-020-noise-2",
+              "doc-020-noise-7",
+              "doc-020-noise-4"
+            ],
+            "unknownIds": []
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "DEV local diagnostic. First query opens a fresh SQLite connection after ingestion; OS/page cache not flushed, so this is not true disk-cold latency. Warm samples follow that first query. No model calls. Results are post-hoc feasibility, not frozen acceptance or quality evidence.",
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false
+}

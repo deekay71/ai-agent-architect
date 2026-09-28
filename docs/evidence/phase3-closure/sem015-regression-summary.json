@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "sem015-regression-summary/1",
+  "sourceCommit": "b5e08e7",
+  "campaigns": [
+    {
+      "kind": "policy",
+      "bundleDigest": "sha256:325f69c3a6de0eb46d4572f62b4e72ef50a7a46fb2743110c7c9eb2a23850292",
+      "campaign": {
+        "campaignId": "phase3-sem015-policy-regression-20260928",
+        "reportRawDigest": "sha256:43bab06f82b5995855efc9065fefbac9306bbc5a863dde976ceec067845a0fda",
+        "lockRawDigest": "sha256:2eff3e261c45aaad49c6c23cb82a823504b23ce39340ddf822b53c8e2c25370d",
+        "configDigest": "sha256:7883bb248f8a602c132882a8f4ded9e714e4a37da0aa060e479e49fcbba8b1b5",
+        "datasetSealDigest": "sha256:78f8e37f0dabdcaff23b2f1d62b8281183fc925ac0a9c8d546ad99b06a68d7b9",
+        "implementationDigest": "sha256:5a6266afac753b716c39657b72373f982b4231ca311838dc7fa3858cc4441dec",
+        "compiledDigest": "sha256:3b60eda5634db34b1d011849ea512655b32c9f5d875c962a99ecdf03cd279914",
+        "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+        "promptDigest": "sha256:18465ad900d39dc6a1a62b127dffc06d3fd9c42ee282bd1ec0436b78f6aca7b9",
+        "transportId": "codex-chatgpt-exec/1",
+        "assurance": "codex-chatgpt",
+        "integrityStable": true,
+        "stoppedReason": null
+      }
+    },
+    {
+      "kind": "enumeration",
+      "bundleDigest": "sha256:9eaa31cf359331bcf51483b49d42e04dcac8227a64efa57f3fdafb0460d55cb8",
+      "campaign": {
+        "campaignId": "phase3-sem015-enumeration-regression-20260928",
+        "reportRawDigest": "sha256:9088c35d1e676f9d035d41f3e83b9c251cd6bdf533bd247e264663db2eeec06a",
+        "lockRawDigest": "sha256:fcc03e1b83be64d62252a26422cd00a2dc4450cf3739923fe2f40b38a8d231c7",
+        "configDigest": "sha256:ab4771ef5209b39ae554bc2b4b6a38a1e61fdac1e263b2c75b4d70d6cf7a2743",
+        "datasetSealDigest": "sha256:15a5e9069b291b60d7628a8b536c53dff61a5bb8b66b1b165eaccfd84d721f1d",
+        "implementationDigest": "sha256:5a6266afac753b716c39657b72373f982b4231ca311838dc7fa3858cc4441dec",
+        "compiledDigest": "sha256:3b60eda5634db34b1d011849ea512655b32c9f5d875c962a99ecdf03cd279914",
+        "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+        "promptDigest": "sha256:18465ad900d39dc6a1a62b127dffc06d3fd9c42ee282bd1ec0436b78f6aca7b9",
+        "transportId": "codex-chatgpt-exec/1",
+        "assurance": "codex-chatgpt",
+        "integrityStable": true,
+        "stoppedReason": null
+      }
+    }
+  ],
+  "modelOutputs": 10,
+  "advisoryPass": 10,
+  "correctedExposedControls": 6,
+  "controlAgreement": 6,
+  "readerInvocations": 18,
+  "readerReportedTokens": 256203,
+  "readerUnknown": 0,
+  "judgeAuthorizationCumulative": {
+    "authorizationId": "phase3-dev-judge-20260928-user-completion",
+    "maxInvocations": 40,
+    "maxReportedTokens": 1200000,
+    "maxWallTimeMs": 3600000,
+    "usedInvocations": 34,
+    "reportedTokens": 358358,
+    "pendingAttempts": 0,
+    "unknownAttempts": 0,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": false,
+    "stopReason": null,
+    "startedAt": 1790579791642,
+    "deadlineAt": 1790583391642,
+    "timeRemainingMs": 1777451
+  },
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "humanReviewed": false,
+  "interpretation": "Targeted exposed DEV regression, one repeat per arm; not a new independent calibration check or replacement of original campaign."
+}

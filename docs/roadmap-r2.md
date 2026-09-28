@@ -1,5 +1,15 @@
 # 07 — Roadmap triển khai R2: hạ tầng trước, game sau
 
+## Actual mới nhất — test và sửa lỗi 28/09/2026
+
+**554/554 clean tests Pass.** Đợt native trên 20 DEV cases ghi đủ 100 trials: 74 đáp án hợp lệ, 25 context-blocked, 1 output sai contract. Sol chấm 70/74 advisory Pass; bốn bất đồng cùng case CORS mơ hồ đã được Astra adjudicate. Đã sửa hướng dẫn abstain/null và tách hai DEV regressions rõ nghĩa: 10/10 outputs hợp lệ, 10/10 advisory Pass; sáu controls sửa câu hỏi khớp nhãn 6/6. Không thay dataset hoặc score cũ.
+
+Calibration 108/108 agreement vẫn thiếu bảo đảm nhãn: sáu controls CORS bị ambiguity; không dùng con số này đóng gate. Có 10 fresh holdout families được AI author/reviewer độc lập chuẩn bị, chưa dispatch. Native harness dùng 187 calls / 2.515.297 reported tokens, không unknown mới; số này không bao gồm lượt chat/collaboration và không suy ra USD.
+
+Compaction context ngắn tốn khoảng 1,99×/3,96× token của F ở C1/C3, chưa tăng quality. Chưa bật mặc định. Retrieval local với topK3 giữ recall=1 trên 17 cases có required sources, đang là DEV feasibility. **T19/T14 Not evaluated, T11 Replan, Phase 3 chưa PASS**: còn protocol freeze, calibration/acceptance runner, fresh holdout matrix và full handoff. Đây không chỉ là thiếu owner approval. [Báo cáo và phần còn lại](phase-3-closure-tests-2026-09-28.md); [protocol đề xuất](phase-3-subscription-acceptance-proposal.md); [cloud evidence](https://drive.google.com/drive/folders/1fJQhs5ral9Pr3NdGJJMWpYaw7gu8O03G).
+
+Các mốc, profile và giới hạn scope bên dưới là lịch sử; giữ nguyên evidence và Forecast R2 để đối chiếu.
+
 ## Kết quả thực hiện Phase 3 — 25/09/2026
 
 **T09/T10 Done / Pass trong phạm vi local; T19 Doing / Not evaluated; T11 Doing / Replan; T14 Doing / Not evaluated; toàn Phase 3 chưa PASS.** SQLite/FTS Memory, provenance/freshness/promotion/invalidation, per-agent Context/hydration/progressive skills và current-source runtime guard đã triển khai. T19 còn AC task quality/loss/latency/tokens với provider thật; T14 có implementation/tests nhưng full handoff gate chờ nghiệm thu T19. Explorer graph/backlinks kiểu Obsidian được duyệt bổ sung vào scope và đã có inspector loopback chỉ đọc; proposal không ghi Memory chuẩn. Xem [báo cáo Phase 3](phase-3-report.md), [hướng dẫn](memory-context.md) và [benchmark](phase3-benchmark.md).
