@@ -1,5 +1,14 @@
 # Phase 3 — Kế hoạch đóng phần còn lại
 
+## Actual hiện hành — 28/09/2026
+
+Terra medium / Sol medium / Astra high đã áp dụng vào [plan](phase-3-execution-plan-2026-09-28.md) và config smoke mới. **530/530 clean tests Pass**; sửa exact Code Mode startup notice đã kiểm offline. 3 live attempts mới đều chưa có output/usage hợp lệ; ledgers frozen, không retry. Sol/Astra chưa chạy. [Báo cáo và evidence](phase-3-routing-execution-report.md); [bàn giao calibration](phase-3-calibration-worklist.md). Phase 3 chưa Pass, T19/T14 Not evaluated, T11 Replan. Các mốc 25/09 và profiles Luna phía dưới là lịch sử.
+
+
+## Tiếp tục thực thi — 28/09/2026
+
+Owner yêu cầu áp dụng Terra/Sol/Astra vào plan và thực thi tiếp. [Plan hiện hành](phase-3-execution-plan-2026-09-28.md) phân vai theo từng gói, dependency, gate và phạm vi đo mới; configs/failed runs ngày 25/09 là lịch sử. Bước hiện tại: chẩn đoán CLI, regression fix, DEV smoke ba profiles, rồi chuẩn bị calibration. Giữ ledger cũ frozen và mọi unknown; không đổi status Phase 3 chỉ vì có model output.
+
 ## Quyết định hiện hành — Codex subscription, 25/09/2026
 
 Owner đã duyệt chạy DEV benchmark qua **Codex CLI đăng nhập ChatGPT**, dùng quota Codex hiện có. Không cần API key và không áp dụng đề xuất cap API 5 USD. Giữ cấu hình Astra/high cho planning và Luna/medium cho execution; đây là requested profiles, chưa phải chứng nhận model hoặc phân vai. Đợt đầu giới hạn một dev case, 6 comparison trials +2 G, tối đa 10 invocations. Runbook và actual nằm trong [báo cáo Codex](phase-3-codex-benchmark.md). **Actual: hai attempts, 0 valid model answers; một local startup failure đã reconcile có evidence, một started-thread attempt còn unknown usage và ledger frozen. Smoke chưa đạt; không chạy lại hoặc reset allowance tự động.**

@@ -1,0 +1,29 @@
+{
+  "request": {
+    "model": "gpt-5.6-terra",
+    "reasoningEffort": "medium",
+    "instructions": "Return the supplied literal value as JSON. Do not use tools.",
+    "input": "The answer is READY.",
+    "maxOutputTokens": 100,
+    "schemaName": "protocol_probe",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "authorization": {
+    "authorizationId": "owner-continue-20260928-diagnostic-1",
+    "maxInvocations": 1,
+    "maxReportedTokens": 25000,
+    "maxWallTimeMs": 180000
+  },
+  "launchPolicyDigest": "sha256:671e62f18eeb1dca18a044e78540e8134fca4dab2a6c5327578866a84bbe0784"
+}

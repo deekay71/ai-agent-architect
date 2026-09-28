@@ -1,0 +1,30 @@
+✖ launch suppresses experimental-feature banner before the first turn without admitting error items (3.358875ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38.933792
+
+✖ failing tests:
+
+test at dist/test/codex-provider.test.js:265:1
+✖ launch suppresses experimental-feature banner before the first turn without admitting error items (3.358875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'incomplete'
+  - 'completed'
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/codex-provider.test.js:273:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'incomplete',
+    expected: 'completed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

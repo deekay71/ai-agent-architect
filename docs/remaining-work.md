@@ -1,5 +1,14 @@
 # Công việc còn lại sau triển khai local Phase 3
 
+## Actual hiện hành — 28/09/2026
+
+Terra medium / Sol medium / Astra high đã áp dụng vào [plan](phase-3-execution-plan-2026-09-28.md) và config smoke mới. **530/530 clean tests Pass**; sửa exact Code Mode startup notice đã kiểm offline. 3 live attempts mới đều chưa có output/usage hợp lệ; ledgers frozen, không retry. Sol/Astra chưa chạy. [Báo cáo và evidence](phase-3-routing-execution-report.md); [bàn giao calibration](phase-3-calibration-worklist.md). Phase 3 chưa Pass, T19/T14 Not evaluated, T11 Replan. Các mốc 25/09 và profiles Luna phía dưới là lịch sử.
+
+
+## Tiếp tục thực thi — 28/09/2026
+
+Owner yêu cầu áp dụng Terra/Sol/Astra vào plan và thực thi tiếp. [Plan hiện hành](phase-3-execution-plan-2026-09-28.md) phân vai theo từng gói, dependency, gate và phạm vi đo mới; configs/failed runs ngày 25/09 là lịch sử. Bước hiện tại: chẩn đoán CLI, regression fix, DEV smoke ba profiles, rồi chuẩn bị calibration. Giữ ledger cũ frozen và mọi unknown; không đổi status Phase 3 chỉ vì có model output.
+
 ## Phân vai model mới — 25/09/2026
 
 Owner chọn **Terra (`gpt-5.6-terra`) cho execution; Sol (`gpt-6-sol`) cho suy nghĩ mức vừa; Astra (`gpt-6-astra`) cho suy nghĩ sâu**. Effort mặc định tương ứng medium / medium / high. [Quy tắc và profiles](model-routing.md) áp dụng cho cấu hình tác vụ mới; Luna trong kết quả/campaign cũ là lịch sử. Đây chưa phải tự động chuyển model của phiên đang chạy hoặc mở lại benchmark frozen.

@@ -1,0 +1,45 @@
+{
+  "scope": "Offline startup diagnostic; macOS sandbox denies all network; injected runner is mock assurance, never semantic evidence",
+  "notices": [
+    "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+  ],
+  "result": {
+    "status": "incomplete",
+    "output": null,
+    "requestedModel": "gpt-5.6-terra",
+    "requestDigest": "sha256:5673d047e298f9a8afcee7e1e959e48d2ffd566bf8bb6fa5188e796b4ef403d5",
+    "renderedRequestDigest": "sha256:77ad4aba735de9ab9bde10d1874e294864f7b9151abfe5dac9fb97abeb4df885",
+    "launchPolicyDigest": "sha256:3cdbd2f9cdb8846dfcc4bcb9c65d5fdb677be58b7f76ac940b8212fa83a812b5",
+    "configurationDigest": "sha256:294967c8dbbd167b81d02677985f20651f57a2627d9dd67c6c9e08512feedd20",
+    "usage": null,
+    "elapsedMs": 1197.2926670000002,
+    "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+    "threadId": "01a0e626-2b05-7361-aa75-d4fa79bd8002",
+    "issues": [
+      "CODEX_TURN_FAILED",
+      "CODEX_EVENT_REJECTED",
+      "CODEX_PROCESS_FAILED"
+    ],
+    "apiCostMicros": null,
+    "exactInputCount": null,
+    "modelIdentityAssurance": "requested-only",
+    "maxOutputTokensEnforced": false,
+    "isolationAssurance": "capability-flags-and-event-audit",
+    "eventDiagnostics": {
+      "eventCount": 4,
+      "eventTypes": [
+        "thread.started",
+        "item.completed",
+        "turn.started",
+        "error"
+      ],
+      "itemTypes": [
+        "error"
+      ],
+      "rejectedEventType": "error",
+      "rejectedItemType": null,
+      "rejectionCategory": "CODEX_TURN_FAILED",
+      "truncated": false
+    }
+  }
+}

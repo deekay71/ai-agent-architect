@@ -189,13 +189,16 @@ const DISABLED_FEATURES = [
   'request_permissions_tool', 'send_message_to_user_async', 'shell_snapshot', 'shell_snapshot_v2',
   'shell_tool', 'skill_mcp_dependency_install', 'skill_search', 'sleep_tool', 'standalone_web_search',
   'step_model_switching', 'token_budget', 'tool_call_mcp_elicitation', 'tool_suggest',
-  'unbounded_connection_retries', 'unified_exec', 'view_image', 'web_search_cached', 'web_search_request',
+  'unbounded_connection_retries', 'unified_exec', 'view_image',
   'workspace_dependencies', 'worktrees',
 ] as const;
 
 function execArgs(request: ModelRequest, schemaFile: string, cwd: string, privateRoot: string): string[] {
   const settings: Record<string, string | number | boolean> = {
     forced_login_method: 'chatgpt', model_provider: 'openai', approval_policy: 'never', web_search: 'disabled',
+    // Prevent the experimental-feature banner from adding a startup notice.
+    // Suppress only that presentation notice; actual error/tool events still fail closed.
+    suppress_unstable_features_warning: true,
     default_permissions: 'architect-benchmark', 'permissions.architect-benchmark.extends': ':read-only',
     'permissions.architect-benchmark.network.enabled': false,
     project_doc_max_bytes: 0, 'skills.include_instructions': false, 'skills.bundled.enabled': false,
@@ -221,6 +224,9 @@ function execArgs(request: ModelRequest, schemaFile: string, cwd: string, privat
   return args;
 }
 
+// Exact advisory observed offline on the pinned CLI. Tool capability remains disabled.
+const DISABLED_CODE_MODE_NOTICE = 'Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`.';
+
 /** Canonical wrapper bytes are bound separately from the original ModelRequest. */
 export function renderCodexRequest(request: ModelRequest): string {
   return canonicalJson({ taskInstructions: request.instructions, input: request.input,
@@ -229,6 +235,7 @@ export function renderCodexRequest(request: ModelRequest): string {
 }
 export const CODEX_LAUNCH_POLICY_DIGEST = digest({
   schemaVersion: 'codex-launch-policy/1', supportedCliVersion: CODEX_CLI_VERSION,
+  startupNoticePolicy: { message: DISABLED_CODE_MODE_NOTICE, maximum: 1, beforeTurnOnly: true },
   args: execArgs({ model: '<requested-model>', instructions: '', input: '', maxOutputTokens: 1,
     schema: { type: 'object' }, schemaName: 'placeholder', reasoningEffort: 'medium' }, '<schema>', '<work>', '<private>'),
   rendering: renderCodexRequest({ model: '<requested-model>', instructions: '<instructions>', input: '<input>',
@@ -252,6 +259,7 @@ function parseUsage(raw: unknown): CodexUsage | null {
 
 /** One thread and one turn, with no accepted tool, plan or unknown events. Reasoning is discarded. */
 function eventParser(): { line: (line: string) => boolean; finish: () => { output: unknown | null; usage: CodexUsage | null; threadId: string | null; issues: string[]; eventDiagnostics: CodexEventDiagnostics } } {
+  let startupNoticeSeen = false;
   let threadId: string | null = null; let started = false; let completed = false; let message: string | null = null;
   let usage: CodexUsage | null = null; const issues: string[] = []; const completedItems = new Set<string>();
   const diagnostics: CodexEventDiagnostics = { eventCount: 0, eventTypes: [], itemTypes: [], rejectedEventType: null,
@@ -289,6 +297,15 @@ function eventParser(): { line: (line: string) => boolean; finish: () => { outpu
       if (event.type === 'turn.completed') {
         if (!started) return fail('CODEX_TURN_INVALID'); completed = true; usage = parseUsage(event.usage);
         if (usage === null) return fail('CODEX_USAGE_UNKNOWN'); return true;
+      }
+      // A pinned CLI advisory about intentionally disabled tools is not a failed model turn.
+      // Match its entire shape/text and position; never admit arbitrary error items.
+      if (event.type === 'item.completed' && threadId !== null && !started && !startupNoticeSeen &&
+          Object.keys(event).every(key => ['type', 'item'].includes(key)) && object(event.item) &&
+          Object.keys(event.item).every(key => ['id', 'type', 'message'].includes(key)) &&
+          typeof event.item.id === 'string' && /^[a-zA-Z0-9_-]{1,128}$/.test(event.item.id) &&
+          event.item.type === 'error' && event.item.message === DISABLED_CODE_MODE_NOTICE) {
+        startupNoticeSeen = true; completedItems.add(event.item.id); return true;
       }
       if (!['item.started', 'item.updated', 'item.completed'].includes(event.type) || !started || !object(event.item) ||
           typeof event.item.id !== 'string' || typeof event.item.type !== 'string') return fail('CODEX_EVENT_UNKNOWN');

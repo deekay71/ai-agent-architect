@@ -1,0 +1,58 @@
+{
+  "attemptId": "a4a526db-c6b1-4e19-ad43-c827b5cdc9a9",
+  "result": {
+    "status": "incomplete",
+    "output": null,
+    "requestedModel": "gpt-5.6-terra",
+    "requestDigest": "sha256:ebf7d732a49e3168ad238915755cef4aa191b05734f50a7ef8e75cd327cb0aa7",
+    "renderedRequestDigest": "sha256:e5fe6c0bf824c73df093eb092ccffb901eacbd8138138f938c56ad27e77df00d",
+    "launchPolicyDigest": "sha256:47579ccd2042252811c3432fd5f16b3b490976be60ce80af3d05e94e6d42296a",
+    "configurationDigest": "sha256:2184d370416c6bf5fd8581384b91c1c2bd480c334b9cdfcc3f5f738fe76c5166",
+    "usage": null,
+    "elapsedMs": 704.322,
+    "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+    "threadId": "01a0e611-e45c-7861-bb43-40c41ee6f4c1",
+    "issues": [
+      "CODEX_EVENT_UNKNOWN",
+      "CODEX_EVENT_REJECTED",
+      "CODEX_PROCESS_FAILED"
+    ],
+    "apiCostMicros": null,
+    "exactInputCount": null,
+    "modelIdentityAssurance": "requested-only",
+    "maxOutputTokensEnforced": false,
+    "isolationAssurance": "capability-flags-and-event-audit",
+    "eventDiagnostics": {
+      "eventCount": 2,
+      "eventTypes": [
+        "thread.started",
+        "item.completed"
+      ],
+      "itemTypes": [
+        "error"
+      ],
+      "rejectedEventType": "item.completed",
+      "rejectedItemType": "error",
+      "rejectionCategory": "CODEX_EVENT_UNKNOWN",
+      "truncated": false
+    }
+  },
+  "budget": {
+    "authorizationId": "owner-continue-20260928-diagnostic-2",
+    "maxInvocations": 1,
+    "maxReportedTokens": 25000,
+    "maxWallTimeMs": 180000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 1,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": true,
+    "stopReason": "unknown-usage",
+    "startedAt": 1790566326743,
+    "deadlineAt": 1790566506743,
+    "timeRemainingMs": 179291
+  },
+  "scope": "protocol-only-no-dataset-no-oracle"
+}

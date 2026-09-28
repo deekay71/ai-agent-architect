@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "codex-semantic-report/1",
+  "campaignId": "codex-terra-sol-astra-dev-20260928",
+  "purpose": "dev-smoke",
+  "configDigest": "sha256:734de6e1d3e71c2856c110cc1048acca02eb21574d8d85818f11c125c90041de",
+  "datasetSealDigest": "sha256:be327cca08b882f0c45669cf5cff38f5009dd26a89cb2c46b39dcc2302250008",
+  "implementationDigest": "sha256:c00a9cc7d4d4a4acf0278ed206c3d6a56e7d75bda0df7e7dc2cbff634838eb8a",
+  "compiledDigest": "sha256:8ce09e2248570ea04a2b530c2dd41e824394c9bc9f92624a744e140e0864134a",
+  "transportId": "codex-chatgpt-exec/1",
+  "assurance": "codex-chatgpt",
+  "launchPolicyDigest": "sha256:889cc0c7ebe9abdf2c42b123912683181d3233d18d3654799b132b721042500a",
+  "billing": "chatgpt-subscription-quota",
+  "apiCostMicros": null,
+  "exactInputCount": null,
+  "maxOutputTokensEnforced": false,
+  "modelIdentityAssurance": "requested-only",
+  "budgetBasis": "invocation-hard-cap-and-post-call-reported-token-stop",
+  "integrityStable": true,
+  "stoppedReason": "unknown-usage",
+  "modelOutputsObserved": false,
+  "plannedTrials": 9,
+  "plannedControls": 3,
+  "comparisonCoverage": {
+    "observed": 1,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {
+      "unknown-usage": 1
+    }
+  },
+  "controlCoverage": {
+    "observed": 0,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {}
+  },
+  "pairedDiagnostics": {
+    "schemaVersion": "codex-paired-diagnostics/1",
+    "interpretation": "descriptive-only",
+    "acceptanceDecision": null,
+    "comparisonTrials": 1,
+    "excludedControlTrials": 0,
+    "observedComparatorCount": 0,
+    "denominator": "Both reader outputs scored; repeats averaged within each unique case, then cases equally weighted",
+    "systemBlockedStatuses": [
+      "context-blocked",
+      "token-budget-blocked",
+      "model-context-blocked",
+      "visible-request-blocked",
+      "reported-token-stop",
+      "subscription-budget-stopped"
+    ],
+    "limitations": [
+      "Missing/unscored/system-blocked counts are overlapping diagnostics, not mutually exclusive outcomes",
+      "Entirely absent comparator arms or cases cannot be inferred from observed trials; use planned matrix coverage",
+      "Evaluator strictPass is a diagnostic score, not an independent semantic truth label or phase acceptance"
+    ],
+    "groups": [],
+    "accountingBasis": "same-post-call-stop-rule-not-equal-hard-provider-token-budget"
+  },
+  "budget": {
+    "authorizationId": "owner-continue-20260928-three-profile-smoke",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 1,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": true,
+    "stopReason": "unknown-usage",
+    "startedAt": 1790566706856,
+    "deadlineAt": 1790568506856,
+    "timeRemainingMs": 1799219
+  },
+  "trials": [
+    {
+      "trialId": "codex-00001",
+      "caseId": "sem-001",
+      "family": "workload-identity",
+      "taskClass": "infrastructure.operations",
+      "profileId": "executor-terra-medium",
+      "role": "executor",
+      "requestedModel": "gpt-5.6-terra",
+      "arm": "full",
+      "compactionRounds": 0,
+      "distractors": 0,
+      "repeat": 0,
+      "status": "unknown-usage",
+      "reportedTokenStop": 100000,
+      "reportedTokens": 0,
+      "reportedTokenStopExceeded": false,
+      "latencyMs": 762.201458,
+      "windowDigests": [
+        "sha256:05d41e8f3e8847a0d3e0dd7d7fbd24ba76e95d8771b0cddb01fc542c5a972a10"
+      ],
+      "selectedIds": [
+        "doc-001-a"
+      ],
+      "retrievedIds": [
+        "doc-001-a"
+      ],
+      "eligibleIds": [
+        "doc-001-a"
+      ],
+      "actualDistractors": 0,
+      "canonicalPreserved": true,
+      "answer": null,
+      "answerDigest": null,
+      "score": null,
+      "gathering": {
+        "retrieved": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        },
+        "selected": {
+          "gatheredCount": 1,
+          "requiredCount": 1,
+          "requiredMatchedCount": 1,
+          "eligibleMatchedCount": 1,
+          "recall": 1,
+          "precision": 1,
+          "sufficient": true,
+          "missingRequiredIds": [],
+          "staleIds": [],
+          "revokedIds": [],
+          "revisionMismatchIds": [],
+          "unsupportedIds": [],
+          "ineligibleIds": [],
+          "unknownIds": []
+        }
+      },
+      "calls": [
+        {
+          "stage": "reader",
+          "requestPath": "requests/codex-00001-reader.json",
+          "requestDigest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+          "attemptId": "e849088b-8b15-4768-9f56-393c46f22ba3",
+          "status": "unknown-usage",
+          "expectedConfigurationDigest": "sha256:7bb71cfa211c096a6113ce4c11aa712c6bc81d1f2f4ea0eecfd846b11491a88b",
+          "result": {
+            "status": "incomplete",
+            "output": null,
+            "requestedModel": "gpt-5.6-terra",
+            "requestDigest": "sha256:2f2b61ef035dbd3012bf45ab82501be6b1fc32d080c777d28e71d3d8e364f101",
+            "renderedRequestDigest": "sha256:ba39df8733363677e4a1d032e07aa461d64f205de52ebf63e8f9018dcb6bd5cf",
+            "launchPolicyDigest": "sha256:889cc0c7ebe9abdf2c42b123912683181d3233d18d3654799b132b721042500a",
+            "configurationDigest": "sha256:7bb71cfa211c096a6113ce4c11aa712c6bc81d1f2f4ea0eecfd846b11491a88b",
+            "usage": null,
+            "elapsedMs": 727.559292,
+            "cliVersion": "codex-cli 0.155.0-alpha.16.4",
+            "threadId": "01a0e617-b159-7e01-aeb6-da85c51cc490",
+            "issues": [
+              "CODEX_EVENT_UNKNOWN",
+              "CODEX_EVENT_REJECTED",
+              "CODEX_PROCESS_FAILED"
+            ],
+            "apiCostMicros": null,
+            "exactInputCount": null,
+            "modelIdentityAssurance": "requested-only",
+            "maxOutputTokensEnforced": false,
+            "isolationAssurance": "capability-flags-and-event-audit",
+            "eventDiagnostics": {
+              "eventCount": 2,
+              "eventTypes": [
+                "thread.started",
+                "item.completed"
+              ],
+              "itemTypes": [
+                "error"
+              ],
+              "rejectedEventType": "item.completed",
+              "rejectedItemType": "error",
+              "rejectionCategory": "CODEX_EVENT_UNKNOWN",
+              "truncated": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "phaseGate": "Not evaluated",
+  "releaseEligible": false,
+  "limitations": [
+    "DEV pipeline measurement includes Codex system context and CLI behavior, not raw Responses API parity",
+    "Reported token stops are post-call and can overshoot within one invocation; no dollar or exact quota conversion",
+    "Requested model/effort and CLI policy are pinned; backend model identity is not independently attested",
+    "Capability flags and event auditing are not proof of absolute oracle isolation",
+    "Fresh independent holdout, human calibration, frozen protocol and T14 remain open"
+  ]
+}

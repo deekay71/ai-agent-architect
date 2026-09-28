@@ -1,0 +1,28 @@
+✔ Codex transport binds wrapper, schema and policy, isolates working directory, and sanitizes receipts (4.161375ms)
+✔ environment construction never reads or forwards API credentials, provider overrides or inherited tools (0.096625ms)
+✔ unsupported version blocks before login or generation (0.69175ms)
+✔ API auth and ambiguous auth output cannot dispatch generation (1.45825ms)
+✔ every invocation rechecks authentication and fresh working root (1.7065ms)
+✔ configuration identity binds exact transport limits and requested model effort (0.137209ms)
+✔ request validation and pre-abort never invoke a child (0.253833ms)
+✔ tool events, unknown events, malformed JSON and extra turns fail closed (3.592791ms)
+✔ malformed, unknown and missing usage are not zero or valid measurements (2.852958ms)
+✔ unknown event diagnostics keep bounded type identifiers while discarding payload text and secrets (1.013666ms)
+✔ reported usage above output hint is retained; transport does not invent a hard cap (0.542958ms)
+✔ known zero cache-write usage is admitted while nonzero or malformed cache-write counters stay unknown (2.567792ms)
+✔ missing terminal event, duplicate outputs and invalid final JSON are not successful (1.327208ms)
+✔ runner failure cannot leak raw error, prompt, or auth material (0.348166ms)
+✔ native runner bounds output, timeout and external cancellation without a shell (126.754917ms)
+✔ native stream decoding preserves UTF-8 across chunks and stops on rejected event (66.09025ms)
+✔ native timeout kills a child process in the detached process group (152.604875ms)
+✔ launch suppresses experimental-feature banner before the first turn without admitting error items (2.869833ms)
+✔ canonical web policy avoids deprecated startup warnings while web stays disabled (1.17075ms)
+✔ exact disabled Code Mode startup notice is tolerated once, before the turn only (5.921458ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 412.4515

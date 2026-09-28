@@ -1,0 +1,30 @@
+✖ exact disabled Code Mode startup notice is tolerated once, before the turn only (3.47125ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.509708
+
+✖ failing tests:
+
+test at dist/test/codex-provider.test.js:296:1
+✖ exact disabled Code Mode startup notice is tolerated once, before the turn only (3.47125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'incomplete'
+  - 'completed'
+  
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/codex-provider.test.js:300:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'incomplete',
+    expected: 'completed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

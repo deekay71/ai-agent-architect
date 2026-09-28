@@ -1,0 +1,39 @@
+{
+  "report": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/codex-terra-sol-astra-dev-20260928/report.json",
+  "campaignId": "codex-terra-sol-astra-dev-20260928",
+  "assurance": "codex-chatgpt",
+  "comparisonCoverage": {
+    "observed": 1,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {
+      "unknown-usage": 1
+    }
+  },
+  "controlCoverage": {
+    "observed": 0,
+    "scored": 0,
+    "strictPass": 0,
+    "outcomes": {}
+  },
+  "budget": {
+    "authorizationId": "owner-continue-20260928-three-profile-smoke",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000,
+    "usedInvocations": 1,
+    "reportedTokens": 0,
+    "pendingAttempts": 0,
+    "unknownAttempts": 1,
+    "notDispatchedAttempts": 0,
+    "reconciliationEvidenceDigests": [],
+    "frozen": true,
+    "stopReason": "unknown-usage",
+    "startedAt": 1790566706856,
+    "deadlineAt": 1790568506856,
+    "timeRemainingMs": 1799219
+  },
+  "stoppedReason": "unknown-usage",
+  "modelOutputsObserved": false,
+  "phaseGate": "Not evaluated"
+}

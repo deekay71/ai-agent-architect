@@ -1,0 +1,26 @@
+✔ Codex transport binds wrapper, schema and policy, isolates working directory, and sanitizes receipts (4.895333ms)
+✔ environment construction never reads or forwards API credentials, provider overrides or inherited tools (0.090958ms)
+✔ unsupported version blocks before login or generation (0.609375ms)
+✔ API auth and ambiguous auth output cannot dispatch generation (1.251042ms)
+✔ every invocation rechecks authentication and fresh working root (1.25575ms)
+✔ configuration identity binds exact transport limits and requested model effort (0.135334ms)
+✔ request validation and pre-abort never invoke a child (0.274334ms)
+✔ tool events, unknown events, malformed JSON and extra turns fail closed (3.900375ms)
+✔ malformed, unknown and missing usage are not zero or valid measurements (2.917042ms)
+✔ unknown event diagnostics keep bounded type identifiers while discarding payload text and secrets (0.962708ms)
+✔ reported usage above output hint is retained; transport does not invent a hard cap (0.504875ms)
+✔ known zero cache-write usage is admitted while nonzero or malformed cache-write counters stay unknown (2.656583ms)
+✔ missing terminal event, duplicate outputs and invalid final JSON are not successful (1.421875ms)
+✔ runner failure cannot leak raw error, prompt, or auth material (0.366083ms)
+✔ native runner bounds output, timeout and external cancellation without a shell (127.426917ms)
+✔ native stream decoding preserves UTF-8 across chunks and stops on rejected event (67.153208ms)
+✔ native timeout kills a child process in the detached process group (151.98675ms)
+✔ launch suppresses experimental-feature banner before the first turn without admitting error items (2.52ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 405.332209

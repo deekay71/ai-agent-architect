@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "codex-semantic-config/1",
+  "campaignId": "codex-terra-sol-astra-dev-20260928",
+  "provider": "codex-chatgpt",
+  "purpose": "dev-smoke",
+  "split": "dev",
+  "caseIds": [
+    "sem-001"
+  ],
+  "profiles": [
+    {
+      "id": "executor-terra-medium",
+      "role": "executor",
+      "model": "gpt-5.6-terra",
+      "reasoningEffort": "medium"
+    },
+    {
+      "id": "reasoning-sol-medium",
+      "role": "planner",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "medium"
+    },
+    {
+      "id": "reasoning-astra-high",
+      "role": "planner",
+      "model": "gpt-6-astra",
+      "reasoningEffort": "high"
+    }
+  ],
+  "distractorLimits": [
+    0
+  ],
+  "compactionRounds": [
+    1
+  ],
+  "repeats": 1,
+  "topK": 8,
+  "outputTokenHint": 4000,
+  "maxVisibleRequestBytes": 100000,
+  "perTrialReportedTokenStop": 100000,
+  "perCallTimeoutMs": 120000,
+  "authorization": {
+    "authorizationId": "owner-continue-20260928-three-profile-smoke",
+    "maxInvocations": 15,
+    "maxReportedTokens": 400000,
+    "maxWallTimeMs": 1800000
+  }
+}

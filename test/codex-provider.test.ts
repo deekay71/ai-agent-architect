@@ -223,3 +223,52 @@ test('native timeout kills a child process in the detached process group', async
   }
   assert.equal(alive, false);
 });
+
+test('launch suppresses experimental-feature banner before the first turn without admitting error items', async () => {
+  const runner: CodexProcessRunner = async invocation => {
+    const normal = events();
+    const startup = invocation.args.includes('suppress_unstable_features_warning=true') ? normal
+      : [normal[0], { type: 'item.completed', item: { id: 'notice-1', type: 'error', message: 'Under-development features enabled: skip_host_skill_discovery' } }, ...normal.slice(1)];
+    return fakeRunner(startup).runner(invocation);
+  };
+  const result = await createCodexTransport({ runner }).respond(request);
+  assert.equal(result.status, 'completed'); assert.equal(result.usage?.totalTokens, 110);
+  const unexpected = fakeRunner([events()[0], { type: 'item.completed', item: { id: 'bad', type: 'error', message: 'Unrelated failure' } }, ...events().slice(1)]);
+  const rejected = await createCodexTransport({ runner: unexpected.runner }).respond(request);
+  assert.equal(rejected.status, 'incomplete'); assert.equal(rejected.output, null);
+});
+
+
+test('canonical web policy avoids deprecated startup warnings while web stays disabled', async () => {
+  const runner: CodexProcessRunner = async invocation => {
+    if (invocation.args[0] !== 'exec') return fakeRunner(events()).runner(invocation);
+    assert.ok(invocation.args.includes('web_search="disabled"'));
+    assert.ok(invocation.args.includes('standalone_web_search'));
+    const normal = events();
+    const legacy = invocation.args.some(arg => ['web_search_cached', 'web_search_request'].includes(arg));
+    return fakeRunner(legacy
+      ? [normal[0], { type: 'item.completed', item: { id: 'deprecation', type: 'error', message: 'Deprecated web feature flag' } }, ...normal.slice(1)]
+      : normal).runner(invocation);
+  };
+  const result = await createCodexTransport({ runner }).respond(request);
+  assert.equal(result.status, 'completed'); assert.equal(result.usage?.totalTokens, 110);
+});
+
+test('exact disabled Code Mode startup notice is tolerated once, before the turn only', async () => {
+  const notice = { type: 'item.completed', item: { id: 'notice-1', type: 'error', message: 'Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`.' } };
+  const normal = events();
+  const accepted = await createCodexTransport({ runner: fakeRunner([normal[0], notice, ...normal.slice(1)]).runner }).respond(request);
+  assert.equal(accepted.status, 'completed'); assert.equal(accepted.usage?.totalTokens, 110);
+  for (const stream of [
+    [notice, ...normal],
+    [normal[0], notice, notice, ...normal.slice(1)],
+    [...normal.slice(0, 2), notice, ...normal.slice(2)],
+    [normal[0], { ...notice, item: { ...notice.item, message: notice.item.message + ' altered' } }, ...normal.slice(1)],
+    [normal[0], { ...notice, item: { ...notice.item, tool: 'shell' } }, ...normal.slice(1)],
+    [normal[0], { ...notice, extra: 'unexpected' }, ...normal.slice(1)],
+    [normal[0], notice],
+  ]) {
+    const rejected = await createCodexTransport({ runner: fakeRunner(stream).runner }).respond(request);
+    assert.equal(rejected.status, 'incomplete'); assert.equal(rejected.output, null);
+  }
+});
