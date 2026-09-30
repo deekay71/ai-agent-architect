@@ -310,5 +310,10 @@
   "sourceRevision": "08ea1c00a8e7b084c623be0901dbeb07f10d9adf",
   "comparisonValidity": "invalid",
   "validityAuditRef": "validity-audit.json",
-  "actualStopReason": "infrastructure-audit"
+  "actualStopReason": "infrastructure-audit",
+  "dispatches": {
+    "solRequests": 20,
+    "terraToolEnabledSessions": 19,
+    "internalModelResponses": null
+  }
 }
