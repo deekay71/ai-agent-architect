@@ -33,17 +33,20 @@ const JUDGMENT_SCHEMA = { type: 'object', additionalProperties: false,
     violatedConstraintIds: { type: 'array', items: { type: 'string' } } },
   required: ['addressesQuestion', 'supportedByEvidence', 'respectsConstraintMeaning', 'abstentionAppropriate', 'rationale', 'unsupportedClaims', 'violatedConstraintIds'] };
 const BATCH_INSTRUCTIONS = 'Evaluate each item independently. Return exactly one judgment for every supplied item ID, with no omissions or additions. Item order and opaque IDs do not indicate quality.';
-const BATCH_SCHEMA = { type: 'object', additionalProperties: false,
-  properties: { judgments: { type: 'array', items: { type: 'object', additionalProperties: false,
-    properties: { id: { type: 'string' }, ...JUDGMENT_SCHEMA.properties }, required: ['id', ...JUDGMENT_SCHEMA.required] } } }, required: ['judgments'] };
-export const SEMANTIC_RUBRIC_DIGEST = digest({ version: 'evidence-meaning/1', INSTRUCTIONS, JUDGMENT_SCHEMA, BATCH_INSTRUCTIONS, BATCH_SCHEMA });
+function batchSchema(ids: readonly string[]) {
+  return { type: 'object', additionalProperties: false,
+    properties: { judgments: { type: 'array', minItems: ids.length, maxItems: ids.length, items: { type: 'object', additionalProperties: false,
+      properties: { id: { type: 'string', enum: [...ids] }, ...JUDGMENT_SCHEMA.properties }, required: ['id', ...JUDGMENT_SCHEMA.required] } } }, required: ['judgments'] };
+}
+export const SEMANTIC_RUBRIC_DIGEST = digest({ version: 'evidence-meaning/2', INSTRUCTIONS, JUDGMENT_SCHEMA, BATCH_INSTRUCTIONS,
+  batchSchema: 'Exact per-request input ID enum and cardinality; parser independently verifies unique exact coverage.' });
 
 export function buildBatchedJudgmentRequest(inputs: readonly JudgmentInput[], judge: CodexProfile): ModelRequest {
   if (!inputs.length || inputs.length > 6 || new Set(inputs.map(i => i.id)).size !== inputs.length) throw Error('JUDGMENT_BATCH_INVALID');
   const single = inputs.map(i => buildSemanticJudgmentRequest(i, judge));
   return { ...single[0]!, instructions: `${INSTRUCTIONS} ${BATCH_INSTRUCTIONS}`,
     input: canonicalJson({ items: inputs.map((i, n) => ({ id: i.id, ...JSON.parse(single[n]!.input) as object })) }),
-    maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: BATCH_SCHEMA };
+    maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: batchSchema(inputs.map(i => i.id)) };
 }
 
 /** Six-item maximum preserves bounded native judgment calls while retaining the frozen holdout guard per item. */
@@ -52,7 +55,7 @@ export function buildBatchedFrozenHoldoutJudgmentRequest(inputs: readonly Judgme
   const single = inputs.map(i => buildFrozenHoldoutJudgmentRequest(i, judge, frozenProtocolDigest));
   return { ...single[0]!, instructions: `${INSTRUCTIONS} ${BATCH_INSTRUCTIONS}`,
     input: canonicalJson({ items: inputs.map((i, n) => ({ id: i.id, ...JSON.parse(single[n]!.input) as object })) }),
-    maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: BATCH_SCHEMA };
+    maxOutputTokens: 4000, schemaName: 'evidence_meaning_batch', schema: batchSchema(inputs.map(i => i.id)) };
 }
 
 export function parseBatchedJudgments(inputs: readonly JudgmentInput[], output: unknown) {

@@ -1,0 +1,4 @@
+$ tsc -p tsconfig.json
+src/evaluation/codex-judgment.ts(226,40): error TS2304: Cannot find name 'assessmentFile'.
+src/evaluation/codex-judgment.ts(226,70): error TS2304: Cannot find name 'assessmentFile'.
+[ELIFECYCLE] Command failed with exit code 2.

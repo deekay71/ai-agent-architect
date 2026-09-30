@@ -7,7 +7,7 @@ import path from 'node:path';
 import { sealDataset, verifyDatasetSeal, loadPublicDataset, loadEvaluatorOracle } from '../src/evaluation/dataset.js';
 import { digest } from '../src/contracts/canonical.js';
 import { freezeCodexAcceptanceProtocol, runCodexAcceptanceCampaign } from '../src/evaluation/acceptance-runner.js';
-import { prepareAcceptanceJudgmentInputs, adjudicateCodexAcceptance } from '../src/evaluation/acceptance-evidence.js';
+import { prepareAcceptanceJudgmentInputs, adjudicateCodexAcceptance, replayCodexJudgments } from '../src/evaluation/acceptance-evidence.js';
 import { runCodexJudgments } from '../src/evaluation/codex-judgment.js';
 import { CODEX_CLI_VERSION, CODEX_LAUNCH_POLICY_DIGEST, renderCodexRequest, type CodexResult, type CodexTransport } from '../src/providers/codex.js';
 import type { ModelRequest } from '../src/providers/types.js';
@@ -144,4 +144,21 @@ test('local-regression executes frozen 300-trial acceptance and produces mock-on
   assert.deepEqual(judgmentProgress, [60, 120, 180, 240, 300]);
   const final = adjudicateCodexAcceptance({ protocolFile, frozen, campaignRoot, judgmentRoot: path.join(root, 'acceptance-judgments') });
   assert.equal(final.report.quality.pass, true); assert.equal(final.report.nativeEvidence, false); assert.equal(final.report.t19, 'Replan'); assert.equal(final.evidence, null);
+  assert.equal(final.report.diagnostics.adjudicationStatus, 'not-required-by-recorded-issues');
+  const replay = replayCodexJudgments({ root: path.join(root, 'acceptance-judgments'), inputs: prepared.inputs, judge,
+    pinDigest: digest({ source: frozen.sourcePins, compiled: frozen.compiledPins }), authorization, frozenProtocolDigest: frozen.freezeDigest });
+  const input = prepared.inputs[0]!, assessment = replay.assessments.find(a => a.id === input.id)!.assessment;
+  const issueFile = path.join(root, 'acceptance-judgments/review-issues.json');
+  const issue = { schemaVersion: 'judgment-review-issue/1', itemId: input.id, kind: 'boolean-rationale-disagreement',
+    reason: 'Synthetic reviewer requires independent adjudication of the rationale.', reportedBy: 'synthetic-reviewer', status: 'pending',
+    inputDigest: digest(input), answerDigest: digest(input.answer), assessmentDigest: digest(assessment),
+    judgmentEvidenceDigest: replay.evidenceDigest, sourcePinDigest: replay.lock.pinDigest, protocolDigest: frozen.freezeDigest };
+  writeJson(issueFile, [issue]);
+  const pending = adjudicateCodexAcceptance({ protocolFile, frozen, campaignRoot, judgmentRoot: path.dirname(issueFile) });
+  assert.equal(pending.report.quality.pass, true); assert.equal(pending.report.diagnostics.adjudicationStatus, 'pending');
+  assert.equal(pending.report.diagnostics.reviewIssues.length, 1); assert.equal(pending.evidence, null);
+  writeJson(issueFile, [{ ...issue, answerDigest: digest('different answer') }]);
+  assert.throws(() => adjudicateCodexAcceptance({ protocolFile, frozen, campaignRoot, judgmentRoot: path.dirname(issueFile) }), /REVIEW_ISSUE_BINDING/);
+  writeJson(issueFile, [{ ...issue, status: 'resolved' }]);
+  assert.throws(() => adjudicateCodexAcceptance({ protocolFile, frozen, campaignRoot, judgmentRoot: path.dirname(issueFile) }));
 });

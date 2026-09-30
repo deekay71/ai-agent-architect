@@ -131,6 +131,30 @@ export async function runCodexEvaluationCli(args: string[]): Promise<boolean> {
     if (report.stoppedReason !== null || report.assessed !== report.planned) process.exitCode = 1;
     return true;
   }
+  if (command === 'semantic-codex-judge-resume') {
+    if (args.length !== 6 || args[5] !== '--live') throw Error('CODEX_CLI_USAGE: semantic-codex-judge-resume <inputs> <config> <parent-output> <new-output> --live');
+    const { z } = await import('zod');
+    const { CodexProfileSchema } = await import('./codex-config.js');
+    const { JudgmentInputSchema } = await import('./semantic-judgment.js');
+    const { resumeCodexJudgments } = await import('./codex-judgment.js');
+    const positive = z.number().int().positive();
+    const config = z.strictObject({ judge: CodexProfileSchema, maxRequestBytes: positive.max(1_000_000), timeoutMs: positive.max(120_000),
+      authorization: z.strictObject({ authorizationId: z.string().trim().min(1), maxInvocations: positive.max(5000),
+        maxReportedTokens: positive.max(10_000_000), maxWallTimeMs: positive.max(3_600_000) }) }).parse(jsonFile(args[2]!));
+    const inputs = z.array(JudgmentInputSchema).min(1).parse(jsonFile(args[1]!));
+    if (inputs.some(input => input.task.split !== 'dev')) throw Error('CODEX_JUDGE_RESUME_DEV_ONLY');
+    const parentRoot = realpathSync(args[3]!), outputRoot = path.resolve(args[4]!);
+    if (existsSync(outputRoot)) throw Error('CODEX_OUTPUT_MUST_BE_NEW');
+    const usageRoot = path.join(repositoryRoot, '.local', 'codex-subscription-usage');
+    const transport = createCodexTransport({ timeoutMs: config.timeoutMs, maxRequestBytes: config.maxRequestBytes });
+    const report = await resumeCodexJudgments({ ...config, inputs, repositoryRoot, parentRoot, outputRoot, usageRoot, transport,
+      onProgress(done, total) { process.stderr.write(`${JSON.stringify({ judgmentsCompleted: done, judgmentsPlanned: total })}\n`); } });
+    output({ report: path.join(outputRoot, 'report.json'), planned: report.planned, assessed: report.assessed,
+      stoppedReason: report.stoppedReason, failedBatchIndexes: report.failedBatchIndexes, budget: report.budget,
+      complete: false, humanReviewed: false, phaseGate: report.phaseGate });
+    process.exitCode = 1;
+    return true;
+  }
   if (command !== 'semantic-codex-run') throw Error('CODEX_CLI_UNKNOWN_COMMAND');
   if (args.length !== 5 || args[4] !== '--live') throw Error('CODEX_CLI_USAGE: semantic-codex-run <dataset> <config> <new-output> --live');
   const datasetRoot = realpathSync(args[1]!), preflight = codexCampaignPreflight(datasetRoot, jsonFile(args[2]!));

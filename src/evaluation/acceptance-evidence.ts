@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { lstatSync, readFileSync, realpathSync } from 'node:fs';
+import { existsSync, lstatSync, readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 import { z } from 'zod';
 import { canonicalJson, digest } from '../contracts/canonical.js';
@@ -17,6 +17,7 @@ import { semanticTaskSpec } from './context-arms.js';
 import { summarizeCalibration } from './semantic-judgment.js';
 import { neutralAcceptanceHistory } from './codex-campaign.js';
 import { ExposureRegistry } from './exposure.js';
+import { diagnoseAcceptanceJudgments, JudgmentReviewIssueSchema } from './acceptance-diagnostics.js';
 
 const text = z.string().min(1), hash = z.string().regex(/^sha256:[a-f0-9]{64}$/);
 const rawDigest = (raw: Uint8Array | string) => `sha256:${createHash('sha256').update(raw).digest('hex')}`;
@@ -28,10 +29,18 @@ function read(file: string, pins: Record<string, string>) {
 const object = z.record(z.string(), z.unknown());
 const authorizationSchema = z.strictObject({ authorizationId: text, maxInvocations: z.number().int().positive(),
   maxReportedTokens: z.number().int().positive(), maxWallTimeMs: z.number().int().positive() });
-const lockSchema = z.object({ schemaVersion: z.literal('codex-semantic-judge-lock/1'),
+const continuationSchema = z.strictObject({ parentRoot: text, parentLockDigest: hash, parentReportDigest: hash, parentCheckpointDigest: hash,
+  continuedBatchIndexes: z.array(z.number().int().nonnegative()), failedBatchIndexes: z.array(z.number().int().nonnegative()) });
+const lockSchema = z.object({ schemaVersion: z.enum(['codex-semantic-judge-lock/1', 'codex-semantic-judge-lock/2', 'codex-semantic-judge-continuation-lock/2']),
   pins: z.strictObject({ source: z.record(text, hash), compiled: z.record(text, hash) }), pinDigest: hash, inputDigest: hash,
   rubricDigest: hash, requestDigests: z.array(hash), judge: CodexProfileSchema, assurance: z.enum(['mock', 'codex-chatgpt']),
-  authorization: authorizationSchema, maxRequestBytes: z.number(), timeoutMs: z.number(), batchSize: z.literal(6) }).passthrough();
+  authorization: authorizationSchema, maxRequestBytes: z.number(), timeoutMs: z.number(), batchSize: z.literal(6),
+  continuation: continuationSchema.optional() }).passthrough();
+const checkpointSchema = z.strictObject({ schemaVersion: z.literal('codex-semantic-judge-checkpoint/2'), inputDigest: hash, pinDigest: hash,
+  rubricDigest: hash, authorizationDigest: hash, lockDigest: hash,
+  batches: z.array(z.strictObject({ index: z.number().int().nonnegative(), inputIds: z.array(text), requestDigest: hash })) });
+const checkpointEventSchema = z.strictObject({ schemaVersion: z.literal('codex-semantic-judge-checkpoint-event/2'),
+  index: z.number().int().nonnegative(), attemptId: text, requestDigest: hash, inputIds: z.array(text), state: z.literal('dispatch-reserved'), at: text });
 const callSchema = z.object({ index: z.number().int().nonnegative(), attemptId: text, requestDigest: hash,
   expectedConfigurationDigest: hash.optional(), result: z.unknown().nullable(), status: text }).passthrough();
 const calibrationReviewSchema = z.strictObject({ schemaVersion: z.literal('codex-calibration-independent-review/1'), reviewerKind: z.literal('ai'),
@@ -92,9 +101,14 @@ export function validateFrozenCalibration(options: { calibrationRoot: string; re
     criteriaPass, assurance: replay.lock.assurance, pass: criteriaPass && replay.lock.assurance === 'codex-chatgpt', phaseGate: 'Not evaluated' as const, releaseEligible: false as const };
 }
 
-/** Replays native receipts and the deterministic checks. A hand-edited report cannot manufacture a passed judgment. */
+interface ReplayedJudgments {
+  assessments: ReturnType<typeof parseBatchedJudgments>; pins: Record<string, string>; lock: z.infer<typeof lockSchema>;
+  stoppedReason: string | null; budget: Record<string, unknown>; attempts: { attemptId: string; requestDigest: string }[];
+  reservedBatchIndexes: number[]; failedBatchIndexes: number[]; complete: boolean; evidenceDigest: string;
+}
+/** Replays receipts; a continuation cannot salvage a malformed parent batch or mint acceptance. */
 export function replayCodexJudgments(options: { root: string; inputs: readonly JudgmentInput[]; judge: CodexProfile;
-  pinDigest: string; authorization: SubscriptionAuthorization; frozenProtocolDigest?: string }) {
+  pinDigest: string; authorization: SubscriptionAuthorization; frozenProtocolDigest?: string }): ReplayedJudgments {
   const pins: Record<string, string> = {}, readJson = (name: string) => JSON.parse(read(path.join(options.root, name), pins)) as unknown;
   const inputs = z.array(JudgmentInputSchema).parse(readJson('inputs.json'));
   const lock = lockSchema.parse(readJson('lock.json'));
@@ -111,11 +125,59 @@ export function replayCodexJudgments(options: { root: string; inputs: readonly J
     ? buildBatchedFrozenHoldoutJudgmentRequest(batch, options.judge, options.frozenProtocolDigest)
     : buildBatchedJudgmentRequest(batch, options.judge));
   if (digest(requests.map(digest)) !== digest(lock.requestDigests)) throw Error('ACCEPTANCE_JUDGE_REQUEST_BINDING');
-  const calls = read(path.join(options.root, 'calls.jsonl'), pins).trim().split('\n').filter(Boolean).map(line => callSchema.parse(JSON.parse(line)));
+  const readLines = (name: string) => existsSync(path.join(options.root, name))
+    ? read(path.join(options.root, name), pins).trim().split('\n').filter(Boolean).map(line => JSON.parse(line) as unknown) : [];
+  const continued = lock.schemaVersion === 'codex-semantic-judge-continuation-lock/2';
+  let parent: ReplayedJudgments | null = null, plannedIndexes = batches.map((_, index) => index);
+  if (continued) {
+    const c = lock.continuation;
+    if (!c || options.frozenProtocolDigest || lock.purpose !== 'advisory-dev-calibration'
+      || realpathSync(c.parentRoot) === realpathSync(options.root)) throw Error('ACCEPTANCE_JUDGE_CONTINUATION_SCOPE');
+    const parentLock = lockSchema.parse(JSON.parse(read(path.join(c.parentRoot, 'lock.json'), pins)));
+    const parentReport = JSON.parse(read(path.join(c.parentRoot, 'report.json'), pins)) as unknown;
+    const parentCheckpoint = JSON.parse(read(path.join(c.parentRoot, 'checkpoint.json'), pins)) as unknown;
+    if (parentLock.schemaVersion !== 'codex-semantic-judge-lock/2' || parentLock.continuation
+      || digest(parentLock) !== c.parentLockDigest || digest(parentReport) !== c.parentReportDigest
+      || digest(parentCheckpoint) !== c.parentCheckpointDigest || parentLock.usageRoot !== lock.usageRoot
+      || digest({ ...parentLock, schemaVersion: lock.schemaVersion, continuation: c }) !== digest(lock)) throw Error('ACCEPTANCE_JUDGE_PARENT_BINDING');
+    parent = replayCodexJudgments({ ...options, root: c.parentRoot });
+    Object.assign(pins, parent.pins);
+    plannedIndexes = plannedIndexes.filter(index => !parent!.reservedBatchIndexes.includes(index));
+    if (digest(c.continuedBatchIndexes) !== digest(plannedIndexes) || digest(c.failedBatchIndexes) !== digest(parent.failedBatchIndexes)
+      || digest(report.continuation) !== digest(c)) throw Error('ACCEPTANCE_JUDGE_CONTINUATION_COVERAGE');
+    const usageRoot = z.string().parse(lock.usageRoot);
+    const claimPath = path.join(usageRoot, `judgment-continuation-${digest({ parentRoot: realpathSync(c.parentRoot), checkpoint: c.parentCheckpointDigest }).slice(7)}.json`);
+    const claim = z.strictObject({ schemaVersion: z.literal('codex-semantic-judge-continuation-claim/2'), parentRoot: text,
+      parentCheckpointDigest: hash, parentReportDigest: hash, childRoot: text }).parse(JSON.parse(read(claimPath, pins)));
+    if (realpathSync(claim.parentRoot) !== realpathSync(c.parentRoot) || claim.parentCheckpointDigest !== c.parentCheckpointDigest
+      || claim.parentReportDigest !== c.parentReportDigest || realpathSync(claim.childRoot) !== realpathSync(options.root)) throw Error('ACCEPTANCE_JUDGE_CONTINUATION_CLAIM');
+  } else if (lock.continuation) throw Error('ACCEPTANCE_JUDGE_CONTINUATION_SCOPE');
+  if (lock.schemaVersion === 'codex-semantic-judge-lock/2') {
+    const checkpoint = checkpointSchema.parse(readJson('checkpoint.json'));
+    const expectedBatches = batches.map((batch, index) => ({ index, inputIds: batch.map(input => input.id), requestDigest: digest(requests[index]!) }));
+    if (checkpoint.inputDigest !== lock.inputDigest || checkpoint.pinDigest !== lock.pinDigest || checkpoint.rubricDigest !== lock.rubricDigest
+      || checkpoint.authorizationDigest !== digest(lock.authorization) || checkpoint.lockDigest !== digest(lock)
+      || digest(checkpoint.batches) !== digest(expectedBatches)) throw Error('ACCEPTANCE_JUDGE_CHECKPOINT_BINDING');
+  }
+  const calls = readLines('calls.jsonl').map(row => callSchema.parse(row));
   if (new Set(calls.map(c => c.index)).size !== calls.length || new Set(calls.map(c => c.attemptId)).size !== calls.length
-    || calls.some((c, index) => c.index !== index || c.index >= batches.length)) throw Error('ACCEPTANCE_JUDGE_CALL_COVERAGE');
+    || calls.some((c, index) => c.index !== plannedIndexes[index] || c.index >= batches.length)
+    || calls.some(c => parent?.attempts.some(p => p.attemptId === c.attemptId))) throw Error('ACCEPTANCE_JUDGE_CALL_COVERAGE');
+  if (lock.schemaVersion !== 'codex-semantic-judge-lock/1') {
+    const events = readLines('checkpoint-events.jsonl').map(row => checkpointEventSchema.parse(row));
+    const exposures = readLines('exposure.jsonl').map(row => z.object({ index: z.number().int().nonnegative(), attemptId: text,
+      requestDigest: hash, inputIds: z.array(text), status: z.literal('possibly-exposed') }).passthrough().parse(row));
+    if (events.length !== calls.length || exposures.length !== calls.length || calls.some((call, index) => {
+      const e = events[index]!, x = exposures[index]!;
+      return e.index !== call.index || e.attemptId !== call.attemptId || e.requestDigest !== call.requestDigest
+        || digest(e.inputIds) !== digest(batches[call.index]!.map(i => i.id)) || x.index !== e.index || x.attemptId !== e.attemptId
+        || x.requestDigest !== e.requestDigest || digest(x.inputIds) !== digest(e.inputIds);
+    })) throw Error('ACCEPTANCE_JUDGE_DISPATCH_HISTORY');
+  }
   const native = createCodexTransport({ timeoutMs: lock.timeoutMs, maxRequestBytes: lock.maxRequestBytes });
-  const assessments: ReturnType<typeof parseBatchedJudgments> = [];
+  const assessments: ReturnType<typeof parseBatchedJudgments> = [...(parent?.assessments ?? [])];
+  const ownAssessments: ReturnType<typeof parseBatchedJudgments> = [], validBatchIndexes: number[] = [];
+  const assessmentJournal: { index: number; requestDigest: string; assessments: ReturnType<typeof parseBatchedJudgments> }[] = [];
   for (const call of calls) {
     const request = requests[call.index]!;
     if (digest(readJson(`request-${call.index}.json`)) !== digest(request) || call.requestDigest !== digest(request)) throw Error('ACCEPTANCE_JUDGE_REQUEST_DRIFT');
@@ -128,12 +190,22 @@ export function replayCodexJudgments(options: { root: string; inputs: readonly J
     if (call.status !== 'completed') continue;
     if (result.status !== 'completed' || !validCodexTokens(result) || result.cliVersion !== CODEX_CLI_VERSION || result.issues.length) throw Error('ACCEPTANCE_JUDGE_COMPLETION_INVALID');
     // Invalid structured judgments remain unassessed; they cannot be repaired during replay.
-    try { assessments.push(...parseBatchedJudgments(batches[call.index]!, result.output)); } catch { /* report must retain missing assessments */ }
+    try {
+      const batch = parseBatchedJudgments(batches[call.index]!, result.output);
+      assessments.push(...batch); ownAssessments.push(...batch); validBatchIndexes.push(call.index);
+      assessmentJournal.push({ index: call.index, requestDigest: call.requestDigest, assessments: batch });
+    } catch { /* report must retain missing assessments */ }
   }
+  if (lock.schemaVersion !== 'codex-semantic-judge-lock/1' && digest(readLines('assessments.jsonl')) !== digest(assessmentJournal)) throw Error('ACCEPTANCE_JUDGE_ASSESSMENT_JOURNAL_DRIFT');
+  const reservedBatchIndexes = [...(parent?.reservedBatchIndexes ?? []), ...calls.map(call => call.index)].sort((a, b) => a - b);
+  const failedBatchIndexes = [...(parent?.failedBatchIndexes ?? []), ...calls.filter(call => !validBatchIndexes.includes(call.index)).map(call => call.index)].sort((a, b) => a - b);
+  if (continued && (digest(report.failedBatchIndexes) !== digest(failedBatchIndexes) || report.ownAssessed !== ownAssessments.length
+    || report.complete !== false)) throw Error('ACCEPTANCE_JUDGE_CONTINUATION_REPORT');
   if (report.planned !== inputs.length || report.assessed !== assessments.length || digest(report.assessments) !== digest(assessments)) throw Error('ACCEPTANCE_JUDGE_ASSESSMENT_DRIFT');
   return { assessments, pins, lock, stoppedReason: report.stoppedReason, budget: report.budget,
-    attempts: calls.map(call => ({ attemptId: call.attemptId, requestDigest: call.requestDigest })),
-    complete: report.stoppedReason === null && assessments.length === inputs.length && calls.length === requests.length,
+    attempts: [...(parent?.attempts ?? []), ...calls.map(call => ({ attemptId: call.attemptId, requestDigest: call.requestDigest }))],
+    reservedBatchIndexes, failedBatchIndexes,
+    complete: !continued && report.stoppedReason === null && assessments.length === inputs.length && calls.length === requests.length,
     evidenceDigest: digest({ pins, assessments, stoppedReason: report.stoppedReason }) };
 }
 
@@ -259,6 +331,16 @@ export function adjudicateCodexAcceptance(options: { protocolFile: string; froze
   const judgments = replayCodexJudgments({ root: options.judgmentRoot, inputs, judge: current.protocol.judge,
     pinDigest: digest({ source: current.sourcePins, compiled: current.compiledPins }), authorization: current.protocol.authorization, frozenProtocolDigest: current.freezeDigest });
   const assessments = new Map(judgments.assessments.map(row => [row.id, row.assessment]));
+  const reviewIssuePath = path.join(options.judgmentRoot, 'review-issues.json');
+  const issueFileExists = () => {
+    try { lstatSync(reviewIssuePath); return true; }
+    catch (error) { if ((error as NodeJS.ErrnoException).code === 'ENOENT') return false; throw error; }
+  };
+  const hadIssueFile = issueFileExists();
+  const reportedIssues = hadIssueFile
+    ? z.array(JudgmentReviewIssueSchema).parse(JSON.parse(read(reviewIssuePath, judgments.pins))) : [];
+  const diagnostics = diagnoseAcceptanceJudgments(inputs, judgments.assessments, { protocolDigest: current.freezeDigest,
+    sourcePinDigest: digest({ source: current.sourcePins, compiled: current.compiledPins }), judgmentEvidenceDigest: judgments.evidenceDigest }, reportedIssues);
   const outcomes: AcceptanceOutcome[] = trials.map(trial => {
     const mapping = mappings.find(m => m.trialId === trial.trialId), assessment = mapping ? assessments.get(mapping.id) : undefined;
     const arm = trial.arm === 'full' ? 'F' : trial.arm === 'retrieval' ? 'R' : trial.arm === 'oracle-evidence' ? 'G' : trial.compactionRounds === 1 ? 'C1' : trial.compactionRounds === 3 ? 'C3' : null;
@@ -270,10 +352,11 @@ export function adjudicateCodexAcceptance(options: { protocolFile: string; froze
   const oracle = loadEvaluatorOracle(current.protocol.datasetRoot), quality = assessPlannedAcceptance(current.trialManifest, outcomes,
     Object.fromEntries(oracle.map(g => [g.caseId, g.answerability])));
   const nativeEvidence = current.protocol.measurementMode === 'native' && bundle.campaign.assurance === 'codex-chatgpt' && judgments.lock.assurance === 'codex-chatgpt';
-  const pass = quality.pass && nativeEvidence && bundle.campaign.integrityStable && bundle.campaign.stoppedReason === null && judgments.complete;
+  const pass = quality.pass && nativeEvidence && bundle.campaign.integrityStable && bundle.campaign.stoppedReason === null && judgments.complete
+    && diagnostics.reviewIssues.length === 0;
   const body = { schemaVersion: 'codex-starter-acceptance-result/1', scope: 'finite-authored-infrastructure-starter',
     protocolDigest: current.freezeDigest, campaign: bundle.campaign, judgmentEvidenceDigest: judgments.evidenceDigest,
-    nativeEvidence, quality, humanAttestation: null, reviewerKind: 'ai', t19: pass ? 'PASS' : 'Replan', t11: pass ? 'PASS' : 'Replan',
+    nativeEvidence, quality, diagnostics, humanAttestation: null, reviewerKind: 'ai', t19: pass ? 'PASS' : 'Replan', t11: pass ? 'PASS' : 'Replan',
     phaseGate: 'Not evaluated', t14: 'Not evaluated', releaseEligible: false,
     limitations: ['Finite authored baseline only; no population or production claim', 'Requested model identity; backend version unknown',
       'AI reviews are not human attestations', 'Local file and principal trust; hashes do not authenticate the host operator'] };
@@ -281,6 +364,7 @@ export function adjudicateCodexAcceptance(options: { protocolFile: string; froze
   // Recheck every consumed file and protocol immediately before minting a capability.
   for (const [file, expected] of Object.entries(bundle.artifactPins)) if (rawDigest(readFileSync(path.join(options.campaignRoot, file))) !== expected) throw Error('ACCEPTANCE_FINAL_CAMPAIGN_DRIFT');
   for (const [file, expected] of Object.entries(judgments.pins)) if (rawDigest(readFileSync(file)) !== expected) throw Error('ACCEPTANCE_FINAL_JUDGMENT_DRIFT');
+  if (issueFileExists() !== hadIssueFile) throw Error('ACCEPTANCE_FINAL_REVIEW_ISSUES_DRIFT');
   if (freezeCodexAcceptanceProtocol(options.protocolFile).freezeDigest !== current.freezeDigest) throw Error('ACCEPTANCE_FINAL_FREEZE_DRIFT');
   let evidence: VerifiedAcceptanceEvidence | null = null;
   if (pass) {

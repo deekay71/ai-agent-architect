@@ -225,6 +225,14 @@ export class SubscriptionBudget {
 
   snapshot(): SubscriptionBudgetSnapshot { return this.transaction(() => this.snapshotWithinTransaction()); }
 
+  /** Durable dispatch history for continuation admission; reading never refunds or reserves an attempt. */
+  attempts(): { attemptId: string; requestDigest: string; state: string; reportedTokens: number }[] {
+    if (this.closed) throw new Error('SUBSCRIPTION_BUDGET_CLOSED');
+    return this.db.prepare('SELECT id,request_digest,state,reported_tokens FROM attempts ORDER BY rowid').all()
+      .map(row => ({ attemptId: String(row.id), requestDigest: String(row.request_digest),
+        state: String(row.state), reportedTokens: Number(row.reported_tokens) }));
+  }
+
   close(): void {
     if (this.closed) return;
     try {

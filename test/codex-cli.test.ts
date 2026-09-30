@@ -59,11 +59,24 @@ test('Codex commands reject unknown names, missing live opt-in and a caller-supp
     ['semantic-codex-run', datasetRoot, configFile, output],
     ['semantic-codex-run', datasetRoot, configFile, output, '--mock'],
     ['semantic-codex-run', datasetRoot, configFile, output, ledgerOverride, '--live'],
+    ['semantic-codex-judge-resume', path.join(root, 'inputs.json'), path.join(root, 'config.json'), path.join(root, 'parent'), output],
   ]) {
     const result = guarded(args); assert.equal(result.status, 1); assert.match(result.stdout, /CODEX_CLI_USAGE/);
     assert.doesNotMatch(result.stdout, /AUTH_ACCESS_FORBIDDEN|SUBPROCESS_FORBIDDEN|NETWORK_FORBIDDEN/);
   }
   assert.deepEqual(readdirSync(root), []);
+});
+
+test('Codex judgment resume rejects malformed DEV input before constructing a live transport', t => {
+  const root = temporary(t), inputs = path.join(root, 'inputs.json'), config = path.join(root, 'config.json');
+  writeFileSync(inputs, '[]');
+  writeFileSync(config, JSON.stringify({ judge: { id: 'sol', model: 'gpt-6-sol', role: 'planner', reasoningEffort: 'medium' },
+    maxRequestBytes: 100_000, timeoutMs: 10_000,
+    authorization: { authorizationId: 'test', maxInvocations: 2, maxReportedTokens: 1000, maxWallTimeMs: 10_000 } }));
+  const result = guarded(['semantic-codex-judge-resume', inputs, config, path.join(root, 'parent'), path.join(root, 'new-output'), '--live']);
+  assert.equal(result.status, 1); assert.match(result.stdout, /Too small/);
+  assert.doesNotMatch(result.stdout, /AUTH_ACCESS_FORBIDDEN|SUBPROCESS_FORBIDDEN|NETWORK_FORBIDDEN/);
+  assert.equal(existsSync(path.join(root, 'new-output')), false);
 });
 
 test('Codex CLI rejects holdout, missing cases and insufficient invocation authorization before live setup', t => {

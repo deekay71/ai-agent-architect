@@ -1,6 +1,6 @@
 # Phase 3 acceptance handoff runbook
 
-This runbook closes the finite authored infrastructure starter only. It does not authorize a production release, Unity/game execution, or Phase 4. The current prepared state has **not** run the live calibration, holdout campaign, blind holdout judgment, or T14 trace. No PASS, human review, or measured result is implied by this document.
+This runbook closes the finite authored infrastructure starter only. It does not authorize a production release, Unity/game execution, or Phase 4. V1 completed native calibration and candidate trials on 28/09/2026, but incomplete judgments and evidence failures left the gate Replan; T14 native did not run. The commands below are historical v1 execution records, not instructions to resume the expired authorization. Current local repairs and remaining acceptance work are in [the 30/09 repair handoff](phase-3-repair-handoff.md).
 
 The owner’s five closure items are handled as follows:
 
@@ -14,7 +14,7 @@ Each agent's model follows the owner's routing: Terra `gpt-5.6-terra` medium for
 
 The operator must use the repository’s shared ledger at `.local/codex-subscription-usage`. Do not delete, rename, replace, or point commands at another usage root. Unknown or interrupted attempts freeze that authorization; changing an output directory never creates a retry allowance. No API key, API purchase, or secret is needed for this subscription route.
 
-Run commands from the repository root after building the current source. Every output path below must be new.
+Historical v1 commands are preserved below. Do not execute them again. A future campaign needs a new validated protocol, calibration, fresh holdout and authorization; changing output paths does not create retry permission.
 
 ```sh
 ./scripts/dev.sh run build

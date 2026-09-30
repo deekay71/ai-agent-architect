@@ -61,6 +61,14 @@ test('batch output has exact coverage and cannot add duplicate, extra or missing
   assert.throws(() => parseBatchedJudgments(inputs, { judgments: [...output.judgments, { ...good, id: 'extra' }] }), /COVERAGE/);
   assert.throws(() => buildBatchedJudgmentRequest([input(), input()], judge), /BATCH_INVALID/);
 });
+test('batch schema itself pins the supplied IDs and exact cardinality before a model can omit one', () => {
+  const inputs = [input(), { ...input(), id: 'control-b' }];
+  const schema = buildBatchedJudgmentRequest(inputs, judge).schema as { properties: { judgments: { minItems?: number; maxItems?: number;
+    items: { properties: { id: { enum?: string[] } } } } } };
+  assert.equal(schema.properties.judgments.minItems, 2);
+  assert.equal(schema.properties.judgments.maxItems, 2);
+  assert.deepEqual(schema.properties.judgments.items.properties.id.enum, ['control-a', 'control-b']);
+});
 test('scope and oracle mismatches are rejected before a judgment request', () => {
   const i = structuredClone(input()); i.documents[0]!.path = 'private/secret';
   assert.throws(() => buildSemanticJudgmentRequest(i, judge), /binding mismatch/);

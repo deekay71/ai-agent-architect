@@ -8,7 +8,7 @@ import type { ModelRequest } from '../providers/types.js';
 import { createCodexTransport, renderCodexRequest, CODEX_CLI_VERSION, CODEX_LAUNCH_POLICY_DIGEST, type CodexResult } from '../providers/codex.js';
 import { buildReaderRequest, buildSummaryRequest, campaignPromptDigest, implementationPins, parseReaderAnswer } from './campaign.js';
 import { codexCampaignPreflight, type CodexProfile } from './codex-config.js';
-import { applyCompaction, prepareContext, type ContextArm } from './context-arms.js';
+import { applyCompaction, prepareContext, type ContextArm, type PreparedContext } from './context-arms.js';
 import { loadEvaluatorOracle, loadPublicDataset, verifyDatasetSeal, type SemanticAnswer, type SemanticCase, type SemanticDocument } from './dataset.js';
 import { scoreGatheringEvidence, scoreSemanticAnswer, type GatheringEvidenceScore, type SemanticScore } from './scoring.js';
 import { summarizePairedTrials } from './paired-statistics.js';
@@ -26,7 +26,7 @@ export interface CodexTrial {
   arm: ContextArm | 'oracle-evidence'; compactionRounds: number; distractors: number; repeat: number; status: string;
   reportedTokenStop: number; reportedTokens: number; reportedTokenStopExceeded: boolean; latencyMs: number;
   windowDigests: string[]; selectedIds: string[]; retrievedIds: string[]; eligibleIds: string[]; actualDistractors: number;
-  retrievalDiagnostics: { retrieved10Ids: string[]; connectionColdMs: number; warmMs: number[]; cacheScope: 'fresh-sqlite-connection-not-os-cold' } | null;
+  retrievalDiagnostics: PreparedContext['retrievalDiagnostics'] | null;
   canonicalPreserved: boolean; answer: SemanticAnswer | null; answerDigest: string | null; score: SemanticScore | null;
   gathering: { selected: GatheringEvidenceScore; retrieved: GatheringEvidenceScore; retrieved10: GatheringEvidenceScore } | null;
   visibleByteAllowance?: number;

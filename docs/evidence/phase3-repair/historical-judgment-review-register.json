@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "historical-judgment-review-register/1",
+  "scope": "v1 historical diagnosis only; not imported into new acceptance and no changes to old verdicts",
+  "trialId": "codex-00023",
+  "planned": 300,
+  "assessed": 24,
+  "unassessed": 276,
+  "sourceFiles": {
+    "judgments/inputs.json": "sha256:5a387c432eea7e2398f4de05ddbeae6e5bdf5d61dcee954d894123f5f2139bfe",
+    "judgments/report.json": "sha256:7acc1630c731cea20e15e6eeb09c85c3259304d93c53367b6e6b5b8f2cc3aab0",
+    "closure/acceptance-result.json": "sha256:7ceb1873707de6748aa76284b3fbd03a0834396cb90ad74fb18e2bd375cf49fb"
+  },
+  "issues": [
+    {
+      "schemaVersion": "judgment-review-issue/1",
+      "itemId": "item-d854c6cb92d2c60cfa22c8fa",
+      "kind": "boolean-rationale-disagreement",
+      "reason": "Original boolean abstentionAppropriate=false disagrees with rationale supporting abstention because the proposed map is absent. Original hard failure from missing selected evidence remains unchanged.",
+      "reportedBy": "AI source review 2026-09-30; native failure analysis 2026-09-28",
+      "status": "pending",
+      "inputDigest": "sha256:431ec6a6cb8f354f6f68e1a72644b39a4efdb1e64abd71906fe01e3524b1170b",
+      "answerDigest": "sha256:28916beade0198389f7533d0c9f3980be0f61d8a361e047fa9414b0bf906c268",
+      "assessmentDigest": "sha256:926b1ef114a3154f2b817e0a37fe1791db343efba23088b68f98e995cb13fa35",
+      "judgmentEvidenceDigest": "sha256:f69b7399dbbf8f6405a92462b2909eae09c679ccc1b630d3abb0581ac5faf7a2",
+      "sourcePinDigest": "sha256:3f169e6317447b6795ce3ec0c844b71a777c8b158553ff858d0819984e73acf7",
+      "protocolDigest": "sha256:d2837dc693f6ec9f154c56f684aee06d1be093e46942e0e00e91f4eef2399c67"
+    }
+  ],
+  "phaseGate": "Replan",
+  "humanAttestation": null
+}

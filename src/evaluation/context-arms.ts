@@ -9,7 +9,9 @@ export type ContextArm = 'full' | 'retrieval' | 'compaction';
 export interface PreparedContext {
   window: ContextWindow; authority: ContextAuthority; selected: SemanticDocument[];
   eligibleIds: string[]; retrievedIds: string[]; sourceByRef: Map<string, SemanticDocument>;
-  retrievalDiagnostics: { retrieved10Ids: string[]; connectionColdMs: number; warmMs: number[]; cacheScope: 'fresh-sqlite-connection-not-os-cold' };
+  retrievalDiagnostics: { retrieved10Ids: string[]; candidateIds: string[]; selectionPolicy: 'public-critical-raw-anchor-mmr/1';
+    selectionMode: 'critical-unknown-lexical' | 'anchored-query-question-mmr'; rawAnchorCount: number;
+    connectionColdMs: number; warmMs: number[]; cacheScope: 'fresh-sqlite-connection-not-os-cold' };
 }
 export function eligibleDocuments(documents: readonly SemanticDocument[], task: SemanticCase, distractors: number): SemanticDocument[] {
   let used = 0;
@@ -27,6 +29,35 @@ export function semanticTaskSpec(task: SemanticCase, modelConfigVersion: string)
   canonical.budget = { schemaVersion: '0.5.0', modelConfigVersion, inputLimit: 1_000_000, outputReserve: 1000, headroom: 1000,
     tokenAccountingPolicy: { version: 'local-wire-safety/1', tokenizer: 'utf8-bytes/1', includeToolOutputs: true }, taskSpendLimit: { amount: 0, currency: 'USD' } };
   return canonical;
+}
+const publicTerms = (text: string): Set<string> => new Set((text.toLocaleLowerCase().match(/[\p{L}\p{N}_]+/gu) ?? []));
+const overlap = (left: ReadonlySet<string>, right: ReadonlySet<string>): number => {
+  let shared = 0;
+  for (const term of left) if (right.has(term)) shared++;
+  return shared;
+};
+const jaccard = (left: ReadonlySet<string>, right: ReadonlySet<string>): number => {
+  if (!left.size && !right.size) return 0;
+  return overlap(left, right) / new Set([...left, ...right]).size;
+};
+/** Selects complementary public source text without evaluator labels or source metadata. */
+export function selectPublicEvidence(candidates: readonly SemanticDocument[], query: string, limit: number, question = '', rawAnchorCount = 0): SemanticDocument[] {
+  const queryTerms = publicTerms(`${query} ${question}`), tokenSets = new Map(candidates.map(document => [document, publicTerms(document.text)]));
+  const selected = candidates.slice(0, Math.min(limit, rawAnchorCount)), remaining = candidates.slice(selected.length);
+  while (selected.length < limit && remaining.length) {
+    let bestIndex = 0, bestScore = -Infinity;
+    for (let index = 0; index < remaining.length; index++) {
+      const document = remaining[index]!, terms = tokenSets.get(document)!;
+      const relevance = queryTerms.size ? overlap(queryTerms, terms) / queryTerms.size : 0;
+      const redundancy = selected.length ? Math.max(...selected.map(previous => jaccard(terms, tokenSets.get(previous)!))) : 0;
+      // Reserve most weight for novel public facts after preserving the configured lexical anchors.
+      const score = 0.4 * relevance - 0.6 * redundancy;
+      const best = remaining[bestIndex]!;
+      if (score > bestScore || (score === bestScore && digest(document.text) < digest(best.text))) { bestScore = score; bestIndex = index; }
+    }
+    selected.push(remaining.splice(bestIndex, 1)[0]!);
+  }
+  return selected;
 }
 /** Corpus-only Memory ingestion. The oracle and answer labels cannot cross this interface. */
 export async function prepareContext(options: {
@@ -50,16 +81,22 @@ export async function prepareContext(options: {
     }
     // Measure a fresh read connection separately from warm queries. No OS cache claim is made.
     const reader = new MemoryStore(options.root, { namespaces: [namespace], principals: [{ id: 'fixture-importer', role: 'memoryPromoter', projectIds: [task.repoId] }] });
-    let retrieved: ReturnType<MemoryStore['query']>;
+    let retrieved: ReturnType<MemoryStore['query']>, candidates: ReturnType<MemoryStore['query']>;
     let retrievalDiagnostics: PreparedContext['retrievalDiagnostics'];
     try {
       const started = performance.now(), first = reader.query({ namespace, text: task.query, limit: 10, expandHops: 0 });
       const connectionColdMs = performance.now() - started, warmMs: number[] = [];
       for (let n = 0; n < 3; n++) { const start = performance.now(); reader.query({ namespace, text: task.query, limit: 10, expandHops: 0 }); warmMs.push(performance.now() - start); }
-      retrieved = reader.query({ namespace, text: task.query, limit: options.topK, expandHops: 0 });
-      retrievalDiagnostics = { retrieved10Ids: first.map(n => sourceByRef.get(n.id)!.id), connectionColdMs, warmMs, cacheScope: 'fresh-sqlite-connection-not-os-cold' };
+      candidates = reader.query({ namespace, text: task.query, limit: Math.max(10, options.topK), expandHops: 0 });
+      retrieved = candidates.slice(0, options.topK);
+      const criticalUnknown = task.unknowns.some(unknown => unknown.critical);
+      const rawAnchorCount = criticalUnknown ? options.topK : Math.min(2, options.topK);
+      retrievalDiagnostics = { retrieved10Ids: first.map(n => sourceByRef.get(n.id)!.id), candidateIds: candidates.map(n => sourceByRef.get(n.id)!.id),
+        selectionPolicy: 'public-critical-raw-anchor-mmr/1', selectionMode: criticalUnknown ? 'critical-unknown-lexical' : 'anchored-query-question-mmr', rawAnchorCount,
+        connectionColdMs, warmMs, cacheScope: 'fresh-sqlite-connection-not-os-cold' };
     } finally { reader.close(); }
-    let selected = options.arm === 'full' ? eligible : retrieved.map(n => sourceByRef.get(n.id)!);
+    const rawAnchorCount = task.unknowns.some(unknown => unknown.critical) ? options.topK : Math.min(2, options.topK);
+    let selected = options.arm === 'full' ? eligible : selectPublicEvidence(candidates.map(n => sourceByRef.get(n.id)!), task.query, options.topK, task.question, rawAnchorCount);
     if (options.evidencePlacement) {
       const evidence = selected.filter(d => !d.distractor), noise = selected.filter(d => d.distractor);
       if (evidence.length) {
@@ -69,7 +106,7 @@ export async function prepareContext(options: {
     }
     const canonical = semanticTaskSpec(task, options.modelConfigVersion);
     const scope = { repoId: namespace.repoId, allowedPaths: namespace.allowedPaths, taskClasses: namespace.taskClasses };
-    const authority: ContextAuthority = { task: canonical, contextPolicyVersion: 'semantic-context-comparison/1',
+    const authority: ContextAuthority = { task: canonical, contextPolicyVersion: 'semantic-context-comparison/2',
       snapshotId: digest(eligible), memoryVersion: memory.memoryVersion,
       model: { modelConfigVersion: options.modelConfigVersion, inputLimit: 1_000_000, maxOutputTokens: 1000 },
       agents: [{ agentId: options.role, role: options.role, scope, branchId: namespace.branchId, lineageId: namespace.lineageId,

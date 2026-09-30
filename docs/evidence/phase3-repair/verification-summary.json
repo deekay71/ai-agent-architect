@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "phase3-repair-verification/1",
+  "baselineCommit": "664a62f02ea52df1f7c4095986ae3d1750f646ea",
+  "cleanSummary": "clean-repair-20260930T023059Z-summary.json",
+  "cleanTests": {
+    "tests": 587,
+    "suites": 0,
+    "pass": 587,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceUnchanged": true,
+  "localCompiledMatchesClean": true,
+  "sourceDigest": "sha256:fcf2434d281e8341d98d5153f8dc74e18b75ca9e817e00c020548258dcef2a1c",
+  "builtJsDigest": "sha256:6229cd60a607d0043e18e71997e3cafa99aeee218c28f6bd2a595e62e63a3f1c",
+  "focusedTests": {
+    "tests": 63,
+    "pass": 63,
+    "fail": 0,
+    "skipped": 0
+  },
+  "preFinalIntegrationTests": {
+    "tests": 585,
+    "pass": 585,
+    "note": "before final shared-replay refactor; final source validated by 587-test fresh copy"
+  },
+  "historicalFilesUnchanged": 2081,
+  "offlineSelections": 60,
+  "requiredEvidenceSufficient": 54,
+  "requiredEvidenceApplicable": 54,
+  "notApplicable": 6,
+  "newNativeBenchmarkCalls": 0,
+  "phaseGate": "Replan",
+  "t19": "Replan",
+  "t11": "Replan",
+  "t14": "Not evaluated",
+  "releaseEligible": false
+}

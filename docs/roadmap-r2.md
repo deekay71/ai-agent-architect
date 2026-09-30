@@ -1,6 +1,16 @@
 # 07 — Roadmap triển khai R2: hạ tầng trước, game sau
 
-## Actual mới nhất — nghiệm thu 5 hạng mục, 28/09/2026
+## Actual mới nhất — sửa local, 30/09/2026
+
+**Phase 3 vẫn Replan; T19/T11 Replan, T14 Not evaluated.** Đã sửa chọn context public: giữ hai lexical anchors, đa dạng nguồn bổ sung; topK không tăng. 60 lượt offline trên bộ đã lộ có 54/54 trường hợp cần evidence đủ nguồn và 6 N/A, không regression; đây chưa phải quality model acceptance.
+
+Đã thêm exact batch schema, checkpoint và continuation một hop chỉ cho DEV finalized, dùng chung receipt replay trước dispatch; failed/unknown không retry. Diagnostics tách gathering/reader và bind pending review issue để chặn PASS. Consumer recovery/adjudication đầy đủ cho acceptance vẫn còn mở.
+
+Bản cuối đạt **587/587 fresh-copy tests, 63/63 focused tests**, hai review độc lập không còn blocker trong scope local. Source/build ổn định, 2.081 historical files nguyên hash; **0 native benchmark calls mới**. Rubric/policy mới không dùng lại calibration v1; v1 đã hết hạn, holdout đã lộ.
+
+Tiếp theo: hoàn tất consumer acceptance recovery/adjudication; calibration mới, fresh holdout, protocol/authorization mới; đo native rồi xét T19/T11 và T14. [Báo cáo sửa](phase-3-repair-report-2026-09-30.md), [Báo cáo sửa trên Notion](https://app.notion.com/p/3eba6c16b3dc81408282e8779d190e18), [bàn giao và phân công](phase-3-repair-handoff.md), [Drive](https://drive.google.com/drive/folders/1outD6aoDKan3YmhnQrHjHaU4KD2RQZnD). Forecast R2 giữ nguyên; Phase 4/Unity/game chưa mở.
+
+## Lịch sử — nghiệm thu 5 hạng mục, 28/09/2026
 
 **Phase 3 = Replan; chưa đóng phase.** Source `c902676` đạt 570/570 tests ở repo và fresh copy. Protocol đã freeze (`d2837dc693f6ec9f154c56f684aee06d1be093e46942e0e00e91f4eef2399c67`); calibration Sol native đạt 32/32, 0 false accept/reject/unknown. Terra chạy đủ 300/300 trials (240 main +60 G), 540 calls, integrity ổn định.
 

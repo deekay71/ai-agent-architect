@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "clean-source-verification/1",
+  "runId": "clean-repair-20260930T023059Z",
+  "startedAt": "2026-09-30T02:30:59.391077+00:00",
+  "finishedAt": "2026-09-30T02:34:26.296523+00:00",
+  "repositoryRoot": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect",
+  "cleanRoot": "/var/folders/_d/y7pmwpts53q6tv3q0zgspf2r0000gn/T/ai-agent-architect-clean-repair-20260930T023059Z-706yk2ci",
+  "os": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "sourceDigest": "sha256:fcf2434d281e8341d98d5153f8dc74e18b75ca9e817e00c020548258dcef2a1c",
+  "sourceFileCount": 173,
+  "sourceUnchanged": true,
+  "install": {
+    "command": [
+      "./scripts/dev.sh",
+      "install",
+      "--frozen-lockfile",
+      "--ignore-scripts"
+    ],
+    "exitCode": 0,
+    "seconds": 1.008,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/outputs/phase3-repair-2026-09-30/clean-repair-20260930T023059Z-install.log"
+  },
+  "check": {
+    "command": [
+      "./scripts/dev.sh",
+      "check"
+    ],
+    "exitCode": 0,
+    "seconds": 205.745,
+    "log": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/outputs/phase3-repair-2026-09-30/clean-repair-20260930T023059Z-check.log"
+  },
+  "testCounts": {
+    "tests": 587,
+    "suites": 0,
+    "pass": 587,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "builtJsDigest": "sha256:6229cd60a607d0043e18e71997e3cafa99aeee218c28f6bd2a595e62e63a3f1c",
+  "builtJsFileCount": 122,
+  "scope": "Independent fresh copy, frozen dependency install, local tests only, no model calls",
+  "passed": true
+}

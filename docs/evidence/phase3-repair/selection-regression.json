@@ -1,0 +1,2441 @@
+{
+  "schemaVersion": "phase3-selection-regression/1",
+  "purpose": "offline-exposed-regression-not-acceptance",
+  "datasetRoot": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/phase3-fresh-holdout-design-20260928-r2",
+  "datasetCounts": {
+    "cases": 30,
+    "dev": 20,
+    "holdout": 10
+  },
+  "selectorInput": "public cases and documents only; evaluator oracle loaded only after all selection runs for post-hoc scoring",
+  "configuration": {
+    "arms": [
+      "retrieval"
+    ],
+    "distractorDensities": [
+      0,
+      8
+    ],
+    "topK": 3,
+    "candidatePool": "max(10, topK)",
+    "selectionPolicy": "public-lexical-mmr/1"
+  },
+  "aggregate": {
+    "0": {
+      "aggregate": {
+        "cases": 30,
+        "legacySufficient": 27,
+        "selectedSufficient": 27,
+        "improved": 0,
+        "regressed": 0,
+        "unchangedInsufficient": 3,
+        "rawRankingPreserved": true
+      },
+      "bySplit": {
+        "dev": {
+          "cases": 20,
+          "legacySufficient": 17,
+          "selectedSufficient": 17,
+          "improved": 0,
+          "regressed": 0,
+          "unchangedInsufficient": 3,
+          "rawRankingPreserved": true
+        },
+        "holdout": {
+          "cases": 10,
+          "legacySufficient": 10,
+          "selectedSufficient": 10,
+          "improved": 0,
+          "regressed": 0,
+          "unchangedInsufficient": 0,
+          "rawRankingPreserved": true
+        }
+      },
+      "insufficientCaseIds": [],
+      "regressionCaseIds": [],
+      "improvementCaseIds": []
+    },
+    "8": {
+      "aggregate": {
+        "cases": 30,
+        "legacySufficient": 24,
+        "selectedSufficient": 21,
+        "improved": 1,
+        "regressed": 4,
+        "unchangedInsufficient": 5,
+        "rawRankingPreserved": true
+      },
+      "bySplit": {
+        "dev": {
+          "cases": 20,
+          "legacySufficient": 17,
+          "selectedSufficient": 14,
+          "improved": 0,
+          "regressed": 3,
+          "unchangedInsufficient": 3,
+          "rawRankingPreserved": true
+        },
+        "holdout": {
+          "cases": 10,
+          "legacySufficient": 7,
+          "selectedSufficient": 7,
+          "improved": 1,
+          "regressed": 1,
+          "unchangedInsufficient": 2,
+          "rawRankingPreserved": true
+        }
+      },
+      "insufficientCaseIds": [
+        "sem-007",
+        "sem-017",
+        "sem-020",
+        "hnew-103",
+        "hnew-104",
+        "hnew-106"
+      ],
+      "regressionCaseIds": [
+        "sem-007",
+        "sem-017",
+        "sem-020",
+        "hnew-104"
+      ],
+      "improvementCaseIds": [
+        "hnew-102"
+      ]
+    }
+  },
+  "hnew102": [
+    {
+      "density": 0,
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "legacyIds": [
+        "hdoc-102-e1",
+        "hdoc-102-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-102-e1",
+        "hdoc-102-e2"
+      ]
+    },
+    {
+      "density": 8,
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-102-e2"
+        ]
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "legacyIds": [
+        "hdoc-102-e1",
+        "hdoc-102-d6",
+        "hdoc-102-d5"
+      ],
+      "newSelectedIds": [
+        "hdoc-102-e1",
+        "hdoc-102-d6",
+        "hdoc-102-e2"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "sem-001",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-001-a"
+      ],
+      "newSelectedIds": [
+        "doc-001-a"
+      ],
+      "candidateIds": [
+        "doc-001-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-002",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-002-a"
+      ],
+      "newSelectedIds": [
+        "doc-002-a"
+      ],
+      "candidateIds": [
+        "doc-002-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-003",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-003-a"
+      ],
+      "newSelectedIds": [
+        "doc-003-a"
+      ],
+      "candidateIds": [
+        "doc-003-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-004",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-004-a"
+      ],
+      "newSelectedIds": [
+        "doc-004-a"
+      ],
+      "candidateIds": [
+        "doc-004-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-005",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-005-a"
+      ],
+      "newSelectedIds": [
+        "doc-005-a"
+      ],
+      "candidateIds": [
+        "doc-005-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-006",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-006-a"
+      ],
+      "newSelectedIds": [
+        "doc-006-a"
+      ],
+      "candidateIds": [
+        "doc-006-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-007",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "newSelectedIds": [
+        "doc-007-b",
+        "doc-007-a"
+      ],
+      "candidateIds": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-008",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-008-a"
+      ],
+      "newSelectedIds": [
+        "doc-008-a"
+      ],
+      "candidateIds": [
+        "doc-008-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-009",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-009-a"
+      ],
+      "newSelectedIds": [
+        "doc-009-a"
+      ],
+      "candidateIds": [
+        "doc-009-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-010",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-010-a"
+      ],
+      "newSelectedIds": [
+        "doc-010-a"
+      ],
+      "candidateIds": [
+        "doc-010-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-011",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-011-a"
+      ],
+      "newSelectedIds": [
+        "doc-011-a"
+      ],
+      "candidateIds": [
+        "doc-011-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-012",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-012-a"
+      ],
+      "newSelectedIds": [
+        "doc-012-a"
+      ],
+      "candidateIds": [
+        "doc-012-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-013",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-013-a"
+      ],
+      "newSelectedIds": [
+        "doc-013-a"
+      ],
+      "candidateIds": [
+        "doc-013-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-014",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-014-a"
+      ],
+      "newSelectedIds": [
+        "doc-014-a"
+      ],
+      "candidateIds": [
+        "doc-014-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-015",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-015-a"
+      ],
+      "newSelectedIds": [
+        "doc-015-a"
+      ],
+      "candidateIds": [
+        "doc-015-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-016",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-016-a"
+      ],
+      "newSelectedIds": [
+        "doc-016-a"
+      ],
+      "candidateIds": [
+        "doc-016-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-017",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "newSelectedIds": [
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "candidateIds": [
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-018",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-018-a"
+      ],
+      "newSelectedIds": [
+        "doc-018-a"
+      ],
+      "candidateIds": [
+        "doc-018-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-019",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-019-a"
+      ],
+      "newSelectedIds": [
+        "doc-019-a"
+      ],
+      "candidateIds": [
+        "doc-019-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-020",
+      "split": "dev",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "doc-020-a"
+      ],
+      "newSelectedIds": [
+        "doc-020-a"
+      ],
+      "candidateIds": [
+        "doc-020-a"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-101",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-101-e1",
+        "hdoc-101-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-101-e1",
+        "hdoc-101-e2"
+      ],
+      "candidateIds": [
+        "hdoc-101-e1",
+        "hdoc-101-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-102",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-102-e1",
+        "hdoc-102-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-102-e1",
+        "hdoc-102-e2"
+      ],
+      "candidateIds": [
+        "hdoc-102-e1",
+        "hdoc-102-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-103",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-103-e1",
+        "hdoc-103-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-103-e1",
+        "hdoc-103-e2"
+      ],
+      "candidateIds": [
+        "hdoc-103-e1",
+        "hdoc-103-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-104",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-104-e1",
+        "hdoc-104-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-104-e1",
+        "hdoc-104-e2"
+      ],
+      "candidateIds": [
+        "hdoc-104-e1",
+        "hdoc-104-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-105",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "hdoc-105-e1"
+      ],
+      "newSelectedIds": [
+        "hdoc-105-e1"
+      ],
+      "candidateIds": [
+        "hdoc-105-e1"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-106",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-106-e1",
+        "hdoc-106-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-106-e1",
+        "hdoc-106-e2"
+      ],
+      "candidateIds": [
+        "hdoc-106-e1",
+        "hdoc-106-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-107",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "hdoc-107-e1"
+      ],
+      "newSelectedIds": [
+        "hdoc-107-e1"
+      ],
+      "candidateIds": [
+        "hdoc-107-e1"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-108",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 1,
+      "legacyIds": [
+        "hdoc-108-e1"
+      ],
+      "newSelectedIds": [
+        "hdoc-108-e1"
+      ],
+      "candidateIds": [
+        "hdoc-108-e1"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-109",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-109-e1",
+        "hdoc-109-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-109-e1",
+        "hdoc-109-e2"
+      ],
+      "candidateIds": [
+        "hdoc-109-e1",
+        "hdoc-109-e2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-110",
+      "split": "holdout",
+      "density": 0,
+      "eligibleCount": 2,
+      "legacyIds": [
+        "hdoc-110-e2",
+        "hdoc-110-e1"
+      ],
+      "newSelectedIds": [
+        "hdoc-110-e2",
+        "hdoc-110-e1"
+      ],
+      "candidateIds": [
+        "hdoc-110-e2",
+        "hdoc-110-e1"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-001",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-001-a",
+        "doc-001-noise-3",
+        "doc-001-noise-4"
+      ],
+      "newSelectedIds": [
+        "doc-001-a",
+        "doc-001-noise-4",
+        "doc-001-noise-3"
+      ],
+      "candidateIds": [
+        "doc-001-a",
+        "doc-001-noise-3",
+        "doc-001-noise-4",
+        "doc-001-noise-5",
+        "doc-001-noise-1",
+        "doc-001-noise-8",
+        "doc-001-noise-2",
+        "doc-001-noise-6",
+        "doc-001-noise-7"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-002",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-002-a",
+        "doc-002-noise-5",
+        "doc-002-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-002-a",
+        "doc-002-noise-4",
+        "doc-002-noise-3"
+      ],
+      "candidateIds": [
+        "doc-002-a",
+        "doc-002-noise-5",
+        "doc-002-noise-1",
+        "doc-002-noise-3",
+        "doc-002-noise-8",
+        "doc-002-noise-2",
+        "doc-002-noise-6",
+        "doc-002-noise-7",
+        "doc-002-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-003",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-003-a",
+        "doc-003-noise-3",
+        "doc-003-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-003-a",
+        "doc-003-noise-4",
+        "doc-003-noise-7"
+      ],
+      "candidateIds": [
+        "doc-003-a",
+        "doc-003-noise-3",
+        "doc-003-noise-5",
+        "doc-003-noise-1",
+        "doc-003-noise-8",
+        "doc-003-noise-6",
+        "doc-003-noise-2",
+        "doc-003-noise-7",
+        "doc-003-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-004",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-004-a",
+        "doc-004-noise-5",
+        "doc-004-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-004-a",
+        "doc-004-noise-1",
+        "doc-004-noise-2"
+      ],
+      "candidateIds": [
+        "doc-004-a",
+        "doc-004-noise-5",
+        "doc-004-noise-1",
+        "doc-004-noise-8",
+        "doc-004-noise-3",
+        "doc-004-noise-6",
+        "doc-004-noise-2",
+        "doc-004-noise-7",
+        "doc-004-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-005",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-005-a",
+        "doc-005-noise-3",
+        "doc-005-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-005-a",
+        "doc-005-noise-3",
+        "doc-005-noise-4"
+      ],
+      "candidateIds": [
+        "doc-005-a",
+        "doc-005-noise-3",
+        "doc-005-noise-5",
+        "doc-005-noise-1",
+        "doc-005-noise-8",
+        "doc-005-noise-6",
+        "doc-005-noise-2",
+        "doc-005-noise-7",
+        "doc-005-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-006",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-006-a",
+        "doc-006-noise-5",
+        "doc-006-noise-2"
+      ],
+      "newSelectedIds": [
+        "doc-006-a",
+        "doc-006-noise-7",
+        "doc-006-noise-5"
+      ],
+      "candidateIds": [
+        "doc-006-a",
+        "doc-006-noise-5",
+        "doc-006-noise-2",
+        "doc-006-noise-7",
+        "doc-006-noise-1",
+        "doc-006-noise-3",
+        "doc-006-noise-8",
+        "doc-006-noise-6",
+        "doc-006-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-007",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "doc-007-a",
+        "doc-007-b",
+        "doc-007-noise-7"
+      ],
+      "newSelectedIds": [
+        "doc-007-noise-7",
+        "doc-007-noise-4",
+        "doc-007-noise-6"
+      ],
+      "candidateIds": [
+        "doc-007-a",
+        "doc-007-b",
+        "doc-007-noise-7",
+        "doc-007-noise-5",
+        "doc-007-noise-1",
+        "doc-007-noise-3",
+        "doc-007-noise-8",
+        "doc-007-noise-2",
+        "doc-007-noise-6",
+        "doc-007-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 2,
+        "recall": 0,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "doc-007-a",
+          "doc-007-b"
+        ]
+      }
+    },
+    {
+      "caseId": "sem-008",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-008-noise-4",
+        "doc-008-a",
+        "doc-008-noise-3"
+      ],
+      "newSelectedIds": [
+        "doc-008-noise-4",
+        "doc-008-noise-3",
+        "doc-008-a"
+      ],
+      "candidateIds": [
+        "doc-008-noise-4",
+        "doc-008-a",
+        "doc-008-noise-3",
+        "doc-008-noise-5",
+        "doc-008-noise-1",
+        "doc-008-noise-8",
+        "doc-008-noise-6",
+        "doc-008-noise-2",
+        "doc-008-noise-7"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-009",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-009-a",
+        "doc-009-noise-2",
+        "doc-009-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-009-a",
+        "doc-009-noise-4",
+        "doc-009-noise-1"
+      ],
+      "candidateIds": [
+        "doc-009-a",
+        "doc-009-noise-2",
+        "doc-009-noise-5",
+        "doc-009-noise-1",
+        "doc-009-noise-3",
+        "doc-009-noise-8",
+        "doc-009-noise-6",
+        "doc-009-noise-7",
+        "doc-009-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-010",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-010-a",
+        "doc-010-noise-5",
+        "doc-010-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-010-a",
+        "doc-010-noise-3",
+        "doc-010-noise-1"
+      ],
+      "candidateIds": [
+        "doc-010-a",
+        "doc-010-noise-5",
+        "doc-010-noise-1",
+        "doc-010-noise-3",
+        "doc-010-noise-8",
+        "doc-010-noise-2",
+        "doc-010-noise-6",
+        "doc-010-noise-7",
+        "doc-010-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-011",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-011-a",
+        "doc-011-noise-3",
+        "doc-011-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-011-noise-3",
+        "doc-011-a",
+        "doc-011-noise-1"
+      ],
+      "candidateIds": [
+        "doc-011-a",
+        "doc-011-noise-3",
+        "doc-011-noise-5",
+        "doc-011-noise-1",
+        "doc-011-noise-8",
+        "doc-011-noise-2",
+        "doc-011-noise-6",
+        "doc-011-noise-7",
+        "doc-011-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-012",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-012-a",
+        "doc-012-noise-5",
+        "doc-012-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-012-a",
+        "doc-012-noise-5",
+        "doc-012-noise-4"
+      ],
+      "candidateIds": [
+        "doc-012-a",
+        "doc-012-noise-5",
+        "doc-012-noise-1",
+        "doc-012-noise-3",
+        "doc-012-noise-8",
+        "doc-012-noise-2",
+        "doc-012-noise-6",
+        "doc-012-noise-7",
+        "doc-012-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-013",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-013-a",
+        "doc-013-noise-4",
+        "doc-013-noise-2"
+      ],
+      "newSelectedIds": [
+        "doc-013-a",
+        "doc-013-noise-4",
+        "doc-013-noise-2"
+      ],
+      "candidateIds": [
+        "doc-013-a",
+        "doc-013-noise-4",
+        "doc-013-noise-2",
+        "doc-013-noise-5",
+        "doc-013-noise-1",
+        "doc-013-noise-3",
+        "doc-013-noise-8",
+        "doc-013-noise-6",
+        "doc-013-noise-7"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-014",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-014-a",
+        "doc-014-noise-5",
+        "doc-014-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-014-a",
+        "doc-014-noise-5",
+        "doc-014-noise-4"
+      ],
+      "candidateIds": [
+        "doc-014-a",
+        "doc-014-noise-5",
+        "doc-014-noise-1",
+        "doc-014-noise-3",
+        "doc-014-noise-8",
+        "doc-014-noise-2",
+        "doc-014-noise-6",
+        "doc-014-noise-7",
+        "doc-014-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-015",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-015-a",
+        "doc-015-noise-2",
+        "doc-015-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-015-noise-2",
+        "doc-015-a",
+        "doc-015-noise-4"
+      ],
+      "candidateIds": [
+        "doc-015-a",
+        "doc-015-noise-2",
+        "doc-015-noise-5",
+        "doc-015-noise-1",
+        "doc-015-noise-8",
+        "doc-015-noise-3",
+        "doc-015-noise-6",
+        "doc-015-noise-7",
+        "doc-015-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-016",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-016-a",
+        "doc-016-noise-2",
+        "doc-016-noise-7"
+      ],
+      "newSelectedIds": [
+        "doc-016-a",
+        "doc-016-noise-2",
+        "doc-016-noise-7"
+      ],
+      "candidateIds": [
+        "doc-016-a",
+        "doc-016-noise-2",
+        "doc-016-noise-7",
+        "doc-016-noise-5",
+        "doc-016-noise-1",
+        "doc-016-noise-3",
+        "doc-016-noise-8",
+        "doc-016-noise-6",
+        "doc-016-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-017",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "doc-017-noise-6",
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "newSelectedIds": [
+        "doc-017-noise-6",
+        "doc-017-noise-2",
+        "doc-017-noise-3"
+      ],
+      "candidateIds": [
+        "doc-017-noise-6",
+        "doc-017-b",
+        "doc-017-a",
+        "doc-017-noise-3",
+        "doc-017-noise-2",
+        "doc-017-noise-8",
+        "doc-017-noise-5",
+        "doc-017-noise-1",
+        "doc-017-noise-7",
+        "doc-017-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 2,
+        "recall": 0,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "doc-017-a",
+          "doc-017-b"
+        ]
+      }
+    },
+    {
+      "caseId": "sem-018",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-018-a",
+        "doc-018-noise-5",
+        "doc-018-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-018-a",
+        "doc-018-noise-6",
+        "doc-018-noise-2"
+      ],
+      "candidateIds": [
+        "doc-018-a",
+        "doc-018-noise-5",
+        "doc-018-noise-1",
+        "doc-018-noise-8",
+        "doc-018-noise-3",
+        "doc-018-noise-6",
+        "doc-018-noise-2",
+        "doc-018-noise-7",
+        "doc-018-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-019",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-019-a",
+        "doc-019-noise-8",
+        "doc-019-noise-5"
+      ],
+      "newSelectedIds": [
+        "doc-019-a",
+        "doc-019-noise-8",
+        "doc-019-noise-4"
+      ],
+      "candidateIds": [
+        "doc-019-a",
+        "doc-019-noise-8",
+        "doc-019-noise-5",
+        "doc-019-noise-1",
+        "doc-019-noise-3",
+        "doc-019-noise-6",
+        "doc-019-noise-2",
+        "doc-019-noise-7",
+        "doc-019-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 0,
+        "recall": null,
+        "sufficient": null,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "sem-020",
+      "split": "dev",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "doc-020-a",
+        "doc-020-noise-5",
+        "doc-020-noise-1"
+      ],
+      "newSelectedIds": [
+        "doc-020-noise-8",
+        "doc-020-noise-4",
+        "doc-020-noise-3"
+      ],
+      "candidateIds": [
+        "doc-020-a",
+        "doc-020-noise-5",
+        "doc-020-noise-1",
+        "doc-020-noise-3",
+        "doc-020-noise-8",
+        "doc-020-noise-6",
+        "doc-020-noise-2",
+        "doc-020-noise-7",
+        "doc-020-noise-4"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 0,
+        "requiredCount": 1,
+        "recall": 0,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "doc-020-a"
+        ]
+      }
+    },
+    {
+      "caseId": "hnew-101",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-101-e1",
+        "hdoc-101-d3",
+        "hdoc-101-e2"
+      ],
+      "newSelectedIds": [
+        "hdoc-101-e1",
+        "hdoc-101-d3",
+        "hdoc-101-e2"
+      ],
+      "candidateIds": [
+        "hdoc-101-e1",
+        "hdoc-101-d3",
+        "hdoc-101-e2",
+        "hdoc-101-d5",
+        "hdoc-101-d6",
+        "hdoc-101-d7",
+        "hdoc-101-d4",
+        "hdoc-101-d2",
+        "hdoc-101-d8",
+        "hdoc-101-d1"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-102",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-102-e1",
+        "hdoc-102-d6",
+        "hdoc-102-d5"
+      ],
+      "newSelectedIds": [
+        "hdoc-102-e1",
+        "hdoc-102-d6",
+        "hdoc-102-e2"
+      ],
+      "candidateIds": [
+        "hdoc-102-e1",
+        "hdoc-102-d6",
+        "hdoc-102-d5",
+        "hdoc-102-d2",
+        "hdoc-102-e2",
+        "hdoc-102-d7",
+        "hdoc-102-d1",
+        "hdoc-102-d4",
+        "hdoc-102-d8",
+        "hdoc-102-d3"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-102-e2"
+        ]
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-103",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-103-e1",
+        "hdoc-103-d3",
+        "hdoc-103-d5"
+      ],
+      "newSelectedIds": [
+        "hdoc-103-e1",
+        "hdoc-103-d3",
+        "hdoc-103-d5"
+      ],
+      "candidateIds": [
+        "hdoc-103-e1",
+        "hdoc-103-d3",
+        "hdoc-103-d5",
+        "hdoc-103-d2",
+        "hdoc-103-d4",
+        "hdoc-103-d8",
+        "hdoc-103-d1",
+        "hdoc-103-e2",
+        "hdoc-103-d7",
+        "hdoc-103-d6"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-103-e2"
+        ]
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-103-e2"
+        ]
+      }
+    },
+    {
+      "caseId": "hnew-104",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-104-e1",
+        "hdoc-104-e2",
+        "hdoc-104-d8"
+      ],
+      "newSelectedIds": [
+        "hdoc-104-e1",
+        "hdoc-104-d3",
+        "hdoc-104-d6"
+      ],
+      "candidateIds": [
+        "hdoc-104-e1",
+        "hdoc-104-e2",
+        "hdoc-104-d8",
+        "hdoc-104-d1",
+        "hdoc-104-d5",
+        "hdoc-104-d4",
+        "hdoc-104-d7",
+        "hdoc-104-d2",
+        "hdoc-104-d6",
+        "hdoc-104-d3"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-104-e2"
+        ]
+      }
+    },
+    {
+      "caseId": "hnew-105",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "hdoc-105-e1",
+        "hdoc-105-d6",
+        "hdoc-105-d3"
+      ],
+      "newSelectedIds": [
+        "hdoc-105-e1",
+        "hdoc-105-d6",
+        "hdoc-105-d3"
+      ],
+      "candidateIds": [
+        "hdoc-105-e1",
+        "hdoc-105-d6",
+        "hdoc-105-d3",
+        "hdoc-105-d1",
+        "hdoc-105-d5",
+        "hdoc-105-d7",
+        "hdoc-105-d4",
+        "hdoc-105-d8",
+        "hdoc-105-d2"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-106",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-106-e1",
+        "hdoc-106-d7",
+        "hdoc-106-d4"
+      ],
+      "newSelectedIds": [
+        "hdoc-106-e1",
+        "hdoc-106-d1",
+        "hdoc-106-d7"
+      ],
+      "candidateIds": [
+        "hdoc-106-e1",
+        "hdoc-106-d7",
+        "hdoc-106-d4",
+        "hdoc-106-e2",
+        "hdoc-106-d1",
+        "hdoc-106-d6",
+        "hdoc-106-d5",
+        "hdoc-106-d2",
+        "hdoc-106-d8",
+        "hdoc-106-d3"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-106-e2"
+        ]
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 2,
+        "recall": 0.5,
+        "sufficient": false,
+        "missingRequiredIds": [
+          "hdoc-106-e2"
+        ]
+      }
+    },
+    {
+      "caseId": "hnew-107",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "hdoc-107-e1",
+        "hdoc-107-d4",
+        "hdoc-107-d1"
+      ],
+      "newSelectedIds": [
+        "hdoc-107-e1",
+        "hdoc-107-d4",
+        "hdoc-107-d1"
+      ],
+      "candidateIds": [
+        "hdoc-107-e1",
+        "hdoc-107-d4",
+        "hdoc-107-d1",
+        "hdoc-107-d6",
+        "hdoc-107-d5",
+        "hdoc-107-d7",
+        "hdoc-107-d2",
+        "hdoc-107-d3",
+        "hdoc-107-d8"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-108",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 9,
+      "legacyIds": [
+        "hdoc-108-e1",
+        "hdoc-108-d5",
+        "hdoc-108-d3"
+      ],
+      "newSelectedIds": [
+        "hdoc-108-e1",
+        "hdoc-108-d5",
+        "hdoc-108-d3"
+      ],
+      "candidateIds": [
+        "hdoc-108-e1",
+        "hdoc-108-d5",
+        "hdoc-108-d3",
+        "hdoc-108-d4",
+        "hdoc-108-d6",
+        "hdoc-108-d1",
+        "hdoc-108-d7",
+        "hdoc-108-d2",
+        "hdoc-108-d8"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 1,
+        "requiredCount": 1,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-109",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-109-e1",
+        "hdoc-109-e2",
+        "hdoc-109-d1"
+      ],
+      "newSelectedIds": [
+        "hdoc-109-e1",
+        "hdoc-109-d1",
+        "hdoc-109-e2"
+      ],
+      "candidateIds": [
+        "hdoc-109-e1",
+        "hdoc-109-e2",
+        "hdoc-109-d1",
+        "hdoc-109-d4",
+        "hdoc-109-d2",
+        "hdoc-109-d5",
+        "hdoc-109-d8",
+        "hdoc-109-d7",
+        "hdoc-109-d6",
+        "hdoc-109-d3"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    },
+    {
+      "caseId": "hnew-110",
+      "split": "holdout",
+      "density": 8,
+      "eligibleCount": 10,
+      "legacyIds": [
+        "hdoc-110-e2",
+        "hdoc-110-e1",
+        "hdoc-110-d2"
+      ],
+      "newSelectedIds": [
+        "hdoc-110-e2",
+        "hdoc-110-d2",
+        "hdoc-110-e1"
+      ],
+      "candidateIds": [
+        "hdoc-110-e2",
+        "hdoc-110-e1",
+        "hdoc-110-d2",
+        "hdoc-110-d8",
+        "hdoc-110-d6",
+        "hdoc-110-d1",
+        "hdoc-110-d3",
+        "hdoc-110-d4",
+        "hdoc-110-d5",
+        "hdoc-110-d7"
+      ],
+      "rawRankingPreserved": true,
+      "selectionPolicy": "public-lexical-mmr/1",
+      "legacy": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      },
+      "selected": {
+        "requiredMatchedCount": 2,
+        "requiredCount": 2,
+        "recall": 1,
+        "sufficient": true,
+        "missingRequiredIds": []
+      }
+    }
+  ]
+}
