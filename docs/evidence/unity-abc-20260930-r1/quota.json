@@ -1,0 +1,70 @@
+{
+  "wholeTurnBefore": {
+    "observedAt": "2026-09-30T05:05:52.441Z",
+    "weeklyUsedPercent": 16,
+    "fiveHourUsedPercent": null
+  },
+  "benchmarkBefore": {
+    "observedAt": "2026-09-30 05:38:02 UTC",
+    "weeklyUsedPercent": 24,
+    "fiveHourUsedPercent": null,
+    "otherCodexActivity": "Root preparation and Terra agents occurred before this snapshot; concurrent outside activity cannot be excluded."
+  },
+  "benchmarkAfter": {
+    "observedAt": "2026-09-30T05:57:04.363Z",
+    "weeklyUsedPercent": 26,
+    "fiveHourUsedPercent": null
+  },
+  "checkpoints": [
+    {
+      "observedAt": "2026-09-30 05:38:02 UTC",
+      "weeklyUsedPercent": 24,
+      "fiveHourUsedPercent": null,
+      "otherCodexActivity": "Root preparation and Terra agents occurred before this snapshot; concurrent outside activity cannot be excluded."
+    },
+    {
+      "observedAt": "2026-09-30T05:42:27.365Z",
+      "weeklyUsedPercent": 24,
+      "fiveHourUsedPercent": null
+    },
+    {
+      "observedAt": "2026-09-30T05:45:29.784Z",
+      "weeklyUsedPercent": 25,
+      "fiveHourUsedPercent": null
+    },
+    {
+      "observedAt": "2026-09-30T05:49:16.447Z",
+      "weeklyUsedPercent": 25,
+      "fiveHourUsedPercent": null
+    },
+    {
+      "observedAt": "2026-09-30T05:52:28.440Z",
+      "weeklyUsedPercent": 25,
+      "fiveHourUsedPercent": null
+    },
+    {
+      "observedAt": "2026-09-30T05:55:18.659Z",
+      "weeklyUsedPercent": 26,
+      "fiveHourUsedPercent": null
+    },
+    {
+      "observedAt": "2026-09-30T05:57:04.363Z",
+      "weeklyUsedPercent": 26,
+      "fiveHourUsedPercent": null
+    }
+  ],
+  "wholeTurnLatest": {
+    "observedAt": "2026-09-30T06:03:44.140Z",
+    "weeklyUsedPercent": 27,
+    "fiveHourUsedPercent": null
+  },
+  "nonBenchmarkPreparation": {
+    "before": 16,
+    "after": 24,
+    "percentagePointDelta": 8,
+    "targetPercentagePoints": 3,
+    "targetMet": false,
+    "reason": "Unity model-tool integration, credit monitoring, isolation checks and local regression coverage took more preparation than forecast."
+  },
+  "note": "Weekly percentages are rounded; root monitoring, Terra implementation agents and possible other Codex activity contaminate attribution. 5-hour window unavailable. Credits are derived from model receipts and the supplied Codex rates, not an API dollar bill."
+}

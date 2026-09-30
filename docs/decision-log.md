@@ -46,13 +46,17 @@ Quyết định: credit Standard trên 1 triệu token uncached input/cached inp
 
 Hỏi trước toàn đợt dự kiến **>300.000 raw input+output**, kể cả retry; không chia đợt để lách. Mục tiêu nghiệm thu A/B/C có cap **≤10 điểm % quota tuần** trên tổng quota tuần, không tính trên phần còn lại; cap DEV 5pp không phải cổng cho thí nghiệm này. Owner cấp conditional approval khi S1 Pass, protocol frozen và forecast ≤10pp. Forecast dựa calibration có dated/source/uncertainty; dùng snapshot trước/sau **cả lượt làm việc**, không chỉ benchmark; ghi 5h/tuần và hoạt động lẫn số đo. Không đọc được ghi unknown, không suy 0.
 
-Nonbenchmark work có mục tiêu ≤3pp quota tuần. Nếu không thể hoàn thành trong target đó, báo nguyên nhân và actual; không ghi target là đạt. Snapshot quota ban đầu của lượt hiện là 17%; số 5h vẫn unknown.
+Nonbenchmark work có mục tiêu ≤3pp quota tuần. Nếu không thể hoàn thành trong target đó, báo nguyên nhân và actual; không ghi target là đạt. Snapshot quota ban đầu của lượt hiện là 16%; số 5h vẫn unknown.
 
 ## S2 protocol Ready, execution chưa bắt đầu
 
 S2 protocol đã frozen và Ready cho run được owner conditional preapprove: S1 6/6, native offline preflight (chỉ `unity_public`/`unity_compile_test`, oracle denied, 0 model calls), và broker preflight 3/3 hidden IntegerClamp test với feedback giống nhau cho các arm. Focused 24 TypeScript và 6 Python broker test pass; full suite đang chạy, chưa được ghi green. Run chưa bắt đầu.
 
 Forecast credit 92,67 / 8,858351336pp dùng tỷ lệ quota noisy observational, không phải trusted calibration. Quota có thể rounded/concurrent; manual checkpoint STOP tại 8pp delta để giữ 2pp reserve. Credit monitor chỉ giảm soft in-flight overshoot risk, không là hard provider cap. Raw forecast tentative 1–2m, kể cả cached input, không phải raw cap; threshold hỏi trước 300.000 raw input+output vẫn giữ.
+
+## R1 invalid, quyết định bị chặn
+
+R1 A10/B reuse10/C9 không hợp lệ cho comparison: runtime MCP không tạo Unity broker receipt và verifier fallback external host. Test external pass không chứng minh arm comparison; lỗi hạ tầng đáng lẽ chặn sau hai A task. Budget benchmark không vượt: 39 invocation, 1.616.535 raw gồm 1.238.400 cached, 31,00375 credits từ receipt đã biết; benchmark quota 24→26 (+2pp). Mục tiêu preparation thất bại: whole turn 16→24 (+8pp, vượt mục tiêu ≤3pp); sau audit là 27% (+11pp overall), có hoạt động khác, 5h unknown. Không suy calibration từ 15,501875 credits/pp. Direct app-server MCP preflight 0 model calls Pass; local fix checks 19 TypeScript target và 6 Python pass. Causal model-path error không thể khôi phục từ old logs, nên Ready vẫn blocked. Conditional model approval còn hiệu lực nhưng chưa rerun. Commits/push vẫn trong authorization hiện có; Git push cần credentials mới vì temporary key đã bị revoke.
 
 [Credit audit](credit-quota-r3.md) thay hệ số 550.668 weighted tokens/1 điểm %. Hệ số mới chỉ sơ bộ bị nhiễu, không tự mở run cap. Theo quota snapshot chưa đủ để bảo chứng trần ngân sách cứng; dự toán vượt cap/unknown thì dừng xin decision trước chạy, không tự nâng trần.
 

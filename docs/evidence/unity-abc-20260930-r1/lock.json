@@ -1,0 +1,169 @@
+{
+  "lock": {
+    "locked": true,
+    "protocolDigest": "sha256:ff9ac50fde88a06e7e09af432c15fbc7999128acb64ce7c348f736da200c5f0e",
+    "tasksDigest": "sha256:76188a6be706cfe492475cc1dae1a810b8183f76576af6b6794a5aef99c9f624",
+    "skillsDigest": "sha256:cbb8d6e6589c1644b8d806c66fa05554aaa709be9e77843028b0c4bd123c15da",
+    "sourceDigest": "sha256:110fbcbc5ce31988b32ec7f5af42277d1b519bf782c60af40a786db5f604b2c7",
+    "modelsDigest": "sha256:b499623f4d85585d2bf68317774f2d55e9ef1b71ff78f99abc41428c6eca2668",
+    "unityCliPermissionsDigest": "sha256:bf34d5cc7c509230fdee3fe8037c56e259d1f0083eb4e8e48e740e9ab2f4e5e9"
+  },
+  "material": {
+    "protocol": {
+      "text": "# S2 Brain comparison protocol \u2014 30/09/2026\n\nS2 l\u00e0 module planning records cho measurement `Request \u2192 Plan \u2192 Critic \u2192 Execution \u2192 Verification \u2192 Evidence \u2192 Memory`. C\u00e1c record m\u00e1y \u0111\u1ecdc \u0111\u01b0\u1ee3c \u1edf [s2-module-ready-records.json](evidence/planning-r3/s2-module-ready-records.json) l\u00e0 schema-valid `ready` records: the run is authorized but has not started.\n\n## Request v\u00e0 shared controls\n\nRound 1 d\u00f9ng \u0111\u00fang existing 10 Unity microtasks. Tr\u01b0\u1edbc A, protocol lock ph\u1ea3i pin task IDs v\u00e0 th\u1ee9 t\u1ef1, base revision, public stub fixture, Unity/CLI version, skill versions, executor CLI rights, [shared execution recipe](../unity/walking-skeleton/execution-recipe.md), per-task B credit cap (cached input included), C cap b\u1eb1ng cap \u0111\u00f3, failure taxonomy v\u00e0 receipt format. Kh\u00f4ng thay case, kh\u00f4ng b\u1ecf case v\u00e0 kh\u00f4ng ch\u1ecdn k\u1ebft qu\u1ea3 sau khi ch\u1ea1y. M\u1ed7i task gi\u1eef compiler/test feedback, usage receipt, wall time v\u00e0 owner-fix record.\n\nS1 \u0111\u00e3 Pass 6/6 controlled runs trong 71,49 gi\u00e2y Unity runtime. Evidence [results.json](evidence/unity-s1-20260930/results.json) x\u00e1c nh\u1eadn cold/warm/recovery/batch fallback 29/29, test fault 3 failed/exit 8, compile fault kh\u00f4ng XML/exit 6+CS error. Source n\u1eb1m d\u01b0\u1edbi `.local`, private v\u00e0 `do_not_merge`. S1 kh\u00f4ng thay protocol lock ho\u1eb7c hidden-oracle isolation.\n\n## Plan, critic v\u00e0 execution\n\nFor each task, A has exactly one sequence: one Sol planner pass, one Sol critic pass against that plan, then one Terra candidate and one verification. B does not replan, re-criticize or rerun A. It reuses the A plan, critic output, workspace and verification result. Only an A task classified `model_failed` may receive at most two Terra candidate invocations. Each receives the preceding compiler/test feedback and is verified through the same broker. A task classified `infra_failed` never enters B repair. If two or more A tasks are infra-failed, stop before any B or C work and report the infrastructure evidence.\n\nC begins only after B. It is ordinary Codex under the identical Terra model, Unity skills and CLI rights used by the executor; it may iterate within its per-task credit cap. C may make ordinary shell writes; its MCP `unity_compile_test` calls the official CLI through a shared-host Unity test broker. The broker copies only the candidate source into its private evaluation workspace and runs the pinned hidden-source tests. Test source and assertions stay inaccessible; compiler and test results are returned equally to A, B and C. A uses one candidate plus one verification; B gets no more than two candidate invocations. C has no Brain requirement. Its per-task credit cap, including cached input, equals B's cumulative `4.6335` credit cap: A allocation `2.7001` plus two repair allocation `0.9667`. There is no raw-token C cutoff.\n\n## Verification, evidence and memory\n\nVerification uses the broker's pinned hidden-source test result after every candidate. Evidence binds task/revision, broker command/XML/log digests, receipts, classification, repair count, credits, wall time and owner manual fixes. The real Memory store records verified A/B finite observations; it is append-only measurement context and cannot replace a receipt or change a locked task/result.\n\nThe forecast has 20 Sol planner/critic calls, 10 Terra A native sessions, 0\u201320 Terra B native repair sessions, and 10 Terra C native sessions. Internal native model responses may vary; credit accounting caps them. A's broker permits one candidate and returns its source hash. B works in a fork of A's target with identical immutable files. C may make free iterations under its credit cap, but reuses a verification result for an unchanged source and does not start another Unity run until the source changes or no prior call exists.\n\nB reports two ledgers: cumulative `A + eligible repairs`, and incremental repairs alone. Every arm reports credits, including cached-input treatment, and wall time. C needs the native app-server credit monitor because JSON executor output only reports at end-of-turn. Unknown usage or missing receipt remains unknown; it cannot be converted to zero or PASS.\n\n## Admission and decision\n\nRaw input + output for the entire run retains the 300,000 threshold; cached input is a subset of input and is not counted twice. The tentative raw forecast is 1\u20132 million including cached input; it is a forecast, not a raw cap. The revised credit forecast is 92.67 credits = 8.858351336pp. That pp rate is noisy and observational, not trusted calibration: quota is rounded and may include concurrent work. The conditional preapproval plus measured quota checkpoints therefore STOP the run at an 8pp delta, preserving 2pp reserve. Credit monitoring can have soft in-flight overshoot; it is not a hard provider cap.\n\nS1 passed. Native offline preflight proves only `unity_public`/`unity_compile_test` was available, oracle reads were denied and model calls were zero. The committed broker preflight passed the three pinned IntegerClamp hidden tests with identical cross-arm feedback. The full TypeScript suite passed 635 unique tests (including the explicit-infrastructure stop regression), and six Python broker tests passed. The protocol is frozen at the digest in its Ready record, broker and monitoring proofs are bound, and execution is authorized but not yet started. Whole-turn quota moved 16\u219223 before benchmark and includes other-agent activity; 5h remains unknown. Nonbenchmark work aims for \u22643pp weekly quota; if that cannot be met, report the reason rather than treating the target as met.\n\nRetain Brain if B has at least two more hidden-test passes than C, or B and C have equal passes and B has fewer owner manual fixes, provided B credits are no more than twice C credits. Equal-pass/fewer-fixes with the cost condition qualifies directly. If C is at least B after these 10 microtasks, the result is inconclusive and batch 2 must be 4 feature plus 2 multi-session tasks with a separate budget approval. A B win by one pass, or B credits above 2 \u00d7 C, is also inconclusive and returns to owner review; it does not trigger automatic shrink. If C is at least B again in batch 2, simplify Brain to thin skills + memory + verification. Bring the owner decision forward as soon as complete paired results are ready.\n",
+      "baseRevision": "08ea1c00a8e7b084c623be0901dbeb07f10d9adf",
+      "purpose": "phase-acceptance",
+      "phaseCapWeeklyPoints": 10,
+      "authorization": "owner-R3-accepted-2026-09-30-conditional-S1-lock-forecast",
+      "forecast": {
+        "aCredits": 27.001,
+        "bMaximumIncrementalCredits": 19.334,
+        "cCredits": 46.335,
+        "totalCredits": 92.67,
+        "weeklyCreditsPerPercent": 10.46132,
+        "weeklyQuotaPercent": 8.85835
+      },
+      "permissionShape": {
+        "sandbox": "root-deny-minimal-read-public-project-write",
+        "unityTool": "fixed-private-evaluation-host-CLI",
+        "hiddenTests": "source-inaccessible-results-shared",
+        "target": "sole task target",
+        "sameArms": true
+      }
+    },
+    "skills": "# Round-1 public Unity execution recipe\n\nUse this controlled baseline for every A, B and C microtask. It is not a claim that an external Unity skill is complete.\n\n1. Read the assigned entry in `tasks.json`. Change only its `targetFile` under `Assets/WalkingSkeleton/Tasks/`; preserve its `WalkingSkeleton.Tasks` namespace, public class, method signature and required Unity types.\n2. Implement only the stated behavior. Validate specified null, range, dimension and coordinate inputs before computing. Use checked-safe comparisons or wider intermediates where the requirement can overflow `Int32`; saturation requirements return the stated bound.\n3. Keep Unity APIs narrow: `JsonUtility` for the JSON round trip, `Vector2`/`Vector2Int` for vector tasks, and the supplied serializable public fields. Do not add editor hooks, filesystem/network/reflection/process APIs, new packages, or test changes.\n4. Use the shared-host `unity_compile_test` tool after each candidate. Its private evaluation workspace copies only the candidate source and runs pinned hidden-source tests. A has one candidate plus one verification; B has at most two eligible repair candidates; C may iterate under its credit cap. Record compiler errors, test results, elapsed time and run ID.\n5. Treat the broker receipt as the common implementation signal. Test source and assertions remain hidden; leave them unread and unchanged. Report the returned pass, model failure, or infrastructure failure without inferring unavailable test details.\n\nCompletion means the sole allowed target is implemented, its broker receipt is recorded, and no protected project file changed.\n",
+    "source": [
+      {
+        "file": "scripts/unity-comparison-local.mjs",
+        "digest": "sha256:cff67653baee5a4755035cf819e09834d9cdbaf88054678a29e98933f8d17d2b"
+      },
+      {
+        "file": "scripts/unity-test-mcp.py",
+        "digest": "sha256:be5c2398c771603d34dda1228989d573fc59b6f39ca00b9a0719b57e6bf2a806"
+      },
+      {
+        "file": "src/unity/comparison.ts",
+        "digest": "sha256:7bbfa8f7f931ec586866f27bfc759907a031c8411ececd657a18f6199e64b184"
+      },
+      {
+        "file": "src/unity/native-codex.ts",
+        "digest": "sha256:e0cc6eef00185a7bc375ad5e44ea1ae1aaa925415044f1abbc263344e497c13f"
+      },
+      {
+        "file": "src/unity/walking-skeleton.ts",
+        "digest": "sha256:db4e2140b128dcfa5efcfc0fdd2c771acb199b2a8c361fb550dd716e9f70a271"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "integer-clamp",
+      "requirement": "Clamp an integer inclusively; reject an inverted range. Throw System.ArgumentException when minimum is greater than maximum.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs",
+      "signature": "int Clamp(int value, int minimum, int maximum)",
+      "stub": "throw new ArgumentException(\"range\") when minimum > maximum",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "cell-bounds",
+      "requirement": "Report whether a cell lies inside a positive rectangular grid. Return false for non-positive dimensions and for negative or out-of-range coordinates.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/CellBounds.cs",
+      "signature": "bool Contains(int x, int y, int width, int height)",
+      "stub": "return false for non-positive dimensions",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "coordinate-index",
+      "requirement": "Map a valid row-major grid coordinate to a linear index. Throw System.ArgumentOutOfRangeException for invalid coordinates or non-positive dimensions. Use y * width + x.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/CoordinateIndex.cs",
+      "signature": "int ToIndex(int x, int y, int width, int height)",
+      "stub": "throw ArgumentOutOfRangeException for invalid coordinate or dimensions",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "row-full",
+      "requirement": "Determine whether every supplied row cell is occupied. Return false for null or empty input.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/RowFull.cs",
+      "signature": "bool IsFull(bool[] cells)",
+      "stub": "return false for null or empty input",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "deterministic-seed",
+      "requirement": "Produce a stable non-negative seed for supplied text. Treat null as empty text. The same text must always return the same non-negative seed across calls.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/DeterministicSeed.cs",
+      "signature": "int FromText(string value)",
+      "stub": "treat null as empty text",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "score-accumulation",
+      "requirement": "Add a score delta without overflowing Int32. Saturate at Int32.MinValue and Int32.MaxValue.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/ScoreAccumulation.cs",
+      "signature": "int Add(int score, int delta)",
+      "stub": "saturate at Int32 bounds",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "json-state-roundtrip",
+      "requirement": "Serialize and recover a small Unity JSON state without data loss. Throw System.ArgumentNullException for null state. State has public int score and public string label. Return a distinct object with identical field values.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/JsonStateRoundtrip.cs",
+      "signature": "State RoundTrip(State state)",
+      "stub": "throw ArgumentNullException for null state",
+      "expectedTests": 2
+    },
+    {
+      "taskId": "vector2-grid-position",
+      "requirement": "Map integer grid coordinates to a scaled Unity Vector2 position. Throw System.ArgumentOutOfRangeException for non-positive cellSize.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/Vector2GridPosition.cs",
+      "signature": "Vector2 ToWorld(int x, int y, float cellSize)",
+      "stub": "throw ArgumentOutOfRangeException for non-positive cellSize",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "duplicate-position",
+      "requirement": "Detect duplicate Vector2Int positions in a collection. Return false for null or fewer than two positions.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/DuplicatePosition.cs",
+      "signature": "bool HasDuplicate(Vector2Int[] positions)",
+      "stub": "return false for null or fewer than two positions",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "placement-bounds",
+      "requirement": "Check that a positive rectangular placement stays wholly within a positive board. Return false for non-positive size or board dimensions, negative origins, and any overflowing placement. Edges are inclusive.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/PlacementBounds.cs",
+      "signature": "bool CanPlace(Vector2Int origin, Vector2Int size, Vector2Int board)",
+      "stub": "return false for non-positive size or board dimensions",
+      "expectedTests": 3
+    }
+  ],
+  "taskDiskDigest": "sha256:c4a38f130be83681ed2c8e0d21c036d1a57b990273849be882489100ed3d18bd",
+  "hiddenOracleDigest": "sha256:ee8ea5eebd87e0f1457f9eb194659db1b62e18e0f0ca83a198062a120985d3ad",
+  "nativePreflight": {
+    "status": "pass",
+    "modelCalls": 0,
+    "handshake": true,
+    "hiddenOracleDenied": true,
+    "mcpAvailable": true,
+    "mcpServers": [
+      {
+        "name": "computer-use",
+        "tools": []
+      },
+      {
+        "name": "node_repl",
+        "tools": []
+      },
+      {
+        "name": "unity_mcp",
+        "tools": []
+      },
+      {
+        "name": "unity_public",
+        "tools": [
+          "unity_compile_test"
+        ]
+      }
+    ]
+  }
+}

@@ -82,6 +82,13 @@ test('an inherited MCP tool blocks dispatch before any turn starts', async t => 
   assert.equal(f.calls().filter(call => call.method === 'turn/start').length, 0);
 });
 
+test('a failed MCP item cannot become a Unity tool proof', async t => {
+  const f = setup(t, c => { started(c); usage(c, 1, 0, 1); c.emit('item/completed', { threadId: 'thread-1', turnId: 'turn-1', item: { id: 'mcp-1', type: 'mcpToolCall', server: 'unity_public', tool: 'unity_compile_test', status: 'failed', error: { message: 'sanitized' } } }); complete(c); });
+  const receipt = await run(f);
+  assert.equal(receipt.status, 'failed'); assert.equal(receipt.error, 'NATIVE_CODEX_MCP_TOOL_FAILED');
+  assert.deepEqual(receipt.toolProofRefs, []);
+});
+
 test('durable tool proof is required and final source comes from the allowed target', async t => {
   const f = setup(t, c => { started(c); usage(c, 1, 0, 1); fileProof(c); complete(c); });
   const receipt = await run(f);
@@ -94,4 +101,11 @@ test('a completed turn without usage cannot be reported as a free run', async t 
   const f = setup(t, c => { started(c); fileProof(c); complete(c); });
   const receipt = await run(f);
   assert.equal(receipt.status, 'failed'); assert.equal(receipt.error, 'NATIVE_CODEX_USAGE_MISSING'); assert.equal(receipt.creditMicros, null);
+});
+
+test('a completed MCP envelope carrying isError still fails verification', async t => {
+  const f = setup(t, c => { started(c); usage(c, 1, 0, 1); c.emit('item/completed', { threadId: 'thread-1', turnId: 'turn-1', item: { id: 'mcp-1', type: 'mcpToolCall', server: 'unity_public', tool: 'unity_compile_test', status: 'completed', error: null, result: { isError: true } } }); complete(c); });
+  const receipt = await run(f);
+  assert.equal(receipt.status, 'failed'); assert.equal(receipt.error, 'NATIVE_CODEX_MCP_TOOL_FAILED');
+  assert.deepEqual(receipt.toolProofRefs, []);
 });

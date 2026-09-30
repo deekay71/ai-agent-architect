@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "native-direct-tool-preflight/1",
+  "modelCalls": 0,
+  "method": "mcpServer/tool/call",
+  "server": "unity_public",
+  "tool": "unity_compile_test",
+  "arguments": null,
+  "appServerResponseIsError": null,
+  "brokerOutcome": "pass",
+  "sourceSha256": "c6bc398746e2deb84017227f6cda798dd688cf6e43d374c1d20c96ad91131c73",
+  "runId": "d9494a02-3d51-4b1b-a6a1-249cabbfbdf9",
+  "actualTestCount": 3,
+  "commandDigest": "734e98d49fb7c8df5a56e4c23abbbdd57d72cfda1ec848b435e82322e1b1bd98",
+  "xmlDigest": "3f57607e3fedbba7ea6d8f6b352490b14c0a478a02620150e000610fad2c79a3",
+  "logDigest": "37e5d492938c248fe150f97958469ccdbf37be2ab10f24832a1d176640923fd5"
+}

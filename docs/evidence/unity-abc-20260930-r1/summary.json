@@ -1,0 +1,314 @@
+{
+  "stoppedReason": "quota-stop",
+  "decision": null,
+  "arms": {
+    "a": {
+      "passes": 10,
+      "hiddenPassTasks": 10,
+      "manualOwnerFixes": 0,
+      "creditMicros": 20398720,
+      "elapsedMs": 745446
+    },
+    "b": {
+      "passes": 10,
+      "hiddenPassTasks": 10,
+      "manualOwnerFixes": 0,
+      "creditMicros": 20398720,
+      "elapsedMs": 745446
+    },
+    "c": {
+      "passes": 9,
+      "hiddenPassTasks": 9,
+      "manualOwnerFixes": 0,
+      "creditMicros": 10605030,
+      "elapsedMs": 374839
+    }
+  },
+  "uniqueReceipts": 39,
+  "usageByModel": {
+    "gpt-6-sol": {
+      "inputTokens": 155242,
+      "cachedInputTokens": 31360,
+      "outputTokens": 3695,
+      "unknownReceipts": 0
+    },
+    "gpt-5.6-terra": {
+      "inputTokens": 1436934,
+      "cachedInputTokens": 1207040,
+      "outputTokens": 20664,
+      "unknownReceipts": 0
+    }
+  },
+  "knownCredits": 31.00375,
+  "actualRawTokens": 1616535,
+  "usageComplete": true,
+  "perTask": [
+    {
+      "taskId": "integer-clamp",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2035060,
+        "elapsedMs": 60714,
+        "evidenceId": "unity:e08de44a-54ef-4a8f-b850-af030e3c27fc"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2035060,
+        "elapsedMs": 60714,
+        "evidenceId": "unity:e08de44a-54ef-4a8f-b850-af030e3c27fc"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1014790,
+        "elapsedMs": 35594,
+        "evidenceId": "unity:b475c794-255e-46d2-94ea-84f7b05de2b4"
+      }
+    },
+    {
+      "taskId": "cell-bounds",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2314950,
+        "elapsedMs": 76660,
+        "evidenceId": "unity:8c2cee35-be88-42ba-b851-69ef48400534"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2314950,
+        "elapsedMs": 76660,
+        "evidenceId": "unity:8c2cee35-be88-42ba-b851-69ef48400534"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1227220,
+        "elapsedMs": 35396,
+        "evidenceId": "unity:da6d83d7-d250-4d8a-adf0-cbe34839e4d6"
+      }
+    },
+    {
+      "taskId": "coordinate-index",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2265160,
+        "elapsedMs": 78814,
+        "evidenceId": "unity:f14c409b-a173-4e37-a720-76ef23fd7dde"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2265160,
+        "elapsedMs": 78814,
+        "evidenceId": "unity:f14c409b-a173-4e37-a720-76ef23fd7dde"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1169610,
+        "elapsedMs": 47238,
+        "evidenceId": "unity:d94a00ee-c8f8-42ff-9711-38a1d4fba9e2"
+      }
+    },
+    {
+      "taskId": "row-full",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1673150,
+        "elapsedMs": 69227,
+        "evidenceId": "unity:e214eca9-a03d-44ab-a73e-0ee873d1ca28"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1673150,
+        "elapsedMs": 69227,
+        "evidenceId": "unity:e214eca9-a03d-44ab-a73e-0ee873d1ca28"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 986090,
+        "elapsedMs": 37718,
+        "evidenceId": "unity:8ba0524e-5a6d-4052-96fa-6160c854a317"
+      }
+    },
+    {
+      "taskId": "deterministic-seed",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2078540,
+        "elapsedMs": 72654,
+        "evidenceId": "unity:17d03a95-5826-4e15-a641-120e29c83a18"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2078540,
+        "elapsedMs": 72654,
+        "evidenceId": "unity:17d03a95-5826-4e15-a641-120e29c83a18"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1603820,
+        "elapsedMs": 46931,
+        "evidenceId": "unity:be8f2724-f2c0-472c-a81d-d90f8045bdfa"
+      }
+    },
+    {
+      "taskId": "score-accumulation",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1803990,
+        "elapsedMs": 107943,
+        "evidenceId": "unity:7b57fc8c-d6dc-41d1-b192-a396a816830a"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1803990,
+        "elapsedMs": 107943,
+        "evidenceId": "unity:7b57fc8c-d6dc-41d1-b192-a396a816830a"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1006460,
+        "elapsedMs": 42378,
+        "evidenceId": "unity:d3885700-4ac5-4854-8687-438e2d0772c3"
+      }
+    },
+    {
+      "taskId": "json-state-roundtrip",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2332540,
+        "elapsedMs": 65924,
+        "evidenceId": "unity:4cd47d59-f341-41da-a1b3-30ae2513cff1"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2332540,
+        "elapsedMs": 65924,
+        "evidenceId": "unity:4cd47d59-f341-41da-a1b3-30ae2513cff1"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1052590,
+        "elapsedMs": 39650,
+        "evidenceId": "unity:71b66964-53a5-4fc7-987a-7132414f5dbd"
+      }
+    },
+    {
+      "taskId": "vector2-grid-position",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1589090,
+        "elapsedMs": 60668,
+        "evidenceId": "unity:8294f082-95af-48c7-bee2-833db1108f95"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1589090,
+        "elapsedMs": 60668,
+        "evidenceId": "unity:8294f082-95af-48c7-bee2-833db1108f95"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1356420,
+        "elapsedMs": 42550,
+        "evidenceId": "unity:5d142c2b-266d-4cbe-a60c-d55ca09a1a8f"
+      }
+    },
+    {
+      "taskId": "duplicate-position",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1992290,
+        "elapsedMs": 72494,
+        "evidenceId": "unity:f55c47c4-97bb-4556-9938-9528dd989639"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1992290,
+        "elapsedMs": 72494,
+        "evidenceId": "unity:f55c47c4-97bb-4556-9938-9528dd989639"
+      },
+      "c": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 1188030,
+        "elapsedMs": 47384,
+        "evidenceId": "unity:257cca85-207f-4755-abba-dd31664912ba"
+      }
+    },
+    {
+      "taskId": "placement-bounds",
+      "a": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2313950,
+        "elapsedMs": 80348,
+        "evidenceId": "unity:ab9d5319-773a-4729-95ee-515f682131fe"
+      },
+      "b": {
+        "outcome": "pass",
+        "hiddenPass": true,
+        "manualOwnerFixes": 0,
+        "creditMicros": 2313950,
+        "elapsedMs": 80348,
+        "evidenceId": "unity:ab9d5319-773a-4729-95ee-515f682131fe"
+      },
+      "c": null
+    }
+  ],
+  "sourceRevision": "08ea1c00a8e7b084c623be0901dbeb07f10d9adf",
+  "comparisonValidity": "invalid",
+  "validityAuditRef": "validity-audit.json",
+  "actualStopReason": "infrastructure-audit"
+}

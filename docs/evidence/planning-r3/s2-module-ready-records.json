@@ -1,7 +1,7 @@
 {
   "recordSet": "s2-brain-comparison-candidate",
   "recordedAt": "2026-09-30T12:36:14+07:00",
-  "purpose": "Schema-valid S2 module Ready evidence; run authorized and not yet started.",
+  "purpose": "S2 planning artifacts complete; execution readiness revoked after the invalid R1 runtime audit.",
   "s1Evidence": {
     "ref": "docs/evidence/unity-s1-20260930/results.json",
     "outcome": "pass",
@@ -18,11 +18,11 @@
       "outputs": ["arm result record", "broker verification evidence", "verified finite Memory observation"],
       "ownership": "s2-comparison-module",
       "invariants": ["A precedes B precedes C", "B reuses A and repairs model failures only", "two A infrastructure failures stop B and C", "A/B/C receive identical broker feedback", "hidden test source remains inaccessible", "C credit cap includes cached input and equals B cap"],
-      "errorContract": "A broker or monitoring failure stops admission and records an infrastructure blocker.",
+      "errorContract": "Missing Unity broker receipt is infrastructure failure and blocks all remaining arms.",
       "compatibilityCheckRefs": ["docs/s2-brain-comparison-protocol.md#request-va-shared-controls"],
-      "state": "approved",
+      "state": "draft",
       "mainPlannerRef": "s2-comparison-module",
-      "decisionRecordRef": "docs/decision-log.md#s2-protocol-ready-execution-chua-bat-dau"
+      "decisionRecordRef": null
     },
     "readyChecklist": {
       "schemaVersion": "0.6.0",
@@ -34,15 +34,15 @@
       },
       "checks": {
         "requirementCoverage": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md", "unity/walking-skeleton/execution-recipe.md"], "reason": "The module defines Request, Plan, Critic, Execution, Verification, Evidence and Memory work items plus one shared public execution recipe."},
-        "interfaceCompatibility": {"outcome": "pass", "evidenceRefs": ["docs/evidence/unity-s1-20260930/broker-preflight.json", "docs/evidence/unity-s1-20260930/native-offline-preflight.json"], "reason": "The broker preflight passed three pinned hidden tests with identical feedback; native preflight exposed only unity_public and denied oracle reads."},
+        "interfaceCompatibility": {"outcome": "fail", "evidenceRefs": ["docs/evidence/unity-abc-20260930-r1/report.json", "docs/s2-abc-r1-invalid-run.md"], "reason": "All runtime MCP calls lacked Unity broker receipts; fallback external-host tests invalidated comparison evidence."},
         "testableAcceptance": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#verification-evidence-va-memory"], "reason": "Every stage names a pinned artifact or check, including broker feedback, receipts and verified Memory observations."},
         "highRiskSpikes": {"outcome": "pass", "evidenceRefs": ["docs/evidence/unity-s1-20260930/results.json"], "reason": "S1 passed all six controlled CLI/failure-path checks; its private spike source remains do_not_merge."},
-        "budgetFit": {"outcome": "pass", "evidenceRefs": ["docs/decision-log.md#s2-protocol-ready-execution-chua-bat-dau", "test/unity-comparison.test.ts"], "reason": "Conditional approval uses measured quota STOP at 8pp delta with 2pp reserve; monitor behavior is tested, with soft in-flight overshoot retained as risk."},
+        "budgetFit": {"outcome": "pass", "evidenceRefs": ["docs/evidence/unity-abc-20260930-r1/summary.json", "docs/s2-abc-r1-invalid-run.md"], "reason": "Quota budget was not exceeded; generic quota-stop is corrected to infrastructure audit as the actual stop reason."},
         "acyclicDependencies": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#plan-critic-va-execution"], "reason": "The declared execution order is A then B then C, with evidence flowing append-only to memory."},
         "clearGoalAndAcceptance": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#admission-va-decision"], "reason": "The keep, batch-2 and simplify criteria are explicit."}
       },
       "openGoalOrAcceptanceQuestions": [],
-      "outcome": "ready",
+      "outcome": "not_ready",
       "reviewedBy": "s2-documentation",
       "reviewedAt": "2026-09-30T12:36:14+07:00"
     },
@@ -63,24 +63,42 @@
       "initialPlanVersion": 1,
       "currentPlanVersion": 1,
       "readyChecklistRef": "s2-r3-comparison-ready-v1",
-      "readyOutcome": "ready",
+      "readyOutcome": "not_ready",
       "spikeRefs": ["docs/evidence/unity-s1-20260930/results.json"],
-      "executionOutcome": "not_started",
+      "executionOutcome": "blocked",
       "replanCount": 0,
       "returnToLevels": [],
       "ownerManualCorrections": 0,
       "planningDefectRefs": [],
-      "modelUsage": [],
-      "creditMicros": null,
-      "usageEvidenceRefs": []
+      "modelUsage": [
+        {"model": "gpt-6-sol", "inputTokens": 155242, "cachedInputTokens": 31360, "outputTokens": 3695},
+        {"model": "gpt-5.6-terra", "inputTokens": 1436934, "cachedInputTokens": 1207040, "outputTokens": 20664}
+      ],
+      "creditMicros": 31003750,
+      "usageEvidenceRefs": ["docs/evidence/unity-abc-20260930-r1/summary.json", "docs/evidence/unity-abc-20260930-r1/report.json"]
+    },
+    "revocationChangeRequest": {
+      "schemaVersion": "0.6.0",
+      "changeRequestId": "s2-r1-runtime-receipt-revocation",
+      "taskId": "s2-comparison-module",
+      "plan": {"ref": "docs/s2-brain-comparison-protocol.md", "version": 1, "digest": "sha256:9bc0a62f2007fef827d2216a0018aaeb15491e4c6ef94be8a7392e0da2995a70"},
+      "kind": "implementation_defect",
+      "causeLevel": null,
+      "returnToLevel": null,
+      "description": "The implementation violated the already-explicit receipt contract: it accepted completed items without Unity broker receipts and fell back to an external host, invalidating the comparison.",
+      "evidenceRefs": ["docs/evidence/unity-abc-20260930-r1/report.json", "docs/s2-abc-r1-invalid-run.md"],
+      "affectedPlanRefs": ["docs/s2-brain-comparison-protocol.md"],
+      "interfaceChanged": false,
+      "invalidatedHandoffRefs": ["s2-r3-comparison-ready-v1"],
+      "status": "accepted",
+      "decisionRecordRef": "docs/decision-log.md#r1-invalid-quyet-dinh-bi-chan"
     }
   },
   "nonSchemaStatus": {
-    "protocolFrozen": true,
+    "protocolFrozenHistorical": true,
     "reserveProven": true,
-    "hiddenTestBrokerIntegrationProven": true,
-    "nativeCCreditMonitoringProven": true,
-    "hiddenOracleIsolationProven": true,
-    "executableReady": true
+    "runtimeBrokerReceiptProven": false,
+    "externalFallbackInvalidatedComparison": true,
+    "executableReady": false
   }
 }

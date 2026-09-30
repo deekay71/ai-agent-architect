@@ -1,0 +1,1075 @@
+[
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:da6d83d7-d250-4d8a-adf0-cbe34839e4d6",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/cell-bounds/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6",
+      "sourceSnapshotAfterDigest": "sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6",
+      "commandDigest": "sha256:e8b030f56754bcbaba8ca36eba9071b5d5df3eec9356a788d596c1909e7dc555",
+      "testXmlDigest": "sha256:c2ec1670c23c731d3e21edd13b14492c7619d46065c6964055fedd8cc9d369a7",
+      "logDigest": "sha256:a97e54651644438a53c8ba4c33132de99df02655cccbcbc7a539f341a9214815",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:30fc92807b562049f91137266f71bacd8379fa4eb01e1419ee47d3960a369c8f",
+      "executionDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b"
+    },
+    "broker": {
+      "runId": "dd4a743c-ae38-4ee9-811a-b976d07bf19f",
+      "sourceSha256": "2265ce51275f98e3dddea2678e85798f28bfa1e65fc2e6d4c67dfe10cd3b9bb3",
+      "protectedBeforeDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.878,
+      "commandDigest": "e8b030f56754bcbaba8ca36eba9071b5d5df3eec9356a788d596c1909e7dc555",
+      "xmlDigest": "c2ec1670c23c731d3e21edd13b14492c7619d46065c6964055fedd8cc9d369a7",
+      "logDigest": "a97e54651644438a53c8ba4c33132de99df02655cccbcbc7a539f341a9214815",
+      "protectedAfterDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:8c2cee35-be88-42ba-b851-69ef48400534",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/cell-bounds/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6",
+      "sourceSnapshotAfterDigest": "sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6",
+      "commandDigest": "sha256:c63fcfc65725c139dc2414008a0222ba3af54324bc360dc1b2ef454df41327c8",
+      "testXmlDigest": "sha256:f3c1bb8f4eadcffa4dc320c478dac95861c867bde144572949e0fbc08f280933",
+      "logDigest": "sha256:e31c72fa1a023ed4b3dd1568f19494f1252f19d0cafb99ace9ea41afc0107c8a",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:15a497b1601638fd639dde7571818a9bb1ea184ed9ab7b776378154ca2184ce5",
+      "executionDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b"
+    },
+    "broker": {
+      "runId": "9e6b9d87-588d-4ab3-96df-84d4a1e49fff",
+      "sourceSha256": "2265ce51275f98e3dddea2678e85798f28bfa1e65fc2e6d4c67dfe10cd3b9bb3",
+      "protectedBeforeDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.932,
+      "commandDigest": "c63fcfc65725c139dc2414008a0222ba3af54324bc360dc1b2ef454df41327c8",
+      "xmlDigest": "f3c1bb8f4eadcffa4dc320c478dac95861c867bde144572949e0fbc08f280933",
+      "logDigest": "e31c72fa1a023ed4b3dd1568f19494f1252f19d0cafb99ace9ea41afc0107c8a",
+      "protectedAfterDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:d94a00ee-c8f8-42ff-9711-38a1d4fba9e2",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/coordinate-index/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:e1fb06fa0e1ab8bd5ed62b895f5acaae4041073fd31d19e7077a8f11da5bac6e",
+      "sourceSnapshotAfterDigest": "sha256:e1fb06fa0e1ab8bd5ed62b895f5acaae4041073fd31d19e7077a8f11da5bac6e",
+      "commandDigest": "sha256:5d5f3c39e7b5175e0896fbdfd8b1d205186ab0e23b288275a60cf0ada10f234d",
+      "testXmlDigest": "sha256:dd9c48f7a25821ab4dea724851801e5604eec326dfa3dcf492d8669125d8b22c",
+      "logDigest": "sha256:2c7ad1f769cda3b413cc72e3e43a84c16f55708d52beb95aba2cd28555f04258",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:0981c6e2dd5fdb7f27f6add54261a1ba6294428445c98d7c0ebf1893b1342cea",
+      "executionDigest": "sha256:793d7581b64c6b88eba79887ca67d7a28c52f06c96eaaf2a3d5fd19bf1bcf3d9"
+    },
+    "broker": {
+      "runId": "c59d26b9-2a74-4fbd-9740-7f1fc4ce83f7",
+      "sourceSha256": "d0b3e10c08807a19f4c77e52d199b9ac36fa9f8c5deef372c49ce80526db1069",
+      "protectedBeforeDigest": "b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.544,
+      "commandDigest": "5d5f3c39e7b5175e0896fbdfd8b1d205186ab0e23b288275a60cf0ada10f234d",
+      "xmlDigest": "dd9c48f7a25821ab4dea724851801e5604eec326dfa3dcf492d8669125d8b22c",
+      "logDigest": "2c7ad1f769cda3b413cc72e3e43a84c16f55708d52beb95aba2cd28555f04258",
+      "protectedAfterDigest": "b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:d3885700-4ac5-4854-8687-438e2d0772c3",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/score-accumulation/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:1deeab769a95b3aa44a16671d344cc4a312610e2e198061104002e3cb380f801",
+      "sourceSnapshotAfterDigest": "sha256:1deeab769a95b3aa44a16671d344cc4a312610e2e198061104002e3cb380f801",
+      "commandDigest": "sha256:49dfcd925d8beec6b54504470c259ecde4d130180ae750cf191abddf65b535b4",
+      "testXmlDigest": "sha256:10c325be4dd9cdf25d6b274b8089b6c269c5d8303f6fc38a591ac8abdf8b462f",
+      "logDigest": "sha256:63a2700e083db401b8c814a6f6f796c7068d49914273aa208978b8a607568b2e",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:17559de385e245ff4d4923193c9658693d062c5657a3429f458c2bf88b36236a",
+      "executionDigest": "sha256:f607540071915b2ef01e3faf636dec8a8efd610c73d7c2c7b70f9a74839255ae"
+    },
+    "broker": {
+      "runId": "774ac16f-4a4f-44e1-a0dd-9c21f86fb4de",
+      "sourceSha256": "ccd1e181da60f30d2b06b11e6d25a9d8097c8258cb25e1e46f57fc69bdc7ba7f",
+      "protectedBeforeDigest": "a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.418,
+      "commandDigest": "49dfcd925d8beec6b54504470c259ecde4d130180ae750cf191abddf65b535b4",
+      "xmlDigest": "10c325be4dd9cdf25d6b274b8089b6c269c5d8303f6fc38a591ac8abdf8b462f",
+      "logDigest": "63a2700e083db401b8c814a6f6f796c7068d49914273aa208978b8a607568b2e",
+      "protectedAfterDigest": "a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:8294f082-95af-48c7-bee2-833db1108f95",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/vector2-grid-position/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:c0dd57c75673fc2fdfe527b7b9874b3a7e8cc9b172aef09d6e89ebd40db702b3",
+      "sourceSnapshotAfterDigest": "sha256:c0dd57c75673fc2fdfe527b7b9874b3a7e8cc9b172aef09d6e89ebd40db702b3",
+      "commandDigest": "sha256:6f09b1e64e83045222ec102005356342d488bde154c2b5f6d83d4cda3b10d62f",
+      "testXmlDigest": "sha256:eaaa6b1cb453d8acbfba9592c32fc3dc030db9898d4a90aaed83fa120f201d1f",
+      "logDigest": "sha256:b3849118c4f87f4c2abf6e2445d5d6b49a968de3553203bcd77265a0564e75e7",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:59bf3d1c80ab92f0d5e9f5a0df9b449f8ce6fab4eb4f7fdbaee5d8b0b33728fb",
+      "executionDigest": "sha256:1c1d160a5e41291f6901abd4726502d30a8fc02fe6c004bde8b38c07ebf231ac"
+    },
+    "broker": {
+      "runId": "01e190f1-adfa-4c00-8e73-30e3b8495f42",
+      "sourceSha256": "c14eed07f4af8d8c16bb9796b0b0be19232c806d2e44945873ca80e44319bc90",
+      "protectedBeforeDigest": "800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 9.099,
+      "commandDigest": "6f09b1e64e83045222ec102005356342d488bde154c2b5f6d83d4cda3b10d62f",
+      "xmlDigest": "eaaa6b1cb453d8acbfba9592c32fc3dc030db9898d4a90aaed83fa120f201d1f",
+      "logDigest": "b3849118c4f87f4c2abf6e2445d5d6b49a968de3553203bcd77265a0564e75e7",
+      "protectedAfterDigest": "800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:71b66964-53a5-4fc7-987a-7132414f5dbd",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/json-state-roundtrip/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:f522ff748cac64819a54af222c04256659e9175b1646eaab1b7f53cc170e5530",
+      "sourceSnapshotAfterDigest": "sha256:f522ff748cac64819a54af222c04256659e9175b1646eaab1b7f53cc170e5530",
+      "commandDigest": "sha256:0cc5d3ec1b6da2019bbaa4b64626a5a8050abd325e952b38f2a7f45a6e1b0121",
+      "testXmlDigest": "sha256:aa23bc53a062e5542ac120df3d8d9aa5f1d8b31d1c4ba0d605229f40f19212c0",
+      "logDigest": "sha256:4ab29a7d9f9ac594bdc6b47dc709fad11c7deef64d6a384f510d0956e2ef08fd",
+      "testSummary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:2d5145978103cc80e11fcab39e195ed26229067c56d87c858f3e4437f7811ae2",
+      "executionDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032"
+    },
+    "broker": {
+      "runId": "aeb10474-fbf0-489b-b2bc-208695516239",
+      "sourceSha256": "294b9bac9d3b098d4ed79f497988897476e8bc8ef5d770af4b18b9b3a70bb1b6",
+      "protectedBeforeDigest": "ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip",
+      "expectedTestCount": 2,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 2,
+      "elapsedSeconds": 8.485,
+      "commandDigest": "0cc5d3ec1b6da2019bbaa4b64626a5a8050abd325e952b38f2a7f45a6e1b0121",
+      "xmlDigest": "aa23bc53a062e5542ac120df3d8d9aa5f1d8b31d1c4ba0d605229f40f19212c0",
+      "logDigest": "4ab29a7d9f9ac594bdc6b47dc709fad11c7deef64d6a384f510d0956e2ef08fd",
+      "protectedAfterDigest": "ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:f14c409b-a173-4e37-a720-76ef23fd7dde",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/coordinate-index/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:1a16f0927863e06a180a7456156a0a4e75d490fb9ae3b69c9ed0c146d9a1173d",
+      "sourceSnapshotAfterDigest": "sha256:1a16f0927863e06a180a7456156a0a4e75d490fb9ae3b69c9ed0c146d9a1173d",
+      "commandDigest": "sha256:7530c1c9c20f1a5687bf5e8281af41cce5a1a5ce32181fdbc0785e99f1c1d2fe",
+      "testXmlDigest": "sha256:6540b3e17ee956ab0de66d5f7c243271aeda1ed37ac31f683d600d936df4592e",
+      "logDigest": "sha256:1b0c86811485eec84ade9c969c92f8ee95edb974349220a42c417c67baa384b8",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:cca0f02401d3d3c45966b80c4bbea65cac76c85f1d1779378995a0c769c891de",
+      "executionDigest": "sha256:8a6a3eb69e656c92b830cbdf1119afb4dd31011e472d9d7dedd5467cd9efb990"
+    },
+    "broker": {
+      "runId": "6642f93f-7891-4c1f-90fd-a478ecbcb44b",
+      "sourceSha256": "903692b776e47b2dd0287c88752bb2e388c8fecfec7e465d2f930002fa43c777",
+      "protectedBeforeDigest": "b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.536,
+      "commandDigest": "7530c1c9c20f1a5687bf5e8281af41cce5a1a5ce32181fdbc0785e99f1c1d2fe",
+      "xmlDigest": "6540b3e17ee956ab0de66d5f7c243271aeda1ed37ac31f683d600d936df4592e",
+      "logDigest": "1b0c86811485eec84ade9c969c92f8ee95edb974349220a42c417c67baa384b8",
+      "protectedAfterDigest": "b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:be8f2724-f2c0-472c-a81d-d90f8045bdfa",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/deterministic-seed/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:6c4221a9a3d46f1ae827a87606a56616d0b7d8c924036db74b8f36d2fdfcc95e",
+      "sourceSnapshotAfterDigest": "sha256:6c4221a9a3d46f1ae827a87606a56616d0b7d8c924036db74b8f36d2fdfcc95e",
+      "commandDigest": "sha256:91cff944ba0a4338a14a081cc9935d17c353fa358ddcb60dddc71671f0f7d37c",
+      "testXmlDigest": "sha256:9299e634ebe2924e827dd181fdd14d40fe73b354a5ae7f0f76d941eb682d4e90",
+      "logDigest": "sha256:5fdb3d79c7302c09eb046bdcf154bc3b0e75bd7077b74967aa80008e49fa6acf",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:88724e2f3c57d8cd40ee3360490cc6aab8e52b08d2aa29ed03f031a7dd6837af",
+      "executionDigest": "sha256:b25a0434e429c454a19aeee1dcecbbecfcd24899d3bd1014bf61e3eac69b9c4a"
+    },
+    "broker": {
+      "runId": "c8308863-fe97-4933-9032-37dd5eb5940e",
+      "sourceSha256": "a58d1aded42fd2527b6b9f6018747c2874ca569e8fe01e825ebeb1422035b9e0",
+      "protectedBeforeDigest": "43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 9.459,
+      "commandDigest": "91cff944ba0a4338a14a081cc9935d17c353fa358ddcb60dddc71671f0f7d37c",
+      "xmlDigest": "9299e634ebe2924e827dd181fdd14d40fe73b354a5ae7f0f76d941eb682d4e90",
+      "logDigest": "5fdb3d79c7302c09eb046bdcf154bc3b0e75bd7077b74967aa80008e49fa6acf",
+      "protectedAfterDigest": "43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:7b57fc8c-d6dc-41d1-b192-a396a816830a",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/score-accumulation/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:1e1b6d34bbb5acf7aba7906c5cb1a3b30bb713038bbd165acab1e6747a093bee",
+      "sourceSnapshotAfterDigest": "sha256:1e1b6d34bbb5acf7aba7906c5cb1a3b30bb713038bbd165acab1e6747a093bee",
+      "commandDigest": "sha256:2c5c79e845365f104a5ea53d9454ab0e8ebba593755a7a4934b8c74bda1b29ea",
+      "testXmlDigest": "sha256:4cc34ac215c5f68d98fb2b1e4978eabf80d33357aa9ae4a158235f9e6e38afd7",
+      "logDigest": "sha256:05967ebad8d30f1696b6175ccdb8f9ec1d7fec3aedbebf472ca3dad17941ad3e",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:5dad77af2c233b706e47c959e988b0fb0ab0d5a4c675d63782a272a8511d05d1",
+      "executionDigest": "sha256:1b7c227194004e1115b995ed6607f118a94bad7ff7ae1ad5c341a8f92acbd33d"
+    },
+    "broker": {
+      "runId": "fc3c9c0a-4120-466b-bd5b-656e22a6f93a",
+      "sourceSha256": "849aa2aa83d82de7f03384034242375880dc3ee4164664aa37c38dd5bc120e4e",
+      "protectedBeforeDigest": "a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.801,
+      "commandDigest": "2c5c79e845365f104a5ea53d9454ab0e8ebba593755a7a4934b8c74bda1b29ea",
+      "xmlDigest": "4cc34ac215c5f68d98fb2b1e4978eabf80d33357aa9ae4a158235f9e6e38afd7",
+      "logDigest": "05967ebad8d30f1696b6175ccdb8f9ec1d7fec3aedbebf472ca3dad17941ad3e",
+      "protectedAfterDigest": "a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:5d142c2b-266d-4cbe-a60c-d55ca09a1a8f",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/vector2-grid-position/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:468284c462dec2a8d722bcbccf8b1debf1a2291e867f04d0e891b66f4fdc4915",
+      "sourceSnapshotAfterDigest": "sha256:468284c462dec2a8d722bcbccf8b1debf1a2291e867f04d0e891b66f4fdc4915",
+      "commandDigest": "sha256:b4f8d26a119aef6ebafb54bfc765aff551e86b80bc385b886e61f54db5562b09",
+      "testXmlDigest": "sha256:90b6c7fb5821f0725431d47446c62d536451ea79c17c9065229642477af8f59a",
+      "logDigest": "sha256:c543efb738f263db4ff24e3a15d2dafed40c74e01b957de31cbc939977ebe178",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:d614b6fe7d6f924e45de134a2ea62f2df8217ef9c2d6c39c685a5e674655e6c8",
+      "executionDigest": "sha256:5fdc11bffad20d5830dfdfe3bbc768bb16c03234c07023608b99fd13f68d1859"
+    },
+    "broker": {
+      "runId": "05d371a9-1a8d-4e02-876b-3cbb69ade206",
+      "sourceSha256": "e501bf1a92be95a932cc70df98d812a91d49bf4a9e5b7b4686e645d8d6b52798",
+      "protectedBeforeDigest": "800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.636,
+      "commandDigest": "b4f8d26a119aef6ebafb54bfc765aff551e86b80bc385b886e61f54db5562b09",
+      "xmlDigest": "90b6c7fb5821f0725431d47446c62d536451ea79c17c9065229642477af8f59a",
+      "logDigest": "c543efb738f263db4ff24e3a15d2dafed40c74e01b957de31cbc939977ebe178",
+      "protectedAfterDigest": "800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:ab9d5319-773a-4729-95ee-515f682131fe",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/placement-bounds/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:385ddf96bc80d5425de062476be3f27006af7907563571e96ae9eb527ac32aa3",
+      "sourceSnapshotAfterDigest": "sha256:385ddf96bc80d5425de062476be3f27006af7907563571e96ae9eb527ac32aa3",
+      "commandDigest": "sha256:9c0757c844810a182260922f0fe815d9c4ff218298c8a64654eaf8e09f0f089a",
+      "testXmlDigest": "sha256:c79a1602ddb90042be4ee214bb7f4167b325862ccde4e74018ffdcb5e629c000",
+      "logDigest": "sha256:3e68fcb65fbafb4dc243435675ba44c138aaa3962077ab9276af1da4a53cce8e",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:6e15a3f889d5fb3f6f5715441e7871a0c568b9f1a3bbedc8f8fe989f890b5bf0",
+      "executionDigest": "sha256:53b02caed2107622bda5ddd9d4f5ee80e672583cb94c80f33e8a9ce4ae5d8f90"
+    },
+    "broker": {
+      "runId": "a10a0f00-a27f-4729-9244-0e24410c6f92",
+      "sourceSha256": "257bd0bb2d7b54804d90b4319edbecc19ea505a020082cb32db9d3f7b4827c0e",
+      "protectedBeforeDigest": "f17bba31622fb9fba3539d493bcc1c6a560d81a1a687da029421e6cf852543ff",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.833,
+      "commandDigest": "9c0757c844810a182260922f0fe815d9c4ff218298c8a64654eaf8e09f0f089a",
+      "xmlDigest": "c79a1602ddb90042be4ee214bb7f4167b325862ccde4e74018ffdcb5e629c000",
+      "logDigest": "3e68fcb65fbafb4dc243435675ba44c138aaa3962077ab9276af1da4a53cce8e",
+      "protectedAfterDigest": "f17bba31622fb9fba3539d493bcc1c6a560d81a1a687da029421e6cf852543ff"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:8ba0524e-5a6d-4052-96fa-6160c854a317",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/row-full/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:6942f7f202accdf1ee27682276f8c17240d642a51b6551fbd2dcd65733cc29e8",
+      "sourceSnapshotAfterDigest": "sha256:6942f7f202accdf1ee27682276f8c17240d642a51b6551fbd2dcd65733cc29e8",
+      "commandDigest": "sha256:2c2e1a5621051e76c1ac1802a0e1d3271575e01fb4a3800016da4329ba8505b1",
+      "testXmlDigest": "sha256:cd3f4d5b71b60af18685f1cc321feaa26f14715193c1bb01e85eeb9ce71ffbf4",
+      "logDigest": "sha256:c91526b708302d7062e8a3c992b407d7edd2ee5c92436130efd3ceb41535e3ae",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:ed23668501a4cf7c39efc43adf2c42860aba30f4b0159e17d345f3f001bdd680",
+      "executionDigest": "sha256:161172284ac08ca074c36c14a90e357c90391e209e20fc4dca37d806edf4a35e"
+    },
+    "broker": {
+      "runId": "0bd6f4fb-dff8-4546-876e-9087228631fe",
+      "sourceSha256": "2e5e512ff758ae6942fbf88c97af48995cb65d456d48bfc44b07937229801ba1",
+      "protectedBeforeDigest": "017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.638,
+      "commandDigest": "2c2e1a5621051e76c1ac1802a0e1d3271575e01fb4a3800016da4329ba8505b1",
+      "xmlDigest": "cd3f4d5b71b60af18685f1cc321feaa26f14715193c1bb01e85eeb9ce71ffbf4",
+      "logDigest": "c91526b708302d7062e8a3c992b407d7edd2ee5c92436130efd3ceb41535e3ae",
+      "protectedAfterDigest": "017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:4cd47d59-f341-41da-a1b3-30ae2513cff1",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/json-state-roundtrip/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:f522ff748cac64819a54af222c04256659e9175b1646eaab1b7f53cc170e5530",
+      "sourceSnapshotAfterDigest": "sha256:f522ff748cac64819a54af222c04256659e9175b1646eaab1b7f53cc170e5530",
+      "commandDigest": "sha256:d1fef518c0563e4b190423b10ab7561e328f26860865431c4eaaf3cb3c0c0203",
+      "testXmlDigest": "sha256:9814a1754a7fc4c2228ee05d67485dcd65125b3d57f9360ee7b20128a4cdc8a6",
+      "logDigest": "sha256:baf6fa9c2a73df315c2e6293cb6d23902b4786955d2c3e67bdc23ebf4295edb7",
+      "testSummary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:06850187433535cf85c63f9ea130315f7eb307037dc1ee9341e585a09f6160b5",
+      "executionDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032"
+    },
+    "broker": {
+      "runId": "70991d9e-f7a9-4021-abc2-09d09730c3d4",
+      "sourceSha256": "294b9bac9d3b098d4ed79f497988897476e8bc8ef5d770af4b18b9b3a70bb1b6",
+      "protectedBeforeDigest": "ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip",
+      "expectedTestCount": 2,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 2,
+      "elapsedSeconds": 8.988,
+      "commandDigest": "d1fef518c0563e4b190423b10ab7561e328f26860865431c4eaaf3cb3c0c0203",
+      "xmlDigest": "9814a1754a7fc4c2228ee05d67485dcd65125b3d57f9360ee7b20128a4cdc8a6",
+      "logDigest": "baf6fa9c2a73df315c2e6293cb6d23902b4786955d2c3e67bdc23ebf4295edb7",
+      "protectedAfterDigest": "ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:17d03a95-5826-4e15-a641-120e29c83a18",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/deterministic-seed/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:40034689397e1a5b1e7ff55cda5bbbddf57253621d9de676567507d997043a06",
+      "sourceSnapshotAfterDigest": "sha256:40034689397e1a5b1e7ff55cda5bbbddf57253621d9de676567507d997043a06",
+      "commandDigest": "sha256:6a97eba0561d923f0fb19ef58e5c9763ba8e8dabc65de7b2b912ce16432b74de",
+      "testXmlDigest": "sha256:606618cc016d3660b4773da88d451ea258166ce6b7311b381712e76fb97bb12b",
+      "logDigest": "sha256:43e47b31b148ecdaa12fb19b58e323cf35437f3b49d92904643afa765ed26367",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:c00ff1be3faefa60585065c8d739e8e0402d9e3da1a1750b31ae4f497f1154d4",
+      "executionDigest": "sha256:6e834cfbe2f1ad50857d6d213ab606406a7060c5e2807b443e4b9a1b5e756c0a"
+    },
+    "broker": {
+      "runId": "c470cc7b-dd38-4d8d-9f7c-4a6422fbe6ab",
+      "sourceSha256": "1ab42ea2cd122601fc9c5d3f3eb20f91b0b9f2b0f704cb6b9ca0b22870dc05e3",
+      "protectedBeforeDigest": "43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.702,
+      "commandDigest": "6a97eba0561d923f0fb19ef58e5c9763ba8e8dabc65de7b2b912ce16432b74de",
+      "xmlDigest": "606618cc016d3660b4773da88d451ea258166ce6b7311b381712e76fb97bb12b",
+      "logDigest": "43e47b31b148ecdaa12fb19b58e323cf35437f3b49d92904643afa765ed26367",
+      "protectedAfterDigest": "43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:e214eca9-a03d-44ab-a73e-0ee873d1ca28",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/row-full/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:02a2e00c91ac4c0c9be98a6223cd43db8586b9d6fc630b1a9c80b8e2f9d91095",
+      "sourceSnapshotAfterDigest": "sha256:02a2e00c91ac4c0c9be98a6223cd43db8586b9d6fc630b1a9c80b8e2f9d91095",
+      "commandDigest": "sha256:095add909743e8c7180e6ba0cc7e8e4d00826c826b07cc15dba0082ef4122358",
+      "testXmlDigest": "sha256:89cb0eb7a4406aed0d3f064992e6f62cccbf94e12fa3b6ca9ab9cb6a0e37946f",
+      "logDigest": "sha256:997b7ee84822496befe27eefb73dbeb1f86fa702b9dd04b6965014f2e86050f5",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:a17fc68bd428652087993e777304c60551e87eef568e04833d626fba1a2151b0",
+      "executionDigest": "sha256:9210f7051a98f11d0aa14966a502b2123e9be3ae2f6ca3fb9f4eefb7c0c9aebd"
+    },
+    "broker": {
+      "runId": "0acc1333-e298-4d42-989b-efc4484fadf1",
+      "sourceSha256": "8b665194f2eca1ea84caf52381256fc2e3e77e63467eb1394960b99f6453ce73",
+      "protectedBeforeDigest": "017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.7,
+      "commandDigest": "095add909743e8c7180e6ba0cc7e8e4d00826c826b07cc15dba0082ef4122358",
+      "xmlDigest": "89cb0eb7a4406aed0d3f064992e6f62cccbf94e12fa3b6ca9ab9cb6a0e37946f",
+      "logDigest": "997b7ee84822496befe27eefb73dbeb1f86fa702b9dd04b6965014f2e86050f5",
+      "protectedAfterDigest": "017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:e08de44a-54ef-4a8f-b850-af030e3c27fc",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/integer-clamp/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:f9d9cbd388ac6252f680ebdfd4410a3ae01377dc8760dc96c3591627f941afff",
+      "sourceSnapshotAfterDigest": "sha256:f9d9cbd388ac6252f680ebdfd4410a3ae01377dc8760dc96c3591627f941afff",
+      "commandDigest": "sha256:01ac473c3838988e0da095f3a5932e25f074261a696328f88caed719225ba122",
+      "testXmlDigest": "sha256:5ac66920200ba7f439b13824a4699eae709b13a27814930972b762c318f609ce",
+      "logDigest": "sha256:c08103b4f149dc742a0f5a230a7f7b6a16984fb484385fb8bad780a1269f3f95",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:fadb05fa3d8f0ca536514d8fb3222770fbc1cb8b3eacc6272fd6bf85c6958e16",
+      "executionDigest": "sha256:5b96ebb7acefbe4afe37428d05822f0d67ab35eda02212fc60a3a6e232b652fe"
+    },
+    "broker": {
+      "runId": "0c084f5c-5ff4-4f6c-8ca4-031d04dc5ded",
+      "sourceSha256": "fbdac627e773576469612806c188fc2b14e4e28412f9df8de3c629d0769cc5ab",
+      "protectedBeforeDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 9.655,
+      "commandDigest": "01ac473c3838988e0da095f3a5932e25f074261a696328f88caed719225ba122",
+      "xmlDigest": "5ac66920200ba7f439b13824a4699eae709b13a27814930972b762c318f609ce",
+      "logDigest": "c08103b4f149dc742a0f5a230a7f7b6a16984fb484385fb8bad780a1269f3f95",
+      "protectedAfterDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:f55c47c4-97bb-4556-9938-9528dd989639",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/A/duplicate-position/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:23e2a3584807e804e9cf0f7fc66ecd84672706234ff8c53f8d33e61cdcdfd8cd",
+      "sourceSnapshotAfterDigest": "sha256:23e2a3584807e804e9cf0f7fc66ecd84672706234ff8c53f8d33e61cdcdfd8cd",
+      "commandDigest": "sha256:06eaeadc25d9b3e0767cfd6b8bc27208b6535e707dcc5a03c9d44a72ac11544c",
+      "testXmlDigest": "sha256:6235ece3e4a67bdaedddc67ec6185b46f7519df130871dcfede39d03948c2115",
+      "logDigest": "sha256:f90126a7515e50a51b5bd06820e853cfccad51c8d115b4a62796e190ea53238d",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:7e9d3031092dff21f8d60c684e37c60dc26c15e5de01dd06ca2372a314a394c1",
+      "executionDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c"
+    },
+    "broker": {
+      "runId": "b912d01d-6860-41e0-b934-b3b489039393",
+      "sourceSha256": "b7161df19cae79fd0ebe66d7d13ebc35af71888da3e9da48632df609d586f4a5",
+      "protectedBeforeDigest": "0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 9.025,
+      "commandDigest": "06eaeadc25d9b3e0767cfd6b8bc27208b6535e707dcc5a03c9d44a72ac11544c",
+      "xmlDigest": "6235ece3e4a67bdaedddc67ec6185b46f7519df130871dcfede39d03948c2115",
+      "logDigest": "f90126a7515e50a51b5bd06820e853cfccad51c8d115b4a62796e190ea53238d",
+      "protectedAfterDigest": "0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:b475c794-255e-46d2-94ea-84f7b05de2b4",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/integer-clamp/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:c93f9755b8575c7d9bd4102ad3a1b32e8c865dcae99699260cf9e20dc255dc5f",
+      "sourceSnapshotAfterDigest": "sha256:c93f9755b8575c7d9bd4102ad3a1b32e8c865dcae99699260cf9e20dc255dc5f",
+      "commandDigest": "sha256:5c539037b3028797e258e3c1ad8232ddda0c196bfe725820e2cc23c1a171e322",
+      "testXmlDigest": "sha256:7c5b373820df21d93af02570e4cc91dd7afbd5620a2a738fb266254e6e6ebf0c",
+      "logDigest": "sha256:fa434319432e31a86356a86d16c0097d45adfaf5d5ae71aeb09bfeb4da0acc04",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:aee6e822276b3136a431927c3902a832ed0e0e412f264b74f7848161c41c7151",
+      "executionDigest": "sha256:36cd88d81f2f52e9efb609336acf212168a9c5ba641fce370feabf0c542493ed"
+    },
+    "broker": {
+      "runId": "7675e1eb-54bb-4a91-ae35-3586b63c43f9",
+      "sourceSha256": "7cdce5455ef479cd192f828fdda4e5ceafe9fc1725247ea46327b1ad097794d2",
+      "protectedBeforeDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.625,
+      "commandDigest": "5c539037b3028797e258e3c1ad8232ddda0c196bfe725820e2cc23c1a171e322",
+      "xmlDigest": "7c5b373820df21d93af02570e4cc91dd7afbd5620a2a738fb266254e6e6ebf0c",
+      "logDigest": "fa434319432e31a86356a86d16c0097d45adfaf5d5ae71aeb09bfeb4da0acc04",
+      "protectedAfterDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3"
+    }
+  },
+  {
+    "evidence": {
+      "schemaVersion": "unity-evidence/1",
+      "evidenceId": "unity:257cca85-207f-4755-abba-dd31664912ba",
+      "projectPath": "<repo>/.local/unity-abc-20260930-r1/C/duplicate-position/private-eval",
+      "unityVersion": "6000.0.84f1",
+      "unityCliVersion": "1.0.0-beta.8",
+      "sourceSnapshotDigest": "sha256:23e2a3584807e804e9cf0f7fc66ecd84672706234ff8c53f8d33e61cdcdfd8cd",
+      "sourceSnapshotAfterDigest": "sha256:23e2a3584807e804e9cf0f7fc66ecd84672706234ff8c53f8d33e61cdcdfd8cd",
+      "commandDigest": "sha256:93f149eabff147f15766531e72dd1a5141c0838fb2bd10d7d099e032677ac6cd",
+      "testXmlDigest": "sha256:ef0460c7e2132af64966811c897a6d90e13bf00c2486a92383ae1add086860a1",
+      "logDigest": "sha256:1e653685b931cf2b08fc9c19ed6f3af25feceeb844339288609a28173be9d756",
+      "testSummary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "outcome": "pass",
+      "checkedPlanDigest": "sha256:bc305a5ab420078cec48ff7638632132cd5f4edfcbe707a1ff132537600597cc",
+      "executionDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c"
+    },
+    "broker": {
+      "runId": "0b213437-f25e-4fd5-810f-b0d30650f7f7",
+      "sourceSha256": "b7161df19cae79fd0ebe66d7d13ebc35af71888da3e9da48632df609d586f4a5",
+      "protectedBeforeDigest": "0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1",
+      "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle",
+      "expectedTestCount": 3,
+      "tests": [
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed",
+          "message": ""
+        },
+        {
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed",
+          "message": ""
+        }
+      ],
+      "compileErrors": [],
+      "outcome": "pass",
+      "exitCode": 0,
+      "actualTestCount": 3,
+      "elapsedSeconds": 8.869,
+      "commandDigest": "93f149eabff147f15766531e72dd1a5141c0838fb2bd10d7d099e032677ac6cd",
+      "xmlDigest": "ef0460c7e2132af64966811c897a6d90e13bf00c2486a92383ae1add086860a1",
+      "logDigest": "1e653685b931cf2b08fc9c19ed6f3af25feceeb844339288609a28173be9d756",
+      "protectedAfterDigest": "0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1"
+    }
+  }
+]

@@ -1,0 +1,2473 @@
+{
+  "schemaVersion": "unity-comparison/1",
+  "lock": {
+    "locked": true,
+    "protocolDigest": "sha256:ff9ac50fde88a06e7e09af432c15fbc7999128acb64ce7c348f736da200c5f0e",
+    "tasksDigest": "sha256:76188a6be706cfe492475cc1dae1a810b8183f76576af6b6794a5aef99c9f624",
+    "skillsDigest": "sha256:cbb8d6e6589c1644b8d806c66fa05554aaa709be9e77843028b0c4bd123c15da",
+    "sourceDigest": "sha256:110fbcbc5ce31988b32ec7f5af42277d1b519bf782c60af40a786db5f604b2c7",
+    "modelsDigest": "sha256:b499623f4d85585d2bf68317774f2d55e9ef1b71ff78f99abc41428c6eca2668",
+    "unityCliPermissionsDigest": "sha256:bf34d5cc7c509230fdee3fe8037c56e259d1f0083eb4e8e48e740e9ab2f4e5e9"
+  },
+  "forecast": {
+    "aCredits": 27.001,
+    "bMaximumIncrementalCredits": 19.334,
+    "cCredits": 46.335,
+    "totalCredits": 92.67,
+    "weeklyCreditsPerPercent": 10.46132,
+    "weeklyQuotaPercent": 8.85835
+  },
+  "a": [
+    {
+      "taskId": "integer-clamp",
+      "receipts": [
+        {
+          "receiptId": "sha256:26ee321ed542fe56f5b843217d938e6268f3c58fed3459e6a3dec0d68e7139db:b0801c82-2697-4183-9904-a4e17952b7a2",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7562,
+            "cachedInputTokens": 0,
+            "outputTokens": 207
+          },
+          "elapsedMs": 14507.99175,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Clamp returns minimum when value is below the range, maximum when above it, and value when within it, including both endpoints.",
+              "Clamp throws System.ArgumentException when minimum is greater than maximum.",
+              "Only the assigned target file changes; the namespace, class, and method signature remain intact.",
+              "The Unity broker receipt is recorded with run ID, elapsed time, compiler errors, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify its targetFile.",
+              "Replace the stub in that target file with an inverted-range check followed by inclusive clamp comparisons.",
+              "Run unity_compile_test for the candidate and record its receipt without accessing hidden tests.",
+              "Verify that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:2572bd297899f612c5c7fe759ad1df52825dfb0fee3db78187710774b56991d1:e201768f-2ab8-4dab-bcb2-a84712a9fc1c",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7710,
+            "cachedInputTokens": 0,
+            "outputTokens": 49
+          },
+          "elapsedMs": 7189.089917000001,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:3e91b095-800f-4137-9968-396a22e8c967",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77368,
+            "cachedInputTokens": 65792,
+            "outputTokens": 999
+          },
+          "creditMicros": 1207460,
+          "reservedCreditMicros": 1872500,
+          "responseReserveCreditMicros": 187250,
+          "interruptAtCreditMicros": 1685250,
+          "elapsedMs": 29225,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) throw new ArgumentException(\"minimum cannot be greater than maximum\"); if (value < minimum) return minimum; if (value > maximum) return maximum; return value; } } }\n",
+          "sourceDigest": "sha256:5b96ebb7acefbe4afe37428d05822f0d67ab35eda02212fc60a3a6e232b652fe",
+          "toolProofRefs": [
+            "command:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-60bc4ccf-d66f-45bf-ba68-9ad2b113df7a",
+            "file:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-01b8935f-4bb3-4536-ac57-e3194827e924",
+            "mcp:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-0569c9bb-6d2f-43d3-9aaf-22c5b6a154a8:f60d1efa9e7c230a6adde599",
+            "command:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-a714fdcb-f121-4c22-b049-b10b7c222ffa"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:297cce40bd3bd6356dce0e3ca7665086e2934708dfedea2a35e1951ab33f8991",
+          "promptDigest": "sha256:9a824f9950786156f36a54af6ec46cba1918a3d50e42f4cd5a9e488cb4aae499",
+          "artifact": {
+            "sourceDigest": "sha256:5b96ebb7acefbe4afe37428d05822f0d67ab35eda02212fc60a3a6e232b652fe",
+            "eventLogDigest": "sha256:297cce40bd3bd6356dce0e3ca7665086e2934708dfedea2a35e1951ab33f8991",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77368,
+              "cachedInputTokens": 65792,
+              "outputTokens": 999
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) throw new ArgumentException(\"minimum cannot be greater than maximum\"); if (value < minimum) return minimum; if (value > maximum) return maximum; return value; } } }\n",
+      "feedback": "{\"runId\":\"0c084f5c-5ff4-4f6c-8ca4-031d04dc5ded\",\"sourceSha256\":\"fbdac627e773576469612806c188fc2b14e4e28412f9df8de3c629d0769cc5ab\",\"protectedBeforeDigest\":\"2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":9.655,\"commandDigest\":\"01ac473c3838988e0da095f3a5932e25f074261a696328f88caed719225ba122\",\"xmlDigest\":\"5ac66920200ba7f439b13824a4699eae709b13a27814930972b762c318f609ce\",\"logDigest\":\"c08103b4f149dc742a0f5a230a7f7b6a16984fb484385fb8bad780a1269f3f95\",\"protectedAfterDigest\":\"2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3\"}",
+      "evidenceId": "unity:e08de44a-54ef-4a8f-b850-af030e3c27fc",
+      "creditMicros": 2035060,
+      "elapsedMs": 60714,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "cell-bounds",
+      "receipts": [
+        {
+          "receiptId": "sha256:ca6a4cd70977d8c604da09e818bb63d2bb8cfd2236387f73e3c52edb47d8e4c9:f32b260e-0ea3-42d8-8c61-8644695a5224",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7631,
+            "cachedInputTokens": 0,
+            "outputTokens": 262
+          },
+          "elapsedMs": 18538.585041,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Contains returns true exactly when width and height are positive and 0 <= x < width and 0 <= y < height.",
+              "Only the assigned target file changes; its namespace, class, and method signature remain intact.",
+              "The Unity broker receipt and run ID are recorded without claiming access to hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the exception in Contains with a short-circuit bounds expression: width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height.",
+              "Run unity_compile_test on the candidate and record its result, compiler errors if any, elapsed time, and run ID. Complete the permitted verification run.",
+              "Check that no protected project file changed, then report the broker result."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:77ef873b9523e7c480fd1b8f08f7cb9ddc3ee4c3c1d487c159cd4f7e18bf0db0:1d0fe5f8-5f8d-4f7f-9619-491b70345e50",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7804,
+            "cachedInputTokens": 0,
+            "outputTokens": 58
+          },
+          "elapsedMs": 8101.444417000006,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:e6faaaf5-bb81-488c-8976-9b863319b3b0",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 80114,
+            "cachedInputTokens": 64000,
+            "outputTokens": 1125
+          },
+          "creditMicros": 1463200,
+          "reservedCreditMicros": 1848350,
+          "responseReserveCreditMicros": 184835,
+          "interruptAtCreditMicros": 1663515,
+          "elapsedMs": 40965,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+          "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+          "toolProofRefs": [
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-11b4f22e-0327-4e55-affb-47b717201414",
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-cf31b3d0-d433-4510-bd3b-c0ee9286876c",
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-917cf99b-aa18-4238-8632-f01efe4595b6",
+            "file:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-1fdd0769-bd42-48bf-895b-0a4a77ee624f",
+            "mcp:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-744b3270-c2f8-40da-afc4-5b4d7c9b8285:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:517cd6b2dc99ac3bf51173e1eea8ad4839b379f82d73347977e1784f4211a201",
+          "promptDigest": "sha256:66e6c054df5d4bdf0a352df4bc7a26df7548f094d48c49940f8c52a6e2fa2353",
+          "artifact": {
+            "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+            "eventLogDigest": "sha256:517cd6b2dc99ac3bf51173e1eea8ad4839b379f82d73347977e1784f4211a201",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 80114,
+              "cachedInputTokens": 64000,
+              "outputTokens": 1125
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+      "feedback": "{\"runId\":\"9e6b9d87-588d-4ab3-96df-84d4a1e49fff\",\"sourceSha256\":\"2265ce51275f98e3dddea2678e85798f28bfa1e65fc2e6d4c67dfe10cd3b9bb3\",\"protectedBeforeDigest\":\"15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.932,\"commandDigest\":\"c63fcfc65725c139dc2414008a0222ba3af54324bc360dc1b2ef454df41327c8\",\"xmlDigest\":\"f3c1bb8f4eadcffa4dc320c478dac95861c867bde144572949e0fbc08f280933\",\"logDigest\":\"e31c72fa1a023ed4b3dd1568f19494f1252f19d0cafb99ace9ea41afc0107c8a\",\"protectedAfterDigest\":\"15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c\"}",
+      "evidenceId": "unity:8c2cee35-be88-42ba-b851-69ef48400534",
+      "creditMicros": 2314950,
+      "elapsedMs": 76660,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "coordinate-index",
+      "receipts": [
+        {
+          "receiptId": "sha256:92548cb66200a9eb06f13ecc78dd2dd29c98507d4dd91fa27c3d97da5174cf24:68a70aa2-8e6f-46a4-8007-95dfa4bafa22",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7702,
+            "cachedInputTokens": 0,
+            "outputTokens": 462
+          },
+          "elapsedMs": 26839.818375000003,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Valid coordinates return y * width + x in row-major order.",
+              "Non-positive dimensions or coordinates outside 0 <= x < width and 0 <= y < height throw System.ArgumentOutOfRangeException.",
+              "Index arithmetic cannot silently overflow Int32.",
+              "Only the assigned target file changes; the namespace and public API remain intact.",
+              "The Unity broker receipt and its run ID, elapsed time, compiler errors, and test result are recorded without inspecting hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify its targetFile under Assets/WalkingSkeleton/Tasks/.",
+              "Replace the stub in that file with dimension and coordinate validation, then compute the index using a wider intermediate and reject an unrepresentable result.",
+              "Run unity_compile_test for the candidate, record its receipt, and verify that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:52875ac16a39285d8a99bd2580bcdeeeac98ee760528e861dbd64de222caa5de:e935e390-cbaa-4bfc-8576-40b022269a22",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7878,
+            "cachedInputTokens": 0,
+            "outputTokens": 67
+          },
+          "elapsedMs": 7618.549790999998,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:8cf208eb-15ba-4434-8c63-23ba62ed6c95",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 67985,
+            "cachedInputTokens": 52992,
+            "outputTokens": 1131
+          },
+          "creditMicros": 1353910,
+          "reservedCreditMicros": 1788850,
+          "responseReserveCreditMicros": 178885,
+          "interruptAtCreditMicros": 1609965,
+          "elapsedMs": 35697,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CoordinateIndex { public static int ToIndex(int x, int y, int width, int height) { if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width)); if (height <= 0) throw new ArgumentOutOfRangeException(nameof(height)); if (x < 0 || x >= width) throw new ArgumentOutOfRangeException(nameof(x)); if (y < 0 || y >= height) throw new ArgumentOutOfRangeException(nameof(y)); long index = (long)y * width + x; if (index > int.MaxValue) throw new ArgumentOutOfRangeException(); return (int)index; } } }\n",
+          "sourceDigest": "sha256:8a6a3eb69e656c92b830cbdf1119afb4dd31011e472d9d7dedd5467cd9efb990",
+          "toolProofRefs": [
+            "command:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-9ca7df99-0264-4fa5-9482-10b67150abc7",
+            "command:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-daec3055-da62-4a0b-ade5-23ce9b48a5c6",
+            "file:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-c5822943-43df-49bb-9646-fa7d1c07afdd",
+            "mcp:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-91d46d19-3e4a-49a0-a617-280f5ac38ee1:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:70325c5d062e33db5d9fdbf783f69be203db9df8aff59df5c69acd9a4f19c95e",
+          "promptDigest": "sha256:f46e3584d38d6589b73cfa593fd652bca64fd2dbe92fca137146b586a463c7f8",
+          "artifact": {
+            "sourceDigest": "sha256:8a6a3eb69e656c92b830cbdf1119afb4dd31011e472d9d7dedd5467cd9efb990",
+            "eventLogDigest": "sha256:70325c5d062e33db5d9fdbf783f69be203db9df8aff59df5c69acd9a4f19c95e",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 67985,
+              "cachedInputTokens": 52992,
+              "outputTokens": 1131
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CoordinateIndex { public static int ToIndex(int x, int y, int width, int height) { if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width)); if (height <= 0) throw new ArgumentOutOfRangeException(nameof(height)); if (x < 0 || x >= width) throw new ArgumentOutOfRangeException(nameof(x)); if (y < 0 || y >= height) throw new ArgumentOutOfRangeException(nameof(y)); long index = (long)y * width + x; if (index > int.MaxValue) throw new ArgumentOutOfRangeException(); return (int)index; } } }\n",
+      "feedback": "{\"runId\":\"6642f93f-7891-4c1f-90fd-a478ecbcb44b\",\"sourceSha256\":\"903692b776e47b2dd0287c88752bb2e388c8fecfec7e465d2f930002fa43c777\",\"protectedBeforeDigest\":\"b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.536,\"commandDigest\":\"7530c1c9c20f1a5687bf5e8281af41cce5a1a5ce32181fdbc0785e99f1c1d2fe\",\"xmlDigest\":\"6540b3e17ee956ab0de66d5f7c243271aeda1ed37ac31f683d600d936df4592e\",\"logDigest\":\"1b0c86811485eec84ade9c969c92f8ee95edb974349220a42c417c67baa384b8\",\"protectedAfterDigest\":\"b9568ca73584bb92ec0f5d383dd7232f1c4f73e68ca1948211b80e10e9cce434\"}",
+      "evidenceId": "unity:f14c409b-a173-4e37-a720-76ef23fd7dde",
+      "creditMicros": 2265160,
+      "elapsedMs": 78814,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "row-full",
+      "receipts": [
+        {
+          "receiptId": "sha256:d44a81c216eb3a600f639ca84c5347dd8ba12a4bce6315ea9d606168fb1acced:c89b777e-b903-4c16-82ef-34904b24804a",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7682,
+            "cachedInputTokens": 6272,
+            "outputTokens": 252
+          },
+          "elapsedMs": 18017.676334000018,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Null or empty input returns false.",
+              "A nonempty array returns true exactly when every cell is true.",
+              "Only the assigned target file changes; the namespace, class, and method signature remain intact.",
+              "The Unity compile test receipt and run ID are recorded without inferring hidden test details."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the exception in RowFull.IsFull with a null and length check, followed by a loop that returns false on any unoccupied cell and true otherwise.",
+              "Run unity_compile_test under the applicable candidate limit and record its compiler result, test result, elapsed time, and run ID.",
+              "Confirm that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:ced8827296214dcd1c8b9fddfe03700cea125c99b6c2a68325b0458a2cb4c122:03c751de-07f7-4f88-8fe4-229e486b083e",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7832,
+            "cachedInputTokens": 0,
+            "outputTokens": 71
+          },
+          "elapsedMs": 10047.427792000002,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:003ab478-27e4-4738-9a14-d07a9087a249",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 78056,
+            "cachedInputTokens": 69888,
+            "outputTokens": 1137
+          },
+          "creditMicros": 1098940,
+          "reservedCreditMicros": 2125890,
+          "responseReserveCreditMicros": 212589,
+          "interruptAtCreditMicros": 1913301,
+          "elapsedMs": 32347,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { if (cells == null || cells.Length == 0) return false; for (int i = 0; i < cells.Length; i++) { if (!cells[i]) return false; } return true; } } }\n",
+          "sourceDigest": "sha256:9210f7051a98f11d0aa14966a502b2123e9be3ae2f6ca3fb9f4eefb7c0c9aebd",
+          "toolProofRefs": [
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-6c2c06bb-99f6-4f36-b492-fc9cd73d5bb6",
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-5b0b8170-0e89-4105-91d0-f08b6e1cb995",
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-f06eabba-5cba-475c-8e5f-753fedad3b7e",
+            "file:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-4639871d-b177-4a2f-94cc-3aa5d5e097e2",
+            "mcp:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-bf66d83f-d5a7-42f7-8c4a-048ab3321f52:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:28d032618e9b04b2c5b8ab006bbf7b5c5da72d3a37b9067cdae5f1ebf64882b3",
+          "promptDigest": "sha256:5736e1d3aee4809f774ea63b0c303d407874ba24e34a5484d268fc8fba8dc20b",
+          "artifact": {
+            "sourceDigest": "sha256:9210f7051a98f11d0aa14966a502b2123e9be3ae2f6ca3fb9f4eefb7c0c9aebd",
+            "eventLogDigest": "sha256:28d032618e9b04b2c5b8ab006bbf7b5c5da72d3a37b9067cdae5f1ebf64882b3",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 78056,
+              "cachedInputTokens": 69888,
+              "outputTokens": 1137
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { if (cells == null || cells.Length == 0) return false; for (int i = 0; i < cells.Length; i++) { if (!cells[i]) return false; } return true; } } }\n",
+      "feedback": "{\"runId\":\"0acc1333-e298-4d42-989b-efc4484fadf1\",\"sourceSha256\":\"8b665194f2eca1ea84caf52381256fc2e3e77e63467eb1394960b99f6453ce73\",\"protectedBeforeDigest\":\"017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.7,\"commandDigest\":\"095add909743e8c7180e6ba0cc7e8e4d00826c826b07cc15dba0082ef4122358\",\"xmlDigest\":\"89cb0eb7a4406aed0d3f064992e6f62cccbf94e12fa3b6ca9ab9cb6a0e37946f\",\"logDigest\":\"997b7ee84822496befe27eefb73dbeb1f86fa702b9dd04b6965014f2e86050f5\",\"protectedAfterDigest\":\"017a74f0fd3d8529781a7968c8d3c400ff78f805018bae4575656062f789f238\"}",
+      "evidenceId": "unity:e214eca9-a03d-44ab-a73e-0ee873d1ca28",
+      "creditMicros": 1673150,
+      "elapsedMs": 69227,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "deterministic-seed",
+      "receipts": [
+        {
+          "receiptId": "sha256:9c1f6c4fbe2d567e2d72110cc8359b2e08151128b39f8b0e1104fc84fdb1b1cf:dbdc6aff-56dd-4bf9-8648-f56d99b479b6",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7693,
+            "cachedInputTokens": 6272,
+            "outputTokens": 308
+          },
+          "elapsedMs": 20050.313291999977,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "FromText returns a non-negative int for every string, including null.",
+              "Null produces the same seed as empty text; identical text produces the same seed across calls.",
+              "Only the assigned target file changes, and the Unity compile and test receipt is recorded."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify targetFile. Preserve the namespace, public class, and method signature.",
+              "Implement a fixed hash over the text\u2019s UTF-16 characters using unchecked 32-bit arithmetic, then clear the sign bit. Treat null as empty text. Do not use string.GetHashCode, whose result may vary between runs.",
+              "Run unity_compile_test for the candidate and the permitted verification. Record each run ID, elapsed time, compiler errors, and reported result; report only what the broker receipt establishes.",
+              "Confirm that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:b95e9f2487cdc8accce1a6dd90214bf320534e54e86c4edd602fdf2967d523b0:28104f15-22e2-476a-b132-6b679018f191",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7870,
+            "cachedInputTokens": 0,
+            "outputTokens": 93
+          },
+          "elapsedMs": 9996.060832999996,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:863abb63-ef22-4f41-84db-fe6ce49d0a79",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 79666,
+            "cachedInputTokens": 62976,
+            "outputTokens": 1110
+          },
+          "creditMicros": 1482380,
+          "reservedCreditMicros": 2103940,
+          "responseReserveCreditMicros": 210394,
+          "interruptAtCreditMicros": 1893546,
+          "elapsedMs": 33782,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DeterministicSeed { public static int FromText(string value) { unchecked { uint hash = 2166136261u; if (value != null) { for (int i = 0; i < value.Length; i++) { hash ^= value[i]; hash *= 16777619u; } } return (int)(hash & 0x7fffffffu); } } } }\n",
+          "sourceDigest": "sha256:6e834cfbe2f1ad50857d6d213ab606406a7060c5e2807b443e4b9a1b5e756c0a",
+          "toolProofRefs": [
+            "command:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-beb3def9-5ae8-4e15-a809-2d9bc9bd3b1f",
+            "command:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-4e429f32-7b65-4e9a-9df1-dd7cc3b37650",
+            "file:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-d3b40346-e518-4bf3-845b-7a4c62c49aa0",
+            "mcp:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-3b6b5684-2cad-4ef2-8ea1-b245e7060273:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:83d2197737608fe3404012e1c5433078641dbfe17ebbc72c0d3cfeef64cb9d61",
+          "promptDigest": "sha256:c870098a4120a42df8f269e0cc26a1b6038ad9c4ab5486ae1022e2310768ea1f",
+          "artifact": {
+            "sourceDigest": "sha256:6e834cfbe2f1ad50857d6d213ab606406a7060c5e2807b443e4b9a1b5e756c0a",
+            "eventLogDigest": "sha256:83d2197737608fe3404012e1c5433078641dbfe17ebbc72c0d3cfeef64cb9d61",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 79666,
+              "cachedInputTokens": 62976,
+              "outputTokens": 1110
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DeterministicSeed { public static int FromText(string value) { unchecked { uint hash = 2166136261u; if (value != null) { for (int i = 0; i < value.Length; i++) { hash ^= value[i]; hash *= 16777619u; } } return (int)(hash & 0x7fffffffu); } } } }\n",
+      "feedback": "{\"runId\":\"c470cc7b-dd38-4d8d-9f7c-4a6422fbe6ab\",\"sourceSha256\":\"1ab42ea2cd122601fc9c5d3f3eb20f91b0b9f2b0f704cb6b9ca0b22870dc05e3\",\"protectedBeforeDigest\":\"43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\\\"\\\",18652613)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\\\"alpha\\\",1569418667)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\\\"alpha\\\",1569418667)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.702,\"commandDigest\":\"6a97eba0561d923f0fb19ef58e5c9763ba8e8dabc65de7b2b912ce16432b74de\",\"xmlDigest\":\"606618cc016d3660b4773da88d451ea258166ce6b7311b381712e76fb97bb12b\",\"logDigest\":\"43e47b31b148ecdaa12fb19b58e323cf35437f3b49d92904643afa765ed26367\",\"protectedAfterDigest\":\"43504f840066cc49c9d71532631b59b52e23dfb579e73b5085806d921fed5368\"}",
+      "evidenceId": "unity:17d03a95-5826-4e15-a641-120e29c83a18",
+      "creditMicros": 2078540,
+      "elapsedMs": 72654,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "score-accumulation",
+      "receipts": [
+        {
+          "receiptId": "sha256:c5ff9113a6cff56192fd3acb24fd57e3262a917e8c25d1d65f8dbcb09c103fed:455b4333-e634-4038-9065-906251be8c12",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7690,
+            "cachedInputTokens": 0,
+            "outputTokens": 238
+          },
+          "elapsedMs": 16577.222707999987,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Add returns score + delta when the sum is within Int32 range, Int32.MinValue when below it, and Int32.MaxValue when above it.",
+              "Only the assigned target file changes; the namespace, public class, and method signature remain intact.",
+              "The Unity broker receipt records the run ID, elapsed time, compiler errors, and test result without claiming access to hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and its target file.",
+              "Implement Add using a long intermediate, clamp it to Int32 bounds, and return the resulting int.",
+              "Run unity_compile_test within the applicable candidate limit, record its receipt, and confirm no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:442fc48470cc87e3d64b77a767e92d8e2fd648503c4ab2cb955fc4f3bcc702ee:9d489798-c31c-4e94-8a50-af6dddadb899",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7833,
+            "cachedInputTokens": 6272,
+            "outputTokens": 90
+          },
+          "elapsedMs": 9354.965000000026,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:b1b930fa-24bb-4d55-b2cd-2e064bdb49df",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 66270,
+            "cachedInputTokens": 52736,
+            "outputTokens": 959
+          },
+          "creditMicros": 1228080,
+          "reservedCreditMicros": 2124190,
+          "responseReserveCreditMicros": 212419,
+          "interruptAtCreditMicros": 1911771,
+          "elapsedMs": 73090,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { long sum = (long)score + delta; if (sum > int.MaxValue) return int.MaxValue; if (sum < int.MinValue) return int.MinValue; return (int)sum; } } }\n",
+          "sourceDigest": "sha256:1b7c227194004e1115b995ed6607f118a94bad7ff7ae1ad5c341a8f92acbd33d",
+          "toolProofRefs": [
+            "command:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-8e8bfc8b-9107-422b-811c-86c411b5acf3",
+            "command:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-fff58578-51c0-4ccb-8753-7ef2ee392452",
+            "file:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-041c40f7-0f4b-4bee-87c9-448e95d75c61",
+            "mcp:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-aa36ace5-e587-4f45-a691-32e9aee29cda:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:6d4f48dd67395df4cba78bf8e4e3782231765683b306cd6a6a919609d16e3127",
+          "promptDigest": "sha256:d30b2748dcb26f3576d27c0a7d4388927276f11911d56d82bc5492c3d6e81b53",
+          "artifact": {
+            "sourceDigest": "sha256:1b7c227194004e1115b995ed6607f118a94bad7ff7ae1ad5c341a8f92acbd33d",
+            "eventLogDigest": "sha256:6d4f48dd67395df4cba78bf8e4e3782231765683b306cd6a6a919609d16e3127",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 66270,
+              "cachedInputTokens": 52736,
+              "outputTokens": 959
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { long sum = (long)score + delta; if (sum > int.MaxValue) return int.MaxValue; if (sum < int.MinValue) return int.MinValue; return (int)sum; } } }\n",
+      "feedback": "{\"runId\":\"fc3c9c0a-4120-466b-bd5b-656e22a6f93a\",\"sourceSha256\":\"849aa2aa83d82de7f03384034242375880dc3ee4164664aa37c38dd5bc120e4e\",\"protectedBeforeDigest\":\"a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.801,\"commandDigest\":\"2c5c79e845365f104a5ea53d9454ab0e8ebba593755a7a4934b8c74bda1b29ea\",\"xmlDigest\":\"4cc34ac215c5f68d98fb2b1e4978eabf80d33357aa9ae4a158235f9e6e38afd7\",\"logDigest\":\"05967ebad8d30f1696b6175ccdb8f9ec1d7fec3aedbebf472ca3dad17941ad3e\",\"protectedAfterDigest\":\"a484c9f65698fa120745e413df84229ed396cfb831100d32aeaad3dfe7b78f4b\"}",
+      "evidenceId": "unity:7b57fc8c-d6dc-41d1-b192-a396a816830a",
+      "creditMicros": 1803990,
+      "elapsedMs": 107943,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "json-state-roundtrip",
+      "receipts": [
+        {
+          "receiptId": "sha256:70340bc47d4343b29b3d1da3d74403594d96e30eb4bd2536193f529f69f5225c:1c94f9e2-9e7d-4374-96a4-0b9164950b20",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7728,
+            "cachedInputTokens": 0,
+            "outputTokens": 243
+          },
+          "elapsedMs": 17869.227042000042,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "RoundTrip(null) throws System.ArgumentNullException.",
+              "RoundTrip returns a different State instance with the same score and label values, including a null label.",
+              "Only the assigned target file changes; the Unity compile test receipt is recorded."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "In that file, check state for null, then use UnityEngine.JsonUtility to serialize and deserialize it into a new State. Preserve the namespace, public fields, and method signature.",
+              "Run unity_compile_test for the candidate and its permitted verification, and record each receipt\u2019s run ID, elapsed time, compiler errors, and result. Report the receipt without inferring hidden test details.",
+              "Confirm no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:e5f1584e346353d6d7bd648e272a3b134ab45d17b24fc493b0b16a0bfe81229a:d7dc99d1-df1a-4e33-8f36-d870f5a39e94",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7884,
+            "cachedInputTokens": 0,
+            "outputTokens": 60
+          },
+          "elapsedMs": 7689.869875000033,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:f00fed16-68c9-4e38-ab57-7688bbb52970",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77855,
+            "cachedInputTokens": 60928,
+            "outputTokens": 1084
+          },
+          "creditMicros": 1476190,
+          "reservedCreditMicros": 1843750,
+          "responseReserveCreditMicros": 184375,
+          "interruptAtCreditMicros": 1659375,
+          "elapsedMs": 31252,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { [Serializable] public sealed class State { public int score; public string label; } public static class JsonStateRoundtrip { public static State RoundTrip(State state) { if (state == null) throw new ArgumentNullException(nameof(state)); return JsonUtility.FromJson<State>(JsonUtility.ToJson(state)); } } }\n",
+          "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+          "toolProofRefs": [
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-b19624d9-efa9-4803-b2cb-1468ba199cca",
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-63a4cdcd-f6c1-4ec3-9884-e9928bff081e",
+            "file:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-5fe0b1bc-7975-4ca6-ae0a-c4a032722d08",
+            "mcp:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-b2540822-f494-4053-8d9c-23c6b5a0d9d1:f60d1efa9e7c230a6adde599",
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-528c7d5c-5173-4d3f-9ee1-1c156eefed27"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:249b77c77eddce626c8e48fd4503b05f81b772b0b9267b02b568588b61d29899",
+          "promptDigest": "sha256:297c413c515e00a0f49a14fd4733904371d749089756e98924bfc81b5ae304be",
+          "artifact": {
+            "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+            "eventLogDigest": "sha256:249b77c77eddce626c8e48fd4503b05f81b772b0b9267b02b568588b61d29899",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77855,
+              "cachedInputTokens": 60928,
+              "outputTokens": 1084
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { [Serializable] public sealed class State { public int score; public string label; } public static class JsonStateRoundtrip { public static State RoundTrip(State state) { if (state == null) throw new ArgumentNullException(nameof(state)); return JsonUtility.FromJson<State>(JsonUtility.ToJson(state)); } } }\n",
+      "feedback": "{\"runId\":\"70991d9e-f7a9-4021-abc2-09d09730c3d4\",\"sourceSha256\":\"294b9bac9d3b098d4ed79f497988897476e8bc8ef5d770af4b18b9b3a70bb1b6\",\"protectedBeforeDigest\":\"ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip\",\"expectedTestCount\":2,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":2,\"elapsedSeconds\":8.988,\"commandDigest\":\"d1fef518c0563e4b190423b10ab7561e328f26860865431c4eaaf3cb3c0c0203\",\"xmlDigest\":\"9814a1754a7fc4c2228ee05d67485dcd65125b3d57f9360ee7b20128a4cdc8a6\",\"logDigest\":\"baf6fa9c2a73df315c2e6293cb6d23902b4786955d2c3e67bdc23ebf4295edb7\",\"protectedAfterDigest\":\"ba4b726f0e376c173307d3718aff0dd3b9e0daa57470716d5ce780a9b10ac4db\"}",
+      "evidenceId": "unity:4cd47d59-f341-41da-a1b3-30ae2513cff1",
+      "creditMicros": 2332540,
+      "elapsedMs": 65924,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "vector2-grid-position",
+      "receipts": [
+        {
+          "receiptId": "sha256:228d66466125d4e11aef9de0e6f68afeb8bdfc8ef7bd8fc551445bb80d6de37c:d0b5699b-c5ed-497f-8edb-6a42338fb74b",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7704,
+            "cachedInputTokens": 0,
+            "outputTokens": 216
+          },
+          "elapsedMs": 15087.364625000046,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "ToWorld(x, y, cellSize) returns new Vector2(x * cellSize, y * cellSize).",
+              "A non-positive cellSize throws System.ArgumentOutOfRangeException before computing the position.",
+              "Only the assigned target file changes; the namespace, public class, method signature, and Unity types remain intact.",
+              "The Unity broker receipt records the run ID, elapsed time, compiler result, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and its target file.",
+              "Replace the stub with a cellSize range check and the scaled Vector2 return value.",
+              "Run unity_compile_test within the applicable candidate limit, record its receipt, and verify that no protected files changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:095c8436c133ada8aaea6a6ae5f6521dd9ac289449f1bae670f36382e568c137:79cdf139-44a2-413f-90fc-ab8211983201",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7851,
+            "cachedInputTokens": 6272,
+            "outputTokens": 61
+          },
+          "elapsedMs": 8715.40399999998,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:f05827d6-694c-4b37-9ce8-145a98d80557",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 66491,
+            "cachedInputTokens": 57856,
+            "outputTokens": 1011
+          },
+          "creditMicros": 1024330,
+          "reservedCreditMicros": 2135340,
+          "responseReserveCreditMicros": 213534,
+          "interruptAtCreditMicros": 1921806,
+          "elapsedMs": 27641,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class Vector2GridPosition { public static Vector2 ToWorld(int x, int y, float cellSize) { if (cellSize <= 0f) throw new ArgumentOutOfRangeException(nameof(cellSize)); return new Vector2(x * cellSize, y * cellSize); } } }\n",
+          "sourceDigest": "sha256:1c1d160a5e41291f6901abd4726502d30a8fc02fe6c004bde8b38c07ebf231ac",
+          "toolProofRefs": [
+            "command:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-e4fffc0a-82e6-414c-bb3d-fdc1516f1c74",
+            "command:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-46d019d3-bd2c-40f7-999c-86c67c61979f",
+            "file:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-843af911-e02b-466a-ba45-6910adb4889a",
+            "mcp:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-636e786f-6e1a-4533-9cce-ea21e3c2d327:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:25dfcedc50f2b7857acb2075694a46d22233e53252f48dbd407bfb4de610f736",
+          "promptDigest": "sha256:fe51127ea7fb4ed5fa245d3bd7ff307ef8a6ee76dcfd8c54840c0aa6b6969c9f",
+          "artifact": {
+            "sourceDigest": "sha256:1c1d160a5e41291f6901abd4726502d30a8fc02fe6c004bde8b38c07ebf231ac",
+            "eventLogDigest": "sha256:25dfcedc50f2b7857acb2075694a46d22233e53252f48dbd407bfb4de610f736",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 66491,
+              "cachedInputTokens": 57856,
+              "outputTokens": 1011
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class Vector2GridPosition { public static Vector2 ToWorld(int x, int y, float cellSize) { if (cellSize <= 0f) throw new ArgumentOutOfRangeException(nameof(cellSize)); return new Vector2(x * cellSize, y * cellSize); } } }\n",
+      "feedback": "{\"runId\":\"01e190f1-adfa-4c00-8e73-30e3b8495f42\",\"sourceSha256\":\"c14eed07f4af8d8c16bb9796b0b0be19232c806d2e44945873ca80e44319bc90\",\"protectedBeforeDigest\":\"800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":9.099,\"commandDigest\":\"6f09b1e64e83045222ec102005356342d488bde154c2b5f6d83d4cda3b10d62f\",\"xmlDigest\":\"eaaa6b1cb453d8acbfba9592c32fc3dc030db9898d4a90aaed83fa120f201d1f\",\"logDigest\":\"b3849118c4f87f4c2abf6e2445d5d6b49a968de3553203bcd77265a0564e75e7\",\"protectedAfterDigest\":\"800c3cc7f637f4626dafddd435c5306db8d3c152c8dbf75ec59251a48bc1cd5a\"}",
+      "evidenceId": "unity:8294f082-95af-48c7-bee2-833db1108f95",
+      "creditMicros": 1589090,
+      "elapsedMs": 60668,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "duplicate-position",
+      "receipts": [
+        {
+          "receiptId": "sha256:1d572b8e9c2772154e36b3a42c020de616ab458f2407796b61dff09141c86cd3:4e7dbd83-fc3e-4e6e-ad8e-618032eb5598",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7692,
+            "cachedInputTokens": 6272,
+            "outputTokens": 260
+          },
+          "elapsedMs": 20203.832249999978,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "HasDuplicate returns false for null arrays and arrays with fewer than two positions.",
+              "HasDuplicate returns true when any two Vector2Int values are equal, and false otherwise.",
+              "Only the assigned target file changes; the namespace, public class, and method signature remain intact.",
+              "The unity_compile_test receipt is recorded and reported without inferring hidden test details."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the stub with a null and length check, then scan positions using a HashSet<Vector2Int>; return true when adding a position fails, otherwise false.",
+              "Run unity_compile_test on the candidate. Record its run ID, elapsed time, compiler errors, and test result.",
+              "Verify that no protected project file changed, then report the broker receipt as a pass, model failure, or infrastructure failure."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:f796e5ef76dbb4a7c6ba8d2fd34d8433ebe73cd9cd66385ecfc61b90e7e603c7:de76e8da-65f7-4c5d-9e8c-1b9d97333ad2",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7870,
+            "cachedInputTokens": 0,
+            "outputTokens": 166
+          },
+          "elapsedMs": 14316.17108400003,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:a468956b-8268-41bb-b7fd-e3f99eb1bd0a",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 78147,
+            "cachedInputTokens": 62976,
+            "outputTokens": 1055
+          },
+          "creditMicros": 1389930,
+          "reservedCreditMicros": 2097740,
+          "responseReserveCreditMicros": 209774,
+          "interruptAtCreditMicros": 1887966,
+          "elapsedMs": 28813,
+          "source": "using System.Collections.Generic;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DuplicatePosition { public static bool HasDuplicate(Vector2Int[] positions) { if (positions == null || positions.Length < 2) return false; var seen = new HashSet<Vector2Int>(); foreach (var position in positions) if (!seen.Add(position)) return true; return false; } } }\n",
+          "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+          "toolProofRefs": [
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-e11c9db5-4234-4cfd-9520-866e865ef743",
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-9070917a-c5ff-421c-b1c5-14e132d6a3e4",
+            "file:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-6cdfd4fd-35a3-499c-ad59-8d4dd16d39f3",
+            "mcp:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-55a71870-d15b-496e-8d96-36e2891a3d01:f60d1efa9e7c230a6adde599",
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-8eaa89c6-96c7-4db3-be9c-4ccb46ff8633"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:b321e85cada105d8e2b86ca00dcc6be1da19fb7b46570b82f15b1303ebefa5b4",
+          "promptDigest": "sha256:de7c8ab9b8181043fd67d7e9fbfdbb71b64e3bbabd33d8cc08d66a4029724c63",
+          "artifact": {
+            "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+            "eventLogDigest": "sha256:b321e85cada105d8e2b86ca00dcc6be1da19fb7b46570b82f15b1303ebefa5b4",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 78147,
+              "cachedInputTokens": 62976,
+              "outputTokens": 1055
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System.Collections.Generic;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DuplicatePosition { public static bool HasDuplicate(Vector2Int[] positions) { if (positions == null || positions.Length < 2) return false; var seen = new HashSet<Vector2Int>(); foreach (var position in positions) if (!seen.Add(position)) return true; return false; } } }\n",
+      "feedback": "{\"runId\":\"b912d01d-6860-41e0-b934-b3b489039393\",\"sourceSha256\":\"b7161df19cae79fd0ebe66d7d13ebc35af71888da3e9da48632df609d586f4a5\",\"protectedBeforeDigest\":\"0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":9.025,\"commandDigest\":\"06eaeadc25d9b3e0767cfd6b8bc27208b6535e707dcc5a03c9d44a72ac11544c\",\"xmlDigest\":\"6235ece3e4a67bdaedddc67ec6185b46f7519df130871dcfede39d03948c2115\",\"logDigest\":\"f90126a7515e50a51b5bd06820e853cfccad51c8d115b4a62796e190ea53238d\",\"protectedAfterDigest\":\"0a81e8cd5f296d48cc8b231df8d0a15758db21f15767beb993f124fa0d158bb1\"}",
+      "evidenceId": "unity:f55c47c4-97bb-4556-9938-9528dd989639",
+      "creditMicros": 1992290,
+      "elapsedMs": 72494,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    },
+    {
+      "taskId": "placement-bounds",
+      "receipts": [
+        {
+          "receiptId": "sha256:e6a3d6d643aa9366970207d95c01c1bfd91bd180612c977f3b1262c0c3af4133:59d6738a-83ba-4d9f-a7f8-bc76480bcc56",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7717,
+            "cachedInputTokens": 0,
+            "outputTokens": 416
+          },
+          "elapsedMs": 24868.62374999991,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Returns true when a positive rectangle fits wholly within a positive board, including placements that touch the board edge.",
+              "Returns false for non-positive size or board dimensions, negative origins, and placements extending beyond either board dimension.",
+              "Uses comparisons that cannot overflow Int32.",
+              "Only the assigned target file changes; the Unity broker receipt records the run ID, elapsed time, compiler errors, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and edit only its targetFile under Assets/WalkingSkeleton/Tasks/, preserving the namespace, class, signature, and Unity types.",
+              "Validate positive size and board dimensions and non-negative origin coordinates. For each axis, require size to be no greater than board and origin to be no greater than board minus size.",
+              "Run unity_compile_test within the applicable candidate limit and record its receipt. Report the returned pass, model failure, or infrastructure failure without inferring hidden test details."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:539911a834c3869a02e73523a821c911b2465c443a64ba3504723144d661bc77:da211d31-9456-4f52-b99a-9ca1dbff8924",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7909,
+            "cachedInputTokens": 0,
+            "outputTokens": 116
+          },
+          "elapsedMs": 10293.967042000033,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:e18623a8-673e-4433-a26b-40003d5bc29f",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 79419,
+            "cachedInputTokens": 64000,
+            "outputTokens": 1029
+          },
+          "creditMicros": 1399650,
+          "reservedCreditMicros": 1785800,
+          "responseReserveCreditMicros": 178580,
+          "interruptAtCreditMicros": 1607220,
+          "elapsedMs": 36216,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class PlacementBounds { public static bool CanPlace(Vector2Int origin, Vector2Int size, Vector2Int board) {\n    if (size.x <= 0 || size.y <= 0 || board.x <= 0 || board.y <= 0 || origin.x < 0 || origin.y < 0)\n        return false;\n\n    return size.x <= board.x && size.y <= board.y\n        && origin.x <= board.x - size.x && origin.y <= board.y - size.y;\n} } }\n",
+          "sourceDigest": "sha256:53b02caed2107622bda5ddd9d4f5ee80e672583cb94c80f33e8a9ce4ae5d8f90",
+          "toolProofRefs": [
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-b75fbd1d-ab42-443c-9ca1-2b8e01f03137",
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-108bccc5-4da3-4094-8450-009cefe7c3d6",
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-899be07d-25b9-45d5-bd35-f3e715f10a0c",
+            "file:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-0cd606de-7b6f-45a6-ac41-b2e55143fb20",
+            "mcp:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-be7f526d-508e-48b6-b930-1fbf53180c2b:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:51a7e7c7dec30410106ec03940b642767a585ebecd17ed4f33b443923433d38d",
+          "promptDigest": "sha256:83441fad51a95a6ac5d7bccdf1119feb8b380f4dd7b2db37b5ea46b98b85d2dd",
+          "artifact": {
+            "sourceDigest": "sha256:53b02caed2107622bda5ddd9d4f5ee80e672583cb94c80f33e8a9ce4ae5d8f90",
+            "eventLogDigest": "sha256:51a7e7c7dec30410106ec03940b642767a585ebecd17ed4f33b443923433d38d",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 79419,
+              "cachedInputTokens": 64000,
+              "outputTokens": 1029
+            }
+          }
+        }
+      ],
+      "outcome": "pass",
+      "classification": null,
+      "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class PlacementBounds { public static bool CanPlace(Vector2Int origin, Vector2Int size, Vector2Int board) {\n    if (size.x <= 0 || size.y <= 0 || board.x <= 0 || board.y <= 0 || origin.x < 0 || origin.y < 0)\n        return false;\n\n    return size.x <= board.x && size.y <= board.y\n        && origin.x <= board.x - size.x && origin.y <= board.y - size.y;\n} } }\n",
+      "feedback": "{\"runId\":\"a10a0f00-a27f-4729-9244-0e24410c6f92\",\"sourceSha256\":\"257bd0bb2d7b54804d90b4319edbecc19ea505a020082cb32db9d3f7b4827c0e\",\"protectedBeforeDigest\":\"f17bba31622fb9fba3539d493bcc1c6a560d81a1a687da029421e6cf852543ff\",\"testFilter\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle\",\"expectedTestCount\":3,\"tests\":[{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)\",\"result\":\"Passed\",\"message\":\"\"},{\"name\":\"WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)\",\"result\":\"Passed\",\"message\":\"\"}],\"compileErrors\":[],\"outcome\":\"pass\",\"exitCode\":0,\"actualTestCount\":3,\"elapsedSeconds\":8.833,\"commandDigest\":\"9c0757c844810a182260922f0fe815d9c4ff218298c8a64654eaf8e09f0f089a\",\"xmlDigest\":\"c79a1602ddb90042be4ee214bb7f4167b325862ccde4e74018ffdcb5e629c000\",\"logDigest\":\"3e68fcb65fbafb4dc243435675ba44c138aaa3962077ab9276af1da4a53cce8e\",\"protectedAfterDigest\":\"f17bba31622fb9fba3539d493bcc1c6a560d81a1a687da029421e6cf852543ff\"}",
+      "evidenceId": "unity:ab9d5319-773a-4729-95ee-515f682131fe",
+      "creditMicros": 2313950,
+      "elapsedMs": 80348,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0
+    }
+  ],
+  "b": [
+    {
+      "taskId": "integer-clamp",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:26ee321ed542fe56f5b843217d938e6268f3c58fed3459e6a3dec0d68e7139db:b0801c82-2697-4183-9904-a4e17952b7a2",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7562,
+            "cachedInputTokens": 0,
+            "outputTokens": 207
+          },
+          "elapsedMs": 14507.99175,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Clamp returns minimum when value is below the range, maximum when above it, and value when within it, including both endpoints.",
+              "Clamp throws System.ArgumentException when minimum is greater than maximum.",
+              "Only the assigned target file changes; the namespace, class, and method signature remain intact.",
+              "The Unity broker receipt is recorded with run ID, elapsed time, compiler errors, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify its targetFile.",
+              "Replace the stub in that target file with an inverted-range check followed by inclusive clamp comparisons.",
+              "Run unity_compile_test for the candidate and record its receipt without accessing hidden tests.",
+              "Verify that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:2572bd297899f612c5c7fe759ad1df52825dfb0fee3db78187710774b56991d1:e201768f-2ab8-4dab-bcb2-a84712a9fc1c",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7710,
+            "cachedInputTokens": 0,
+            "outputTokens": 49
+          },
+          "elapsedMs": 7189.089917000001,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:3e91b095-800f-4137-9968-396a22e8c967",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77368,
+            "cachedInputTokens": 65792,
+            "outputTokens": 999
+          },
+          "creditMicros": 1207460,
+          "reservedCreditMicros": 1872500,
+          "responseReserveCreditMicros": 187250,
+          "interruptAtCreditMicros": 1685250,
+          "elapsedMs": 29225,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) throw new ArgumentException(\"minimum cannot be greater than maximum\"); if (value < minimum) return minimum; if (value > maximum) return maximum; return value; } } }\n",
+          "sourceDigest": "sha256:5b96ebb7acefbe4afe37428d05822f0d67ab35eda02212fc60a3a6e232b652fe",
+          "toolProofRefs": [
+            "command:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-60bc4ccf-d66f-45bf-ba68-9ad2b113df7a",
+            "file:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-01b8935f-4bb3-4536-ac57-e3194827e924",
+            "mcp:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-0569c9bb-6d2f-43d3-9aaf-22c5b6a154a8:f60d1efa9e7c230a6adde599",
+            "command:01a0f0d2-6709-7582-b550-7b6d2fa8f36d:01a0f0d2-6746-7331-8e9d-458958cac560:exec-a714fdcb-f121-4c22-b049-b10b7c222ffa"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:297cce40bd3bd6356dce0e3ca7665086e2934708dfedea2a35e1951ab33f8991",
+          "promptDigest": "sha256:9a824f9950786156f36a54af6ec46cba1918a3d50e42f4cd5a9e488cb4aae499",
+          "artifact": {
+            "sourceDigest": "sha256:5b96ebb7acefbe4afe37428d05822f0d67ab35eda02212fc60a3a6e232b652fe",
+            "eventLogDigest": "sha256:297cce40bd3bd6356dce0e3ca7665086e2934708dfedea2a35e1951ab33f8991",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77368,
+              "cachedInputTokens": 65792,
+              "outputTokens": 999
+            }
+          }
+        }
+      ],
+      "creditMicros": 2035060,
+      "elapsedMs": 60714,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:e08de44a-54ef-4a8f-b850-af030e3c27fc",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "cell-bounds",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:ca6a4cd70977d8c604da09e818bb63d2bb8cfd2236387f73e3c52edb47d8e4c9:f32b260e-0ea3-42d8-8c61-8644695a5224",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7631,
+            "cachedInputTokens": 0,
+            "outputTokens": 262
+          },
+          "elapsedMs": 18538.585041,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Contains returns true exactly when width and height are positive and 0 <= x < width and 0 <= y < height.",
+              "Only the assigned target file changes; its namespace, class, and method signature remain intact.",
+              "The Unity broker receipt and run ID are recorded without claiming access to hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the exception in Contains with a short-circuit bounds expression: width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height.",
+              "Run unity_compile_test on the candidate and record its result, compiler errors if any, elapsed time, and run ID. Complete the permitted verification run.",
+              "Check that no protected project file changed, then report the broker result."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:77ef873b9523e7c480fd1b8f08f7cb9ddc3ee4c3c1d487c159cd4f7e18bf0db0:1d0fe5f8-5f8d-4f7f-9619-491b70345e50",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7804,
+            "cachedInputTokens": 0,
+            "outputTokens": 58
+          },
+          "elapsedMs": 8101.444417000006,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:e6faaaf5-bb81-488c-8976-9b863319b3b0",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 80114,
+            "cachedInputTokens": 64000,
+            "outputTokens": 1125
+          },
+          "creditMicros": 1463200,
+          "reservedCreditMicros": 1848350,
+          "responseReserveCreditMicros": 184835,
+          "interruptAtCreditMicros": 1663515,
+          "elapsedMs": 40965,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+          "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+          "toolProofRefs": [
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-11b4f22e-0327-4e55-affb-47b717201414",
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-cf31b3d0-d433-4510-bd3b-c0ee9286876c",
+            "command:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-917cf99b-aa18-4238-8632-f01efe4595b6",
+            "file:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-1fdd0769-bd42-48bf-895b-0a4a77ee624f",
+            "mcp:01a0f0d3-6769-74a0-9276-61535a30c013:01a0f0d3-67a6-7df0-882c-efb5df7f7bfa:exec-744b3270-c2f8-40da-afc4-5b4d7c9b8285:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:517cd6b2dc99ac3bf51173e1eea8ad4839b379f82d73347977e1784f4211a201",
+          "promptDigest": "sha256:66e6c054df5d4bdf0a352df4bc7a26df7548f094d48c49940f8c52a6e2fa2353",
+          "artifact": {
+            "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+            "eventLogDigest": "sha256:517cd6b2dc99ac3bf51173e1eea8ad4839b379f82d73347977e1784f4211a201",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 80114,
+              "cachedInputTokens": 64000,
+              "outputTokens": 1125
+            }
+          }
+        }
+      ],
+      "creditMicros": 2314950,
+      "elapsedMs": 76660,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:8c2cee35-be88-42ba-b851-69ef48400534",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "coordinate-index",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:92548cb66200a9eb06f13ecc78dd2dd29c98507d4dd91fa27c3d97da5174cf24:68a70aa2-8e6f-46a4-8007-95dfa4bafa22",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7702,
+            "cachedInputTokens": 0,
+            "outputTokens": 462
+          },
+          "elapsedMs": 26839.818375000003,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Valid coordinates return y * width + x in row-major order.",
+              "Non-positive dimensions or coordinates outside 0 <= x < width and 0 <= y < height throw System.ArgumentOutOfRangeException.",
+              "Index arithmetic cannot silently overflow Int32.",
+              "Only the assigned target file changes; the namespace and public API remain intact.",
+              "The Unity broker receipt and its run ID, elapsed time, compiler errors, and test result are recorded without inspecting hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify its targetFile under Assets/WalkingSkeleton/Tasks/.",
+              "Replace the stub in that file with dimension and coordinate validation, then compute the index using a wider intermediate and reject an unrepresentable result.",
+              "Run unity_compile_test for the candidate, record its receipt, and verify that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:52875ac16a39285d8a99bd2580bcdeeeac98ee760528e861dbd64de222caa5de:e935e390-cbaa-4bfc-8576-40b022269a22",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7878,
+            "cachedInputTokens": 0,
+            "outputTokens": 67
+          },
+          "elapsedMs": 7618.549790999998,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:8cf208eb-15ba-4434-8c63-23ba62ed6c95",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 67985,
+            "cachedInputTokens": 52992,
+            "outputTokens": 1131
+          },
+          "creditMicros": 1353910,
+          "reservedCreditMicros": 1788850,
+          "responseReserveCreditMicros": 178885,
+          "interruptAtCreditMicros": 1609965,
+          "elapsedMs": 35697,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CoordinateIndex { public static int ToIndex(int x, int y, int width, int height) { if (width <= 0) throw new ArgumentOutOfRangeException(nameof(width)); if (height <= 0) throw new ArgumentOutOfRangeException(nameof(height)); if (x < 0 || x >= width) throw new ArgumentOutOfRangeException(nameof(x)); if (y < 0 || y >= height) throw new ArgumentOutOfRangeException(nameof(y)); long index = (long)y * width + x; if (index > int.MaxValue) throw new ArgumentOutOfRangeException(); return (int)index; } } }\n",
+          "sourceDigest": "sha256:8a6a3eb69e656c92b830cbdf1119afb4dd31011e472d9d7dedd5467cd9efb990",
+          "toolProofRefs": [
+            "command:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-9ca7df99-0264-4fa5-9482-10b67150abc7",
+            "command:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-daec3055-da62-4a0b-ade5-23ce9b48a5c6",
+            "file:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-c5822943-43df-49bb-9646-fa7d1c07afdd",
+            "mcp:01a0f0d4-b16b-7570-8ac2-ae31af713b4e:01a0f0d4-b1a4-7030-b784-3642b9592821:exec-91d46d19-3e4a-49a0-a617-280f5ac38ee1:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:70325c5d062e33db5d9fdbf783f69be203db9df8aff59df5c69acd9a4f19c95e",
+          "promptDigest": "sha256:f46e3584d38d6589b73cfa593fd652bca64fd2dbe92fca137146b586a463c7f8",
+          "artifact": {
+            "sourceDigest": "sha256:8a6a3eb69e656c92b830cbdf1119afb4dd31011e472d9d7dedd5467cd9efb990",
+            "eventLogDigest": "sha256:70325c5d062e33db5d9fdbf783f69be203db9df8aff59df5c69acd9a4f19c95e",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 67985,
+              "cachedInputTokens": 52992,
+              "outputTokens": 1131
+            }
+          }
+        }
+      ],
+      "creditMicros": 2265160,
+      "elapsedMs": 78814,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:f14c409b-a173-4e37-a720-76ef23fd7dde",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "row-full",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:d44a81c216eb3a600f639ca84c5347dd8ba12a4bce6315ea9d606168fb1acced:c89b777e-b903-4c16-82ef-34904b24804a",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7682,
+            "cachedInputTokens": 6272,
+            "outputTokens": 252
+          },
+          "elapsedMs": 18017.676334000018,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Null or empty input returns false.",
+              "A nonempty array returns true exactly when every cell is true.",
+              "Only the assigned target file changes; the namespace, class, and method signature remain intact.",
+              "The Unity compile test receipt and run ID are recorded without inferring hidden test details."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the exception in RowFull.IsFull with a null and length check, followed by a loop that returns false on any unoccupied cell and true otherwise.",
+              "Run unity_compile_test under the applicable candidate limit and record its compiler result, test result, elapsed time, and run ID.",
+              "Confirm that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:ced8827296214dcd1c8b9fddfe03700cea125c99b6c2a68325b0458a2cb4c122:03c751de-07f7-4f88-8fe4-229e486b083e",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7832,
+            "cachedInputTokens": 0,
+            "outputTokens": 71
+          },
+          "elapsedMs": 10047.427792000002,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:003ab478-27e4-4738-9a14-d07a9087a249",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 78056,
+            "cachedInputTokens": 69888,
+            "outputTokens": 1137
+          },
+          "creditMicros": 1098940,
+          "reservedCreditMicros": 2125890,
+          "responseReserveCreditMicros": 212589,
+          "interruptAtCreditMicros": 1913301,
+          "elapsedMs": 32347,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { if (cells == null || cells.Length == 0) return false; for (int i = 0; i < cells.Length; i++) { if (!cells[i]) return false; } return true; } } }\n",
+          "sourceDigest": "sha256:9210f7051a98f11d0aa14966a502b2123e9be3ae2f6ca3fb9f4eefb7c0c9aebd",
+          "toolProofRefs": [
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-6c2c06bb-99f6-4f36-b492-fc9cd73d5bb6",
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-5b0b8170-0e89-4105-91d0-f08b6e1cb995",
+            "command:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-f06eabba-5cba-475c-8e5f-753fedad3b7e",
+            "file:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-4639871d-b177-4a2f-94cc-3aa5d5e097e2",
+            "mcp:01a0f0d5-cc4a-7962-8493-47707a107aab:01a0f0d5-cc86-7db3-865d-54adf9255e5b:exec-bf66d83f-d5a7-42f7-8c4a-048ab3321f52:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:28d032618e9b04b2c5b8ab006bbf7b5c5da72d3a37b9067cdae5f1ebf64882b3",
+          "promptDigest": "sha256:5736e1d3aee4809f774ea63b0c303d407874ba24e34a5484d268fc8fba8dc20b",
+          "artifact": {
+            "sourceDigest": "sha256:9210f7051a98f11d0aa14966a502b2123e9be3ae2f6ca3fb9f4eefb7c0c9aebd",
+            "eventLogDigest": "sha256:28d032618e9b04b2c5b8ab006bbf7b5c5da72d3a37b9067cdae5f1ebf64882b3",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 78056,
+              "cachedInputTokens": 69888,
+              "outputTokens": 1137
+            }
+          }
+        }
+      ],
+      "creditMicros": 1673150,
+      "elapsedMs": 69227,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:e214eca9-a03d-44ab-a73e-0ee873d1ca28",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "deterministic-seed",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:9c1f6c4fbe2d567e2d72110cc8359b2e08151128b39f8b0e1104fc84fdb1b1cf:dbdc6aff-56dd-4bf9-8648-f56d99b479b6",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7693,
+            "cachedInputTokens": 6272,
+            "outputTokens": 308
+          },
+          "elapsedMs": 20050.313291999977,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "FromText returns a non-negative int for every string, including null.",
+              "Null produces the same seed as empty text; identical text produces the same seed across calls.",
+              "Only the assigned target file changes, and the Unity compile and test receipt is recorded."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify targetFile. Preserve the namespace, public class, and method signature.",
+              "Implement a fixed hash over the text\u2019s UTF-16 characters using unchecked 32-bit arithmetic, then clear the sign bit. Treat null as empty text. Do not use string.GetHashCode, whose result may vary between runs.",
+              "Run unity_compile_test for the candidate and the permitted verification. Record each run ID, elapsed time, compiler errors, and reported result; report only what the broker receipt establishes.",
+              "Confirm that no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:b95e9f2487cdc8accce1a6dd90214bf320534e54e86c4edd602fdf2967d523b0:28104f15-22e2-476a-b132-6b679018f191",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7870,
+            "cachedInputTokens": 0,
+            "outputTokens": 93
+          },
+          "elapsedMs": 9996.060832999996,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:863abb63-ef22-4f41-84db-fe6ce49d0a79",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 79666,
+            "cachedInputTokens": 62976,
+            "outputTokens": 1110
+          },
+          "creditMicros": 1482380,
+          "reservedCreditMicros": 2103940,
+          "responseReserveCreditMicros": 210394,
+          "interruptAtCreditMicros": 1893546,
+          "elapsedMs": 33782,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DeterministicSeed { public static int FromText(string value) { unchecked { uint hash = 2166136261u; if (value != null) { for (int i = 0; i < value.Length; i++) { hash ^= value[i]; hash *= 16777619u; } } return (int)(hash & 0x7fffffffu); } } } }\n",
+          "sourceDigest": "sha256:6e834cfbe2f1ad50857d6d213ab606406a7060c5e2807b443e4b9a1b5e756c0a",
+          "toolProofRefs": [
+            "command:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-beb3def9-5ae8-4e15-a809-2d9bc9bd3b1f",
+            "command:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-4e429f32-7b65-4e9a-9df1-dd7cc3b37650",
+            "file:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-d3b40346-e518-4bf3-845b-7a4c62c49aa0",
+            "mcp:01a0f0d6-e275-78b3-ab98-5ca27465aa97:01a0f0d6-e2b2-7003-aa04-cb0873e67527:exec-3b6b5684-2cad-4ef2-8ea1-b245e7060273:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:83d2197737608fe3404012e1c5433078641dbfe17ebbc72c0d3cfeef64cb9d61",
+          "promptDigest": "sha256:c870098a4120a42df8f269e0cc26a1b6038ad9c4ab5486ae1022e2310768ea1f",
+          "artifact": {
+            "sourceDigest": "sha256:6e834cfbe2f1ad50857d6d213ab606406a7060c5e2807b443e4b9a1b5e756c0a",
+            "eventLogDigest": "sha256:83d2197737608fe3404012e1c5433078641dbfe17ebbc72c0d3cfeef64cb9d61",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 79666,
+              "cachedInputTokens": 62976,
+              "outputTokens": 1110
+            }
+          }
+        }
+      ],
+      "creditMicros": 2078540,
+      "elapsedMs": 72654,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:17d03a95-5826-4e15-a641-120e29c83a18",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "score-accumulation",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:c5ff9113a6cff56192fd3acb24fd57e3262a917e8c25d1d65f8dbcb09c103fed:455b4333-e634-4038-9065-906251be8c12",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7690,
+            "cachedInputTokens": 0,
+            "outputTokens": 238
+          },
+          "elapsedMs": 16577.222707999987,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Add returns score + delta when the sum is within Int32 range, Int32.MinValue when below it, and Int32.MaxValue when above it.",
+              "Only the assigned target file changes; the namespace, public class, and method signature remain intact.",
+              "The Unity broker receipt records the run ID, elapsed time, compiler errors, and test result without claiming access to hidden tests."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and its target file.",
+              "Implement Add using a long intermediate, clamp it to Int32 bounds, and return the resulting int.",
+              "Run unity_compile_test within the applicable candidate limit, record its receipt, and confirm no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:442fc48470cc87e3d64b77a767e92d8e2fd648503c4ab2cb955fc4f3bcc702ee:9d489798-c31c-4e94-8a50-af6dddadb899",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7833,
+            "cachedInputTokens": 6272,
+            "outputTokens": 90
+          },
+          "elapsedMs": 9354.965000000026,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:b1b930fa-24bb-4d55-b2cd-2e064bdb49df",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 66270,
+            "cachedInputTokens": 52736,
+            "outputTokens": 959
+          },
+          "creditMicros": 1228080,
+          "reservedCreditMicros": 2124190,
+          "responseReserveCreditMicros": 212419,
+          "interruptAtCreditMicros": 1911771,
+          "elapsedMs": 73090,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { long sum = (long)score + delta; if (sum > int.MaxValue) return int.MaxValue; if (sum < int.MinValue) return int.MinValue; return (int)sum; } } }\n",
+          "sourceDigest": "sha256:1b7c227194004e1115b995ed6607f118a94bad7ff7ae1ad5c341a8f92acbd33d",
+          "toolProofRefs": [
+            "command:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-8e8bfc8b-9107-422b-811c-86c411b5acf3",
+            "command:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-fff58578-51c0-4ccb-8753-7ef2ee392452",
+            "file:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-041c40f7-0f4b-4bee-87c9-448e95d75c61",
+            "mcp:01a0f0d7-ee38-7cf1-bd05-7c697c85ea06:01a0f0d7-ee75-7b32-a507-2fcedd1ee3da:exec-aa36ace5-e587-4f45-a691-32e9aee29cda:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:6d4f48dd67395df4cba78bf8e4e3782231765683b306cd6a6a919609d16e3127",
+          "promptDigest": "sha256:d30b2748dcb26f3576d27c0a7d4388927276f11911d56d82bc5492c3d6e81b53",
+          "artifact": {
+            "sourceDigest": "sha256:1b7c227194004e1115b995ed6607f118a94bad7ff7ae1ad5c341a8f92acbd33d",
+            "eventLogDigest": "sha256:6d4f48dd67395df4cba78bf8e4e3782231765683b306cd6a6a919609d16e3127",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 66270,
+              "cachedInputTokens": 52736,
+              "outputTokens": 959
+            }
+          }
+        }
+      ],
+      "creditMicros": 1803990,
+      "elapsedMs": 107943,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:7b57fc8c-d6dc-41d1-b192-a396a816830a",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "json-state-roundtrip",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:70340bc47d4343b29b3d1da3d74403594d96e30eb4bd2536193f529f69f5225c:1c94f9e2-9e7d-4374-96a4-0b9164950b20",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7728,
+            "cachedInputTokens": 0,
+            "outputTokens": 243
+          },
+          "elapsedMs": 17869.227042000042,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "RoundTrip(null) throws System.ArgumentNullException.",
+              "RoundTrip returns a different State instance with the same score and label values, including a null label.",
+              "Only the assigned target file changes; the Unity compile test receipt is recorded."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "In that file, check state for null, then use UnityEngine.JsonUtility to serialize and deserialize it into a new State. Preserve the namespace, public fields, and method signature.",
+              "Run unity_compile_test for the candidate and its permitted verification, and record each receipt\u2019s run ID, elapsed time, compiler errors, and result. Report the receipt without inferring hidden test details.",
+              "Confirm no protected project file changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:e5f1584e346353d6d7bd648e272a3b134ab45d17b24fc493b0b16a0bfe81229a:d7dc99d1-df1a-4e33-8f36-d870f5a39e94",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7884,
+            "cachedInputTokens": 0,
+            "outputTokens": 60
+          },
+          "elapsedMs": 7689.869875000033,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:f00fed16-68c9-4e38-ab57-7688bbb52970",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77855,
+            "cachedInputTokens": 60928,
+            "outputTokens": 1084
+          },
+          "creditMicros": 1476190,
+          "reservedCreditMicros": 1843750,
+          "responseReserveCreditMicros": 184375,
+          "interruptAtCreditMicros": 1659375,
+          "elapsedMs": 31252,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { [Serializable] public sealed class State { public int score; public string label; } public static class JsonStateRoundtrip { public static State RoundTrip(State state) { if (state == null) throw new ArgumentNullException(nameof(state)); return JsonUtility.FromJson<State>(JsonUtility.ToJson(state)); } } }\n",
+          "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+          "toolProofRefs": [
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-b19624d9-efa9-4803-b2cb-1468ba199cca",
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-63a4cdcd-f6c1-4ec3-9884-e9928bff081e",
+            "file:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-5fe0b1bc-7975-4ca6-ae0a-c4a032722d08",
+            "mcp:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-b2540822-f494-4053-8d9c-23c6b5a0d9d1:f60d1efa9e7c230a6adde599",
+            "command:01a0f0d9-9265-7ab1-a437-2da605f356da:01a0f0d9-929f-72d0-9cc5-58d601bf0cad:exec-528c7d5c-5173-4d3f-9ee1-1c156eefed27"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:249b77c77eddce626c8e48fd4503b05f81b772b0b9267b02b568588b61d29899",
+          "promptDigest": "sha256:297c413c515e00a0f49a14fd4733904371d749089756e98924bfc81b5ae304be",
+          "artifact": {
+            "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+            "eventLogDigest": "sha256:249b77c77eddce626c8e48fd4503b05f81b772b0b9267b02b568588b61d29899",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77855,
+              "cachedInputTokens": 60928,
+              "outputTokens": 1084
+            }
+          }
+        }
+      ],
+      "creditMicros": 2332540,
+      "elapsedMs": 65924,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:4cd47d59-f341-41da-a1b3-30ae2513cff1",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "vector2-grid-position",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:228d66466125d4e11aef9de0e6f68afeb8bdfc8ef7bd8fc551445bb80d6de37c:d0b5699b-c5ed-497f-8edb-6a42338fb74b",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7704,
+            "cachedInputTokens": 0,
+            "outputTokens": 216
+          },
+          "elapsedMs": 15087.364625000046,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "ToWorld(x, y, cellSize) returns new Vector2(x * cellSize, y * cellSize).",
+              "A non-positive cellSize throws System.ArgumentOutOfRangeException before computing the position.",
+              "Only the assigned target file changes; the namespace, public class, method signature, and Unity types remain intact.",
+              "The Unity broker receipt records the run ID, elapsed time, compiler result, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and its target file.",
+              "Replace the stub with a cellSize range check and the scaled Vector2 return value.",
+              "Run unity_compile_test within the applicable candidate limit, record its receipt, and verify that no protected files changed."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:095c8436c133ada8aaea6a6ae5f6521dd9ac289449f1bae670f36382e568c137:79cdf139-44a2-413f-90fc-ab8211983201",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7851,
+            "cachedInputTokens": 6272,
+            "outputTokens": 61
+          },
+          "elapsedMs": 8715.40399999998,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:f05827d6-694c-4b37-9ce8-145a98d80557",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 66491,
+            "cachedInputTokens": 57856,
+            "outputTokens": 1011
+          },
+          "creditMicros": 1024330,
+          "reservedCreditMicros": 2135340,
+          "responseReserveCreditMicros": 213534,
+          "interruptAtCreditMicros": 1921806,
+          "elapsedMs": 27641,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class Vector2GridPosition { public static Vector2 ToWorld(int x, int y, float cellSize) { if (cellSize <= 0f) throw new ArgumentOutOfRangeException(nameof(cellSize)); return new Vector2(x * cellSize, y * cellSize); } } }\n",
+          "sourceDigest": "sha256:1c1d160a5e41291f6901abd4726502d30a8fc02fe6c004bde8b38c07ebf231ac",
+          "toolProofRefs": [
+            "command:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-e4fffc0a-82e6-414c-bb3d-fdc1516f1c74",
+            "command:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-46d019d3-bd2c-40f7-999c-86c67c61979f",
+            "file:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-843af911-e02b-466a-ba45-6910adb4889a",
+            "mcp:01a0f0da-8d25-7df3-8348-9c7d9bcbe8c0:01a0f0da-8d62-77a0-954d-354b789bee99:exec-636e786f-6e1a-4533-9cce-ea21e3c2d327:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:25dfcedc50f2b7857acb2075694a46d22233e53252f48dbd407bfb4de610f736",
+          "promptDigest": "sha256:fe51127ea7fb4ed5fa245d3bd7ff307ef8a6ee76dcfd8c54840c0aa6b6969c9f",
+          "artifact": {
+            "sourceDigest": "sha256:1c1d160a5e41291f6901abd4726502d30a8fc02fe6c004bde8b38c07ebf231ac",
+            "eventLogDigest": "sha256:25dfcedc50f2b7857acb2075694a46d22233e53252f48dbd407bfb4de610f736",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 66491,
+              "cachedInputTokens": 57856,
+              "outputTokens": 1011
+            }
+          }
+        }
+      ],
+      "creditMicros": 1589090,
+      "elapsedMs": 60668,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:8294f082-95af-48c7-bee2-833db1108f95",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "duplicate-position",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:1d572b8e9c2772154e36b3a42c020de616ab458f2407796b61dff09141c86cd3:4e7dbd83-fc3e-4e6e-ad8e-618032eb5598",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7692,
+            "cachedInputTokens": 6272,
+            "outputTokens": 260
+          },
+          "elapsedMs": 20203.832249999978,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "HasDuplicate returns false for null arrays and arrays with fewer than two positions.",
+              "HasDuplicate returns true when any two Vector2Int values are equal, and false otherwise.",
+              "Only the assigned target file changes; the namespace, public class, and method signature remain intact.",
+              "The unity_compile_test receipt is recorded and reported without inferring hidden test details."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry to identify the target file.",
+              "Replace the stub with a null and length check, then scan positions using a HashSet<Vector2Int>; return true when adding a position fails, otherwise false.",
+              "Run unity_compile_test on the candidate. Record its run ID, elapsed time, compiler errors, and test result.",
+              "Verify that no protected project file changed, then report the broker receipt as a pass, model failure, or infrastructure failure."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:f796e5ef76dbb4a7c6ba8d2fd34d8433ebe73cd9cd66385ecfc61b90e7e603c7:de76e8da-65f7-4c5d-9e8c-1b9d97333ad2",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7870,
+            "cachedInputTokens": 0,
+            "outputTokens": 166
+          },
+          "elapsedMs": 14316.17108400003,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:a468956b-8268-41bb-b7fd-e3f99eb1bd0a",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 78147,
+            "cachedInputTokens": 62976,
+            "outputTokens": 1055
+          },
+          "creditMicros": 1389930,
+          "reservedCreditMicros": 2097740,
+          "responseReserveCreditMicros": 209774,
+          "interruptAtCreditMicros": 1887966,
+          "elapsedMs": 28813,
+          "source": "using System.Collections.Generic;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DuplicatePosition { public static bool HasDuplicate(Vector2Int[] positions) { if (positions == null || positions.Length < 2) return false; var seen = new HashSet<Vector2Int>(); foreach (var position in positions) if (!seen.Add(position)) return true; return false; } } }\n",
+          "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+          "toolProofRefs": [
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-e11c9db5-4234-4cfd-9520-866e865ef743",
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-9070917a-c5ff-421c-b1c5-14e132d6a3e4",
+            "file:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-6cdfd4fd-35a3-499c-ad59-8d4dd16d39f3",
+            "mcp:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-55a71870-d15b-496e-8d96-36e2891a3d01:f60d1efa9e7c230a6adde599",
+            "command:01a0f0db-a3f0-7d12-82df-0ee2eabfacb3:01a0f0db-a42c-7763-8ebc-43c790427571:exec-8eaa89c6-96c7-4db3-be9c-4ccb46ff8633"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:b321e85cada105d8e2b86ca00dcc6be1da19fb7b46570b82f15b1303ebefa5b4",
+          "promptDigest": "sha256:de7c8ab9b8181043fd67d7e9fbfdbb71b64e3bbabd33d8cc08d66a4029724c63",
+          "artifact": {
+            "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+            "eventLogDigest": "sha256:b321e85cada105d8e2b86ca00dcc6be1da19fb7b46570b82f15b1303ebefa5b4",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 78147,
+              "cachedInputTokens": 62976,
+              "outputTokens": 1055
+            }
+          }
+        }
+      ],
+      "creditMicros": 1992290,
+      "elapsedMs": 72494,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:f55c47c4-97bb-4556-9938-9528dd989639",
+      "reusedAResult": true
+    },
+    {
+      "taskId": "placement-bounds",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "receiptId": "sha256:e6a3d6d643aa9366970207d95c01c1bfd91bd180612c977f3b1262c0c3af4133:59d6738a-83ba-4d9f-a7f8-bc76480bcc56",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7717,
+            "cachedInputTokens": 0,
+            "outputTokens": 416
+          },
+          "elapsedMs": 24868.62374999991,
+          "status": "completed",
+          "artifact": {
+            "acceptance": [
+              "Returns true when a positive rectangle fits wholly within a positive board, including placements that touch the board edge.",
+              "Returns false for non-positive size or board dimensions, negative origins, and placements extending beyond either board dimension.",
+              "Uses comparisons that cannot overflow Int32.",
+              "Only the assigned target file changes; the Unity broker receipt records the run ID, elapsed time, compiler errors, and test result."
+            ],
+            "steps": [
+              "Read the assigned tasks.json entry and edit only its targetFile under Assets/WalkingSkeleton/Tasks/, preserving the namespace, class, signature, and Unity types.",
+              "Validate positive size and board dimensions and non-negative origin coordinates. For each axis, require size to be no greater than board and origin to be no greater than board minus size.",
+              "Run unity_compile_test within the applicable candidate limit and record its receipt. Report the returned pass, model failure, or infrastructure failure without inferring hidden test details."
+            ]
+          },
+          "toolProofRefs": []
+        },
+        {
+          "receiptId": "sha256:539911a834c3869a02e73523a821c911b2465c443a64ba3504723144d661bc77:da211d31-9456-4f52-b99a-9ca1dbff8924",
+          "model": "gpt-6-sol",
+          "usage": {
+            "model": "gpt-6-sol",
+            "inputTokens": 7909,
+            "cachedInputTokens": 0,
+            "outputTokens": 116
+          },
+          "elapsedMs": 10293.967042000033,
+          "status": "completed",
+          "artifact": {
+            "approved": true,
+            "findings": []
+          },
+          "toolProofRefs": [],
+          "criticApproved": true
+        },
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:e18623a8-673e-4433-a26b-40003d5bc29f",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 79419,
+            "cachedInputTokens": 64000,
+            "outputTokens": 1029
+          },
+          "creditMicros": 1399650,
+          "reservedCreditMicros": 1785800,
+          "responseReserveCreditMicros": 178580,
+          "interruptAtCreditMicros": 1607220,
+          "elapsedMs": 36216,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class PlacementBounds { public static bool CanPlace(Vector2Int origin, Vector2Int size, Vector2Int board) {\n    if (size.x <= 0 || size.y <= 0 || board.x <= 0 || board.y <= 0 || origin.x < 0 || origin.y < 0)\n        return false;\n\n    return size.x <= board.x && size.y <= board.y\n        && origin.x <= board.x - size.x && origin.y <= board.y - size.y;\n} } }\n",
+          "sourceDigest": "sha256:53b02caed2107622bda5ddd9d4f5ee80e672583cb94c80f33e8a9ce4ae5d8f90",
+          "toolProofRefs": [
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-b75fbd1d-ab42-443c-9ca1-2b8e01f03137",
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-108bccc5-4da3-4094-8450-009cefe7c3d6",
+            "command:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-899be07d-25b9-45d5-bd35-f3e715f10a0c",
+            "file:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-0cd606de-7b6f-45a6-ac41-b2e55143fb20",
+            "mcp:01a0f0dc-c1a1-73b3-a094-f3ceb2934235:01a0f0dc-c1dd-77b3-aae5-143c7cb1ce31:exec-be7f526d-508e-48b6-b930-1fbf53180c2b:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:51a7e7c7dec30410106ec03940b642767a585ebecd17ed4f33b443923433d38d",
+          "promptDigest": "sha256:83441fad51a95a6ac5d7bccdf1119feb8b380f4dd7b2db37b5ea46b98b85d2dd",
+          "artifact": {
+            "sourceDigest": "sha256:53b02caed2107622bda5ddd9d4f5ee80e672583cb94c80f33e8a9ce4ae5d8f90",
+            "eventLogDigest": "sha256:51a7e7c7dec30410106ec03940b642767a585ebecd17ed4f33b443923433d38d",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 79419,
+              "cachedInputTokens": 64000,
+              "outputTokens": 1029
+            }
+          }
+        }
+      ],
+      "creditMicros": 2313950,
+      "elapsedMs": 80348,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:ab9d5319-773a-4729-95ee-515f682131fe",
+      "reusedAResult": true
+    }
+  ],
+  "c": [
+    {
+      "taskId": "integer-clamp",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:b011c7ab-892e-4381-92a2-e17a4e952ada",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 65093,
+            "cachedInputTokens": 55808,
+            "outputTokens": 905
+          },
+          "creditMicros": 1014790,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 26846,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) throw new ArgumentException(); if (value < minimum) return minimum; if (value > maximum) return maximum; return value; } } }\n",
+          "sourceDigest": "sha256:36cd88d81f2f52e9efb609336acf212168a9c5ba641fce370feabf0c542493ed",
+          "toolProofRefs": [
+            "command:01a0f0dd-7215-7131-9aca-73b77c6c97e1:01a0f0dd-724f-73b3-8e1b-c09ea0e6f658:exec-a3c029ab-56fc-4d3d-841b-95210130f598",
+            "command:01a0f0dd-7215-7131-9aca-73b77c6c97e1:01a0f0dd-724f-73b3-8e1b-c09ea0e6f658:exec-27c15fef-6285-4349-a35b-8cd8b7d8a548",
+            "file:01a0f0dd-7215-7131-9aca-73b77c6c97e1:01a0f0dd-724f-73b3-8e1b-c09ea0e6f658:exec-37441c11-5391-4178-ab88-b8a77fd27aa4",
+            "mcp:01a0f0dd-7215-7131-9aca-73b77c6c97e1:01a0f0dd-724f-73b3-8e1b-c09ea0e6f658:exec-d78367da-0b5d-4749-8833-1363e595ce32:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:9c191f1f7b6801785bbfe22ace866262d8f47cdde24b1affcc96959675fedbc5",
+          "promptDigest": "sha256:e58bcc8154508913de1a46c38750a46bb4757f5f17bf8b92c60334936a5a8592",
+          "artifact": {
+            "sourceDigest": "sha256:36cd88d81f2f52e9efb609336acf212168a9c5ba641fce370feabf0c542493ed",
+            "eventLogDigest": "sha256:9c191f1f7b6801785bbfe22ace866262d8f47cdde24b1affcc96959675fedbc5",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 65093,
+              "cachedInputTokens": 55808,
+              "outputTokens": 905
+            }
+          }
+        }
+      ],
+      "creditMicros": 1014790,
+      "elapsedMs": 35594,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:b475c794-255e-46d2-94ea-84f7b05de2b4",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "cell-bounds",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:c5b7acae-d811-4977-b415-7e10899926ab",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 65096,
+            "cachedInputTokens": 50944,
+            "outputTokens": 883
+          },
+          "creditMicros": 1227220,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 26394,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+          "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+          "toolProofRefs": [
+            "command:01a0f0dd-fd1c-7550-bb97-9f537aa0bee6:01a0f0dd-fd5b-77d3-b17c-0920a9db9203:exec-a24b7e2e-22df-4b2b-b6ae-460419a71507",
+            "command:01a0f0dd-fd1c-7550-bb97-9f537aa0bee6:01a0f0dd-fd5b-77d3-b17c-0920a9db9203:exec-a1712a5c-5070-46f8-8016-cae38bca34f2",
+            "file:01a0f0dd-fd1c-7550-bb97-9f537aa0bee6:01a0f0dd-fd5b-77d3-b17c-0920a9db9203:exec-4c5de31a-a7bc-44ed-b292-f39d92ab5aa4",
+            "mcp:01a0f0dd-fd1c-7550-bb97-9f537aa0bee6:01a0f0dd-fd5b-77d3-b17c-0920a9db9203:exec-677ee110-3268-48f6-9583-c51bfc02312b:f60d1efa9e7c230a6adde599"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:fd5021dab315ba6a49a53865ec460b6f29f52741aefce2586ea67c6b4f15992a",
+          "promptDigest": "sha256:306ee13595e97fce48b71d4bc6f9acff89997301fffef6ac36518fb14f11c848",
+          "artifact": {
+            "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+            "eventLogDigest": "sha256:fd5021dab315ba6a49a53865ec460b6f29f52741aefce2586ea67c6b4f15992a",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 65096,
+              "cachedInputTokens": 50944,
+              "outputTokens": 883
+            }
+          }
+        }
+      ],
+      "creditMicros": 1227220,
+      "elapsedMs": 35396,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:da6d83d7-d250-4d8a-adf0-cbe34839e4d6",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "coordinate-index",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:d3bb7d8c-a556-4afa-a73a-8cb0f80eb7d0",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 78723,
+            "cachedInputTokens": 70912,
+            "outputTokens": 1415
+          },
+          "creditMicros": 1169610,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 38568,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CoordinateIndex { public static int ToIndex(int x, int y, int width, int height) { if (width <= 0 || height <= 0 || x < 0 || y < 0 || x >= width || y >= height) throw new ArgumentOutOfRangeException(); long index = (long)y * width + x; if (index > int.MaxValue) throw new ArgumentOutOfRangeException(); return (int)index; } } }\n",
+          "sourceDigest": "sha256:793d7581b64c6b88eba79887ca67d7a28c52f06c96eaaf2a3d5fd19bf1bcf3d9",
+          "toolProofRefs": [
+            "command:01a0f0de-8768-7470-98c9-a12243be1720:01a0f0de-87a8-74b3-8b83-ff638b42bdfb:exec-83f39a81-d069-4634-9fc1-8748a3f9cbed",
+            "command:01a0f0de-8768-7470-98c9-a12243be1720:01a0f0de-87a8-74b3-8b83-ff638b42bdfb:exec-7099c417-219b-414b-89a2-1df6fdc6cd7c",
+            "file:01a0f0de-8768-7470-98c9-a12243be1720:01a0f0de-87a8-74b3-8b83-ff638b42bdfb:exec-dbde0150-9514-4cc4-a408-3b2a49481461",
+            "mcp:01a0f0de-8768-7470-98c9-a12243be1720:01a0f0de-87a8-74b3-8b83-ff638b42bdfb:exec-eaa861ed-fa62-4605-b760-6840deffcaef:f60d1efa9e7c230a6adde599",
+            "command:01a0f0de-8768-7470-98c9-a12243be1720:01a0f0de-87a8-74b3-8b83-ff638b42bdfb:exec-04b4118f-e35c-437d-acfe-beadca59dc75"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:e3025a089325d7433a991b10acc749c1951deab6b861c630cc6a17f3bd7dba09",
+          "promptDigest": "sha256:167608d4e79d6836c4d4cf54f245e9f5b0bd0b1c9bdd8d2cd7e8f1223b133392",
+          "artifact": {
+            "sourceDigest": "sha256:793d7581b64c6b88eba79887ca67d7a28c52f06c96eaaf2a3d5fd19bf1bcf3d9",
+            "eventLogDigest": "sha256:e3025a089325d7433a991b10acc749c1951deab6b861c630cc6a17f3bd7dba09",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 78723,
+              "cachedInputTokens": 70912,
+              "outputTokens": 1415
+            }
+          }
+        }
+      ],
+      "creditMicros": 1169610,
+      "elapsedMs": 47238,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:d94a00ee-c8f8-42ff-9711-38a1d4fba9e2",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "row-full",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:d4c21354-65be-4039-99b8-49173ec990e1",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 76603,
+            "cachedInputTokens": 69888,
+            "outputTokens": 1003
+          },
+          "creditMicros": 986090,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 28967,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { if (cells == null || cells.Length == 0) return false; foreach (bool cell in cells) { if (!cell) return false; } return true; } } }\n",
+          "sourceDigest": "sha256:161172284ac08ca074c36c14a90e357c90391e209e20fc4dca37d806edf4a35e",
+          "toolProofRefs": [
+            "command:01a0f0df-3fdc-7ba1-8aa9-2fe3397e9553:01a0f0df-4019-7be1-acdc-2b767abc84b2:exec-7aeea0e6-1bf3-4a66-a750-75368a51bf6c",
+            "command:01a0f0df-3fdc-7ba1-8aa9-2fe3397e9553:01a0f0df-4019-7be1-acdc-2b767abc84b2:exec-2a483743-6db2-4ab9-b148-49cd4458a4df",
+            "file:01a0f0df-3fdc-7ba1-8aa9-2fe3397e9553:01a0f0df-4019-7be1-acdc-2b767abc84b2:exec-00e5df05-53c8-4ad0-96e4-d4b8a2c38fac",
+            "mcp:01a0f0df-3fdc-7ba1-8aa9-2fe3397e9553:01a0f0df-4019-7be1-acdc-2b767abc84b2:exec-ec29aaba-fb20-4a5c-96de-b4bb6ded392c:f60d1efa9e7c230a6adde599",
+            "command:01a0f0df-3fdc-7ba1-8aa9-2fe3397e9553:01a0f0df-4019-7be1-acdc-2b767abc84b2:exec-45c50a65-148c-4bfd-a204-1fb7835b89bd"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:a133984fd19b99e88d4237ce3827829524b273d0c969a2bfe412325572329098",
+          "promptDigest": "sha256:2ed1f2a3ff4711238ded99d98e17df0ba2776ce34134eb5f8a7d0a090566feff",
+          "artifact": {
+            "sourceDigest": "sha256:161172284ac08ca074c36c14a90e357c90391e209e20fc4dca37d806edf4a35e",
+            "eventLogDigest": "sha256:a133984fd19b99e88d4237ce3827829524b273d0c969a2bfe412325572329098",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 76603,
+              "cachedInputTokens": 69888,
+              "outputTokens": 1003
+            }
+          }
+        }
+      ],
+      "creditMicros": 986090,
+      "elapsedMs": 37718,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:8ba0524e-5a6d-4052-96fa-6160c854a317",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "deterministic-seed",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:e9d34a77-63de-4053-8a7a-c34ac4885f36",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77734,
+            "cachedInputTokens": 59904,
+            "outputTokens": 1376
+          },
+          "creditMicros": 1603820,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 37352,
+          "source": "namespace WalkingSkeleton.Tasks\n{\n    public static class DeterministicSeed\n    {\n        public static int FromText(string value)\n        {\n            const uint offsetBasis = 2166136261u;\n            const uint prime = 16777619u;\n\n            uint hash = offsetBasis;\n            if (value != null)\n            {\n                for (int index = 0; index < value.Length; index++)\n                {\n                    hash ^= value[index];\n                    hash *= prime;\n                }\n            }\n\n            return (int)(hash & 0x7fffffffu);\n        }\n    }\n}\n",
+          "sourceDigest": "sha256:b25a0434e429c454a19aeee1dcecbbecfcd24899d3bd1014bf61e3eac69b9c4a",
+          "toolProofRefs": [
+            "command:01a0f0df-d337-7041-96dc-b6157622e97b:01a0f0df-d372-73d3-af1f-df39850f5c4d:exec-7455b8e9-bf79-43e9-8466-81dedfe2c0a2",
+            "command:01a0f0df-d337-7041-96dc-b6157622e97b:01a0f0df-d372-73d3-af1f-df39850f5c4d:exec-97249584-0da4-419d-b06d-ca2f92a9cf05",
+            "file:01a0f0df-d337-7041-96dc-b6157622e97b:01a0f0df-d372-73d3-af1f-df39850f5c4d:exec-f5e56622-1dc2-468a-81c6-9017adbd8979",
+            "mcp:01a0f0df-d337-7041-96dc-b6157622e97b:01a0f0df-d372-73d3-af1f-df39850f5c4d:exec-a8484996-3db6-4a8b-83cd-c46c57836276:f60d1efa9e7c230a6adde599",
+            "command:01a0f0df-d337-7041-96dc-b6157622e97b:01a0f0df-d372-73d3-af1f-df39850f5c4d:exec-33a3f32f-fa50-4f58-9365-846a5623b477"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:6637d0de38de9db93e3c2b31b4f5e294050b34755354d7817e5b10718c12e974",
+          "promptDigest": "sha256:a4df1e81f0a815cf12651bc235f6f6d17ea62aefa98074d53f14635a34380aa0",
+          "artifact": {
+            "sourceDigest": "sha256:b25a0434e429c454a19aeee1dcecbbecfcd24899d3bd1014bf61e3eac69b9c4a",
+            "eventLogDigest": "sha256:6637d0de38de9db93e3c2b31b4f5e294050b34755354d7817e5b10718c12e974",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77734,
+              "cachedInputTokens": 59904,
+              "outputTokens": 1376
+            }
+          }
+        }
+      ],
+      "creditMicros": 1603820,
+      "elapsedMs": 46931,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:be8f2724-f2c0-472c-a81d-d90f8045bdfa",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "score-accumulation",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:fdb80894-672e-4728-9c08-699eaa692d3a",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77740,
+            "cachedInputTokens": 70912,
+            "outputTokens": 1035
+          },
+          "creditMicros": 1006460,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 33837,
+          "source": "using UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { long total = (long)score + delta; if (total > int.MaxValue) return int.MaxValue; if (total < int.MinValue) return int.MinValue; return (int)total; } } }\n",
+          "sourceDigest": "sha256:f607540071915b2ef01e3faf636dec8a8efd610c73d7c2c7b70f9a74839255ae",
+          "toolProofRefs": [
+            "command:01a0f0e0-8a93-79c1-9b16-137268478b3c:01a0f0e0-8ada-7a92-a82a-5aed1ac46595:exec-617aff4b-c892-44f1-bfc1-49d8b773c11f",
+            "file:01a0f0e0-8a93-79c1-9b16-137268478b3c:01a0f0e0-8ada-7a92-a82a-5aed1ac46595:exec-dc89edd0-3f6c-4b04-99ab-4a87f26abd66",
+            "mcp:01a0f0e0-8a93-79c1-9b16-137268478b3c:01a0f0e0-8ada-7a92-a82a-5aed1ac46595:exec-a3cdb2e7-be53-4dba-82c3-9515f3c78242:f60d1efa9e7c230a6adde599",
+            "command:01a0f0e0-8a93-79c1-9b16-137268478b3c:01a0f0e0-8ada-7a92-a82a-5aed1ac46595:exec-120e897a-ea69-4155-9220-72fe6b99dd84"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:5274367c6bdc956e064ef9926d99dcccf11a4ca3456925ebaaa8ab6d682dcd97",
+          "promptDigest": "sha256:2e3469f2d11105c2c490ad0995f12f8b6b02926bf33b3078eed941d806b5f77e",
+          "artifact": {
+            "sourceDigest": "sha256:f607540071915b2ef01e3faf636dec8a8efd610c73d7c2c7b70f9a74839255ae",
+            "eventLogDigest": "sha256:5274367c6bdc956e064ef9926d99dcccf11a4ca3456925ebaaa8ab6d682dcd97",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77740,
+              "cachedInputTokens": 70912,
+              "outputTokens": 1035
+            }
+          }
+        }
+      ],
+      "creditMicros": 1006460,
+      "elapsedMs": 42378,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:d3885700-4ac5-4854-8687-438e2d0772c3",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "json-state-roundtrip",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:c1bbec85-88da-4e84-b4de-5f22fb0040b8",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77351,
+            "cachedInputTokens": 69888,
+            "outputTokens": 1100
+          },
+          "creditMicros": 1052590,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 31046,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { [Serializable] public sealed class State { public int score; public string label; } public static class JsonStateRoundtrip { public static State RoundTrip(State state) { if (state == null) throw new ArgumentNullException(nameof(state)); return JsonUtility.FromJson<State>(JsonUtility.ToJson(state)); } } }\n",
+          "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+          "toolProofRefs": [
+            "command:01a0f0e1-3013-7592-94b4-cf7fc73e46ff:01a0f0e1-3053-7123-95fa-95dc754233aa:exec-1bcbffd0-0070-4d56-b2e6-6dd5006e641b",
+            "command:01a0f0e1-3013-7592-94b4-cf7fc73e46ff:01a0f0e1-3053-7123-95fa-95dc754233aa:exec-e31a1d62-c42e-4d6a-83bb-a13acb8d34d6",
+            "file:01a0f0e1-3013-7592-94b4-cf7fc73e46ff:01a0f0e1-3053-7123-95fa-95dc754233aa:exec-6452a584-595f-4724-abda-87be14b52ea1",
+            "mcp:01a0f0e1-3013-7592-94b4-cf7fc73e46ff:01a0f0e1-3053-7123-95fa-95dc754233aa:exec-e4501bc8-cc86-4b31-bc2f-d29f529d99d7:f60d1efa9e7c230a6adde599",
+            "command:01a0f0e1-3013-7592-94b4-cf7fc73e46ff:01a0f0e1-3053-7123-95fa-95dc754233aa:exec-3319dbf9-4a28-408c-9ce5-6bf8b52b6971"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:673dd17cd865a4f9e430d67dc6663c975264694e01b9d83c40d5827b825fd567",
+          "promptDigest": "sha256:853c20b07f2b34c854cc4e0a9ef63219ad02238d7fdf30b7f87f6989acb0843b",
+          "artifact": {
+            "sourceDigest": "sha256:a9c0ed03aab700c2514d09a4cdf0d4278938f93474359bc018258b35451f9032",
+            "eventLogDigest": "sha256:673dd17cd865a4f9e430d67dc6663c975264694e01b9d83c40d5827b825fd567",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77351,
+              "cachedInputTokens": 69888,
+              "outputTokens": 1100
+            }
+          }
+        }
+      ],
+      "creditMicros": 1052590,
+      "elapsedMs": 39650,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:71b66964-53a5-4fc7-987a-7132414f5dbd",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "vector2-grid-position",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:9be715cd-8b28-4b63-b3cf-f593ab180add",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 89874,
+            "cachedInputTokens": 77824,
+            "outputTokens": 1216
+          },
+          "creditMicros": 1356420,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 33803,
+          "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class Vector2GridPosition { public static Vector2 ToWorld(int x, int y, float cellSize) { if (!(cellSize > 0f)) throw new ArgumentOutOfRangeException(nameof(cellSize)); return new Vector2(x * cellSize, y * cellSize); } } }\n",
+          "sourceDigest": "sha256:5fdc11bffad20d5830dfdfe3bbc768bb16c03234c07023608b99fd13f68d1859",
+          "toolProofRefs": [
+            "command:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-20003643-aae1-4758-b826-b2349baad1c2",
+            "command:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-94862286-a70f-491f-be0f-a4f464ece872",
+            "command:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-01282835-1740-492f-aed4-068a17844fe9",
+            "file:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-dce9b8e5-9266-4676-8188-a7d0b4a4844e",
+            "mcp:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-13dc8596-df96-405a-a925-30fc5dc18633:f60d1efa9e7c230a6adde599",
+            "command:01a0f0e1-caf0-7b00-a4c9-c7ce3d5d1fd2:01a0f0e1-cb32-7c61-9367-3ad6376c8f1e:exec-c07b1684-f485-4184-9606-dc84afb2d6fb"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:a3cf9827cfaae1222bf174c35936209f6d720728f810fda89ef6067b19f408ff",
+          "promptDigest": "sha256:a3de80258f55dd65cf25ae4923bf450ec7c47640c4f369f073b16fb08486effd",
+          "artifact": {
+            "sourceDigest": "sha256:5fdc11bffad20d5830dfdfe3bbc768bb16c03234c07023608b99fd13f68d1859",
+            "eventLogDigest": "sha256:a3cf9827cfaae1222bf174c35936209f6d720728f810fda89ef6067b19f408ff",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 89874,
+              "cachedInputTokens": 77824,
+              "outputTokens": 1216
+            }
+          }
+        }
+      ],
+      "creditMicros": 1356420,
+      "elapsedMs": 42550,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:5d142c2b-266d-4cbe-a60c-d55ca09a1a8f",
+      "reusedAResult": false
+    },
+    {
+      "taskId": "duplicate-position",
+      "outcome": "pass",
+      "classification": null,
+      "receipts": [
+        {
+          "schemaVersion": "native-codex-receipt/1",
+          "receiptId": "native-codex:4e74d974-e6b2-413e-b9f7-7dd695e82b4c",
+          "status": "completed",
+          "model": "gpt-5.6-terra",
+          "modelIdentityAssurance": "requested-only",
+          "usage": {
+            "model": "gpt-5.6-terra",
+            "inputTokens": 77349,
+            "cachedInputTokens": 66816,
+            "outputTokens": 1091
+          },
+          "creditMicros": 1188030,
+          "reservedCreditMicros": 4633500,
+          "responseReserveCreditMicros": 463350,
+          "interruptAtCreditMicros": 4170150,
+          "elapsedMs": 38404,
+          "source": "using System.Collections.Generic;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DuplicatePosition { public static bool HasDuplicate(Vector2Int[] positions) { if (positions == null || positions.Length < 2) return false; var seen = new HashSet<Vector2Int>(); foreach (var position in positions) if (!seen.Add(position)) return true; return false; } } }\n",
+          "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+          "toolProofRefs": [
+            "command:01a0f0e2-7130-7280-88ff-3a4603f9bbb2:01a0f0e2-7178-7ea2-b450-8b5cf349249b:exec-3d19be92-7fe5-42f8-8b87-c16903f17fc8",
+            "command:01a0f0e2-7130-7280-88ff-3a4603f9bbb2:01a0f0e2-7178-7ea2-b450-8b5cf349249b:exec-64a34078-5dee-456f-bb78-ca68b44ead76",
+            "file:01a0f0e2-7130-7280-88ff-3a4603f9bbb2:01a0f0e2-7178-7ea2-b450-8b5cf349249b:exec-53410dcb-0e56-4f07-826a-daae1233cf8d",
+            "mcp:01a0f0e2-7130-7280-88ff-3a4603f9bbb2:01a0f0e2-7178-7ea2-b450-8b5cf349249b:exec-c2335c03-412d-436c-a3df-3e829e3ae2d3:f60d1efa9e7c230a6adde599",
+            "command:01a0f0e2-7130-7280-88ff-3a4603f9bbb2:01a0f0e2-7178-7ea2-b450-8b5cf349249b:exec-33772a14-116d-47bc-beeb-fdb25294ad96"
+          ],
+          "overshootRisk": false,
+          "eventLogDigest": "sha256:990e4ea8fe5ca99474c5814315eab9cc10927197125a65fe788328f1b397c9d4",
+          "promptDigest": "sha256:67c0f923fdb78dce9e8971e8edfcdbf20c205af60f90126c8317bfee84242a9d",
+          "artifact": {
+            "sourceDigest": "sha256:2b11d140e56eedbbcb87cca9829330c81273645987447d0d294e6e9c1c07af5c",
+            "eventLogDigest": "sha256:990e4ea8fe5ca99474c5814315eab9cc10927197125a65fe788328f1b397c9d4",
+            "observedUsage": {
+              "model": "gpt-5.6-terra",
+              "inputTokens": 77349,
+              "cachedInputTokens": 66816,
+              "outputTokens": 1091
+            }
+          }
+        }
+      ],
+      "creditMicros": 1188030,
+      "elapsedMs": 47384,
+      "hiddenPass": true,
+      "manualOwnerFixes": 0,
+      "evidenceId": "unity:257cca85-207f-4755-abba-dd31664912ba",
+      "reusedAResult": false
+    }
+  ],
+  "stoppedReason": "quota-stop",
+  "infrastructureFailures": 0,
+  "decision": null,
+  "summary": {
+    "a": {
+      "passes": 10,
+      "hiddenPassTasks": 10,
+      "manualOwnerFixes": 0,
+      "creditMicros": 20398720,
+      "elapsedMs": 745446
+    },
+    "b": {
+      "passes": 10,
+      "hiddenPassTasks": 10,
+      "manualOwnerFixes": 0,
+      "creditMicros": 20398720,
+      "elapsedMs": 745446
+    },
+    "c": {
+      "passes": 9,
+      "hiddenPassTasks": 9,
+      "manualOwnerFixes": 0,
+      "creditMicros": 10605030,
+      "elapsedMs": 374839
+    }
+  }
+}

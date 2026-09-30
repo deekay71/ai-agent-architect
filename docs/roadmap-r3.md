@@ -21,7 +21,9 @@ Chỉ mốc kế tiếp được viết chi tiết; các mốc sau chỉ outline
 
 S1 là spike hạ tầng, không phải planning engine: timebox 90 phút, cap 60.000 token hỗ trợ AI; xác nhận lại Unity CLI đã pin chạy compile/EditMode test trên empty fixture, tạo XML với test IDs/count và reject một compile/test failure cố ý. S1 đã Pass với evidence nêu trên. S2 là module plan/interface-first và Ready records cho chuỗi `Request → Plan → Critic → Execution → Verification → Evidence → Memory`, ở [S2 protocol](s2-brain-comparison-protocol.md) và [records](evidence/planning-r3/s2-module-ready-records.json). S2 vẫn `not_ready` cho execution: protocol lock, reserve, native C credit monitoring và hidden-oracle isolation chưa có evidence. Schema tests chỉ kiểm record shape, không thực thi admission/engine.
 
-## Comparison round: existing 10 microtasks
+## Comparison round: invalid R1, blocked
+
+R1 is invalid and cannot support a product decision: all runtime MCP calls lacked Unity broker receipts and verification fell back to an external host. It reached A10/B reuse10/C9 before the infrastructure audit; it should have stopped after two A infrastructure failures. The generic raw `quota-stop` label is not the actual reason. Direct app-server MCP preflight passed with 0 model calls and the local fix checks passed 19 target TypeScript plus 6 Python tests, but the causal model-path error is unrecoverable from old logs. S2 Ready remains blocked; conditional model approval persists, no rerun has been performed, and no retain/simplify/batch-2 decision follows. See [handoff](s2-abc-r1-invalid-run.md).
 
 Không dùng 24 task bank để làm first round. Cùng 10 microtasks hiện có, cùng Unity CLI/version, protected tests, executor/tool access, revision đầu vào, token cap và workspace isolation cho ba arm:
 

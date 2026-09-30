@@ -1,0 +1,32 @@
+{
+  "status": "invalid-comparison",
+  "detectedAt": "2026-09-30T05:58:28.684Z",
+  "actualStopReason": "infrastructure-audit",
+  "rawRunnerStopLabel": "quota-stop",
+  "rawLabelExplanation": "The launcher uses a generic STOP file; the stop was not caused by reaching quota.",
+  "validEvidence": "External host verifier executed pinned tests on candidate sources; those finite observations remain valid.",
+  "invalidInference": "The agent-internal Unity feedback path was not proven. No Brain-vs-Codex conclusion or batch-2 eligibility decision is supported.",
+  "affected": {
+    "A": 10,
+    "BReusedA": 10,
+    "C": 9
+  },
+  "protocolDeviation": "Missing native Unity execution receipts should have been classified as infrastructure in A. The >=2 A infrastructure stop was not enforced because the guard accepted tool completion metadata and host fallback masked the failure.",
+  "remediation": "Require successful native tool result plus durable matching broker receipt; prohibit missing-receipt host fallback; local-only regression checks; no further model dispatch.",
+  "budget": {
+    "modelInvocations": 39,
+    "rawTokens": 1616535,
+    "cachedInputTokens": 1238400,
+    "credits": 31.00375,
+    "weeklyBefore": 24,
+    "weeklyAfter": 26,
+    "fiveHourBefore": null,
+    "fiveHourAfter": null
+  },
+  "calibration": {
+    "creditsPerWeeklyPercentagePoint": 15.501875,
+    "trusted": null,
+    "observedDate": "2026-09-30",
+    "confounding": "Includes root monitoring and possible other Codex activity; integer usage rounding. Descriptive only."
+  }
+}

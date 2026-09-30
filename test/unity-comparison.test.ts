@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { digest } from '../src/contracts/canonical.js';
 import type { ModelCreditUsage } from '../src/contracts/credit-usage.js';
-import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
+import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, auditNativeUnityExecution, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
 import { UNITY_TASK_MANIFEST } from '../src/unity/walking-skeleton.js';
 
 const tasks = UNITY_TASK_MANIFEST;
@@ -115,11 +115,11 @@ test('unknown token usage and missing admission evidence fail closed', async () 
   await assert.rejects(runUnityComparison({ ...withoutC, admission: { ...withoutC.admission, forecastWeeklyQuotaPercent: -0.1 } }), /UNITY_COMPARISON_FORECAST_QUOTA_EXCEEDED/);
 });
 
-test('C at least as successful as B requests the separately approved simplified batch 2', async () => {
+test('C at least as successful as B requests the separately approved feature and multi-session batch 2', async () => {
   const f = fixture();
   const report = await runUnityComparison({ ...f, cExecutor: f.cExecutor });
   assert.equal(report.decision!.decision, 'batch2-separate-approval-required');
-  assert.deepEqual(report.decision!.batch2, { featureTasks: 4, multiSessionTasks: 2, instruction: 'simplify', approvalRequired: true });
+  assert.deepEqual(report.decision!.batch2, { featureTasks: 4, multiSessionTasks: 2, instruction: 'run-feature-and-multi-session-comparison', approvalRequired: true });
 });
 
 test('duplicate receipts and quota stops preserve the completed row for durable progress recording', async () => {
@@ -143,4 +143,13 @@ test('duplicate receipts and quota stops preserve the completed row for durable 
 test("broker infrastructure evidence is never classified as a model failure", () => {
   assert.equal(classifyUnityComparisonFailure("Infrastructure failure: test count mismatch", "unknown"), "infrastructure");
   assert.equal(classifyUnityComparisonFailure("Compile/test failed: assertion", "fail"), "model");
+});
+
+test('native Unity proof requires a durable receipt and a single bound A/B candidate', () => {
+  assert.match(auditNativeUnityExecution('A', 'a', [])!, /infrastructure/);
+  assert.match(auditNativeUnityExecution('C', 'a', [])!, /infrastructure/);
+  assert.match(auditNativeUnityExecution('B', 'a', [{sourceSha256:'b'}])!, /one-candidate/);
+  assert.match(auditNativeUnityExecution('A', 'a', [{sourceSha256:'a'}, {sourceSha256:'a'}])!, /one-candidate/);
+  assert.equal(auditNativeUnityExecution('A', 'a', [{sourceSha256:'a'}]), null);
+  assert.equal(auditNativeUnityExecution('C', 'b', [{sourceSha256:'a'}]), null); // Final changed C candidate still needs verification.
 });

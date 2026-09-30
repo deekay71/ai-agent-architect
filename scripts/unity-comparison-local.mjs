@@ -5,7 +5,7 @@ import { randomUUID, createHash } from 'node:crypto';
 import { digest } from '../dist/src/contracts/canonical.js';
 import { ReadyChecklistSchema } from '../dist/src/contracts/brain-planning.js';
 import { creditMicrosForUsage } from '../dist/src/contracts/credit-usage.js';
-import { runUnityComparison, UNITY_COMPARISON_FORECAST } from '../dist/src/unity/comparison.js';
+import { runUnityComparison, UNITY_COMPARISON_FORECAST, auditNativeUnityExecution } from '../dist/src/unity/comparison.js';
 import { runNativeCodexUnityTask } from '../dist/src/unity/native-codex.js';
 import { createCurrentCodexTransport, renderCodexRequest } from '../dist/src/providers/codex.js';
 import { UNITY_TASK_MANIFEST, proposeVerifiedUnityObservation } from '../dist/src/unity/walking-skeleton.js';
@@ -92,11 +92,8 @@ async function native(task,arm,budget,extra){
  const fixedMcpConfig=p.fixedMcpConfig.map(v=>v.startsWith('mcp_servers.unity_public.args=')?'mcp_servers.unity_public.args='+JSON.stringify(args):v);
  const prompt=skill+'\nTask: '+task.requirement+'\nOnly implementation file: '+task.targetFile+'\nUse unity_public.unity_compile_test for Unity (direct shell Unity is unavailable in this sandbox). The supplied public smoke test is immutable; you may add no other code/files in Assets, Packages, ProjectSettings. The broker returns the pinned test results, but test source is outside your workspace.\n'+extra;
  const r=await runNativeCodexUnityTask({projectPath:p.project,targetFile:task.targetFile,prompt,artifactDirectory:run,maxCreditMicros:budget,fixedMcpConfig});
- let violation;
- if(arm!=='C'&&fs.existsSync(brokerRoot)){
-  const receipts=brokerReceipts(brokerRoot);
-  if(receipts.length>1||(receipts.length===1&&receipts[0].sourceSha256!==createHash('sha256').update(r.source??'').digest('hex')))violation='infrastructure: one-candidate protocol violated after verification';
- }
+ const receipts=brokerReceipts(brokerRoot);
+ const violation=auditNativeUnityExecution(arm,createHash('sha256').update(r.source??'').digest('hex'),receipts);
  // An interrupted turn can have an in-flight response beyond the latest counter.
  // Preserve that observed counter in the native receipt, but never settle it as final.
  const usage=r.status==='failed'?{model:r.model,inputTokens:null,cachedInputTokens:null,outputTokens:null}:r.usage;
@@ -126,8 +123,9 @@ const verifier={async verify({arm,task,source}){
  let brokerRoot=latestBrokerRoots.get(arm+':'+task.taskId),list=brokerRoot?brokerReceipts(brokerRoot):[];
  const sourceHash=createHash('sha256').update(source).digest('hex');
  let result=list.at(-1);
- if(!result||result.sourceSha256!==sourceHash){
-  // C can edit after its last tool call. A/B can arrive here without making a tool call.
+ if(!result)return {outcome:'unknown',feedback:'Infrastructure failure: native Unity receipt missing; external fallback prohibited',evidenceId:'broker:'+randomUUID(),hiddenPass:false,manualOwnerFixes:0};
+ if(result.sourceSha256!==sourceHash){
+  // C can edit after its last successful tool call; this final candidate is verified separately.
   brokerRoot=path.join(p.artifacts,'final-'+randomUUID());const args=[...p.args];args[4]=brokerRoot;
   const run=spawnSync('/usr/bin/python3',args,{input:JSON.stringify(requests[2])+'\n',encoding:'utf8',timeout:220000,maxBuffer:100000});
   if(run.status!==0) return {outcome:'unknown',feedback:'Infrastructure failure: verifier broker unavailable',evidenceId:'broker:'+randomUUID(),hiddenPass:false,manualOwnerFixes:0};

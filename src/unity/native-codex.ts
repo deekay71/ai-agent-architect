@@ -56,7 +56,7 @@ export interface NativeCodexEventLog {
   schemaVersion: 'native-codex-event-log/1';
   threadId: string | null;
   turnId: string | null;
-  events: readonly { method: string; itemType: string | null; itemId: string | null }[];
+  events: readonly { method: string; itemType: string | null; itemId: string | null; itemStatus: string | null; mcpErrorMessage: string | null }[];
   toolProofRefs: readonly string[];
   interruption: 'none' | 'unknown-usage' | 'credit-cap';
 }
@@ -235,7 +235,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   if (!safeInteger(responseReserveCreditMicros) || responseReserveCreditMicros >= input.maxCreditMicros) throw new NativeCodexError('NATIVE_CODEX_RESERVE_INVALID');
   const interruptAtCreditMicros = input.maxCreditMicros - responseReserveCreditMicros;
   const receiptId = `native-codex:${randomUUID()}`, promptDigest = digest({ prompt: input.prompt, targetFile: input.targetFile });
-  const started = performance.now(), logEvents: { method: string; itemType: string | null; itemId: string | null }[] = [];
+  const started = performance.now(), logEvents: { method: string; itemType: string | null; itemId: string | null; itemStatus: string | null; mcpErrorMessage: string | null }[] = [];
   const toolProofRefs: string[] = []; let threadId: string | null = null, turnId: string | null = null;
   let latestUsage: ModelCreditUsage | null = null, error: string | null = null, interruption: NativeCodexEventLog['interruption'] = 'none';
   let overshootRisk = false, completed = false, interrupted = false;
@@ -255,7 +255,10 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   const observe = (notification: NativeCodexNotification): void => {
     const params = object(notification.params) ? notification.params : null, item = eventItem(notification.params);
     const itemType = item !== null && typeof item.type === 'string' ? item.type : null, itemId = item !== null && id(item.id) ? item.id : null;
-    if (logEvents.length < 256) logEvents.push({ method: /^[a-zA-Z/]+$/.test(notification.method) ? notification.method : 'invalid', itemType, itemId });
+    const itemStatus = item !== null && typeof item.status === 'string' && /^[a-zA-Z]+$/.test(item.status) ? item.status : null;
+    const rawMcpError = itemType === 'mcpToolCall' && item !== null && object(item.error) && typeof item.error.message === 'string' ? item.error.message : null;
+    const mcpErrorMessage = rawMcpError === null ? null : rawMcpError.replace(/[\r\n]/g, ' ').replace(/\/Users\/[^/\s]+/g, '<home>').replace(/(?:sk-|ghp_)[A-Za-z0-9_-]+/g, '<redacted>').slice(0, 500);
+    if (logEvents.length < 256) logEvents.push({ method: /^[a-zA-Z/]+$/.test(notification.method) ? notification.method : 'invalid', itemType, itemId, itemStatus, mcpErrorMessage });
     if (params !== null && typeof params.threadId === 'string' && threadId !== null && params.threadId !== threadId) { fail('NATIVE_CODEX_THREAD_DRIFT'); return; }
     if (params !== null && typeof params.turnId === 'string' && turnId !== null && params.turnId !== turnId) { fail('NATIVE_CODEX_TURN_DRIFT'); return; }
     if (notification.method === 'model/rerouted') { fail('NATIVE_CODEX_MODEL_REROUTED'); return; }
@@ -291,6 +294,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
         toolProofRefs.push(`command:${threadId}:${turnId}:${itemId}`);
       } else if (itemType === 'fileChange') toolProofRefs.push(`file:${threadId}:${turnId}:${itemId}`);
       else if (itemType === 'mcpToolCall') {
+        if (item.status !== 'completed' || (item.error !== undefined && item.error !== null) || !object(item.result) || item.result.isError === true) { fail('NATIVE_CODEX_MCP_TOOL_FAILED'); return; }
         if (typeof item.server !== 'string' || typeof item.tool !== 'string' || !mcpConfig.some(setting => setting.startsWith(`mcp_servers.${item.server}.`))) { fail('NATIVE_CODEX_MCP_TOOL_INVALID'); return; }
         toolProofRefs.push(`mcp:${threadId}:${turnId}:${itemId}:${shortHash(`${item.server}:${item.tool}`)}`);
       }

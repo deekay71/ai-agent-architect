@@ -1,0 +1,116 @@
+[
+  {
+    "arm": "A",
+    "taskId": "cell-bounds",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "coordinate-index",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "deterministic-seed",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "duplicate-position",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "integer-clamp",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "json-state-roundtrip",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "placement-bounds",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "row-full",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "score-accumulation",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "A",
+    "taskId": "vector2-grid-position",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "cell-bounds",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "coordinate-index",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "deterministic-seed",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "duplicate-position",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "integer-clamp",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "json-state-roundtrip",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "row-full",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "score-accumulation",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  },
+  {
+    "arm": "C",
+    "taskId": "vector2-grid-position",
+    "nativeUnityReceiptCount": 0,
+    "externalFinalVerificationCount": 1
+  }
+]

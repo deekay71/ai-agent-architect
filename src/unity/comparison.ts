@@ -14,6 +14,15 @@ export const UNITY_COMPARISON_FORECAST = Object.freeze({
 export const A_TASK_CREDIT_CAP_MICROS = 2_700_100;
 export const B_TASK_CUMULATIVE_CREDIT_CAP_MICROS = 4_633_500;
 
+/** Tool completion metadata is insufficient: require the host broker's durable receipt. */
+export function auditNativeUnityExecution(arm: 'A' | 'B' | 'C', sourceSha256: string,
+  receipts: readonly { sourceSha256: string }[]): string | null {
+  if (!receipts.length) return 'infrastructure: native Unity tool produced no execution receipt';
+  if (arm !== 'C' && (receipts.length !== 1 || receipts[0]!.sourceSha256 !== sourceSha256))
+    return 'infrastructure: one-candidate protocol violated after verification';
+  return null;
+}
+
 export type ComparisonFailureClass = 'model' | 'infrastructure' | 'unknown';
 export type ComparisonOutcome = 'pass' | 'fail' | 'unknown';
 export type AStage = 'planner' | 'critic' | 'executor';
@@ -270,7 +279,7 @@ export function decideUnityComparison(b: ReturnType<typeof aggregate>, c: Return
   const keepB = (b.hiddenPassTasks >= c.hiddenPassTasks + 2 || (b.hiddenPassTasks === c.hiddenPassTasks && b.manualOwnerFixes < c.manualOwnerFixes)) && b.creditMicros <= 2 * c.creditMicros;
   if (keepB) return { decision: 'keep-B' as const, batch2: null };
   if (c.hiddenPassTasks >= b.hiddenPassTasks) return { decision: 'batch2-separate-approval-required' as const,
-    batch2: { featureTasks: 4, multiSessionTasks: 2, instruction: 'simplify', approvalRequired: true as const } };
+    batch2: { featureTasks: 4, multiSessionTasks: 2, instruction: 'run-feature-and-multi-session-comparison', approvalRequired: true as const } };
   return { decision: 'inconclusive-owner-review' as const, batch2: null };
 }
 
