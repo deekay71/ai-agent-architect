@@ -20,6 +20,7 @@ const MAX_REQUEST_BYTES = 16_000;
 const OUTPUT_GUIDANCE = 2_000;
 export const MODEL_RUN_APPROVAL_THRESHOLD = 300_000;
 const RUN_POLICY: ModelRunPolicy = { schemaVersion: 'weighted-model-run-policy/1', approvalThreshold: 300000, devCap: 1500000, phaseAcceptanceCap: 3000000, weights: { terra: 1, sol: 3, astra: 5 } };
+function requireCurrentCampaignPolicy(): void { throw Error('UNITY_LEGACY_MODEL_POLICY_DISABLED'); }
 const write = (file: string, data: unknown) => writeFileSync(file, JSON.stringify(data, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
 
 export function loadSkeletonTasks(file: string): SkeletonTask[] {
@@ -31,7 +32,8 @@ export function loadSkeletonTasks(file: string): SkeletonTask[] {
 
 /** Whole campaign, including all three roles. Zero automatic model retries. */
 export function estimateSkeletonCampaign() {
-  return { schemaVersion: 'unity-baseline-estimate/1', tasks: 10, modelCalls: 30, retries: 0,
+  return { schemaVersion: 'unity-baseline-estimate/1', policyStatus: 'legacy-disabled' as const, dispatchEligible: false as const,
+    tasks: 10, modelCalls: 30, retries: 0,
     maxRequestBytes: MAX_REQUEST_BYTES, outputTokenGuidancePerCall: OUTPUT_GUIDANCE,
     platformOverheadEstimatePerCall: 2000,
     estimatedAggregateTokens: 30 * (Math.ceil(MAX_REQUEST_BYTES / 3) + OUTPUT_GUIDANCE + 2000),
@@ -61,6 +63,9 @@ export interface SkeletonCampaignOptions {
 }
 
 export async function runSkeletonCampaign(options: SkeletonCampaignOptions) {
+  // This legacy campaign reserves and stops on 1/3/5 weighted tokens. A new
+  // approved campaign must use credit accounting and calibrated weekly quota.
+  requireCurrentCampaignPolicy();
   const estimate = estimateSkeletonCampaign();
   requireModelRunAdmission(RUN_POLICY, { purpose: 'dev', cases: 10, calls: 30, tokens: estimate.tokensByFamily, decision: 'Measure a single-planner Unity baseline before enabling experiments', weeklyQuotaPercent: null, weeklyQuotaBasis: 'Not yet calibrated; record observed quota before and after' }, options.overrideApproval ? { reference: options.overrideApproval.reference, maxWeightedTokens: options.overrideApproval.maxEstimatedTokens } : undefined);
   if (options.authorization.maxInvocations < estimate.modelCalls || options.authorization.maxReportedTokens < estimate.estimatedAggregateTokens) throw Error('SKELETON_BUDGET_INSUFFICIENT');

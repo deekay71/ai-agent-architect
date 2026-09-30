@@ -16,7 +16,7 @@ _Avoid_: PlanArtifact.
 **HandoffPacket**: Hồ sơ giao việc tham chiếu artifact, GateReport và context còn hiệu lực trong phạm vi được phép.
 _Avoid_: HandoffBundle.
 **PolicyRelease**: Phiên bản chính sách chấm và bộ kiểm đã được kiểm định, cho phép dùng trong một phạm vi tác vụ.
-**PlanningModeDecision**: Quyết định cách phân chia planning giữa các agent theo đặc điểm công việc và năng lực đã đo.
+**PlanningModeDecision**: Chọn làn Task hoặc phân tầng Game/Epic→Module→Task theo quy mô; module chỉ mở sau interface approval và chỉ song song khi độc lập.
 **Claim**: Một khẳng định có nguồn và phạm vi áp dụng, phân biệt quan sát, suy luận và quyết định.
 **SourceRecord**: Hồ sơ nhận diện một nguồn tri thức cùng phiên bản và trạng thái hiện hành.
 **MemoryDelta**: Đề nghị thay đổi các claims của Memory dựa trên nguồn và bằng chứng.
@@ -27,7 +27,7 @@ _Avoid_: Điểm sẵn sàng 0–100, Planning PASS như bảo đảm kết qu�
 **Module Plan**: Phân rã một phần chức năng thành task trong interface đã chốt và dependency đã xác định.
 **Task Plan**: Phần việc thực thi có phạm vi và tiêu chí nghiệm thu kiểm được; là tầng đủ cho bug nhỏ.
 **Interface đã chốt**: Hợp đồng có phiên bản và người chịu trách nhiệm, thống nhất giữa bên cung cấp và bên sử dụng trước khi chia planning module.
-**Planning Spike**: Tác vụ khám phá có giới hạn thời gian và tài nguyên để trả lời một câu hỏi kỹ thuật hoặc thực nghiệm cụ thể.
+**Planning Spike**: Task riêng có một câu hỏi, timebox, token cap và điều kiện dừng; đầu ra là decision record, code spike không merge.
 **Planning Defect**: Sai sót trong mục tiêu, interface, phân rã hoặc acceptance được phát hiện khi thực thi và trả về tầng gây lỗi.
 **Execution PASS**: Kết quả thực thi đáp ứng các phép kiểm bắt buộc bằng bằng chứng hợp lệ.
 **STALE**: Artifact không còn đủ điều kiện tái sử dụng do một phụ thuộc liên quan đã thay đổi.

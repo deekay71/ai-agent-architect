@@ -1,6 +1,8 @@
 import { createHash } from 'node:crypto';
 import { digest, digestOmitting } from '../src/contracts/canonical.js';
 import { SCHEMA_VERSION, type ContractMap } from '../src/contracts/schemas.js';
+import { PLANNING_SCHEMA_VERSION } from '../src/contracts/brain-planning.js';
+import { createBrainPlanningFixtures } from './brain-planning.js';
 import { currentGateInputs } from '../src/foundation/audit.js';
 
 /** Entirely synthetic data: an active fixture is NOT an activated runtime policy. */
@@ -99,6 +101,7 @@ export const createContractFixtures: FixtureFactory = () => {
     { ref: 'environment:fixture-repo', version: schemaVersion, digest: hash },
   ];
   const fixtures: ContractMap = {
+    ...createBrainPlanningFixtures(),
     ContextBudget: budget,
     TaskSpec: {
       schemaVersion, taskId: 'task-1', taskClass: 'fixture.inspect', goal: 'Inspect a synthetic fixture',
@@ -121,7 +124,9 @@ export const createContractFixtures: FixtureFactory = () => {
     PlanStep: planStep,
     SubPlan: subplan,
     PlanPackage: {
-      schemaVersion, planId: 'plan-1', version: 1, hash, subplans: [subplan], integrationContracts: [],
+      schemaVersion: PLANNING_SCHEMA_VERSION, planId: 'plan-1', version: 1, hash, subplans: [subplan], integrationContracts: [],
+      level: 'task', parentPlanRef: null, milestoneRef: 'fixture-milestone', interfaceApprovalRefs: [],
+      readyChecklistRef: 'fixture-ready', changeRequestRefs: [], spikeRefs: [],
       requirementCoverage: [{ requirementRef: 'ac-1', stepRefs: ['step-1'], checkRefs: ['check-1'] }],
       assumptions: [], risks: [], planningModeDecisionRef: 'mode-1',
     },
@@ -152,14 +157,14 @@ export const createContractFixtures: FixtureFactory = () => {
       ownerId: 'fixture-policy-owner', approvedBy: 'fixture-policy-owner', status: 'active', activatedAt: now,
     },
     PlanningModeDecision: {
-      schemaVersion, decisionId: 'mode-1', taskClass: 'fixture.inspect', mode: 'single+critic',
+      schemaVersion: PLANNING_SCHEMA_VERSION, decisionId: 'mode-1', taskClass: 'fixture.inspect', mode: 'single+critic',
       decompositionEvidence: ['evidence-1'], sharedInvariants: ['constraint-1'], dependencies: [], fanOut: 1,
       budget, benchmarkProfileRef: 'fixture-benchmark', policyReleaseId: 'policy-1',
     },
     GateReport: {
-      schemaVersion, gateReportId: 'gate-1', artifactHash: hash, rubricVersion: 'fixture-rubric-v1', policyReleaseId: 'policy-1',
+      schemaVersion: PLANNING_SCHEMA_VERSION, gateReportId: 'gate-1', artifactHash: hash, rubricVersion: 'fixture-rubric-v1', policyReleaseId: 'policy-1',
       inputVersions,
-      checkResults: [checkResult], dimensionScores: [{ dimension: 'synthetic', score: 1, maximum: 1 }],
+      checkResults: [checkResult],
       evidenceRefs: ['evidence-1'], defects: [], verdict: 'PASS', issuerId: 'fixture-gate-controller', issuedAt: now,
     },
     HandoffPacket: {

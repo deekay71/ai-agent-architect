@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "planning-r3-credit-calibration/1",
+  "measurementDate": "2026-09-30",
+  "purpose": "Chi phí credit quan sát được cho đúng 50 receipt regrade Sol đã chọn; không phải quota conversion hay forecast.",
+  "sources": [
+    ".local/phase3-v1-regrade-20260930/calls.jsonl",
+    ".local/phase3-v1-regrade-20260930-continuation/calls.jsonl",
+    "docs/evidence/phase3-pivot-20260930/receipt-audit.json",
+    "docs/evidence/phase3-pivot-20260930/quota.json"
+  ],
+  "selection": {
+    "unit": "receipt requestDigest",
+    "expectedRequestCount": 50,
+    "selectedUniqueRequestDigests": 50,
+    "duplicateRequestDigestsExcluded": 0,
+    "allSelectedStatusCompleted": true,
+    "allSelectedRequestedModel": "gpt-6-sol",
+    "uniqueInputItemIdsCovered": 300,
+    "method": "Đọc cả hai JSONL, lấy duy nhất một receipt cho mỗi requestDigest, chỉ cộng usage của 50 requestDigest duy nhất. Không suy ra hay cộng request ngoài hai nguồn này."
+  },
+  "recordedUsage": {
+    "uncachedInputTokens": 885692,
+    "cachedInputTokens": 0,
+    "outputTokens": 32088,
+    "rawTotalTokens": 917780,
+    "identity": "885692 + 0 + 32088 = 917780"
+  },
+  "ratesCreditsPer1M": {
+    "terra": {
+      "uncachedInput": 50,
+      "cachedInput": 5,
+      "output": 300
+    },
+    "sol": {
+      "uncachedInput": 50,
+      "cachedInput": 5,
+      "output": 250
+    },
+    "astra": {
+      "uncachedInput": 250,
+      "cachedInput": 25,
+      "output": 1250
+    },
+    "weightsApplied": false
+  },
+  "calculation": {
+    "model": "gpt-6-sol",
+    "formula": "(uncachedInputTokens * 50 + cachedInputTokens * 5 + outputTokens * 250) / 1000000",
+    "uncachedInputCredits": 44.2846,
+    "cachedInputCredits": 0,
+    "outputCredits": 8.022,
+    "totalCredits": 52.3066
+  },
+  "trustedQuotaCalibrationCreditsPerWeeklyPercentagePoint": null,
+  "observationalRatio": {
+    "creditsPerWeeklyPercentagePoint": 10.46132,
+    "formula": "52.3066 / 5",
+    "observationDate": "2026-09-30",
+    "classification": "polluted-descriptive-ratio-only",
+    "notA": [
+      "official quota conversion",
+      "clean calibrated gate",
+      "hard quota-safety guarantee"
+    ]
+  },
+  "proposalForecastUsingObservationalRatio": {
+    "classification": "approximate-and-not-admissible-under-current-5pp-dev-cap",
+    "currentDevCapWeeklyPercentagePoints": 5,
+    "components": {
+      "A": {
+        "credits": 27.001,
+        "approxWeeklyPercentagePoints": 2.58
+      },
+      "B": {
+        "credits": 46.335,
+        "approxWeeklyPercentagePoints": 4.43
+      },
+      "C": {
+        "credits": 48.335,
+        "approxWeeklyPercentagePoints": 4.62
+      }
+    },
+    "totalApproxWeeklyPercentagePoints": 11.63,
+    "decision": "Proposal không admissible theo cap DEV hiện tại 5pp; cần forecast mới thấp hơn hoặc quyết định rõ ràng của owner về sau. Không chạy model từ phép tính này."
+  },
+  "quotaObservations": {
+    "benchmarkInterval": {
+      "weeklyUsedPercentBefore": 0,
+      "weeklyUsedPercentAfter": 5,
+      "weeklyPercentagePointDelta": 5,
+      "classification": "contaminated",
+      "reason": "Nguồn quota ghi nhận hoạt động Codex đồng thời và weekly usage tăng từ 2% lên 3% khi benchmark đang pause; vì vậy 0→5% không thể quy cho regrade receipts."
+    },
+    "wholeWorkSnapshot": {
+      "weeklyUsedPercentBefore": 0,
+      "weeklyUsedPercentAfter": 10,
+      "weeklyPercentagePointDelta": 10,
+      "classification": "measured-interval-with-unknown-token-numerator",
+      "source": "Giá trị snapshot 10% được cung cấp trong yêu cầu lập kế hoạch hiện tại.",
+      "beforeTimestamp": null,
+      "afterTimestamp": null,
+      "interpretation": "Mốc before đầu kỳ 0% không có timestamp; latest check là 10%, còn timestamp completion sẽ do root capture. Đây là thay đổi quota đo được cho whole work, không phải phép quy đổi token/credit. 917780 raw Sol tokens chỉ bao phủ 50 receipt regrade, không đại diện cho toàn bộ công việc trong khoảng 0→10%."
+    }
+  },
+  "limits": [
+    "Không có suy luận nào về cached/uncached input của những calls không xuất hiện trong 50 receipt đã chọn.",
+    "CachedInputTokens có mặt và bằng 0 trên 50 receipt đã chọn; điều này không chứng minh cache usage bằng 0 cho whole work.",
+    "Phần trăm quota có thể làm tròn và không phải bảng quy đổi credit chính thức.",
+    "Không tính credits-per-weekly-percentage-point vì interval 0→5 bị nhiễm và interval 0→10 thiếu tổng token/usage của whole work.",
+    "Observational ratio được giữ riêng để estimator có thể fail closed: trusted calibration vẫn là null.",
+    "Không dùng trọng số Terra/Sol/Astra trong phép tính credit."
+  ]
+}

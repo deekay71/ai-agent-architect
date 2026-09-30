@@ -1,8 +1,8 @@
-# Đóng hồ sơ Phase 3 và bàn giao baseline Unity — 30/09/2026
+# Phase 3 đóng có điều kiện — 30/09/2026
 
 ## Đã xong
 
-**Phase 3: Pass có điều kiện, chỉ trong phạm vi đóng hồ sơ hành chính.** Quyết định theo timebox của chủ dự án; không cấp verified PASS, không công nhận production readiness và không sửa kết quả lịch sử.
+**Phase 3: Pass có điều kiện — owner đã nghiệm thu ngày 30/09/2026.** Phạm vi, residual risks và thứ tự tiếp theo xem [decision log](decision-log.md). Đây không phải production/semantic verified PASS.
 
 | Hạng mục | Kết quả |
 |---|---|
@@ -21,17 +21,15 @@ Baseline Unity đã có 10 task C# nhỏ, manifest, stub, oracle được bảo 
 
 ## Cần tôi quyết định
 
-Người dùng quyết định chỉ bàn giao Phase 3, chưa chạy model Unity. Dự toán lưu cho lần sau: 10 task, 30 lượt (20 Sol, 10 Terra), không tự retry; dự kiến 280.020 token thô / 653.380 token quy đổi, trần DEV 1.500.000. Mục đích là có baseline thực tế trước khi bật thí nghiệm.
-
-GitHub đã có lịch sử đến commit 2481c70. Bản sửa và kết quả trong báo cáo này đang local, chưa xác nhận push hoặc CI của commit mới. Nếu cần cấp quyền truy cập tạm mới để push, sẽ trình quyền repo cụ thể trước khi cấp.
+Owner đã nghiệm thu Phase 3. Báo cáo R3 mới sẽ dừng chờ nghiệm thu trước mọi model run; xem [roadmap](roadmap-r3.md).
 
 ## Chi phí-quota
 
 - Đợt chấm: **917.780 token Sol ×3 = 2.753.340 token quy đổi**, còn 246.660 dưới trần 3 triệu. 50 calls, 0 pending, 0 unknown mới.
 - Usage tuần trước/sau: **0% → 5%**. Giới hạn 5 giờ: **chưa xác định** ở cả hai đầu. Mốc chụp đầu không lưu timestamp chính xác.
 - Hệ số quan sát sơ bộ ngày 30/09/2026: **550.668 token Terra tương đương / 1 điểm % quota tuần**. Có hoạt động Codex khác làm lẫn số đo; quota tuần tăng 2% → 3% ngay trong khoảng benchmark tạm dừng. Đây không phải quy đổi quota chính thức.
-- Unity forecast: **khoảng 1,19 điểm % quota tuần**, ước tính từ số đo ngày 30/09/2026, độ tin cậy thấp vì số đo lẫn và làm tròn.
-- Chính sách cố định: Terra ×1, Sol ×3, Astra ×5; hỏi trước khi toàn đợt vượt 300.000; DEV ≤1,5 triệu; nghiệm thu phase ≤3 triệu. Không chia hoặc reset ledger để lách trần.
+- Forecast 1,19 điểm % tuần của baseline cũ đã superseded. Chưa có forecast được duyệt cho round 1 R3.
+- Các con số quy đổi phía trên chỉ là accounting lịch sử. Chính sách mới dùng credit trực tiếp và cap quota, xem [decision log](decision-log.md) và [tính lại credit](credit-quota-r3.md).
 - Dùng Codex đăng nhập ChatGPT; không dùng API key, không suy token thành USD. Token của trao đổi/coordination không nằm trong ledger benchmark.
 
 ## Rủi ro
@@ -42,16 +40,11 @@ Memory promotion trong baseline là phân quyền local cùng broker, không ph�
 
 CLI không cung cấp hard token output cap. Runner dự phòng trước mỗi lượt và chặn khi không đủ ngân sách; một lượt có thể vượt ước lượng. Actual phải được ghi đủ và không dispatch thêm nếu chạm trần.
 
-Multi-planner, compaction mặc định và Explorer nâng cao tiếp tục tắt. Chỉ mở từng thí nghiệm khi có protocol, ngân sách và kết quả thắng baseline trên task thật.
+Planning phân tầng/interface-first là mặc định R3; chỉ compaction mặc định và Explorer nâng cao còn là thí nghiệm. Chưa xây engine mới trong lượt tài liệu/schema này.
 
 ## Kế hoạch tiếp theo và test plan
 
-1. **Đã hoàn tất trong lượt này:** chấm đủ 300, audit lịch sử, đo selector DEV, chốt hồ sơ có điều kiện.
-2. **Khi người dùng mở lại đợt Unity và duyệt ngân sách, khoảng một buổi:** chạy 10 task Unity, mỗi task tối đa một chuỗi 3 model calls; lưu yêu cầu, plan, critic, code, receipts, source hash, exact test count, XML/log, Memory claim hoặc lý do không promote. Case bị critic từ chối hoặc compile/test fail được giữ nguyên kết quả; không gọi là 10/10 nếu chưa đo đủ.
-3. **Cùng lượt bàn giao:** push source, kiểm CI build/test và Phase 2 từ fresh install; cập nhật Notion và Drive. CI Node không tự chạy model/Unity cần license.
-4. **Sau baseline:** review task success, false acceptance, token, latency, recovery và công người dùng. Chỉ lên đợt thí nghiệm riêng khi baseline chỉ ra nhu cầu.
-
-Điều kiện test: critic reject thì không executor; unknown usage đóng băng; source/test bị đổi thì fail; XML zero/skipped/missing tests không Pass; test fail không ghi Memory claim; cap dự toán chặn trước dispatch; receipt phải khớp request/model/config/CLI; lịch sử v1 bất biến.
+Thứ tự, forecast và test plan ở [roadmap R3](roadmap-r3.md). Schema local không chứng minh engine hoặc model end-to-end; cần Module Ready bằng code và spike CLI sau nghiệm thu. Scaffold 10 microtasks hiện có không thay 24-case task bank hay protocol Brain/Codex.
 
 Evidence: [closure](evidence/phase3-pivot-20260930/closure.json), [300 assessments](evidence/phase3-pivot-20260930/regrade-report.json), [DEV selection](evidence/phase3-pivot-20260930/dev-selection-report.json), [quota](evidence/phase3-pivot-20260930/quota.json), [integrity](evidence/phase3-pivot-20260930/historical-integrity.json), [local tests](evidence/phase3-pivot-20260930/local-check.log).
 

@@ -4,9 +4,9 @@ import { createContractFixtures } from '../fixtures/contracts.js';
 import { canonicalJson, digest, digestOmitting } from '../src/contracts/canonical.js';
 import { parseContract, schemas, type ContractName } from '../src/contracts/schemas.js';
 
-test('all 26 contract fixtures round-trip without mutation or defaults', () => {
+test('all 33 contract fixtures round-trip without mutation or defaults', () => {
   const fixtures = createContractFixtures();
-  assert.equal(Object.keys(schemas).length, 26);
+  assert.equal(Object.keys(schemas).length, 33);
   for (const name of Object.keys(schemas) as ContractName[]) {
     const input = fixtures[name];
     assert.deepEqual(parseContract(name, input), input, name);

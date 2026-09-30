@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
 import { schemas, SCHEMA_VERSION, parseContract, type ContractName, type ProjectProfile } from './contracts/schemas.js';
+import { brainPlanningSchemas, PLANNING_SCHEMA_VERSION } from './contracts/brain-planning.js';
 import { digest } from './contracts/canonical.js';
 import { createFoundationScenario } from '../fixtures/foundation.js';
 import { createFixtureWorkflow } from './foundation/workflow.js';
@@ -78,7 +79,9 @@ async function main(args: string[]): Promise<void> {
   } else if (command?.startsWith('runtime-')) {
     await runtimeCommand(args);
   } else if (command === 'contracts' && args.length === 1) {
-    output({ schemaVersion: SCHEMA_VERSION, contracts: Object.keys(schemas) });
+    const planningContracts = new Set([...Object.keys(brainPlanningSchemas), 'PlanPackage', 'PlanningModeDecision', 'GateReport']);
+    output({ schemaVersion: 'mixed', contracts: Object.keys(schemas), contractVersions: Object.fromEntries(
+      Object.keys(schemas).map(name => [name, planningContracts.has(name) ? PLANNING_SCHEMA_VERSION : SCHEMA_VERSION])) });
   } else if (command === 'validate' && args.length === 3) {
     const name = args[1]!;
     if (!Object.hasOwn(schemas, name)) throw new Error(`Unknown contract: ${name}`);

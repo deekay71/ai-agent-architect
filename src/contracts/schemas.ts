@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { canonicalJson } from './canonical.js';
+import { PlanLevelSchema, PLANNING_SCHEMA_VERSION, brainPlanningSchemas } from './brain-planning.js';
 
 export const SCHEMA_VERSION = '0.5.0' as const;
 const version = z.literal(SCHEMA_VERSION);
@@ -88,7 +89,9 @@ export const SubPlanSchema = z.strictObject({
   steps: z.array(PlanStepSchema).min(1),
 });
 export const PlanPackageSchema = z.strictObject({
-  schemaVersion: version, planId: text, version: positive, hash: digestRef,
+  schemaVersion: z.literal(PLANNING_SCHEMA_VERSION), planId: text, version: positive, hash: digestRef,
+  level: PlanLevelSchema, parentPlanRef: text.nullable(), milestoneRef: text,
+  interfaceApprovalRefs: uniqueRefs, readyChecklistRef: text, changeRequestRefs: uniqueRefs, spikeRefs: uniqueRefs,
   subplans: z.array(SubPlanSchema).min(1), integrationContracts: z.array(IntegrationContractSchema),
   requirementCoverage: z.array(z.strictObject({ requirementRef: text, stepRefs: uniqueRefs.min(1), checkRefs: uniqueRefs.min(1) })).min(1),
   assumptions: z.array(z.strictObject({ id: text, statement: text, evidenceRefs: uniqueRefs, status: z.enum(['unverified', 'supported', 'rejected']) })),
@@ -172,19 +175,18 @@ export const PolicyReleaseSchema = z.strictObject({
   }
 });
 export const PlanningModeDecisionSchema = z.strictObject({
-  schemaVersion: version, decisionId: text, taskClass: text,
-  mode: z.enum(['single+critic', 'multi+synthesizer+critic']), decompositionEvidence: uniqueRefs.min(1),
+  schemaVersion: z.literal(PLANNING_SCHEMA_VERSION), decisionId: text, taskClass: text,
+  mode: z.enum(['single+critic', 'hierarchical+critic']), decompositionEvidence: uniqueRefs.min(1),
   sharedInvariants: uniqueRefs, dependencies: uniqueRefs, fanOut: positive,
   budget: ContextBudgetSchema, benchmarkProfileRef: text, policyReleaseId: text,
 }).superRefine((value, ctx) => {
-  if ((value.mode === 'single+critic' && value.fanOut !== 1) || (value.mode === 'multi+synthesizer+critic' && value.fanOut < 2)) {
+  if (value.mode === 'single+critic' && value.fanOut !== 1) {
     ctx.addIssue({ code: 'custom', path: ['fanOut'], message: 'Fan-out must match planning mode' });
   }
 });
 export const GateReportSchema = z.strictObject({
-  schemaVersion: version, gateReportId: text, artifactHash: digestRef, rubricVersion: text, policyReleaseId: text,
+  schemaVersion: z.literal(PLANNING_SCHEMA_VERSION), gateReportId: text, artifactHash: digestRef, rubricVersion: text, policyReleaseId: text,
   inputVersions: z.array(VersionBindingSchema).min(1), checkResults: z.array(CheckResultSchema).min(1),
-  dimensionScores: z.array(z.strictObject({ dimension: text, score: amount, maximum: z.number().positive().finite() }).refine((v) => v.score <= v.maximum, 'Score exceeds maximum')),
   evidenceRefs: uniqueRefs, defects: z.array(z.strictObject({ defectId: text, checkRef: text, severity: z.enum(['low', 'medium', 'high', 'critical']), description: text })),
   verdict: z.enum(['PASS', 'FAIL', 'UNKNOWN', 'BLOCKED']), issuerId: text, issuedAt: timestamp,
 }).superRefine((value, ctx) => {
@@ -316,6 +318,7 @@ export const SkillBindingSchema = z.strictObject({
 });
 
 export const schemas = {
+  ...brainPlanningSchemas,
   TaskSpec: TaskSpecSchema, ContextBudget: ContextBudgetSchema, ContextBundle: ContextBundleSchema,
   ContextManifest: ContextManifestSchema, PlanStep: PlanStepSchema, SubPlan: SubPlanSchema,
   PlanPackage: PlanPackageSchema, ToolCall: ToolCallSchema, ToolResult: ToolResultSchema,

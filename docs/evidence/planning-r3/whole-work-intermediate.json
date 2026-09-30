@@ -1,0 +1,7 @@
+{
+  "capturedAt": "2026-09-30T04:30:16.775Z",
+  "weeklyUsedPercent": 10,
+  "fiveHourUsedPercent": null,
+  "source": "get_usage_limits",
+  "scope": "intermediate whole-work snapshot, not start-of-session; concurrent Codex activity possible"
+}

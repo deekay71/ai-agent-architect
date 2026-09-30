@@ -156,13 +156,13 @@ test('stage gate is canonical and lookup requires protected report/current input
   rejects(lookupStageGate(q.gateReportId, expectation, [forged], f.authority, f.now), 'gate.envelopeDigest');
   f.policy.status = 'revoked'; rejects(lookupStageGate(q.gateReportId, expectation, [issued.gate], f.authority, f.now), 'gate.policyDrift');
 });
-test('high score cannot override failed or unknown hard checks', () => {
+test('binary gate retains failed and unknown hard checks', () => {
   const f = createRuntimeEvaluationFixture();
   for (const outcome of ['fail', 'unknown'] as const) {
     const result = deterministicCheckResult(f.checks.planning, f.records.plan.hash,
       { outcome, issues: [{ code: 'fixture.defect', path: 'plan', message: 'Controlled mechanical failure' }] }, 'evidence:failure', 'runtime-verifier', f.now);
     register(f, result);
-    const issued = issueStageGate({ ...request(f, result), dimensionScores: [{ dimension: 'all', score: 100, maximum: 100 }] }, f.authority, f.now);
+    const issued = issueStageGate(request(f, result), f.authority, f.now);
     assert.equal(issued.outcome, outcome); assert.notEqual(issued.gate?.report.verdict, 'PASS');
   }
 });

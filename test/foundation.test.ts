@@ -15,7 +15,7 @@ test('valid full contract chain roundtrips and never authorizes real dispatch', 
   const report = auditContractBundle(JSON.parse(JSON.stringify(bundle)), authority);
   assert.deepEqual(report.issues, []);
   assert.equal(report.valid, true);
-  assert.equal(report.checkedContracts, 26);
+  assert.equal(report.checkedContracts, 33);
   assert.equal(report.dispatchAuthorized, false);
 });
 
@@ -63,9 +63,9 @@ for (const [label, expectedCode, mutate] of cases) test(label, () => {
   assert.ok(report.issues.some(x => x.code === expectedCode), JSON.stringify(report.issues));
 });
 
-test('high scores do not turn UNKNOWN into PASS', () => {
+test('removed numeric gate fields are rejected instead of becoming readiness authority', () => {
   const { bundle, authority } = createFoundationScenario();
-  bundle.GateReport.dimensionScores = [{ dimension: 'all', score: 100, maximum: 100 }];
+  Object.assign(bundle.GateReport, { dimensionScores: [{ dimension: 'all', score: 100, maximum: 100 }] });
   bundle.GateReport.checkResults[0]!.outcome = 'unknown';
   bundle.GateReport.checkResults[0]!.unknownReason = 'Evidence unavailable';
   const report = auditContractBundle(bundle, authority);

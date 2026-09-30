@@ -3,6 +3,7 @@ import { digest, digestOmitting, canonicalJson } from '../contracts/canonical.js
 import { SCHEMA_VERSION, schemas, type TaskSpec, type PlanPackage, type ContextManifest, type ContextBundle,
   type CheckDefinition, type CheckResult, type PolicyRelease, type GateReport } from '../contracts/schemas.js';
 import { isWithinScope, isSafeRelativePath } from '../foundation/permissions.js';
+import { PLANNING_SCHEMA_VERSION } from '../contracts/brain-planning.js';
 
 export type EvaluationStage = 'planning' | 'pre-dispatch' | 'post-execution';
 export type EvaluationOutcome = 'pass' | 'fail' | 'unknown' | 'blocked';
@@ -71,7 +72,6 @@ export interface TrustedVerifierReceipt {
 export interface GateRequest {
   gateReportId: string; stage: EvaluationStage; taskClass: string; subjectDigest: string;
   inputVersions: GateReport['inputVersions']; policyReleaseId: string; checkResults: CheckResult[];
-  dimensionScores?: GateReport['dimensionScores'];
 }
 export interface StageGateEnvelope {
   schemaVersion: 'stage-gate/1'; stage: EvaluationStage; taskClass: string; policyDigest: string;
@@ -446,13 +446,14 @@ function evaluateGateChecks(request: GateRequest, authority: RuntimeAuthorityCon
 }
 
 export function issueStageGate(request: GateRequest, authority: RuntimeAuthorityConfig, now: string): GateIssueResult {
+  if (Object.hasOwn(request, 'dimensionScores')) return { outcome: 'fail', issues: [{ code: 'gate.removedScores', path: '$', message: 'Numeric planning scores are no longer accepted' }], gate: null };
   const evaluated = evaluateGateChecks(request, authority, now);
   const policy = authority.policy.releases.find(x => x.releaseId === request.policyReleaseId);
   if (!policy || request.checkResults.length === 0 || request.checkResults.some(x => !schemas.CheckResult.safeParse(x).success)) return { ...evaluated, gate: null };
   const verdict = { pass: 'PASS', fail: 'FAIL', unknown: 'UNKNOWN', blocked: 'BLOCKED' } as const;
-  const reportParsed = schemas.GateReport.safeParse({ schemaVersion: SCHEMA_VERSION, gateReportId: request.gateReportId,
+  const reportParsed = schemas.GateReport.safeParse({ schemaVersion: PLANNING_SCHEMA_VERSION, gateReportId: request.gateReportId,
     artifactHash: request.subjectDigest, rubricVersion: policy.rubricVersion, policyReleaseId: policy.releaseId,
-    inputVersions: request.inputVersions, checkResults: request.checkResults, dimensionScores: request.dimensionScores ?? [],
+    inputVersions: request.inputVersions, checkResults: request.checkResults,
     evidenceRefs: [...new Set(request.checkResults.flatMap(x => x.evidenceRefs))],
     defects: evaluated.issues.map((x, i) => ({ defectId: `${request.gateReportId}:defect:${i}`, checkRef: x.path || '$', severity: 'critical' as const, description: `${x.code}: ${x.message}` })),
     verdict: verdict[evaluated.outcome], issuerId: authority.gate.issuerId, issuedAt: now,

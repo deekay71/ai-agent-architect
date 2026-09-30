@@ -63,6 +63,14 @@ test('CLI invalid syntax, tampered gate and malformed JSON all exit nonzero', as
   }
 });
 test('CLI validates a contract and exports all structural schemas with an explicit limitation', async (t) => {
+  const catalog = JSON.parse(execFileSync(process.execPath, [cli, 'contracts'], { encoding: 'utf8' }));
+  assert.equal(catalog.schemaVersion, 'mixed');
+  assert.equal(catalog.contracts.length, 33);
+  assert.equal(catalog.contractVersions.TaskSpec, '0.5.0');
+  assert.equal(catalog.contractVersions.PlanPackage, '0.6.0');
+  assert.equal(catalog.contractVersions.GateReport, '0.6.0');
+  assert.equal(catalog.contractVersions.ReadyChecklist, '0.6.0');
+  assert.deepEqual(Object.keys(catalog.contractVersions).sort(), [...catalog.contracts].sort());
   const temp = await mkdtemp(path.join(os.tmpdir(), 'architect-schema-'));
   t.after(() => rm(temp, { recursive: true, force: true }));
   const file = path.join(temp, 'task.json');
@@ -71,7 +79,7 @@ test('CLI validates a contract and exports all structural schemas with an explic
   assert.equal(validation.schemaValid, true);
   assert.equal(validation.dispatchAuthorized, false);
   const exported = JSON.parse(execFileSync(process.execPath, [cli, 'schemas', path.join(temp, 'schemas')], { encoding: 'utf8' }));
-  assert.equal(exported.written, 26);
+  assert.equal(exported.written, 33);
   const schema = JSON.parse(await readFile(path.join(temp, 'schemas/ToolCall.schema.json'), 'utf8'));
   assert.match(schema.$comment, /Structure only/);
 });
