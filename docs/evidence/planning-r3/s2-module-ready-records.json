@@ -1,0 +1,86 @@
+{
+  "recordSet": "s2-brain-comparison-candidate",
+  "recordedAt": "2026-09-30T12:36:14+07:00",
+  "purpose": "Schema-valid S2 module Ready evidence; run authorized and not yet started.",
+  "s1Evidence": {
+    "ref": "docs/evidence/unity-s1-20260930/results.json",
+    "outcome": "pass",
+    "summary": "6/6 controlled runs; 71.49s Unity runtime; cold/warm/recovery/batch fallback 29/29; expected test and compile failures were rejected."
+  },
+  "records": {
+    "interfaceApproval": {
+      "schemaVersion": "0.6.0",
+      "interfaceId": "s2-r3-measurement-v1",
+      "version": 1,
+      "producer": "s2-comparison-module",
+      "consumers": ["round1-a", "round1-b", "round1-c", "measurement-memory"],
+      "inputs": ["locked task manifest", "pinned revision", "candidate source", "shared broker compiler/test feedback", "usage receipt"],
+      "outputs": ["arm result record", "broker verification evidence", "verified finite Memory observation"],
+      "ownership": "s2-comparison-module",
+      "invariants": ["A precedes B precedes C", "B reuses A and repairs model failures only", "two A infrastructure failures stop B and C", "A/B/C receive identical broker feedback", "hidden test source remains inaccessible", "C credit cap includes cached input and equals B cap"],
+      "errorContract": "A broker or monitoring failure stops admission and records an infrastructure blocker.",
+      "compatibilityCheckRefs": ["docs/s2-brain-comparison-protocol.md#request-va-shared-controls"],
+      "state": "approved",
+      "mainPlannerRef": "s2-comparison-module",
+      "decisionRecordRef": "docs/decision-log.md#s2-protocol-ready-execution-chua-bat-dau"
+    },
+    "readyChecklist": {
+      "schemaVersion": "0.6.0",
+      "checklistId": "s2-r3-comparison-ready-v1",
+      "plan": {
+        "ref": "docs/s2-brain-comparison-protocol.md",
+        "version": 1,
+        "digest": "sha256:9bc0a62f2007fef827d2216a0018aaeb15491e4c6ef94be8a7392e0da2995a70"
+      },
+      "checks": {
+        "requirementCoverage": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md", "unity/walking-skeleton/execution-recipe.md"], "reason": "The module defines Request, Plan, Critic, Execution, Verification, Evidence and Memory work items plus one shared public execution recipe."},
+        "interfaceCompatibility": {"outcome": "pass", "evidenceRefs": ["docs/evidence/unity-s1-20260930/broker-preflight.json", "docs/evidence/unity-s1-20260930/native-offline-preflight.json"], "reason": "The broker preflight passed three pinned hidden tests with identical feedback; native preflight exposed only unity_public and denied oracle reads."},
+        "testableAcceptance": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#verification-evidence-va-memory"], "reason": "Every stage names a pinned artifact or check, including broker feedback, receipts and verified Memory observations."},
+        "highRiskSpikes": {"outcome": "pass", "evidenceRefs": ["docs/evidence/unity-s1-20260930/results.json"], "reason": "S1 passed all six controlled CLI/failure-path checks; its private spike source remains do_not_merge."},
+        "budgetFit": {"outcome": "pass", "evidenceRefs": ["docs/decision-log.md#s2-protocol-ready-execution-chua-bat-dau", "test/unity-comparison.test.ts"], "reason": "Conditional approval uses measured quota STOP at 8pp delta with 2pp reserve; monitor behavior is tested, with soft in-flight overshoot retained as risk."},
+        "acyclicDependencies": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#plan-critic-va-execution"], "reason": "The declared execution order is A then B then C, with evidence flowing append-only to memory."},
+        "clearGoalAndAcceptance": {"outcome": "pass", "evidenceRefs": ["docs/s2-brain-comparison-protocol.md#admission-va-decision"], "reason": "The keep, batch-2 and simplify criteria are explicit."}
+      },
+      "openGoalOrAcceptanceQuestions": [],
+      "outcome": "ready",
+      "reviewedBy": "s2-documentation",
+      "reviewedAt": "2026-09-30T12:36:14+07:00"
+    },
+    "workItems": [
+      {"schemaVersion": "0.6.0", "taskId": "s2-request-lock", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Freeze the ten-task manifest, revision, fixtures, rights, taxonomy and caps.", "parentRef": "s2-comparison-module", "requirementRefs": ["request-lock"], "interfaceApprovalRefs": [], "dependencies": [], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["manifest-lock-check"], "acceptanceCriteria": ["The ten task IDs and all shared controls are pinned before A."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-plan", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Record the one-pass Sol plan for each locked task.", "parentRef": "s2-comparison-module", "requirementRefs": ["a-one-pass"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-request-lock"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["a-plan-count-check"], "acceptanceCriteria": ["Exactly one planner output exists per locked task."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-critic", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Record the one-pass Sol critic result for each A plan.", "parentRef": "s2-comparison-module", "requirementRefs": ["a-one-pass"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-plan"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["a-critic-count-check"], "acceptanceCriteria": ["Exactly one critic output is bound to each A plan."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-execution", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Execute A once and B repairs only for model failures, then execute C.", "parentRef": "s2-comparison-module", "requirementRefs": ["a-b-c-sequence"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-critic"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["sequence-and-repair-cap-check"], "acceptanceCriteria": ["B never reruns A; two A infrastructure failures stop B and C."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-verification", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Run pinned checks after each execution or repair and count hidden-test passes.", "parentRef": "s2-comparison-module", "requirementRefs": ["verification-evidence"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-execution"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["pinned-test-and-hidden-oracle-check"], "acceptanceCriteria": ["Verification evidence binds each result to the locked task and revision."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-evidence", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Publish receipts, classifications, credits, wall time, owner fixes and B's two ledgers.", "parentRef": "s2-comparison-module", "requirementRefs": ["measurement-ledger"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-verification"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["receipt-and-ledger-check"], "acceptanceCriteria": ["C credit monitoring includes cached input; unknown usage remains unknown."]},
+      {"schemaVersion": "0.6.0", "taskId": "s2-memory", "level": "task", "kind": "implementation", "horizon": "next_milestone", "goal": "Append measurement context without altering locked tasks or receipts.", "parentRef": "s2-comparison-module", "requirementRefs": ["memory-provenance"], "interfaceApprovalRefs": ["s2-r3-measurement-v1"], "dependencies": ["s2-evidence"], "childTaskRefs": [], "oneAgentSession": true, "ownerReviewMinutes": 30, "automatedCheckRefs": ["append-only-memory-check"], "acceptanceCriteria": ["Memory summaries preserve evidence references and cannot overwrite a result."]}
+    ],
+    "taskLog": {
+      "schemaVersion": "0.6.0",
+      "taskId": "s2-comparison-module",
+      "cohortId": "r3-round1-candidate",
+      "level": "module",
+      "initialPlanVersion": 1,
+      "currentPlanVersion": 1,
+      "readyChecklistRef": "s2-r3-comparison-ready-v1",
+      "readyOutcome": "ready",
+      "spikeRefs": ["docs/evidence/unity-s1-20260930/results.json"],
+      "executionOutcome": "not_started",
+      "replanCount": 0,
+      "returnToLevels": [],
+      "ownerManualCorrections": 0,
+      "planningDefectRefs": [],
+      "modelUsage": [],
+      "creditMicros": null,
+      "usageEvidenceRefs": []
+    }
+  },
+  "nonSchemaStatus": {
+    "protocolFrozen": true,
+    "reserveProven": true,
+    "hiddenTestBrokerIntegrationProven": true,
+    "nativeCCreditMonitoringProven": true,
+    "hiddenOracleIsolationProven": true,
+    "executableReady": true
+  }
+}

@@ -48,6 +48,14 @@ Khi triển khai orchestration cần engine/Ready integration tests riêng: ch�
 
 Tỉ lệ task hoàn tất không replan = số task đã hoàn tất, chưa từng sửa plan / toàn bộ task đã bắt đầu trong cohort. Báo riêng đang chạy, blocked và fail; chỉ kết luận trên cohort đã kết thúc. Lỗi plan đếm nguyên nhân gốc theo tầng; không tính lỗi code hoặc yêu cầu mới thành lỗi plan. Mỗi đợt owner sửa tay liên tục tính một lần, có lý do; review/duyệt thường lệ không là lỗi. Không reset mẫu số hoặc lịch sử sau replan. Kèm input/cached/output, credit, thời gian và usage receipts; chưa đo ghi chưa đo.
 
+## Protocol đối chứng Brain R3
+
+Round 1 là một module measurement, không phải permission để xây engine: dùng existing 10 microtasks, frozen revision/fixtures/protected tests/skills/quyền CLI. Thứ tự bắt buộc là A → B → C. A chạy một pass planner Sol → critic Sol → executor Terra. B dùng kết quả A, chỉ repair tối đa hai vòng Terra cho A model-failed task theo compile/test output, và không chạy A lần nữa. B ledger tách `cumulative A + repairs` khỏi `incremental repairs`. C là ordinary Codex cùng Terra, Unity skills và CLI rights; C per-task **credit cap, gồm cached input**, bằng cap B per-task.
+
+Nếu từ hai task A trở lên infra-failed, stop trước B/C và báo evidence. Metrics là hidden-test pass count, owner manual fixes, credits và wall time. Không chọn lọc task/kết quả sau khi chạy. Giữ Brain khi B ≥ C + 2 pass, hoặc B/C equal pass nhưng B ít owner fixes hơn, và B credit ≤ 2 × C; điều kiện equal-pass/fewer-fixes cùng cost constraint cũng đủ giữ. Tất cả tie còn lại đi batch 2 (4 feature + 2 multi-session task), cần budget approval riêng. C ≥ B ở batch 2 dẫn đến simplify Brain thành thin skills + memory + verification.
+
+Raw threshold toàn lượt vẫn 300.000 input + output (cached không đếm hai lần). Owner conditional approval chỉ có hiệu lực khi S1 Pass, protocol frozen và forecast ≤10pp quota tuần; thiếu bất cứ evidence nào là Not Ready. Mục tiêu nghiệm thu này dùng cap 10pp, không dùng DEV 5pp.
+
 ## Mẫu brief Game/Epic một trang
 
 Mục tiêu và thành công kiểm được; phạm vi làm/không làm; quyết định chính; interface/ownership/dependency; rủi ro và spike (câu hỏi/timebox/token/stop); budget thời gian/token/credit/quota; mục cần owner chốt. Owner nhận trang này trước khi mở planning module.

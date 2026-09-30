@@ -1,0 +1,31 @@
+# S2 Brain comparison protocol — 30/09/2026
+
+S2 là module planning records cho measurement `Request → Plan → Critic → Execution → Verification → Evidence → Memory`. Các record máy đọc được ở [s2-module-ready-records.json](evidence/planning-r3/s2-module-ready-records.json) là schema-valid `ready` records: the run is authorized but has not started.
+
+## Request và shared controls
+
+Round 1 dùng đúng existing 10 Unity microtasks. Trước A, protocol lock phải pin task IDs và thứ tự, base revision, public stub fixture, Unity/CLI version, skill versions, executor CLI rights, [shared execution recipe](../unity/walking-skeleton/execution-recipe.md), per-task B credit cap (cached input included), C cap bằng cap đó, failure taxonomy và receipt format. Không thay case, không bỏ case và không chọn kết quả sau khi chạy. Mỗi task giữ compiler/test feedback, usage receipt, wall time và owner-fix record.
+
+S1 đã Pass 6/6 controlled runs trong 71,49 giây Unity runtime. Evidence [results.json](evidence/unity-s1-20260930/results.json) xác nhận cold/warm/recovery/batch fallback 29/29, test fault 3 failed/exit 8, compile fault không XML/exit 6+CS error. Source nằm dưới `.local`, private và `do_not_merge`. S1 không thay protocol lock hoặc hidden-oracle isolation.
+
+## Plan, critic và execution
+
+For each task, A has exactly one sequence: one Sol planner pass, one Sol critic pass against that plan, then one Terra candidate and one verification. B does not replan, re-criticize or rerun A. It reuses the A plan, critic output, workspace and verification result. Only an A task classified `model_failed` may receive at most two Terra candidate invocations. Each receives the preceding compiler/test feedback and is verified through the same broker. A task classified `infra_failed` never enters B repair. If two or more A tasks are infra-failed, stop before any B or C work and report the infrastructure evidence.
+
+C begins only after B. It is ordinary Codex under the identical Terra model, Unity skills and CLI rights used by the executor; it may iterate within its per-task credit cap. C may make ordinary shell writes; its MCP `unity_compile_test` calls the official CLI through a shared-host Unity test broker. The broker copies only the candidate source into its private evaluation workspace and runs the pinned hidden-source tests. Test source and assertions stay inaccessible; compiler and test results are returned equally to A, B and C. A uses one candidate plus one verification; B gets no more than two candidate invocations. C has no Brain requirement. Its per-task credit cap, including cached input, equals B's cumulative `4.6335` credit cap: A allocation `2.7001` plus two repair allocation `0.9667`. There is no raw-token C cutoff.
+
+## Verification, evidence and memory
+
+Verification uses the broker's pinned hidden-source test result after every candidate. Evidence binds task/revision, broker command/XML/log digests, receipts, classification, repair count, credits, wall time and owner manual fixes. The real Memory store records verified A/B finite observations; it is append-only measurement context and cannot replace a receipt or change a locked task/result.
+
+The forecast has 20 Sol planner/critic calls, 10 Terra A native sessions, 0–20 Terra B native repair sessions, and 10 Terra C native sessions. Internal native model responses may vary; credit accounting caps them. A's broker permits one candidate and returns its source hash. B works in a fork of A's target with identical immutable files. C may make free iterations under its credit cap, but reuses a verification result for an unchanged source and does not start another Unity run until the source changes or no prior call exists.
+
+B reports two ledgers: cumulative `A + eligible repairs`, and incremental repairs alone. Every arm reports credits, including cached-input treatment, and wall time. C needs the native app-server credit monitor because JSON executor output only reports at end-of-turn. Unknown usage or missing receipt remains unknown; it cannot be converted to zero or PASS.
+
+## Admission and decision
+
+Raw input + output for the entire run retains the 300,000 threshold; cached input is a subset of input and is not counted twice. The tentative raw forecast is 1–2 million including cached input; it is a forecast, not a raw cap. The revised credit forecast is 92.67 credits = 8.858351336pp. That pp rate is noisy and observational, not trusted calibration: quota is rounded and may include concurrent work. The conditional preapproval plus measured quota checkpoints therefore STOP the run at an 8pp delta, preserving 2pp reserve. Credit monitoring can have soft in-flight overshoot; it is not a hard provider cap.
+
+S1 passed. Native offline preflight proves only `unity_public`/`unity_compile_test` was available, oracle reads were denied and model calls were zero. The committed broker preflight passed the three pinned IntegerClamp hidden tests with identical cross-arm feedback. The full TypeScript suite passed 635 unique tests (including the explicit-infrastructure stop regression), and six Python broker tests passed. The protocol is frozen at the digest in its Ready record, broker and monitoring proofs are bound, and execution is authorized but not yet started. Whole-turn quota moved 16→23 before benchmark and includes other-agent activity; 5h remains unknown. Nonbenchmark work aims for ≤3pp weekly quota; if that cannot be met, report the reason rather than treating the target as met.
+
+Retain Brain if B has at least two more hidden-test passes than C, or B and C have equal passes and B has fewer owner manual fixes, provided B credits are no more than twice C credits. Equal-pass/fewer-fixes with the cost condition qualifies directly. If C is at least B after these 10 microtasks, the result is inconclusive and batch 2 must be 4 feature plus 2 multi-session tasks with a separate budget approval. A B win by one pass, or B credits above 2 × C, is also inconclusive and returns to owner review; it does not trigger automatic shrink. If C is at least B again in batch 2, simplify Brain to thin skills + memory + verification. Bring the owner decision forward as soon as complete paired results are ready.

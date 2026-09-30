@@ -33,6 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           pnpm check 2>&1 | tee -a ci-logs/check.log
+          python3 test/unity-broker-test.py 2>&1 | tee -a ci-logs/check.log
       - name: Check Phase 2 spike
         shell: bash
         run: |

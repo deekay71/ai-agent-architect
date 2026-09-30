@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "modelCalls": 0,
+  "handshake": true,
+  "hiddenOracleDenied": true,
+  "mcpAvailable": true,
+  "mcpServers": [
+    {
+      "name": "computer-use",
+      "tools": []
+    },
+    {
+      "name": "node_repl",
+      "tools": []
+    },
+    {
+      "name": "unity_mcp",
+      "tools": []
+    },
+    {
+      "name": "unity_public",
+      "tools": [
+        "unity_compile_test"
+      ]
+    }
+  ]
+}

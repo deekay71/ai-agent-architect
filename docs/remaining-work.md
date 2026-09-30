@@ -4,9 +4,9 @@ Phase 3 conditional closure đã được owner **accepted**. Evidence/report R2
 
 1. Push phạm vi được duyệt và xác nhận CI.
 2. Làm Unity baseline/infrastructure: T21 adapter + empty project, sau đó T08 compile/test evidence. Preflight lịch sử có Editor `6000.0.84f1`, CLI `1.0.0-beta.8`, 29 oracle và 3 CLI tests pass; chưa có model Unity run.
-3. Khi owner duyệt forecast/budget, chạy fixes và comparison A/B/C trên existing 10 microtasks: Brain one pass; Brain + tối đa hai repair rounds; ordinary Codex cùng Unity CLI/token cap.
-4. Ghi actual per task/arm, gồm input/output/cached tokens, direct credits, test evidence, repair/replan và manual fixes. Nếu forecast unknown hoặc vượt threshold/quota, xin approval trước run.
-5. Cuối 10/2026 owner chọn retain hoặc simplify Brain. Sau đó mới mở rộng Brain orchestration nếu quyết định giữ yêu cầu.
+3. S1 đã Pass. Khi protocol frozen, reserve, native C credit monitoring và hidden-oracle isolation đủ evidence, chạy sequential A → B → C trên existing 10 microtasks. A chỉ một planner Sol → critic Sol → executor Terra pass. B dùng lại A, chỉ repair tối đa hai Terra round cho task model-failed và không rerun A. C sau B có cùng Terra/Unity skills/CLI rights; C per-task credit cap, gồm cached input, bằng B.
+4. Nếu ≥2 task A infra-failed, dừng trước B/C. Ghi actual per task/arm: hidden-test pass count, owner manual fixes, credits, wall time, input/output/cached tokens, test evidence; B tách cumulative A+repairs và incremental repairs. Không cherry-pick sau kết quả.
+5. Khi paired results sẵn sàng, owner chọn retain nếu B ≥ C + 2 pass hoặc equal pass/fewer fixes, với B credit ≤2×C. Các tie khác đi batch 2 (4 feature + 2 multi-session, budget approval riêng); C ≥ B batch 2 thì simplify Brain thành thin skills + memory + verification. Sau đó mới mở rộng Brain orchestration nếu quyết định giữ yêu cầu.
 6. Hoàn tất T22 platform gate trước Game/Epic brief và Block Puzzle pilot.
 7. Khi future batch trở thành next milestone, khóa 24-task scene/prefab + feature bank; hiện chỉ là outline.
 

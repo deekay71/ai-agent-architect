@@ -1,0 +1,976 @@
+{
+  "startedAt": "2026-09-30T05:08:13.255810+00:00",
+  "results": [
+    {
+      "case": "cli-cold-pass",
+      "expected": "pass",
+      "accepted": true,
+      "exitCode": 0,
+      "durationSeconds": 21.34,
+      "tests": [
+        {
+          "id": "1007",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1011",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1012",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1013",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed"
+        },
+        {
+          "id": "1019",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed"
+        },
+        {
+          "id": "1020",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1021",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1033",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1034",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1035",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1003",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        },
+        {
+          "id": "1027",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed"
+        },
+        {
+          "id": "1028",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed"
+        },
+        {
+          "id": "1037",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1038",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1039",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1015",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1016",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1017",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1023",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1024",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1025",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1029",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1030",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1031",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed"
+        }
+      ],
+      "passed": 29,
+      "failed": 0,
+      "compileErrors": [],
+      "command": [
+        "<home>/.unity/bin/unity",
+        "--non-interactive",
+        "--no-banner",
+        "test",
+        "<repo>/.local/unity-s1-20260930/project",
+        "--mode",
+        "EditMode",
+        "--output",
+        "<repo>/.local/unity-s1-20260930/cli-cold-pass/tests.xml",
+        "--editor-path",
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "--timeout",
+        "180",
+        "--retries",
+        "0",
+        "--",
+        "-nographics",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/cli-cold-pass/editor.log"
+      ],
+      "xmlSha256": "5836f08869c3ca54c495d2599b7da39ff82500c8d7d4553a0bc74ec862da3d29",
+      "artifactHashes": {
+        "tests.xml": "5836f08869c3ca54c495d2599b7da39ff82500c8d7d4553a0bc74ec862da3d29",
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "case": "cli-warm-pass",
+      "expected": "pass",
+      "accepted": true,
+      "exitCode": 0,
+      "durationSeconds": 11.9,
+      "tests": [
+        {
+          "id": "1007",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1011",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1012",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1013",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed"
+        },
+        {
+          "id": "1019",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed"
+        },
+        {
+          "id": "1020",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1021",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1033",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1034",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1035",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1003",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        },
+        {
+          "id": "1027",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed"
+        },
+        {
+          "id": "1028",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed"
+        },
+        {
+          "id": "1037",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1038",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1039",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1015",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1016",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1017",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1023",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1024",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1025",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1029",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1030",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1031",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed"
+        }
+      ],
+      "passed": 29,
+      "failed": 0,
+      "compileErrors": [],
+      "command": [
+        "<home>/.unity/bin/unity",
+        "--non-interactive",
+        "--no-banner",
+        "test",
+        "<repo>/.local/unity-s1-20260930/project",
+        "--mode",
+        "EditMode",
+        "--output",
+        "<repo>/.local/unity-s1-20260930/cli-warm-pass/tests.xml",
+        "--editor-path",
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "--timeout",
+        "180",
+        "--retries",
+        "0",
+        "--",
+        "-nographics",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/cli-warm-pass/editor.log"
+      ],
+      "xmlSha256": "c4657ee3e1c6993c27c6198a20794e9ef759b6d3cb3a928db601ab2ed4516d9b",
+      "artifactHashes": {
+        "tests.xml": "c4657ee3e1c6993c27c6198a20794e9ef759b6d3cb3a928db601ab2ed4516d9b",
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "case": "cli-test-fail",
+      "expected": "test-fail",
+      "accepted": true,
+      "exitCode": 8,
+      "durationSeconds": 14.28,
+      "tests": [
+        {
+          "id": "1007",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1011",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1012",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1013",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed"
+        },
+        {
+          "id": "1019",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed"
+        },
+        {
+          "id": "1020",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1021",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1033",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1034",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1035",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1003",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Failed"
+        },
+        {
+          "id": "1004",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Failed"
+        },
+        {
+          "id": "1005",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Failed"
+        },
+        {
+          "id": "1027",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed"
+        },
+        {
+          "id": "1028",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed"
+        },
+        {
+          "id": "1037",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1038",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1039",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1015",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1016",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1017",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1023",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1024",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1025",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1029",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1030",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1031",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed"
+        }
+      ],
+      "passed": 26,
+      "failed": 3,
+      "compileErrors": [],
+      "command": [
+        "<home>/.unity/bin/unity",
+        "--non-interactive",
+        "--no-banner",
+        "test",
+        "<repo>/.local/unity-s1-20260930/project",
+        "--mode",
+        "EditMode",
+        "--output",
+        "<repo>/.local/unity-s1-20260930/cli-test-fail/tests.xml",
+        "--editor-path",
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "--timeout",
+        "180",
+        "--retries",
+        "0",
+        "--",
+        "-nographics",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/cli-test-fail/editor.log"
+      ],
+      "xmlSha256": "e89575a0b88c8b8c5c6627c78ce8a64fcbe539341cf63976f73b063149d4df70",
+      "artifactHashes": {
+        "tests.xml": "e89575a0b88c8b8c5c6627c78ce8a64fcbe539341cf63976f73b063149d4df70",
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "3196be28fd54b573439f5b6767d2b20751fa04567eac2e8ea8e6cb736d8c7329"
+      }
+    },
+    {
+      "case": "cli-compile-fail",
+      "expected": "compile-fail",
+      "accepted": true,
+      "exitCode": 6,
+      "durationSeconds": 15.34,
+      "tests": [],
+      "passed": 0,
+      "failed": 0,
+      "compileErrors": [
+        "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs(1,35): error CS0116: A namespace cannot directly contain members such as fields, methods or statements",
+        "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs(1,35): error CS0116: A namespace cannot directly contain members such as fields, methods or statements",
+        "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs(1,35): error CS0116: A namespace cannot directly contain members such as fields, methods or statements"
+      ],
+      "command": [
+        "<home>/.unity/bin/unity",
+        "--non-interactive",
+        "--no-banner",
+        "test",
+        "<repo>/.local/unity-s1-20260930/project",
+        "--mode",
+        "EditMode",
+        "--output",
+        "<repo>/.local/unity-s1-20260930/cli-compile-fail/tests.xml",
+        "--editor-path",
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "--timeout",
+        "180",
+        "--retries",
+        "0",
+        "--",
+        "-nographics",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/cli-compile-fail/editor.log"
+      ],
+      "xmlSha256": null,
+      "artifactHashes": {
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "8d5d72b4d6011b9081cb0d8f6016be3eeb7d332f61c3faf361947467c540ba56"
+      }
+    },
+    {
+      "case": "cli-recovery-pass",
+      "expected": "pass",
+      "accepted": true,
+      "exitCode": 0,
+      "durationSeconds": 3.03,
+      "tests": [
+        {
+          "id": "1007",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1011",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1012",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1013",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed"
+        },
+        {
+          "id": "1019",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed"
+        },
+        {
+          "id": "1020",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1021",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1033",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1034",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1035",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1003",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        },
+        {
+          "id": "1027",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed"
+        },
+        {
+          "id": "1028",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed"
+        },
+        {
+          "id": "1037",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1038",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1039",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1015",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1016",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1017",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1023",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1024",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1025",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1029",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1030",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1031",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed"
+        }
+      ],
+      "passed": 29,
+      "failed": 0,
+      "compileErrors": [],
+      "command": [
+        "<home>/.unity/bin/unity",
+        "--non-interactive",
+        "--no-banner",
+        "test",
+        "<repo>/.local/unity-s1-20260930/project",
+        "--mode",
+        "EditMode",
+        "--output",
+        "<repo>/.local/unity-s1-20260930/cli-recovery-pass/tests.xml",
+        "--editor-path",
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "--timeout",
+        "180",
+        "--retries",
+        "0",
+        "--",
+        "-nographics",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/cli-recovery-pass/editor.log"
+      ],
+      "xmlSha256": "c36d3f13b1f75f834e083e98243bddcd8bfc34e436d5454ba8efb423e05dde83",
+      "artifactHashes": {
+        "tests.xml": "c36d3f13b1f75f834e083e98243bddcd8bfc34e436d5454ba8efb423e05dde83",
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "case": "batchmode-fallback-pass",
+      "expected": "pass",
+      "accepted": true,
+      "exitCode": 0,
+      "durationSeconds": 5.58,
+      "tests": [
+        {
+          "id": "1007",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1011",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(0,0,3,2,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1012",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(2,1,3,2,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1013",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle(1,1,2,2,3)",
+          "result": "Passed"
+        },
+        {
+          "id": "1019",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"\",18652613)",
+          "result": "Passed"
+        },
+        {
+          "id": "1020",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1021",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle(\"alpha\",1569418667)",
+          "result": "Passed"
+        },
+        {
+          "id": "1033",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1034",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1035",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle(System.Int32[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1003",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        },
+        {
+          "id": "1027",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_preserves_scalar_state",
+          "result": "Passed"
+        },
+        {
+          "id": "1028",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip_rejects_null",
+          "result": "Passed"
+        },
+        {
+          "id": "1037",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(0,0,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1038",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,1,1,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1039",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle(1,1,2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1015",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1016",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1017",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle(System.Boolean[],False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1023",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(2,3,5)",
+          "result": "Passed"
+        },
+        {
+          "id": "1024",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MaxValue,1,int.MaxValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1025",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle(int.MinValue,-1,int.MinValue)",
+          "result": "Passed"
+        },
+        {
+          "id": "1029",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(2,-1,0.5f,1.0f,-0.5f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1030",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(0,3,2.0f,0.0f,6.0f)",
+          "result": "Passed"
+        },
+        {
+          "id": "1031",
+          "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle(1,1,1.0f,1.0f,1.0f)",
+          "result": "Passed"
+        }
+      ],
+      "passed": 29,
+      "failed": 0,
+      "compileErrors": [],
+      "command": [
+        "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app/Contents/MacOS/Unity",
+        "-batchmode",
+        "-nographics",
+        "-projectPath",
+        "<repo>/.local/unity-s1-20260930/project",
+        "-runTests",
+        "-testPlatform",
+        "EditMode",
+        "-testResults",
+        "<repo>/.local/unity-s1-20260930/batchmode-fallback-pass/tests.xml",
+        "-runSynchronously",
+        "-logFile",
+        "<repo>/.local/unity-s1-20260930/batchmode-fallback-pass/editor.log"
+      ],
+      "xmlSha256": "f66bcec36ca24df47174337e8b7fa5a3044a2012da7921a9ab24697d10d34b2a",
+      "artifactHashes": {
+        "tests.xml": "f66bcec36ca24df47174337e8b7fa5a3044a2012da7921a9ab24697d10d34b2a",
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "elapsedSeconds": 71.489896041,
+  "status": "Pass",
+  "scope": "Unity CLI stability spike, isolated empty infrastructure fixture",
+  "unityEditor": "6000.0.84f1",
+  "unityCli": "1.0.0-beta.8",
+  "spikeCodeDisposition": "do_not_merge",
+  "modelBenchmarkCalls": 0,
+  "timeboxMinutes": 90,
+  "supportTokenCap": 60000,
+  "reportedSupportTokens": null,
+  "supportTokenMeasurement": "Conversation/agent quota not exposed as per-task token count; no extra benchmark model calls."
+}

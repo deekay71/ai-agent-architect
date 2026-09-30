@@ -32,6 +32,8 @@ Không thể suy ra cached/uncached input chưa ghi nhận cho whole work từ t
 
 Chia 52.3066 credits cho thay đổi quota quan sát 5 percentage points cho **10.46132 credits/weekly-percentage-point**. Đây chỉ là *tỷ lệ mô tả bị nhiễm của ngày 30/09*, không phải conversion chính thức, calibration sạch, hay hard quota-safety guarantee. Giá trị trusted calibration giữ là `null`, để estimator fail closed khi thiếu calibration hợp lệ.
 
-Nếu chỉ dùng tỷ lệ mô tả này để kiểm tra một proposal, forecast xấp xỉ là A: `27.001 / 10.46132 = 2.58pp`; B: `46.335 / 10.46132 = 4.43pp`; C: `48.335 / 10.46132 = 4.62pp`; tổng **11.63pp**. Cap DEV hiện tại là 5pp, nên proposal này **không admissible**. Cần forecast mới thấp hơn hoặc một quyết định owner rõ ràng ở giai đoạn sau; phép tính này không cho phép chạy model.
+Các số A/B/C `2.58pp/4.43pp/4.62pp` và tổng `11.63pp` là forecast cũ, giả B rerun A và C có raw ceiling `46.670/task`; chúng không còn là protocol hiện hành. Forecast sửa đổi A/B/C là **92,67 credits = 8,858351336pp**, với B cumulative per-task cap `4,6335` credit (A `2,7001` + tối đa hai repair `0,9667`) và C cap `4,6335` credit mỗi task, cached input included. Cần reserve và native credit monitoring cho C trước run.
+
+Mục tiêu acceptance hiện hành là ≤**10pp** quota tuần, không phải DEV 5pp. 300.000 raw input+output vẫn là ngưỡng hỏi trước toàn lượt. S1 đã Pass, nhưng owner conditional approval chưa thành executable Ready trước protocol frozen, reserve, native C credit monitoring và hidden-oracle isolation. Tỷ lệ `10.46132 credits/pp` vẫn bị nhiễm và trusted calibration vẫn `null`, nên nó không tự chứng minh forecast hoặc cấp quyền model run.
 
 Snapshot whole work từ 0% đến latest check 10% vẫn không thay đổi kết luận: timestamp mốc early 0% không có, tổng token whole work không biết, và root sẽ ghi mốc completion sau. Nó không tạo được hệ số quota tin cậy.

@@ -30,9 +30,11 @@ Thay thế: trạng thái tạm “chờ nghiệm thu đóng Phase 3” và các
 
 Lý do: cần đo lợi ích của vòng sửa lỗi compile/test và so với cách dùng Codex thường trước đầu tư thêm orchestration.
 
-Quyết định: push/CI → baseline Unity → fix/đối chứng → **28–30/10/2026 giữ hay thu gọn Brain** → orchestration phù hợp quyết định → T22 → pilot. Báo sớm lý do/tác động nếu trễ.
+Quyết định: push/CI → baseline Unity → fix/đối chứng → **quyết định giữ hay thu gọn ngay khi paired results sẵn sàng** → orchestration phù hợp quyết định → T22 → pilot. Báo sớm lý do/tác động nếu blocker kéo dài.
 
-Round 1 dùng cùng 10 microtasks Unity hiện có: **A** Brain một lượt; **B** A + tối đa 2 vòng sửa từ compile/test; **C** Codex thường, cùng Terra executor, Unity CLI, skills và trần token. Brain tính cả planner/critic. Dự toán riêng từng nhánh và tổng; khóa fixture/revision/AC/trần/retry protocol trước chạy. Đợt sau thêm scene/prefab và feature. T24 đo skill trên Unity thật; thí nghiệm A/B/C giữ skill cố định nên không tự chứng minh causal benefit của skill.
+Round 1 dùng cùng 10 microtasks Unity hiện có, tuần tự **A → B → C**. A chỉ một pass planner Sol → critic Sol → executor Terra. B tái sử dụng A và chỉ repair tối đa hai vòng Terra cho task A model-failed, từ compile/test output; không rerun A. C là Codex thường với cùng Terra executor, Unity CLI, skills và quyền CLI. Nếu ít nhất hai task A infra-failed, dừng trước B/C và báo evidence. Protocol khóa fixture/revision/AC/phân loại lỗi/skill pins/quyền/caps trước A; không cherry-pick sau kết quả. B báo cumulative A+repairs và incremental repairs riêng. C cap **credit (gồm cached input)** mỗi task bằng B cap, không dùng raw `46.670/task` cũ. Đợt sau thêm scene/prefab và feature. T24 đo skill trên Unity thật; thí nghiệm A/B/C giữ skill cố định nên không tự chứng minh causal benefit của skill.
+
+Quy tắc quyết định: giữ nếu B ≥ C + 2 hidden-test passes, hoặc bằng pass nhưng B có ít owner manual fixes hơn, với B credit ≤ 2 × C. Equal-pass/fewer-fixes cùng cost constraint đủ điều kiện giữ; tie khác phải batch 2. Nếu C ≥ B sau 10 microtasks thì inconclusive: batch 2 gồm 4 feature + 2 multi-session task và cần approval ngân sách riêng; nếu C ≥ B ở batch 2 thì simplify Brain thành thin skills + memory + verification. Metrics bắt buộc: hidden-test pass count, owner manual fixes, credits và wall time.
 
 Thay thế: first round 24 case real-task bank/10 case phân cỡ × 2 arm; T24 repo không Unity; thứ tự Brain orchestration trước Unity. Task bank 24 giữ outline đợt sau, chưa fixture hay campaign.
 
@@ -42,7 +44,15 @@ Lý do: hệ số model cố định không phản ánh cached input/output. Own
 
 Quyết định: credit Standard trên 1 triệu token uncached input/cached input/output: **gpt-5.6-terra 50/5/300; gpt-6-sol 50/5/250; gpt-6-astra 250/25/1250**. Tính `(input−cached)×inputRate + cached×cachedRate + output×outputRate`, chia 1 triệu. Cached đã nằm trong input, không cộng hai lần; receipt thiếu usage/cache ghi unknown. [Bảng giá Codex](https://learn.chatgpt.com/docs/pricing) xác nhận credit Standard, khác giá API USD; credit không tự quy đổi thành quota included.
 
-Hỏi trước toàn đợt dự kiến **>300.000 raw input+output**, kể cả retry; không chia đợt để lách. **DEV ≤5 điểm % quota tuần; nghiệm thu ≤10 điểm %** trên tổng quota tuần, không tính trên phần còn lại. Forecast dựa calibration có dated/source/uncertainty; dùng snapshot trước/sau **cả lượt làm việc**, không chỉ benchmark; ghi 5h/tuần và hoạt động lẫn số đo. Không đọc được ghi unknown, không suy 0.
+Hỏi trước toàn đợt dự kiến **>300.000 raw input+output**, kể cả retry; không chia đợt để lách. Mục tiêu nghiệm thu A/B/C có cap **≤10 điểm % quota tuần** trên tổng quota tuần, không tính trên phần còn lại; cap DEV 5pp không phải cổng cho thí nghiệm này. Owner cấp conditional approval khi S1 Pass, protocol frozen và forecast ≤10pp. Forecast dựa calibration có dated/source/uncertainty; dùng snapshot trước/sau **cả lượt làm việc**, không chỉ benchmark; ghi 5h/tuần và hoạt động lẫn số đo. Không đọc được ghi unknown, không suy 0.
+
+Nonbenchmark work có mục tiêu ≤3pp quota tuần. Nếu không thể hoàn thành trong target đó, báo nguyên nhân và actual; không ghi target là đạt. Snapshot quota ban đầu của lượt hiện là 17%; số 5h vẫn unknown.
+
+## S2 protocol Ready, execution chưa bắt đầu
+
+S2 protocol đã frozen và Ready cho run được owner conditional preapprove: S1 6/6, native offline preflight (chỉ `unity_public`/`unity_compile_test`, oracle denied, 0 model calls), và broker preflight 3/3 hidden IntegerClamp test với feedback giống nhau cho các arm. Focused 24 TypeScript và 6 Python broker test pass; full suite đang chạy, chưa được ghi green. Run chưa bắt đầu.
+
+Forecast credit 92,67 / 8,858351336pp dùng tỷ lệ quota noisy observational, không phải trusted calibration. Quota có thể rounded/concurrent; manual checkpoint STOP tại 8pp delta để giữ 2pp reserve. Credit monitor chỉ giảm soft in-flight overshoot risk, không là hard provider cap. Raw forecast tentative 1–2m, kể cả cached input, không phải raw cap; threshold hỏi trước 300.000 raw input+output vẫn giữ.
 
 [Credit audit](credit-quota-r3.md) thay hệ số 550.668 weighted tokens/1 điểm %. Hệ số mới chỉ sơ bộ bị nhiễu, không tự mở run cap. Theo quota snapshot chưa đủ để bảo chứng trần ngân sách cứng; dự toán vượt cap/unknown thì dừng xin decision trước chạy, không tự nâng trần.
 

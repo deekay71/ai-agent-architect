@@ -1,0 +1,30 @@
+{
+  "outcome": "pass",
+  "tests": [
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+      "result": "Passed",
+      "message": ""
+    }
+  ],
+  "commandInterface": "fixed private evaluation of sole public candidate; identical feedback across arms",
+  "hiddenOracleInPublicProject": false,
+  "modelCalls": 0,
+  "brokerUnitTests": {
+    "command": "python3 test/unity-broker-test.py",
+    "passed": 6
+  },
+  "nativeAndProtocolUnitTests": {
+    "passed": 24
+  }
+}
