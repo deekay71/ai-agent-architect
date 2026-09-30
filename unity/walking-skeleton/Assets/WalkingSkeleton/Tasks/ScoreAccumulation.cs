@@ -1,0 +1,1 @@
+namespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { long sum = (long)score + delta; return sum > int.MaxValue ? int.MaxValue : sum < int.MinValue ? int.MinValue : (int)sum; } } }

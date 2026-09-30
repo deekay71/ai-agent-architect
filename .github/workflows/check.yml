@@ -1,4 +1,4 @@
-name: Phase 2 conformance
+name: Local tests and Phase 2 conformance
 on:
   push:
   pull_request:
@@ -7,17 +7,43 @@ permissions:
 jobs:
   local-runtime:
     runs-on: macos-26
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Prepare failure log
+        run: mkdir -p ci-logs && touch ci-logs/check.log
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '24.19.0'
           package-manager-cache: false
-      - run: npm install --global pnpm@11.19.0
-      - run: pnpm install --frozen-lockfile --ignore-scripts
-      - run: pnpm check
-      - run: sh spikes/phase2/run.sh install --frozen-lockfile
-      - run: sh spikes/phase2/run.sh run check
+      - name: Install pnpm
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --global pnpm@11.19.0 2>&1 | tee -a ci-logs/check.log
+      - name: Install locked dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm install --frozen-lockfile --ignore-scripts 2>&1 | tee -a ci-logs/check.log
+      - name: Build and test
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm check 2>&1 | tee -a ci-logs/check.log
+      - name: Check Phase 2 spike
+        shell: bash
+        run: |
+          set -euo pipefail
+          sh spikes/phase2/run.sh install --frozen-lockfile 2>&1 | tee -a ci-logs/check.log
+          sh spikes/phase2/run.sh run check 2>&1 | tee -a ci-logs/check.log
+      - name: Upload failure log
+        if: failure()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: local-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ci-logs/check.log
+          if-no-files-found: warn
+          retention-days: 7

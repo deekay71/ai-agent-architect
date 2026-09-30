@@ -1,6 +1,19 @@
 # AI Agent Architect — Bối cảnh hiện hành R2
 
-## Actual mới nhất — sửa local, 30/09/2026
+**Planning Brain — quyết định mới:** Game/Epic → Module → Task theo quy mô; planner chính chốt GDD lõi và interface trước khi chia module. Chỉ module độc lập mới planning song song; critic và test-plan author kiểm chứng độc lập. Ready là checklist nhị phân; ẩn số thành spike timebox; đo planning bằng hoàn thành không replan, lỗi plan khi execution và số lần owner sửa tay. Lỗi trả về đúng tầng. [Quy tắc, checklist và test plan](brain-planning-policy.md). Đây là thiết kế hiện hành; điều phối hierarchy/interface lock và telemetry chưa được triển khai đầy đủ.
+
+**Hiện trạng 30/09/2026:** Phase 3 **Pass có điều kiện trong phạm vi đóng hồ sơ hành chính**; 300/300 đáp án đã chấm, 264 advisory Pass, 36 hard failures. Tổng đợt: 2.753.340 token quy đổi, dưới trần 3 triệu; 608/608 test local Pass. Bước kế tiếp là baseline Unity 6 trên 10 task, chưa chạy model theo quyết định chỉ bàn giao Phase 3. Multi-planner, compaction mặc định và Explorer nâng cao tiếp tục tắt. [Báo cáo, rủi ro và kế hoạch hiện hành](phase-3-conditional-closure-2026-09-30.md) thay phần kế hoạch cũ bên dưới; evidence và các gate lịch sử được giữ nguyên.
+
+Ngân sách: Terra ×1 / Sol ×3 / Astra ×5; hỏi trước >300.000 token quy đổi; DEV ≤1,5 triệu; nghiệm thu phase ≤3 triệu. Ghi % quota 5 giờ/tuần trước và sau; dữ liệu thiếu ghi chưa xác định. Hệ số sơ bộ 30/09: 550.668 token quy đổi / 1 điểm % tuần, có lẫn hoạt động khác.
+
+
+## Hướng thực thi hiện hành — 30/09/2026
+
+See [current closure](phase-3-conditional-closure-2026-09-30.md): all 300 answers assessed, 264 advisory passes and 36 hard failures. The superseding weighted cap is 3,000,000; actual 2,753,340. Administrative closure only, no production PASS. Owner requested Phase 3 handoff only; Unity model baseline remains deferred. Apply [Brain planning policy](brain-planning-policy.md) before further planning.
+
+Sau đó là Unity 6 walking skeleton: 10 tác vụ Unity/C# nhỏ, khác nhau, khóa trong manifest cùng requirement/allowlist/oracle; mỗi tác vụ cần chu trình single planner → critic → executor thực sự và compile/test evidence từ official Unity CLI. Multi-planner, compaction mặc định và advanced Explorer tắt theo mặc định; chỉ thử nghiệm nếu thắng baseline trên 10 tác vụ thật với cùng giới hạn và không tăng hard failures. Chưa làm full game hoặc gameplay. Báo cáo dated dưới đây là lịch sử, không thay thế quyết định này.
+
+## Lịch sử — sửa local, 30/09/2026
 
 **Phase 3 vẫn Replan; T19/T11 Replan, T14 Not evaluated.** Đã sửa chọn context public: giữ hai lexical anchors, đa dạng nguồn bổ sung; topK không tăng. 60 lượt offline trên bộ đã lộ có 54/54 trường hợp cần evidence đủ nguồn và 6 N/A, không regression; đây chưa phải quality model acceptance.
 

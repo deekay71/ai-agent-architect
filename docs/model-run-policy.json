@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "weighted-model-run-policy/1",
+  "approvalThreshold": 300000,
+  "devCap": 1500000,
+  "phaseAcceptanceCap": 3000000,
+  "weights": {
+    "terra": 1,
+    "sol": 3,
+    "astra": 5
+  }
+}

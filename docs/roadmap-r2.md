@@ -1,6 +1,13 @@
 # 07 — Roadmap triển khai R2: hạ tầng trước, game sau
 
-## Actual mới nhất — sửa local, 30/09/2026
+**Hiện trạng 30/09/2026:** Phase 3 **Pass có điều kiện trong phạm vi đóng hồ sơ hành chính**; 300/300 đáp án đã chấm, 264 advisory Pass, 36 hard failures. Tổng đợt: 2.753.340 token quy đổi, dưới trần 3 triệu; 608/608 test local Pass. Bước kế tiếp là baseline Unity 6 trên 10 task, chưa chạy model theo quyết định chỉ bàn giao Phase 3. Multi-planner, compaction mặc định và Explorer nâng cao tiếp tục tắt. [Báo cáo, rủi ro và kế hoạch hiện hành](phase-3-conditional-closure-2026-09-30.md) thay phần kế hoạch cũ bên dưới; evidence và các gate lịch sử được giữ nguyên.
+
+Ngân sách: Terra ×1 / Sol ×3 / Astra ×5; hỏi trước >300.000 token quy đổi; DEV ≤1,5 triệu; nghiệm thu phase ≤3 triệu. Ghi % quota 5 giờ/tuần trước và sau; dữ liệu thiếu ghi chưa xác định. Hệ số sơ bộ 30/09: 550.668 token quy đổi / 1 điểm % tuần, có lẫn hoạt động khác.
+
+
+See [current closure](phase-3-conditional-closure-2026-09-30.md): all 300 answers assessed, 264 advisory passes and 36 hard failures. The superseding weighted cap is 3,000,000; actual 2,753,340. Administrative closure only, no production PASS. Owner requested Phase 3 handoff only; Unity model baseline remains deferred. Apply [Brain planning policy](brain-planning-policy.md) before further planning.
+
+## Lịch sử — sửa local, 30/09/2026
 
 **Phase 3 vẫn Replan; T19/T11 Replan, T14 Not evaluated.** Đã sửa chọn context public: giữ hai lexical anchors, đa dạng nguồn bổ sung; topK không tăng. 60 lượt offline trên bộ đã lộ có 54/54 trường hợp cần evidence đủ nguồn và 6 N/A, không regression; đây chưa phải quality model acceptance.
 
@@ -57,7 +64,7 @@ Cập nhật24/09/2026 sau khi người dùng yêu cầu áp dụng execution sk
 ## Các nguyên tắc tiếp tục giữ
 
 - Benchmark đo policy/năng lực theo tập bài; quality gate kiểm từng artifact. Planning readiness khác correctness sau execution.
-- Multi-planning được hỗ trợ: specialist subplans → synthesizer → independent critic → integration gate. Chọn mode theo task class và benchmark cùng budget; nhiều agents không mặc định tốt hơn.
+- Planning Brain: planner chính chốt Game/Epic, GDD lõi và interface trước; sau đó chia Module → Task. Chỉ module độc lập mới planning song song. Critic/test-plan author độc lập để kiểm chứng; không cùng quyết định phần còn phụ thuộc. Ready dùng checklist nhị phân; spike timebox xử lý ẩn số; đo bằng execution và trả lỗi về đúng tầng. [Chính sách hiện hành](brain-planning-policy.md) thay mô hình specialist làm song song rồi synthesizer hợp nhất. Điều phối nhiều module còn là phần triển khai sau baseline.
 - Chỉ trusted PASS đúng artifact/hash/input refs và active PolicyRelease đúng scope mới runtime auto-dispatch. Executor không ghi oracle/rubric/verdict/trusted evidence/promoted Memory.
 - Context partition/isolation, progressive disclosure và compaction là ba cơ chế riêng. Manifest ghi đúng body/references/constraints đã nạp; hydrate bản pin sau compaction. Revoke/invalidation theo dependency, không stale cả hệ thống vô điều kiện.
 - Skill là procedural knowledge có version/digest/provenance; không phải policy authority. Dùng operation ledger, context và evaluation harness hiện có, không thêm runtime/gate thứ hai.

@@ -6,3 +6,20 @@ coverage/
 *.log
 !docs/evidence/*.log
 !docs/evidence/**/*.log
+
+# Unity project source (Assets and .meta, Packages, ProjectSettings, tasks.json)
+# remains versioned; only Editor-generated state and run artifacts are ignored.
+unity/**/Library/
+unity/**/Temp/
+unity/**/Logs/
+unity/**/obj/
+unity/**/UserSettings/
+unity/**/Build/
+unity/**/Builds/
+unity/**/TestResults/
+unity/**/Artifacts/
+unity/**/*-results.xml
+unity/**/*.csproj
+unity/**/*.sln
+unity/**/.vs/
+unity/**/.idea/

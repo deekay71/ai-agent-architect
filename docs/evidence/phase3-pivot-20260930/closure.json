@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "phase3-conditional-closure/1",
+  "status": "Pass có điều kiện",
+  "scope": "phase3-administrative-closure",
+  "decisionDate": "2026-09-30",
+  "userDirection": "Timeboxed closure on existing v1 outputs, no new holdout; advance to single-planner Unity baseline.",
+  "coverage": {
+    "planned": 300,
+    "assessed": 300,
+    "uniqueIds": 300,
+    "unassessed": 0
+  },
+  "quality": {
+    "advisoryPass": 264,
+    "hardFailures": 36,
+    "meaningCorrect": 299,
+    "judgmentConsistent": 300,
+    "authority": "model-advisory-only"
+  },
+  "usage": {
+    "calls": 50,
+    "retries": 0,
+    "rawSolTokens": 917780,
+    "weightedTokens": 2753340,
+    "weightedCap": 3000000,
+    "pending": 0,
+    "unknown": 0
+  },
+  "integrity": {
+    "checked": 2081,
+    "changed": []
+  },
+  "sourceDigest": "sha256:8378b5b65b1c9366015f7cc4f390050fc4aecaafe70ca465dabd898ce7829cff",
+  "inputDigest": "sha256:7a25ead785fb0bbc0704e767c147308542f454f4f680669ae8514c72490508d9",
+  "devSelection": {
+    "cases": 20,
+    "runs": 40,
+    "densities": [
+      0,
+      8
+    ],
+    "applicablePerDensity": 17,
+    "requiredSourcesRetainedPerDensity": 17,
+    "notApplicablePerDensity": 3,
+    "regressions": 0
+  },
+  "localTests": {
+    "passed": 608,
+    "failed": 0,
+    "skipped": 0
+  },
+  "releaseEligible": false,
+  "verifiedPassCapability": false,
+  "remainingRisks": [
+    "36 historical answers still fail hard checks; administrative closure does not repair these answers.",
+    "DEV selector measurement is not fresh holdout or end-to-end answer quality.",
+    "Judge remains advisory, without independent human calibration of this regrade.",
+    "Multi-planner, default compaction and advanced Explorer remain off pending baseline comparisons.",
+    "Unity native model baseline and current GitHub CI are not yet verified."
+  ],
+  "nextStep": "Unity 6 baseline: 10 tasks, 1 planner + critic + executor each, official CLI, exact test evidence and Memory observations."
+}

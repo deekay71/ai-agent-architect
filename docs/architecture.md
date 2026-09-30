@@ -1,5 +1,20 @@
 # Architecture and trust limits — local Phase 3
 
+**Planning Brain — quyết định mới:** Game/Epic → Module → Task theo quy mô; planner chính chốt GDD lõi và interface trước khi chia module. Chỉ module độc lập mới planning song song; critic và test-plan author kiểm chứng độc lập. Ready là checklist nhị phân; ẩn số thành spike timebox; đo planning bằng hoàn thành không replan, lỗi plan khi execution và số lần owner sửa tay. Lỗi trả về đúng tầng. [Quy tắc, checklist và test plan](brain-planning-policy.md). Đây là thiết kế hiện hành; điều phối hierarchy/interface lock và telemetry chưa được triển khai đầy đủ.
+
+**Hiện trạng 30/09/2026:** Phase 3 **Pass có điều kiện trong phạm vi đóng hồ sơ hành chính**; 300/300 đáp án đã chấm, 264 advisory Pass, 36 hard failures. Tổng đợt: 2.753.340 token quy đổi, dưới trần 3 triệu; 608/608 test local Pass. Bước kế tiếp là baseline Unity 6 trên 10 task, chưa chạy model theo quyết định chỉ bàn giao Phase 3. Multi-planner, compaction mặc định và Explorer nâng cao tiếp tục tắt. [Báo cáo, rủi ro và kế hoạch hiện hành](phase-3-conditional-closure-2026-09-30.md) thay phần kế hoạch cũ bên dưới; evidence và các gate lịch sử được giữ nguyên.
+
+Ngân sách: Terra ×1 / Sol ×3 / Astra ×5; hỏi trước >300.000 token quy đổi; DEV ≤1,5 triệu; nghiệm thu phase ≤3 triệu. Ghi % quota 5 giờ/tuần trước và sau; dữ liệu thiếu ghi chưa xác định. Hệ số sơ bộ 30/09: 550.668 token quy đổi / 1 điểm % tuần, có lẫn hoạt động khác.
+
+
+## Current execution boundary — 30 September 2026
+
+The [current execution policy](execution-policy-2026-09-30.md) closes Phase 3 administratively with conditions after all 300 existing v1 outputs were regraded. The run used 917,780 Sol tokens / 2,753,340 weighted tokens under the superseding 3,000,000 weighted cap. There are 264 advisory passes and 36 hard failures. This does not issue a production PASS or turn exposed v1 material into fresh holdout evidence.
+
+The next baseline is a Unity 6 walking skeleton with 10 distinct, manifest-pinned Unity/C# utility tasks. Each task needs an actual single planner → critic → executor cycle, bounded writes, protected oracles, and official Unity CLI compile/test evidence. Multi-planner, default compaction and advanced Explorer remain disabled by default until an experiment beats this baseline on the real task set without increasing hard failures. The sections below describe the implementation and dated evidence; they do not supersede this boundary.
+
+## Implemented architecture and dated evidence
+
 This repository implements Phase 1 foundation, Phase 2 local mechanical runtime and the local Memory/Context/Explorer components of Phase 3. It remains a TypeScript modular monolith. T09/T10 are Done / Pass for their local scope. T19 is Doing / Not evaluated: context mechanics are implemented, but task-quality/loss/latency/token acceptance still needs real provider evidence. T14 implementation/tests exist, while its full handoff gate waits for T19; T14 is Doing / Not evaluated. T11 is Doing / Replan. **The whole Phase 3 has not passed; Phase 4 and gameplay are not open.** See the [Phase 3 report](phase-3-report.md), [Memory/Context guide](memory-context.md) and [remaining work](remaining-work.md).
 
 Production/Unity task classes are not authorized. Runtime uses SQLite durable records, a canonical project OS lock, macOS sandboxed executor/verifier processes and stage-specific gates. See [runtime behavior](runtime.md), [Phase 2 evidence](phase-2-report.md) and [framework decision](adr/0002-phase2-runtime.md).

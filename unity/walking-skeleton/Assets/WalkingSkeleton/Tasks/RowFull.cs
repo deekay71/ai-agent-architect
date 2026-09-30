@@ -1,0 +1,1 @@
+namespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { if (cells == null || cells.Length == 0) return false; foreach (var cell in cells) if (!cell) return false; return true; } } }

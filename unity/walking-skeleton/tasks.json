@@ -1,0 +1,82 @@
+[
+  {
+    "id": "integer-clamp",
+    "requirement": "Clamp an integer inclusively; reject an inverted range. Throw System.ArgumentException when minimum is greater than maximum.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "cell-bounds",
+    "requirement": "Report whether a cell lies inside a positive rectangular grid. Return false for non-positive dimensions and for negative or out-of-range coordinates.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/CellBounds.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "coordinate-index",
+    "requirement": "Map a valid row-major grid coordinate to a linear index. Throw System.ArgumentOutOfRangeException for invalid coordinates or non-positive dimensions. Use y * width + x.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/CoordinateIndex.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CoordinateIndex { public static int ToIndex(int x, int y, int width, int height) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CoordinateIndex_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "row-full",
+    "requirement": "Determine whether every supplied row cell is occupied. Return false for null or empty input.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/RowFull.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class RowFull { public static bool IsFull(bool[] cells) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.RowFull_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "deterministic-seed",
+    "requirement": "Produce a stable non-negative seed for supplied text. Treat null as empty text. The same text must always return the same non-negative seed across calls.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/DeterministicSeed.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DeterministicSeed { public static int FromText(string value) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DeterministicSeed_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "score-accumulation",
+    "requirement": "Add a score delta without overflowing Int32. Saturate at Int32.MinValue and Int32.MaxValue.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/ScoreAccumulation.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class ScoreAccumulation { public static int Add(int score, int delta) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.ScoreAccumulation_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "json-state-roundtrip",
+    "requirement": "Serialize and recover a small Unity JSON state without data loss. Throw System.ArgumentNullException for null state. State has public int score and public string label. Return a distinct object with identical field values.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/JsonStateRoundtrip.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { [Serializable] public sealed class State { public int score; public string label; } public static class JsonStateRoundtrip { public static State RoundTrip(State state) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.JsonStateRoundtrip",
+    "expectedTestCount": 2
+  },
+  {
+    "id": "vector2-grid-position",
+    "requirement": "Map integer grid coordinates to a scaled Unity Vector2 position. Throw System.ArgumentOutOfRangeException for non-positive cellSize.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/Vector2GridPosition.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class Vector2GridPosition { public static Vector2 ToWorld(int x, int y, float cellSize) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.Vector2GridPosition_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "duplicate-position",
+    "requirement": "Detect duplicate Vector2Int positions in a collection. Return false for null or fewer than two positions.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/DuplicatePosition.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class DuplicatePosition { public static bool HasDuplicate(Vector2Int[] positions) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.DuplicatePosition_oracle",
+    "expectedTestCount": 3
+  },
+  {
+    "id": "placement-bounds",
+    "requirement": "Check that a positive rectangular placement stays wholly within a positive board. Return false for non-positive size or board dimensions, negative origins, and any overflowing placement. Edges are inclusive.",
+    "targetFile": "Assets/WalkingSkeleton/Tasks/PlacementBounds.cs",
+    "stub": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class PlacementBounds { public static bool CanPlace(Vector2Int origin, Vector2Int size, Vector2Int board) { throw new NotImplementedException(); } } }\n",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.PlacementBounds_oracle",
+    "expectedTestCount": 3
+  }
+]

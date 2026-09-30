@@ -9,6 +9,9 @@ import type { ModelRequest } from './types.js';
 /** Re-review the isolation flags before admitting a different CLI build. */
 export const CODEX_CLI_VERSION = 'codex-cli 0.155.0-alpha.16.4';
 export const CODEX_BINARY_PATH = '/Applications/ChatGPT.app/Contents/Resources/codex';
+/** Current build is deliberately separate: historical receipts remain replayable. */
+export const CURRENT_CODEX_CLI_VERSION = 'codex-cli 0.158.0-alpha.2.1';
+export const CURRENT_CODEX_BINARY_PATH = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex';
 export interface CodexUsage {
   inputTokens: number;
   cachedInputTokens: number;
@@ -78,6 +81,8 @@ export interface CodexTransportOptions {
 export interface CodexTransport {
   id: 'codex-chatgpt-exec/1';
   assurance: 'codex-chatgpt' | 'mock';
+  /** Undefined is accepted only by older in-process fakes. */
+  cliVersion?: string;
   launchPolicyDigest: string;
   configurationDigest(request: ModelRequest): string;
   respond(request: ModelRequest, signal?: AbortSignal): Promise<CodexResult>;
@@ -233,8 +238,8 @@ export function renderCodexRequest(request: ModelRequest): string {
     responseInstructions: 'Use only the supplied input. Return exactly one JSON object conforming to the response schema. Do not use tools.',
     requestedMaxOutputTokens: request.maxOutputTokens });
 }
-export const CODEX_LAUNCH_POLICY_DIGEST = digest({
-  schemaVersion: 'codex-launch-policy/1', supportedCliVersion: CODEX_CLI_VERSION,
+function launchPolicyDigest(cliVersion: string): string { return digest({
+  schemaVersion: 'codex-launch-policy/1', supportedCliVersion: cliVersion,
   startupNoticePolicy: { message: DISABLED_CODE_MODE_NOTICE, maximum: 1, beforeTurnOnly: true },
   args: execArgs({ model: '<requested-model>', instructions: '', input: '', maxOutputTokens: 1,
     schema: { type: 'object' }, schemaName: 'placeholder', reasoningEffort: 'medium' }, '<schema>', '<work>', '<private>'),
@@ -243,7 +248,11 @@ export const CODEX_LAUNCH_POLICY_DIGEST = digest({
   environmentAllowlist: ['HOME', 'CODEX_HOME', 'USER', 'LOGNAME', 'TMPDIR'],
   isolationAssurance: 'capability-flags-and-event-audit', modelIdentityAssurance: 'requested-only',
   applicationRetries: 0, cliInternalRetries: 'CLI-managed; not an exact provider-request cap',
-});
+}); }
+/** Historical policy: keep for existing evidence replay. */
+export const CODEX_LAUNCH_POLICY_DIGEST = launchPolicyDigest(CODEX_CLI_VERSION);
+/** Current native policy, pinned after offline `--version`/help inspection on 2026-09-30. */
+export const CURRENT_CODEX_LAUNCH_POLICY_DIGEST = launchPolicyDigest(CURRENT_CODEX_CLI_VERSION);
 
 function parseUsage(raw: unknown): CodexUsage | null {
   if (!object(raw) || Object.keys(raw).some(key => !['input_tokens', 'cached_input_tokens', 'cache_write_input_tokens', 'output_tokens', 'reasoning_output_tokens'].includes(key)) ||
@@ -330,24 +339,25 @@ function eventParser(): { line: (line: string) => boolean; finish: () => { outpu
 }
 
 /** Subscription transport, deliberately separate from the exact-count/API-tariff ModelProvider. */
-export function createCodexTransport(options: CodexTransportOptions = {}): CodexTransport {
-  const binary = options.binaryPath ?? CODEX_BINARY_PATH;
+type CodexBuild = { cliVersion: string; binaryPath: string; launchPolicyDigest: string };
+function createCodexTransportForBuild(options: CodexTransportOptions, build: CodexBuild): CodexTransport {
+  const binary = options.binaryPath ?? build.binaryPath;
   if (!isAbsolute(binary)) throw new CodexTransportError('CODEX_BINARY_PATH_INVALID');
   const runner = options.runner ?? runCodexProcess;
   const timeoutMs = bounded(options.timeoutMs ?? 180_000, 600_000);
   const maxRequestBytes = bounded(options.maxRequestBytes ?? 1_048_576, 4_194_304);
   const maxResponseBytes = bounded(options.maxResponseBytes ?? 2_097_152, 8_388_608);
-  const configurationDigest = (request: ModelRequest): string => digest({ launchPolicyDigest: CODEX_LAUNCH_POLICY_DIGEST,
+  const configurationDigest = (request: ModelRequest): string => digest({ launchPolicyDigest: build.launchPolicyDigest,
     binary, timeoutMs, maxRequestBytes, maxResponseBytes, model: request.model, reasoningEffort: request.reasoningEffort ?? null });
   return {
     id: 'codex-chatgpt-exec/1', assurance: options.runner === undefined ? 'codex-chatgpt' : 'mock',
-    launchPolicyDigest: CODEX_LAUNCH_POLICY_DIGEST, configurationDigest,
+    cliVersion: build.cliVersion, launchPolicyDigest: build.launchPolicyDigest, configurationDigest,
     async respond(request, signal): Promise<CodexResult> {
       const pinned = snapshot(request, maxRequestBytes); const started = performance.now();
       const prompt = renderCodexRequest(pinned.request);
       if (Buffer.byteLength(prompt) > maxRequestBytes) throw new CodexTransportError('CODEX_REQUEST_TOO_LARGE');
       const base: CodexResult = { status: 'failed', output: null, requestedModel: pinned.request.model, requestDigest: pinned.requestDigest,
-        renderedRequestDigest: digest(prompt), launchPolicyDigest: CODEX_LAUNCH_POLICY_DIGEST,
+        renderedRequestDigest: digest(prompt), launchPolicyDigest: build.launchPolicyDigest,
         configurationDigest: configurationDigest(pinned.request),
         usage: null, elapsedMs: 0, cliVersion: null, threadId: null, issues: [], apiCostMicros: null, exactInputCount: null,
         modelIdentityAssurance: 'requested-only', maxOutputTokensEnforced: false, isolationAssurance: 'capability-flags-and-event-audit' };
@@ -363,10 +373,10 @@ export function createCodexTransport(options: CodexTransportOptions = {}): Codex
           ...(signal === undefined ? {} : { signal }), ...(onStdoutLine === undefined ? {} : { onStdoutLine }),
         });
         const version = await invoke(['--version']);
-        if (version.exitCode !== 0 || version.stopReason !== null || version.stdout.trim() !== CODEX_CLI_VERSION) {
+        if (version.exitCode !== 0 || version.stopReason !== null || version.stdout.trim() !== build.cliVersion) {
           base.issues = ['CODEX_CLI_VERSION_UNSUPPORTED']; return finish();
         }
-        base.cliVersion = CODEX_CLI_VERSION;
+        base.cliVersion = build.cliVersion;
         const auth = await invoke(['-c', 'forced_login_method="chatgpt"', 'login', 'status']);
         if (auth.exitCode !== 0 || auth.stopReason !== null || `${auth.stdout}\n${auth.stderr}`.trim() !== 'Logged in using ChatGPT') {
           base.issues = ['CODEX_CHATGPT_AUTH_REQUIRED']; return finish();
@@ -387,4 +397,15 @@ export function createCodexTransport(options: CodexTransportOptions = {}): Codex
       } finally { if (root !== null) await rm(root, { recursive: true, force: true }); }
     },
   };
+}
+
+/** Historical factory retained for receipt compatibility and replay. */
+export function createCodexTransport(options: CodexTransportOptions = {}): CodexTransport {
+  return createCodexTransportForBuild(options, { cliVersion: CODEX_CLI_VERSION, binaryPath: CODEX_BINARY_PATH, launchPolicyDigest: CODEX_LAUNCH_POLICY_DIGEST });
+}
+
+/** New native runs must opt into the current, separately pinned ChatGPT-bundled CLI. */
+export function createCurrentCodexTransport(options: CodexTransportOptions = {}): CodexTransport {
+  return createCodexTransportForBuild(options, { cliVersion: CURRENT_CODEX_CLI_VERSION, binaryPath: CURRENT_CODEX_BINARY_PATH,
+    launchPolicyDigest: CURRENT_CODEX_LAUNCH_POLICY_DIGEST });
 }

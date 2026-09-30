@@ -1,0 +1,1 @@
+namespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) => width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } }

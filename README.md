@@ -1,5 +1,9 @@
 # AI Agent Architect — runtime, Memory và Context local
 
+**Cập nhật 30/09/2026:** [Phase 3 đóng hồ sơ có điều kiện](docs/phase-3-conditional-closure-2026-09-30.md): 300/300 đã chấm, 264 advisory Pass, 36 hard failures; 608/608 test local Pass. Baseline Unity 6 có runner và oracle, chưa chạy model thật theo quyết định chỉ bàn giao Phase 3. Các trạng thái nghiệm thu cũ phía dưới là lịch sử; không phải kết luận mới hay production PASS.
+
+**Hướng thực thi hiện hành (30/09/2026):** [chính sách Phase 3 và Unity walking skeleton](docs/execution-policy-2026-09-30.md). Baseline là single planner + critic + executor trên 10 tác vụ Unity 6 tổng quát; multi-planner, compaction mặc định và advanced Explorer tắt theo mặc định cho tới khi thắng baseline trên task thật. Các báo cáo và điểm cũ bên dưới là lịch sử, không phải production PASS.
+
 Repo có foundation **Phase 1**, runtime **Phase 2** và phần Memory/Context local của **Phase 3**. T09/T10 đạt Done / Pass trong phạm vi local; **T19 Doing / Not evaluated, T11 Doing / Replan, T14 Doing / Not evaluated; toàn Phase 3 chưa PASS**. Context mechanics và Memory promotion đã có code/tests, nhưng T19 còn AC chất lượng/token thật; handoff T14 chờ T19/T11 được nghiệm thu đầy đủ. Chưa mở Phase 4 hoặc gameplay. Xem [báo cáo Phase 3](docs/phase-3-report.md).
 
 Runtime lưu checkpoint/operation ledger trong SQLite, bảo vệ executor bằng sandbox macOS, giữ khóa OS theo project và cấp gate theo từng stage. Memory bổ sung nguồn/claim có provenance, freshness và selective invalidation; Context tách window theo agent, hydrate constraints/acceptance sau compaction và kiểm source hiện hành trước dispatch/commit. Tool hiện tại chỉ ghi một file fixture có giới hạn rồi kiểm lại bằng một verifier process độc lập.

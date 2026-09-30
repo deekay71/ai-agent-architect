@@ -11,6 +11,8 @@ import { createSkillBinding, discoverSkills, loadSkillCatalog, loadSkillResource
 import type { SkillResolutionContext } from './skills/catalog.js';
 import { runtimeCommand } from './runtime/cli.js';
 import { memoryCommand } from './explorer/cli.js';
+import { runV1RegradeCli } from './evaluation/v1-regrade-cli.js';
+import { runUnityCli } from './unity/cli.js';
 import { runEvaluationCli } from './evaluation/cli.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
@@ -65,6 +67,10 @@ async function main(args: string[]): Promise<void> {
       'semantic-codex-review-export <campaign> <new-review-directory>',
       'semantic-codex-review-import <campaign> <decisions.json> <new-reviewed-file>'],
       scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
+  } else if (command?.startsWith('unity-baseline-')) {
+    await runUnityCli(args);
+  } else if (command?.startsWith('v1-regrade-')) {
+    if (!await runV1RegradeCli(args)) throw new Error('Unknown regrade command');
   } else if (command?.startsWith('semantic-')) {
     if (!await runEvaluationCli(args)) throw new Error('Unknown semantic command');
   } else if (command?.startsWith('memory-')) {

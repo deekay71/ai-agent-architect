@@ -1,0 +1,1 @@
+namespace WalkingSkeleton.Tasks { public static class DeterministicSeed { public static int FromText(string value) { unchecked { uint seed = 2166136261; foreach (var character in value ?? string.Empty) { seed ^= character; seed *= 16777619; } return (int)(seed & 0x7fffffff); } } } }

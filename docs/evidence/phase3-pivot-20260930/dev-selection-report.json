@@ -1,0 +1,1790 @@
+{
+  "schemaVersion": "phase3-dev-selection/1",
+  "scope": "DEV-only offline measurement; no model calls; no new holdout",
+  "publicDatasetDigest": "sha256:f4cec4e1fab5bac957899eb6bbeef6759cef833610f9733cd5a53f203ca753c5",
+  "selector": "public-critical-raw-anchor-mmr/1",
+  "aggregate": [
+    {
+      "density": 0,
+      "cases": 20,
+      "applicable": 17,
+      "sufficient": 17,
+      "notApplicable": 3,
+      "regressions": 0
+    },
+    {
+      "density": 8,
+      "cases": 20,
+      "applicable": 17,
+      "sufficient": 17,
+      "notApplicable": 3,
+      "regressions": 0
+    }
+  ],
+  "rows": [
+    {
+      "caseId": "sem-001",
+      "density": 0,
+      "selected": [
+        "doc-001-a"
+      ],
+      "legacy": [
+        "doc-001-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-001-a"
+        ],
+        "candidateIds": [
+          "doc-001-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.49579200000000156,
+        "warmMs": [
+          0.1477920000000026,
+          0.1492500000000021,
+          0.14666700000000077
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-001-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-001",
+      "density": 8,
+      "selected": [
+        "doc-001-a",
+        "doc-001-noise-3",
+        "doc-001-noise-4"
+      ],
+      "legacy": [
+        "doc-001-a",
+        "doc-001-noise-3",
+        "doc-001-noise-4"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-001-a",
+          "doc-001-noise-3",
+          "doc-001-noise-4",
+          "doc-001-noise-5",
+          "doc-001-noise-1",
+          "doc-001-noise-8",
+          "doc-001-noise-2",
+          "doc-001-noise-6",
+          "doc-001-noise-7"
+        ],
+        "candidateIds": [
+          "doc-001-a",
+          "doc-001-noise-3",
+          "doc-001-noise-4",
+          "doc-001-noise-5",
+          "doc-001-noise-1",
+          "doc-001-noise-8",
+          "doc-001-noise-2",
+          "doc-001-noise-6",
+          "doc-001-noise-7"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.47033300000000366,
+        "warmMs": [
+          0.4022500000000022,
+          0.40979200000000304,
+          0.4287910000000039
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-001-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-002",
+      "density": 0,
+      "selected": [
+        "doc-002-a"
+      ],
+      "legacy": [
+        "doc-002-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-002-a"
+        ],
+        "candidateIds": [
+          "doc-002-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1338750000000033,
+        "warmMs": [
+          0.10079100000000096,
+          0.10491700000000037,
+          0.12016699999999503
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-002-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-002",
+      "density": 8,
+      "selected": [
+        "doc-002-a",
+        "doc-002-noise-5",
+        "doc-002-noise-3"
+      ],
+      "legacy": [
+        "doc-002-a",
+        "doc-002-noise-5",
+        "doc-002-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-002-a",
+          "doc-002-noise-5",
+          "doc-002-noise-1",
+          "doc-002-noise-3",
+          "doc-002-noise-8",
+          "doc-002-noise-2",
+          "doc-002-noise-6",
+          "doc-002-noise-7",
+          "doc-002-noise-4"
+        ],
+        "candidateIds": [
+          "doc-002-a",
+          "doc-002-noise-5",
+          "doc-002-noise-1",
+          "doc-002-noise-3",
+          "doc-002-noise-8",
+          "doc-002-noise-2",
+          "doc-002-noise-6",
+          "doc-002-noise-7",
+          "doc-002-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.41583300000000634,
+        "warmMs": [
+          0.3668750000000074,
+          0.3845839999999896,
+          0.41499999999999204
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-002-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-003",
+      "density": 0,
+      "selected": [
+        "doc-003-a"
+      ],
+      "legacy": [
+        "doc-003-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-003-a"
+        ],
+        "candidateIds": [
+          "doc-003-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1624169999999907,
+        "warmMs": [
+          0.10804100000000005,
+          0.1039169999999956,
+          0.0958750000000066
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-003-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-003",
+      "density": 8,
+      "selected": [
+        "doc-003-a",
+        "doc-003-noise-3",
+        "doc-003-noise-7"
+      ],
+      "legacy": [
+        "doc-003-a",
+        "doc-003-noise-3",
+        "doc-003-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-003-a",
+          "doc-003-noise-3",
+          "doc-003-noise-5",
+          "doc-003-noise-1",
+          "doc-003-noise-8",
+          "doc-003-noise-2",
+          "doc-003-noise-6",
+          "doc-003-noise-7",
+          "doc-003-noise-4"
+        ],
+        "candidateIds": [
+          "doc-003-a",
+          "doc-003-noise-3",
+          "doc-003-noise-5",
+          "doc-003-noise-1",
+          "doc-003-noise-8",
+          "doc-003-noise-2",
+          "doc-003-noise-6",
+          "doc-003-noise-7",
+          "doc-003-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.4222919999999988,
+        "warmMs": [
+          0.4002499999999998,
+          0.3832079999999962,
+          0.38291699999999196
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-003-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-004",
+      "density": 0,
+      "selected": [
+        "doc-004-a"
+      ],
+      "legacy": [
+        "doc-004-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-004-a"
+        ],
+        "candidateIds": [
+          "doc-004-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.13787500000000819,
+        "warmMs": [
+          0.0953750000000042,
+          0.10333300000000634,
+          0.09525000000000716
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-004-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-004",
+      "density": 8,
+      "selected": [
+        "doc-004-a",
+        "doc-004-noise-5",
+        "doc-004-noise-6"
+      ],
+      "legacy": [
+        "doc-004-a",
+        "doc-004-noise-5",
+        "doc-004-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-004-a",
+          "doc-004-noise-5",
+          "doc-004-noise-1",
+          "doc-004-noise-8",
+          "doc-004-noise-3",
+          "doc-004-noise-6",
+          "doc-004-noise-2",
+          "doc-004-noise-7",
+          "doc-004-noise-4"
+        ],
+        "candidateIds": [
+          "doc-004-a",
+          "doc-004-noise-5",
+          "doc-004-noise-1",
+          "doc-004-noise-8",
+          "doc-004-noise-3",
+          "doc-004-noise-6",
+          "doc-004-noise-2",
+          "doc-004-noise-7",
+          "doc-004-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.4264579999999967,
+        "warmMs": [
+          0.35529099999999403,
+          0.3828330000000051,
+          0.6966249999999974
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-004-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-005",
+      "density": 0,
+      "selected": [
+        "doc-005-a"
+      ],
+      "legacy": [
+        "doc-005-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-005-a"
+        ],
+        "candidateIds": [
+          "doc-005-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.16783300000000168,
+        "warmMs": [
+          0.12075000000000102,
+          0.10679199999999867,
+          0.1052919999999915
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-005-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-005",
+      "density": 8,
+      "selected": [
+        "doc-005-a",
+        "doc-005-noise-3",
+        "doc-005-noise-7"
+      ],
+      "legacy": [
+        "doc-005-a",
+        "doc-005-noise-3",
+        "doc-005-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-005-a",
+          "doc-005-noise-3",
+          "doc-005-noise-5",
+          "doc-005-noise-1",
+          "doc-005-noise-8",
+          "doc-005-noise-6",
+          "doc-005-noise-2",
+          "doc-005-noise-7",
+          "doc-005-noise-4"
+        ],
+        "candidateIds": [
+          "doc-005-a",
+          "doc-005-noise-3",
+          "doc-005-noise-5",
+          "doc-005-noise-1",
+          "doc-005-noise-8",
+          "doc-005-noise-6",
+          "doc-005-noise-2",
+          "doc-005-noise-7",
+          "doc-005-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.4147919999999914,
+        "warmMs": [
+          0.36887500000000273,
+          0.3484579999999937,
+          0.3245420000000081
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-005-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-006",
+      "density": 0,
+      "selected": [
+        "doc-006-a"
+      ],
+      "legacy": [
+        "doc-006-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-006-a"
+        ],
+        "candidateIds": [
+          "doc-006-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.1432089999999988,
+        "warmMs": [
+          0.08924999999999272,
+          0.08395800000000975,
+          0.08100000000001728
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-006",
+      "density": 8,
+      "selected": [
+        "doc-006-a",
+        "doc-006-noise-5",
+        "doc-006-noise-2"
+      ],
+      "legacy": [
+        "doc-006-a",
+        "doc-006-noise-5",
+        "doc-006-noise-2"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-006-a",
+          "doc-006-noise-5",
+          "doc-006-noise-2",
+          "doc-006-noise-7",
+          "doc-006-noise-1",
+          "doc-006-noise-3",
+          "doc-006-noise-8",
+          "doc-006-noise-6",
+          "doc-006-noise-4"
+        ],
+        "candidateIds": [
+          "doc-006-a",
+          "doc-006-noise-5",
+          "doc-006-noise-2",
+          "doc-006-noise-7",
+          "doc-006-noise-1",
+          "doc-006-noise-3",
+          "doc-006-noise-8",
+          "doc-006-noise-6",
+          "doc-006-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.4511669999999981,
+        "warmMs": [
+          0.41058400000000006,
+          0.4108750000000043,
+          0.39725000000001387
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-007",
+      "density": 0,
+      "selected": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "legacy": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-007-a",
+          "doc-007-b"
+        ],
+        "candidateIds": [
+          "doc-007-a",
+          "doc-007-b"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.16391699999999787,
+        "warmMs": [
+          0.1315829999999778,
+          0.15066699999999855,
+          0.14058399999998983
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-007",
+      "density": 8,
+      "selected": [
+        "doc-007-a",
+        "doc-007-b",
+        "doc-007-noise-7"
+      ],
+      "legacy": [
+        "doc-007-a",
+        "doc-007-b",
+        "doc-007-noise-7"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-007-a",
+          "doc-007-b",
+          "doc-007-noise-7",
+          "doc-007-noise-5",
+          "doc-007-noise-1",
+          "doc-007-noise-3",
+          "doc-007-noise-8",
+          "doc-007-noise-6",
+          "doc-007-noise-2",
+          "doc-007-noise-4"
+        ],
+        "candidateIds": [
+          "doc-007-a",
+          "doc-007-b",
+          "doc-007-noise-7",
+          "doc-007-noise-5",
+          "doc-007-noise-1",
+          "doc-007-noise-3",
+          "doc-007-noise-8",
+          "doc-007-noise-6",
+          "doc-007-noise-2",
+          "doc-007-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.47887499999998795,
+        "warmMs": [
+          0.4013750000000016,
+          0.4420420000000149,
+          0.4253749999999741
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-007-a",
+        "doc-007-b"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-008",
+      "density": 0,
+      "selected": [
+        "doc-008-a"
+      ],
+      "legacy": [
+        "doc-008-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-008-a"
+        ],
+        "candidateIds": [
+          "doc-008-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.13762499999998568,
+        "warmMs": [
+          0.0992080000000044,
+          0.09816699999998946,
+          0.0887920000000122
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-008-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-008",
+      "density": 8,
+      "selected": [
+        "doc-008-noise-4",
+        "doc-008-a",
+        "doc-008-noise-3"
+      ],
+      "legacy": [
+        "doc-008-noise-4",
+        "doc-008-a",
+        "doc-008-noise-3"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-008-noise-4",
+          "doc-008-a",
+          "doc-008-noise-3",
+          "doc-008-noise-5",
+          "doc-008-noise-1",
+          "doc-008-noise-8",
+          "doc-008-noise-2",
+          "doc-008-noise-6",
+          "doc-008-noise-7"
+        ],
+        "candidateIds": [
+          "doc-008-noise-4",
+          "doc-008-a",
+          "doc-008-noise-3",
+          "doc-008-noise-5",
+          "doc-008-noise-1",
+          "doc-008-noise-8",
+          "doc-008-noise-2",
+          "doc-008-noise-6",
+          "doc-008-noise-7"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.39895900000001916,
+        "warmMs": [
+          0.32970900000000825,
+          0.36075000000002433,
+          0.3596250000000225
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-008-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-009",
+      "density": 0,
+      "selected": [
+        "doc-009-a"
+      ],
+      "legacy": [
+        "doc-009-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-009-a"
+        ],
+        "candidateIds": [
+          "doc-009-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1324160000000063,
+        "warmMs": [
+          0.10287499999998317,
+          0.08987500000000637,
+          0.08574999999999022
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-009-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-009",
+      "density": 8,
+      "selected": [
+        "doc-009-a",
+        "doc-009-noise-2",
+        "doc-009-noise-4"
+      ],
+      "legacy": [
+        "doc-009-a",
+        "doc-009-noise-2",
+        "doc-009-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-009-a",
+          "doc-009-noise-2",
+          "doc-009-noise-5",
+          "doc-009-noise-1",
+          "doc-009-noise-3",
+          "doc-009-noise-8",
+          "doc-009-noise-6",
+          "doc-009-noise-7",
+          "doc-009-noise-4"
+        ],
+        "candidateIds": [
+          "doc-009-a",
+          "doc-009-noise-2",
+          "doc-009-noise-5",
+          "doc-009-noise-1",
+          "doc-009-noise-3",
+          "doc-009-noise-8",
+          "doc-009-noise-6",
+          "doc-009-noise-7",
+          "doc-009-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.39154199999998696,
+        "warmMs": [
+          0.34704199999998764,
+          0.3542500000000075,
+          0.3578339999999969
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-009-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-010",
+      "density": 0,
+      "selected": [
+        "doc-010-a"
+      ],
+      "legacy": [
+        "doc-010-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-010-a"
+        ],
+        "candidateIds": [
+          "doc-010-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.12683300000000486,
+        "warmMs": [
+          0.09475000000000477,
+          0.0887090000000228,
+          0.09004200000001106
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-010-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-010",
+      "density": 8,
+      "selected": [
+        "doc-010-a",
+        "doc-010-noise-5",
+        "doc-010-noise-1"
+      ],
+      "legacy": [
+        "doc-010-a",
+        "doc-010-noise-5",
+        "doc-010-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-010-a",
+          "doc-010-noise-5",
+          "doc-010-noise-1",
+          "doc-010-noise-8",
+          "doc-010-noise-3",
+          "doc-010-noise-6",
+          "doc-010-noise-2",
+          "doc-010-noise-7",
+          "doc-010-noise-4"
+        ],
+        "candidateIds": [
+          "doc-010-a",
+          "doc-010-noise-5",
+          "doc-010-noise-1",
+          "doc-010-noise-8",
+          "doc-010-noise-3",
+          "doc-010-noise-6",
+          "doc-010-noise-2",
+          "doc-010-noise-7",
+          "doc-010-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.3755419999999958,
+        "warmMs": [
+          0.3283749999999941,
+          0.3263340000000028,
+          0.8414999999999964
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-010-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-011",
+      "density": 0,
+      "selected": [
+        "doc-011-a"
+      ],
+      "legacy": [
+        "doc-011-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-011-a"
+        ],
+        "candidateIds": [
+          "doc-011-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1404579999999953,
+        "warmMs": [
+          0.1165409999999838,
+          0.09408300000001191,
+          0.0901670000000081
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-011-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-011",
+      "density": 8,
+      "selected": [
+        "doc-011-a",
+        "doc-011-noise-3",
+        "doc-011-noise-4"
+      ],
+      "legacy": [
+        "doc-011-a",
+        "doc-011-noise-3",
+        "doc-011-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-011-a",
+          "doc-011-noise-3",
+          "doc-011-noise-5",
+          "doc-011-noise-1",
+          "doc-011-noise-8",
+          "doc-011-noise-2",
+          "doc-011-noise-6",
+          "doc-011-noise-7",
+          "doc-011-noise-4"
+        ],
+        "candidateIds": [
+          "doc-011-a",
+          "doc-011-noise-3",
+          "doc-011-noise-5",
+          "doc-011-noise-1",
+          "doc-011-noise-8",
+          "doc-011-noise-2",
+          "doc-011-noise-6",
+          "doc-011-noise-7",
+          "doc-011-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.3882499999999993,
+        "warmMs": [
+          0.3500410000000045,
+          0.3446659999999895,
+          0.3623749999999859
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-011-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-012",
+      "density": 0,
+      "selected": [
+        "doc-012-a"
+      ],
+      "legacy": [
+        "doc-012-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-012-a"
+        ],
+        "candidateIds": [
+          "doc-012-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1149159999999938,
+        "warmMs": [
+          0.08516700000001265,
+          0.08104099999999903,
+          0.0800830000000019
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-012-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-012",
+      "density": 8,
+      "selected": [
+        "doc-012-a",
+        "doc-012-noise-5",
+        "doc-012-noise-8"
+      ],
+      "legacy": [
+        "doc-012-a",
+        "doc-012-noise-5",
+        "doc-012-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-012-a",
+          "doc-012-noise-5",
+          "doc-012-noise-1",
+          "doc-012-noise-3",
+          "doc-012-noise-8",
+          "doc-012-noise-2",
+          "doc-012-noise-6",
+          "doc-012-noise-7",
+          "doc-012-noise-4"
+        ],
+        "candidateIds": [
+          "doc-012-a",
+          "doc-012-noise-5",
+          "doc-012-noise-1",
+          "doc-012-noise-3",
+          "doc-012-noise-8",
+          "doc-012-noise-2",
+          "doc-012-noise-6",
+          "doc-012-noise-7",
+          "doc-012-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.4077079999999853,
+        "warmMs": [
+          0.35358300000001464,
+          0.4948749999999791,
+          0.43950000000000955
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-012-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-013",
+      "density": 0,
+      "selected": [
+        "doc-013-a"
+      ],
+      "legacy": [
+        "doc-013-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-013-a"
+        ],
+        "candidateIds": [
+          "doc-013-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1297089999999912,
+        "warmMs": [
+          0.0863339999999937,
+          0.09333300000000122,
+          0.09208300000000236
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-013-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-013",
+      "density": 8,
+      "selected": [
+        "doc-013-a",
+        "doc-013-noise-4",
+        "doc-013-noise-2"
+      ],
+      "legacy": [
+        "doc-013-a",
+        "doc-013-noise-4",
+        "doc-013-noise-2"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-013-a",
+          "doc-013-noise-4",
+          "doc-013-noise-2",
+          "doc-013-noise-5",
+          "doc-013-noise-1",
+          "doc-013-noise-3",
+          "doc-013-noise-8",
+          "doc-013-noise-6",
+          "doc-013-noise-7"
+        ],
+        "candidateIds": [
+          "doc-013-a",
+          "doc-013-noise-4",
+          "doc-013-noise-2",
+          "doc-013-noise-5",
+          "doc-013-noise-1",
+          "doc-013-noise-3",
+          "doc-013-noise-8",
+          "doc-013-noise-6",
+          "doc-013-noise-7"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.4023339999999962,
+        "warmMs": [
+          0.35829100000000835,
+          0.34962499999997476,
+          0.37016700000000924
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-013-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-014",
+      "density": 0,
+      "selected": [
+        "doc-014-a"
+      ],
+      "legacy": [
+        "doc-014-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-014-a"
+        ],
+        "candidateIds": [
+          "doc-014-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1580409999999972,
+        "warmMs": [
+          0.0952079999999853,
+          0.08916700000000333,
+          0.08312500000002387
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-014-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-014",
+      "density": 8,
+      "selected": [
+        "doc-014-a",
+        "doc-014-noise-5",
+        "doc-014-noise-4"
+      ],
+      "legacy": [
+        "doc-014-a",
+        "doc-014-noise-5",
+        "doc-014-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-014-a",
+          "doc-014-noise-5",
+          "doc-014-noise-1",
+          "doc-014-noise-8",
+          "doc-014-noise-3",
+          "doc-014-noise-6",
+          "doc-014-noise-2",
+          "doc-014-noise-7",
+          "doc-014-noise-4"
+        ],
+        "candidateIds": [
+          "doc-014-a",
+          "doc-014-noise-5",
+          "doc-014-noise-1",
+          "doc-014-noise-8",
+          "doc-014-noise-3",
+          "doc-014-noise-6",
+          "doc-014-noise-2",
+          "doc-014-noise-7",
+          "doc-014-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.3854170000000181,
+        "warmMs": [
+          0.35599999999999454,
+          0.3466670000000249,
+          0.3394999999999868
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-014-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-015",
+      "density": 0,
+      "selected": [
+        "doc-015-a"
+      ],
+      "legacy": [
+        "doc-015-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-015-a"
+        ],
+        "candidateIds": [
+          "doc-015-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.12358399999999392,
+        "warmMs": [
+          0.0871670000000222,
+          0.08608300000000213,
+          0.0817909999999813
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-015-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-015",
+      "density": 8,
+      "selected": [
+        "doc-015-a",
+        "doc-015-noise-2",
+        "doc-015-noise-6"
+      ],
+      "legacy": [
+        "doc-015-a",
+        "doc-015-noise-2",
+        "doc-015-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-015-a",
+          "doc-015-noise-2",
+          "doc-015-noise-5",
+          "doc-015-noise-1",
+          "doc-015-noise-3",
+          "doc-015-noise-8",
+          "doc-015-noise-6",
+          "doc-015-noise-7",
+          "doc-015-noise-4"
+        ],
+        "candidateIds": [
+          "doc-015-a",
+          "doc-015-noise-2",
+          "doc-015-noise-5",
+          "doc-015-noise-1",
+          "doc-015-noise-3",
+          "doc-015-noise-8",
+          "doc-015-noise-6",
+          "doc-015-noise-7",
+          "doc-015-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.3759589999999946,
+        "warmMs": [
+          0.34004099999998516,
+          1.5351249999999936,
+          0.3371669999999938
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-015-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-016",
+      "density": 0,
+      "selected": [
+        "doc-016-a"
+      ],
+      "legacy": [
+        "doc-016-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-016-a"
+        ],
+        "candidateIds": [
+          "doc-016-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.12341600000002018,
+        "warmMs": [
+          0.08000000000004093,
+          0.08220799999998007,
+          0.08429200000000492
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-016",
+      "density": 8,
+      "selected": [
+        "doc-016-a",
+        "doc-016-noise-2",
+        "doc-016-noise-7"
+      ],
+      "legacy": [
+        "doc-016-a",
+        "doc-016-noise-2",
+        "doc-016-noise-7"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-016-a",
+          "doc-016-noise-2",
+          "doc-016-noise-7",
+          "doc-016-noise-5",
+          "doc-016-noise-1",
+          "doc-016-noise-3",
+          "doc-016-noise-8",
+          "doc-016-noise-6",
+          "doc-016-noise-4"
+        ],
+        "candidateIds": [
+          "doc-016-a",
+          "doc-016-noise-2",
+          "doc-016-noise-7",
+          "doc-016-noise-5",
+          "doc-016-noise-1",
+          "doc-016-noise-3",
+          "doc-016-noise-8",
+          "doc-016-noise-6",
+          "doc-016-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.43070799999998144,
+        "warmMs": [
+          0.3142920000000231,
+          0.3059170000000222,
+          0.3009580000000369
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-017",
+      "density": 0,
+      "selected": [
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "legacy": [
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-017-b",
+          "doc-017-a"
+        ],
+        "candidateIds": [
+          "doc-017-b",
+          "doc-017-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.16162499999995816,
+        "warmMs": [
+          0.13166599999999562,
+          0.12633299999998826,
+          0.11975000000001046
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-017-a",
+        "doc-017-b"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-017",
+      "density": 8,
+      "selected": [
+        "doc-017-noise-6",
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "legacy": [
+        "doc-017-noise-6",
+        "doc-017-b",
+        "doc-017-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-017-noise-6",
+          "doc-017-b",
+          "doc-017-a",
+          "doc-017-noise-3",
+          "doc-017-noise-2",
+          "doc-017-noise-8",
+          "doc-017-noise-5",
+          "doc-017-noise-1",
+          "doc-017-noise-7",
+          "doc-017-noise-4"
+        ],
+        "candidateIds": [
+          "doc-017-noise-6",
+          "doc-017-b",
+          "doc-017-a",
+          "doc-017-noise-3",
+          "doc-017-noise-2",
+          "doc-017-noise-8",
+          "doc-017-noise-5",
+          "doc-017-noise-1",
+          "doc-017-noise-7",
+          "doc-017-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.4775420000000281,
+        "warmMs": [
+          0.3841249999999832,
+          0.4042910000000006,
+          0.3947090000000344
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-017-a",
+        "doc-017-b"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-018",
+      "density": 0,
+      "selected": [
+        "doc-018-a"
+      ],
+      "legacy": [
+        "doc-018-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-018-a"
+        ],
+        "candidateIds": [
+          "doc-018-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.1785419999999931,
+        "warmMs": [
+          0.10050000000001091,
+          0.09000000000003183,
+          0.08708400000000438
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-018-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-018",
+      "density": 8,
+      "selected": [
+        "doc-018-a",
+        "doc-018-noise-5",
+        "doc-018-noise-4"
+      ],
+      "legacy": [
+        "doc-018-a",
+        "doc-018-noise-5",
+        "doc-018-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-018-a",
+          "doc-018-noise-5",
+          "doc-018-noise-1",
+          "doc-018-noise-8",
+          "doc-018-noise-3",
+          "doc-018-noise-2",
+          "doc-018-noise-6",
+          "doc-018-noise-7",
+          "doc-018-noise-4"
+        ],
+        "candidateIds": [
+          "doc-018-a",
+          "doc-018-noise-5",
+          "doc-018-noise-1",
+          "doc-018-noise-8",
+          "doc-018-noise-3",
+          "doc-018-noise-2",
+          "doc-018-noise-6",
+          "doc-018-noise-7",
+          "doc-018-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.3908330000000433,
+        "warmMs": [
+          0.3634999999999877,
+          0.3501250000000482,
+          0.38679100000001654
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-018-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-019",
+      "density": 0,
+      "selected": [
+        "doc-019-a"
+      ],
+      "legacy": [
+        "doc-019-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-019-a"
+        ],
+        "candidateIds": [
+          "doc-019-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.11545800000004647,
+        "warmMs": [
+          0.08474999999998545,
+          0.09145799999998871,
+          0.08333399999997937
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-019",
+      "density": 8,
+      "selected": [
+        "doc-019-a",
+        "doc-019-noise-8",
+        "doc-019-noise-5"
+      ],
+      "legacy": [
+        "doc-019-a",
+        "doc-019-noise-8",
+        "doc-019-noise-5"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-019-a",
+          "doc-019-noise-8",
+          "doc-019-noise-5",
+          "doc-019-noise-1",
+          "doc-019-noise-3",
+          "doc-019-noise-6",
+          "doc-019-noise-2",
+          "doc-019-noise-7",
+          "doc-019-noise-4"
+        ],
+        "candidateIds": [
+          "doc-019-a",
+          "doc-019-noise-8",
+          "doc-019-noise-5",
+          "doc-019-noise-1",
+          "doc-019-noise-3",
+          "doc-019-noise-6",
+          "doc-019-noise-2",
+          "doc-019-noise-7",
+          "doc-019-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "critical-unknown-lexical",
+        "rawAnchorCount": 3,
+        "connectionColdMs": 0.42616700000002083,
+        "warmMs": [
+          0.3648330000000328,
+          0.38691599999998516,
+          0.3546250000000555
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [],
+      "applicable": false,
+      "sufficient": null,
+      "legacySufficient": null
+    },
+    {
+      "caseId": "sem-020",
+      "density": 0,
+      "selected": [
+        "doc-020-a"
+      ],
+      "legacy": [
+        "doc-020-a"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-020-a"
+        ],
+        "candidateIds": [
+          "doc-020-a"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.11391600000001745,
+        "warmMs": [
+          0.08287500000000136,
+          0.08358299999997598,
+          0.08183400000001484
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-020-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    },
+    {
+      "caseId": "sem-020",
+      "density": 8,
+      "selected": [
+        "doc-020-a",
+        "doc-020-noise-5",
+        "doc-020-noise-4"
+      ],
+      "legacy": [
+        "doc-020-a",
+        "doc-020-noise-5",
+        "doc-020-noise-1"
+      ],
+      "diagnostics": {
+        "retrieved10Ids": [
+          "doc-020-a",
+          "doc-020-noise-5",
+          "doc-020-noise-1",
+          "doc-020-noise-8",
+          "doc-020-noise-3",
+          "doc-020-noise-2",
+          "doc-020-noise-6",
+          "doc-020-noise-7",
+          "doc-020-noise-4"
+        ],
+        "candidateIds": [
+          "doc-020-a",
+          "doc-020-noise-5",
+          "doc-020-noise-1",
+          "doc-020-noise-8",
+          "doc-020-noise-3",
+          "doc-020-noise-2",
+          "doc-020-noise-6",
+          "doc-020-noise-7",
+          "doc-020-noise-4"
+        ],
+        "selectionPolicy": "public-critical-raw-anchor-mmr/1",
+        "selectionMode": "anchored-query-question-mmr",
+        "rawAnchorCount": 2,
+        "connectionColdMs": 0.44183299999997416,
+        "warmMs": [
+          1.0270419999999945,
+          0.33170800000004874,
+          0.34541699999999764
+        ],
+        "cacheScope": "fresh-sqlite-connection-not-os-cold"
+      },
+      "required": [
+        "doc-020-a"
+      ],
+      "applicable": true,
+      "sufficient": true,
+      "legacySufficient": true
+    }
+  ]
+}

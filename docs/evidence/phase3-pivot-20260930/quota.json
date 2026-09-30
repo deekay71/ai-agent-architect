@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "observed-quota-calibration/1",
+  "measurementDate": "2026-09-30",
+  "before": {
+    "weeklyUsedPercent": 0,
+    "fiveHourUsedPercent": null,
+    "capturedAt": null,
+    "note": "Observed before initial dispatch; exact capture timestamp was not saved."
+  },
+  "pause": {
+    "capturedAt": "2026-09-30T03:33:42.621Z",
+    "weeklyUsedPercent": 2,
+    "fiveHourUsedPercent": null
+  },
+  "beforeContinuation": {
+    "recordedAt": "2026-09-30T03:39:33.575Z",
+    "kind": "before-regrade-continuation",
+    "fiveHourUsedPercent": null,
+    "weeklyUsedPercent": 3,
+    "concurrentCodexActivity": true,
+    "source": "get_usage_limits"
+  },
+  "after": {
+    "capturedAt": "2026-09-30T03:52:41.101621+00:00",
+    "weeklyUsedPercent": 5,
+    "fiveHourUsedPercent": null,
+    "weeklyWindowMinutes": 10080,
+    "concurrentCodexActivity": true,
+    "notes": "Root and delegated agents active. Weekly usage moved 2% to 3% while benchmark paused. Mixed measurement."
+  },
+  "weightedTokens": 2753340,
+  "weeklyPercentagePointChange": 5,
+  "terraEquivalentTokensPerWeeklyPercentagePoint": 550668,
+  "confidence": "provisional-mixed-observation",
+  "contaminated": true,
+  "limitations": [
+    "Other Codex activity occurred; weekly usage rose from 2% to 3% while benchmark was paused.",
+    "Usage percentages are rounded; not an official quota conversion or causal attribution.",
+    "Five-hour usage unavailable."
+  ],
+  "unityForecast": {
+    "weightedTokens": 653380,
+    "weeklyPercentagePoints": 1.19,
+    "basis": "Estimate from mixed observations on 2026-09-30"
+  }
+}

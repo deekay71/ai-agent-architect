@@ -1,0 +1,9 @@
+{
+  "receiptBindings": "pass",
+  "assessmentReplay": "pass",
+  "ids": 300,
+  "calls": 50,
+  "rawTokens": 917780,
+  "weightedTokens": 2753340,
+  "weightedCap": 3000000
+}
