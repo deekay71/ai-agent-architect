@@ -68,6 +68,17 @@ test('credit-cap event interrupts and records the overshoot risk', async t => {
   assert.equal(f.calls().filter(call => call.method === 'turn/interrupt').length, 1);
 });
 
+test('reserve closes later tool admission but permits a tool-free final completion', async t => {
+  const settled = setup(t, c => { started(c); fileProof(c); usage(c, 190, 0, 0); complete(c); });
+  const settledReceipt = await run(settled, 10_000);
+  assert.equal(settledReceipt.status, 'completed'); assert.equal(settledReceipt.overshootRisk, true);
+  assert.equal(settled.calls().filter(call => call.method === 'turn/interrupt').length, 0);
+  const blocked = setup(t, c => { started(c); usage(c, 190, 0, 0); c.emit('item/started', { threadId: 'thread-1', turnId: 'turn-1', item: { id: 'late-tool', type: 'commandExecution', status: 'inProgress' } }); });
+  const blockedReceipt = await run(blocked, 10_000);
+  assert.equal(blockedReceipt.status, 'failed'); assert.equal(blockedReceipt.error, 'NATIVE_CODEX_TOOL_ADMISSION_CLOSED');
+  assert.equal(blocked.calls().filter(call => call.method === 'turn/interrupt').length, 1);
+});
+
 test('a rerouted model is rejected before a turn can begin', async t => {
   const f = setup(t, () => undefined, true);
   const receipt = await run(f);

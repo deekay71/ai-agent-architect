@@ -52,7 +52,7 @@ function preparePublic(task,arm,reference=false){
  fs.cpSync(path.join(template,'Assets/Tests'),path.join(evalProject,'Assets/Tests'),{recursive:true});
  const d=taskById.get(task.taskId);
  const args=[path.join(repo,'scripts/unity-test-mcp.py'),project,target,result.stdout.trim(),path.join(artifacts,'unity'),evalProject,d.testFilter,String(d.expectedTestCount),arm==='C'?'0':'1'];
- const fixedMcpConfig=['mcp_servers.unity_public.command="/usr/bin/python3"',`mcp_servers.unity_public.args=${JSON.stringify(args)}`,'mcp_servers.unity_public.startup_timeout_sec=20','mcp_servers.unity_public.tool_timeout_sec=210'];
+ const fixedMcpConfig=['mcp_servers.unity_public.command="/usr/bin/python3"',`mcp_servers.unity_public.args=${JSON.stringify(args)}`,'mcp_servers.unity_public.enabled_tools=["unity_compile_test"]','mcp_servers.unity_public.startup_timeout_sec=20','mcp_servers.unity_public.tool_timeout_sec=210','mcp_servers.unity_public.tools.unity_compile_test.approval_mode="approve"'];
  return {project,target,artifacts,args,fixedMcpConfig,evalProject};
 }
 // Probe the broker with a known-correct implementation in a throwaway PUBLIC fixture.

@@ -248,7 +248,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   const started = performance.now(), logEvents: { method: string; itemType: string | null; itemId: string | null; itemStatus: string | null; mcpErrorMessage: string | null }[] = [];
   const toolProofRefs: string[] = []; let threadId: string | null = null, turnId: string | null = null;
   let latestUsage: ModelCreditUsage | null = null, error: string | null = null, interruption: NativeCodexEventLog['interruption'] = 'none';
-  let overshootRisk = false, completed = false, interrupted = false;
+  let overshootRisk = false, completed = false, interrupted = false, admissionClosed = false;
   let settle!: () => void; const terminal = new Promise<void>(resolve => { settle = resolve; });
   const fail = (code: string): void => { if (error === null) error = code; if (!completed) { completed = true; settle(); } };
   const factory = input.connectionFactory ?? nativeCodexAppServerConnection;
@@ -270,6 +270,12 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     const rawMcpError = itemType === 'mcpToolCall' && item !== null && object(item.error) && typeof item.error.message === 'string' ? item.error.message : null;
     const mcpErrorMessage = rawMcpError === null ? null : rawMcpError.replace(/[\r\n]/g, ' ').replace(/\/Users\/[^/\s]+/g, '<home>').replace(/(?:sk-|ghp_)[A-Za-z0-9_-]+/g, '<redacted>').slice(0, 500);
     if (logEvents.length < 256) logEvents.push({ method: /^[a-zA-Z/]+$/.test(notification.method) ? notification.method : 'invalid', itemType, itemId, itemStatus, mcpErrorMessage });
+    // App-server has no dynamic built-in-tool denylist.  Once the reserve is
+    // reached, a subsequent tool-start is therefore detected and failed
+    // closed; broker maxCalls remains the prevention point for Unity MCP.
+    if (admissionClosed && notification.method === 'item/started' && itemType !== 'userMessage' && itemType !== 'agentMessage' && itemType !== 'reasoning') {
+      requestInterrupt(); fail('NATIVE_CODEX_TOOL_ADMISSION_CLOSED'); return;
+    }
     if (params !== null && typeof params.threadId === 'string' && threadId !== null && params.threadId !== threadId) { fail('NATIVE_CODEX_THREAD_DRIFT'); return; }
     if (params !== null && typeof params.turnId === 'string' && turnId !== null && params.turnId !== turnId) { fail('NATIVE_CODEX_TURN_DRIFT'); return; }
     if (notification.method === 'model/rerouted') { fail('NATIVE_CODEX_MODEL_REROUTED'); return; }
@@ -289,7 +295,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; requestInterrupt(); fail('NATIVE_CODEX_CREDIT_CAP_EXCEEDED'); }
       // The reserve closes future broker admission; it does not interrupt an
       // already-admitted turn before its final counter can arrive.
-      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; }
+      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; admissionClosed = true; }
       return;
     }
     if (notification.method === 'turn/started') {
