@@ -1,0 +1,12 @@
+{
+  "success": false,
+  "command": "unity command",
+  "data": null,
+  "errors": [
+    {
+      "code": "COMMAND_FAILED",
+      "message": "No Pipeline instance found for project: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/unity/walking-skeleton. Make sure Unity Editor is running with the Pipeline package installed."
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.0151502">
+  <test-suite type="TestSuite" id="1006" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.015150" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1004" name="Spike.Tests.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/scene-prefab-spike/Library/ScriptAssemblies/Spike.Tests.dll" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.012302" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="21142" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="SpikeTests" fullname="SpikeTests" classname="SpikeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.011935" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1002" name="PrefabWasCreatedAndModified" fullname="SpikeTests.PrefabWasCreatedAndModified" methodname="PrefabWasCreatedAndModified" classname="SpikeTests" runstate="Runnable" seed="179900321" result="Passed" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.006892" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="SceneWasCreatedAndModified" fullname="SpikeTests.SceneWasCreatedAndModified" methodname="SceneWasCreatedAndModified" classname="SpikeTests" runstate="Runnable" seed="1119339939" result="Passed" start-time="2026-10-01 09:00:27Z" end-time="2026-10-01 09:00:27Z" duration="0.001611" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/spike-playmode.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

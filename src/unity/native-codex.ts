@@ -7,6 +7,11 @@ import { creditMicrosForUsage, type ModelCreditUsage } from '../contracts/credit
 import { canonicalJson, digest } from '../contracts/canonical.js';
 
 /** The only currently admitted ordinary-Codex model for the Unity C arm. */
+export const HARNESS_CODEX_HOME = path.resolve('.local/harness-codex-home');
+export const HARNESS_WORKSPACE = path.resolve('.local/harness-workspace');
+export const HARNESS_ADMISSION_FLAG = path.join(HARNESS_CODEX_HOME, 'tool-admission.flag');
+const harnessEnvironment = () => ({ ...codexChildEnvironment(), CODEX_HOME: HARNESS_CODEX_HOME });
+
 export const NATIVE_CODEX_MODEL = 'gpt-5.6-terra' as const;
 export const NATIVE_CODEX_APP_SERVER_VERSION = CURRENT_CODEX_CLI_VERSION;
 
@@ -79,6 +84,8 @@ export interface NativeCodexReceipt {
   toolProofRefs: readonly string[];
   error: string | null;
   overshootRisk: boolean;
+  usageSettlement: 'settled' | 'unsettled';
+  hardStopCreditMicros: number;
   eventLogDigest: string;
   promptDigest: string;
 }
@@ -136,18 +143,14 @@ export function nativeCodexAppServerArgs(mcpConfig: readonly string[], admission
   // Do not disable shell or file-change tools: ordinary Codex needs both. These
   // settings only remove global integrations/config-sourced capabilities.
   const args = ['app-server', '--stdio', '--strict-config',
-    '-c', 'forced_login_method="chatgpt"', '-c', 'web_search="disabled"', '-c', 'mcp_servers={}', '-c', 'plugins={}', '-c', 'hooks={}',
+    '-c', 'forced_login_method="chatgpt"', '-c', 'web_search="disabled"', '-c', 'mcp_servers={}', '-c', 'plugins={}', 
     '-c', 'default_permissions="unity-comparison"', '-c', 'permissions.unity-comparison.extends=":read-only"',
     '-c', 'permissions.unity-comparison.network.enabled=false', '-c', 'permissions.unity-comparison.filesystem={":root"="deny",":minimal"="read",":workspace_roots"="write"}',
     '-c', 'memories.use_memories=false', '-c', 'memories.generate_memories=false', '-c', 'memories.dedicated_tools=false',
     '-c', 'include_apps_instructions=false', '-c', 'history.persistence="none"', '-c', 'analytics.enabled=false', '-c', 'feedback.enabled=false',
-    '-c', 'mcp_servers.node_repl.enabled=false', '-c', 'mcp_servers.computer-use.enabled=false', '-c', 'mcp_servers.unity_mcp.enabled=false',
     '-c', 'features.skip_host_skill_discovery=true', '-c', 'project_doc_max_bytes=0', '-c', 'skills.include_instructions=false', '-c', 'skills.bundled.enabled=false'];
   for (const feature of ['apps', 'enable_mcp_apps', 'memories', 'plugins', 'plugin_sharing', 'recommended_plugins', 'remote_plugin', 'standalone_web_search', 'in_app_browser']) args.push('--disable', feature);
-  if (admissionFlag !== undefined) {
-    const hookCommand = `/usr/bin/python3 '${path.resolve('scripts/unity-tool-admission-guard.py').replaceAll("'", "'\\''")}' '${admissionFlag.replaceAll("'", "'\\''")}'`;
-    args.push('-c', `hooks.PreToolUse=[{matcher=".*",hooks=[{type="command",command=${JSON.stringify(hookCommand)}}]}]`);
-  }
+  // Hook comes only from the fixed private CODEX_HOME; do not override its definition.
   for (const setting of mcpConfig) args.push('-c', setting);
   return args;
 }
@@ -241,9 +244,9 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   // These files are intentionally private artifacts, including for startup failures.
   // They are operational evidence and are never written into the repository.
   const rawEventsFile = path.join(artifacts, 'app-server.events.ndjson');
-  const admissionFlag = path.join(artifacts, 'tool-admission.flag');
+  const admissionFlag = input.connectionFactory ? path.join(artifacts, 'tool-admission.flag') : HARNESS_ADMISSION_FLAG;
   for (const file of [path.join(artifacts, 'app-server.stdout.log'), path.join(artifacts, 'app-server.stderr.log'), rawEventsFile]) writeFileSync(file, '', { flag: 'a', mode: 0o600 });
-  writeFileSync(admissionFlag, 'open\n', { flag: 'wx', mode: 0o600 });
+  writeFileSync(admissionFlag, 'open\n', { flag: input.connectionFactory ? 'wx' : 'w', mode: 0o600 });
   writeNew(path.join(artifacts, 'app-server.startup.json'), { schemaVersion: 'native-codex-startup/1', status: 'launching' });
   const mcpConfig = checkedMcpConfig(input.fixedMcpConfig), timeoutMs = input.timeoutMs ?? 600_000;
   if (!safeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 600_000) throw new NativeCodexError('NATIVE_CODEX_TIMEOUT_INVALID');
@@ -254,7 +257,8 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   const started = performance.now(), logEvents: { method: string; itemType: string | null; itemId: string | null; itemStatus: string | null; mcpErrorMessage: string | null }[] = [];
   const toolProofRefs: string[] = []; let threadId: string | null = null, turnId: string | null = null;
   let latestUsage: ModelCreditUsage | null = null, error: string | null = null, interruption: NativeCodexEventLog['interruption'] = 'none';
-  let overshootRisk = false, completed = false, interrupted = false;
+  let overshootRisk = false, completed = false, interrupted = false, turnCompleted = false;
+  const hardStopCreditMicros = Math.ceil(input.maxCreditMicros * 1.5);
   let settle!: () => void; const terminal = new Promise<void>(resolve => { settle = resolve; });
   const fail = (code: string): void => { if (error === null) error = code; if (!completed) { completed = true; settle(); } };
   const factory = input.connectionFactory ?? nativeCodexAppServerConnection;
@@ -292,6 +296,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       latestUsage = usage;
       const micros = creditMicrosForUsage([usage]);
       if (micros === null) { interruption = 'unknown-usage'; requestInterrupt(); fail('NATIVE_CODEX_USAGE_UNKNOWN'); return; }
+      if (micros >= hardStopCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; writeFileSync(admissionFlag, 'closed\n', { flag: 'w', mode: 0o600 }); requestInterrupt(); return; }
       if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; writeFileSync(admissionFlag, 'closed\n', { flag: 'w', mode: 0o600 }); }
       // The reserve closes future broker admission; it does not interrupt an
       // already-admitted turn before its final counter can arrive.
@@ -326,9 +331,10 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     }
     if (notification.method === 'turn/completed') {
       const turn = turnFrom(notification.params);
+      if (turn !== null && turn.status === 'interrupted' && interrupted && interruption === 'credit-cap') { fail('NATIVE_CODEX_HARD_CREDIT_STOP'); return; }
       if (turn === null || !id(turn.id) || (turnId !== null && turn.id !== turnId) || turn.status !== 'completed') { fail('NATIVE_CODEX_TURN_FAILED'); return; }
       if (latestUsage === null) { fail('NATIVE_CODEX_USAGE_MISSING'); return; }
-      completed = true; settle();
+      turnCompleted = true; completed = true; settle();
     }
   };
   try {
@@ -344,7 +350,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       writeNew(path.join(artifacts, 'app-server.version.json'), { schemaVersion: 'native-codex-version-check/1', command: [binary, '--version'], exitCode: version.status, signal: version.signal, error: version.error?.name ?? null, expected: expectedCliVersion });
       if (version.status !== 0 || stdout.toString('utf8').trim() !== expectedCliVersion) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
     }
-    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: nativeCodexAppServerArgs(mcpConfig, admissionFlag), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
+    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: nativeCodexAppServerArgs(mcpConfig, admissionFlag), cwd: HARNESS_WORKSPACE, env: harnessEnvironment(), rawLogDirectory: artifacts }));
     unlisten = connection.onNotification(observe);
     const initialized = await beforeDeadline(connection.request('initialize', { clientInfo: { name: 'ai-agent-architect-unity', version: '1' }, capabilities: { optOutNotificationMethods: [] } }));
     if (!object(initialized)) throw new NativeCodexError('NATIVE_CODEX_INITIALIZE_INVALID');
@@ -352,7 +358,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     if (input.connectionFactory === undefined) {
       // Fail closed before any paid turn: an untrusted hook is not active.
       const inventory = await beforeDeadline(connection.request('hooks/list', { cwd: project })) as { data?: { hooks?: { source: string; command: string; enabled: boolean; trustStatus: string }[] }[] };
-      const hook = inventory.data?.flatMap(row => row.hooks ?? []).find(row => row.source === 'sessionFlags' && row.command.includes(admissionFlag));
+      const hook = inventory.data?.flatMap(row => row.hooks ?? []).find(row => row.source === 'user' && row.command.includes(admissionFlag));
       writeNew(path.join(artifacts, 'hook-admission-preflight.json'), { hook: hook ?? null });
       if (!hook || !hook.enabled || hook.trustStatus !== 'trusted') throw new NativeCodexError('NATIVE_CODEX_HOOK_NOT_TRUSTED');
     }
@@ -385,7 +391,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   if (error === null && (creditMicros === null || creditMicros > input.maxCreditMicros)) error = creditMicros === null ? 'NATIVE_CODEX_USAGE_MISSING' : 'NATIVE_CODEX_CREDIT_CAP_EXCEEDED';
   if (error === null && !toolProofRefs.length) error = 'NATIVE_CODEX_TOOL_PROOF_REQUIRED';
   let source: string | undefined;
-  if (error === null) {
+  if (error === null || error === 'NATIVE_CODEX_HARD_CREDIT_STOP' || error === 'NATIVE_CODEX_CREDIT_CAP_EXCEEDED') {
     try { source = readFileSync(target, 'utf8'); }
     catch { error = 'NATIVE_CODEX_TARGET_READ_FAILED'; }
   }
@@ -394,7 +400,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   writeNew(eventFile, eventLog);
   const receipt: NativeCodexReceipt = { schemaVersion: 'native-codex-receipt/1', receiptId, status: error === null ? 'completed' : 'failed', model: NATIVE_CODEX_MODEL,
     modelIdentityAssurance: 'requested-only', usage, creditMicros, reservedCreditMicros: input.maxCreditMicros, responseReserveCreditMicros, interruptAtCreditMicros, elapsedMs: Math.max(0, Math.round(performance.now() - started)),
-    ...(source === undefined ? {} : { source }), sourceDigest: source === undefined ? null : digest(source), toolProofRefs: [...new Set(toolProofRefs)], error, overshootRisk, eventLogDigest, promptDigest };
+    ...(source === undefined ? {} : { source }), sourceDigest: source === undefined ? null : digest(source), toolProofRefs: [...new Set(toolProofRefs)], error, overshootRisk, usageSettlement: turnCompleted ? 'settled' : 'unsettled', hardStopCreditMicros, eventLogDigest, promptDigest };
   writeNew(path.join(artifacts, `${receiptId.replace(':', '-')}.receipt.json`), receipt);
   return receipt;
 }
