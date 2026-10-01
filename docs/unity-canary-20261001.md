@@ -21,3 +21,23 @@ across the failed canary. The hard stop remains 34%.
 No second microtask, Editor spike, batch-2 execution, or replacement canary is
 authorized by this record. The prior ten-task A/B/C approval remains withdrawn.
 Git authentication was unavailable, so this handoff is committed locally only.
+
+## Stable retry outcome
+
+The one authorized compatibility retry used the dedicated pinned native
+`@openai/codex@0.159.0` binary. Both same-turn `unity_compile_test` calls were
+explicitly approved. The first returned the expected three failing tests and
+exit 8; the second returned the same three test IDs passing with exit 0. Source
+hashes and XML evidence bound the ordered stub-to-repair transition, and the
+durable receipt audit passed.
+
+The native transport then stopped at its 1.0-credit interruption threshold
+(1.5-credit cap less a 0.5-credit reserve). Its observed counter was 1.033010
+credits, but final settlement is not established: no `turn/completed` event was
+recorded after the second tool call. This is a technical tool-proof pass and an
+overall interrupted canary, so no follow-on tasks, spike, protocol continuation,
+or automatic retry is authorized.
+
+The isolated pin applies only to the canary runner. The default native transport
+still points at the desktop CLI/version and cannot be treated as migrated for
+the A/C harness.

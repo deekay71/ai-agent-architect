@@ -74,3 +74,11 @@ Pin này chỉ phục vụ canary; model Terra, Unity CLI `1.0.0-beta.8`, cap 1.
 reserve 0.5 credit, và các stopping rules giữ nguyên. Offline probe đã Pass với
 initialize, thread/start và inventory `unity_public.unity_compile_test`; probe không
 gửi turn/start hay model request. Retry live vẫn chờ snapshot quota mới từ owner.
+
+Stable retry đã chứng minh hai Unity tool call cùng session: stub fail 3/3 rồi
+repair pass 3/3, receipt/XML/source hash khớp. Tuy nhiên native monitor ngắt ở
+1.033010 credit observed khi reserve 0.5 credit được chạm; không có
+`turn/completed`, nên settled cost unknown. Đây là technical tool-proof Pass nhưng
+canary overall interrupted: không mở 2 task, spike, A/C hay retry tự động. Native
+pin hiện chỉ có canary; default transport/A/C vẫn dùng desktop pin cũ và migration
+đó bị chặn cho đến quyết định riêng.

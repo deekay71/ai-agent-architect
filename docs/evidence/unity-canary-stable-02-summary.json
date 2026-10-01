@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "unity-canary-stable-summary/1",
+  "status": "tool-proof-pass-settlement-interrupted",
+  "session": { "count": 1, "sameSessionMcpCalls": 2, "retryAuthorizationUsed": true },
+  "toolEvidence": {
+    "approval": ["approved", "approved"],
+    "backend": "unity-cli 1.0.0-beta.8; Editor 6000.0.84f1; no fallback",
+    "first": { "testCount": 3, "outcome": "model", "exitCode": 8 },
+    "second": { "testCount": 3, "outcome": "pass", "exitCode": 0 },
+    "receiptAudit": "pass: ordered source hashes, XML, and unique test IDs match"
+  },
+  "native": {
+    "status": "failed",
+    "error": "NATIVE_CODEX_CREDIT_CAP_RESERVE_REACHED",
+    "observedCreditMicros": 1033010,
+    "capCreditMicros": 1500000,
+    "reserveCreditMicros": 500000,
+    "interruptAtCreditMicros": 1000000,
+    "overshootRisk": true,
+    "finalSettlement": "unknown; no turn/completed event after the second MCP call"
+  },
+  "quota": { "beginPercent": 33, "preModelPercent": 35, "postPercent": 35, "observedAt": "2026-10-01T03:51:25Z", "fiveHourWindow": "unknown", "attribution": "shared rounded snapshots; no causal allocation" },
+  "scope": { "followOnTasks": false, "editorSpike": false, "protocolContinuation": false, "automaticRetry": false, "defaultTransportMigration": "blocked; isolated pin is canary-only" },
+  "privateArtifactHashes": {
+    "appServerStdout": "sha256:c6f4fd2963a615e779aad42c9fcd54b71ae7dc2dd421decec7a6e55e4b20db49",
+    "appServerStderr": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawEvents": "sha256:eb0d91af4aad5c87f1af590d41d11a5efccc4745f59904914ab0e8b45577705d",
+    "nativeReceipt": "sha256:d53e611f7e2fe2723ebc4013d8ca53339123cbfee48ee4b4cf9b94f7b9bae6d6",
+    "result": "sha256:a0ce6c750e566a5c519d04ac3726f6e963583481930a035533468c0a3df68ffe"
+  }
+}
