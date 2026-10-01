@@ -5,7 +5,7 @@ import { randomUUID, createHash } from 'node:crypto';
 import { digest } from '../dist/src/contracts/canonical.js';
 import { ReadyChecklistSchema } from '../dist/src/contracts/brain-planning.js';
 import { creditMicrosForUsage } from '../dist/src/contracts/credit-usage.js';
-import { runUnityComparison, UNITY_COMPARISON_FORECAST, auditNativeUnityExecution } from '../dist/src/unity/comparison.js';
+import { runUnityComparison, runTwoCaseAcceptance, UNITY_COMPARISON_FORECAST, auditNativeUnityExecution } from '../dist/src/unity/comparison.js';
 import { runNativeCodexUnityTask } from '../dist/src/unity/native-codex.js';
 import { createCurrentCodexTransport, renderCodexRequest } from '../dist/src/providers/codex.js';
 import { UNITY_TASK_MANIFEST, proposeVerifiedUnityObservation } from '../dist/src/unity/walking-skeleton.js';
@@ -14,6 +14,7 @@ const repo=path.resolve(import.meta.dirname,'..');
 const template=path.join(repo,'unity/walking-skeleton');
 const output=path.resolve(process.argv[2]??'.local/unity-comparison-20260930');
 const live=process.argv.includes('--live');
+const twoCase=process.argv.includes('--two-case');
 if(fs.existsSync(output)) throw Error('Comparison output must be new');
 fs.mkdirSync(output,{recursive:true});
 const save=(name,data)=>fs.writeFileSync(path.join(output,name),JSON.stringify(data,null,2)+'\n',{flag:'wx'});
@@ -21,7 +22,7 @@ const diskTasks=JSON.parse(fs.readFileSync(path.join(template,'tasks.json'),'utf
 const taskById=new Map(diskTasks.map(t=>[t.id,t]));
 const skill=fs.readFileSync(path.join(template,'execution-recipe.md'),'utf8');
 const protocolText=fs.readFileSync(path.join(repo,'docs/s2-brain-comparison-protocol.md'),'utf8');
-const tasks=UNITY_TASK_MANIFEST.map(t=>({...t,requirement:taskById.get(t.taskId).requirement}));
+const tasks=UNITY_TASK_MANIFEST.map(t=>({...t,requirement:taskById.get(t.taskId).requirement})).filter(t=>!twoCase||t.taskId==='integer-clamp'||t.taskId==='cell-bounds');
 const smoke={
  'integer-clamp':'Assert.AreEqual(5, IntegerClamp.Clamp(5, 0, 10));',
  'cell-bounds':'Assert.IsTrue(CellBounds.Contains(0, 0, 2, 2));',
@@ -148,7 +149,8 @@ const verifier={async verify({arm,task,source}){
 const cExecutor={kind:'ordinary-codex',model:'gpt-5.6-terra',toolEnabled:true,skillsDigest:lock.skillsDigest,unityCliPermissionsDigest:lock.unityCliPermissionsDigest,
  async runCToolEnabled({task,maxCreditMicros}){return native(task,'C',maxCreditMicros,'Implement the requirement using your normal Codex workflow. You may inspect the public project, edit the target, run Unity through the supplied tool, and fix your work until satisfied or the credit allowance is near exhausted. No Brain planner/critic is provided.');}};
 const rows=[];
-const report=await runUnityComparison({mode:'live',tasks,lock,lockMaterial:material,admission:{conditionalAuthorizationRef:material.protocol.authorization,s1Passed:true,lockedProtocol:true,forecastWeeklyQuotaPercent:UNITY_COMPARISON_FORECAST.weeklyQuotaPercent},model,verifier,cExecutor,
+const execute=twoCase?runTwoCaseAcceptance:runUnityComparison;
+const report=await execute({mode:'live',tasks,lock,lockMaterial:material,admission:{conditionalAuthorizationRef:material.protocol.authorization,s1Passed:true,lockedProtocol:true,forecastWeeklyQuotaPercent:UNITY_COMPARISON_FORECAST.weeklyQuotaPercent},model,verifier,cExecutor,
  onResult(arm,row){rows.push({arm,row});fs.writeFileSync(path.join(output,'progress.json'),JSON.stringify(rows,null,2));process.stdout.write(JSON.stringify({arm,taskId:row.taskId,outcome:row.outcome,credits:row.creditMicros===null?null:row.creditMicros/1e6})+'\n');},
  shouldStop(){return fs.existsSync(path.join(output,'STOP'));}});
 save('report.json',report);save('memory-snapshot.json',memory.writeMarkdownSnapshot(namespace).snapshot);memory.close();console.log(JSON.stringify({output,stoppedReason:report.stoppedReason,summary:report.summary,decision:report.decision}));

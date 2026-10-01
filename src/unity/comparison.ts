@@ -305,6 +305,25 @@ export function decideUnityComparison(b: ReturnType<typeof aggregate>, c: Return
   return { decision: 'inconclusive-owner-review' as const, batch2: null };
 }
 
+/** Narrow acceptance slice: two locked tasks, A then C, with no B repair arm. */
+export async function runTwoCaseAcceptance(options: UnityComparisonOptions) {
+  if (options.tasks.length !== 2 || new Set(options.tasks.map(task => task.taskId)).size !== 2) throw Error('UNITY_TWO_CASE_TASK_SET_REQUIRED');
+  if (!validCExecutor(options.cExecutor, options.lock)) throw Error('UNITY_TWO_CASE_C_TOOL_TRANSPORT_REQUIRED');
+  const audit: ReceiptAudit = { seen: new Set(), duplicateReceiptId: null }, a: ATaskResult[] = [], c: ComparisonTaskResult[] = [];
+  let infrastructureFailures = 0;
+  for (const task of options.tasks) {
+    const row = await runA(task, options, audit); a.push(row); options.onResult?.('A', row);
+    if (row.classification === 'infrastructure') infrastructureFailures++;
+    if (infrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('A', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: infrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
+  }
+  for (const task of options.tasks) {
+    const row = await runC(task, options.cExecutor, options, audit); c.push(row); options.onResult?.('C', row);
+    if (row.classification === 'infrastructure') infrastructureFailures++;
+    if (infrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('C', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: infrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
+  }
+  return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: null };
+}
+
 /** Executes the locked A → B → C comparison. There is intentionally no native JSON-only C fallback. */
 export async function runUnityComparison(options: UnityComparisonOptions) {
   validateAdmission(options);
