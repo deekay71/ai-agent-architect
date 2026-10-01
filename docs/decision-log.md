@@ -82,3 +82,8 @@ repair pass 3/3, receipt/XML/source hash khớp. Tuy nhiên native monitor ngắ
 canary overall interrupted: không mở 2 task, spike, A/C hay retry tự động. Native
 pin hiện chỉ có canary; default transport/A/C vẫn dùng desktop pin cũ và migration
 đó bị chặn cho đến quyết định riêng.
+
+Owner chấp nhận mục tiêu canary và hạch toán **1.5 credit reserved**, không dùng
+1.033010 observed như settled cost. Runtime stable isolated hiện là default cho
+new transports. Hard weekly stop mới là 40%; two-case A/C (forecast 387.439 raw
+tokens) vẫn blocked cho đến ModuleReady mới, full checks và owner budget approval.

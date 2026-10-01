@@ -41,3 +41,12 @@ or automatic retry is authorized.
 The isolated pin applies only to the canary runner. The default native transport
 still points at the desktop CLI/version and cannot be treated as migrated for
 the A/C harness.
+
+## Current phase closure
+
+The owner accepted the canary objective and accounts the full reserved 1.5
+credits because final settlement was unknown. New transports now use the
+isolated stable CLI pin. Weekly work is capped at 40%; the two-case A/C run is
+blocked pending a fully bound ModuleReady record, completed checks, and a new
+owner budget approval for its 387,439-token forecast. No scene/prefab spike or
+batch-2 work is authorized in this phase.

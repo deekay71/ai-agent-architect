@@ -69,6 +69,7 @@ if(receipt.outcome!=='pass')throw Error('Broker preflight did not pass');
 if(!live){console.log(JSON.stringify({preflight:'pass',output,modelsInvoked:0}));process.exit(0);}
 const ready=JSON.parse(fs.readFileSync(path.join(repo,'docs/evidence/planning-r3/s2-module-ready-records.json'),'utf8'));
 ReadyChecklistSchema.parse(ready.records.readyChecklist);
+if(twoCase) throw Error('TWO_CASE_MODULE_READY_REQUIRED');
 if(ready.records.readyChecklist.outcome!=='ready'||ready.records.readyChecklist.plan.digest!=='sha256:'+createHash('sha256').update(protocolText).digest('hex'))throw Error('READY_PROTOCOL_BINDING_REQUIRED');
 const nativeProofFile=path.join(repo,'docs/evidence/unity-s1-20260930/native-offline-preflight.json');
 if(!fs.existsSync(nativeProofFile)||JSON.parse(fs.readFileSync(nativeProofFile,'utf8')).status!=='pass')throw Error('NATIVE_COMPARISON_PREFLIGHT_REQUIRED');
@@ -126,6 +127,7 @@ const verifier={async verify({arm,task,source}){
  let result=list.at(-1);
  if(!result)return {outcome:'unknown',feedback:'Infrastructure failure: native Unity receipt missing; external fallback prohibited',evidenceId:'broker:'+randomUUID(),hiddenPass:false,manualOwnerFixes:0};
  if(result.sourceSha256!==sourceHash){
+  if(twoCase)return {outcome:'unknown',feedback:'Infrastructure failure: final source lacks a bound broker receipt; host fallback prohibited',evidenceId:'broker:'+randomUUID(),hiddenPass:false,manualOwnerFixes:0};
   // C can edit after its last successful tool call; this final candidate is verified separately.
   brokerRoot=path.join(p.artifacts,'final-'+randomUUID());const args=[...p.args];args[4]=brokerRoot;
   const run=spawnSync('/usr/bin/python3',args,{input:JSON.stringify(requests[2])+'\n',encoding:'utf8',timeout:220000,maxBuffer:100000});
