@@ -206,10 +206,11 @@ function verifyResult(result: Awaited<ReturnType<UnityComparisonVerifier['verify
   return { ...result, hiddenPass, manualOwnerFixes };
 }
 
-async function runA(task: UnityTaskManifest, options: UnityComparisonOptions, audit: ReceiptAudit): Promise<ATaskResult> {
+async function runA(task: UnityTaskManifest, options: UnityComparisonOptions, audit: ReceiptAudit, cap = A_TASK_CREDIT_CAP_MICROS): Promise<ATaskResult> {
   const started = Date.now(), receipts: ComparisonReceipt[] = [];
   for (const stage of ['planner', 'critic', 'executor'] as const) {
-    const receipt = await options.model.runAStage({ task, stage, priorStages: receipts, maxTaskCreditMicros: A_TASK_CREDIT_CAP_MICROS, lock: options.lock });
+    if (options.shouldStop?.('A', { taskId: task.taskId, receipts, outcome: 'unknown', classification: 'unknown', source: '', feedback: 'pre-dispatch stop', evidenceId: null, creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0 })) throw Error('UNITY_COMPARISON_PRE_DISPATCH_STOP');
+    const receipt = await options.model.runAStage({ task, stage, priorStages: receipts, maxTaskCreditMicros: cap, lock: options.lock });
     if (receipt.model !== (stage === 'executor' ? 'gpt-5.6-terra' : 'gpt-6-sol') || receipt.artifact === undefined) throw Error('UNITY_COMPARISON_A_ROLE_RECEIPT_INVALID');
     if (stage === 'critic' && typeof receipt.criticApproved !== 'boolean') throw Error('UNITY_COMPARISON_CRITIC_ARTIFACT_INVALID');
     receipts.push(receipt);
@@ -222,7 +223,7 @@ async function runA(task: UnityTaskManifest, options: UnityComparisonOptions, au
     creditMicros: null, elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0 };
   if (audit.duplicateReceiptId !== null) return { taskId: task.taskId, receipts, outcome: 'unknown', classification: 'unknown', source: receiptSource(receipts.at(-1)), feedback: `duplicate receipt ${audit.duplicateReceiptId}`, evidenceId: null,
     creditMicros, elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0 };
-  if (creditMicros > A_TASK_CREDIT_CAP_MICROS) return { taskId: task.taskId, receipts, outcome: 'fail', classification: 'model', source: receiptSource(receipts.at(-1)), feedback: 'A credit cap exceeded', evidenceId: null,
+  if (creditMicros > cap) return { taskId: task.taskId, receipts, outcome: 'fail', classification: 'model', source: receiptSource(receipts.at(-1)), feedback: 'A credit cap exceeded', evidenceId: null,
     creditMicros, elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0 };
   const critic = receipts.find(receipt => receipt.criticApproved !== undefined);
   if (critic?.status === 'completed' && critic.criticApproved === false) return { taskId: task.taskId, receipts, outcome: 'fail', classification: 'model', source: '', feedback: 'critic rejected the plan', evidenceId: null,
@@ -273,8 +274,9 @@ function validCExecutor(c: ToolEnabledUnityCodexExecutor | undefined, lock: Unit
     && c.unityCliPermissionsDigest === lock.unityCliPermissionsDigest && c.skillsDigest === lock.skillsDigest;
 }
 
-async function runC(task: UnityTaskManifest, executor: ToolEnabledUnityCodexExecutor, options: UnityComparisonOptions, audit: ReceiptAudit): Promise<ComparisonTaskResult> {
-  const started = Date.now(), receipt = await executor.runCToolEnabled({ task, maxCreditMicros: B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, lock: options.lock });
+async function runC(task: UnityTaskManifest, executor: ToolEnabledUnityCodexExecutor, options: UnityComparisonOptions, audit: ReceiptAudit, cap = B_TASK_CUMULATIVE_CREDIT_CAP_MICROS): Promise<ComparisonTaskResult> {
+  if (options.shouldStop?.('C', { taskId: task.taskId, outcome: 'unknown', classification: 'unknown', receipts: [], creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false })) throw Error('UNITY_COMPARISON_PRE_DISPATCH_STOP');
+  const started = Date.now(), receipt = await executor.runCToolEnabled({ task, maxCreditMicros: cap, lock: options.lock });
   if (receipt.model !== 'gpt-5.6-terra' || receipt.artifact === undefined) throw Error('UNITY_COMPARISON_C_ROLE_RECEIPT_INVALID');
   if (!receipt.toolProofRefs.length || receipt.toolProofRefs.some(ref => !ref.trim())) throw Error('UNITY_COMPARISON_C_TOOL_PROOF_REQUIRED');
   const creditMicros = usageMicros([receipt]);
@@ -282,7 +284,7 @@ async function runC(task: UnityTaskManifest, executor: ToolEnabledUnityCodexExec
     elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false };
   if (!recordReceipt(audit, receipt)) return { taskId: task.taskId, outcome: 'unknown', classification: 'unknown', receipts: [receipt], creditMicros,
     elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false };
-  if (creditMicros > B_TASK_CUMULATIVE_CREDIT_CAP_MICROS) return { taskId: task.taskId, outcome: 'fail', classification: 'model', receipts: [receipt], creditMicros,
+  if (creditMicros > cap) return { taskId: task.taskId, outcome: 'fail', classification: 'model', receipts: [receipt], creditMicros,
     elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false };
   if (receipt.status !== 'completed' || !receiptSource(receipt)) return { taskId: task.taskId, outcome: 'fail', classification: stageFailure(receipt) ?? 'model', receipts: [receipt], creditMicros,
     elapsedMs: Date.now() - started, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false };
@@ -308,18 +310,19 @@ export function decideUnityComparison(b: ReturnType<typeof aggregate>, c: Return
 /** Narrow acceptance slice: two locked tasks, A then C, with no B repair arm. */
 export async function runTwoCaseAcceptance(options: UnityComparisonOptions) {
   if (options.tasks.length !== 2 || new Set(options.tasks.map(task => task.taskId)).size !== 2) throw Error('UNITY_TWO_CASE_TASK_SET_REQUIRED');
+  if (!options.admission.conditionalAuthorizationRef.trim() || options.admission.s1Passed !== true || options.admission.lockedProtocol !== true || options.lock.locked !== true || options.lock.tasksDigest !== digest(options.tasks) || options.lock.modelsDigest !== digest({ planner: 'gpt-6-sol', critic: 'gpt-6-sol', executor: 'gpt-5.6-terra', c: 'gpt-5.6-terra' }) || options.lock.protocolDigest !== digest(options.lockMaterial.protocol) || options.lock.skillsDigest !== digest(options.lockMaterial.skills) || options.lock.sourceDigest !== digest(options.lockMaterial.source)) throw Error('UNITY_TWO_CASE_ADMISSION_INVALID');
   if (!validCExecutor(options.cExecutor, options.lock)) throw Error('UNITY_TWO_CASE_C_TOOL_TRANSPORT_REQUIRED');
   const audit: ReceiptAudit = { seen: new Set(), duplicateReceiptId: null }, a: ATaskResult[] = [], c: ComparisonTaskResult[] = [];
-  let infrastructureFailures = 0;
+  let aInfrastructureFailures = 0, cInfrastructureFailures = 0;
   for (const task of options.tasks) {
-    const row = await runA(task, options, audit); a.push(row); options.onResult?.('A', row);
-    if (row.classification === 'infrastructure') infrastructureFailures++;
-    if (infrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('A', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: infrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
+    const row = await runA(task, options, audit, 3_000_000); a.push(row); options.onResult?.('A', row);
+    if (row.classification === 'infrastructure') aInfrastructureFailures++;
+    if (aInfrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('A', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: aInfrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
   }
   for (const task of options.tasks) {
-    const row = await runC(task, options.cExecutor, options, audit); c.push(row); options.onResult?.('C', row);
-    if (row.classification === 'infrastructure') infrastructureFailures++;
-    if (infrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('C', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: infrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
+    const row = await runC(task, options.cExecutor, options, audit, 3_000_000); c.push(row); options.onResult?.('C', row);
+    if (row.classification === 'infrastructure') cInfrastructureFailures++;
+    if (cInfrastructureFailures >= 2 || audit.duplicateReceiptId !== null || options.shouldStop?.('C', row)) return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: cInfrastructureFailures >= 2 ? 'infrastructure-stop' : audit.duplicateReceiptId ? 'duplicate-receipt' : 'quota-stop' };
   }
   return { schemaVersion: 'unity-two-case/1' as const, a, c, stoppedReason: null };
 }
