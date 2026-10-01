@@ -63,3 +63,14 @@ R1 A10/B reuse10/C9 không hợp lệ cho comparison: runtime MCP không tạo U
 ## Giới hạn lượt cập nhật này
 
 Hoàn thiện docs/Notion, decision log, roadmap/backlog, contracts/tests, budget calculation, GitHub/CI và bàn giao. **Không model run mới, không xây planning engine, không pilot.** Sau báo cáo cập nhật dừng để owner nghiệm thu; acceptance Phase 3 đã có không phải approval chạy thí nghiệm.
+
+## Canary CLI compatibility pin — 01/10/2026
+
+Lần canary IntegerClamp duy nhất dừng trước app-server vì binary desktop thay đổi từ
+`0.158.0-alpha.2.1` sang `0.159.0`. Owner cho phép một compatibility fix và retry
+sau khi xác nhận quota mới. Harness dùng binary riêng trong `.local/tools/codex/0.159.0`,
+cài exact `@openai/codex@0.159.0`, không cập nhật binary desktop hay global Codex.
+Pin này chỉ phục vụ canary; model Terra, Unity CLI `1.0.0-beta.8`, cap 1.5 credit,
+reserve 0.5 credit, và các stopping rules giữ nguyên. Offline probe đã Pass với
+initialize, thread/start và inventory `unity_public.unity_compile_test`; probe không
+gửi turn/start hay model request. Retry live vẫn chờ snapshot quota mới từ owner.

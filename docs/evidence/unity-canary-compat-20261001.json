@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "unity-canary-compatibility/1",
+  "status": "offline-pass",
+  "isolatedCodex": {
+    "package": "@openai/codex@0.159.0",
+    "registry": "https://registry.npmjs.org",
+    "integrity": "sha512-nQWxAkzn+Rhr8TgtIhVhSlqvCytrMoqe+P8xoo4xxhCIBnzOfRs6SEmkMJfTPjkU3BYlsplwDOY2dbSp4+514g==",
+    "binaryPath": ".local/tools/codex/0.159.0/node_modules/.bin/codex",
+    "expectedVersion": "codex-cli 0.159.0",
+    "nativeBinarySha256": "e89718aa1969bfc4a471277bdc4679a3a3529293de0a309909822dfd67ddb77a",
+    "globalInstallationMutated": false
+  },
+  "offlineProbe": {
+    "initialize": true,
+    "threadStart": true,
+    "unityCompileTestInventory": true,
+    "turnStart": false,
+    "modelRequests": 0
+  },
+  "rawArtifacts": {
+    "root": ".local/unity-canary-offline-verify-20261001/offline-probe",
+    "versionStdoutSha256": "8a8469ab9e45cda52908dc6f57b933a00f602e2dce766709df60161368440a1d",
+    "appServerStdoutSha256": "fc5e93017462024758e14e4dc0230f4f64aa702ebe3454fac8b06ef1d4542517",
+    "eventsSha256": "04c6a73a6ddf0411c283eca7a4ab841329b8855918386f6be242f285cb2cd10c"
+  },
+  "liveDispatch": "requires fresh owner quota confirmation"
+}

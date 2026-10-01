@@ -49,6 +49,8 @@ export interface NativeCodexUnityTask {
   fixedMcpConfig?: FixedMcpConfig;
   timeoutMs?: number;
   binaryPath?: string;
+  /** Exact version of an isolated binary. Defaults to the bundled CLI pin. */
+  expectedCliVersion?: string;
   connectionFactory?: NativeCodexConnectionFactory;
 }
 
@@ -318,9 +320,16 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   };
   try {
     const binary = input.binaryPath ?? CURRENT_CODEX_BINARY_PATH;
+    const expectedCliVersion = input.expectedCliVersion ?? NATIVE_CODEX_APP_SERVER_VERSION;
+    if (typeof expectedCliVersion !== 'string' || !/^codex-cli [0-9][A-Za-z0-9.+-]*$/.test(expectedCliVersion)) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_INVALID');
     if (input.connectionFactory === undefined) {
-      const version = spawnSync(binary, ['--version'], { cwd: project, env: codexChildEnvironment(), encoding: 'utf8', shell: false, timeout: 5_000 });
-      if (version.status !== 0 || version.stdout.trim() !== NATIVE_CODEX_APP_SERVER_VERSION) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
+      const version = spawnSync(binary, ['--version'], { cwd: project, env: codexChildEnvironment(), shell: false, timeout: 5_000 });
+      const stdout = Buffer.isBuffer(version.stdout) ? version.stdout : Buffer.from('');
+      const stderr = Buffer.isBuffer(version.stderr) ? version.stderr : Buffer.from('');
+      writeFileSync(path.join(artifacts, 'app-server.version.stdout.log'), stdout, { flag: 'wx', mode: 0o600 });
+      writeFileSync(path.join(artifacts, 'app-server.version.stderr.log'), stderr, { flag: 'wx', mode: 0o600 });
+      writeNew(path.join(artifacts, 'app-server.version.json'), { schemaVersion: 'native-codex-version-check/1', command: [binary, '--version'], exitCode: version.status, signal: version.signal, error: version.error?.name ?? null, expected: expectedCliVersion });
+      if (version.status !== 0 || stdout.toString('utf8').trim() !== expectedCliVersion) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
     }
     connection = await beforeDeadline(factory.open({ binaryPath: binary, args: launchArgs(mcpConfig), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
     unlisten = connection.onNotification(observe);
