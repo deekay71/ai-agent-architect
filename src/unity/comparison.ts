@@ -23,6 +23,28 @@ export function auditNativeUnityExecution(arm: 'A' | 'B' | 'C', sourceSha256: st
   return null;
 }
 
+/** Canary-specific durable evidence gate.  It binds the two permitted broker
+ * calls to one test set and to the expected stub-failure then repaired-pass.
+ */
+export function auditUnityCanaryReceipts(receipts: readonly {
+  sourceSha256: string; outcome: string; actualTestCount: number; expectedTestCount: number;
+  tests: readonly { name?: string | null; result?: string | null }[]; xmlDigest: string | null; exitCode: number | null;
+}[], stubSha256: string, repairedSha256: string): string | null {
+  if (receipts.length !== 2) return 'infrastructure: canary requires exactly two broker receipts';
+  const failed = receipts[0]!, passed = receipts[1]!;
+  if (failed.sourceSha256 !== stubSha256 || passed.sourceSha256 !== repairedSha256 || stubSha256 === repairedSha256) return 'infrastructure: canary source hashes do not bind stub then repair';
+  for (const receipt of [failed, passed]) {
+    if (receipt.expectedTestCount !== 3 || receipt.actualTestCount !== 3 || receipt.tests.length !== 3 || !receipt.xmlDigest || receipt.exitCode === null)
+      return 'infrastructure: canary receipt is missing exact Unity test evidence';
+  }
+  const ids = (receipt: typeof failed) => receipt.tests.map(test => test.name ?? '').sort();
+  const failedIds = ids(failed), passedIds = ids(passed);
+  if (JSON.stringify(failedIds) !== JSON.stringify(passedIds) || failedIds.some(id => !id) || new Set(failedIds).size !== 3) return 'infrastructure: canary test IDs differ between stub failure and repair pass';
+  if (failed.outcome !== 'model' || failed.exitCode === 0 || !failed.tests.some(test => test.result === 'Failed') || passed.outcome !== 'pass' || passed.exitCode !== 0 || !passed.tests.every(test => test.result === 'Passed'))
+    return 'infrastructure: canary did not prove stub failure followed by repaired pass';
+  return null;
+}
+
 export type ComparisonFailureClass = 'model' | 'infrastructure' | 'unknown';
 export type ComparisonOutcome = 'pass' | 'fail' | 'unknown';
 export type AStage = 'planner' | 'critic' | 'executor';

@@ -36,9 +36,10 @@ def validate(public, target, evaluation):
 def write_receipt(run_dir, receipt):
     run_dir.mkdir(parents=True, exist_ok=True)
     (run_dir/'receipt.json').write_text(json.dumps(receipt,indent=2),encoding='utf8')
-def invoke(public,target,public_before,evaluation,private_target,private_before,output,test_filter,expected):
+def invoke(public,target,public_before,evaluation,private_target,private_before,output,test_filter,expected,call_index=0):
     run_dir=output/str(uuid.uuid4()); run_dir.mkdir(parents=True); source_sha=sha(target)
-    base={'runId':run_dir.name,'sourceSha256':source_sha,'protectedBeforeDigest':digest([public_before,private_before]),'testFilter':test_filter,'expectedTestCount':expected,'tests':[],'compileErrors':[]}
+    base={'runId':run_dir.name,'callIndex':call_index,'backend':{'label':'unity-cli','cli':str(UNITY),'cliVersion':'1.0.0-beta.8','editor':EDITOR,'editorVersion':'6000.0.84f1','fallback':'none'},'sourceSha256':source_sha,'protectedBeforeDigest':digest([public_before,private_before]),'testFilter':test_filter,'expectedTestCount':expected,'tests':[],'compileErrors':[]}
+    for name in ('unity.stdout.log','unity.stderr.log'): (run_dir/name).write_bytes(b'')
     if snapshot(public,target)!=public_before or snapshot(evaluation,private_target)!=private_before:
         receipt={**base,'outcome':'infrastructure','error':'protected project changed','elapsedSeconds':0,'actualTestCount':0,'commandDigest':None,'xmlDigest':None,'logDigest':None,'protectedAfterDigest':None}; write_receipt(run_dir,receipt); return receipt
     source=target.read_text(encoding='utf8')
@@ -48,9 +49,19 @@ def invoke(public,target,public_before,evaluation,private_target,private_before,
     private_target.write_bytes(target.read_bytes())
     xml,log=run_dir/'tests.xml',run_dir/'editor.log'
     command=[str(UNITY),'--non-interactive','--no-banner','test',str(evaluation),'--mode','EditMode','--filter',test_filter,'--output',str(xml),'--editor-path',EDITOR,'--timeout','180','--retries','0','--','-nographics','-runSynchronously','-logFile',str(log)]
-    start=time.monotonic(); result=None
-    try: result=subprocess.run(command,capture_output=True,text=True,timeout=195)
-    except subprocess.TimeoutExpired: pass
+    start=time.monotonic(); result=None; startup_error=None
+    def raw(value): return value if isinstance(value,bytes) else (value or '').encode()
+    try: result=subprocess.run(command,capture_output=True,timeout=195)
+    except subprocess.TimeoutExpired as timeout:
+        # Preserve partial process output even when the pinned Editor times out.
+        (run_dir/'unity.stdout.log').write_bytes(raw(timeout.stdout))
+        (run_dir/'unity.stderr.log').write_bytes(raw(timeout.stderr))
+    except OSError as failure:
+        startup_error=str(failure)
+        (run_dir/'startup-error.json').write_text(json.dumps({'error':startup_error}),encoding='utf8')
+    if result is not None:
+        (run_dir/'unity.stdout.log').write_bytes(raw(getattr(result,'stdout',None)))
+        (run_dir/'unity.stderr.log').write_bytes(raw(getattr(result,'stderr',None)))
     errors=[]; tests=[]
     if log.exists(): errors=[line[:500] for line in log.read_text(errors='replace').splitlines() if 'error CS' in line][:12]
     malformed=False
@@ -64,7 +75,7 @@ def invoke(public,target,public_before,evaluation,private_target,private_before,
     elif errors or (count_ok and any(x['result']=='Failed' for x in tests)): outcome='model'
     else: outcome='infrastructure'
     if after != base['protectedBeforeDigest']: outcome='infrastructure'; errors.append('Protected project changed during Unity execution')
-    receipt={**base,'outcome':outcome,'exitCode':None if result is None else result.returncode,'tests':tests,'actualTestCount':len(tests),'compileErrors':errors,'elapsedSeconds':round(time.monotonic()-start,3),'commandDigest':digest(command),'xmlDigest':sha(xml) if xml.exists() else None,'logDigest':sha(log) if log.exists() else None,'protectedAfterDigest':after}
+    receipt={**base,'outcome':outcome,'exitCode':None if result is None else result.returncode,'tests':tests,'actualTestCount':len(tests),'compileErrors':errors,'elapsedSeconds':round(time.monotonic()-start,3),'commandDigest':digest(command),'xmlDigest':sha(xml) if xml.exists() else None,'logDigest':sha(log) if log.exists() else None,'protectedAfterDigest':after,**({'error':'Unity startup error: '+startup_error} if startup_error else {})}
     write_receipt(run_dir,receipt); return receipt
 def serve(public,target,expected_public,output,evaluation,test_filter,expected_count,max_calls):
     public,target,evaluation,private=validate(public,target,evaluation); output=output.resolve()
@@ -79,7 +90,7 @@ def serve(public,target,expected_public,output,evaluation,test_filter,expected_c
         elif method=='tools/call' and request.get('params',{}).get('name')=='unity_compile_test' and request.get('params',{}).get('arguments',{})=={}:
             if max_calls and calls>=max_calls: result=None; error={'code':-32000,'message':'Fixed broker call limit reached'}
             else:
-                calls+=1; receipt=invoke(public,target,expected_public,evaluation,private,private_snapshot,output,test_filter,expected_count); result={'content':[{'type':'text','text':json.dumps(receipt)}]}
+                calls+=1; receipt=invoke(public,target,expected_public,evaluation,private,private_snapshot,output,test_filter,expected_count,calls); result={'content':[{'type':'text','text':json.dumps(receipt)}]}
         elif method=='ping': result={}
         else: result=None; error={'code':-32602,'message':'Unknown method or invalid fixed-project tool arguments'}
         response={'jsonrpc':'2.0','id':request['id']}; response['error' if error else 'result']=error or result; print(json.dumps(response),flush=True)

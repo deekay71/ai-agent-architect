@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "unity-canary-public-summary/1",
+  "date": "2026-10-01",
+  "task": "integer-clamp",
+  "dispatches": 1,
+  "outcome": "preflight-failed",
+  "failure": "NATIVE_CODEX_CLI_VERSION_UNSUPPORTED",
+  "cli": {
+    "expected": "codex-cli 0.158.0-alpha.2.1",
+    "observedDiagnosticRepeat": "codex-cli 0.159.0",
+    "originalVersionOutputCaptured": false,
+    "diagnosticOnly": true
+  },
+  "execution": {
+    "appServerLaunched": false,
+    "modelRequestsDispatched": 0,
+    "mcpCalls": 0,
+    "unityExecutions": 0,
+    "brokerReceipts": 0,
+    "usage": "unknown",
+    "cost": "unknown; code preflight establishes no model dispatch"
+  },
+  "quota": {
+    "preparation": { "fromPercent": 31, "toPercent": 33 },
+    "failedCanary": { "fromPercent": 33, "toPercent": 33 },
+    "hardStopPercent": 34,
+    "lastObservedAt": "2026-10-01T02:32:35Z"
+  },
+  "scope": {
+    "secondMicrotask": false,
+    "editorSpike": false,
+    "batch2Execution": false,
+    "priorTenTaskABCApproval": "withdrawn"
+  },
+  "privateArtifactHashes": {
+    ".local/unity-canary-20261001-01/native-*/app-server.stdout.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/unity-canary-20261001-01/native-*/app-server.stderr.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/unity-canary-20261001-01/native-*/app-server.events.ndjson": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/unity-canary-20261001-01/native-*/native-codex-*.receipt.json": "sha256:77c162f23ef4eb5d3d610a972439faa0db1dbe71bcd1434ca8c45408572e4aec",
+    ".local/unity-canary-20261001-01/diagnosis/version-check.json": "sha256:ed9b8d3c788eba4758bf3e017523371ee117f31049a52b3d7a892f8814ab543e"
+  }
+}

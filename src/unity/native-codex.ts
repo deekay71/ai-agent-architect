@@ -23,7 +23,7 @@ export interface NativeCodexAppServerConnection {
   close(): Promise<void>;
 }
 export interface NativeCodexConnectionFactory {
-  open(options: { binaryPath: string; args: readonly string[]; cwd: string; env: NodeJS.ProcessEnv }): Promise<NativeCodexAppServerConnection>;
+  open(options: { binaryPath: string; args: readonly string[]; cwd: string; env: NodeJS.ProcessEnv; rawLogDirectory?: string }): Promise<NativeCodexAppServerConnection>;
 }
 
 /**
@@ -150,16 +150,19 @@ class StdioAppServerConnection implements NativeCodexAppServerConnection {
   private readonly listeners = new Set<(notification: NativeCodexNotification) => void>();
   private readonly pending = new Map<number, { resolve: (value: unknown) => void; reject: (reason: Error) => void }>();
   private nextId = 1; private buffer = ''; private closed = false;
-  private constructor(private readonly child: ReturnType<typeof spawn>) {
-    child.stdout?.setEncoding('utf8'); child.stdout?.on('data', (chunk: string) => this.read(chunk));
+  private constructor(private readonly child: ReturnType<typeof spawn>, rawLogDirectory?: string) {
+    const rawStdout = rawLogDirectory === undefined ? undefined : path.join(rawLogDirectory, 'app-server.stdout.log');
+    const rawStderr = rawLogDirectory === undefined ? undefined : path.join(rawLogDirectory, 'app-server.stderr.log');
+    child.stdout?.on('data', (chunk: Buffer) => { if (rawStdout !== undefined) writeFileSync(rawStdout, chunk, { flag: 'a', mode: 0o600 }); this.read(chunk.toString('utf8')); });
+    child.stderr?.on('data', (chunk: Buffer) => { if (rawStderr !== undefined) writeFileSync(rawStderr, chunk, { flag: 'a', mode: 0o600 }); });
     child.on('error', () => this.failAll('NATIVE_CODEX_APP_SERVER_SPAWN_FAILED'));
     child.on('close', () => this.failAll('NATIVE_CODEX_APP_SERVER_EXIT_DRIFT'));
   }
-  static async open(options: { binaryPath: string; args: readonly string[]; cwd: string; env: NodeJS.ProcessEnv }): Promise<NativeCodexAppServerConnection> {
+  static async open(options: { binaryPath: string; args: readonly string[]; cwd: string; env: NodeJS.ProcessEnv; rawLogDirectory?: string }): Promise<NativeCodexAppServerConnection> {
     let child: ReturnType<typeof spawn>;
-    try { child = spawn(options.binaryPath, [...options.args], { cwd: options.cwd, env: options.env, stdio: ['pipe', 'pipe', 'ignore'], shell: false }); }
+    try { child = spawn(options.binaryPath, [...options.args], { cwd: options.cwd, env: options.env, stdio: ['pipe', 'pipe', 'pipe'], shell: false }); }
     catch { throw new NativeCodexError('NATIVE_CODEX_APP_SERVER_SPAWN_FAILED'); }
-    return new StdioAppServerConnection(child);
+    return new StdioAppServerConnection(child, options.rawLogDirectory);
   }
   private failAll(code: string): void { for (const request of this.pending.values()) request.reject(new NativeCodexError(code)); this.pending.clear(); this.closed = true; }
   private read(chunk: string): void {
@@ -229,6 +232,11 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   const model = input.model ?? NATIVE_CODEX_MODEL;
   if (model !== NATIVE_CODEX_MODEL || !safeInteger(input.maxCreditMicros) || input.maxCreditMicros < 1 || typeof input.prompt !== 'string' || !input.prompt.trim()) throw new NativeCodexError('NATIVE_CODEX_OPTIONS_INVALID');
   const { project, target } = checkedProject(input.projectPath, input.targetFile), artifacts = checkedArtifactDirectory(input.artifactDirectory);
+  // These files are intentionally private artifacts, including for startup failures.
+  // They are operational evidence and are never written into the repository.
+  const rawEventsFile = path.join(artifacts, 'app-server.events.ndjson');
+  for (const file of [path.join(artifacts, 'app-server.stdout.log'), path.join(artifacts, 'app-server.stderr.log'), rawEventsFile]) writeFileSync(file, '', { flag: 'a', mode: 0o600 });
+  writeNew(path.join(artifacts, 'app-server.startup.json'), { schemaVersion: 'native-codex-startup/1', status: 'launching' });
   const mcpConfig = checkedMcpConfig(input.fixedMcpConfig), timeoutMs = input.timeoutMs ?? 600_000;
   if (!safeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 600_000) throw new NativeCodexError('NATIVE_CODEX_TIMEOUT_INVALID');
   const responseReserveCreditMicros = input.responseReserveCreditMicros ?? Math.min(500_000, Math.floor(input.maxCreditMicros / 10));
@@ -253,6 +261,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     void connection.request('turn/interrupt', { threadId, turnId }).catch(() => undefined);
   };
   const observe = (notification: NativeCodexNotification): void => {
+    writeFileSync(rawEventsFile, `${JSON.stringify(notification)}\n`, { flag: 'a', mode: 0o600 });
     const params = object(notification.params) ? notification.params : null, item = eventItem(notification.params);
     const itemType = item !== null && typeof item.type === 'string' ? item.type : null, itemId = item !== null && id(item.id) ? item.id : null;
     const itemStatus = item !== null && typeof item.status === 'string' && /^[a-zA-Z]+$/.test(item.status) ? item.status : null;
@@ -313,7 +322,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       const version = spawnSync(binary, ['--version'], { cwd: project, env: codexChildEnvironment(), encoding: 'utf8', shell: false, timeout: 5_000 });
       if (version.status !== 0 || version.stdout.trim() !== NATIVE_CODEX_APP_SERVER_VERSION) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
     }
-    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: launchArgs(mcpConfig), cwd: project, env: codexChildEnvironment() }));
+    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: launchArgs(mcpConfig), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
     unlisten = connection.onNotification(observe);
     const initialized = await beforeDeadline(connection.request('initialize', { clientInfo: { name: 'ai-agent-architect-unity', version: '1' }, capabilities: { optOutNotificationMethods: [] } }));
     if (!object(initialized)) throw new NativeCodexError('NATIVE_CODEX_INITIALIZE_INVALID');
@@ -337,6 +346,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     await Promise.race([terminal, deadline]);
   } catch (cause) {
     error = cause instanceof NativeCodexError ? cause.code : 'NATIVE_CODEX_TRANSPORT_FAILED';
+    writeNew(path.join(artifacts, 'app-server.failure.json'), { schemaVersion: 'native-codex-startup-failure/1', error });
   } finally {
     clearTimeout(timer);
     unlisten?.(); await connection?.close();

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { digest } from '../src/contracts/canonical.js';
 import type { ModelCreditUsage } from '../src/contracts/credit-usage.js';
-import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, auditNativeUnityExecution, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
+import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, auditNativeUnityExecution, auditUnityCanaryReceipts, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
 import { UNITY_TASK_MANIFEST } from '../src/unity/walking-skeleton.js';
 
 const tasks = UNITY_TASK_MANIFEST;
@@ -152,4 +152,12 @@ test('native Unity proof requires a durable receipt and a single bound A/B candi
   assert.match(auditNativeUnityExecution('A', 'a', [{sourceSha256:'a'}, {sourceSha256:'a'}])!, /one-candidate/);
   assert.equal(auditNativeUnityExecution('A', 'a', [{sourceSha256:'a'}]), null);
   assert.equal(auditNativeUnityExecution('C', 'b', [{sourceSha256:'a'}]), null); // Final changed C candidate still needs verification.
+});
+
+test('canary receipt audit binds stub failure then repaired pass to the same three tests', () => {
+  const receipt = (sourceSha256: string, outcome: string, result: string, exitCode: number) => ({ sourceSha256, outcome, actualTestCount: 3, expectedTestCount: 3,
+    tests: ['a', 'b', 'c'].map(name => ({ name, result })), xmlDigest: 'xml', exitCode });
+  assert.equal(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0)], 'stub', 'repair'), null);
+  assert.match(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0)], 'wrong', 'repair')!, /source hashes/);
+  assert.match(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0), receipt('repair', 'pass', 'Passed', 0)], 'stub', 'repair')!, /exactly two/);
 });
