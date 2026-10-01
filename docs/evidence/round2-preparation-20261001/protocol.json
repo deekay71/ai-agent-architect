@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "round2-protocol/1",
+  "locked": true,
+  "policy": {
+    "absoluteWeeklyStopUsedPercent": 85,
+    "stepCapsPoints": [
+      2,
+      5,
+      6
+    ],
+    "resetAt": 1791343381,
+    "pairOrder": "B/C",
+    "repairFeedback": "public-only",
+    "hardCreditMultiplier": 1.5,
+    "infraFixLimit": 2,
+    "noFastMode": true,
+    "singleAgent": true,
+    "ownerRunRequired": true,
+    "softCapIncludesPlanningAndRepairs": true,
+    "stopOnProtocolChange": true,
+    "stopOnReset": true
+  },
+  "baseRevision": "7170e94415aefca1ceaf6ff85c8c59a8b123f6f6",
+  "instructionsRef": "docs/round2-protocol.md",
+  "instructionsDigest": "sha256:c9e0560d0a5df9a587c349a80162565608ddc4c353a21fcb0ac32f889f52eb69",
+  "tasks": [
+    {
+      "id": "T1",
+      "name": "Xóa dòng và combo",
+      "sessions": 1,
+      "planningLevel": "Task",
+      "creditCapPerArm": 6,
+      "sessionCaps": [
+        6
+      ],
+      "hiddenCategories": [
+        "T1"
+      ],
+      "hiddenCases": [
+        4
+      ],
+      "platform": "EditMode",
+      "publicFilters": [
+        "PublicSmoke.ClearEmpty"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Round2/LineRules.cs"
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "Bộ 3 khối theo seed và game over",
+      "sessions": 1,
+      "planningLevel": "Task",
+      "creditCapPerArm": 6,
+      "sessionCaps": [
+        6
+      ],
+      "hiddenCategories": [
+        "T2"
+      ],
+      "hiddenCases": [
+        4
+      ],
+      "platform": "EditMode",
+      "publicFilters": [
+        "PublicSmoke.SupplyThree"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Round2/BlockSupply.cs"
+        ]
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "Prefab, kéo thả và preview",
+      "sessions": 1,
+      "planningLevel": "Task",
+      "creditCapPerArm": 6,
+      "sessionCaps": [
+        6
+      ],
+      "hiddenCategories": [
+        "T3"
+      ],
+      "hiddenCases": [
+        5
+      ],
+      "platform": "PlayMode",
+      "publicFilters": [
+        "PublicSmoke.PlacementCancel"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Round2/Placement.cs",
+          "Assets/Editor/Round2Assets.cs",
+          "Assets/Resources/",
+          "Assets/Board.unity",
+          "ProjectSettings/EditorBuildSettings.asset"
+        ]
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "Lưu và khôi phục ván",
+      "sessions": 1,
+      "planningLevel": "Task",
+      "creditCapPerArm": 6,
+      "sessionCaps": [
+        6
+      ],
+      "hiddenCategories": [
+        "T4"
+      ],
+      "hiddenCases": [
+        4
+      ],
+      "platform": "EditMode",
+      "publicFilters": [
+        "PublicSmoke.SaveRoundTrip"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Round2/GameSave.cs"
+        ]
+      ]
+    },
+    {
+      "id": "T5",
+      "name": "Level qua 2 phiên",
+      "sessions": 2,
+      "planningLevel": "Module→Task",
+      "creditCapPerArm": 10,
+      "sessionCaps": [
+        5,
+        5
+      ],
+      "hiddenCategories": [
+        "T5S1",
+        "T5S2"
+      ],
+      "hiddenCases": [
+        3,
+        3
+      ],
+      "platform": "EditMode",
+      "publicFilters": [
+        "PublicSmoke.LevelOneUnlocked",
+        "PublicSmoke.LevelSelection"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Round2/Levels.cs"
+        ],
+        [
+          "Assets/Round2/LevelMenu.cs",
+          "Assets/LevelUI/"
+        ]
+      ],
+      "phase2Regressions": [
+        "T5S1"
+      ],
+      "phase2Protected": [
+        "Assets/Round2/Levels.cs"
+      ]
+    },
+    {
+      "id": "T6",
+      "name": "Refactor board rồi thêm bom",
+      "sessions": 2,
+      "planningLevel": "Module→Task",
+      "creditCapPerArm": 10,
+      "sessionCaps": [
+        5,
+        5
+      ],
+      "hiddenCategories": [
+        "T6S1",
+        "T6S2"
+      ],
+      "hiddenCases": [
+        4,
+        3
+      ],
+      "platform": "EditMode",
+      "publicFilters": [
+        "PublicSmoke.BoardBounds",
+        "PublicSmoke.EmptyBomb"
+      ],
+      "allowedPaths": [
+        [
+          "Assets/Core/BoardCore.cs",
+          "Assets/Core/BoardCore.Core.asmdef",
+          "Assets/Round2/LegacyBoard.cs"
+        ],
+        [
+          "Assets/Core/BoardCore.cs"
+        ]
+      ],
+      "phase2Regressions": [
+        "T6S1"
+      ],
+      "phase2Protected": [
+        "Assets/Round2/LegacyBoard.cs",
+        "Assets/Core/BoardCore.Core.asmdef"
+      ]
+    }
+  ],
+  "fixtureManifest": [
+    {
+      "path": "unity/round2/hidden/Editor/HiddenRulesTests.cs",
+      "sha256": "43ac68029eb501aee9cb5c37a1cfd4c898b2656c314a6546d22e22bd90152ebf"
+    },
+    {
+      "path": "unity/round2/hidden/Editor/Round2.HiddenEditor.asmdef",
+      "sha256": "3e7f0807ab50f7dd969ff0c7ca209806220a7a6a9d10075e35267c74f4fe5828"
+    },
+    {
+      "path": "unity/round2/hidden/PlayMode/HiddenPlacementTests.cs",
+      "sha256": "77e272019708a3ef35008bac690577f35283a2270da6c82a2780bbc7d03cbe0b"
+    },
+    {
+      "path": "unity/round2/hidden/PlayMode/Round2.HiddenPlayMode.asmdef",
+      "sha256": "ba2f24c6c265897ba081be9d604329ab938b28e27419df2dcc9ead172ab3024a"
+    },
+    {
+      "path": "unity/round2/public/Assets/Core/BoardCore.Core.asmdef",
+      "sha256": "63a1fb4fc548589eb24dba49a7112c3cd1796b56a622c73aa879c80263f6418f"
+    },
+    {
+      "path": "unity/round2/public/Assets/Core/BoardCore.cs",
+      "sha256": "b465a73d285ffabf5d682aa9645f97fa17e3bf87f4a44116bacddb0f73bf79cf"
+    },
+    {
+      "path": "unity/round2/public/Assets/Editor/Round2Assets.cs",
+      "sha256": "9e374c9dcffb1c75b8533216aeb865e6582851b96ac8dfd04eb6f11fc919faa3"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/BlockSupply.cs",
+      "sha256": "962cc1bdeef212526e6ca7ef8ddf96d32b0daa18b0295a5b0926e92f165009f1"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/GameSave.cs",
+      "sha256": "05279e94254488f0acab14584e74d9d0aad3d16a669063656794a8bc44f8f682"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/LegacyBoard.cs",
+      "sha256": "8a0a502d3dc5d7214ff4045aad9bd7f27b6ab6cc86a92add581e8474e625af5e"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/LevelMenu.cs",
+      "sha256": "2c62d22e1b3767d8c08db18332e4fe0a2ecdfc1c975472b0d1c8ca7f697d0f1d"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/Levels.cs",
+      "sha256": "95cbb17d666e4dbe3fd090281f9b49b68f667aeef6164315beb57578ddb29426"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/LineRules.cs",
+      "sha256": "90744f857af617cd65456b2ecec1363063a6f6b8b18411d18674cd624d2e5522"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/Placement.cs",
+      "sha256": "f803a00b5ed6b0611b5d182ac3ad06deaacd737983e74c7d4bca89ab1e265e01"
+    },
+    {
+      "path": "unity/round2/public/Assets/Round2/Round2.asmdef",
+      "sha256": "765310d1e1f7006039c723bd870648ef0e03b94c664996e6a13ac6cc4215a374"
+    },
+    {
+      "path": "unity/round2/public/Assets/Tests/Editor/PublicSmoke.cs",
+      "sha256": "0d6d36dd4e321290e4a03915eb436bf6b77079a24a07f3572ef543d917b5c2b2"
+    },
+    {
+      "path": "unity/round2/public/Assets/Tests/Editor/Round2.PublicTests.asmdef",
+      "sha256": "2f9069fd115e222aeeb37202961683c4bb180a333cf1c1eea262163f51172072"
+    },
+    {
+      "path": "unity/round2/public/Packages/manifest.json",
+      "sha256": "88f7e49ad11b93d9d5ca165cb5efc246db262fbf776b02d0afb18472deb4a6e5"
+    },
+    {
+      "path": "unity/round2/public/Packages/packages-lock.json",
+      "sha256": "ee3c294655c0db9731252e6ff5e9661daf9b0b8c311124cc47117e946ec5f864"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/AudioManager.asset",
+      "sha256": "9a554916fe138ebcad8443ee9b079363ecc72795c39d0e80f5f7ca99e2c6f5e7"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/ClusterInputManager.asset",
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/DynamicsManager.asset",
+      "sha256": "f27512e38f80c091df2dd163ece09f86f8fe67395659af0a0ca873a88fd1c6a7"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/EditorBuildSettings.asset",
+      "sha256": "41bc588f6ecc03944687d496f024917cabb061e21c148a6471b74581df14f908"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/EditorSettings.asset",
+      "sha256": "06753c21648950aee0013b70f79a9035ac52aec6204d44cc2ac55a84034ad9ca"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/GraphicsSettings.asset",
+      "sha256": "fbf0856b7693639a5388ae693a455baaad354c1d8dc548601de3dc61c4ab12c3"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/InputManager.asset",
+      "sha256": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/MemorySettings.asset",
+      "sha256": "2c9e2339b4fa50f4782840d37dde021508d411b99278614cba335d206edb1738"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/MultiplayerManager.asset",
+      "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/NavMeshAreas.asset",
+      "sha256": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/Physics2DSettings.asset",
+      "sha256": "9b78fdd0bac0f486c052ca65ddc0e5022d322b12874931a49456d407c5bbfc00"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/PresetManager.asset",
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/ProjectSettings.asset",
+      "sha256": "248bdaacae9f9f9dd6069bc257ccbcdf61e305f04537c62a44bfb8f672c0a4cc"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/ProjectVersion.txt",
+      "sha256": "a48c8dd72f418e20b17a48f6b93b98e87a10d4c448befb6edeba79810c30fdab"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/QualitySettings.asset",
+      "sha256": "bbc1846ac2fa9fdaa62fb1d1425c30ae0a30a98972eb158e8f0bcd9f862f70c4"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/TagManager.asset",
+      "sha256": "da4b5eefc927f8b91bcf9e56a186d2b852f49d9cbe91d466638d26c79d6a83ce"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/TimeManager.asset",
+      "sha256": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/UnityConnectSettings.asset",
+      "sha256": "11251dae0356b6f43dd2c67bb511f6b7ecda4e5de425186bba3297e6f3dc1c6f"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/VFXManager.asset",
+      "sha256": "9378043da38a17f2198d52a10c17789161d30e3285a387ca3687a71551c32448"
+    },
+    {
+      "path": "unity/round2/public/ProjectSettings/VersionControlSettings.asset",
+      "sha256": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b"
+    }
+  ],
+  "pins": {
+    "executor": "gpt-5.6-terra",
+    "executorEffort": "medium",
+    "planner": "gpt-6-sol",
+    "critic": "gpt-6-sol",
+    "planningEffort": "medium",
+    "serviceTier": "default",
+    "codex": "0.159.0",
+    "unityCli": "1.0.0-beta.8",
+    "editor": "6000.0.84f1",
+    "editorBinary": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app/Contents/MacOS/Unity",
+    "unityTool": "unity_public.unity_compile_test",
+    "unityBackend": "Editor executeMethod + batchmode runTests",
+    "hookHash": "sha256:b3b23b423685a409cf4cbe17986569b7716a8852c41bf335ad03264930a5afbb",
+    "hookHome": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home",
+    "hostCwd": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-workspace",
+    "skillRecipe": "docs/round2-protocol.md (same tool/test instructions both arms)"
+  },
+  "schedule": [
+    {
+      "taskId": "T1",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 18
+    },
+    {
+      "taskId": "T2",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 18
+    },
+    {
+      "taskId": "T3",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 18
+    },
+    {
+      "taskId": "T4",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 18
+    },
+    {
+      "taskId": "T5",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 30
+    },
+    {
+      "taskId": "T6",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "pairReserveCredits": 30
+    }
+  ],
+  "forecast": {
+    "creditsLow": 44,
+    "creditsHigh": 64,
+    "softCapsCredits": 88,
+    "hardFallbackReserveCredits": 132,
+    "creditsPerWeeklyPoint": 10.46132,
+    "quotaExpectedPoints": [
+      4.205970183495008,
+      6.117774812356375
+    ],
+    "quotaReservePoints": 12.617910550485025,
+    "basis": "historical noisy shared-account observations; not trusted calibration",
+    "weeklyStartUsedPercent": 49
+  },
+  "metrics": {
+    "hiddenCases": 30,
+    "taskCount": 6,
+    "decisionPassUnit": "whole-task-hidden-pass",
+    "ownerFixes": true,
+    "inputCachedOutput": true,
+    "wallTime": true
+  },
+  "gradePolicy": {
+    "hiddenFeedbackToModel": false,
+    "firstPublicBrokerReceiptBeforeEdits": true,
+    "creditStoppedFinalSnapshotGraded": true,
+    "interruptedCounterUnsettled": true,
+    "infraOrRateLimitNotTaskFailure": true,
+    "sameSnapshotReplay": true,
+    "testDefectExclusionBothArmsWithRecord": true
+  }
+}

@@ -1,0 +1,250 @@
+[
+  {
+    "path": ".local/round2-reference/Assets/Core/BoardCore.Core.asmdef",
+    "sha256": "63a1fb4fc548589eb24dba49a7112c3cd1796b56a622c73aa879c80263f6418f"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Core/BoardCore.cs",
+    "sha256": "affb3dbf03d2d8c536f22b84ce499abf47c8e369814dc613b4562c8a19d9ba42"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Editor/Round2Assets.cs",
+    "sha256": "df34e1cdfd3149b88c3463e20ee2573ccecdf1c2e63d7f3b1e8e9583ed4c6f68"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/BlockSupply.cs",
+    "sha256": "dbe962301afbaf920b8ce06523cf3ad600f31c57070de58bd7cb1310df234c62"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/GameSave.cs",
+    "sha256": "adafa728cf3f8a80681ce55fb1340ad135cb0b2dd9ca32d82f654508a6ebc35b"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/LegacyBoard.cs",
+    "sha256": "d87b3ea56bc82fc4ce23fbb4f700a045bc0600b933259a9413f1b34e263f8f24"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/LevelMenu.cs",
+    "sha256": "92a1703afd69417fc2139da4a654f7e3f5536f435495c9fa6b8506c57f43be47"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/Levels.cs",
+    "sha256": "fd7f1c67fcce75ce0a0843630cc0bbc9d6d42a9a095b25b9ec04de022d8c1935"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/LineRules.cs",
+    "sha256": "8229fdad9275181f9bc46dc2a27faa4ee90516a0a85fd3dd5f797599c72eaee3"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/Placement.cs",
+    "sha256": "ec1f15ae3be4c811f7ed8129ed982613cada254172cbc1656dd5266a23a77086"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Round2/Round2.asmdef",
+    "sha256": "765310d1e1f7006039c723bd870648ef0e03b94c664996e6a13ac6cc4215a374"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Tests/Editor/PublicSmoke.cs",
+    "sha256": "625f6572be7579c5095f6c9a321a62dc7309d2d461a8c1070b5cafbc2bb99100"
+  },
+  {
+    "path": ".local/round2-reference/Assets/Tests/Editor/Round2.PublicTests.asmdef",
+    "sha256": "2f9069fd115e222aeeb37202961683c4bb180a333cf1c1eea262163f51172072"
+  },
+  {
+    "path": ".local/round2-reference/Packages/manifest.json",
+    "sha256": "88f7e49ad11b93d9d5ca165cb5efc246db262fbf776b02d0afb18472deb4a6e5"
+  },
+  {
+    "path": ".local/round2-reference/Packages/packages-lock.json",
+    "sha256": "1e73caa0096fa9aebc828d0900ffdb8e34dd814bb86b7ff43532b6001134bd1c"
+  },
+  {
+    "path": ".local/round2-reference/ProjectSettings/SceneTemplateSettings.json",
+    "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Core/BoardCore.Core.asmdef",
+    "sha256": "63a1fb4fc548589eb24dba49a7112c3cd1796b56a622c73aa879c80263f6418f"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Core/BoardCore.cs",
+    "sha256": "affb3dbf03d2d8c536f22b84ce499abf47c8e369814dc613b4562c8a19d9ba42"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Editor/Round2Assets.cs",
+    "sha256": "df34e1cdfd3149b88c3463e20ee2573ccecdf1c2e63d7f3b1e8e9583ed4c6f68"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Hidden/Editor/HiddenRulesTests.cs",
+    "sha256": "43ac68029eb501aee9cb5c37a1cfd4c898b2656c314a6546d22e22bd90152ebf"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Hidden/Editor/Round2.HiddenEditor.asmdef",
+    "sha256": "3e7f0807ab50f7dd969ff0c7ca209806220a7a6a9d10075e35267c74f4fe5828"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs",
+    "sha256": "77e272019708a3ef35008bac690577f35283a2270da6c82a2780bbc7d03cbe0b"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Hidden/PlayMode/Round2.HiddenPlayMode.asmdef",
+    "sha256": "ba2f24c6c265897ba081be9d604329ab938b28e27419df2dcc9ead172ab3024a"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/BlockSupply.cs",
+    "sha256": "dbe962301afbaf920b8ce06523cf3ad600f31c57070de58bd7cb1310df234c62"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/GameSave.cs",
+    "sha256": "adafa728cf3f8a80681ce55fb1340ad135cb0b2dd9ca32d82f654508a6ebc35b"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/LegacyBoard.cs",
+    "sha256": "d87b3ea56bc82fc4ce23fbb4f700a045bc0600b933259a9413f1b34e263f8f24"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/LevelMenu.cs",
+    "sha256": "92a1703afd69417fc2139da4a654f7e3f5536f435495c9fa6b8506c57f43be47"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/Levels.cs",
+    "sha256": "fd7f1c67fcce75ce0a0843630cc0bbc9d6d42a9a095b25b9ec04de022d8c1935"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/LineRules.cs",
+    "sha256": "8229fdad9275181f9bc46dc2a27faa4ee90516a0a85fd3dd5f797599c72eaee3"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/Placement.cs",
+    "sha256": "ec1f15ae3be4c811f7ed8129ed982613cada254172cbc1656dd5266a23a77086"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Round2/Round2.asmdef",
+    "sha256": "765310d1e1f7006039c723bd870648ef0e03b94c664996e6a13ac6cc4215a374"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Tests/Editor/PublicSmoke.cs",
+    "sha256": "625f6572be7579c5095f6c9a321a62dc7309d2d461a8c1070b5cafbc2bb99100"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Assets/Tests/Editor/Round2.PublicTests.asmdef",
+    "sha256": "2f9069fd115e222aeeb37202961683c4bb180a333cf1c1eea262163f51172072"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Packages/manifest.json",
+    "sha256": "88f7e49ad11b93d9d5ca165cb5efc246db262fbf776b02d0afb18472deb4a6e5"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/Packages/packages-lock.json",
+    "sha256": "1e73caa0096fa9aebc828d0900ffdb8e34dd814bb86b7ff43532b6001134bd1c"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/project/ProjectSettings/SceneTemplateSettings.json",
+    "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/summary.json",
+    "sha256": "2ca3b4fb3ee2c2c92d13a627f991c1a1f14624e0c469a1b9d90c9e876487d119"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/tests.xml",
+    "sha256": "c4a2eaeb5e68b88cdd591a294d6d6ce23c5d5aefad56ce5d69843ff2ef39d0af"
+  },
+  {
+    "path": ".local/round2-reference-edit-lock/unity.log",
+    "sha256": "6beb5dcec2dd53ff043a24ee704eb5703a732479644f3b8da7734dc3c0c47376"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Core/BoardCore.Core.asmdef",
+    "sha256": "63a1fb4fc548589eb24dba49a7112c3cd1796b56a622c73aa879c80263f6418f"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Core/BoardCore.cs",
+    "sha256": "affb3dbf03d2d8c536f22b84ce499abf47c8e369814dc613b4562c8a19d9ba42"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Editor/Round2Assets.cs",
+    "sha256": "df34e1cdfd3149b88c3463e20ee2573ccecdf1c2e63d7f3b1e8e9583ed4c6f68"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Hidden/Editor/HiddenRulesTests.cs",
+    "sha256": "43ac68029eb501aee9cb5c37a1cfd4c898b2656c314a6546d22e22bd90152ebf"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Hidden/Editor/Round2.HiddenEditor.asmdef",
+    "sha256": "3e7f0807ab50f7dd969ff0c7ca209806220a7a6a9d10075e35267c74f4fe5828"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs",
+    "sha256": "77e272019708a3ef35008bac690577f35283a2270da6c82a2780bbc7d03cbe0b"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Hidden/PlayMode/Round2.HiddenPlayMode.asmdef",
+    "sha256": "ba2f24c6c265897ba081be9d604329ab938b28e27419df2dcc9ead172ab3024a"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/BlockSupply.cs",
+    "sha256": "dbe962301afbaf920b8ce06523cf3ad600f31c57070de58bd7cb1310df234c62"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/GameSave.cs",
+    "sha256": "adafa728cf3f8a80681ce55fb1340ad135cb0b2dd9ca32d82f654508a6ebc35b"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/LegacyBoard.cs",
+    "sha256": "d87b3ea56bc82fc4ce23fbb4f700a045bc0600b933259a9413f1b34e263f8f24"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/LevelMenu.cs",
+    "sha256": "92a1703afd69417fc2139da4a654f7e3f5536f435495c9fa6b8506c57f43be47"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/Levels.cs",
+    "sha256": "fd7f1c67fcce75ce0a0843630cc0bbc9d6d42a9a095b25b9ec04de022d8c1935"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/LineRules.cs",
+    "sha256": "8229fdad9275181f9bc46dc2a27faa4ee90516a0a85fd3dd5f797599c72eaee3"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/Placement.cs",
+    "sha256": "ec1f15ae3be4c811f7ed8129ed982613cada254172cbc1656dd5266a23a77086"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Round2/Round2.asmdef",
+    "sha256": "765310d1e1f7006039c723bd870648ef0e03b94c664996e6a13ac6cc4215a374"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Tests/Editor/PublicSmoke.cs",
+    "sha256": "625f6572be7579c5095f6c9a321a62dc7309d2d461a8c1070b5cafbc2bb99100"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Assets/Tests/Editor/Round2.PublicTests.asmdef",
+    "sha256": "2f9069fd115e222aeeb37202961683c4bb180a333cf1c1eea262163f51172072"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Packages/manifest.json",
+    "sha256": "88f7e49ad11b93d9d5ca165cb5efc246db262fbf776b02d0afb18472deb4a6e5"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/Packages/packages-lock.json",
+    "sha256": "1e73caa0096fa9aebc828d0900ffdb8e34dd814bb86b7ff43532b6001134bd1c"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/project/ProjectSettings/SceneTemplateSettings.json",
+    "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/summary.json",
+    "sha256": "2e73e9a4827ee1290006ecee704e2560e37cd63030a7ce85efa305c5a40130ed"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/tests.xml",
+    "sha256": "36158103366545a0b285011b91010b5ff2b1325128466c45f28231fb2b5c6ecf"
+  },
+  {
+    "path": ".local/round2-reference-play-lock/unity.log",
+    "sha256": "6d3f0f4b6bd73aaf299a00be3d4150e07c99e22e920938544a16a6d1bd222921"
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "backend": "batchmode-runTests",
+  "platform": "EditMode",
+  "exitCode": 2,
+  "modelsInvoked": 0,
+  "result": "Failed(Child)",
+  "total": "25",
+  "passed": "0",
+  "failed": "25",
+  "skipped": "0",
+  "tests": [
+    {
+      "name": "HiddenRulesTests.CatalogIdsAndTargets",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-1"
+    },
+    {
+      "name": "HiddenRulesTests.CenterBombClearsNine",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-2"
+    },
+    {
+      "name": "HiddenRulesTests.CoreBoundsAndCollision",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-1"
+    },
+    {
+      "name": "HiddenRulesTests.CornerBombClipsAndCountsOccupied",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-2"
+    },
+    {
+      "name": "HiddenRulesTests.CrossCountsUniqueCellsAndCombo",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:line-clear"
+    },
+    {
+      "name": "HiddenRulesTests.EmptyDoesNotScore",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:line-clear"
+    },
+    {
+      "name": "HiddenRulesTests.FixedSeedSequence",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:supply"
+    },
+    {
+      "name": "HiddenRulesTests.FullBoardGameOver",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:supply"
+    },
+    {
+      "name": "HiddenRulesTests.InvalidBombNoOpAndVersionPreserved",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-2"
+    },
+    {
+      "name": "HiddenRulesTests.InvalidIdAndCopies",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-1"
+    },
+    {
+      "name": "HiddenRulesTests.InvalidOffsetsCannotMutate",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-1"
+    },
+    {
+      "name": "HiddenRulesTests.LegacyAdapterUsesExtractedCore",
+      "result": "Failed",
+      "message": "  LegacyBoard must delegate to BoardCore\n  Expected: not null\n  But was:  null\n"
+    },
+    {
+      "name": "HiddenRulesTests.MalformedSaveRejected",
+      "result": "Failed",
+      "message": "  Expected: <System.ArgumentException>\n  But was:  <System.NotImplementedException: ROUND2_STUB:save\n  at HiddenRulesTests+<>c.<MalformedSaveRejected>b__10_0 () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:17 \n  at NUnit.Framework.Assert.Throws (NUnit.Framework.Constraints.IResolveConstraint expression, NUnit.Framework.TestDelegate code, System.String message, System.Object[] "
+    },
+    {
+      "name": "HiddenRulesTests.MenuUsesCatalogAndUnlockedState",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-2"
+    },
+    {
+      "name": "HiddenRulesTests.OnlyPendingFitDeterminesGameOver",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:supply"
+    },
+    {
+      "name": "HiddenRulesTests.PlacementAtomicAndDefensiveCopies",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:board-1"
+    },
+    {
+      "name": "HiddenRulesTests.RenderIsIdempotentAndClickSelects",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-2"
+    },
+    {
+      "name": "HiddenRulesTests.RepeatSeedAndDifferentSeed",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:supply"
+    },
+    {
+      "name": "HiddenRulesTests.RoundTripAllState",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:save"
+    },
+    {
+      "name": "HiddenRulesTests.RowClearedWithoutGravity",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:line-clear"
+    },
+    {
+      "name": "HiddenRulesTests.SelectionRespectsLockedLevel",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-2"
+    },
+    {
+      "name": "HiddenRulesTests.SnapshotIndependentOfLaterMutation",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:save"
+    },
+    {
+      "name": "HiddenRulesTests.TwoRowsComboAndInputUntouched",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:line-clear"
+    },
+    {
+      "name": "HiddenRulesTests.UnlockUsesPredecessorCompletion",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:levels-1"
+    },
+    {
+      "name": "HiddenRulesTests.UnsupportedSaveVersionRejected",
+      "result": "Failed",
+      "message": "  Expected: <System.ArgumentException>\n  But was:  <System.NotImplementedException: ROUND2_STUB:save\n  at HiddenRulesTests+<>c.<UnsupportedSaveVersionRejected>b__11_0 () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:18 \n  at NUnit.Framework.Assert.Throws (NUnit.Framework.Constraints.IResolveConstraint expression, NUnit.Framework.TestDelegate code, System.String message, System."
+    }
+  ],
+  "sourceDigest": "034ccc97d47df815280c653cfb805ab2cc87350b7a3dae51ede57c821ac952b4",
+  "protocolDigest": "sha256:b9327ac9fb4b4f404c4828c39dfddcb712c9d58e331aac691909fd8d04b7fb97"
+}

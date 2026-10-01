@@ -1,0 +1,40 @@
+{
+  "backend": "batchmode-runTests",
+  "platform": "PlayMode",
+  "exitCode": 2,
+  "modelsInvoked": 0,
+  "result": "Failed(Child)",
+  "total": "5",
+  "passed": "0",
+  "failed": "5",
+  "skipped": "0",
+  "tests": [
+    {
+      "name": "HiddenPlacementTests.CancelRemovesVisibleGhost",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:placement"
+    },
+    {
+      "name": "HiddenPlacementTests.InvalidPreviewAndPlacementAreAtomic",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:placement"
+    },
+    {
+      "name": "HiddenPlacementTests.PointerDragCommitsThroughUnityEvents",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:placement"
+    },
+    {
+      "name": "HiddenPlacementTests.PrefabAndSceneDeliverable",
+      "result": "Failed",
+      "message": "  Required Block.prefab missing\n  Expected: not null\n  But was:  null\n"
+    },
+    {
+      "name": "HiddenPlacementTests.PreviewDoesNotMutateAndCommitOccupies",
+      "result": "Failed",
+      "message": "System.NotImplementedException : ROUND2_STUB:placement"
+    }
+  ],
+  "sourceDigest": "034ccc97d47df815280c653cfb805ab2cc87350b7a3dae51ede57c821ac952b4",
+  "protocolDigest": "sha256:b9327ac9fb4b4f404c4828c39dfddcb712c9d58e331aac691909fd8d04b7fb97"
+}

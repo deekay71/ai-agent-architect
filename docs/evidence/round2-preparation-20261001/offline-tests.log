@@ -1,0 +1,30 @@
+✔ uses cumulative totals once and counts cached input in credits (4.848125ms)
+✔ unknown token counters fail closed and interrupt the active turn (2.204459ms)
+✔ credit-cap closes new tools and settles completed overrun (2.412875ms)
+✔ reserve closes hook admission while allowing a denied-tool turn to settle (40.287542ms)
+✔ a rerouted model is rejected before a turn can begin (1.713542ms)
+✔ an inherited MCP tool blocks dispatch before any turn starts (1.354666ms)
+✔ a failed MCP item cannot become a Unity tool proof (1.639167ms)
+✔ durable tool proof is required and final source comes from the allowed target (1.706791ms)
+✔ a completed turn without usage cannot be reported as a free run (1.516208ms)
+✔ a completed MCP envelope carrying isError still fails verification (1.547083ms)
+✔ 1.5 cap interrupts, preserves final file and last counter for hidden grading (5.433416ms)
+✔ round2 rejects old weekly/step caps and hidden repair feedback (0.419833ms)
+✔ admission reserves full B/C plus hard-stop fallback before either arm (0.143041ms)
+✔ credit interruption can be graded but missing broker/usage never silently falls back (0.078959ms)
+✔ reject superseded authorization 40 (0.395458ms)
+✔ reject superseded authorization 45 (0.044625ms)
+✔ reject superseded authorization 47 (0.035833ms)
+✔ step 1 includes orchestration (0.360959ms)
+✔ step 2 includes orchestration (0.042875ms)
+✔ step 3 includes orchestration (0.035417ms)
+✔ pair admission reserves both arms and refuses a partial pair (0.060792ms)
+✔ unknown, stale and reset telemetry fail closed (0.054583ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.766417

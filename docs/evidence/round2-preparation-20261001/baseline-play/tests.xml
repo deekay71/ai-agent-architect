@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="0" failed="5" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.0176645">
+  <test-suite type="TestSuite" id="1009" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.017665" total="5" passed="0" failed="5" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1007" name="Round2.HiddenPlayMode.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Library/ScriptAssemblies/Round2.HiddenPlayMode.dll" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.014567" total="5" passed="0" failed="5" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23675" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1001" name="HiddenPlacementTests" fullname="HiddenPlacementTests" classname="HiddenPlacementTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.014164" total="5" passed="0" failed="5" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1006" name="CancelRemovesVisibleGhost" fullname="HiddenPlacementTests.CancelRemovesVisibleGhost" methodname="CancelRemovesVisibleGhost" classname="HiddenPlacementTests" runstate="Runnable" seed="312855881" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.004432" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:placement]]></message>
+            <stack-trace><![CDATA[  at HiddenPlacementTests+<CancelRemovesVisibleGhost>d__4.MoveNext () [0x00026] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs:14 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1005" name="InvalidPreviewAndPlacementAreAtomic" fullname="HiddenPlacementTests.InvalidPreviewAndPlacementAreAtomic" methodname="InvalidPreviewAndPlacementAreAtomic" classname="HiddenPlacementTests" runstate="Runnable" seed="1688149320" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000268" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:placement]]></message>
+            <stack-trace><![CDATA[  at HiddenPlacementTests+<InvalidPreviewAndPlacementAreAtomic>d__3.MoveNext () [0x0005b] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs:13 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1002" name="PointerDragCommitsThroughUnityEvents" fullname="HiddenPlacementTests.PointerDragCommitsThroughUnityEvents" methodname="PointerDragCommitsThroughUnityEvents" classname="HiddenPlacementTests" runstate="Runnable" seed="563992867" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000581" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:placement]]></message>
+            <stack-trace><![CDATA[  at HiddenPlacementTests+<PointerDragCommitsThroughUnityEvents>d__0.MoveNext () [0x00032] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs:9 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1003" name="PrefabAndSceneDeliverable" fullname="HiddenPlacementTests.PrefabAndSceneDeliverable" methodname="PrefabAndSceneDeliverable" classname="HiddenPlacementTests" runstate="Runnable" seed="1086002011" result="Failed" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.004521" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Required Block.prefab missing
+  Expected: not null
+  But was:  null
+]]></message>
+            <stack-trace><![CDATA[at HiddenPlacementTests+<PrefabAndSceneDeliverable>d__1.MoveNext () [0x0002c] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs:11
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1004" name="PreviewDoesNotMutateAndCommitOccupies" fullname="HiddenPlacementTests.PreviewDoesNotMutateAndCommitOccupies" methodname="PreviewDoesNotMutateAndCommitOccupies" classname="HiddenPlacementTests" runstate="Runnable" seed="1996690951" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000458" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:placement]]></message>
+            <stack-trace><![CDATA[  at HiddenPlacementTests+<PreviewDoesNotMutateAndCommitOccupies>d__2.MoveNext () [0x0004d] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/project/Assets/Hidden/PlayMode/HiddenPlacementTests.cs:12 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44 ]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-play-frozen/tests.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

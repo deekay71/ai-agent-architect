@@ -1,0 +1,53 @@
+{
+  "modelsInvoked": 0,
+  "trusted": false,
+  "hook": {
+    "key": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/hooks.json:pre_tool_use:0:0",
+    "eventName": "preToolUse",
+    "handlerType": "command",
+    "command": "/usr/bin/python3 '/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/scripts/unity-tool-admission-guard.py' '/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/tool-admission.flag'",
+    "async": false,
+    "matcher": ".*",
+    "timeoutSec": 600,
+    "statusMessage": null,
+    "additionalContextLimit": null,
+    "sourcePath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/hooks.json",
+    "source": "user",
+    "pluginId": null,
+    "displayOrder": 0,
+    "enabled": true,
+    "isManaged": false,
+    "currentHash": "sha256:b3b23b423685a409cf4cbe17986569b7716a8852c41bf335ad03264930a5afbb",
+    "trustStatus": "untrusted"
+  },
+  "inventory": {
+    "data": [
+      {
+        "cwd": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-workspace",
+        "hooks": [
+          {
+            "key": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/hooks.json:pre_tool_use:0:0",
+            "eventName": "preToolUse",
+            "handlerType": "command",
+            "command": "/usr/bin/python3 '/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/scripts/unity-tool-admission-guard.py' '/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/tool-admission.flag'",
+            "async": false,
+            "matcher": ".*",
+            "timeoutSec": 600,
+            "statusMessage": null,
+            "additionalContextLimit": null,
+            "sourcePath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/harness-codex-home/hooks.json",
+            "source": "user",
+            "pluginId": null,
+            "displayOrder": 0,
+            "enabled": true,
+            "isManaged": false,
+            "currentHash": "sha256:b3b23b423685a409cf4cbe17986569b7716a8852c41bf335ad03264930a5afbb",
+            "trustStatus": "untrusted"
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    ]
+  }
+}

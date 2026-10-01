@@ -1,0 +1,1 @@
+{"name": "Round2.HiddenPlayMode", "references": ["Round2", "Unity.ugui", "BoardCore.Core"], "optionalUnityReferences": ["TestAssemblies"]}

@@ -1,0 +1,40 @@
+{
+  "backend": "batchmode-runTests",
+  "platform": "PlayMode",
+  "exitCode": 0,
+  "modelsInvoked": 0,
+  "result": "Passed",
+  "total": "5",
+  "passed": "5",
+  "failed": "0",
+  "skipped": "0",
+  "tests": [
+    {
+      "name": "HiddenPlacementTests.CancelRemovesVisibleGhost",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenPlacementTests.InvalidPreviewAndPlacementAreAtomic",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenPlacementTests.PointerDragCommitsThroughUnityEvents",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenPlacementTests.PrefabAndSceneDeliverable",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenPlacementTests.PreviewDoesNotMutateAndCommitOccupies",
+      "result": "Passed",
+      "message": ""
+    }
+  ],
+  "sourceDigest": "abb1537cfe38989033bb1ee9728c0f5f38a019a6dee2f2ba2134412ad51d9250",
+  "protocolDigest": "sha256:b9327ac9fb4b4f404c4828c39dfddcb712c9d58e331aac691909fd8d04b7fb97"
+}

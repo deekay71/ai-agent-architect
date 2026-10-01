@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="25" result="Failed(Child)" total="25" passed="0" failed="25" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.0220822">
+  <test-suite type="TestSuite" id="1000" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="33" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.022082" total="25" passed="0" failed="25" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1027" name="Round2.HiddenEditor.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Library/ScriptAssemblies/Round2.HiddenEditor.dll" runstate="Runnable" testcasecount="25" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.018189" total="25" passed="0" failed="25" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23718" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1001" name="HiddenRulesTests" fullname="HiddenRulesTests" classname="HiddenRulesTests" runstate="Runnable" testcasecount="25" result="Failed" site="Child" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.017587" total="25" passed="0" failed="25" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1014" name="CatalogIdsAndTargets" fullname="HiddenRulesTests.CatalogIdsAndTargets" methodname="CatalogIdsAndTargets" classname="HiddenRulesTests" runstate="Runnable" seed="118400018" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.003549" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.CatalogIdsAndTargets () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:19 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1024" name="CenterBombClearsNine" fullname="HiddenRulesTests.CenterBombClearsNine" methodname="CenterBombClearsNine" classname="HiddenRulesTests" runstate="Runnable" seed="881903350" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000197" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.CenterBombClearsNine () [0x00030] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:29 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1020" name="CoreBoundsAndCollision" fullname="HiddenRulesTests.CoreBoundsAndCollision" methodname="CoreBoundsAndCollision" classname="HiddenRulesTests" runstate="Runnable" seed="2095355698" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000100" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.CoreBoundsAndCollision () [0x00016] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:25 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1025" name="CornerBombClipsAndCountsOccupied" fullname="HiddenRulesTests.CornerBombClipsAndCountsOccupied" methodname="CornerBombClipsAndCountsOccupied" classname="HiddenRulesTests" runstate="Runnable" seed="272664105" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000088" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.CornerBombClipsAndCountsOccupied () [0x0002e] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:30 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1004" name="CrossCountsUniqueCellsAndCombo" fullname="HiddenRulesTests.CrossCountsUniqueCellsAndCombo" methodname="CrossCountsUniqueCellsAndCombo" classname="HiddenRulesTests" runstate="Runnable" seed="1616896702" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000082" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:line-clear]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.CrossCountsUniqueCellsAndCombo () [0x00026] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:9 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1002" name="EmptyDoesNotScore" fullname="HiddenRulesTests.EmptyDoesNotScore" methodname="EmptyDoesNotScore" classname="HiddenRulesTests" runstate="Runnable" seed="974081794" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000058" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:line-clear]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.EmptyDoesNotScore () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:7 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1006" name="FixedSeedSequence" fullname="HiddenRulesTests.FixedSeedSequence" methodname="FixedSeedSequence" classname="HiddenRulesTests" runstate="Runnable" seed="934801194" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000059" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:supply]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.FixedSeedSequence () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:11 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1008" name="FullBoardGameOver" fullname="HiddenRulesTests.FullBoardGameOver" methodname="FullBoardGameOver" classname="HiddenRulesTests" runstate="Runnable" seed="2060869510" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000064" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:supply]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.FullBoardGameOver () [0x00029] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:13 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1026" name="InvalidBombNoOpAndVersionPreserved" fullname="HiddenRulesTests.InvalidBombNoOpAndVersionPreserved" methodname="InvalidBombNoOpAndVersionPreserved" classname="HiddenRulesTests" runstate="Runnable" seed="2140976484" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000071" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.InvalidBombNoOpAndVersionPreserved () [0x00016] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:31 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1016" name="InvalidIdAndCopies" fullname="HiddenRulesTests.InvalidIdAndCopies" methodname="InvalidIdAndCopies" classname="HiddenRulesTests" runstate="Runnable" seed="409020806" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000075" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.InvalidIdAndCopies () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:21 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1022" name="InvalidOffsetsCannotMutate" fullname="HiddenRulesTests.InvalidOffsetsCannotMutate" methodname="InvalidOffsetsCannotMutate" classname="HiddenRulesTests" runstate="Runnable" seed="1034302072" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000105" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.InvalidOffsetsCannotMutate () [0x0000d] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:27 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1023" name="LegacyAdapterUsesExtractedCore" fullname="HiddenRulesTests.LegacyAdapterUsesExtractedCore" methodname="LegacyAdapterUsesExtractedCore" classname="HiddenRulesTests" runstate="Runnable" seed="457773834" result="Failed" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.004007" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  LegacyBoard must delegate to BoardCore
+  Expected: not null
+  But was:  null
+]]></message>
+            <stack-trace><![CDATA[at HiddenRulesTests.LegacyAdapterUsesExtractedCore () [0x00019] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:28
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1012" name="MalformedSaveRejected" fullname="HiddenRulesTests.MalformedSaveRejected" methodname="MalformedSaveRejected" classname="HiddenRulesTests" runstate="Runnable" seed="1953443036" result="Failed" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000721" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Expected: <System.ArgumentException>
+  But was:  <System.NotImplementedException: ROUND2_STUB:save
+  at HiddenRulesTests+<>c.<MalformedSaveRejected>b__10_0 () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:17 
+  at NUnit.Framework.Assert.Throws (NUnit.Framework.Constraints.IResolveConstraint expression, NUnit.Framework.TestDelegate code, System.String message, System.Object[] args) [0x0002f] in <f577cd9686154d6ab10efd7e65e64366>:0 >
+]]></message>
+            <stack-trace><![CDATA[at HiddenRulesTests.MalformedSaveRejected () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:17
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1017" name="MenuUsesCatalogAndUnlockedState" fullname="HiddenRulesTests.MenuUsesCatalogAndUnlockedState" methodname="MenuUsesCatalogAndUnlockedState" classname="HiddenRulesTests" runstate="Runnable" seed="987551937" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000223" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.MenuUsesCatalogAndUnlockedState () [0x0000c] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:22 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1009" name="OnlyPendingFitDeterminesGameOver" fullname="HiddenRulesTests.OnlyPendingFitDeterminesGameOver" methodname="OnlyPendingFitDeterminesGameOver" classname="HiddenRulesTests" runstate="Runnable" seed="1697404873" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000083" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:supply]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.OnlyPendingFitDeterminesGameOver () [0x00027] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:14 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1021" name="PlacementAtomicAndDefensiveCopies" fullname="HiddenRulesTests.PlacementAtomicAndDefensiveCopies" methodname="PlacementAtomicAndDefensiveCopies" classname="HiddenRulesTests" runstate="Runnable" seed="539421499" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000109" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:board-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.PlacementAtomicAndDefensiveCopies () [0x0000f] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:26 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1019" name="RenderIsIdempotentAndClickSelects" fullname="HiddenRulesTests.RenderIsIdempotentAndClickSelects" methodname="RenderIsIdempotentAndClickSelects" classname="HiddenRulesTests" runstate="Runnable" seed="918830805" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000139" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.RenderIsIdempotentAndClickSelects () [0x0000d] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:24 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1007" name="RepeatSeedAndDifferentSeed" fullname="HiddenRulesTests.RepeatSeedAndDifferentSeed" methodname="RepeatSeedAndDifferentSeed" classname="HiddenRulesTests" runstate="Runnable" seed="1322167807" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.001214" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:supply]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.RepeatSeedAndDifferentSeed () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:12 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1010" name="RoundTripAllState" fullname="HiddenRulesTests.RoundTripAllState" methodname="RoundTripAllState" classname="HiddenRulesTests" runstate="Runnable" seed="1339862883" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000130" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:save]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.RoundTripAllState () [0x00011] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:15 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1003" name="RowClearedWithoutGravity" fullname="HiddenRulesTests.RowClearedWithoutGravity" methodname="RowClearedWithoutGravity" classname="HiddenRulesTests" runstate="Runnable" seed="269352248" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000078" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:line-clear]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.RowClearedWithoutGravity () [0x00026] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:8 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1018" name="SelectionRespectsLockedLevel" fullname="HiddenRulesTests.SelectionRespectsLockedLevel" methodname="SelectionRespectsLockedLevel" classname="HiddenRulesTests" runstate="Runnable" seed="1227375936" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000125" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-2]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.SelectionRespectsLockedLevel () [0x0000d] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:23 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1011" name="SnapshotIndependentOfLaterMutation" fullname="HiddenRulesTests.SnapshotIndependentOfLaterMutation" methodname="SnapshotIndependentOfLaterMutation" classname="HiddenRulesTests" runstate="Runnable" seed="1678600103" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000081" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:save]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.SnapshotIndependentOfLaterMutation () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:16 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1005" name="TwoRowsComboAndInputUntouched" fullname="HiddenRulesTests.TwoRowsComboAndInputUntouched" methodname="TwoRowsComboAndInputUntouched" classname="HiddenRulesTests" runstate="Runnable" seed="2114407504" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000072" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:line-clear]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.TwoRowsComboAndInputUntouched () [0x00026] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:10 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1015" name="UnlockUsesPredecessorCompletion" fullname="HiddenRulesTests.UnlockUsesPredecessorCompletion" methodname="UnlockUsesPredecessorCompletion" classname="HiddenRulesTests" runstate="Runnable" seed="1074312476" result="Failed" label="Error" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000076" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[System.NotImplementedException : ROUND2_STUB:levels-1]]></message>
+            <stack-trace><![CDATA[  at HiddenRulesTests.UnlockUsesPredecessorCompletion () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:20 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <10ab8b7c0c5c4be0a99a39bdb6b9f10c>:0 ]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1013" name="UnsupportedSaveVersionRejected" fullname="HiddenRulesTests.UnsupportedSaveVersionRejected" methodname="UnsupportedSaveVersionRejected" classname="HiddenRulesTests" runstate="Runnable" seed="1315497564" result="Failed" start-time="2026-10-01 09:17:57Z" end-time="2026-10-01 09:17:57Z" duration="0.000134" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Expected: <System.ArgumentException>
+  But was:  <System.NotImplementedException: ROUND2_STUB:save
+  at HiddenRulesTests+<>c.<UnsupportedSaveVersionRejected>b__11_0 () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:18 
+  at NUnit.Framework.Assert.Throws (NUnit.Framework.Constraints.IResolveConstraint expression, NUnit.Framework.TestDelegate code, System.String message, System.Object[] args) [0x0002f] in <f577cd9686154d6ab10efd7e65e64366>:0 >
+]]></message>
+            <stack-trace><![CDATA[at HiddenRulesTests.UnsupportedSaveVersionRejected () [0x00000] in /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/project/Assets/Hidden/Editor/HiddenRulesTests.cs:18
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-baseline-edit-frozen/tests.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

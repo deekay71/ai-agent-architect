@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.0189565">
+  <test-suite type="TestSuite" id="1009" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.018957" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1007" name="Round2.HiddenPlayMode.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-reference-play-lock/project/Library/ScriptAssemblies/Round2.HiddenPlayMode.dll" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.016241" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23250" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="HiddenPlacementTests" fullname="HiddenPlacementTests" classname="HiddenPlacementTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.015888" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1006" name="CancelRemovesVisibleGhost" fullname="HiddenPlacementTests.CancelRemovesVisibleGhost" methodname="CancelRemovesVisibleGhost" classname="HiddenPlacementTests" runstate="Runnable" seed="1856013043" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.009069" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1005" name="InvalidPreviewAndPlacementAreAtomic" fullname="HiddenPlacementTests.InvalidPreviewAndPlacementAreAtomic" methodname="InvalidPreviewAndPlacementAreAtomic" classname="HiddenPlacementTests" runstate="Runnable" seed="1693404536" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.000414" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="PointerDragCommitsThroughUnityEvents" fullname="HiddenPlacementTests.PointerDragCommitsThroughUnityEvents" methodname="PointerDragCommitsThroughUnityEvents" classname="HiddenPlacementTests" runstate="Runnable" seed="1932458792" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.000737" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="PrefabAndSceneDeliverable" fullname="HiddenPlacementTests.PrefabAndSceneDeliverable" methodname="PrefabAndSceneDeliverable" classname="HiddenPlacementTests" runstate="Runnable" seed="721672776" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.001932" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="PreviewDoesNotMutateAndCommitOccupies" fullname="HiddenPlacementTests.PreviewDoesNotMutateAndCommitOccupies" methodname="PreviewDoesNotMutateAndCommitOccupies" classname="HiddenPlacementTests" runstate="Runnable" seed="1462090232" result="Passed" start-time="2026-10-01 09:13:32Z" end-time="2026-10-01 09:13:32Z" duration="0.000249" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="Category" value="T3" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-reference-play-lock/tests.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

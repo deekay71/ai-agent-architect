@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="25" result="Passed" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.0214993">
+  <test-suite type="TestSuite" id="1000" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="30" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.021499" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1027" name="Round2.HiddenEditor.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-reference-edit-lock/project/Library/ScriptAssemblies/Round2.HiddenEditor.dll" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.018308" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="22667" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="HiddenRulesTests" fullname="HiddenRulesTests" classname="HiddenRulesTests" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.016860" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1014" name="CatalogIdsAndTargets" fullname="HiddenRulesTests.CatalogIdsAndTargets" methodname="CatalogIdsAndTargets" classname="HiddenRulesTests" runstate="Runnable" seed="1910985704" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.005168" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1024" name="CenterBombClearsNine" fullname="HiddenRulesTests.CenterBombClearsNine" methodname="CenterBombClearsNine" classname="HiddenRulesTests" runstate="Runnable" seed="1012780041" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000287" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1020" name="CoreBoundsAndCollision" fullname="HiddenRulesTests.CoreBoundsAndCollision" methodname="CoreBoundsAndCollision" classname="HiddenRulesTests" runstate="Runnable" seed="199780869" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000173" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="CornerBombClipsAndCountsOccupied" fullname="HiddenRulesTests.CornerBombClipsAndCountsOccupied" methodname="CornerBombClipsAndCountsOccupied" classname="HiddenRulesTests" runstate="Runnable" seed="97725901" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000055" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="CrossCountsUniqueCellsAndCombo" fullname="HiddenRulesTests.CrossCountsUniqueCellsAndCombo" methodname="CrossCountsUniqueCellsAndCombo" classname="HiddenRulesTests" runstate="Runnable" seed="365433100" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000141" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="EmptyDoesNotScore" fullname="HiddenRulesTests.EmptyDoesNotScore" methodname="EmptyDoesNotScore" classname="HiddenRulesTests" runstate="Runnable" seed="1878453951" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000037" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="FixedSeedSequence" fullname="HiddenRulesTests.FixedSeedSequence" methodname="FixedSeedSequence" classname="HiddenRulesTests" runstate="Runnable" seed="180136860" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000167" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="FullBoardGameOver" fullname="HiddenRulesTests.FullBoardGameOver" methodname="FullBoardGameOver" classname="HiddenRulesTests" runstate="Runnable" seed="1363545622" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000097" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1026" name="InvalidBombNoOpAndVersionPreserved" fullname="HiddenRulesTests.InvalidBombNoOpAndVersionPreserved" methodname="InvalidBombNoOpAndVersionPreserved" classname="HiddenRulesTests" runstate="Runnable" seed="1571699741" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000044" asserts="0">
+          <properties>
+            <property name="Category" value="T6S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="InvalidIdAndCopies" fullname="HiddenRulesTests.InvalidIdAndCopies" methodname="InvalidIdAndCopies" classname="HiddenRulesTests" runstate="Runnable" seed="229430958" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000063" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1022" name="InvalidOffsetsCannotMutate" fullname="HiddenRulesTests.InvalidOffsetsCannotMutate" methodname="InvalidOffsetsCannotMutate" classname="HiddenRulesTests" runstate="Runnable" seed="863269632" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000078" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1023" name="LegacyAdapterUsesExtractedCore" fullname="HiddenRulesTests.LegacyAdapterUsesExtractedCore" methodname="LegacyAdapterUsesExtractedCore" classname="HiddenRulesTests" runstate="Runnable" seed="244949325" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000982" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="MalformedSaveRejected" fullname="HiddenRulesTests.MalformedSaveRejected" methodname="MalformedSaveRejected" classname="HiddenRulesTests" runstate="Runnable" seed="849202672" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000900" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="MenuUsesCatalogAndUnlockedState" fullname="HiddenRulesTests.MenuUsesCatalogAndUnlockedState" methodname="MenuUsesCatalogAndUnlockedState" classname="HiddenRulesTests" runstate="Runnable" seed="1619110893" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.002447" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="OnlyPendingFitDeterminesGameOver" fullname="HiddenRulesTests.OnlyPendingFitDeterminesGameOver" methodname="OnlyPendingFitDeterminesGameOver" classname="HiddenRulesTests" runstate="Runnable" seed="2060539974" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000051" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1021" name="PlacementAtomicAndDefensiveCopies" fullname="HiddenRulesTests.PlacementAtomicAndDefensiveCopies" methodname="PlacementAtomicAndDefensiveCopies" classname="HiddenRulesTests" runstate="Runnable" seed="1907806234" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000086" asserts="0">
+          <properties>
+            <property name="Category" value="T6S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1019" name="RenderIsIdempotentAndClickSelects" fullname="HiddenRulesTests.RenderIsIdempotentAndClickSelects" methodname="RenderIsIdempotentAndClickSelects" classname="HiddenRulesTests" runstate="Runnable" seed="1576105842" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000318" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="RepeatSeedAndDifferentSeed" fullname="HiddenRulesTests.RepeatSeedAndDifferentSeed" methodname="RepeatSeedAndDifferentSeed" classname="HiddenRulesTests" runstate="Runnable" seed="1612218873" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000105" asserts="0">
+          <properties>
+            <property name="Category" value="T2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1010" name="RoundTripAllState" fullname="HiddenRulesTests.RoundTripAllState" methodname="RoundTripAllState" classname="HiddenRulesTests" runstate="Runnable" seed="1186498341" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000252" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="RowClearedWithoutGravity" fullname="HiddenRulesTests.RowClearedWithoutGravity" methodname="RowClearedWithoutGravity" classname="HiddenRulesTests" runstate="Runnable" seed="1018332793" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000054" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="SelectionRespectsLockedLevel" fullname="HiddenRulesTests.SelectionRespectsLockedLevel" methodname="SelectionRespectsLockedLevel" classname="HiddenRulesTests" runstate="Runnable" seed="2144732644" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000082" asserts="0">
+          <properties>
+            <property name="Category" value="T5S2" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="SnapshotIndependentOfLaterMutation" fullname="HiddenRulesTests.SnapshotIndependentOfLaterMutation" methodname="SnapshotIndependentOfLaterMutation" classname="HiddenRulesTests" runstate="Runnable" seed="97735934" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000064" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1005" name="TwoRowsComboAndInputUntouched" fullname="HiddenRulesTests.TwoRowsComboAndInputUntouched" methodname="TwoRowsComboAndInputUntouched" classname="HiddenRulesTests" runstate="Runnable" seed="654598569" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000048" asserts="0">
+          <properties>
+            <property name="Category" value="T1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="UnlockUsesPredecessorCompletion" fullname="HiddenRulesTests.UnlockUsesPredecessorCompletion" methodname="UnlockUsesPredecessorCompletion" classname="HiddenRulesTests" runstate="Runnable" seed="550177537" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000045" asserts="0">
+          <properties>
+            <property name="Category" value="T5S1" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1013" name="UnsupportedSaveVersionRejected" fullname="HiddenRulesTests.UnsupportedSaveVersionRejected" methodname="UnsupportedSaveVersionRejected" classname="HiddenRulesTests" runstate="Runnable" seed="1247492616" result="Passed" start-time="2026-10-01 09:11:37Z" end-time="2026-10-01 09:11:37Z" duration="0.000060" asserts="0">
+          <properties>
+            <property name="Category" value="T4" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/round2-reference-edit-lock/tests.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

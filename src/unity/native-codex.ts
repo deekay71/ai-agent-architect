@@ -9,6 +9,7 @@ import { canonicalJson, digest } from '../contracts/canonical.js';
 /** The only currently admitted ordinary-Codex model for the Unity C arm. */
 export const HARNESS_CODEX_HOME = path.resolve('.local/harness-codex-home');
 export const HARNESS_WORKSPACE = path.resolve('.local/harness-workspace');
+export const HARNESS_HOOK_HASH = 'sha256:b3b23b423685a409cf4cbe17986569b7716a8852c41bf335ad03264930a5afbb';
 export const HARNESS_ADMISSION_FLAG = path.join(HARNESS_CODEX_HOME, 'tool-admission.flag');
 const harnessEnvironment = () => ({ ...codexChildEnvironment(), CODEX_HOME: HARNESS_CODEX_HOME });
 
@@ -47,6 +48,7 @@ export interface NativeCodexUnityTask {
   /** An isolated artifact directory controlled by the caller. */
   artifactDirectory: string;
   maxCreditMicros: number;
+  protocolDigest?: string;
   /** Held back from observed totals to absorb notification/in-flight response lag. */
   responseReserveCreditMicros?: number;
   model?: typeof NATIVE_CODEX_MODEL;
@@ -69,6 +71,7 @@ export interface NativeCodexEventLog {
 }
 export interface NativeCodexReceipt {
   schemaVersion: 'native-codex-receipt/1';
+  protocolDigest: string | null;
   receiptId: string;
   status: 'completed' | 'failed';
   model: typeof NATIVE_CODEX_MODEL;
@@ -238,6 +241,7 @@ async function requireUnityMcp(connection: NativeCodexAppServerConnection, befor
  * native shell/file/MCP tools finish.
  */
 export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Promise<NativeCodexReceipt> {
+  if (input.protocolDigest !== undefined && !/^sha256:[a-f0-9]{64}$/.test(input.protocolDigest)) throw new NativeCodexError('NATIVE_CODEX_PROTOCOL_DIGEST_INVALID');
   const model = input.model ?? NATIVE_CODEX_MODEL;
   if (model !== NATIVE_CODEX_MODEL || !safeInteger(input.maxCreditMicros) || input.maxCreditMicros < 1 || typeof input.prompt !== 'string' || !input.prompt.trim()) throw new NativeCodexError('NATIVE_CODEX_OPTIONS_INVALID');
   const { project, target } = checkedProject(input.projectPath, input.targetFile), artifacts = checkedArtifactDirectory(input.artifactDirectory);
@@ -357,10 +361,10 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     await beforeDeadline(connection.notify('initialized', {}));
     if (input.connectionFactory === undefined) {
       // Fail closed before any paid turn: an untrusted hook is not active.
-      const inventory = await beforeDeadline(connection.request('hooks/list', { cwd: project })) as { data?: { hooks?: { source: string; command: string; enabled: boolean; trustStatus: string }[] }[] };
-      const hook = inventory.data?.flatMap(row => row.hooks ?? []).find(row => row.source === 'user' && row.command.includes(admissionFlag));
+      const inventory = await beforeDeadline(connection.request('hooks/list', { cwd: project })) as { data?: { hooks?: { source: string; command: string; enabled: boolean; trustStatus: string; currentHash: string; sourcePath: string }[] }[] };
+      const hook = inventory.data?.flatMap(row => row.hooks ?? []).find(row => row.source === 'user' && row.sourcePath === path.join(HARNESS_CODEX_HOME, 'hooks.json') && row.command.includes(admissionFlag));
       writeNew(path.join(artifacts, 'hook-admission-preflight.json'), { hook: hook ?? null });
-      if (!hook || !hook.enabled || hook.trustStatus !== 'trusted') throw new NativeCodexError('NATIVE_CODEX_HOOK_NOT_TRUSTED');
+      if (!hook || !hook.enabled || hook.trustStatus !== 'trusted' || hook.currentHash !== HARNESS_HOOK_HASH) throw new NativeCodexError('NATIVE_CODEX_HOOK_NOT_TRUSTED');
     }
     await requireUnityMcp(connection, beforeDeadline);
     const threadStarted = await beforeDeadline(connection.request('thread/start', { cwd: project, model, approvalPolicy: 'never', ephemeral: true }));
@@ -370,9 +374,9 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     if (object(threadStarted) && threadStarted.model !== null && threadStarted.model !== undefined && threadStarted.model !== model) throw new NativeCodexError('NATIVE_CODEX_MODEL_REROUTED');
     // The reservation is the full observed cap before any model response. It is
     // released only in the final receipt's measured charge, never replaced by a raw-token cap.
-    const reservation = { schemaVersion: 'native-codex-reservation/1', receiptId, maxCreditMicros: input.maxCreditMicros, promptDigest };
+    const reservation = { schemaVersion: 'native-codex-reservation/1', receiptId, protocolDigest: input.protocolDigest ?? null, maxCreditMicros: input.maxCreditMicros, promptDigest };
     writeNew(path.join(artifacts, `${receiptId.replace(':', '-')}.reservation.json`), reservation);
-    const turnStarted = await beforeDeadline(connection.request('turn/start', { threadId, model, cwd: project, approvalPolicy: 'never', input: [{ type: 'text', text: input.prompt }] }));
+    const turnStarted = await beforeDeadline(connection.request('turn/start', { threadId, model, effort: 'medium', serviceTier: 'default', cwd: project, approvalPolicy: 'never', input: [{ type: 'text', text: input.prompt }] }));
     const turn = turnFrom(turnStarted);
     if (turn === null || !id(turn.id)) throw new NativeCodexError('NATIVE_CODEX_TURN_INVALID');
     turnId = turn.id;
@@ -398,7 +402,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   const eventLog: NativeCodexEventLog = { schemaVersion: 'native-codex-event-log/1', threadId, turnId, events: logEvents, toolProofRefs, interruption };
   const eventLogDigest = digest(eventLog), eventFile = path.join(artifacts, `${receiptId.replace(':', '-')}.events.json`);
   writeNew(eventFile, eventLog);
-  const receipt: NativeCodexReceipt = { schemaVersion: 'native-codex-receipt/1', receiptId, status: error === null ? 'completed' : 'failed', model: NATIVE_CODEX_MODEL,
+  const receipt: NativeCodexReceipt = { schemaVersion: 'native-codex-receipt/1', protocolDigest: input.protocolDigest ?? null, receiptId, status: error === null ? 'completed' : 'failed', model: NATIVE_CODEX_MODEL,
     modelIdentityAssurance: 'requested-only', usage, creditMicros, reservedCreditMicros: input.maxCreditMicros, responseReserveCreditMicros, interruptAtCreditMicros, elapsedMs: Math.max(0, Math.round(performance.now() - started)),
     ...(source === undefined ? {} : { source }), sourceDigest: source === undefined ? null : digest(source), toolProofRefs: [...new Set(toolProofRefs)], error, overshootRisk, usageSettlement: turnCompleted ? 'settled' : 'unsettled', hardStopCreditMicros, eventLogDigest, promptDigest };
   writeNew(path.join(artifacts, `${receiptId.replace(':', '-')}.receipt.json`), receipt);

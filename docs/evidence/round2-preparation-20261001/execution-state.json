@@ -1,0 +1,21 @@
+{
+  "scope": "protocol-artifact-only",
+  "executionReady": false,
+  "executionBlockers": [
+    "step1-live-hook-proof",
+    "owner-chay",
+    "fresh-weekly-quota-and-pair-reserve",
+    "round2-runner-offline-preflight-before-paid-dispatch"
+  ],
+  "step1Status": "pending-owner-hook-trust",
+  "weeklyQuotaBeforeStep2": 49,
+  "weeklyQuotaAfterStep2": 49,
+  "weeklyQuotaBeforeStep3": 49,
+  "weeklyQuotaAfterStep3": 50,
+  "sessionStartUsedPercent": 49,
+  "sessionDeltaPoints": 1,
+  "notionDriveSync": "deferred-until-round2-results",
+  "sessionEndUsedPercent": 50,
+  "harnessModelCreditsThisSession": 0,
+  "quotaAccounting": "includes orchestration; shared account rounded measurement"
+}

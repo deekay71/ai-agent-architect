@@ -1,0 +1,140 @@
+{
+  "backend": "batchmode-runTests",
+  "platform": "EditMode",
+  "exitCode": 0,
+  "modelsInvoked": 0,
+  "result": "Passed",
+  "total": "25",
+  "passed": "25",
+  "failed": "0",
+  "skipped": "0",
+  "tests": [
+    {
+      "name": "HiddenRulesTests.CatalogIdsAndTargets",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.CenterBombClearsNine",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.CoreBoundsAndCollision",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.CornerBombClipsAndCountsOccupied",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.CrossCountsUniqueCellsAndCombo",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.EmptyDoesNotScore",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.FixedSeedSequence",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.FullBoardGameOver",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.InvalidBombNoOpAndVersionPreserved",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.InvalidIdAndCopies",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.InvalidOffsetsCannotMutate",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.LegacyAdapterUsesExtractedCore",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.MalformedSaveRejected",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.MenuUsesCatalogAndUnlockedState",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.OnlyPendingFitDeterminesGameOver",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.PlacementAtomicAndDefensiveCopies",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.RenderIsIdempotentAndClickSelects",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.RepeatSeedAndDifferentSeed",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.RoundTripAllState",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.RowClearedWithoutGravity",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.SelectionRespectsLockedLevel",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.SnapshotIndependentOfLaterMutation",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.TwoRowsComboAndInputUntouched",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.UnlockUsesPredecessorCompletion",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "HiddenRulesTests.UnsupportedSaveVersionRejected",
+      "result": "Passed",
+      "message": ""
+    }
+  ],
+  "sourceDigest": "abb1537cfe38989033bb1ee9728c0f5f38a019a6dee2f2ba2134412ad51d9250",
+  "protocolDigest": "sha256:b9327ac9fb4b4f404c4828c39dfddcb712c9d58e331aac691909fd8d04b7fb97"
+}
