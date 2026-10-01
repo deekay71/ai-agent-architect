@@ -1,0 +1,13 @@
+{
+  "pass": false,
+  "turnCompleted": false,
+  "usage": {
+    "model": "gpt-5.6-terra",
+    "inputTokens": 30974,
+    "cachedInputTokens": 26880,
+    "outputTokens": 3554
+  },
+  "creditMicros": 1405300,
+  "hookAttestations": [],
+  "error": "NATIVE_CODEX_CREDIT_CAP_EXCEEDED"
+}

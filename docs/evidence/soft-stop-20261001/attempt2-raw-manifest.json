@@ -1,0 +1,97 @@
+[
+  {
+    "path": ".local/soft-stop-20261001-attempt2/preparation.json",
+    "sha256": "9c4a8cc430dcacc9911b16f32d47ab3be4d7b9fc05fb56437871fd4fef608346",
+    "bytes": 1788
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/result.json",
+    "sha256": "5059a5b39b5e81b6ee6a582af9d997bae5c1705137fd076e1916e014f278c1a8",
+    "bytes": 2227
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/soft-stop-summary.json",
+    "sha256": "dcaa00950d47a8d26670cf7901f252af32d8b6f9ac036230b28b86897c5c5c06",
+    "bytes": 278
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/private-eval/Packages/manifest.json",
+    "sha256": "d048d6519b6b6ce1be2576355ecf5b4d1dd607a4972bf66b34f97bfe869ba973",
+    "bytes": 68
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/private-eval/Packages/packages-lock.json",
+    "sha256": "ee3c294655c0db9731252e6ff5e9661daf9b0b8c311124cc47117e946ec5f864",
+    "bytes": 718
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/public/Packages/manifest.json",
+    "sha256": "d048d6519b6b6ce1be2576355ecf5b4d1dd607a4972bf66b34f97bfe869ba973",
+    "bytes": 68
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/public/Packages/packages-lock.json",
+    "sha256": "ee3c294655c0db9731252e6ff5e9661daf9b0b8c311124cc47117e946ec5f864",
+    "bytes": 718
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/tool-admission.flag",
+    "sha256": "55cba4bb35813b49ebc44b95a00002da823de6184c0fd3c9667a9aa06345bfe3",
+    "bytes": 7
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/native-codex-ffdd62aa-b5df-43a3-8e8b-70019b8af400.reservation.json",
+    "sha256": "6e53ac8dd414c392fe2ad0f88fd26d45438f5b515b51e1c2cf2817c70945d060",
+    "bytes": 225
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.version.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.events.ndjson",
+    "sha256": "9319b44eb704199cf00f657e1f8e41057da3ff7b2352876213e231962bb1226d",
+    "bytes": 65998
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/native-codex-ffdd62aa-b5df-43a3-8e8b-70019b8af400.receipt.json",
+    "sha256": "58b05b584504bf90d7a819d61ad93e48a28d0596fa29f29a5fc7e265f8be0657",
+    "bytes": 1850
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.stdout.log",
+    "sha256": "d8f8b834afc84a87df15638d59bc3ca795a230410700bebbbc08dd767fbfe5ff",
+    "bytes": 75887
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.version.json",
+    "sha256": "85ce6322d2442a7a83984db9aa352434ce85e27ba4d3bf1725114a4e5a8e92d7",
+    "bytes": 361
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.version.stdout.log",
+    "sha256": "8a8469ab9e45cda52908dc6f57b933a00f602e2dce766709df60161368440a1d",
+    "bytes": 18
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.startup.json",
+    "sha256": "56c714ccc55f29c0978cb63ac297b9f3acf40118c2e879147e733a7fbb3d3b27",
+    "bytes": 64
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/native-codex-ffdd62aa-b5df-43a3-8e8b-70019b8af400.events.json",
+    "sha256": "4d8a1c8ef9dd5002d5dd49888b8618ba1d20bf0e9836ac52d5f45410e64ec333",
+    "bytes": 23946
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/hook-trust.json",
+    "sha256": "28295f7ef6321d5aed47a4b9ee7528102f9fa3426ac324d0008aef419b60cf13",
+    "bytes": 758
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt2/native-bd85c720-dee6-451d-9663-cb1634634978/app-server.stderr.log",
+    "sha256": "c46e4dc328d6179f218fe9bda2a120f5c531a4140bf7ac5df79ba26bb7b8cc4e",
+    "bytes": 239
+  }
+]

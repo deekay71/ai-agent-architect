@@ -62,11 +62,11 @@ test('unknown token counters fail closed and interrupt the active turn', async t
   assert.equal(f.calls().filter(call => call.method === 'turn/interrupt').length, 1);
 });
 
-test('credit-cap event interrupts and records the overshoot risk', async t => {
-  const f = setup(t, c => { started(c); usage(c, 20, 0, 1); });
+test('credit-cap closes new tools and settles completed overrun', async t => {
+  const f = setup(t, c => { started(c); fileProof(c); usage(c, 20, 0, 1); complete(c); });
   const receipt = await run(f, 1_000);
   assert.equal(receipt.status, 'failed'); assert.equal(receipt.error, 'NATIVE_CODEX_CREDIT_CAP_EXCEEDED'); assert.equal(receipt.overshootRisk, true);
-  assert.equal(f.calls().filter(call => call.method === 'turn/interrupt').length, 1);
+  assert.equal(f.calls().filter(call => call.method === 'turn/interrupt').length, 0);
 });
 
 test('reserve closes hook admission while allowing a denied-tool turn to settle', async t => {

@@ -1,0 +1,92 @@
+[
+  {
+    "path": ".local/soft-stop-20261001-attempt1/preparation.json",
+    "sha256": "9c4a8cc430dcacc9911b16f32d47ab3be4d7b9fc05fb56437871fd4fef608346",
+    "bytes": 1788
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/result.json",
+    "sha256": "d4ac3186c4e499c8fd4b3f62e7ee143047e46f37784832218236b4d0832657a2",
+    "bytes": 1427
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/soft-stop-summary.json",
+    "sha256": "7d5e938f60c716b0b54c6542604cbff579c14d643a6067c604d89cf9a3a5f9dc",
+    "bytes": 277
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/private-eval/Packages/manifest.json",
+    "sha256": "d048d6519b6b6ce1be2576355ecf5b4d1dd607a4972bf66b34f97bfe869ba973",
+    "bytes": 68
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/private-eval/Packages/packages-lock.json",
+    "sha256": "ee3c294655c0db9731252e6ff5e9661daf9b0b8c311124cc47117e946ec5f864",
+    "bytes": 718
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/tool-admission.flag",
+    "sha256": "30da2826a39aee42b1ecc8c8f5ad1f503e430566b03e3b13655a94915f012b00",
+    "bytes": 5
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.version.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.events.ndjson",
+    "sha256": "b8d35f82fdc388ca6980edf7dd2e9e0ea173606e7797188de69ad063e2bd934b",
+    "bytes": 716474
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/native-codex-cf39231e-bb73-4461-b48c-f9ffa47e3d3a.receipt.json",
+    "sha256": "9ddb2109bf1548db6ad6c1caeeec6e2f14c7897051fada52f7a2364c292155c7",
+    "bytes": 1092
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.stdout.log",
+    "sha256": "3217c0d1aa5330de12967b39bcca256f64da1b30c74f46b6f86c209eb800f0f2",
+    "bytes": 805591
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.version.json",
+    "sha256": "85ce6322d2442a7a83984db9aa352434ce85e27ba4d3bf1725114a4e5a8e92d7",
+    "bytes": 361
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.version.stdout.log",
+    "sha256": "8a8469ab9e45cda52908dc6f57b933a00f602e2dce766709df60161368440a1d",
+    "bytes": 18
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.startup.json",
+    "sha256": "56c714ccc55f29c0978cb63ac297b9f3acf40118c2e879147e733a7fbb3d3b27",
+    "bytes": 64
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/native-codex-cf39231e-bb73-4461-b48c-f9ffa47e3d3a.reservation.json",
+    "sha256": "68249588c4b377dbcc76d2488ce8fb7dd67445a7a12df99cbac51ff6b6e6e09f",
+    "bytes": 225
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/native-codex-cf39231e-bb73-4461-b48c-f9ffa47e3d3a.events.json",
+    "sha256": "2883c5e7c8ac88b9224b98f6a98085b0e6dfce452830a8012588214e42202f09",
+    "bytes": 28922
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/native-47890b2b-6809-45cc-bfd1-a66130eec16e/app-server.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/public/Packages/manifest.json",
+    "sha256": "d048d6519b6b6ce1be2576355ecf5b4d1dd607a4972bf66b34f97bfe869ba973",
+    "bytes": 68
+  },
+  {
+    "path": ".local/soft-stop-20261001-attempt1/public/Packages/packages-lock.json",
+    "sha256": "ee3c294655c0db9731252e6ff5e9661daf9b0b8c311124cc47117e946ec5f864",
+    "bytes": 718
+  }
+]

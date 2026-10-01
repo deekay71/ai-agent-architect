@@ -144,7 +144,10 @@ export function nativeCodexAppServerArgs(mcpConfig: readonly string[], admission
     '-c', 'mcp_servers.node_repl.enabled=false', '-c', 'mcp_servers.computer-use.enabled=false', '-c', 'mcp_servers.unity_mcp.enabled=false',
     '-c', 'features.skip_host_skill_discovery=true', '-c', 'project_doc_max_bytes=0', '-c', 'skills.include_instructions=false', '-c', 'skills.bundled.enabled=false'];
   for (const feature of ['apps', 'enable_mcp_apps', 'memories', 'plugins', 'plugin_sharing', 'recommended_plugins', 'remote_plugin', 'standalone_web_search', 'in_app_browser']) args.push('--disable', feature);
-  if (admissionFlag !== undefined) args.push('-c', `hooks.PreToolUse=[{command="/usr/bin/python3",args=["/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/scripts/unity-tool-admission-guard.py",${JSON.stringify(admissionFlag)}]}]`);
+  if (admissionFlag !== undefined) {
+    const hookCommand = `/usr/bin/python3 '${path.resolve('scripts/unity-tool-admission-guard.py').replaceAll("'", "'\\''")}' '${admissionFlag.replaceAll("'", "'\\''")}'`;
+    args.push('-c', `hooks.PreToolUse=[{matcher=".*",hooks=[{type="command",command=${JSON.stringify(hookCommand)}}]}]`);
+  }
   for (const setting of mcpConfig) args.push('-c', setting);
   return args;
 }
@@ -289,7 +292,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       latestUsage = usage;
       const micros = creditMicrosForUsage([usage]);
       if (micros === null) { interruption = 'unknown-usage'; requestInterrupt(); fail('NATIVE_CODEX_USAGE_UNKNOWN'); return; }
-      if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; requestInterrupt(); fail('NATIVE_CODEX_CREDIT_CAP_EXCEEDED'); }
+      if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; writeFileSync(admissionFlag, 'closed\n', { flag: 'w', mode: 0o600 }); }
       // The reserve closes future broker admission; it does not interrupt an
       // already-admitted turn before its final counter can arrive.
       else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; writeFileSync(admissionFlag, 'closed\n', { flag: 'w', mode: 0o600 }); }
@@ -346,6 +349,13 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
     const initialized = await beforeDeadline(connection.request('initialize', { clientInfo: { name: 'ai-agent-architect-unity', version: '1' }, capabilities: { optOutNotificationMethods: [] } }));
     if (!object(initialized)) throw new NativeCodexError('NATIVE_CODEX_INITIALIZE_INVALID');
     await beforeDeadline(connection.notify('initialized', {}));
+    if (input.connectionFactory === undefined) {
+      // Fail closed before any paid turn: an untrusted hook is not active.
+      const inventory = await beforeDeadline(connection.request('hooks/list', { cwd: project })) as { data?: { hooks?: { source: string; command: string; enabled: boolean; trustStatus: string }[] }[] };
+      const hook = inventory.data?.flatMap(row => row.hooks ?? []).find(row => row.source === 'sessionFlags' && row.command.includes(admissionFlag));
+      writeNew(path.join(artifacts, 'hook-admission-preflight.json'), { hook: hook ?? null });
+      if (!hook || !hook.enabled || hook.trustStatus !== 'trusted') throw new NativeCodexError('NATIVE_CODEX_HOOK_NOT_TRUSTED');
+    }
     await requireUnityMcp(connection, beforeDeadline);
     const threadStarted = await beforeDeadline(connection.request('thread/start', { cwd: project, model, approvalPolicy: 'never', ephemeral: true }));
     const thread = object(threadStarted) && object(threadStarted.thread) ? threadStarted.thread : null;

@@ -87,3 +87,15 @@ Owner chấp nhận mục tiêu canary và hạch toán **1.5 credit reserved**,
 1.033010 observed như settled cost. Runtime stable isolated hiện là default cho
 new transports. Hard weekly stop mới là 40%; two-case A/C (forecast 387.439 raw
 tokens) vẫn blocked cho đến ModuleReady mới, full checks và owner budget approval.
+
+## Chuỗi nhanh 01/10 — ngân sách mới; dừng cổng bước 1
+
+Owner thay mọi trần 45%/47% của chuỗi bằng hard stop **85% quota tuần hiện tại**; bước 1/2/3 tăng tối đa **2/5/6 điểm %**, gồm điều phối. Bước 4 dùng phần còn lại, admission phải dự phòng đủ cả cặp B/C; không mở một arm lẻ. Không Fast mode, không subagent, không hỏi theo token trong trần; không đợi reset 07/10. Reset authorization `1791343381` (07/10 10:23:01 VN); tới/qua reset phải dừng. Cổng mới từ chối cấu hình cũ, thiếu dữ liệu bước, snapshot cũ, reset đổi và thiếu dự phòng cặp. Cổng API đã kiểm thử; chưa có harness đợt 2 tích hợp nên chưa tuyên bố Ready.
+
+Đã đọc handoff nghiệm thu bcb2ea8, policy theo tầng và Notion “14 — Bối cảnh hiện hành R3” (còn bàn giao cũ ngày 30/09). Không sửa lịch sử immutable. Bước 1 bắt đầu quota 49%, kết thúc 49% (rounded/shared account). Build và 18 test liên quan đạt.
+
+Hai lượt Terra thật, cùng fixture IntegerClamp ban đầu, trần 0,5 credit, reserve 0,1: lượt 1 chốt counter quan sát 1,40530 nhưng không có turn/completed, settled charge chưa xác minh; lượt 2 có turn/completed, chốt **1,44057** credit. Tổng counter quan sát **2,84587**, không gọi tổng đó là toàn bộ settled charge. Lượt đầu không có final settlement giữ ít nhất observed cost trong ledger; không coi 0,5 reserved là chi phí tối đa khi thực tế đã vượt. Cả hai không có hook log, không đạt nghiệm thu dừng mềm. Không tính đây là model/task failure hoặc benchmark results.
+
+Sửa trong cổng: (1) cấu trúc hook đúng matcher/handler và sửa tuple test để build; (2) kiểm trust qua hooks/list, thử session trust override và cho turn chốt thay vì ngắt ngay khi vượt credit. CLI 0.159.0 báo override trust bị bỏ qua; hook inventory vẫn untrusted. Sau hai lần sửa, cổng Fail: **dừng bước 1, không spike, không protocol, không đợt 2**. Runtime hiện chặn trước paid turn nếu exact session hook không trusted; không thử tiếp đường trust khác. Cần owner quyết định mở phiên sửa riêng/cấp lại giới hạn sửa, hoặc thao tác trust hook phù hợp CLI đã ghim. Không đổi pin tự động.
+
+Bằng chứng tóm tắt và manifest: [soft stop](evidence/soft-stop-20261001/handoff.md). Raw logs giữ `.local/soft-stop-20261001-attempt{1,2}`. Chưa push; owner push gom. Protocol chưa khóa nên chưa có protocol hash đợt 2. Cần tích hợp snapshot supervisor và cặp B/C vào harness trước khi có Ready; không nhận API tests là bằng chứng integration.

@@ -1,0 +1,19 @@
+{
+  "notion": {
+    "pageId": "3e4a6c16-b3dc-81da-b605-c1ed834032c7",
+    "status": "updated"
+  },
+  "drive": {
+    "fileId": "1cXDV0QJdQ8WF5Y3wVMCTnfBaFFwUyCDF",
+    "url": "https://drive.google.com/file/d/1cXDV0QJdQ8WF5Y3wVMCTnfBaFFwUyCDF/view?usp=drivesdk",
+    "status": "uploaded"
+  },
+  "weeklyQuota": {
+    "before": 49,
+    "after": 49,
+    "hardStop": 85,
+    "step": 1,
+    "stepCapPoints": 2,
+    "resetsAt": 1791343381
+  }
+}
