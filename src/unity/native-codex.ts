@@ -132,7 +132,7 @@ function checkedMcpConfig(config: FixedMcpConfig | undefined): readonly string[]
   }
   return [...config];
 }
-export function nativeCodexAppServerArgs(mcpConfig: readonly string[]): string[] {
+export function nativeCodexAppServerArgs(mcpConfig: readonly string[], admissionFlag?: string): string[] {
   // Do not disable shell or file-change tools: ordinary Codex needs both. These
   // settings only remove global integrations/config-sourced capabilities.
   const args = ['app-server', '--stdio', '--strict-config',
@@ -144,6 +144,7 @@ export function nativeCodexAppServerArgs(mcpConfig: readonly string[]): string[]
     '-c', 'mcp_servers.node_repl.enabled=false', '-c', 'mcp_servers.computer-use.enabled=false', '-c', 'mcp_servers.unity_mcp.enabled=false',
     '-c', 'features.skip_host_skill_discovery=true', '-c', 'project_doc_max_bytes=0', '-c', 'skills.include_instructions=false', '-c', 'skills.bundled.enabled=false'];
   for (const feature of ['apps', 'enable_mcp_apps', 'memories', 'plugins', 'plugin_sharing', 'recommended_plugins', 'remote_plugin', 'standalone_web_search', 'in_app_browser']) args.push('--disable', feature);
+  if (admissionFlag !== undefined) args.push('-c', `hooks.PreToolUse=[{command="/usr/bin/python3",args=["/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/scripts/unity-tool-admission-guard.py",${JSON.stringify(admissionFlag)}]}]`);
   for (const setting of mcpConfig) args.push('-c', setting);
   return args;
 }
@@ -237,7 +238,9 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
   // These files are intentionally private artifacts, including for startup failures.
   // They are operational evidence and are never written into the repository.
   const rawEventsFile = path.join(artifacts, 'app-server.events.ndjson');
+  const admissionFlag = path.join(artifacts, 'tool-admission.flag');
   for (const file of [path.join(artifacts, 'app-server.stdout.log'), path.join(artifacts, 'app-server.stderr.log'), rawEventsFile]) writeFileSync(file, '', { flag: 'a', mode: 0o600 });
+  writeFileSync(admissionFlag, 'open\n', { flag: 'wx', mode: 0o600 });
   writeNew(path.join(artifacts, 'app-server.startup.json'), { schemaVersion: 'native-codex-startup/1', status: 'launching' });
   const mcpConfig = checkedMcpConfig(input.fixedMcpConfig), timeoutMs = input.timeoutMs ?? 600_000;
   if (!safeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 600_000) throw new NativeCodexError('NATIVE_CODEX_TIMEOUT_INVALID');
@@ -295,7 +298,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; requestInterrupt(); fail('NATIVE_CODEX_CREDIT_CAP_EXCEEDED'); }
       // The reserve closes future broker admission; it does not interrupt an
       // already-admitted turn before its final counter can arrive.
-      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; admissionClosed = true; }
+      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; admissionClosed = true; writeFileSync(admissionFlag, 'closed\n', { flag: 'w', mode: 0o600 }); }
       return;
     }
     if (notification.method === 'turn/started') {
@@ -339,7 +342,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       writeNew(path.join(artifacts, 'app-server.version.json'), { schemaVersion: 'native-codex-version-check/1', command: [binary, '--version'], exitCode: version.status, signal: version.signal, error: version.error?.name ?? null, expected: expectedCliVersion });
       if (version.status !== 0 || stdout.toString('utf8').trim() !== expectedCliVersion) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
     }
-    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: nativeCodexAppServerArgs(mcpConfig), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
+    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: nativeCodexAppServerArgs(mcpConfig, admissionFlag), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
     unlisten = connection.onNotification(observe);
     const initialized = await beforeDeadline(connection.request('initialize', { clientInfo: { name: 'ai-agent-architect-unity', version: '1' }, capabilities: { optOutNotificationMethods: [] } }));
     if (!object(initialized)) throw new NativeCodexError('NATIVE_CODEX_INITIALIZE_INVALID');

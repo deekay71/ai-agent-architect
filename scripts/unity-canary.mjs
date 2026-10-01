@@ -41,7 +41,8 @@ if (offlineVerify) {
   fs.writeFileSync(path.join(probe, 'version.stderr.log'), version.stderr ?? Buffer.alloc(0), { mode: 0o600 });
   save('offline-probe-version.json', { command: [codexBinary, '--version'], exitCode: version.status, error: version.error?.name ?? null, expected: codexVersion });
   if (version.status !== 0 || version.stdout.toString('utf8').trim() !== codexVersion) throw Error('CANARY_OFFLINE_VERSION_PIN_FAILED');
-  const args = nativeCodexAppServerArgs(fixedMcpConfig);
+  const admissionFlag = path.join(probe, 'tool-admission.flag'); fs.writeFileSync(admissionFlag, 'open\n', { mode: 0o600 });
+  const args = nativeCodexAppServerArgs(fixedMcpConfig, admissionFlag);
   const child = spawn(codexBinary, args, { cwd: project, env: codexChildEnvironment(), stdio: ['pipe', 'pipe', 'pipe'], shell: false });
   const stdout = path.join(probe, 'app-server.stdout.log'), stderr = path.join(probe, 'app-server.stderr.log'), events = path.join(probe, 'events.ndjson');
   for (const file of [stdout, stderr, events]) fs.writeFileSync(file, '', { mode: 0o600 });
