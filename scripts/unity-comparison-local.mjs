@@ -5,11 +5,12 @@ import { randomUUID, createHash } from 'node:crypto';
 import { digest } from '../dist/src/contracts/canonical.js';
 import { ReadyChecklistSchema } from '../dist/src/contracts/brain-planning.js';
 import { creditMicrosForUsage } from '../dist/src/contracts/credit-usage.js';
-import { runUnityComparison, runTwoCaseAcceptance, UNITY_COMPARISON_FORECAST, auditNativeUnityExecution } from '../dist/src/unity/comparison.js';
+import { runUnityComparison, runTwoCaseAcceptance, UNITY_COMPARISON_FORECAST, UnityPreDispatchStop, auditNativeUnityExecution } from '../dist/src/unity/comparison.js';
 import { runNativeCodexUnityTask } from '../dist/src/unity/native-codex.js';
 import { createCurrentCodexTransport, renderCodexRequest } from '../dist/src/providers/codex.js';
 import { UNITY_TASK_MANIFEST, proposeVerifiedUnityObservation } from '../dist/src/unity/walking-skeleton.js';
 import { MemoryStore } from '../dist/src/memory/index.js';
+import { checkWalkingSkeletonQuota } from '../dist/src/unity/quota-gate.js';
 const repo=path.resolve(import.meta.dirname,'..');
 const template=path.join(repo,'unity/walking-skeleton');
 const output=path.resolve(process.argv[2]??'.local/unity-comparison-20260930');
@@ -37,6 +38,20 @@ if(process.argv.includes('--gate-only')){
 if(fs.existsSync(output)) throw Error('Comparison output must be new');
 fs.mkdirSync(output,{recursive:true});
 const save=(name,data)=>fs.writeFileSync(path.join(output,name),JSON.stringify(data,null,2)+'\n',{flag:'wx'});
+const quotaSnapshotPath=twoCase&&live?optionPath('--quota-snapshot'):null;
+const twoCaseForecast=twoCaseAdmission?JSON.parse(twoCaseAdmission.protocolText).forecast:null;
+function quotaDecision(forecastPoints=0){
+ if(!quotaSnapshotPath)return {allowed:true,reason:'legacy-path'};
+ let snapshot=null;try{snapshot=JSON.parse(fs.readFileSync(quotaSnapshotPath,'utf8'));}catch{}
+ const decision=checkWalkingSkeletonQuota(snapshot,forecastPoints);
+ fs.appendFileSync(path.join(output,'quota-admission.ndjson'),JSON.stringify({at:new Date().toISOString(),snapshot,forecastPoints,...decision})+'\n');
+ if(!decision.allowed)fs.writeFileSync(path.join(output,'STOP'),decision.reason+'\n');
+ return decision;
+}
+if(quotaSnapshotPath){
+ const admission=quotaDecision(twoCaseForecast?.weeklyQuotaPercent);
+ if(!admission.allowed){save('report.json',{stoppedReason:'quota-stop',reason:admission.reason,dispatched:false,creditMicros:0,a:[],c:[]});console.log(JSON.stringify(admission));process.exit(0);}
+}
 const diskTasks=JSON.parse(fs.readFileSync(path.join(template,'tasks.json'),'utf8'));
 const taskById=new Map(diskTasks.map(t=>[t.id,t]));
 const skill=fs.readFileSync(path.join(template,'execution-recipe.md'),'utf8');
@@ -96,7 +111,7 @@ if(s1.status!=='Pass')throw Error('S1_REQUIRED');
 const permissionShape={sandbox:'root-deny-minimal-read-public-project-write',unityTool:'fixed-private-evaluation-host-CLI',hiddenTests:'source-inaccessible-results-shared',target:'sole task target',sameArms:true};
 const sourceMaterial=['scripts/unity-comparison-local.mjs','scripts/unity-test-mcp.py','src/unity/comparison.ts','src/unity/native-codex.ts','src/unity/walking-skeleton.ts'].map(file=>({file,digest:digest(fs.readFileSync(path.join(repo,file),'utf8'))}));
 const base=spawnSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'});if(base.status!==0)throw Error('BASE_REVISION_REQUIRED');
-const material={protocol:{text:protocolText,baseRevision:base.stdout.trim(),purpose:'phase-acceptance',phaseCapWeeklyPoints:10,authorization:twoCaseAdmission?.approvalRef??'owner-R3-accepted-2026-09-30-conditional-S1-lock-forecast',forecast:UNITY_COMPARISON_FORECAST,permissionShape},skills:skill,source:sourceMaterial};
+const material={protocol:{text:protocolText,baseRevision:base.stdout.trim(),purpose:'phase-acceptance',...(twoCase?{absoluteWeeklyStopUsedPercent:45}:{phaseCapWeeklyPoints:10}),authorization:twoCaseAdmission?.approvalRef??'owner-R3-accepted-2026-09-30-conditional-S1-lock-forecast',forecast:twoCaseForecast??UNITY_COMPARISON_FORECAST,permissionShape},skills:skill,source:sourceMaterial};
 const lock={locked:true,protocolDigest:digest(material.protocol),tasksDigest:digest(tasks),skillsDigest:digest(skill),sourceDigest:digest(sourceMaterial),modelsDigest:digest({planner:'gpt-6-sol',critic:'gpt-6-sol',executor:'gpt-5.6-terra',c:'gpt-5.6-terra'}),unityCliPermissionsDigest:digest(permissionShape)};
 save('lock.json',{lock,material,tasks,taskDiskDigest:digest(diskTasks),hiddenOracleDigest:digest(fs.readFileSync(path.join(template,'Assets/Tests/Editor/WalkingSkeletonFixtureTests.cs'),'utf8')),nativePreflight:JSON.parse(fs.readFileSync(nativeProofFile,'utf8'))});
 const publicProjects=new Map(); const brainArtifacts=new Map(); const latestBrokerRoots=new Map();
@@ -111,7 +126,14 @@ async function native(task,arm,budget,extra){
  const brokerRoot=path.join(run,'unity');latestBrokerRoots.set(arm+':'+task.taskId,brokerRoot);const args=[...p.args];args[4]=brokerRoot;
  const fixedMcpConfig=p.fixedMcpConfig.map(v=>v.startsWith('mcp_servers.unity_public.args=')?'mcp_servers.unity_public.args='+JSON.stringify(args):v);
  const prompt=skill+'\nTask: '+task.requirement+'\nOnly implementation file: '+task.targetFile+'\nUse unity_public.unity_compile_test for Unity (direct shell Unity is unavailable in this sandbox). The supplied public smoke test is immutable; you may add no other code/files in Assets, Packages, ProjectSettings. The broker returns the pinned test results, but test source is outside your workspace.\n'+extra;
- const r=await runNativeCodexUnityTask({projectPath:p.project,targetFile:task.targetFile,prompt,artifactDirectory:run,maxCreditMicros:budget,fixedMcpConfig});
+ // A closed quota gate prevents new tools; the admitted turn may finish and settle usage.
+ const monitor=quotaSnapshotPath?setInterval(()=>{
+  const stop=fs.existsSync(path.join(output,'STOP'))||!quotaDecision().allowed;
+  const flag=path.join(run,'tool-admission.flag');
+  if(stop&&fs.existsSync(flag))fs.writeFileSync(flag,'closed\n');
+ },1000):null;
+ let r;try{r=await runNativeCodexUnityTask({projectPath:p.project,targetFile:task.targetFile,prompt,artifactDirectory:run,maxCreditMicros:budget,fixedMcpConfig});}
+ finally{if(monitor)clearInterval(monitor);}
  const receipts=brokerReceipts(brokerRoot);
  const violation=auditNativeUnityExecution(arm,createHash('sha256').update(r.source??'').digest('hex'),receipts);
  // An interrupted turn can have an in-flight response beyond the latest counter.
@@ -170,7 +192,8 @@ const cExecutor={kind:'ordinary-codex',model:'gpt-5.6-terra',toolEnabled:true,sk
  async runCToolEnabled({task,maxCreditMicros}){return native(task,'C',maxCreditMicros,'Implement the requirement using your normal Codex workflow. You may inspect the public project, edit the target, run Unity through the supplied tool, and fix your work until satisfied or the credit allowance is near exhausted. No Brain planner/critic is provided.');}};
 const rows=[];
 const execute=twoCase?runTwoCaseAcceptance:runUnityComparison;
-const report=await execute({mode:'live',tasks,lock,lockMaterial:material,admission:{conditionalAuthorizationRef:material.protocol.authorization,s1Passed:true,lockedProtocol:true,forecastWeeklyQuotaPercent:UNITY_COMPARISON_FORECAST.weeklyQuotaPercent},model,verifier,cExecutor,
+let report;try{report=await execute({mode:'live',tasks,lock,lockMaterial:material,admission:{conditionalAuthorizationRef:material.protocol.authorization,s1Passed:true,lockedProtocol:true,forecastWeeklyQuotaPercent:(twoCaseForecast??UNITY_COMPARISON_FORECAST).weeklyQuotaPercent},model,verifier,cExecutor,
  onResult(arm,row){rows.push({arm,row});fs.writeFileSync(path.join(output,'progress.json'),JSON.stringify(rows,null,2));process.stdout.write(JSON.stringify({arm,taskId:row.taskId,outcome:row.outcome,credits:row.creditMicros===null?null:row.creditMicros/1e6})+'\n');},
- shouldStop(){return fs.existsSync(path.join(output,'STOP'));}});
+ shouldStop(){return fs.existsSync(path.join(output,'STOP'))||!quotaDecision(twoCase?(twoCaseForecast.weeklyQuotaPercent/4):0).allowed;}});}
+catch(error){if(!(error instanceof UnityPreDispatchStop))throw error;report={stoppedReason:'quota-stop',stopRecord:error.record,rows};}
 save('report.json',report);save('memory-snapshot.json',memory.writeMarkdownSnapshot(namespace).snapshot);memory.close();console.log(JSON.stringify({output,stoppedReason:report.stoppedReason,summary:report.summary,decision:report.decision}));

@@ -1,0 +1,87 @@
+{
+  "recordedAt": "2026-10-01T05:18:21.124714+00:00",
+  "status": "blocked_before_dispatch_by_budget",
+  "diagnosis": {
+    "test": "Old expectation allowed one completed task although the stop callback was already true before dispatch.",
+    "code": "Stopping before dispatch was correct; the exception lacked a durable stop record.",
+    "additionalInfrastructureFixes": 1,
+    "additionalFix": "Runner used only STOP file; numeric weekly admission now enforces current 45% policy and a fresh snapshot."
+  },
+  "offline": {
+    "build": "pass",
+    "tests": 33,
+    "passed": 33,
+    "failed": 0,
+    "preDispatch": "zero dispatch, zero credit, reason retained",
+    "softStop": "new tool denied, turn/completed present, settled 9500 credit micros in deterministic fixture; no forced interrupt",
+    "obsoleteLimits": "34 and 40 rejected; 45 is current absolute weekly stop"
+  },
+  "runnerAdmission": {
+    "stoppedReason": "quota-stop",
+    "reason": "forecast-exceeds-remaining-quota",
+    "dispatched": false,
+    "creditMicros": 0,
+    "a": [],
+    "c": []
+  },
+  "benchmark": {
+    "calls": 0,
+    "tokens": 0,
+    "credits": 0,
+    "usageSettlement": "not applicable: no model dispatched"
+  },
+  "quota": {
+    "weeklyStartUsedPercent": 43,
+    "weeklyAdmissionUsedPercent": 44,
+    "weeklyEndUsedPercent": 44,
+    "hardStopUsedPercent": 45,
+    "forecastWeeklyPoints": 1.147,
+    "remainingAtAdmission": 1,
+    "fiveHourUsedPercent": null,
+    "resetUtc": "2026-10-07T03:23:01Z",
+    "caveat": "Account-wide rounded snapshots; historical credit/quota conversion is noisy; other sessions not isolated.",
+    "observedAt": "2026-10-01T05:18:40.761438+00:00"
+  },
+  "attempts": [
+    {
+      "arm": "A",
+      "taskId": "integer-clamp",
+      "status": "not_started_budget_admission_denied",
+      "receipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "A",
+      "taskId": "cell-bounds",
+      "status": "not_started_budget_admission_denied",
+      "receipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "C",
+      "taskId": "integer-clamp",
+      "status": "not_started_budget_admission_denied",
+      "receipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "C",
+      "taskId": "cell-bounds",
+      "status": "not_started_budget_admission_denied",
+      "receipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    }
+  ],
+  "unchanged": [
+    "scoring logic",
+    "native receipt schema/accounting",
+    "per-task credit caps",
+    "MCP allowlist",
+    "stop conditions"
+  ],
+  "next": "After reset, refresh quota snapshot from dashboard; rerun offline tests and quota admission, then the same approved two-case run. Do not treat the old snapshot as current."
+}

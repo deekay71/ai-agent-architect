@@ -1,0 +1,30 @@
+✔ B reuses A passes, repairs only model failures, and accounts A plus repair cumulatively (2.100667ms)
+✔ B carries the latest compile/test feedback into at most two Terra repairs (0.536875ms)
+✔ two A infrastructure failures stop before B and C dispatch (0.179833ms)
+✔ C requires a matching tool-enabled ordinary Codex executor and keeps B when it wins by two passes (1.914958ms)
+✔ C cap counts cached input and has no raw-token substitute cap (0.292875ms)
+✔ unknown token usage and missing admission evidence fail closed (0.177542ms)
+✔ C at least as successful as B requests the separately approved feature and multi-session batch 2 (0.280292ms)
+✖ duplicate receipts and quota stops preserve the completed row for durable progress recording (0.264125ms)
+✔ broker infrastructure evidence is never classified as a model failure (0.051708ms)
+✔ native Unity proof requires a durable receipt and a single bound A/B candidate (0.127458ms)
+✔ canary receipt audit binds stub failure then repaired pass to the same three tests (0.13925ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.788125
+
+✖ failing tests:
+
+test at dist/test/unity-comparison.test.js:115:1
+✖ duplicate receipts and quota stops preserve the completed row for durable progress recording (0.264125ms)
+  Error: UNITY_COMPARISON_PRE_DISPATCH_STOP
+      at runA (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/src/unity/comparison.js:120:19)
+      at runUnityComparison (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/src/unity/comparison.js:278:30)
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/unity-comparison.test.js:128:29)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

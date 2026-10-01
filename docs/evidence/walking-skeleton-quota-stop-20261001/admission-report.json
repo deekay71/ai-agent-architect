@@ -1,0 +1,8 @@
+{
+  "stoppedReason": "quota-stop",
+  "reason": "forecast-exceeds-remaining-quota",
+  "dispatched": false,
+  "creditMicros": 0,
+  "a": [],
+  "c": []
+}

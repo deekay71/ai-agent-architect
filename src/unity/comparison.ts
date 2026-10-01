@@ -194,6 +194,14 @@ function stageFailure(receipt: ComparisonReceipt): ComparisonFailureClass | null
   return classifyUnityComparisonFailure(receipt.error, 'fail');
 }
 function receiptSource(receipt: ComparisonReceipt | undefined): string { return receipt?.source ?? ''; }
+export class UnityPreDispatchStop extends Error {
+  readonly record;
+  constructor(arm: 'A' | 'C', taskId: string, stage: string, receipts: readonly ComparisonReceipt[]) {
+    super('UNITY_COMPARISON_PRE_DISPATCH_STOP');
+    this.record = { arm, taskId, stage, reason: 'budget-or-owner-stop-before-dispatch', dispatchedNextStage: false,
+      creditMicros: usageMicros(receipts), receipts };
+  }
+}
 interface ReceiptAudit { seen: Set<string>; duplicateReceiptId: string | null }
 function recordReceipt(audit: ReceiptAudit, receipt: ComparisonReceipt): boolean {
   if (!receipt.receiptId.trim()) throw Error('UNITY_COMPARISON_RECEIPT_ID_INVALID');
@@ -209,7 +217,7 @@ function verifyResult(result: Awaited<ReturnType<UnityComparisonVerifier['verify
 async function runA(task: UnityTaskManifest, options: UnityComparisonOptions, audit: ReceiptAudit, cap = A_TASK_CREDIT_CAP_MICROS): Promise<ATaskResult> {
   const started = Date.now(), receipts: ComparisonReceipt[] = [];
   for (const stage of ['planner', 'critic', 'executor'] as const) {
-    if (options.shouldStop?.('A', { taskId: task.taskId, receipts, outcome: 'unknown', classification: 'unknown', source: '', feedback: 'pre-dispatch stop', evidenceId: null, creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0 })) throw Error('UNITY_COMPARISON_PRE_DISPATCH_STOP');
+    if (options.shouldStop?.('A', { taskId: task.taskId, receipts, outcome: 'unknown', classification: 'unknown', source: '', feedback: 'pre-dispatch stop', evidenceId: null, creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0 })) throw new UnityPreDispatchStop('A', task.taskId, stage, receipts);
     const receipt = await options.model.runAStage({ task, stage, priorStages: receipts, maxTaskCreditMicros: cap, lock: options.lock });
     if (receipt.model !== (stage === 'executor' ? 'gpt-5.6-terra' : 'gpt-6-sol') || receipt.artifact === undefined) throw Error('UNITY_COMPARISON_A_ROLE_RECEIPT_INVALID');
     if (stage === 'critic' && typeof receipt.criticApproved !== 'boolean') throw Error('UNITY_COMPARISON_CRITIC_ARTIFACT_INVALID');
@@ -275,7 +283,7 @@ function validCExecutor(c: ToolEnabledUnityCodexExecutor | undefined, lock: Unit
 }
 
 async function runC(task: UnityTaskManifest, executor: ToolEnabledUnityCodexExecutor, options: UnityComparisonOptions, audit: ReceiptAudit, cap = B_TASK_CUMULATIVE_CREDIT_CAP_MICROS): Promise<ComparisonTaskResult> {
-  if (options.shouldStop?.('C', { taskId: task.taskId, outcome: 'unknown', classification: 'unknown', receipts: [], creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false })) throw Error('UNITY_COMPARISON_PRE_DISPATCH_STOP');
+  if (options.shouldStop?.('C', { taskId: task.taskId, outcome: 'unknown', classification: 'unknown', receipts: [], creditMicros: null, elapsedMs: 0, hiddenPass: false, manualOwnerFixes: 0, evidenceId: null, reusedAResult: false })) throw new UnityPreDispatchStop('C', task.taskId, 'ordinary-codex', []);
   const started = Date.now(), receipt = await executor.runCToolEnabled({ task, maxCreditMicros: cap, lock: options.lock });
   if (receipt.model !== 'gpt-5.6-terra' || receipt.artifact === undefined) throw Error('UNITY_COMPARISON_C_ROLE_RECEIPT_INVALID');
   if (!receipt.toolProofRefs.length || receipt.toolProofRefs.some(ref => !ref.trim())) throw Error('UNITY_COMPARISON_C_TOOL_PROOF_REQUIRED');

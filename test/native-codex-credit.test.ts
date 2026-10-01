@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import { spawnSync } from 'node:child_process';
 import { runNativeCodexUnityTask, type NativeCodexAppServerConnection, type NativeCodexConnectionFactory, type NativeCodexNotification } from '../src/unity/native-codex.js';
 
 type Script = (connection: FixtureConnection) => void;
@@ -76,6 +77,12 @@ test('reserve closes hook admission while allowing a denied-tool turn to settle'
   const blocked = setup(t, c => { started(c); fileProof(c); usage(c, 190, 0, 0); c.emit('item/started', { threadId: 'thread-1', turnId: 'turn-1', item: { id: 'late-tool', type: 'commandExecution', status: 'inProgress' } }); c.emit('item/completed', { threadId: 'thread-1', turnId: 'turn-1', item: { id: 'late-tool', type: 'commandExecution', status: 'failed' } }); complete(c); });
   const blockedReceipt = await run(blocked, 10_000);
   assert.equal(blockedReceipt.status, 'completed'); assert.equal(blockedReceipt.overshootRisk, true);
+  assert.equal(blockedReceipt.creditMicros, 9_500);
+  assert.deepEqual(blockedReceipt.usage, { model: 'gpt-5.6-terra', inputTokens: 190, cachedInputTokens: 0, outputTokens: 0 });
+  assert.match(readFileSync(path.join(blocked.artifacts, 'app-server.events.ndjson'), 'utf8'), /turn\/completed/);
+  const denied = spawnSync('/usr/bin/python3', ['scripts/unity-tool-admission-guard.py', path.join(blocked.artifacts, 'tool-admission.flag')], { input: JSON.stringify({ tool_name: 'unity_compile_test', tool_use_id: 'after-reserve' }), encoding: 'utf8' });
+  assert.equal(denied.status, 0);
+  assert.equal(JSON.parse(denied.stdout).hookSpecificOutput.permissionDecision, 'deny');
   assert.equal(blocked.calls().filter(call => call.method === 'turn/interrupt').length, 0);
 });
 

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { digest } from '../src/contracts/canonical.js';
 import type { ModelCreditUsage } from '../src/contracts/credit-usage.js';
-import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, auditNativeUnityExecution, auditUnityCanaryReceipts, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
+import { B_TASK_CUMULATIVE_CREDIT_CAP_MICROS, classifyUnityComparisonFailure, auditNativeUnityExecution, auditUnityCanaryReceipts, UnityPreDispatchStop, type AStage, type ComparisonReceipt, type ToolEnabledUnityCodexExecutor, type UnityComparisonModelAdapter, type UnityComparisonOptions, type UnityComparisonVerifier, runUnityComparison } from '../src/unity/comparison.js';
 import { UNITY_TASK_MANIFEST } from '../src/unity/walking-skeleton.js';
 
 const tasks = UNITY_TASK_MANIFEST;
@@ -122,7 +122,7 @@ test('C at least as successful as B requests the separately approved feature and
   assert.deepEqual(report.decision!.batch2, { featureTasks: 4, multiSessionTasks: 2, instruction: 'run-feature-and-multi-session-comparison', approvalRequired: true });
 });
 
-test('duplicate receipts and quota stops preserve the completed row for durable progress recording', async () => {
+test('duplicate receipts preserve the completed row for durable progress recording', async () => {
   const f = fixture();
   const model: UnityComparisonModelAdapter = { ...f.model, async runAStage(input) {
     const result = await f.model.runAStage(input);
@@ -133,11 +133,7 @@ test('duplicate receipts and quota stops preserve the completed row for durable 
   const duplicate = await runUnityComparison({ ...withoutC, model, onResult: (arm, row) => saved.push(`${arm}:${row.taskId}`) });
   assert.equal(duplicate.stoppedReason, 'duplicate-receipt');
   assert.deepEqual(saved, ['A:integer-clamp', 'A:cell-bounds']);
-  const quota = fixture();
-  const { cExecutor: _alsoNoC, ...quotaWithoutC } = quota;
-  const quotaStop = await runUnityComparison({ ...quotaWithoutC, shouldStop: arm => arm === 'A' });
-  assert.equal(quotaStop.stoppedReason, 'quota-stop');
-  assert.equal(quotaStop.a.length, 1);
+
 });
 
 test("broker infrastructure evidence is never classified as a model failure", () => {
@@ -160,4 +156,20 @@ test('canary receipt audit binds stub failure then repaired pass to the same thr
   assert.equal(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0)], 'stub', 'repair'), null);
   assert.match(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0)], 'wrong', 'repair')!, /source hashes/);
   assert.match(auditUnityCanaryReceipts([receipt('stub', 'model', 'Failed', 1), receipt('repair', 'pass', 'Passed', 0), receipt('repair', 'pass', 'Passed', 0)], 'stub', 'repair')!, /exactly two/);
+});
+
+// Budget admission must stop before spending; a stopped task is not a completed row.
+test('forecast over remaining budget stops before dispatch with zero credit and a reason', async () => {
+  const f = fixture();
+  const forecast = 1.147, remaining = 0.5;
+  await assert.rejects(runUnityComparison({ ...f, shouldStop: () => forecast > remaining }), error => {
+    assert.ok(error instanceof UnityPreDispatchStop);
+    assert.equal(error.record.creditMicros, 0);
+    assert.equal(error.record.dispatchedNextStage, false);
+    assert.equal(error.record.stage, 'planner');
+    assert.match(error.record.reason, /before-dispatch/);
+    assert.deepEqual(error.record.receipts, []);
+    return true;
+  });
+  assert.deepEqual(f.aCalls, []);
 });
