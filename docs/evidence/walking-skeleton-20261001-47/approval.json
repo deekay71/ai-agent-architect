@@ -1,0 +1,6 @@
+{
+  "id": "owner-20261001-walking-skeleton-47",
+  "date": "2026-10-01",
+  "hardStopUsedPercent": 47,
+  "content": "Duyệt nâng mức dừng cứng lên 47% chỉ cho 4 lượt chạy walking skeleton (2 microtask × A, C), không làm việc gì khác:\n1. Giữ nguyên cổng, trần credit 3/task, allowlist, dừng trước dispatch và dừng mềm.\n2. Ghi quyết định duyệt này (ngày, nội dung, mức 47%) vào Ready record để cổng kiểm.\n3. Xong 4 lượt: báo biên nhận từng lượt (exit code, XML, test ID, credit đã chốt có turn/completed), quota trước/sau, và kết luận walking skeleton đạt hay không theo tiêu chí đã chốt.\n4. Không chạy spike hay dự toán đợt 2 trong lượt này. Các việc đó để sau ngày reset 07/10, mở phiên mới từ trang bàn giao.\n5. Có commit mới thì gửi tôi lệnh push."
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "receiptId": "sha256:27ea7c3c84d486297e9368d054824d3b8df9bbe9919365fd7ff2095a84eb4e16:3bd7599e-53b6-4aa5-9805-392a3678e162",
+    "model": "gpt-6-sol",
+    "usage": {
+      "model": "gpt-6-sol",
+      "inputTokens": 7636,
+      "cachedInputTokens": 0,
+      "outputTokens": 259
+    },
+    "elapsedMs": 12812.423500000004,
+    "status": "completed",
+    "artifact": {
+      "acceptance": [
+        "Contains returns true exactly when width and height are positive and 0 <= x < width and 0 <= y < height.",
+        "Non-positive dimensions and negative or out-of-range coordinates return false.",
+        "Only the assigned target file changes; the namespace, class, and method signature remain intact.",
+        "The Unity broker receipt and run ID are recorded without inferring hidden test details."
+      ],
+      "steps": [
+        "Read the assigned tasks.json entry and identify its targetFile.",
+        "Replace the stub with dimension and coordinate checks, then return x < width && y < height.",
+        "Run unity_compile_test within the assigned candidate limit and record compiler errors, test result, elapsed time, and run ID.",
+        "Report the broker result and confirm no protected project files changed."
+      ]
+    },
+    "toolProofRefs": []
+  },
+  {
+    "receiptId": "sha256:87d2730f44d076200eb267359c34c2cc3fb3c067fc56e077575f816e64e563aa:97670d35-d5a5-4b80-966a-1367588b3db3",
+    "model": "gpt-6-sol",
+    "usage": {
+      "model": "gpt-6-sol",
+      "inputTokens": 7794,
+      "cachedInputTokens": 0,
+      "outputTokens": 91
+    },
+    "elapsedMs": 8899.212958999997,
+    "status": "completed",
+    "artifact": {
+      "approved": true,
+      "findings": []
+    },
+    "toolProofRefs": [],
+    "criticApproved": true
+  },
+  {
+    "schemaVersion": "native-codex-receipt/1",
+    "receiptId": "native-codex:6fc26e9c-863b-4208-a866-b65ee9246b82",
+    "status": "completed",
+    "model": "gpt-5.6-terra",
+    "modelIdentityAssurance": "requested-only",
+    "usage": {
+      "model": "gpt-5.6-terra",
+      "inputTokens": 67198,
+      "cachedInputTokens": 51968,
+      "outputTokens": 805
+    },
+    "creditMicros": 1262840,
+    "reservedCreditMicros": 2141000,
+    "responseReserveCreditMicros": 214100,
+    "interruptAtCreditMicros": 1926900,
+    "elapsedMs": 37390,
+    "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+    "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+    "toolProofRefs": [
+      "command:01a0f63b-426e-7b40-b6b8-3d96cf2253de:01a0f63b-42ad-7050-ac4b-6c46b7c9858d:exec-3cf1f81b-e263-4643-9b2d-92a40b03b51c",
+      "command:01a0f63b-426e-7b40-b6b8-3d96cf2253de:01a0f63b-42ad-7050-ac4b-6c46b7c9858d:exec-cc276f2c-36c5-4e95-8ceb-2563ab0684a2",
+      "file:01a0f63b-426e-7b40-b6b8-3d96cf2253de:01a0f63b-42ad-7050-ac4b-6c46b7c9858d:exec-6767584a-c8f1-464c-9636-c600faa26827",
+      "mcp:01a0f63b-426e-7b40-b6b8-3d96cf2253de:01a0f63b-42ad-7050-ac4b-6c46b7c9858d:exec-adf9c99d-84fa-4329-9df9-fa6cb1333965:f60d1efa9e7c230a6adde599"
+    ],
+    "overshootRisk": false,
+    "eventLogDigest": "sha256:fcfce6375346d195a13a2de3cbdfa135efd9585910164b09e63bf2c7833dce39",
+    "promptDigest": "sha256:dc1f2f66c558a91062dcbb456adac72c479b1ba2be97388486cbaa6925e38d38",
+    "artifact": {
+      "sourceDigest": "sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b",
+      "eventLogDigest": "sha256:fcfce6375346d195a13a2de3cbdfa135efd9585910164b09e63bf2c7833dce39",
+      "observedUsage": {
+        "model": "gpt-5.6-terra",
+        "inputTokens": 67198,
+        "cachedInputTokens": 51968,
+        "outputTokens": 805
+      }
+    }
+  }
+]

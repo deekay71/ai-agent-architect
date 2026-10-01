@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.0185094">
+  <test-suite type="TestSuite" id="1000" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.018509" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1041" name="WalkingSkeleton.Tests.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/cell-bounds/private-eval/Library/ScriptAssemblies/WalkingSkeleton.Tests.dll" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.014559" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13311" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1042" name="WalkingSkeleton" fullname="WalkingSkeleton" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.014402" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1043" name="Tests" fullname="WalkingSkeleton.Tests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.014310" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="WalkingSkeletonFixtureTests" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.014017" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1010" name="CellBounds_oracle" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.011845" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1007" name="CellBounds_oracle(0,0,2,2,True)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)" methodname="CellBounds_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="1596827978" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.006871" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1008" name="CellBounds_oracle(2,1,2,2,False)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)" methodname="CellBounds_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="557772398" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.000100" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1009" name="CellBounds_oracle(0,0,0,2,False)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)" methodname="CellBounds_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="32626364" result="Passed" start-time="2026-10-01 06:51:46Z" end-time="2026-10-01 06:51:46Z" duration="0.000031" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/cell-bounds/artifacts/432f6c87-a3e5-4539-a413-7a0f3486dafd/unity/c7744ed9-78cf-4d46-8311-3b0372f5c282/tests.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

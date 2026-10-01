@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "memory-snapshot/1",
+  "namespace": {
+    "repoId": "unity-comparison",
+    "branchId": "round1",
+    "lineageId": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+    "allowedPaths": [
+      "unity/comparison"
+    ],
+    "taskClasses": [
+      "unity.microtask"
+    ]
+  },
+  "memoryVersion": "memory:4",
+  "generatedAt": "2026-10-01T06:53:00.006Z",
+  "nodes": [
+    {
+      "branchId": "round1",
+      "content": "Observed Unity 6000.0.84f1 EditMode fixture execution passed 3 test cases.",
+      "contentDigest": "sha256:91bc3b1d8b6dfc0247a9b36414607b1f063cc6368361b5a04d0bba83749efcc9",
+      "current": true,
+      "id": "claim:d1c7c5ee4433ddfd3c18181bc0e39e90292bf9600c2a986ddd56bf1f841e9700",
+      "kind": "claim",
+      "label": "unity-observation:unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e",
+      "lineageId": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+      "provenance": {
+        "assertionType": "observed",
+        "derived": false,
+        "originIds": [
+          "unity-evidence:unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e"
+        ],
+        "sourceRefs": [
+          "source:bb451c96a4ed72b05bc655ab077029d82cac86ac04a7acd97569d13d116fe20a"
+        ]
+      },
+      "recordDigest": "sha256:80ea20e71573e63a454c6e00384964bce11a7ca83e68c71a6b9fd261a5e2dd13",
+      "revision": "1",
+      "scope": {
+        "allowedPaths": [
+          "unity/comparison"
+        ],
+        "repoId": "unity-comparison",
+        "taskClasses": [
+          "unity.microtask"
+        ]
+      },
+      "status": {
+        "freshness": "fresh",
+        "lifecycle": "approved",
+        "reasons": [],
+        "validity": "valid"
+      }
+    },
+    {
+      "branchId": "round1",
+      "content": "Observed Unity 6000.0.84f1 EditMode fixture execution passed 3 test cases.",
+      "contentDigest": "sha256:91bc3b1d8b6dfc0247a9b36414607b1f063cc6368361b5a04d0bba83749efcc9",
+      "current": true,
+      "id": "claim:ddddef77472b9ddaa44d86ed3ef9ed41456e71afcb763be58fb42e5026d25e23",
+      "kind": "claim",
+      "label": "unity-observation:unity:69bca21e-b26e-4fcc-8536-24b3a537e903",
+      "lineageId": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+      "provenance": {
+        "assertionType": "observed",
+        "derived": false,
+        "originIds": [
+          "unity-evidence:unity:69bca21e-b26e-4fcc-8536-24b3a537e903"
+        ],
+        "sourceRefs": [
+          "source:703f19d243be8cc7789995dd78e802649822b00e27162d81b33403a03f468f02"
+        ]
+      },
+      "recordDigest": "sha256:5c59eb0ce061b7595c4782deee1953925ff7c21794fb7b64b0898b2675487871",
+      "revision": "1",
+      "scope": {
+        "allowedPaths": [
+          "unity/comparison"
+        ],
+        "repoId": "unity-comparison",
+        "taskClasses": [
+          "unity.microtask"
+        ]
+      },
+      "status": {
+        "freshness": "fresh",
+        "lifecycle": "approved",
+        "reasons": [],
+        "validity": "valid"
+      }
+    },
+    {
+      "branchId": "round1",
+      "content": "{\"schemaVersion\":\"unity-evidence/1\",\"evidenceId\":\"unity:69bca21e-b26e-4fcc-8536-24b3a537e903\",\"projectPath\":\"/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/integer-clamp/private-eval\",\"unityVersion\":\"6000.0.84f1\",\"unityCliVersion\":\"1.0.0-beta.8\",\"sourceSnapshotDigest\":\"sha256:44b100eca814eb2f86a7efebd58e3bf4926926d331ee23889f0a53140e5527e7\",\"sourceSnapshotAfterDigest\":\"sha256:44b100eca814eb2f86a7efebd58e3bf4926926d331ee23889f0a53140e5527e7\",\"commandDigest\":\"sha256:bcb1522bcab31564d7c8ac896189e35423b97fcd8340812c045fa431922816bc\",\"testXmlDigest\":\"sha256:f09edc44b6f6213622e762f6e65fc3d6c1054b02aa5612f688d11f614377619b\",\"logDigest\":\"sha256:604491fc044e4e48078f117fca332cac980fb6ca02f91a71a1c3e293bb6dc8b2\",\"testSummary\":{\"total\":3,\"passed\":3,\"failed\":0,\"skipped\":0,\"inconclusive\":0},\"outcome\":\"pass\",\"checkedPlanDigest\":\"sha256:c1cedf760682141a0511b738d1b0d64b90a067606a7583ceffc1ff26287a1400\",\"executionDigest\":\"sha256:8930603e6393bab9428232ab0c8320ed4b8bc9f1327799ceba3a74b83247f545\"}",
+      "contentDigest": "sha256:d945e88d90daf0c591586b13359265eb1662107c05e82c148a2ef5ff63732aae",
+      "current": true,
+      "id": "source:703f19d243be8cc7789995dd78e802649822b00e27162d81b33403a03f468f02",
+      "kind": "source",
+      "label": "unity-evidence:unity:69bca21e-b26e-4fcc-8536-24b3a537e903",
+      "lineageId": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+      "provenance": {
+        "derived": false,
+        "originIds": [
+          "unity-evidence:unity:69bca21e-b26e-4fcc-8536-24b3a537e903"
+        ],
+        "sourceRefs": []
+      },
+      "recordDigest": "sha256:1a0a66d98edd84dc3f103606fcc6ad2d8964456ecec279dd46905f52286c1f9e",
+      "revision": "sha256:44b100eca814eb2f86a7efebd58e3bf4926926d331ee23889f0a53140e5527e7",
+      "scope": {
+        "allowedPaths": [
+          "unity/comparison"
+        ],
+        "repoId": "unity-comparison",
+        "taskClasses": [
+          "unity.microtask"
+        ]
+      },
+      "sourceRef": "unity://unity:69bca21e-b26e-4fcc-8536-24b3a537e903",
+      "status": {
+        "freshness": "fresh",
+        "lifecycle": "active",
+        "reasons": [],
+        "validity": "valid"
+      }
+    },
+    {
+      "branchId": "round1",
+      "content": "{\"schemaVersion\":\"unity-evidence/1\",\"evidenceId\":\"unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e\",\"projectPath\":\"/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/cell-bounds/private-eval\",\"unityVersion\":\"6000.0.84f1\",\"unityCliVersion\":\"1.0.0-beta.8\",\"sourceSnapshotDigest\":\"sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6\",\"sourceSnapshotAfterDigest\":\"sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6\",\"commandDigest\":\"sha256:44963156290c189f4d983f7ba054f6e37d2945ec1902ad178083d6da87c37b27\",\"testXmlDigest\":\"sha256:2640f9ed5b30105956d9a99a3d55ad948eebfa513e7e7f0b421da0f1d1c36e07\",\"logDigest\":\"sha256:672ef7b8bd225785156ae82cf062ebe3940572e0b397caf974497e789250431b\",\"testSummary\":{\"total\":3,\"passed\":3,\"failed\":0,\"skipped\":0,\"inconclusive\":0},\"outcome\":\"pass\",\"checkedPlanDigest\":\"sha256:e62c1ad405e08427fcbeab26a6abe2216f606a0cbfc7f698c69b93ce53197b1c\",\"executionDigest\":\"sha256:27f4f07a428ae42bc73a123970048ecf2bf263d934c39431f4bf45c8603dfa9b\"}",
+      "contentDigest": "sha256:2d7ec53cd8441891f94ce05d8052bfbaf864dcd00c985f41cca959296ade0496",
+      "current": true,
+      "id": "source:bb451c96a4ed72b05bc655ab077029d82cac86ac04a7acd97569d13d116fe20a",
+      "kind": "source",
+      "label": "unity-evidence:unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e",
+      "lineageId": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+      "provenance": {
+        "derived": false,
+        "originIds": [
+          "unity-evidence:unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e"
+        ],
+        "sourceRefs": []
+      },
+      "recordDigest": "sha256:760909aba4f8626e3b2162a3ce37f7665e211d0d46c522680d69ff6b4c3701f2",
+      "revision": "sha256:e2350cf5c6af2ab66393313564dcffd7a6f9cf6935b6dbacc3c367332a7277d6",
+      "scope": {
+        "allowedPaths": [
+          "unity/comparison"
+        ],
+        "repoId": "unity-comparison",
+        "taskClasses": [
+          "unity.microtask"
+        ]
+      },
+      "sourceRef": "unity://unity:e8330abe-dd66-4515-a8c6-0e2ae64d7b7e",
+      "status": {
+        "freshness": "fresh",
+        "lifecycle": "active",
+        "reasons": [],
+        "validity": "valid"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "assertion": "explicit",
+      "from": "claim:ddddef77472b9ddaa44d86ed3ef9ed41456e71afcb763be58fb42e5026d25e23",
+      "id": "edge:01861a1ba63a847e2e6c96dbee6602eb03ff7c755c32a6db5ee9ab11be1a8e5e",
+      "provenanceRef": "claim:ddddef77472b9ddaa44d86ed3ef9ed41456e71afcb763be58fb42e5026d25e23",
+      "to": "source:703f19d243be8cc7789995dd78e802649822b00e27162d81b33403a03f468f02",
+      "type": "justified_by"
+    },
+    {
+      "assertion": "explicit",
+      "from": "claim:d1c7c5ee4433ddfd3c18181bc0e39e90292bf9600c2a986ddd56bf1f841e9700",
+      "id": "edge:cafe31024abae6a464c46f473869420bb102d32c99b40845c0a1c8122b76b76c",
+      "provenanceRef": "claim:d1c7c5ee4433ddfd3c18181bc0e39e90292bf9600c2a986ddd56bf1f841e9700",
+      "to": "source:bb451c96a4ed72b05bc655ab077029d82cac86ac04a7acd97569d13d116fe20a",
+      "type": "justified_by"
+    }
+  ],
+  "digest": "sha256:eef74cc325d317144ae44acb9d7d70f6048777ba2ec82c711298f28443413a1d"
+}

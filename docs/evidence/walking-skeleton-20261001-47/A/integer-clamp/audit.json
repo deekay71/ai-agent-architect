@@ -1,0 +1,59 @@
+{
+  "arm": "A",
+  "taskId": "integer-clamp",
+  "status": "pass",
+  "exitCode": 0,
+  "xml": "docs/evidence/walking-skeleton-20261001-47/A/integer-clamp/tests.xml",
+  "xmlSha256": "f09edc44b6f6213622e762f6e65fc3d6c1054b02aa5612f688d11f614377619b",
+  "testIds": [
+    {
+      "id": "1003",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+      "result": "Passed"
+    },
+    {
+      "id": "1004",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+      "result": "Passed"
+    },
+    {
+      "id": "1005",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+      "result": "Passed"
+    }
+  ],
+  "creditMicrosSettled": 2430470,
+  "creditsSettled": 2.43047,
+  "rawTokens": 95822,
+  "nativeTurnCompleted": {
+    "threadId": "01a0f63a-3e9e-7a42-a998-3e7fd9fe147a",
+    "turnId": "01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4",
+    "status": "completed"
+  },
+  "nativeUsageMatchesFinalEvent": true,
+  "backend": {
+    "label": "unity-cli",
+    "cli": "/Users/dmobin/.unity/bin/unity",
+    "cliVersion": "1.0.0-beta.8",
+    "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+    "editorVersion": "6000.0.84f1",
+    "fallback": "none"
+  },
+  "mcpAudit": [
+    {
+      "itemId": "exec-ab62c7fe-74c5-4c12-b37e-b5ed1f55f941",
+      "server": "unity_public",
+      "tool": "unity_compile_test",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "sourceAndXmlDigestsMatch": true,
+  "protectedFilesUnchanged": true,
+  "memoryPromoted": true,
+  "memoryNodeIds": [
+    "claim:ddddef77472b9ddaa44d86ed3ef9ed41456e71afcb763be58fb42e5026d25e23"
+  ],
+  "softStopActivated": false,
+  "hookAdmissionLogPresent": false
+}

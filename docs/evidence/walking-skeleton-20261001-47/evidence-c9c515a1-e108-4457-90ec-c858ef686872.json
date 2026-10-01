@@ -1,0 +1,67 @@
+{
+  "evidence": {
+    "schemaVersion": "unity-evidence/1",
+    "evidenceId": "unity:69bca21e-b26e-4fcc-8536-24b3a537e903",
+    "projectPath": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/integer-clamp/private-eval",
+    "unityVersion": "6000.0.84f1",
+    "unityCliVersion": "1.0.0-beta.8",
+    "sourceSnapshotDigest": "sha256:44b100eca814eb2f86a7efebd58e3bf4926926d331ee23889f0a53140e5527e7",
+    "sourceSnapshotAfterDigest": "sha256:44b100eca814eb2f86a7efebd58e3bf4926926d331ee23889f0a53140e5527e7",
+    "commandDigest": "sha256:bcb1522bcab31564d7c8ac896189e35423b97fcd8340812c045fa431922816bc",
+    "testXmlDigest": "sha256:f09edc44b6f6213622e762f6e65fc3d6c1054b02aa5612f688d11f614377619b",
+    "logDigest": "sha256:604491fc044e4e48078f117fca332cac980fb6ca02f91a71a1c3e293bb6dc8b2",
+    "testSummary": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "outcome": "pass",
+    "checkedPlanDigest": "sha256:c1cedf760682141a0511b738d1b0d64b90a067606a7583ceffc1ff26287a1400",
+    "executionDigest": "sha256:8930603e6393bab9428232ab0c8320ed4b8bc9f1327799ceba3a74b83247f545"
+  },
+  "broker": {
+    "runId": "fc16ef9b-4d29-4134-9979-ea5dacc0368d",
+    "callIndex": 1,
+    "backend": {
+      "label": "unity-cli",
+      "cli": "/Users/dmobin/.unity/bin/unity",
+      "cliVersion": "1.0.0-beta.8",
+      "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+      "editorVersion": "6000.0.84f1",
+      "fallback": "none"
+    },
+    "sourceSha256": "02f5dd2cbbf24f937085fb859f46f29b47002fb09319b1e57bb85acb1abc2a89",
+    "protectedBeforeDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3",
+    "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle",
+    "expectedTestCount": 3,
+    "tests": [
+      {
+        "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+        "result": "Passed",
+        "message": ""
+      },
+      {
+        "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+        "result": "Passed",
+        "message": ""
+      },
+      {
+        "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+        "result": "Passed",
+        "message": ""
+      }
+    ],
+    "compileErrors": [],
+    "outcome": "pass",
+    "exitCode": 0,
+    "actualTestCount": 3,
+    "elapsedSeconds": 9.435,
+    "commandDigest": "bcb1522bcab31564d7c8ac896189e35423b97fcd8340812c045fa431922816bc",
+    "xmlDigest": "f09edc44b6f6213622e762f6e65fc3d6c1054b02aa5612f688d11f614377619b",
+    "logDigest": "604491fc044e4e48078f117fca332cac980fb6ca02f91a71a1c3e293bb6dc8b2",
+    "protectedAfterDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3",
+    "receiptFile": "/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/A/integer-clamp/artifacts/d8f03e2f-a8e7-4268-ad78-fc4d7ba7508b/unity/fc16ef9b-4d29-4134-9979-ea5dacc0368d/receipt.json"
+  }
+}

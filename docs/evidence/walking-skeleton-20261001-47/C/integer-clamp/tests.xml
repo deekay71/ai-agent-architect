@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.0163484">
+  <test-suite type="TestSuite" id="1000" name="walking-skeleton" fullname="walking-skeleton" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.016348" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1041" name="WalkingSkeleton.Tests.dll" fullname="/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/C/integer-clamp/private-eval/Library/ScriptAssemblies/WalkingSkeleton.Tests.dll" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.012912" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13533" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1042" name="WalkingSkeleton" fullname="WalkingSkeleton" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.012702" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1043" name="Tests" fullname="WalkingSkeleton.Tests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.010964" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="WalkingSkeletonFixtureTests" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.010607" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1006" name="IntegerClamp_oracle" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.008713" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="IntegerClamp_oracle(-1,0,4,0)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)" methodname="IntegerClamp_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="741092556" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.005336" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="IntegerClamp_oracle(5,0,4,4)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)" methodname="IntegerClamp_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="843345973" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.000034" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="IntegerClamp_oracle(2,0,4,2)" fullname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)" methodname="IntegerClamp_oracle" classname="WalkingSkeleton.Tests.WalkingSkeletonFixtureTests" runstate="Runnable" seed="1152873922" result="Passed" start-time="2026-10-01 06:52:23Z" end-time="2026-10-01 06:52:23Z" duration="0.000017" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/walking-skeleton-live-47-20261001/C/integer-clamp/artifacts/3759858a-c25f-4b1c-bc7c-bb6590de837a/unity/d344c495-37ab-409b-813f-55faaf6cdfbe/tests.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

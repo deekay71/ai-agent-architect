@@ -1,0 +1,86 @@
+[
+  {
+    "receiptId": "sha256:26ee321ed542fe56f5b843217d938e6268f3c58fed3459e6a3dec0d68e7139db:f50126f1-60ef-4d6c-8c1f-14f316e5a4df",
+    "model": "gpt-6-sol",
+    "usage": {
+      "model": "gpt-6-sol",
+      "inputTokens": 7564,
+      "cachedInputTokens": 0,
+      "outputTokens": 245
+    },
+    "elapsedMs": 9892.123042000001,
+    "status": "completed",
+    "artifact": {
+      "acceptance": [
+        "Clamp throws System.ArgumentException when minimum > maximum.",
+        "For a valid range, Clamp returns minimum below the range, maximum above it, and value when it is within the inclusive bounds.",
+        "Only the assigned target file changes; its namespace, public class, method signature, and required Unity types remain intact.",
+        "The unity_compile_test receipt, including run ID, elapsed time, compiler errors, and test result, is recorded without claiming access to hidden tests."
+      ],
+      "steps": [
+        "Read the assigned tasks.json entry and locate its targetFile under Assets/WalkingSkeleton/Tasks/.",
+        "Replace the stub with a range check followed by direct integer comparisons and returns; avoid arithmetic that could overflow.",
+        "Run one candidate and one verification through unity_compile_test. Record each receipt and report its returned pass, model failure, or infrastructure failure.",
+        "Confirm no protected project file changed."
+      ]
+    },
+    "toolProofRefs": []
+  },
+  {
+    "receiptId": "sha256:d9473fab412341606024ca5af6b7daa24a62891753ce4527ffed8df4c9e7d816:0d02abe3-8cff-42af-a432-dc4ccb34738b",
+    "model": "gpt-6-sol",
+    "usage": {
+      "model": "gpt-6-sol",
+      "inputTokens": 7746,
+      "cachedInputTokens": 0,
+      "outputTokens": 94
+    },
+    "elapsedMs": 11869.988625000002,
+    "status": "completed",
+    "artifact": {
+      "approved": true,
+      "findings": []
+    },
+    "toolProofRefs": [],
+    "criticApproved": true
+  },
+  {
+    "schemaVersion": "native-codex-receipt/1",
+    "receiptId": "native-codex:2d799fb2-f003-4fec-8a99-c4ab0ff5accd",
+    "status": "completed",
+    "model": "gpt-5.6-terra",
+    "modelIdentityAssurance": "requested-only",
+    "usage": {
+      "model": "gpt-5.6-terra",
+      "inputTokens": 79104,
+      "cachedInputTokens": 59904,
+      "outputTokens": 1069
+    },
+    "creditMicros": 1580220,
+    "reservedCreditMicros": 2149750,
+    "responseReserveCreditMicros": 214975,
+    "interruptAtCreditMicros": 1934775,
+    "elapsedMs": 44726,
+    "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) { throw new ArgumentException(); } if (value < minimum) { return minimum; } if (value > maximum) { return maximum; } return value; } } }\n",
+    "sourceDigest": "sha256:8930603e6393bab9428232ab0c8320ed4b8bc9f1327799ceba3a74b83247f545",
+    "toolProofRefs": [
+      "command:01a0f63a-3e9e-7a42-a998-3e7fd9fe147a:01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4:exec-1e6a5556-8916-4586-8190-b57ef564be33",
+      "file:01a0f63a-3e9e-7a42-a998-3e7fd9fe147a:01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4:exec-ffb00914-5101-44b6-b6df-be2805e14feb",
+      "mcp:01a0f63a-3e9e-7a42-a998-3e7fd9fe147a:01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4:exec-ab62c7fe-74c5-4c12-b37e-b5ed1f55f941:f60d1efa9e7c230a6adde599",
+      "command:01a0f63a-3e9e-7a42-a998-3e7fd9fe147a:01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4:exec-6f17aa1e-3eb2-4934-a79a-84a5cd7b31df"
+    ],
+    "overshootRisk": false,
+    "eventLogDigest": "sha256:221d42bad9ef653c2e9a9a6c22c0072ccf6717089828b5423c69ca888951be41",
+    "promptDigest": "sha256:a7d26ad9a7ae38be547c1cc2e17a9fd2a9490695aef8f660c7d819a6dde00458",
+    "artifact": {
+      "sourceDigest": "sha256:8930603e6393bab9428232ab0c8320ed4b8bc9f1327799ceba3a74b83247f545",
+      "eventLogDigest": "sha256:221d42bad9ef653c2e9a9a6c22c0072ccf6717089828b5423c69ca888951be41",
+      "observedUsage": {
+        "model": "gpt-5.6-terra",
+        "inputTokens": 79104,
+        "cachedInputTokens": 59904,
+        "outputTokens": 1069
+      }
+    }
+  }
+]

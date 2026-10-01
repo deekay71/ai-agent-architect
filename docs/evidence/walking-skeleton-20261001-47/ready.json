@@ -1,0 +1,76 @@
+{
+  "records": {
+    "readyChecklist": {
+      "schemaVersion": "0.6.0",
+      "checklistId": "walking-skeleton-two-case-47-20261001",
+      "plan": {
+        "ref": "docs/evidence/walking-skeleton-20261001-47/protocol.json",
+        "version": 2,
+        "digest": "sha256:a82f463f94ec56727d262e15f669c90d40dd682aa502b7dd3d691eae7eb135e1"
+      },
+      "checks": {
+        "requirementCoverage": {
+          "outcome": "pass",
+          "reason": "Phạm vi gồm đúng hai task và hai nhánh, có evidence và Memory.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/protocol.json"
+          ]
+        },
+        "interfaceCompatibility": {
+          "outcome": "pass",
+          "reason": "New gate requires the complete Ready checklist, exact protocol bytes and the specific owner decision; offline admission tests must pass before live dispatch.",
+          "evidenceRefs": [
+            "test/unity-ready-gate.test.ts"
+          ]
+        },
+        "testableAcceptance": {
+          "outcome": "pass",
+          "reason": "Yêu cầu receipt, test IDs, turn/completed, usage chốt và Memory có thể kiểm được.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/protocol.json"
+          ]
+        },
+        "highRiskSpikes": {
+          "outcome": "pass",
+          "reason": "S1 và canary có bằng chứng; canary được chủ dự án chấp nhận, gate mới chưa kiểm live.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/protocol.json"
+          ]
+        },
+        "budgetFit": {
+          "outcome": "pass",
+          "reason": "Owner approved this four-attempt run only, with 47% absolute weekly stop including orchestration, 3 credits/task, unchanged stop mechanics.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/approval.json"
+          ]
+        },
+        "acyclicDependencies": {
+          "outcome": "pass",
+          "reason": "Ready → A planner → critic → executor → verification → evidence/Memory; A hai task trước C hai task.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/protocol.json"
+          ]
+        },
+        "clearGoalAndAcceptance": {
+          "outcome": "pass",
+          "reason": "Chỉ nghiệm thu walking skeleton; không có câu hỏi mở về mục tiêu.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-47/protocol.json"
+          ]
+        }
+      },
+      "openGoalOrAcceptanceQuestions": [],
+      "outcome": "ready",
+      "reviewedBy": "single-primary-agent",
+      "reviewedAt": "2026-10-01T06:48:45.135147+00:00"
+    }
+  },
+  "approvalRef": {
+    "ref": "docs/evidence/walking-skeleton-20261001-47/approval.json",
+    "id": "owner-20261001-walking-skeleton-47",
+    "date": "2026-10-01",
+    "contentDigest": "sha256:9c006707318050079463ee550e7e90e1c3cdbf70a300c22eb1b3b1e01ea28a97",
+    "hardStopUsedPercent": 47,
+    "content": "Duyệt nâng mức dừng cứng lên 47% chỉ cho 4 lượt chạy walking skeleton (2 microtask × A, C), không làm việc gì khác:\n1. Giữ nguyên cổng, trần credit 3/task, allowlist, dừng trước dispatch và dừng mềm.\n2. Ghi quyết định duyệt này (ngày, nội dung, mức 47%) vào Ready record để cổng kiểm.\n3. Xong 4 lượt: báo biên nhận từng lượt (exit code, XML, test ID, credit đã chốt có turn/completed), quota trước/sau, và kết luận walking skeleton đạt hay không theo tiêu chí đã chốt.\n4. Không chạy spike hay dự toán đợt 2 trong lượt này. Các việc đó để sau ngày reset 07/10, mở phiên mới từ trang bàn giao.\n5. Có commit mới thì gửi tôi lệnh push."
+  }
+}

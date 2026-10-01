@@ -6,7 +6,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const repo = process.cwd();
-const fixture = path.join(repo, 'docs/evidence/walking-skeleton-20261001-acceptance');
+const fixture = path.join(repo, 'docs/evidence/walking-skeleton-20261001-47');
 
 for (const scenario of ['ready', 'not_ready', 'wrong_hash', 'missing_approval', 'changed_decision'] as const) {
   test(`two-case entrypoint admission: ${scenario}`, () => {

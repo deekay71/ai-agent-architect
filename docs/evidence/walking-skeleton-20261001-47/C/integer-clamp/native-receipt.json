@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "native-codex-receipt/1",
+  "receiptId": "native-codex:72ad592e-dfe8-4f91-a0d4-c79dbe1d36b4",
+  "status": "completed",
+  "model": "gpt-5.6-terra",
+  "modelIdentityAssurance": "requested-only",
+  "usage": {
+    "model": "gpt-5.6-terra",
+    "inputTokens": 65682,
+    "cachedInputTokens": 50944,
+    "outputTokens": 753
+  },
+  "creditMicros": 1217520,
+  "reservedCreditMicros": 3000000,
+  "responseReserveCreditMicros": 300000,
+  "interruptAtCreditMicros": 2700000,
+  "elapsedMs": 37530,
+  "source": "using System;\nusing UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class IntegerClamp { public static int Clamp(int value, int minimum, int maximum) { if (minimum > maximum) { throw new ArgumentException(\"Minimum cannot be greater than maximum.\", nameof(minimum)); } if (value < minimum) { return minimum; } if (value > maximum) { return maximum; } return value; } } }\n",
+  "sourceDigest": "sha256:3591caa4e98b4b596adce598162f77b87153b0b19f744963157668b024c5b280",
+  "toolProofRefs": [
+    "command:01a0f63b-d51b-7771-a8b8-cfbe5f622670:01a0f63b-d56d-7370-86d5-bd6b7f57bb27:exec-956b7d4c-4a6b-4dd6-bf5e-3e6ee0054f6b",
+    "command:01a0f63b-d51b-7771-a8b8-cfbe5f622670:01a0f63b-d56d-7370-86d5-bd6b7f57bb27:exec-ce3314e9-48c1-4787-a5d2-9db4c4f61632",
+    "file:01a0f63b-d51b-7771-a8b8-cfbe5f622670:01a0f63b-d56d-7370-86d5-bd6b7f57bb27:exec-fe2ff52d-aec2-48e7-95d6-a2e9a91cf589",
+    "mcp:01a0f63b-d51b-7771-a8b8-cfbe5f622670:01a0f63b-d56d-7370-86d5-bd6b7f57bb27:exec-7c87afd0-5777-4d07-a50f-5db1f31145a9:f60d1efa9e7c230a6adde599"
+  ],
+  "overshootRisk": false,
+  "eventLogDigest": "sha256:e983d3a58e740e0c270ccc1fc3de4c7696a2423c4dcb461316be849f2274a405",
+  "promptDigest": "sha256:e58bcc8154508913de1a46c38750a46bb4757f5f17bf8b92c60334936a5a8592",
+  "artifact": {
+    "sourceDigest": "sha256:3591caa4e98b4b596adce598162f77b87153b0b19f744963157668b024c5b280",
+    "eventLogDigest": "sha256:e983d3a58e740e0c270ccc1fc3de4c7696a2423c4dcb461316be849f2274a405",
+    "observedUsage": {
+      "model": "gpt-5.6-terra",
+      "inputTokens": 65682,
+      "cachedInputTokens": 50944,
+      "outputTokens": 753
+    }
+  }
+}

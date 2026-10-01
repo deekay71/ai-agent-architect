@@ -1,0 +1,42 @@
+{
+  "runId": "d344c495-37ab-409b-813f-55faaf6cdfbe",
+  "callIndex": 1,
+  "backend": {
+    "label": "unity-cli",
+    "cli": "/Users/dmobin/.unity/bin/unity",
+    "cliVersion": "1.0.0-beta.8",
+    "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+    "editorVersion": "6000.0.84f1",
+    "fallback": "none"
+  },
+  "sourceSha256": "b2884b9c2a256b24fa92819a70f7927577492ffd5d622c6f0741ab6305b8f49a",
+  "protectedBeforeDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3",
+  "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle",
+  "expectedTestCount": 3,
+  "tests": [
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+      "result": "Passed",
+      "message": ""
+    }
+  ],
+  "compileErrors": [],
+  "outcome": "pass",
+  "exitCode": 0,
+  "actualTestCount": 3,
+  "elapsedSeconds": 9.793,
+  "commandDigest": "e44c7936750aa789d9977b0dc736d95183bae7a5a78dcc64ebbaa5d761102e7f",
+  "xmlDigest": "79ffc226a0e91342ab05d874c29034ac4d9aa0897e223afacfe0c96a125074d9",
+  "logDigest": "6a7f1e5cb6e76d9849f6254cd12b89b221bce3a9937934000fff9db12b151483",
+  "protectedAfterDigest": "2f811577535db0f25063ccdb2574c96bcba0e45ad9db26fe93fd02ad506e1fc3"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "C",
+  "taskId": "cell-bounds",
+  "status": "pass",
+  "exitCode": 0,
+  "xml": "docs/evidence/walking-skeleton-20261001-47/C/cell-bounds/tests.xml",
+  "xmlSha256": "ef9a8c6638538a0fc25ae07e1822f572fb0812b2ea739c27576e20ac9898b778",
+  "testIds": [
+    {
+      "id": "1007",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+      "result": "Passed"
+    },
+    {
+      "id": "1008",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+      "result": "Passed"
+    },
+    {
+      "id": "1009",
+      "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+      "result": "Passed"
+    }
+  ],
+  "creditMicrosSettled": 1012760,
+  "creditsSettled": 1.01276,
+  "rawTokens": 67419,
+  "nativeTurnCompleted": {
+    "threadId": "01a0f63c-678d-7963-b1e4-7ba92a2755a6",
+    "turnId": "01a0f63c-67c8-7071-8966-e5dd2315f6b8",
+    "status": "completed"
+  },
+  "nativeUsageMatchesFinalEvent": true,
+  "backend": {
+    "label": "unity-cli",
+    "cli": "/Users/dmobin/.unity/bin/unity",
+    "cliVersion": "1.0.0-beta.8",
+    "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+    "editorVersion": "6000.0.84f1",
+    "fallback": "none"
+  },
+  "mcpAudit": [
+    {
+      "itemId": "exec-e0d5b7f8-c701-4531-9ece-b3f3a149eac6",
+      "server": "unity_public",
+      "tool": "unity_compile_test",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "sourceAndXmlDigestsMatch": true,
+  "protectedFilesUnchanged": true,
+  "memoryPromoted": false,
+  "memoryNodeIds": [],
+  "softStopActivated": false,
+  "hookAdmissionLogPresent": false
+}

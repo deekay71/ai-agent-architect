@@ -1,0 +1,41 @@
+✔ uses cumulative totals once and counts cached input in credits (4.924375ms)
+✔ unknown token counters fail closed and interrupt the active turn (2.030709ms)
+✔ credit-cap event interrupts and records the overshoot risk (2.387125ms)
+✔ reserve closes hook admission while allowing a denied-tool turn to settle (33.59125ms)
+✔ a rerouted model is rejected before a turn can begin (1.647625ms)
+✔ an inherited MCP tool blocks dispatch before any turn starts (1.454833ms)
+✔ a failed MCP item cannot become a Unity tool proof (1.75775ms)
+✔ durable tool proof is required and final source comes from the allowed target (1.631959ms)
+✔ a completed turn without usage cannot be reported as a free run (1.551667ms)
+✔ a completed MCP envelope carrying isError still fails verification (1.470958ms)
+✔ B reuses A passes, repairs only model failures, and accounts A plus repair cumulatively (2.38425ms)
+✔ B carries the latest compile/test feedback into at most two Terra repairs (0.594375ms)
+✔ two A infrastructure failures stop before B and C dispatch (0.207125ms)
+✔ C requires a matching tool-enabled ordinary Codex executor and keeps B when it wins by two passes (2.12375ms)
+✔ C cap counts cached input and has no raw-token substitute cap (0.325167ms)
+✔ unknown token usage and missing admission evidence fail closed (0.197958ms)
+✔ C at least as successful as B requests the separately approved feature and multi-session batch 2 (0.367792ms)
+✔ duplicate receipts preserve the completed row for durable progress recording (0.171375ms)
+✔ broker infrastructure evidence is never classified as a model failure (0.050667ms)
+✔ native Unity proof requires a durable receipt and a single bound A/B candidate (0.126375ms)
+✔ canary receipt audit binds stub failure then repaired pass to the same three tests (0.141041ms)
+✔ forecast over remaining budget stops before dispatch with zero credit and a reason (0.177916ms)
+✔ weekly quota 44/47 forecast 1.147 (3.74375ms)
+✔ weekly quota 46.9/47 forecast 0.2 (0.1215ms)
+✔ weekly quota 47/47 forecast 0 (0.056958ms)
+✔ weekly quota 43/40 forecast 0 (0.046541ms)
+✔ weekly quota 33/34 forecast 0 (0.451708ms)
+✔ unknown or stale quota cannot dispatch (0.059125ms)
+✔ two-case entrypoint admission: ready (56.6ms)
+✔ two-case entrypoint admission: not_ready (49.30325ms)
+✔ two-case entrypoint admission: wrong_hash (48.22875ms)
+✔ two-case entrypoint admission: missing_approval (48.792208ms)
+✔ two-case entrypoint admission: changed_decision (51.452ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 289.499125

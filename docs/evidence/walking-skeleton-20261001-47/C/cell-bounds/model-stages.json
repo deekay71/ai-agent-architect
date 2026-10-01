@@ -1,0 +1,41 @@
+[
+  {
+    "schemaVersion": "native-codex-receipt/1",
+    "receiptId": "native-codex:e2ab1109-fe07-44bb-8ce1-fa3019bae898",
+    "status": "completed",
+    "model": "gpt-5.6-terra",
+    "modelIdentityAssurance": "requested-only",
+    "usage": {
+      "model": "gpt-5.6-terra",
+      "inputTokens": 66622,
+      "cachedInputTokens": 56832,
+      "outputTokens": 797
+    },
+    "creditMicros": 1012760,
+    "reservedCreditMicros": 3000000,
+    "responseReserveCreditMicros": 300000,
+    "interruptAtCreditMicros": 2700000,
+    "elapsedMs": 31143,
+    "source": "using UnityEngine;\nnamespace WalkingSkeleton.Tasks { public static class CellBounds { public static bool Contains(int x, int y, int width, int height) { return width > 0 && height > 0 && x >= 0 && y >= 0 && x < width && y < height; } } }\n",
+    "sourceDigest": "sha256:9f2e22d23118c4f14299fb243c6af8a70f7f08f706f8b6417931c0c04a5c0b25",
+    "toolProofRefs": [
+      "command:01a0f63c-678d-7963-b1e4-7ba92a2755a6:01a0f63c-67c8-7071-8966-e5dd2315f6b8:exec-7017eb09-4f86-4079-a7b2-04781a28b939",
+      "command:01a0f63c-678d-7963-b1e4-7ba92a2755a6:01a0f63c-67c8-7071-8966-e5dd2315f6b8:exec-33b419ab-cc4b-423b-923f-d04b45d03679",
+      "file:01a0f63c-678d-7963-b1e4-7ba92a2755a6:01a0f63c-67c8-7071-8966-e5dd2315f6b8:exec-748391e2-9866-4ba7-96ef-b1e6ac79ccda",
+      "mcp:01a0f63c-678d-7963-b1e4-7ba92a2755a6:01a0f63c-67c8-7071-8966-e5dd2315f6b8:exec-e0d5b7f8-c701-4531-9ece-b3f3a149eac6:f60d1efa9e7c230a6adde599"
+    ],
+    "overshootRisk": false,
+    "eventLogDigest": "sha256:9479748370e89bb0321e404038e8d5b236b0d71b164e58e66cf9b950338b9dc0",
+    "promptDigest": "sha256:306ee13595e97fce48b71d4bc6f9acff89997301fffef6ac36518fb14f11c848",
+    "artifact": {
+      "sourceDigest": "sha256:9f2e22d23118c4f14299fb243c6af8a70f7f08f706f8b6417931c0c04a5c0b25",
+      "eventLogDigest": "sha256:9479748370e89bb0321e404038e8d5b236b0d71b164e58e66cf9b950338b9dc0",
+      "observedUsage": {
+        "model": "gpt-5.6-terra",
+        "inputTokens": 66622,
+        "cachedInputTokens": 56832,
+        "outputTokens": 797
+      }
+    }
+  }
+]

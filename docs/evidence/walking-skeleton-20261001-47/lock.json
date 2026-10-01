@@ -1,0 +1,104 @@
+{
+  "lock": {
+    "locked": true,
+    "protocolDigest": "sha256:1b476c2100b1b365759abc96384f544a0e2d02294986a9198bd8040c4eeba9c3",
+    "tasksDigest": "sha256:7b2189fc2bab2abc3247934da202655a6c1e7bfa4a1b7f95601d8e6bb661c0ae",
+    "skillsDigest": "sha256:cbb8d6e6589c1644b8d806c66fa05554aaa709be9e77843028b0c4bd123c15da",
+    "sourceDigest": "sha256:e06814f90ab1bf593c7dd6670d6c8f3b344202d65b453ecd00ef999b0f3903df",
+    "modelsDigest": "sha256:b499623f4d85585d2bf68317774f2d55e9ef1b71ff78f99abc41428c6eca2668",
+    "unityCliPermissionsDigest": "sha256:bf34d5cc7c509230fdee3fe8037c56e259d1f0083eb4e8e48e740e9ab2f4e5e9"
+  },
+  "material": {
+    "protocol": {
+      "text": "{\n  \"schemaVersion\": \"walking-skeleton-acceptance/1\",\n  \"purpose\": \"technical walking skeleton acceptance only\",\n  \"tasks\": [\n    \"integer-clamp\",\n    \"cell-bounds\"\n  ],\n  \"schedule\": [\n    \"A:integer-clamp\",\n    \"A:cell-bounds\",\n    \"C:integer-clamp\",\n    \"C:cell-bounds\"\n  ],\n  \"aStages\": [\n    \"planner\",\n    \"critic\",\n    \"executor\",\n    \"compile/test\",\n    \"evidence\",\n    \"Memory\"\n  ],\n  \"cStages\": [\n    \"ordinary-codex\",\n    \"compile/test\",\n    \"evidence\"\n  ],\n  \"models\": {\n    \"planner\": \"gpt-6-sol\",\n    \"critic\": \"gpt-6-sol\",\n    \"executor\": \"gpt-5.6-terra\",\n    \"c\": \"gpt-5.6-terra\"\n  },\n  \"policy\": {\n    \"maxCreditsPerTask\": 3,\n    \"absoluteWeeklyStopUsedPercent\": 47,\n    \"oneAgent\": true,\n    \"retries\": 0,\n    \"b\": false,\n    \"requireCompletedTurnAndSettledUsage\": true,\n    \"missingReceipt\": \"infrastructure\",\n    \"hostFallback\": false,\n    \"onInfrastructureNeedingCodeRepair\": \"stop and report; no repair\"\n  },\n  \"approvalRef\": \"docs/evidence/walking-skeleton-20261001-47/approval.json\",\n  \"forecast\": {\n    \"calls\": 8,\n    \"rawTokens\": 387439,\n    \"creditsUpperBound\": 12,\n    \"weeklyQuotaPercent\": 1.147,\n    \"caveat\": \"Historical noisy conversion; shared orchestration consumes quota too.\"\n  },\n  \"acceptance\": [\n    \"All four attempts preserve raw logs, final usage and native Unity receipts with bound XML/test IDs and exit codes.\",\n    \"A evidence is promoted to Memory only after verification.\",\n    \"Any credit cap attempt lacking turn/completed or settled usage is infrastructure failure.\",\n    \"No scene/prefab spike or batch2 work.\"\n  ]\n}\n",
+      "baseRevision": "ec8c08d31e611be9f583ebca83fb5af5cfc2684c",
+      "purpose": "phase-acceptance",
+      "absoluteWeeklyStopUsedPercent": 47,
+      "authorization": "docs/evidence/walking-skeleton-20261001-47/approval.json#owner-20261001-walking-skeleton-47",
+      "forecast": {
+        "calls": 8,
+        "rawTokens": 387439,
+        "creditsUpperBound": 12,
+        "weeklyQuotaPercent": 1.147,
+        "caveat": "Historical noisy conversion; shared orchestration consumes quota too."
+      },
+      "permissionShape": {
+        "sandbox": "root-deny-minimal-read-public-project-write",
+        "unityTool": "fixed-private-evaluation-host-CLI",
+        "hiddenTests": "source-inaccessible-results-shared",
+        "target": "sole task target",
+        "sameArms": true
+      }
+    },
+    "skills": "# Round-1 public Unity execution recipe\n\nUse this controlled baseline for every A, B and C microtask. It is not a claim that an external Unity skill is complete.\n\n1. Read the assigned entry in `tasks.json`. Change only its `targetFile` under `Assets/WalkingSkeleton/Tasks/`; preserve its `WalkingSkeleton.Tasks` namespace, public class, method signature and required Unity types.\n2. Implement only the stated behavior. Validate specified null, range, dimension and coordinate inputs before computing. Use checked-safe comparisons or wider intermediates where the requirement can overflow `Int32`; saturation requirements return the stated bound.\n3. Keep Unity APIs narrow: `JsonUtility` for the JSON round trip, `Vector2`/`Vector2Int` for vector tasks, and the supplied serializable public fields. Do not add editor hooks, filesystem/network/reflection/process APIs, new packages, or test changes.\n4. Use the shared-host `unity_compile_test` tool after each candidate. Its private evaluation workspace copies only the candidate source and runs pinned hidden-source tests. A has one candidate plus one verification; B has at most two eligible repair candidates; C may iterate under its credit cap. Record compiler errors, test results, elapsed time and run ID.\n5. Treat the broker receipt as the common implementation signal. Test source and assertions remain hidden; leave them unread and unchanged. Report the returned pass, model failure, or infrastructure failure without inferring unavailable test details.\n\nCompletion means the sole allowed target is implemented, its broker receipt is recorded, and no protected project file changed.\n",
+    "source": [
+      {
+        "file": "scripts/unity-comparison-local.mjs",
+        "digest": "sha256:97a443a0cba7791d3b80e2603bb2ec478cfc44385c9d8433e422c9d53f8456c0"
+      },
+      {
+        "file": "scripts/unity-test-mcp.py",
+        "digest": "sha256:6c4223021ff5647c443f8893e98441b2b713a1a6e2495b8a26d2f8aabeabbc0b"
+      },
+      {
+        "file": "src/unity/comparison.ts",
+        "digest": "sha256:31a5569f8e80cdb10eabc5bc02b158088b6beaf274e6f1b2ba631334e10fda05"
+      },
+      {
+        "file": "src/unity/native-codex.ts",
+        "digest": "sha256:18afb7b1940a517f1167e6e3970d0751c31300c399484595c60620b5c6f305cd"
+      },
+      {
+        "file": "src/unity/walking-skeleton.ts",
+        "digest": "sha256:db4e2140b128dcfa5efcfc0fdd2c771acb199b2a8c361fb550dd716e9f70a271"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "taskId": "integer-clamp",
+      "requirement": "Clamp an integer inclusively; reject an inverted range. Throw System.ArgumentException when minimum is greater than maximum.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/IntegerClamp.cs",
+      "signature": "int Clamp(int value, int minimum, int maximum)",
+      "stub": "throw new ArgumentException(\"range\") when minimum > maximum",
+      "expectedTests": 3
+    },
+    {
+      "taskId": "cell-bounds",
+      "requirement": "Report whether a cell lies inside a positive rectangular grid. Return false for non-positive dimensions and for negative or out-of-range coordinates.",
+      "targetFile": "Assets/WalkingSkeleton/Tasks/CellBounds.cs",
+      "signature": "bool Contains(int x, int y, int width, int height)",
+      "stub": "return false for non-positive dimensions",
+      "expectedTests": 3
+    }
+  ],
+  "taskDiskDigest": "sha256:c4a38f130be83681ed2c8e0d21c036d1a57b990273849be882489100ed3d18bd",
+  "hiddenOracleDigest": "sha256:ee8ea5eebd87e0f1457f9eb194659db1b62e18e0f0ca83a198062a120985d3ad",
+  "nativePreflight": {
+    "status": "pass",
+    "modelCalls": 0,
+    "handshake": true,
+    "hiddenOracleDenied": true,
+    "mcpAvailable": true,
+    "mcpServers": [
+      {
+        "name": "computer-use",
+        "tools": []
+      },
+      {
+        "name": "node_repl",
+        "tools": []
+      },
+      {
+        "name": "unity_mcp",
+        "tools": []
+      },
+      {
+        "name": "unity_public",
+        "tools": [
+          "unity_compile_test"
+        ]
+      }
+    ]
+  }
+}

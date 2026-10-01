@@ -1,5 +1,5 @@
 /** Current owner limit, in absolute weekly percentage points, including orchestration. */
-export const WALKING_SKELETON_WEEKLY_STOP = 45;
+export const WALKING_SKELETON_WEEKLY_STOP = 47;
 export function checkWalkingSkeletonQuota(snapshot: unknown, forecastPoints: number, now = Date.now()) {
   const s = snapshot as { weeklyUsedPercent?: unknown; hardStopUsedPercent?: unknown; observedAt?: unknown } | null;
   const stop = (reason: string) => ({ allowed: false, reason, hardStopUsedPercent: WALKING_SKELETON_WEEKLY_STOP });

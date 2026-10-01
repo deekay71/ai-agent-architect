@@ -1,0 +1,264 @@
+{
+  "recordedAt": "2026-10-01T06:55:39.910160+00:00",
+  "walkingSkeletonAcceptance": "pass",
+  "scope": "two microtasks A then C; functional end-to-end acceptance, not Brain effectiveness comparison",
+  "offlineTests": {
+    "passed": 33,
+    "failed": 0
+  },
+  "rows": [
+    {
+      "arm": "A",
+      "taskId": "integer-clamp",
+      "status": "pass",
+      "exitCode": 0,
+      "xml": "docs/evidence/walking-skeleton-20261001-47/A/integer-clamp/tests.xml",
+      "xmlSha256": "f09edc44b6f6213622e762f6e65fc3d6c1054b02aa5612f688d11f614377619b",
+      "testIds": [
+        {
+          "id": "1003",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        }
+      ],
+      "creditMicrosSettled": 2430470,
+      "creditsSettled": 2.43047,
+      "rawTokens": 95822,
+      "nativeTurnCompleted": {
+        "threadId": "01a0f63a-3e9e-7a42-a998-3e7fd9fe147a",
+        "turnId": "01a0f63a-3ee1-7f50-bf14-76c16bc9c8d4",
+        "status": "completed"
+      },
+      "nativeUsageMatchesFinalEvent": true,
+      "backend": {
+        "label": "unity-cli",
+        "cli": "/Users/dmobin/.unity/bin/unity",
+        "cliVersion": "1.0.0-beta.8",
+        "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "editorVersion": "6000.0.84f1",
+        "fallback": "none"
+      },
+      "mcpAudit": [
+        {
+          "itemId": "exec-ab62c7fe-74c5-4c12-b37e-b5ed1f55f941",
+          "server": "unity_public",
+          "tool": "unity_compile_test",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "sourceAndXmlDigestsMatch": true,
+      "protectedFilesUnchanged": true,
+      "memoryPromoted": true,
+      "memoryNodeIds": [
+        "claim:ddddef77472b9ddaa44d86ed3ef9ed41456e71afcb763be58fb42e5026d25e23"
+      ],
+      "softStopActivated": false,
+      "hookAdmissionLogPresent": false
+    },
+    {
+      "arm": "A",
+      "taskId": "cell-bounds",
+      "status": "pass",
+      "exitCode": 0,
+      "xml": "docs/evidence/walking-skeleton-20261001-47/A/cell-bounds/tests.xml",
+      "xmlSha256": "2640f9ed5b30105956d9a99a3d55ad948eebfa513e7e7f0b421da0f1d1c36e07",
+      "testIds": [
+        {
+          "id": "1007",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        }
+      ],
+      "creditMicrosSettled": 2121840,
+      "creditsSettled": 2.12184,
+      "rawTokens": 83783,
+      "nativeTurnCompleted": {
+        "threadId": "01a0f63b-426e-7b40-b6b8-3d96cf2253de",
+        "turnId": "01a0f63b-42ad-7050-ac4b-6c46b7c9858d",
+        "status": "completed"
+      },
+      "nativeUsageMatchesFinalEvent": true,
+      "backend": {
+        "label": "unity-cli",
+        "cli": "/Users/dmobin/.unity/bin/unity",
+        "cliVersion": "1.0.0-beta.8",
+        "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "editorVersion": "6000.0.84f1",
+        "fallback": "none"
+      },
+      "mcpAudit": [
+        {
+          "itemId": "exec-adf9c99d-84fa-4329-9df9-fa6cb1333965",
+          "server": "unity_public",
+          "tool": "unity_compile_test",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "sourceAndXmlDigestsMatch": true,
+      "protectedFilesUnchanged": true,
+      "memoryPromoted": true,
+      "memoryNodeIds": [
+        "claim:d1c7c5ee4433ddfd3c18181bc0e39e90292bf9600c2a986ddd56bf1f841e9700"
+      ],
+      "softStopActivated": false,
+      "hookAdmissionLogPresent": false
+    },
+    {
+      "arm": "C",
+      "taskId": "integer-clamp",
+      "status": "pass",
+      "exitCode": 0,
+      "xml": "docs/evidence/walking-skeleton-20261001-47/C/integer-clamp/tests.xml",
+      "xmlSha256": "79ffc226a0e91342ab05d874c29034ac4d9aa0897e223afacfe0c96a125074d9",
+      "testIds": [
+        {
+          "id": "1003",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(-1,0,4,0)",
+          "result": "Passed"
+        },
+        {
+          "id": "1004",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(5,0,4,4)",
+          "result": "Passed"
+        },
+        {
+          "id": "1005",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.IntegerClamp_oracle(2,0,4,2)",
+          "result": "Passed"
+        }
+      ],
+      "creditMicrosSettled": 1217520,
+      "creditsSettled": 1.21752,
+      "rawTokens": 66435,
+      "nativeTurnCompleted": {
+        "threadId": "01a0f63b-d51b-7771-a8b8-cfbe5f622670",
+        "turnId": "01a0f63b-d56d-7370-86d5-bd6b7f57bb27",
+        "status": "completed"
+      },
+      "nativeUsageMatchesFinalEvent": true,
+      "backend": {
+        "label": "unity-cli",
+        "cli": "/Users/dmobin/.unity/bin/unity",
+        "cliVersion": "1.0.0-beta.8",
+        "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "editorVersion": "6000.0.84f1",
+        "fallback": "none"
+      },
+      "mcpAudit": [
+        {
+          "itemId": "exec-7c87afd0-5777-4d07-a50f-5db1f31145a9",
+          "server": "unity_public",
+          "tool": "unity_compile_test",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "sourceAndXmlDigestsMatch": true,
+      "protectedFilesUnchanged": true,
+      "memoryPromoted": false,
+      "memoryNodeIds": [],
+      "softStopActivated": false,
+      "hookAdmissionLogPresent": false
+    },
+    {
+      "arm": "C",
+      "taskId": "cell-bounds",
+      "status": "pass",
+      "exitCode": 0,
+      "xml": "docs/evidence/walking-skeleton-20261001-47/C/cell-bounds/tests.xml",
+      "xmlSha256": "ef9a8c6638538a0fc25ae07e1822f572fb0812b2ea739c27576e20ac9898b778",
+      "testIds": [
+        {
+          "id": "1007",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+          "result": "Passed"
+        },
+        {
+          "id": "1008",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+          "result": "Passed"
+        },
+        {
+          "id": "1009",
+          "fullname": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+          "result": "Passed"
+        }
+      ],
+      "creditMicrosSettled": 1012760,
+      "creditsSettled": 1.01276,
+      "rawTokens": 67419,
+      "nativeTurnCompleted": {
+        "threadId": "01a0f63c-678d-7963-b1e4-7ba92a2755a6",
+        "turnId": "01a0f63c-67c8-7071-8966-e5dd2315f6b8",
+        "status": "completed"
+      },
+      "nativeUsageMatchesFinalEvent": true,
+      "backend": {
+        "label": "unity-cli",
+        "cli": "/Users/dmobin/.unity/bin/unity",
+        "cliVersion": "1.0.0-beta.8",
+        "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+        "editorVersion": "6000.0.84f1",
+        "fallback": "none"
+      },
+      "mcpAudit": [
+        {
+          "itemId": "exec-e0d5b7f8-c701-4531-9ece-b3f3a149eac6",
+          "server": "unity_public",
+          "tool": "unity_compile_test",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "sourceAndXmlDigestsMatch": true,
+      "protectedFilesUnchanged": true,
+      "memoryPromoted": false,
+      "memoryNodeIds": [],
+      "softStopActivated": false,
+      "hookAdmissionLogPresent": false
+    }
+  ],
+  "settledCredits": 6.78259,
+  "rawTokens": 313459,
+  "modelCalls": 8,
+  "manualOwnerFixes": 0,
+  "quota": {
+    "turnStartWeeklyUsedPercent": 44,
+    "modelBatchBeforeUsedPercent": 45,
+    "modelBatchAfterUsedPercent": 45,
+    "turnEndWeeklyUsedPercent": 46,
+    "hardStopUsedPercent": 47,
+    "fiveHourUsedPercent": null,
+    "reset": "2026-10-07T03:23:01Z",
+    "measurementCaveat": "Rounded shared-account snapshots; cannot isolate concurrent Codex activity.",
+    "finalObservedAt": "2026-10-01T06:58:06.000484+00:00"
+  },
+  "limitations": [
+    "No task reached credit reserve or cap; live soft-stop behavior was not exercised.",
+    "Per-tool hook admission log was absent in all four runs; MCP completion events are present and successful. Hook-level enforcement is not attested by this live run.",
+    "Two microtasks establish the pipeline only; no conclusion about Brain versus ordinary Codex."
+  ],
+  "next": "Stop. Scene/prefab spike and batch2 planning after reset 07/10 in a new session."
+}

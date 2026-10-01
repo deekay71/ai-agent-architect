@@ -1,0 +1,42 @@
+{
+  "runId": "c7744ed9-78cf-4d46-8311-3b0372f5c282",
+  "callIndex": 1,
+  "backend": {
+    "label": "unity-cli",
+    "cli": "/Users/dmobin/.unity/bin/unity",
+    "cliVersion": "1.0.0-beta.8",
+    "editor": "/Applications/Unity/Hub/Editor/6000.0.84f1/Unity.app",
+    "editorVersion": "6000.0.84f1",
+    "fallback": "none"
+  },
+  "sourceSha256": "2265ce51275f98e3dddea2678e85798f28bfa1e65fc2e6d4c67dfe10cd3b9bb3",
+  "protectedBeforeDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c",
+  "testFilter": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle",
+  "expectedTestCount": 3,
+  "tests": [
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,2,2,True)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(2,1,2,2,False)",
+      "result": "Passed",
+      "message": ""
+    },
+    {
+      "name": "WalkingSkeleton.Tests.WalkingSkeletonFixtureTests.CellBounds_oracle(0,0,0,2,False)",
+      "result": "Passed",
+      "message": ""
+    }
+  ],
+  "compileErrors": [],
+  "outcome": "pass",
+  "exitCode": 0,
+  "actualTestCount": 3,
+  "elapsedSeconds": 11.475,
+  "commandDigest": "44963156290c189f4d983f7ba054f6e37d2945ec1902ad178083d6da87c37b27",
+  "xmlDigest": "2640f9ed5b30105956d9a99a3d55ad948eebfa513e7e7f0b421da0f1d1c36e07",
+  "logDigest": "672ef7b8bd225785156ae82cf062ebe3940572e0b397caf974497e789250431b",
+  "protectedAfterDigest": "15dd97d0bc16537c9cbc1e2e378c59e76b14258ede303d850d872d5d2ed0743c"
+}

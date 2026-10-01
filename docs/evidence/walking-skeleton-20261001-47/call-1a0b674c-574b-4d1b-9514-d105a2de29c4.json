@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "output": {
+    "approved": true,
+    "findings": []
+  },
+  "requestedModel": "gpt-6-sol",
+  "requestDigest": "sha256:d9473fab412341606024ca5af6b7daa24a62891753ce4527ffed8df4c9e7d816",
+  "renderedRequestDigest": "sha256:e8092b5290056ef1a477c6722f7d90bb8f3715e3f0426981c9c00448909c452d",
+  "launchPolicyDigest": "sha256:2691e8e8334cc524349be5bae5290b08dae5bd675bdf1dc87fb8ec5fb8f3be46",
+  "configurationDigest": "sha256:bfede7fcb401bd7b28001ecdaca9e717bddc284595e3e2af198e231511e51349",
+  "usage": {
+    "inputTokens": 7746,
+    "cachedInputTokens": 0,
+    "outputTokens": 94,
+    "totalTokens": 7840,
+    "reasoningTokens": 73
+  },
+  "elapsedMs": 11869.988625000002,
+  "cliVersion": "codex-cli 0.159.0",
+  "threadId": "01a0f63a-1510-74e0-8a3c-c31d8d4a9f75",
+  "issues": [],
+  "apiCostMicros": null,
+  "exactInputCount": null,
+  "modelIdentityAssurance": "requested-only",
+  "maxOutputTokensEnforced": false,
+  "isolationAssurance": "capability-flags-and-event-audit",
+  "eventDiagnostics": {
+    "eventCount": 5,
+    "eventTypes": [
+      "thread.started",
+      "item.completed",
+      "turn.started",
+      "turn.completed"
+    ],
+    "itemTypes": [
+      "error",
+      "agent_message"
+    ],
+    "rejectedEventType": null,
+    "rejectedItemType": null,
+    "rejectionCategory": null,
+    "truncated": false
+  }
+}
