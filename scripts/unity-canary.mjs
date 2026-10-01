@@ -66,10 +66,12 @@ const receipt = await runNativeCodexUnityTask({ projectPath: project, targetFile
 const brokerReceipts = fs.existsSync(brokerOutput) ? fs.readdirSync(brokerOutput).map(id => path.join(brokerOutput, id, 'receipt.json')).filter(fs.existsSync).map(file => JSON.parse(fs.readFileSync(file, 'utf8'))).sort((a, b) => a.callIndex - b.callIndex) : [];
 const failure = auditUnityCanaryReceipts(brokerReceipts, hashFrom(task.stub), hash(target));
 const eventsFile = path.join(artifacts, 'app-server.events.ndjson');
+const hookEventsFile = path.join(artifacts, 'tool-admission.hook-events.ndjson');
+const hookAttestations = fs.existsSync(hookEventsFile) ? fs.readFileSync(hookEventsFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : [];
 const approvals = fs.existsSync(eventsFile) ? fs.readFileSync(eventsFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse).filter(event => event.method === 'item/completed' && event.params?.item?.type === 'mcpToolCall').map(event => {
   const item = event.params.item, error = item.error?.message ?? null, denied = typeof error === 'string' && /denied|rejected|approval.*refused/i.test(error);
   return { id: item.id ?? null, server: item.server ?? null, tool: item.tool ?? null, status: item.status ?? null, error, approval: item.status === 'completed' && !error && item.result?.isError !== true ? 'approved' : denied ? 'denied' : 'error' };
 }) : [];
-save('result.json', { receipt, brokerReceipts, receiptAudit: failure, approvals });
-if (receipt.status !== 'completed' || failure) process.exitCode = 1;
+save('result.json', { receipt, brokerReceipts, receiptAudit: failure, approvals, hookAttestations });
+if (receipt.status !== 'completed' || failure || hookAttestations.length === 0) process.exitCode = 1;
 function hashFrom(text) { return createHash('sha256').update(text).digest('hex'); }
