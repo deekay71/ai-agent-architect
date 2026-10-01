@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "walking-skeleton-acceptance/1",
+  "purpose": "technical walking skeleton acceptance only",
+  "tasks": [
+    "integer-clamp",
+    "cell-bounds"
+  ],
+  "schedule": [
+    "A:integer-clamp",
+    "A:cell-bounds",
+    "C:integer-clamp",
+    "C:cell-bounds"
+  ],
+  "aStages": [
+    "planner",
+    "critic",
+    "executor",
+    "compile/test",
+    "evidence",
+    "Memory"
+  ],
+  "cStages": [
+    "ordinary-codex",
+    "compile/test",
+    "evidence"
+  ],
+  "models": {
+    "planner": "gpt-6-sol",
+    "critic": "gpt-6-sol",
+    "executor": "gpt-5.6-terra",
+    "c": "gpt-5.6-terra"
+  },
+  "policy": {
+    "maxCreditsPerTask": 3,
+    "absoluteWeeklyStopUsedPercent": 45,
+    "oneAgent": true,
+    "retries": 0,
+    "b": false,
+    "requireCompletedTurnAndSettledUsage": true,
+    "missingReceipt": "infrastructure",
+    "hostFallback": false,
+    "onInfrastructureNeedingCodeRepair": "stop and report; no repair"
+  },
+  "approvalRef": "docs/evidence/walking-skeleton-20261001-acceptance/approval.json",
+  "forecast": {
+    "calls": 8,
+    "rawTokens": 387439,
+    "creditsUpperBound": 12,
+    "weeklyQuotaPercent": 1.147,
+    "caveat": "Historical noisy conversion; shared orchestration consumes quota too."
+  },
+  "acceptance": [
+    "All four attempts preserve raw logs, final usage and native Unity receipts with bound XML/test IDs and exit codes.",
+    "A evidence is promoted to Memory only after verification.",
+    "Any credit cap attempt lacking turn/completed or settled usage is infrastructure failure.",
+    "No scene/prefab spike or batch2 work."
+  ]
+}

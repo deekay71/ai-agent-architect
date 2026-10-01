@@ -1,0 +1,6 @@
+{
+  "id": "owner-20261001-two-case-ready-gate",
+  "date": "2026-10-01",
+  "source": "direct user message in this conversation",
+  "content": "Duyệt sửa runner để nối Ready/protocol mới, rồi chạy luôn 2 microtask trong cùng lượt nếu còn dưới mức dừng 45%:\n1. Phạm vi sửa: chỉ phần cổng trong scripts/unity-comparison-local.mjs để nhận Ready record mới. Không đổi logic chấm, biên nhận, trần credit hay allowlist.\n2. Cổng chỉ mở khi đủ ba điều kiện: Ready record ở trạng thái ready, khớp hash protocol, và tham chiếu quyết định duyệt này của tôi (ngày, nội dung). Thêm test âm: Ready not_ready, sai hash protocol hoặc thiếu tham chiếu duyệt thì runner phải từ chối.\n3. Chạy test offline liên quan. Đạt thì chạy 2 microtask × (A, C) như đã duyệt; không đạt thì dừng và báo.\n4. Báo cáo kèm diff tóm tắt phần sửa cổng, kết quả test âm, biên nhận 4 lượt chạy và quota trước/sau.\n5. Giữ nguyên: một agent, không sub-agent, mức dừng cứng 45%. Chạm mức dừng thì dừng, phần còn lại chuyển sang sau ngày reset 07/10.\n6. Cuối lượt push các commit đang ở local, gồm cả trang bàn giao. Nếu chưa có khóa cố định, gửi tôi lệnh git push để tôi tự chạy trong Terminal."
+}

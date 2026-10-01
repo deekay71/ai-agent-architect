@@ -15,13 +15,32 @@ const template=path.join(repo,'unity/walking-skeleton');
 const output=path.resolve(process.argv[2]??'.local/unity-comparison-20260930');
 const live=process.argv.includes('--live');
 const twoCase=process.argv.includes('--two-case');
+// Admit the narrow owner-approved run before creating projects or invoking tools.
+const optionPath=(name)=>{const i=process.argv.indexOf(name);if(i<0||!process.argv[i+1]||process.argv[i+1].startsWith('--'))throw Error('TWO_CASE_ADMISSION_ARGUMENT_REQUIRED:'+name);return path.resolve(process.argv[i+1]);};
+let twoCaseAdmission=null;
+if(twoCase){
+ const readyPath=optionPath('--ready-record'), protocolPath=optionPath('--protocol'), approvalPath=optionPath('--approval-record');
+ const record=JSON.parse(fs.readFileSync(readyPath,'utf8'));
+ const checklist=ReadyChecklistSchema.parse(record.records?.readyChecklist);
+ if(checklist.outcome!=='ready')throw Error('TWO_CASE_READY_REQUIRED');
+ const text=fs.readFileSync(protocolPath,'utf8');
+ if(path.resolve(repo,checklist.plan.ref)!==protocolPath||checklist.plan.digest!=='sha256:'+createHash('sha256').update(text).digest('hex'))throw Error('READY_PROTOCOL_BINDING_REQUIRED');
+ const approval=JSON.parse(fs.readFileSync(approvalPath,'utf8')), ref=record.approvalRef;
+ const contentDigest='sha256:'+createHash('sha256').update(typeof approval.content==='string'?approval.content:'').digest('hex');
+ if(!ref||path.resolve(repo,ref.ref??'')!==approvalPath||ref.id!==approval.id||ref.date!==approval.date||ref.contentDigest!==contentDigest||approval.id!=='owner-20261001-two-case-ready-gate'||approval.date!=='2026-10-01'||contentDigest!=='sha256:4fa9d3920ca9da80e313d94955be5d13e3b2054fcac64b34d5a11d34ba0f7537')throw Error('TWO_CASE_OWNER_APPROVAL_REQUIRED');
+ twoCaseAdmission={record,protocolText:text,approvalRef:path.relative(repo,approvalPath)+'#'+approval.id};
+}
+if(process.argv.includes('--gate-only')){
+ if(!twoCaseAdmission)throw Error('TWO_CASE_ADMISSION_REQUIRED');
+ console.log(JSON.stringify({admission:'ready',modelsInvoked:0,toolsInvoked:0}));process.exit(0);
+}
 if(fs.existsSync(output)) throw Error('Comparison output must be new');
 fs.mkdirSync(output,{recursive:true});
 const save=(name,data)=>fs.writeFileSync(path.join(output,name),JSON.stringify(data,null,2)+'\n',{flag:'wx'});
 const diskTasks=JSON.parse(fs.readFileSync(path.join(template,'tasks.json'),'utf8'));
 const taskById=new Map(diskTasks.map(t=>[t.id,t]));
 const skill=fs.readFileSync(path.join(template,'execution-recipe.md'),'utf8');
-const protocolText=fs.readFileSync(path.join(repo,'docs/s2-brain-comparison-protocol.md'),'utf8');
+const protocolText=twoCaseAdmission?.protocolText??fs.readFileSync(path.join(repo,'docs/s2-brain-comparison-protocol.md'),'utf8');
 const tasks=UNITY_TASK_MANIFEST.map(t=>({...t,requirement:taskById.get(t.taskId).requirement})).filter(t=>!twoCase||t.taskId==='integer-clamp'||t.taskId==='cell-bounds');
 const smoke={
  'integer-clamp':'Assert.AreEqual(5, IntegerClamp.Clamp(5, 0, 10));',
@@ -67,9 +86,8 @@ const receipt=JSON.parse(messages.find(m=>m.id===3).result.content[0].text);
 save('broker-preflight.json',{outcome:receipt.outcome,tests:receipt.tests,commandInterface:'fixed private evaluation of sole public candidate; identical feedback across arms',hiddenOracleInPublicProject:false});
 if(receipt.outcome!=='pass')throw Error('Broker preflight did not pass');
 if(!live){console.log(JSON.stringify({preflight:'pass',output,modelsInvoked:0}));process.exit(0);}
-const ready=JSON.parse(fs.readFileSync(path.join(repo,'docs/evidence/planning-r3/s2-module-ready-records.json'),'utf8'));
+const ready=twoCaseAdmission?.record??JSON.parse(fs.readFileSync(path.join(repo,'docs/evidence/planning-r3/s2-module-ready-records.json'),'utf8'));
 ReadyChecklistSchema.parse(ready.records.readyChecklist);
-if(twoCase) throw Error('TWO_CASE_MODULE_READY_REQUIRED');
 if(ready.records.readyChecklist.outcome!=='ready'||ready.records.readyChecklist.plan.digest!=='sha256:'+createHash('sha256').update(protocolText).digest('hex'))throw Error('READY_PROTOCOL_BINDING_REQUIRED');
 const nativeProofFile=path.join(repo,'docs/evidence/unity-s1-20260930/native-offline-preflight.json');
 if(!fs.existsSync(nativeProofFile)||JSON.parse(fs.readFileSync(nativeProofFile,'utf8')).status!=='pass')throw Error('NATIVE_COMPARISON_PREFLIGHT_REQUIRED');
@@ -78,7 +96,7 @@ if(s1.status!=='Pass')throw Error('S1_REQUIRED');
 const permissionShape={sandbox:'root-deny-minimal-read-public-project-write',unityTool:'fixed-private-evaluation-host-CLI',hiddenTests:'source-inaccessible-results-shared',target:'sole task target',sameArms:true};
 const sourceMaterial=['scripts/unity-comparison-local.mjs','scripts/unity-test-mcp.py','src/unity/comparison.ts','src/unity/native-codex.ts','src/unity/walking-skeleton.ts'].map(file=>({file,digest:digest(fs.readFileSync(path.join(repo,file),'utf8'))}));
 const base=spawnSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'});if(base.status!==0)throw Error('BASE_REVISION_REQUIRED');
-const material={protocol:{text:protocolText,baseRevision:base.stdout.trim(),purpose:'phase-acceptance',phaseCapWeeklyPoints:10,authorization:'owner-R3-accepted-2026-09-30-conditional-S1-lock-forecast',forecast:UNITY_COMPARISON_FORECAST,permissionShape},skills:skill,source:sourceMaterial};
+const material={protocol:{text:protocolText,baseRevision:base.stdout.trim(),purpose:'phase-acceptance',phaseCapWeeklyPoints:10,authorization:twoCaseAdmission?.approvalRef??'owner-R3-accepted-2026-09-30-conditional-S1-lock-forecast',forecast:UNITY_COMPARISON_FORECAST,permissionShape},skills:skill,source:sourceMaterial};
 const lock={locked:true,protocolDigest:digest(material.protocol),tasksDigest:digest(tasks),skillsDigest:digest(skill),sourceDigest:digest(sourceMaterial),modelsDigest:digest({planner:'gpt-6-sol',critic:'gpt-6-sol',executor:'gpt-5.6-terra',c:'gpt-5.6-terra'}),unityCliPermissionsDigest:digest(permissionShape)};
 save('lock.json',{lock,material,tasks,taskDiskDigest:digest(diskTasks),hiddenOracleDigest:digest(fs.readFileSync(path.join(template,'Assets/Tests/Editor/WalkingSkeletonFixtureTests.cs'),'utf8')),nativePreflight:JSON.parse(fs.readFileSync(nativeProofFile,'utf8'))});
 const publicProjects=new Map(); const brainArtifacts=new Map(); const latestBrokerRoots=new Map();

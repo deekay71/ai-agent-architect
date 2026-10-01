@@ -1,0 +1,74 @@
+{
+  "records": {
+    "readyChecklist": {
+      "schemaVersion": "0.6.0",
+      "checklistId": "walking-skeleton-two-case-authorized-20261001",
+      "plan": {
+        "ref": "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json",
+        "version": 1,
+        "digest": "sha256:d61995cbb7e67df4b1310f390b6d31d26c0aa369a92903a05ffe4fbb82febc0a"
+      },
+      "checks": {
+        "requirementCoverage": {
+          "outcome": "pass",
+          "reason": "Phạm vi gồm đúng hai task và hai nhánh, có evidence và Memory.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json"
+          ]
+        },
+        "interfaceCompatibility": {
+          "outcome": "pass",
+          "reason": "New gate requires the complete Ready checklist, exact protocol bytes and the specific owner decision; offline admission tests must pass before live dispatch.",
+          "evidenceRefs": [
+            "test/unity-ready-gate.test.ts"
+          ]
+        },
+        "testableAcceptance": {
+          "outcome": "pass",
+          "reason": "Yêu cầu receipt, test IDs, turn/completed, usage chốt và Memory có thể kiểm được.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json"
+          ]
+        },
+        "highRiskSpikes": {
+          "outcome": "pass",
+          "reason": "S1 và canary có bằng chứng; canary được chủ dự án chấp nhận, gate mới chưa kiểm live.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json"
+          ]
+        },
+        "budgetFit": {
+          "outcome": "pass",
+          "reason": "Owner approved gate repair and the disclosed two-case forecast; 3 credits/task, stop at 45% weekly including orchestration. Recheck actual headroom before dispatch.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/approval.json"
+          ]
+        },
+        "acyclicDependencies": {
+          "outcome": "pass",
+          "reason": "Ready → A planner → critic → executor → verification → evidence/Memory; A hai task trước C hai task.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json"
+          ]
+        },
+        "clearGoalAndAcceptance": {
+          "outcome": "pass",
+          "reason": "Chỉ nghiệm thu walking skeleton; không có câu hỏi mở về mục tiêu.",
+          "evidenceRefs": [
+            "docs/evidence/walking-skeleton-20261001-acceptance/protocol.json"
+          ]
+        }
+      },
+      "openGoalOrAcceptanceQuestions": [],
+      "outcome": "ready",
+      "reviewedBy": "single-primary-agent",
+      "reviewedAt": "2026-10-01T04:40:58.360872+00:00"
+    }
+  },
+  "approvalRef": {
+    "ref": "docs/evidence/walking-skeleton-20261001-acceptance/approval.json",
+    "id": "owner-20261001-two-case-ready-gate",
+    "date": "2026-10-01",
+    "contentDigest": "sha256:4fa9d3920ca9da80e313d94955be5d13e3b2054fcac64b34d5a11d34ba0f7537"
+  }
+}

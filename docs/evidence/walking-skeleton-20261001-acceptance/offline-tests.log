@@ -1,0 +1,45 @@
+✔ uses cumulative totals once and counts cached input in credits (5.462083ms)
+✔ unknown token counters fail closed and interrupt the active turn (1.958208ms)
+✔ credit-cap event interrupts and records the overshoot risk (2.392833ms)
+✔ reserve closes hook admission while allowing a denied-tool turn to settle (3.807583ms)
+✔ a rerouted model is rejected before a turn can begin (1.592166ms)
+✔ an inherited MCP tool blocks dispatch before any turn starts (1.432667ms)
+✔ a failed MCP item cannot become a Unity tool proof (1.713709ms)
+✔ durable tool proof is required and final source comes from the allowed target (2.446458ms)
+✔ a completed turn without usage cannot be reported as a free run (1.715417ms)
+✔ a completed MCP envelope carrying isError still fails verification (1.693583ms)
+✔ B reuses A passes, repairs only model failures, and accounts A plus repair cumulatively (2.298209ms)
+✔ B carries the latest compile/test feedback into at most two Terra repairs (0.554958ms)
+✔ two A infrastructure failures stop before B and C dispatch (0.162333ms)
+✔ C requires a matching tool-enabled ordinary Codex executor and keeps B when it wins by two passes (1.972917ms)
+✔ C cap counts cached input and has no raw-token substitute cap (0.314416ms)
+✔ unknown token usage and missing admission evidence fail closed (0.170417ms)
+✔ C at least as successful as B requests the separately approved feature and multi-session batch 2 (0.271083ms)
+✖ duplicate receipts and quota stops preserve the completed row for durable progress recording (0.260084ms)
+✔ broker infrastructure evidence is never classified as a model failure (0.045875ms)
+✔ native Unity proof requires a durable receipt and a single bound A/B candidate (0.121ms)
+✔ canary receipt audit binds stub failure then repaired pass to the same three tests (0.127958ms)
+✔ two-case entrypoint admission: ready (58.027625ms)
+✔ two-case entrypoint admission: not_ready (49.354041ms)
+✔ two-case entrypoint admission: wrong_hash (49.759333ms)
+✔ two-case entrypoint admission: missing_approval (49.630167ms)
+✔ two-case entrypoint admission: changed_decision (48.914833ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 25
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 289.901916
+
+✖ failing tests:
+
+test at dist/test/unity-comparison.test.js:115:1
+✖ duplicate receipts and quota stops preserve the completed row for durable progress recording (0.260084ms)
+  Error: UNITY_COMPARISON_PRE_DISPATCH_STOP
+      at runA (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/src/unity/comparison.js:120:19)
+      at runUnityComparison (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/src/unity/comparison.js:278:30)
+      at TestContext.<anonymous> (file:///Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/dist/test/unity-comparison.test.js:128:29)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

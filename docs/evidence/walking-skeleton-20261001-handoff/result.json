@@ -1,0 +1,135 @@
+{
+  "recordedAt": "2026-10-01T04:35:23.303939+00:00",
+  "baseCommit": "25413197ae9bb412669e11dea8b4441f02cbaa1c",
+  "status": "blocked_before_dispatch",
+  "cause": "unconditional_two_case_guard_requires_code_change",
+  "evidence": "scripts/unity-comparison-local.mjs:72",
+  "inspectionMethod": "static source inspection; no live/preflight dispatch attempted",
+  "codeChanged": false,
+  "subagentsUsed": 0,
+  "ciChecked": false,
+  "benchmark": {
+    "calls": 0,
+    "inputTokens": 0,
+    "cachedInputTokens": 0,
+    "outputTokens": 0,
+    "credits": 0
+  },
+  "orchestration": {
+    "tokens": null,
+    "credits": null
+  },
+  "quota": {
+    "weeklyStartUsedPercent": 41,
+    "weeklyEndUsedPercent": 42,
+    "hardStopUsedPercent": 45,
+    "fiveHourUsedPercent": null,
+    "resetsAtUtc": "2026-10-07T03:23:01.000Z",
+    "measurementCaveat": "Account-wide rounded snapshots; other Codex activity is not isolated.",
+    "observedAt": "2026-10-01T04:35:47.256Z"
+  },
+  "attempts": [
+    {
+      "arm": "A",
+      "taskId": "integer-clamp",
+      "status": "not_started",
+      "turnCompleted": null,
+      "settledUsage": null,
+      "receipt": null
+    },
+    {
+      "arm": "A",
+      "taskId": "cell-bounds",
+      "status": "not_started",
+      "turnCompleted": null,
+      "settledUsage": null,
+      "receipt": null
+    },
+    {
+      "arm": "C",
+      "taskId": "integer-clamp",
+      "status": "not_started",
+      "turnCompleted": null,
+      "settledUsage": null,
+      "receipt": null
+    },
+    {
+      "arm": "C",
+      "taskId": "cell-bounds",
+      "status": "not_started",
+      "turnCompleted": null,
+      "settledUsage": null,
+      "receipt": null
+    }
+  ],
+  "readyChecklist": {
+    "schemaVersion": "0.6.0",
+    "checklistId": "walking-skeleton-two-case-20261001",
+    "plan": {
+      "ref": "docs/evidence/walking-skeleton-20261001-handoff/handoff.md",
+      "version": 1,
+      "digest": "sha256:daab52e9e8bba8ad52f48f69838d14fd80a5af72ac5389108f6e4c5c46ed08a3"
+    },
+    "checks": {
+      "requirementCoverage": {
+        "outcome": "pass",
+        "reason": "Phạm vi gồm đúng hai task và hai nhánh, có evidence và Memory.",
+        "evidenceRefs": [
+          "docs/evidence/walking-skeleton-20261001-handoff/handoff.md"
+        ]
+      },
+      "interfaceCompatibility": {
+        "outcome": "fail",
+        "reason": "Entrypoint luôn throw khi --two-case; chưa nối protocol/Ready mới.",
+        "evidenceRefs": [
+          "scripts/unity-comparison-local.mjs:72"
+        ]
+      },
+      "testableAcceptance": {
+        "outcome": "pass",
+        "reason": "Yêu cầu receipt, test IDs, turn/completed, usage chốt và Memory có thể kiểm được.",
+        "evidenceRefs": [
+          "docs/evidence/walking-skeleton-20261001-handoff/handoff.md"
+        ]
+      },
+      "highRiskSpikes": {
+        "outcome": "pass",
+        "reason": "S1 và canary có bằng chứng; canary được chủ dự án chấp nhận, gate mới chưa kiểm live.",
+        "evidenceRefs": [
+          "docs/evidence/unity-s1-20260930/results.json",
+          "docs/evidence/unity-canary-stable-02-summary.json"
+        ]
+      },
+      "budgetFit": {
+        "outcome": "fail",
+        "reason": "Sửa code hạ tầng bị loại khỏi phạm vi lượt này; chưa cấp admission cho runner. Dự toán tổng thô trên 300.000 cần đối chiếu phê duyệt trước chạy.",
+        "evidenceRefs": [
+          "docs/evidence/walking-skeleton-20261001-handoff/handoff.md"
+        ]
+      },
+      "acyclicDependencies": {
+        "outcome": "pass",
+        "reason": "Ready → A planner → critic → executor → verification → evidence/Memory; A hai task trước C hai task.",
+        "evidenceRefs": [
+          "docs/evidence/walking-skeleton-20261001-handoff/handoff.md"
+        ]
+      },
+      "clearGoalAndAcceptance": {
+        "outcome": "pass",
+        "reason": "Chỉ nghiệm thu walking skeleton; không có câu hỏi mở về mục tiêu.",
+        "evidenceRefs": [
+          "docs/evidence/walking-skeleton-20261001-handoff/handoff.md"
+        ]
+      }
+    },
+    "openGoalOrAcceptanceQuestions": [],
+    "outcome": "not_ready",
+    "reviewedBy": "single-primary-agent",
+    "reviewedAt": "2026-10-01T04:35:23.303939+00:00"
+  },
+  "nextStep": "Await owner approval of infrastructure repair; do not bypass guard.",
+  "localValidation": {
+    "readySchema": "pass",
+    "handoffPlanDigest": "pass"
+  }
+}

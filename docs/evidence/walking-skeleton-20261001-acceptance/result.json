@@ -1,0 +1,78 @@
+{
+  "recordedAt": "2026-10-01T04:43:25.936198+00:00",
+  "status": "blocked_offline_tests",
+  "baseCommit": "25413197ae9bb412669e11dea8b4441f02cbaa1c",
+  "liveAuthorized": false,
+  "reason": "Offline related suite failed; owner instruction requires stop before model dispatch.",
+  "gateTests": {
+    "passed": 5,
+    "failed": 0,
+    "negativeCases": [
+      "not_ready",
+      "wrong_hash",
+      "missing_approval",
+      "changed_decision"
+    ]
+  },
+  "relatedOfflineTests": {
+    "passed": 25,
+    "failed": 1,
+    "failureName": "duplicate receipts and quota stops preserve the completed row for durable progress recording",
+    "error": "UNITY_COMPARISON_PRE_DISPATCH_STOP",
+    "source": "src/unity/comparison.ts:212",
+    "explanation": "Existing quota-stop fixture returns true before dispatch; runA throws while the test expects a returned quota-stop report with one completed row. Neither source nor existing test modified."
+  },
+  "build": "pass",
+  "modelsInvoked": 0,
+  "benchmarkCredits": 0,
+  "benchmarkTokens": 0,
+  "subagentsUsed": 0,
+  "ciChecked": false,
+  "quota": {
+    "weeklyStartUsedPercent": 42,
+    "weeklyEndUsedPercent": 42,
+    "hardStopUsedPercent": 45,
+    "fiveHourUsedPercent": null,
+    "resetsAtUtc": "2026-10-07T03:23:01Z",
+    "caveat": "Rounded account-wide snapshots; other sessions are not isolated.",
+    "observedAt": "2026-10-01T04:43:41.934377+00:00"
+  },
+  "attempts": [
+    {
+      "arm": "A",
+      "taskId": "integer-clamp",
+      "status": "not_started",
+      "reason": "offline_tests_failed",
+      "nativeReceipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "A",
+      "taskId": "cell-bounds",
+      "status": "not_started",
+      "reason": "offline_tests_failed",
+      "nativeReceipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "C",
+      "taskId": "integer-clamp",
+      "status": "not_started",
+      "reason": "offline_tests_failed",
+      "nativeReceipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    },
+    {
+      "arm": "C",
+      "taskId": "cell-bounds",
+      "status": "not_started",
+      "reason": "offline_tests_failed",
+      "nativeReceipt": null,
+      "turnCompleted": null,
+      "settledUsage": null
+    }
+  ]
+}
