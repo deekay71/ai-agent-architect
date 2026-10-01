@@ -217,7 +217,7 @@ async function requireUnityMcp(connection: NativeCodexAppServerConnection, befor
     for (const status of result.data) {
       if (!object(status) || typeof status.name !== 'string' || !object(status.tools)) throw new NativeCodexError('NATIVE_CODEX_MCP_INVENTORY_INVALID');
       const toolNames = Object.keys(status.tools);
-      if (status.name === 'unity_public') { if (!toolNames.includes('unity_compile_test')) throw new NativeCodexError('NATIVE_CODEX_UNITY_MCP_TOOL_MISSING'); requiredFound = true; }
+      if (status.name === 'unity_public') { if (toolNames.length !== 1 || toolNames[0] !== 'unity_compile_test') throw new NativeCodexError('NATIVE_CODEX_UNITY_MCP_ALLOWLIST_VIOLATION'); requiredFound = true; }
       else if (toolNames.length) throw new NativeCodexError('NATIVE_CODEX_UNAPPROVED_MCP_TOOL');
     }
     cursor = typeof result.nextCursor === 'string' ? result.nextCursor : null;
@@ -287,7 +287,9 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       const micros = creditMicrosForUsage([usage]);
       if (micros === null) { interruption = 'unknown-usage'; requestInterrupt(); fail('NATIVE_CODEX_USAGE_UNKNOWN'); return; }
       if (micros > input.maxCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; requestInterrupt(); fail('NATIVE_CODEX_CREDIT_CAP_EXCEEDED'); }
-      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; requestInterrupt(); fail('NATIVE_CODEX_CREDIT_CAP_RESERVE_REACHED'); }
+      // The reserve closes future broker admission; it does not interrupt an
+      // already-admitted turn before its final counter can arrive.
+      else if (micros >= interruptAtCreditMicros) { interruption = 'credit-cap'; overshootRisk = true; }
       return;
     }
     if (notification.method === 'turn/started') {

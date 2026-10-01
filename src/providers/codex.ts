@@ -10,8 +10,9 @@ import type { ModelRequest } from './types.js';
 export const CODEX_CLI_VERSION = 'codex-cli 0.155.0-alpha.16.4';
 export const CODEX_BINARY_PATH = '/Applications/ChatGPT.app/Contents/Resources/codex';
 /** Current build is deliberately separate: historical receipts remain replayable. */
-export const CURRENT_CODEX_CLI_VERSION = 'codex-cli 0.158.0-alpha.2.1';
-export const CURRENT_CODEX_BINARY_PATH = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex';
+/** All new model transports use the isolated, exact native package binary. */
+export const CURRENT_CODEX_CLI_VERSION = 'codex-cli 0.159.0';
+export const CURRENT_CODEX_BINARY_PATH = '/Users/dmobin/Documents/Codex/2026-09-22/new-chat/ai-agent-architect/.local/tools/codex/0.159.0/node_modules/.pnpm/@openai+codex@0.159.0-darwin-arm64/node_modules/@openai/codex/vendor/aarch64-apple-darwin/bin/codex';
 export interface CodexUsage {
   inputTokens: number;
   cachedInputTokens: number;
