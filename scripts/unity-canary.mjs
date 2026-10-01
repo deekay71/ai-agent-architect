@@ -3,8 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
-import { runNativeCodexUnityTask } from '../dist/src/unity/native-codex.js';
+import { nativeCodexAppServerArgs, runNativeCodexUnityTask } from '../dist/src/unity/native-codex.js';
 import { auditUnityCanaryReceipts } from '../dist/src/unity/comparison.js';
+import { codexChildEnvironment } from '../dist/src/providers/codex.js';
 
 const repo = path.resolve(import.meta.dirname, '..');
 const template = path.join(repo, 'unity/walking-skeleton');
@@ -27,7 +28,7 @@ const hash = file => createHash('sha256').update(fs.readFileSync(file)).digest('
 const snapshot = spawnSync('/usr/bin/python3', ['-c', 'import importlib.util,sys;from pathlib import Path;s=importlib.util.spec_from_file_location("bridge",sys.argv[1]);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(m.snapshot(Path(sys.argv[2]),Path(sys.argv[3])))', path.join(repo, 'scripts/unity-test-mcp.py'), project, target], { encoding: 'utf8' });
 if (snapshot.status !== 0) throw Error('CANARY_BROKER_SNAPSHOT_FAILED');
 const brokerOutput = path.join(output, 'broker');
-const codexBinary = path.join(repo, '.local/tools/codex/0.159.0/node_modules/.bin/codex');
+const codexBinary = path.join(repo, '.local/tools/codex/0.159.0/node_modules/.pnpm/@openai+codex@0.159.0-darwin-arm64/node_modules/@openai/codex/vendor/aarch64-apple-darwin/bin/codex');
 const codexVersion = 'codex-cli 0.159.0';
 const brokerArgs = [path.join(repo, 'scripts/unity-test-mcp.py'), project, target, snapshot.stdout.trim(), brokerOutput, evaluation, task.testFilter, '3', '2'];
 const fixedMcpConfig = ['mcp_servers.unity_public.command="/usr/bin/python3"', `mcp_servers.unity_public.args=${JSON.stringify(brokerArgs)}`, 'mcp_servers.unity_public.startup_timeout_sec=20', 'mcp_servers.unity_public.tool_timeout_sec=210', 'mcp_servers.unity_public.tools.unity_compile_test.approval_mode="approve"'];
@@ -35,13 +36,13 @@ const preparation = { schemaVersion: 'unity-canary-preparation/1', status: live 
 save('preparation.json', preparation);
 if (offlineVerify) {
   const probe = path.join(output, 'offline-probe'); fs.mkdirSync(probe, { mode: 0o700 });
-  const version = spawnSync(codexBinary, ['--version'], { encoding: 'buffer' });
+  const version = spawnSync(codexBinary, ['--version'], { encoding: 'buffer', env: codexChildEnvironment() });
   fs.writeFileSync(path.join(probe, 'version.stdout.log'), version.stdout ?? Buffer.alloc(0), { mode: 0o600 });
   fs.writeFileSync(path.join(probe, 'version.stderr.log'), version.stderr ?? Buffer.alloc(0), { mode: 0o600 });
   save('offline-probe-version.json', { command: [codexBinary, '--version'], exitCode: version.status, error: version.error?.name ?? null, expected: codexVersion });
   if (version.status !== 0 || version.stdout.toString('utf8').trim() !== codexVersion) throw Error('CANARY_OFFLINE_VERSION_PIN_FAILED');
-  const args = ['app-server', '--stdio', '--strict-config', '-c', 'mcp_servers={}', '-c', 'web_search="disabled"', ...fixedMcpConfig.flatMap(value => ['-c', value])];
-  const child = spawn(codexBinary, args, { cwd: project, stdio: ['pipe', 'pipe', 'pipe'], shell: false });
+  const args = nativeCodexAppServerArgs(fixedMcpConfig);
+  const child = spawn(codexBinary, args, { cwd: project, env: codexChildEnvironment(), stdio: ['pipe', 'pipe', 'pipe'], shell: false });
   const stdout = path.join(probe, 'app-server.stdout.log'), stderr = path.join(probe, 'app-server.stderr.log'), events = path.join(probe, 'events.ndjson');
   for (const file of [stdout, stderr, events]) fs.writeFileSync(file, '', { mode: 0o600 });
   let buffer = '', nextId = 1; const pending = new Map();

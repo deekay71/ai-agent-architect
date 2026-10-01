@@ -132,7 +132,7 @@ function checkedMcpConfig(config: FixedMcpConfig | undefined): readonly string[]
   }
   return [...config];
 }
-function launchArgs(mcpConfig: readonly string[]): string[] {
+export function nativeCodexAppServerArgs(mcpConfig: readonly string[]): string[] {
   // Do not disable shell or file-change tools: ordinary Codex needs both. These
   // settings only remove global integrations/config-sourced capabilities.
   const args = ['app-server', '--stdio', '--strict-config',
@@ -331,7 +331,7 @@ export async function runNativeCodexUnityTask(input: NativeCodexUnityTask): Prom
       writeNew(path.join(artifacts, 'app-server.version.json'), { schemaVersion: 'native-codex-version-check/1', command: [binary, '--version'], exitCode: version.status, signal: version.signal, error: version.error?.name ?? null, expected: expectedCliVersion });
       if (version.status !== 0 || stdout.toString('utf8').trim() !== expectedCliVersion) throw new NativeCodexError('NATIVE_CODEX_CLI_VERSION_UNSUPPORTED');
     }
-    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: launchArgs(mcpConfig), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
+    connection = await beforeDeadline(factory.open({ binaryPath: binary, args: nativeCodexAppServerArgs(mcpConfig), cwd: project, env: codexChildEnvironment(), rawLogDirectory: artifacts }));
     unlisten = connection.onNotification(observe);
     const initialized = await beforeDeadline(connection.request('initialize', { clientInfo: { name: 'ai-agent-architect-unity', version: '1' }, capabilities: { optOutNotificationMethods: [] } }));
     if (!object(initialized)) throw new NativeCodexError('NATIVE_CODEX_INITIALIZE_INVALID');
