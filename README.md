@@ -1,6 +1,8 @@
-**Accepted offline durability repair:** [Exact source, application evidence and remaining limits](docs/portable-durability-20261008.md). Existing archives remain unchanged; no native/whole-platform acceptance or Claude F11/F14 candidate is included.
+**Git-source integration (08/10/2026):** This source keeps the [accepted durability repair](docs/portable-durability-20261008.md) and the accepted identity/help work. Offline integration evidence is separate from a publication receipt. Original working-tree evidence below describes its original scope. A Git checkout does not bundle the frozen ZIP or guarantee `releases/` metadata; `identity.frozenRelease: null` means that metadata is absent here. No native Unity, MCP/model binding or broader milestone acceptance is implied.
 
-**Portable Brain 0.2.0-preview.1 — Git source preparation.** [Git setup, prompt, readiness and scoped evidence](docs/portable-distribution-20261006.md). Queens testing is paused; native Unity acceptance and M1/T22 gates remain pending.
+**Current status, identities and capability owners: [docs/STATUS.md](docs/STATUS.md).** The frozen 06/10 archive below predates the accepted 08/10 portable repair; inspect with `node dist/src/cli.js identity` and `node scripts/verify-portable-identity.mjs`.
+
+**Portable preview 0.2.0-preview.1 is available.** [Setup/prompt/readiness and actual evidence](docs/portable-distribution-20261006.md). Queens testing is paused; native Unity acceptance and M1/T22 gates remain pending.
 
 # AI Agent Architect
 
@@ -36,6 +38,8 @@ Cần Node.js 24.x và pnpm 11.19.0. Trên macOS, runtime tests còn cần `/usr
 ./scripts/dev.sh exec node dist/src/cli.js contracts
 ./scripts/dev.sh exec node dist/src/cli.js validate TaskSpec /duong-dan/task.json
 ./scripts/dev.sh schemas ./artifacts/schemas
+./scripts/dev.sh exec node dist/src/cli.js identity
+./scripts/dev.sh exec node dist/src/cli.js portable help
 ```
 
 Các lệnh demo chỉ dùng fixtures local; một record parse hợp lệ vẫn cần runtime/policy authorization trước dispatch. Không tự diễn giải test count, schema conformance hoặc historical evidence thành acceptance của planning engine, Unity hay gameplay.

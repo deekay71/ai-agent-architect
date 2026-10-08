@@ -15,6 +15,8 @@ import { memoryCommand } from './explorer/cli.js';
 import { runV1RegradeCli } from './evaluation/v1-regrade-cli.js';
 import { runUnityCli } from './unity/cli.js';
 import { runEvaluationCli } from './evaluation/cli.js';
+import { portableCommand } from './portable/cli.js';
+import { identityReport } from './portable/identity.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
 const output = (value: unknown) => process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
@@ -66,8 +68,11 @@ async function main(args: string[]): Promise<void> {
       'semantic-codex-preflight <dataset> <config.json>',
       'semantic-codex-run <dataset> <config.json> <new-output-directory> --live',
       'semantic-codex-review-export <campaign> <new-review-directory>',
-      'semantic-codex-review-import <campaign> <decisions.json> <new-reviewed-file>'],
-      scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization' });
+      'semantic-codex-review-import <campaign> <decisions.json> <new-reviewed-file>',
+      'identity', 'portable help', 'portable <bootstrap|status|resume|ingest|knowledge|plan|handoff|context> --project <unity-project-root> [arguments]'],
+      scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization',
+      portable: 'Project-local Brain data commands delegated to portableCommand; executionAuthorized:false, no Unity/MCP/model invocation',
+      identity: 'Read-only working-tree source/build/frozen-release identity; parity needs scripts/verify-portable-identity.mjs' });
   } else if (command?.startsWith('unity-baseline-')) {
     await runUnityCli(args);
   } else if (command?.startsWith('v1-regrade-')) {
@@ -106,6 +111,11 @@ async function main(args: string[]): Promise<void> {
     const result = await workflow.run(scenario);
     output(result);
     if (!result.conformance.valid) process.exitCode = 1;
+  } else if (command === 'identity' && args.length === 1) {
+    output(identityReport(repositoryRoot));
+  } else if (command === 'portable') {
+    // Namespaced delegation only; portableCommand keeps its own argument checks and grants no execution authority.
+    await portableCommand(args.slice(1));
   } else throw new Error('Invalid command or arguments. Run --help.');
 }
 

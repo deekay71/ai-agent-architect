@@ -1,5 +1,7 @@
 # Kiến trúc và ranh giới R3 — 30/09/2026
 
+> Historical 30/09 snapshot. For current components, entrypoints, identities and blockers (including `src/portable/`), see [STATUS.md](STATUS.md).
+
 R3 giữ modular monolith TypeScript, runtime/Memory/Context local hiện có và evidence R2 immutable. Bổ sung hiện tại là **planning data contracts và schema tests**, không phải planning engine, scheduler, model campaign hay Unity adapter đang chạy. Scope này không thêm Unity/model run; Unity preflight cũ vẫn là evidence lịch sử. [Policy](brain-planning-policy.md) và [decision log](decision-log.md) là nguồn quyết định hiện hành.
 
 Planning hierarchy mặc định là Game/Epic → Module → Task. Main planner khóa core GDD, boundaries và interfaces; interface approval là precondition của module planning. Critic/test-plan validation độc lập đọc đầu vào đã khóa. Song song chỉ áp dụng cho module chứng minh độc lập; single+critic là default cho task.

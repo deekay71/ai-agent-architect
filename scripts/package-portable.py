@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Package an explicit source payload; no install, Editor, provider, git or network action."""
-import argparse, gzip, hashlib, json, re, shutil, tarfile, zipfile
+import argparse, gzip, hashlib, json, re, shutil, subprocess, tarfile, zipfile
 from pathlib import Path
 
 VERSION = '0.2.0-preview.1'
+# Legacy inspection spec for roots without a declaration; this producer always selects PAYLOAD.json.
+CORE=['contracts','foundation','context','memory','skills','runtime','portable']
+FIXTURES=['contracts','brain-planning','portable-session','runtime-crash-child','runtime-authority']
+TESTS=['portable','portable-durability','context','context-memory','context-skills','memory','brain-planning-contracts','runtime-recovery']
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -15,30 +19,62 @@ def copy(source, target):
     shutil.copyfile(source, target)
 
 def load_payload(build):
+    checked_file(build, 'portable/PAYLOAD.json')
     payload = json.loads((build / 'portable/PAYLOAD.json').read_text())
-    if payload.get('format') != 'architect-portable-payload/1' or payload.get('version') != VERSION:
+    if not isinstance(payload, dict) or payload.get('format') != 'architect-portable-payload/1' or payload.get('version') != VERSION:
         raise ValueError('payload version mismatch')
     keys = ('sourceModules', 'inspectionOnlyModules', 'fixtures', 'tests',
             'fixtureResourceFiles', 'policyFiles', 'unityPackageFiles')
     for key in keys:
-        values = payload[key]
-        if not isinstance(values, list) or len(values) != len(set(values)):
+        values = payload.get(key)
+        if not isinstance(values, list) or any(not isinstance(value, str) for value in values) or len(values) != len(set(values)):
             raise ValueError('invalid payload list: ' + key)
         for value in values:
-            if not isinstance(value, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*', value):
+            if not value or any(not re.fullmatch(r'[^/\\\s\x00-\x1f:]+', part) for part in value.split('/')):
                 raise ValueError('invalid payload path')
             if any(part in ('.', '..') for part in Path(value).parts):
                 raise ValueError('unsafe payload path')
     if not set(payload['inspectionOnlyModules']) <= set(payload['sourceModules']):
         raise ValueError('inspection module outside declared source')
-    if payload['hostCliModule'] not in payload['sourceModules']:
+    if payload.get('hostCliModule') != 'portable/cli' or payload['hostCliModule'] not in payload['sourceModules'] or payload['hostCliModule'] in payload['inspectionOnlyModules']:
         raise ValueError('CLI outside declared source')
     return payload
 
-def package(build, policy, out):
+def checked_file(build, relative):
+    source = build / relative
+    if source.is_symlink() or not source.is_file() or not source.resolve().is_relative_to(build.resolve()):
+        raise ValueError('non-regular source: ' + str(source))
+    return source
+
+def declared_inventory(build, payload):
+    paths = ['src/' + module + '.ts' for module in payload['sourceModules']]
+    paths += ['fixtures/' + name + '.ts' for name in payload['fixtures']]
+    paths += ['test/' + name + '.test.ts' for name in payload['tests']]
+    paths += ['portable/PAYLOAD.json', 'scripts/architect.mjs']
+    paths += ['unity/packages/com.architect.brain-unity/' + name for name in payload['unityPackageFiles']]
+    return {relative: sha(checked_file(build, relative)) for relative in paths}
+
+def build_parity(build, node):
+    p = subprocess.run([str(node), str(build/'scripts/verify-portable-identity.mjs'), str(build)],
+                       text=True, capture_output=True, timeout=600)
+    try:
+        result = json.loads(p.stdout)
+    except json.JSONDecodeError:
+        result = {}
+    if p.returncode or result.get('status') != 'coherent' or result.get('diagnostics') != 0 or not result.get('verifierMatched'):
+        raise ValueError('source/build parity preflight failed; rebuild dist from this exact source: ' + (p.stdout or p.stderr)[-4000:])
+    return result
+
+def package(build, policy, out, node='node'):
     payload = load_payload(build)
+    inventory_before = declared_inventory(build, payload)
+    for relative in payload['fixtureResourceFiles']:
+        checked_file(build, 'fixtures/' + relative)
+    for relative in payload['policyFiles']:
+        checked_file(policy, 'docs/' + relative)
     if out.exists():
         raise ValueError('output must be a new directory')
+    parity=build_parity(build,node)
     out.mkdir(parents=True)
     root = out / ('architect-brain-' + VERSION)
     root.mkdir()
@@ -77,10 +113,12 @@ def package(build, policy, out):
     # Reuse the source-controlled entry; only the compiled module location differs.
     entry = (build / 'scripts/architect.mjs').read_text()
     old_import = "'../dist/src/portable/cli.js'"
-    if entry.count(old_import) != 1:
+    old_call = 'portableCommand(process.argv.slice(2))'
+    if entry.count(old_import) != 1 or entry.count(old_call) != 1:
         raise ValueError('unexpected CLI entry')
     (root / 'host/bin').mkdir()
-    (root / 'host/bin/architect.mjs').write_text(entry.replace(old_import, "'../src/portable/cli.js'"))
+    (root / 'host/bin/architect.mjs').write_text(entry.replace(old_import, "'../src/portable/cli.js'").replace(
+        old_call, "portableCommand(process.argv.slice(2),{ entrypoint:'distribution' })"))
     for name in ('SETUP.md', 'NEW_SESSION_PROMPT.md', 'READINESS.md', 'verify-distribution.mjs'):
         copy(build / 'portable' / name, root / name)
     for name in payload['policyFiles']:
@@ -106,10 +144,18 @@ def package(build, policy, out):
                             tar.addfile(info, stream)
                     else:
                         tar.addfile(info)
+    revision = hashlib.sha256(json.dumps(inventory, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if inventory != inventory_before or revision != parity.get('sourceRevision'):
+        raise ValueError('parity preflight and packaged source inventory describe different source revisions')
     (root / 'SOURCE_INVENTORY.json').write_text(json.dumps({
         'version': VERSION,
-        'sourceRevision': hashlib.sha256(json.dumps(inventory, sort_keys=True, separators=(',', ':')).encode()).hexdigest(),
+        'sourceRevision': revision,
         'files': inventory
+    }, indent=2, sort_keys=True) + '\n')
+    (root / 'BUILD_IDENTITY.json').write_text(json.dumps({
+        'schemaVersion': 'architect-build-identity/1', 'version': VERSION, 'sourceRevision': revision,
+        'buildParity': {key: parity[key] for key in ('status', 'compiledInputs', 'comparedOutputs', 'diagnostics', 'typescriptVersion')},
+        'assurance': 'Fresh in-memory compile of declared source byte-matched the packaged dist outputs; not a Git commit, publication or native acceptance.'
     }, indent=2, sort_keys=True) + '\n')
     files = [{'path': str(path.relative_to(root)), 'bytes': path.stat().st_size, 'sha256': sha(path)}
              for path in sorted(root.rglob('*')) if path.is_file()]
@@ -128,7 +174,7 @@ def package(build, policy, out):
     result = {'version': VERSION, 'archive': archive.name, 'archiveSha256': sha(archive),
               'archiveBytes': archive.stat().st_size, 'fileCount': len(files),
               'manifestSha256': sha(root / 'MANIFEST.json'),
-              'sourceRevision': json.loads((root / 'SOURCE_INVENTORY.json').read_text())['sourceRevision']}
+              'sourceRevision': revision, 'buildParity': 'coherent'}
     (out / 'artifact.json').write_text(json.dumps(result, indent=2) + '\n')
     return result
 
@@ -138,10 +184,11 @@ if __name__ == '__main__':
     parser.add_argument('--policy-root', type=Path)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--list-payload', action='store_true')
+    parser.add_argument('--node', default='node', help='Node 24 executable for the mandatory read-only parity preflight')
     args = parser.parse_args()
     if args.list_payload:
         print(json.dumps(load_payload(args.build_root.resolve()), indent=2))
     else:
         if args.policy_root is None or args.output is None:
             parser.error('--policy-root and --output are required for packaging')
-        print(json.dumps(package(args.build_root.resolve(), args.policy_root.resolve(), args.output.resolve())))
+        print(json.dumps(package(args.build_root.resolve(), args.policy_root.resolve(), args.output.resolve(), args.node)))

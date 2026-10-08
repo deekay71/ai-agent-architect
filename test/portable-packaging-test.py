@@ -2,6 +2,8 @@
 import importlib.util
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -18,16 +20,15 @@ class PortablePackagingTests(unittest.TestCase):
     def fixture(self, root):
         payload = {
             'format': 'architect-portable-payload/1', 'version': '0.2.0-preview.1',
-            'sourceModules': ['portable/cli'], 'inspectionOnlyModules': [], 'hostCliModule': 'portable/cli',
+            'sourceModules': ['portable/cli', 'portable/identity', 'portable/templates', 'contracts/canonical'],
+            'inspectionOnlyModules': [], 'hostCliModule': 'portable/cli',
             'fixtures': [], 'tests': [], 'fixtureResourceFiles': [], 'policyFiles': [],
             'unityPackageFiles': ['package.json']
         }
         files = {
             'portable/PAYLOAD.json': json.dumps(payload),
             'src/portable/cli.ts': 'export const fixture = true;',
-            'dist/src/portable/cli.js': 'export const fixture = true;',
-            'dist/src/portable/cli.d.ts': 'export declare const fixture: boolean;',
-            'scripts/architect.mjs': "import { portableCommand } from '../dist/src/portable/cli.js';\n",
+            'scripts/architect.mjs': (ROOT / 'scripts/architect.mjs').read_text(),
             'node_modules/zod/package.json': '{"version":"4.1.12"}',
             'node_modules/zod/LICENSE': 'Synthetic offline dependency fixture.',
             'unity/packages/com.architect.brain-unity/package.json': '{"version":"0.2.0-preview.1"}'
@@ -38,6 +39,24 @@ class PortablePackagingTests(unittest.TestCase):
             path = root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(content)
+        # Real compiler and self-checked verifier infrastructure, not a preflight stub.
+        for relative in ('src/portable/identity.ts', 'src/portable/templates.ts', 'src/contracts/canonical.ts',
+                         'scripts/verify-portable-identity.mjs'):
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / relative, target)
+        (root / 'package.json').write_text('{"type":"module"}')
+        (root / 'tsconfig.json').write_text(json.dumps({
+            'compilerOptions': {'target':'ES2023', 'module':'NodeNext', 'moduleResolution':'NodeNext',
+                                'strict':True, 'declaration':True, 'sourceMap':True, 'rootDir':'.', 'outDir':'dist', 'skipLibCheck':True},
+            'include':['src/**/*.ts']
+        }))
+        for name in ('typescript', '@types'):
+            (root / 'node_modules' / name).symlink_to((ROOT / 'node_modules' / name).resolve(), target_is_directory=True)
+        node = shutil.which('node')
+        build = subprocess.run([node, str(root / 'node_modules/typescript/bin/tsc'), '-p', str(root / 'tsconfig.json')],
+                               text=True, capture_output=True, timeout=120)
+        self.assertEqual(build.returncode, 0, build.stdout + build.stderr)
         return payload
 
     def test_unlisted_proposal_and_compiled_noise_are_excluded(self):
@@ -54,7 +73,8 @@ class PortablePackagingTests(unittest.TestCase):
                 inventory = json.loads(archive.read('architect-brain-0.2.0-preview.1/SOURCE_INVENTORY.json'))
                 self.assertEqual(set(inventory['files']), {
                     'src/portable/cli.ts', 'portable/PAYLOAD.json', 'scripts/architect.mjs',
-                    'unity/packages/com.architect.brain-unity/package.json'
+                    'unity/packages/com.architect.brain-unity/package.json',
+                    'src/portable/identity.ts', 'src/portable/templates.ts', 'src/contracts/canonical.ts'
                 })
 
     def test_equal_bytes_in_different_output_directories_produce_equal_archives(self):

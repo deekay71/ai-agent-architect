@@ -17,6 +17,7 @@
     "memory/types",
     "portable/brain",
     "portable/cli",
+    "portable/identity",
     "portable/index",
     "portable/project",
     "portable/templates",
