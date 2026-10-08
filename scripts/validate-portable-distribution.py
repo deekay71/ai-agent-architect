@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+"""Independent archive/extraction comparison against actual source/build plus fresh CLI fixture."""
+import argparse,hashlib,json,stat,subprocess,tarfile,zipfile
+from pathlib import Path
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def run(node,args,cwd=None):
+    p=subprocess.run([str(node),*map(str,args)],cwd=cwd,text=True,capture_output=True,timeout=30)
+    if p.returncode:raise AssertionError(p.stderr[-4000:])
+    return json.loads(p.stdout)
+
+def validate(archive,build,output,node):
+    if output.exists():raise ValueError('validation output must be new')
+    output.mkdir(parents=True)
+    with zipfile.ZipFile(archive) as z:
+        names=z.namelist();assert len(names)==len(set(names));assert z.testzip() is None
+        roots=set()
+        for info in z.infolist():
+            p=Path(info.filename);assert not p.is_absolute() and '..' not in p.parts
+            assert not stat.S_ISLNK(info.external_attr>>16);roots.add(p.parts[0])
+        assert len(roots)==1;z.extractall(output/'extracted')
+    root=output/'extracted'/next(iter(roots));manifest=json.loads((root/'MANIFEST.json').read_text())
+    expected={x['path'] for x in manifest['files']}|{'MANIFEST.json'}
+    actual={str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()};assert actual==expected
+    for item in manifest['files']:
+        p=root/item['path'];assert p.stat().st_size==item['bytes'] and sha(p)==item['sha256']
+    payload=json.loads((build/'portable/PAYLOAD.json').read_text())
+    inventory=json.loads((root/'SOURCE_INVENTORY.json').read_text())
+    declared={'src/'+module+'.ts' for module in payload['sourceModules']}
+    declared|={'fixtures/'+name+'.ts' for name in payload['fixtures']}
+    declared|={'test/'+name+'.test.ts' for name in payload['tests']}
+    declared|={'unity/packages/com.architect.brain-unity/'+name for name in payload['unityPackageFiles']}
+    declared|={'portable/PAYLOAD.json','scripts/architect.mjs'}
+    assert set(inventory['files'])==declared
+    for relative,content_hash in inventory['files'].items():assert sha(build/relative)==content_hash
+    assert inventory['sourceRevision']==hashlib.sha256(json.dumps(inventory['files'],sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    expected_host={'host/src/'+module+extension for module in payload['sourceModules'] if module not in payload['inspectionOnlyModules'] for extension in ('.js','.d.ts')}
+    assert {path for path in actual if path.startswith('host/src/')}==expected_host
+    comparisons=0
+    mappings=[('source',''),('host/src','dist/src'),('host/fixtures','dist/fixtures'),('host/test','dist/test'),('unity-package/com.architect.brain-unity','unity/packages/com.architect.brain-unity')]
+    for target,origin in mappings:
+        for p in (root/target).rglob('*'):
+            if p.is_file():
+                relative=p.relative_to(root/target)
+                if target=='host/fixtures' and relative.parts[0]=='skill-catalog':other=build/'fixtures'/relative
+                else:other=build/origin/relative
+                assert p.read_bytes()==other.read_bytes(),str(relative);comparisons+=1
+    with tarfile.open(root/'unity-adapter-0.2.0-preview.1.tgz') as t:
+        files=[m for m in t.getmembers() if m.isfile()];assert len({m.name for m in files})==len(files)
+        for m in files:
+            assert not m.issym() and '..' not in Path(m.name).parts
+            assert t.extractfile(m).read()==(root/'unity-package/com.architect.brain-unity'/Path(m.name).relative_to('package')).read_bytes();comparisons+=1
+    asmdef=json.loads((root/'unity-package/com.architect.brain-unity/Editor/Architect.Brain.Unity.Editor.asmdef').read_text())
+    assert asmdef['includePlatforms']==['Editor']
+    guid_lines=[]
+    for p in (root/'unity-package').rglob('*.meta'):
+        guid_lines += [line for line in p.read_text().splitlines() if line.startswith('guid: ')]
+    assert len(guid_lines)==len(set(guid_lines))
+    verified=run(node,[root/'verify-distribution.mjs'])
+    fixture=output/'fresh-project';fixture.mkdir()
+    for name in ('Assets','Packages','ProjectSettings'): (fixture/name).mkdir()
+    preserved={'Assets/original.txt':'untouched source','Packages/manifest.json':'{"dependencies":{}}','ProjectSettings/ProjectVersion.txt':'m_EditorVersion: 6000.0.84f1\n','AGENTS.md':'Existing project instructions.\n','.agents/skills/existing/SKILL.md':'Existing local skill.\n'}
+    for rel,text in preserved.items():p=fixture/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
+    before={rel:sha(fixture/rel) for rel in preserved}
+    cli=root/'host/bin/architect.mjs'
+    boot=run(node,[cli,'bootstrap','--project',fixture]);repeat=run(node,[cli,'bootstrap','--project',fixture]);assert not repeat['created']
+    assert before=={rel:sha(fixture/rel) for rel in preserved};assert not (fixture/'.architect/data').exists()
+    starter=(fixture/'.architect/SESSION_START.md').read_text();assert '<distribution>/host/bin/architect.mjs' in starter
+    status=run(node,[cli,'status','--project',fixture]);assert status['mcpBinding']=='not-verified-by-this-command' and status['modelExecution']=='disabled'
+    assert not (fixture/'.architect/data').exists()
+    empty=run(node,[cli,'resume','--project',fixture]);assert empty['state']=='empty'
+    (fixture/'.architect/plans/fixture-evidence.md').write_text('Offline compile fixture passed; Android build was not run.')
+    one=run(node,[root/'host/fixtures/portable-session.js','one',fixture]);two=run(node,[root/'host/fixtures/portable-session.js','two',fixture])
+    assert one['pid']!=two['pid'] and two['contextStatus']=='ready' and one['claimId'] in two['resourceRefs'] and not two['executionAuthorized']
+    # Verify a deliberate corruption is rejected without modifying the reviewed artifact.
+    target=root/'unity-package/com.architect.brain-unity/Editor/BrainObservation.cs';original=target.read_bytes();target.write_bytes(original+b'\n// controlled-corruption\n')
+    corrupt=subprocess.run([str(node),str(root/'verify-distribution.mjs')],text=True,capture_output=True,timeout=10);assert corrupt.returncode!=0 and 'BrainObservation.cs' in corrupt.stderr
+    target.write_bytes(original);run(node,[root/'verify-distribution.mjs'])
+    result={'version':manifest['version'],'archiveSha256':sha(archive),'manifestSha256':sha(root/'MANIFEST.json'),'extractedFiles':len(actual),'directSourceBuildComparisons':comparisons,
+      'inventoryConsistent':True,'tgzPayloadCompared':True,'freshBootstrapPreservedFiles':len(before),'bootstrapCreated':len(boot['created']),'repeatCreated':0,
+      'freshSessionPids':[one['pid'],two['pid']],'knowledgeContextStatus':two['contextStatus'],'corruptionRejected':True,'unityInvoked':False,'modelsInvoked':False,
+      'extractedRoot':str(root),'newProjectFixture':str(fixture),'assurance':'offline-extraction-and-synthetic-continuity; not native acceptance'}
+    (output/'validation.json').write_text(json.dumps(result,indent=2)+'\n');return result
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--archive',type=Path,required=True);p.add_argument('--build-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--node',type=Path,required=True)
+    a=p.parse_args();print(json.dumps(validate(a.archive.resolve(),a.build_root.resolve(),a.output.resolve(),a.node.resolve())))

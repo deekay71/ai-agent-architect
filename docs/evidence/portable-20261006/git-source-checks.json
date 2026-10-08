@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "architect-git-source-checks/2",
+  "scope": "combined 40-path portable foundations plus accepted durability source preparation outside Git; no native acceptance",
+  "baseCommit": "bcb2ea8128b1835704b506509fe0cc2d5d9845df",
+  "baseVerification": "cached origin/main; current remote read failed",
+  "gitCommit": "not-created",
+  "typeScriptBuild": "pass",
+  "nodeVersion": "24.19.0",
+  "typescriptVersion": "5.9.3",
+  "combinedSourceTests": {
+    "files": 11,
+    "tests": 190,
+    "pass": 190,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "packagingRegressionChecks": {
+    "tests": 5,
+    "pass": 5,
+    "fail": 0
+  },
+  "sourceControlledCliSmoke": {
+    "sourceControlledCli": "pass",
+    "bootstrapCreated": 12,
+    "repeatCreated": 0,
+    "preservedExistingFiles": 5,
+    "statusDoesNotCreateData": true,
+    "resumeState": "empty",
+    "gitStarterSupported": true,
+    "mcpBinding": "not-verified-by-this-command",
+    "modelExecution": "disabled",
+    "unityInvoked": false,
+    "modelsInvoked": false
+  },
+  "acceptedSourcePostimagesVerified": {
+    "fixtures/portable-session.ts": true,
+    "src/portable/brain.ts": true,
+    "test/portable-durability.test.ts": true
+  },
+  "acceptedCompiledPostimagesMatchOriginalBuild": {
+    "files": 9,
+    "allMatch": true
+  },
+  "acceptedAggregatePatchSha256": "1e5ac3d0095f419fcc61947005bead4d858512f816df00ae52c7c97102b433a6",
+  "independentR1Probes": "15/15 on original application; not rerun here",
+  "fullDurabilityMatrix": "26/26 in preceding isolated acceptance; not rerun here",
+  "historicalArchiveReports": "apply only to original archive, not combined source or future release",
+  "independentReviewOfCombined40PathDelivery": "not-run",
+  "releaseArchiveFromFinalCleanCommit": "pending; no production archive built",
+  "originalRepoSourceOrGitMutation": false,
+  "claudeF11F14CandidateTouched": false,
+  "unityInvoked": false,
+  "modelsInvoked": false
+}

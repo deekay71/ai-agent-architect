@@ -1,3 +1,7 @@
+**Accepted offline durability repair:** [Exact source, application evidence and remaining limits](docs/portable-durability-20261008.md). Existing archives remain unchanged; no native/whole-platform acceptance or Claude F11/F14 candidate is included.
+
+**Portable Brain 0.2.0-preview.1 — Git source preparation.** [Git setup, prompt, readiness and scoped evidence](docs/portable-distribution-20261006.md). Queens testing is paused; native Unity acceptance and M1/T22 gates remain pending.
+
 # AI Agent Architect
 
 R3 hiện cập nhật documentation và planning data contracts/schema tests. Scope này không thêm planning engine, model campaign hoặc Unity run; Unity preflight trước đó vẫn là evidence lịch sử. Schema tests chỉ kiểm cấu trúc/invariant, không chứng minh module admission thật, semantic acceptance hay checklist evidence thực. Phase 3 đã được owner **accepted, conditional closure**; đây không phải production PASS. Chính sách hiện hành chỉ nằm ở [policy](docs/brain-planning-policy.md) và [decision log](docs/decision-log.md).

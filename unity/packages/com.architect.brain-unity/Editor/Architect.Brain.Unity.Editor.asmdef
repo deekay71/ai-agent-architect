@@ -1,0 +1,8 @@
+{
+  "name": "Architect.Brain.Unity.Editor",
+  "rootNamespace": "Architect.Brain.Unity",
+  "references": [],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true,
+  "allowUnsafeCode": false
+}

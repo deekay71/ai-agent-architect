@@ -1,0 +1,89 @@
+{
+  "scope": "Independent readonly final ZIP/TGZ/source-byte/extraction/bootstrap review; no native or whole-platform acceptance",
+  "archiveSha256": "993a82c8454801eee9d3c08bfa3d43b4510374f1fd070672530add8dec0bbf2d",
+  "archiveBytes": 1399491,
+  "integrity": {
+    "archive": "<legacy-artifact>/architect-brain-0.2.0-preview.1.zip",
+    "archiveSha256": "993a82c8454801eee9d3c08bfa3d43b4510374f1fd070672530add8dec0bbf2d",
+    "suppliedHashMatched": true,
+    "archiveBytes": 1399491,
+    "extraction": "<review-extraction>/architect-brain-0.2.0-preview.1",
+    "zipFiles": 804,
+    "independentByteComparisons": {
+      "docs-verifier": 4,
+      "compiled-fixtures": 10,
+      "fixture-resources": 6,
+      "vendor-zod": 656,
+      "compiled-core": 62,
+      "compiled-tests": 7,
+      "source": 44,
+      "unity-package": 8
+    },
+    "tgzSourceFiles": 8,
+    "issues": [],
+    "missingRelativeImports": [],
+    "fixtureSkillCatalogPresent": true
+  },
+  "shippedOfflineTests": {
+    "tests": 104,
+    "pass": 104,
+    "fail": 0
+  },
+  "bootstrap": {
+    "project-a": {
+      "projectId": "8568960d-5785-4bdd-b5d6-dd31495d9389",
+      "created": 12,
+      "repeatCreated": 0,
+      "stableId": true,
+      "preserved": true,
+      "statusCreatedStorage": false,
+      "mcpBinding": "not-verified-by-this-command",
+      "modelExecution": "disabled",
+      "starterPaths": [
+        "host/bin/architect.mjs",
+        "host/bin/architect.mjs"
+      ],
+      "starterStatusWorks": true
+    },
+    "project-b": {
+      "projectId": "dbbd590d-19a0-48f6-b493-b0640c3211bf",
+      "created": 12,
+      "repeatCreated": 0,
+      "stableId": true,
+      "preserved": true,
+      "statusCreatedStorage": false,
+      "mcpBinding": "not-verified-by-this-command",
+      "modelExecution": "disabled",
+      "starterPaths": [
+        "host/bin/architect.mjs",
+        "host/bin/architect.mjs"
+      ],
+      "starterStatusWorks": true
+    },
+    "continuity": {
+      "firstPid": 64895,
+      "secondPid": 64896,
+      "distinctProcess": true,
+      "projectIdMatches": true,
+      "contextStatus": "ready",
+      "state": "resumable",
+      "claimIncluded": true,
+      "androidUnknownPreserved": true,
+      "executionAuthorized": false,
+      "unityInvoked": false,
+      "modelInvoked": false
+    },
+    "isolation": true,
+    "sdk": {
+      "imports": true,
+      "exports": 93,
+      "version": "0.2.0-preview.1"
+    }
+  },
+  "temporaryCorruptionDetected": true,
+  "corruptionErrorNamesExpectedFile": true,
+  "remainingFindings": [],
+  "nativeUnityImportPlay": "NOT RUN; pending",
+  "wholeM1T22": "Pending; not established by offline review",
+  "systemRepoEditorProviderMutations": false
+}

@@ -1,0 +1,9 @@
+{
+  "name": "com.architect.brain-unity",
+  "version": "0.2.0-preview.1",
+  "displayName": "Architect Brain — Unity Observation Adapter",
+  "description": "Explicit Editor observation export for the external project-local Architect Brain. No automatic execution or gameplay code.",
+  "unity": "6000.0",
+  "keywords": ["editor", "agent", "observation"],
+  "author": { "name": "AI Agent Architect" }
+}

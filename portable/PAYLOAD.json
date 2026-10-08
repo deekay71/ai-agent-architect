@@ -1,0 +1,80 @@
+{
+  "format": "architect-portable-payload/1",
+  "version": "0.2.0-preview.1",
+  "sourceModules": [
+    "context/engine",
+    "context/runtime-guard",
+    "context/skills",
+    "contracts/brain-planning",
+    "contracts/canonical",
+    "contracts/credit-usage",
+    "contracts/schemas",
+    "foundation/audit",
+    "foundation/permissions",
+    "foundation/workflow",
+    "memory/index",
+    "memory/store",
+    "memory/types",
+    "portable/brain",
+    "portable/cli",
+    "portable/index",
+    "portable/project",
+    "portable/templates",
+    "portable/unity-session",
+    "providers/types",
+    "runtime/cli",
+    "runtime/evaluation",
+    "runtime/isolation",
+    "runtime/lock",
+    "runtime/models",
+    "runtime/runner",
+    "runtime/store",
+    "runtime/tool-worker",
+    "runtime/verifier-worker",
+    "runtime/workspace",
+    "skills/catalog"
+  ],
+  "inspectionOnlyModules": [
+    "runtime/cli"
+  ],
+  "hostCliModule": "portable/cli",
+  "fixtures": [
+    "contracts",
+    "brain-planning",
+    "portable-session",
+    "runtime-crash-child",
+    "runtime-authority"
+  ],
+  "tests": [
+    "portable",
+    "context",
+    "context-memory",
+    "context-skills",
+    "memory",
+    "brain-planning-contracts",
+    "runtime-recovery",
+    "portable-durability"
+  ],
+  "fixtureResourceFiles": [
+    "skill-catalog/README.md",
+    "skill-catalog/catalog.json",
+    "skill-catalog/catalog.pin.json",
+    "skill-catalog/local-review/descriptor.json",
+    "skill-catalog/local-review/recipe.md",
+    "skill-catalog/local-review/reference.md"
+  ],
+  "policyFiles": [
+    "brain-planning-policy.md",
+    "model-routing.json"
+  ],
+  "unityPackageFiles": [
+    "Editor.meta",
+    "Editor/Architect.Brain.Unity.Editor.asmdef",
+    "Editor/Architect.Brain.Unity.Editor.asmdef.meta",
+    "Editor/BrainObservation.cs",
+    "Editor/BrainObservation.cs.meta",
+    "README.md",
+    "README.md.meta",
+    "package.json"
+  ]
+}

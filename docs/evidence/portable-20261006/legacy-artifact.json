@@ -1,0 +1,9 @@
+{
+  "version": "0.2.0-preview.1",
+  "archive": "architect-brain-0.2.0-preview.1.zip",
+  "archiveSha256": "993a82c8454801eee9d3c08bfa3d43b4510374f1fd070672530add8dec0bbf2d",
+  "archiveBytes": 1399491,
+  "fileCount": 803,
+  "manifestSha256": "311d27ce017bd8c2b5f64d5426e878375d33d6eecfff0f0fdae973dc81ac145c",
+  "sourceRevision": "c7258fb761f1f6185f41f998a00e45d0118feb7e5c33ae5f7c999ac3488b044e"
+}

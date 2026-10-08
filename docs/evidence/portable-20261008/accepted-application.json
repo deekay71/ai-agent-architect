@@ -1,0 +1,66 @@
+{
+  "completed_at": "2026-10-08T03:36:13.766122+00:00",
+  "verdict": "accepted offline batch applied and verified; no whole Architect/native acceptance",
+  "original_repo": "<original-repository>",
+  "patch_applied": true,
+  "patch_sha256": "1e5ac3d0095f419fcc61947005bead4d858512f816df00ae52c7c97102b433a6",
+  "applied_postimages": {
+    "fixtures/portable-session.ts": "bceae9da041d04de48b34c380fb6f1e218ffcb5ec739b6842873c7cecc7af0d7",
+    "src/portable/brain.ts": "590b77f61fc816e234048f8a13ca3f5ee5ac6e89fbe31bb717262bef6bc507c5",
+    "test/portable-durability.test.ts": "7901c4d6b9a5c9bee12c3da912b9542912724751432ae61aa6f4a81322723c1b"
+  },
+  "unrelated_original_files_unchanged": 926,
+  "original_dependencies_unchanged": 910,
+  "head_unchanged": true,
+  "head": "2f9295a6f20438297815306b48c1c04d49a0b8f1",
+  "branch": "main",
+  "index_unchanged": true,
+  "index_sha256": "b2f492acd4c28b9bac191950501f06b12a6139dd5a9b7d7d98e0b4426d9ee934",
+  "dirty_status_before_sha256": "d52a089d8a2609b473ae76cc1c3c7e9481eec166a8462bb84440f3bd72f8c7b3",
+  "dirty_status_after_sha256": "6775b17b95a2cf2e16f840f1d50d39e9b21e849d2ab80a51ddc65df93f02a5e2",
+  "tracked_dirty": 10,
+  "untracked": 82,
+  "only_new_nonignored_path": "test/portable-durability.test.ts",
+  "backups": "<application-evidence>/backups",
+  "build": "pass",
+  "node": "v24.19.0",
+  "regression_tests": {
+    "files": 11,
+    "tests": 190,
+    "pass": 190,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "post_application_independent_r1_probes": {
+    "cases": 15,
+    "pass": 15,
+    "fail": 0
+  },
+  "portable_cli_export_probe": "pass; fresh processes, healthy repeat/resume and corrupt record retry fail-closed",
+  "built_output_equivalence": {
+    "compared_at": "2026-10-08T03:33:23.762979+00:00",
+    "accepted_build_files": 507,
+    "mismatches": [],
+    "extra_original_outputs_preserved": [
+      ".DS_Store",
+      "test/reader-request-contract.test.d.ts"
+    ]
+  },
+  "generated_dist_changes": {
+    "before_count": 467,
+    "after_count": 509,
+    "added": 42,
+    "removed": 0,
+    "modified": 5,
+    "unchanged_count": 462
+  },
+  "source_changes": 3,
+  "release_bundle_updated": false,
+  "commit_or_push": false,
+  "unity_invoked": false,
+  "live_models_invoked": false,
+  "denied_capabilities": [],
+  "evidence_scope": "Original accepted three-file application only; combined Git delivery checked separately",
+  "aggregate_patch_is_git_commit": false
+}

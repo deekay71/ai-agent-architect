@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "architect-portable-validation/1",
+  "version": "0.2.0-preview.1",
+  "archiveSha256": "993a82c8454801eee9d3c08bfa3d43b4510374f1fd070672530add8dec0bbf2d",
+  "archiveBytes": 1399491,
+  "manifestSha256": "311d27ce017bd8c2b5f64d5426e878375d33d6eecfff0f0fdae973dc81ac145c",
+  "sourceRevision": "c7258fb761f1f6185f41f998a00e45d0118feb7e5c33ae5f7c999ac3488b044e",
+  "typeScriptBuild": "pass",
+  "focusedSourceChecks": {
+    "pass": 104,
+    "fail": 0
+  },
+  "actualExtractedChecks": {
+    "pass": 104,
+    "fail": 0
+  },
+  "existingRecoverySourceChecks": {
+    "pass": 10,
+    "fail": 0
+  },
+  "actualExtractedRecoveryChecks": {
+    "pass": 10,
+    "fail": 0
+  },
+  "csharpSDKCompile": {
+    "mode": "standalone-sdk-compile",
+    "unityVersion": "6000.0.84f1",
+    "exitCode": 0,
+    "unityEditorStarted": false,
+    "unityImported": false,
+    "warningsOrErrors": "Compilation succeeded - 2 warning(s)\n<source-build>/unity/packages/com.architect.brain-unity/Editor/BrainObservation.cs(14,75): warning CS0649: Field `Architect.Brain.Unity.BrainObservation.ProjectConfig.schemaVersion' is never assigned to, and will always have its default value `null'\n<source-build>/unity/packages/com.architect.brain-unity/Editor/BrainObservation.cs(14,104): warning CS0649: Field `Architect.Brain.Unity.BrainObservation.ProjectConfig.projectId' is never assigned to, and will always have its default value `null'",
+    "referenceCount": 132,
+    "sourceHash": "d8385561b33f504ffe846974c4ce6bc1eb0393879feba62fdaad94c04993e2dc"
+  },
+  "archiveAndBootstrap": {
+    "version": "0.2.0-preview.1",
+    "archiveSha256": "993a82c8454801eee9d3c08bfa3d43b4510374f1fd070672530add8dec0bbf2d",
+    "manifestSha256": "311d27ce017bd8c2b5f64d5426e878375d33d6eecfff0f0fdae973dc81ac145c",
+    "extractedFiles": 804,
+    "directSourceBuildComparisons": 145,
+    "inventoryConsistent": true,
+    "tgzPayloadCompared": true,
+    "freshBootstrapPreservedFiles": 5,
+    "bootstrapCreated": 12,
+    "repeatCreated": 0,
+    "freshSessionPids": [
+      64603,
+      64605
+    ],
+    "knowledgeContextStatus": "ready",
+    "corruptionRejected": true,
+    "unityInvoked": false,
+    "modelsInvoked": false,
+    "extractedRoot": "<legacy-validation>/extracted/architect-brain-0.2.0-preview.1",
+    "newProjectFixture": "<legacy-validation>/fresh-project",
+    "assurance": "offline-extraction-and-synthetic-continuity; not native acceptance"
+  },
+  "nativeUnityImport": "not-run",
+  "nativeUnityPlay": "not-run",
+  "liveMCPBinding": "blocked-tools-not-exposed",
+  "modelCalls": 0,
+  "milestones": {
+    "R7": "FIRST/COLD scoped PASS retained",
+    "fullM1a": "not-accepted",
+    "M1b": "offline synthetic two-process continuity; native/model two-task acceptance pending",
+    "M1c": "mechanical fixture recovery PASS; native approved fault/recovery pending",
+    "M1d_F1_F2_F9": "not-accepted/not-activated",
+    "T22": "comparison/owner decision not waived",
+    "R11": "not-activated"
+  },
+  "limits": [
+    "SDK compile is not Unity import/compile/menu execution.",
+    "Plan Ready records are evidence-linked data, not semantic or execution approval.",
+    "Canonical mechanical runtime still uses HOME-dependent lock paths; no F9 activation.",
+    "Fixture crash checkpoints are prepared/after-worker/before-commit; native during-verify acceptance is pending.",
+    "Full historical suite and its environmental failures are not regraded by targeted checks."
+  ],
+  "queensStatus": "owner paused testing;21 native domain tests passed and UI render observed earlier;input/win/reset acceptance unverified;no Queens or Pet access in this portable task",
+  "independentFreshSessionReview": {
+    "result": "pass-no-remaining-findings",
+    "report": "REVIEW.json",
+    "actualExtractedChecks": {
+      "pass": 104,
+      "fail": 0
+    },
+    "directComparisons": 797
+  }
+}

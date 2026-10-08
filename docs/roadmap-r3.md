@@ -1,3 +1,13 @@
+## Accepted offline durability repair — application evidence 20261008
+
+[Exact accepted source and evidence](portable-durability-20261008.md): canonical revalidation, persisted/hydrated plan artifacts, verified handoff/resume and corrupt retry handling. Original application passed 190/190 regressions and 15/15 independent R1 probes. Combined Git-source preparation is a separate check; existing archives remain unchanged. No F11/F14 candidate or native/whole M1/T22 acceptance is included.
+
+## Portable Brain preview and Queens pause — 06/10/2026
+
+Owner paused Queens tests and requested a portable Brain for a fresh Unity project/new session. The original `0.2.0-preview.1` archive packaged existing Context/Memory/decision provenance, planning/evaluation/runtime foundations plus project-local bootstrap/context/plan/handoff and Editor-only UPM observation adapter. Historical archive evidence: 104/104 targeted checks + 104/104 actual-extracted checks, 10/10 mechanical recovery checks from each, and standalone 6000.0.84f1 SDK compilation PASS. Actual ZIP/TGZ/source comparison, fresh bootstrap, distinct-process Knowledge resume and corruption rejection verified; these are offline scopes.
+
+Unity import/Play and live Assistant Unity MCP binding remain pending (tools unavailable in delegated session); no CLI fallback/model/R11 activation. R7 scoped FIRST/COLD PASS retained; full M1a/M1b/M1c/M1d/F1/F2/F9/T22 are not passed or waived. Queens native domain 21 PASS/UI render existed before pause; input/win/reset remains unverified and is not resumed. Existing dirty work and R7/R11 evidence preserved. Git is the primary source; portable-only commit excludes the unrelated lock proposal and binary output. [Historical evidence, Git setup/prompt and readiness](portable-distribution-20261006.md).
+
 # Roadmap R3 — 30/09/2026
 
 [Brain planning policy](brain-planning-policy.md) và [decision log](decision-log.md) là nguồn quyết định authoritative. Roadmap này áp dụng các quyết định đó. Phase 3 đã được owner **accepted, conditional closure**; đây không phải production PASS. Lượt hiện tại chỉ cập nhật documentation/contracts/schema tests, không có model run.
