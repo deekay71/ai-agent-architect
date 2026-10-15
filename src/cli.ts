@@ -15,7 +15,7 @@ import { memoryCommand } from './explorer/cli.js';
 import { runV1RegradeCli } from './evaluation/v1-regrade-cli.js';
 import { runUnityCli } from './unity/cli.js';
 import { runEvaluationCli } from './evaluation/cli.js';
-import { portableCommand } from './portable/cli.js';
+import { portableCommand, PORTABLE_COMMANDS } from './portable/cli.js';
 import { identityReport } from './portable/identity.js';
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url));
@@ -69,7 +69,7 @@ async function main(args: string[]): Promise<void> {
       'semantic-codex-run <dataset> <config.json> <new-output-directory> --live',
       'semantic-codex-review-export <campaign> <new-review-directory>',
       'semantic-codex-review-import <campaign> <decisions.json> <new-reviewed-file>',
-      'identity', 'portable help', 'portable <bootstrap|status|resume|ingest|knowledge|plan|handoff|context> --project <unity-project-root> [arguments]'],
+      'identity', 'portable help', `portable <${PORTABLE_COMMANDS.join('|')}> --project <unity-project-root> [arguments]`],
       scope: 'Foundation, local mechanical runtime and Memory/Context inspector; no production/model/Unity authorization',
       portable: 'Project-local Brain data commands delegated to portableCommand; executionAuthorized:false, no Unity/MCP/model invocation',
       identity: 'Read-only working-tree source/build/frozen-release identity; parity needs scripts/verify-portable-identity.mjs' });

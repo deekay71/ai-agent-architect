@@ -7,9 +7,10 @@
   "engines": { "node": ">=24.0.0 <25" },
   "packageManager": "pnpm@11.19.0",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/write-build-identity.mjs",
     "brain": "node scripts/architect.mjs",
     "test": "node --test dist/test/*.test.js",
+    "test:stage1-plan": "node --test dist/test/stage1-plan.test.js",
     "check": "pnpm run build && pnpm run test",
     "demo": "node dist/src/cli.js demo",
     "schemas": "node dist/src/cli.js schemas"

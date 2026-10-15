@@ -43,6 +43,14 @@ export interface PromotionEvidence {
   attestationRef: string;
 }
 export interface ReviewInput { reviewRef: string; decision: 'approve' | 'reject'; reason: string }
+/**
+ * Recorded promotion trail of one claim, as stored. Every actor is a local principal string checked inside one process;
+ * the trail labels who recorded what, it does not authenticate a person or prove independent review.
+ */
+export interface ClaimAssurance {
+  roleModel: 'local-single-process-roles'; reviewRef: string | null; reviewedBy: string | null; reviewReason: string | null; approvedBy: string | null;
+  evidence: { evidenceId: string; recordedBy: string; attestationRef: string; conclusion: PromotionEvidence['conclusion'] }[];
+}
 export interface Proposal {
   delta: MemoryDelta; namespace: MemoryNamespace; digest: string; proposedBy: string;
   sourceBindings: { claimId: string; sources: SourceBinding[] }[];

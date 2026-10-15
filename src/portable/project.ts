@@ -6,7 +6,7 @@ import { digest } from '../contracts/canonical.js';
 import { ProjectProfileSchema, SkillDescriptorSchema, type ProjectProfile } from '../contracts/schemas.js';
 import { isSafeRelativePath } from '../foundation/permissions.js';
 import { resourceDigest, type CatalogManifest } from '../skills/catalog.js';
-import { brainSkill, unitySkill, planTemplates, RELEASE_VERSION, sessionStart } from './templates.js';
+import { brainSkill, unitySkill, planTemplates, PREVIOUS_SKILL_DIGESTS, RELEASE_VERSION, sessionStart } from './templates.js';
 
 export const projectConfigSchema = z.strictObject({ schemaVersion: z.literal('architect-project/1'),
   distributionVersion: z.literal(RELEASE_VERSION), projectId: z.string().uuid(), branchId: z.string().min(1), lineageId: z.string().uuid(),
@@ -63,6 +63,32 @@ export function detectProject(root: string, repoId: string): ProjectProfile {
   // Installed packages do not establish the active render/UI/input settings; these stay unknown.
   for (const k of ['editorVersion','operatingSystem','buildTarget','packageLockDigest','renderPipeline','uiSystem','inputSystem'] as const) if (profile[k] === null) profile.unknowns.push(k);
   return ProjectProfileSchema.parse(profile);
+}
+
+export type SkillState = 'current' | 'outdated-template' | 'catalog-mismatch' | 'drift' | 'missing';
+export interface SkillCheck { state: SkillState; skills: { skillId: string; path: string; digest: string | null; state: SkillState }[] }
+const skillBodies = { 'architect-brain': brainSkill, 'architect-unity-execution': unitySkill } as const;
+/**
+ * Compares installed SKILL.md bytes with bodies shipped by this or earlier reviewed builds, an anchor the project cannot
+ * rewrite; recomputing the project catalog or project.json digests does not make a modified body current. A released body
+ * that the project's own descriptor does not pin (for example a hand-copied newer template) is `catalog-mismatch`: context
+ * refuses it until the catalog is regenerated. Read-only.
+ */
+export function checkSkills(root: string): SkillCheck {
+  const rank: Record<SkillState,number> = { current:0,'outdated-template':1,'catalog-mismatch':2,missing:3,drift:4 };
+  const skills = (Object.keys(skillBodies) as (keyof typeof skillBodies)[]).map(skillId => {
+    const rel = `.agents/skills/${skillId}/SKILL.md`; let digest: string | null = null, pinned: string | null = null;
+    try { digest = resourceDigest(readProjectFile(root,rel)); } catch { /* Missing or unsafe stays null. */ }
+    try {
+      const descriptor = JSON.parse(readProjectFile(root,`.architect/skills/${skillId}.json`)) as { resources?: { path?: unknown; contentHash?: unknown }[] };
+      const pin = descriptor.resources?.find(r => r.path === rel)?.contentHash; pinned = typeof pin === 'string' ? pin : null;
+    } catch { /* No readable descriptor pins nothing. */ }
+    const released = digest !== null && (digest === resourceDigest(skillBodies[skillId]) || PREVIOUS_SKILL_DIGESTS[skillId].includes(digest));
+    const state: SkillState = digest === null ? 'missing' : !released ? 'drift' : pinned !== digest ? 'catalog-mismatch' :
+      digest === resourceDigest(skillBodies[skillId]) ? 'current' : 'outdated-template';
+    return { skillId,path:rel,digest,state };
+  });
+  return { state:skills.reduce<SkillState>((worst,s) => rank[s.state] > rank[worst] ? s.state : worst,'current'),skills };
 }
 
 export function bootstrapProject(input: string): { root: string; config: ProjectConfig; created: string[]; profile: ProjectProfile } {

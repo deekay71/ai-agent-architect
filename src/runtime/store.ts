@@ -17,8 +17,8 @@ export class RuntimeStore {
     catch (e) { if (!(e instanceof Error && 'code' in e && e.code === 'ENOENT')) throw e; }
     this.db = new DatabaseSync(file);
     chmodSync(file, 0o600);
-    this.db.exec(`PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA foreign_keys=ON;
-      PRAGMA busy_timeout=3000;
+    // busy_timeout first: switching to WAL needs a lock, and a concurrent opener must wait for it instead of failing at once.
+    this.db.exec(`PRAGMA busy_timeout=3000; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA foreign_keys=ON;
       CREATE TABLE IF NOT EXISTS metadata(key TEXT PRIMARY KEY, value TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS records(kind TEXT NOT NULL, id TEXT NOT NULL, body TEXT NOT NULL,
         PRIMARY KEY(kind,id));

@@ -20,6 +20,15 @@ node scripts/architect.mjs resume --project <existing-unity-project-root>
 
 `pnpm run brain bootstrap --project <root>` uses the same entry. Verify `git rev-parse HEAD` and the reviewed source diff before bootstrap. Installation requires dependency retrieval unless the pinned dependencies are already present; an archive may instead provide an offline compiled host.
 
+Without pnpm (dependencies already present in `node_modules`), build with Node 24 directly:
+
+```sh
+node node_modules/typescript/bin/tsc -p tsconfig.json
+node scripts/write-build-identity.mjs
+```
+
+`write-build-identity.mjs` runs the same fresh in-memory parity check as `verify-portable-identity.mjs` and only then records `dist/BUILD_IDENTITY.json`. Before every command, `scripts/architect.mjs` re-hashes the source inventory and the packaged `dist` outputs against that record and refuses with `PORTABLE_DIST_STALE` when either changed (for example a source edit without a rebuild). A missing record or a Node major other than 24 is reported on stderr. A `tsc`-only rebuild also needs `node scripts/write-build-identity.mjs` afterwards; `PORTABLE_DIST_STALE` says whether the source or the dist changed and prints that command. `ARCHITECT_ALLOW_UNVERIFIED_DIST=1` runs a mismatched dist anyway and says so on stderr. Archives are unaffected: they carry their own validated `BUILD_IDENTITY.json`.
+
 Choose the project explicitly. Read its instructions and existing foundation before any integration. Bootstrap preserves its gameplay source, package manifest, settings and unrelated skills; it does not authorize framework replacement or invent a game design. Project-local `.architect` identities/stores/observations/handoffs are working data; do not add them to the Architect source commit or transplant them between projects.
 
 For the adapter, select `<architect-checkout>/unity/packages/com.architect.brain-unity/package.json` with Package Manager Add package from disk only when the exact import is authorized. Native import/Play is still pending.
@@ -81,6 +90,26 @@ node <distribution>/host/bin/architect.mjs resume --project <root>
 Plan and source/checklist pins, source scope, task identity and dependencies are bound in persisted plan records. Seven-check Ready records are validated as evidence-linked **data**; `recorded_ready` is not semantic acceptance or execution authority. All portable task records retain `executionAuthorized:false` and `executionOutcome:not_started`. Canonical resume reads the durable SQLite store; `SESSION_HANDOFF.json` is a convenience projection. Live native verification/result authority must use the existing trusted caller boundary; the portable wrapper does not bypass it.
 
 For API integrations, import `host/src/portable/index.js`. Existing APIs expose Context windows/guards, Memory source/claim/decision provenance and role-separated propose→evidence→critic→promote, planning/verifier evaluation, skill resolution and the mechanical durable runtime. Candidate text and skill bodies never grant permissions. Synthetic test actor IDs are not authentication. An owner decision requires the existing decision-source/authority path, not a `decisionBy` label alone.
+
+Optional arguments: `resume --project <root> --summary` returns the same checks with plan text and a knowledge index but no source contents (a 15/10 project store: 7 KB instead of 48 KB). `ingest … <source-id> [document|evidence|decision]` records the source type. `plan … <source-node-id,...> [ready-checklist-json]` records a Ready checklist through the CLI; its `plan.digest` must equal the `planDigest` printed by a plan run without the checklist (the error names the expected value). `retire --project <root> <source-id> <reason>` withdraws a file source (deleted, renamed, replaced by a new id or no longer relevant); it cannot be undone, invalidates dependants and stores the reason in Memory. `log --project <root> [limit]` lists the operation journal (ingest, plan, handoff, retire, source drift) with time, process and host; any local writer can append to it, so it records, it does not prove.
+
+Every resume/knowledge/plan output carries `trust:"untrusted-data"` and `instructionAuthority:"none"`. The previous session's next step appears as `handoffNote` with `ownerApproval:false`. Approved claims show `assurance` (local single-process role labels, review and attestation refs); a recorded Ready checklist shows `readinessAttestation:"self-recorded"`. `warnings` never block resume:
+- `skill-drift`, `skill-catalog-mismatch`, `skill-missing`, `skill-outdated-template` compare installed SKILL.md bytes with bodies shipped by reviewed builds and with the project's own catalog. `context` refuses a drifted body even after its project digests were recomputed (`PORTABLE_SKILL_DRIFT`). `skill-outdated-template` is informational: the project keeps the guidance it was bootstrapped with. Do not copy a newer SKILL.md by hand; the project catalog still pins the old body and `context` fails until an upgrade path regenerates it (not provided yet).
+- `task-dropped:<id>` names a task the previous handoff listed and the latest one left out; it clears at the next handoff. `tasksOutsideHandoff` lists every recorded task the latest handoff does not list (finished, abandoned or never handed off); no command closes a task yet.
+
+A text `knowledge` query and the unfiltered listing return at most 100 nodes (sources, approved claims, plans, handoffs); check `truncated`.
+
+## Recovery when resume is blocked
+
+Stores are never edited by hand. Each case leaves history intact:
+
+| Resume shows | Cause | Recovery |
+|---|---|---|
+| `staleSources: [id]` | A pinned file changed (also when a plan step edits a pinned file such as `Packages/manifest.json`) | `ingest` the file under the same source id, `plan` again with the current node IDs, then `handoff`. Reuse the same checklist file only if task and plan text are unchanged and none of its evidenceRefs changed; a checklist citing a superseded node fails with `PORTABLE_DEPENDENCY_UNUSABLE: <node>` — review again and cite current nodes |
+| `PORTABLE_SOURCE_REVISION_NOT_CURRENT` on ingest | The file returned to bytes of an older, already superseded revision | Old trust is never restored: ingest under a new source id, `retire` the old id, `plan` with the new node, `handoff` |
+| `staleSources: [id]` and the file is gone or renamed | Deleted, moved or merged file | `retire <id> "<reason>"`, then `plan` without that node and `handoff` |
+| `issues: source-unreadable:<id>` (knowledge hidden); ingest/knowledge/plan/context/handoff fail with `PORTABLE_SOURCE_UNREADABLE` | A read error other than missing/replaced (permissions, I/O, open-file limit). Unverifiable bytes are never served | Fix the error and run resume again; the source was not invalidated. If the file changed meanwhile it becomes stale. If it cannot be fixed, `retire` it |
+| `issues: plan-…:<task>` after one of the above | The plan's lineage points at an unusable node | `plan` again with current node IDs, then `handoff` |
 
 ## Durable plan continuation
 

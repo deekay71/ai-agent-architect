@@ -1,3 +1,13 @@
+## Test theo khâu và sửa phía không cần Unity Editor trước — 15/10/2026
+
+Owner (sau review kiến trúc 15/10): "có thể triển khai test theo từng khâu là test khâu plan trước, xong rồi theo khâu Unity CLI, Unity Assisstant MCP" và "Tạm thời khắc phục ở phía chưa liên quan đến Unity Editor trước".
+
+Quyết định: thứ tự khâu test là Plan → Unity CLI → Assistant Unity MCP, mỗi khâu có suite, điều kiện vào và evidence riêng ([staged testing](staged-testing-20261015.md)). Khâu 1 (Plan) và các sửa không cần Editor làm trước trên nhánh `fix/brain-stage1-plan` từ 7f0cc80: nhãn trust/assurance, `retire` (lý do lưu trong Memory), nguồn không đọc được thì mọi lệnh dùng nó từ chối nhưng không bị invalidate, cảnh báo task bị handoff bỏ rơi và skill drift (context từ chối body không thuộc bản phát hành nào), `resume --summary`, checklist qua CLI, journal, chờ khóa SQLite khi chạy song song, kiểm dist cũ ở entrypoint, ghi projection atomic.
+
+Queens `.architect` được bootstrap từ 7f0cc80 ngày 14/10; các số đo 15/10 dùng bản sao đọc riêng, Queens thật không bị ghi. Việc tạm dừng Queens giữ nguyên.
+
+Chưa đổi: khâu 2 cần owner chốt phạm vi (bản sao/Editor đóng, pin version CLI) trước; cho tới lúc đó `architect-unity-execution` và Q-C2 vẫn giữ "no CLI fallback". Không tuyên bố M1/T22, Unity import/compile/Play hay isolation.
+
 ## Accepted offline durability repair — application evidence 20261008
 
 [Exact accepted source and evidence](portable-durability-20261008.md): canonical revalidation, persisted/hydrated plan artifacts, verified handoff/resume and corrupt retry handling. Original application passed 190/190 regressions and 15/15 independent R1 probes. Combined Git-source preparation is a separate check; existing archives remain unchanged. No F11/F14 candidate or native/whole M1/T22 acceptance is included.

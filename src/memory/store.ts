@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { canonicalJson, digest } from '../contracts/canonical.js';
 import { parseContract, type Claim, type MemoryDelta, type SourceRecord } from '../contracts/schemas.js';
 import { isSafeRelativePath, isWithinScope, type Principal } from '../foundation/permissions.js';
-import type { DependencyInput, MemoryEdge, MemoryNamespace, MemoryNode, MemoryOptions, MemoryQuery, MemorySnapshot,
+import type { ClaimAssurance, DependencyInput, MemoryEdge, MemoryNamespace, MemoryNode, MemoryOptions, MemoryQuery, MemorySnapshot,
   PromotionEvidence, Proposal, ReviewInput, SourceBinding, SourceInput, SourceProvenance, TransitionInput, ValidationReport } from './types.js';
 
 const text = z.string().min(1).refine(x => x.trim().length > 0);
@@ -62,7 +62,8 @@ export class MemoryStore {
     const file = path.join(this.root, 'memory.db');
     for (const candidate of [file, `${file}-wal`, `${file}-shm`]) if (existsSync(candidate)) { const s = lstatSync(candidate); if (!s.isFile() || s.isSymbolicLink() || s.nlink !== 1) throw new Error('MEMORY_UNSAFE_STORE'); }
     this.db = new DatabaseSync(file); chmodSync(file, 0o600);
-    this.db.exec(`PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=3000;
+    // busy_timeout first: switching to WAL needs a lock, and a concurrent opener must wait for it instead of failing at once.
+    this.db.exec(`PRAGMA busy_timeout=3000; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;
       CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY,value TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS nodes(id TEXT PRIMARY KEY,kind TEXT NOT NULL,ns TEXT NOT NULL,body TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS edges(id TEXT PRIMARY KEY,from_id TEXT NOT NULL,to_id TEXT NOT NULL,body TEXT NOT NULL);
@@ -195,7 +196,8 @@ export class MemoryStore {
         [...new Map(parents.flatMap(p => p.origins).map(o => [o.id + ':' + o.contentDigest, o])).values()];
       const old = this.sourceHead(record.sourceId, n);
       if (old && !fits(old.namespace, n)) throw new Error('MEMORY_SOURCE_SCOPE_CONFLICT');
-      if (old) { old.view.current = false; old.view.status.lifecycle = 'superseded'; this.putNode(old); this.invalidate([old.view.id], 'source-revision-changed'); }
+      // A withdrawn head (revoked/quarantined/deleted) keeps that lifecycle; a new revision never relabels it as merely superseded.
+      if (old) { old.view.current = false; if (!blockedLifecycles.has(old.view.status.lifecycle)) old.view.status.lifecycle = 'superseded'; this.putNode(old); this.invalidate([old.view.id], 'source-revision-changed'); }
       const node: StoredNode = { namespace: n, record, origins, sourceBindings: [], source: { provenance, checkedAt: null }, view: {
         id: nodeId, kind: 'source', label: record.sourceId, content: input.content, sourceRef: record.sourceRef, scope: scopeOf(n), branchId: n.branchId, lineageId: n.lineageId,
         revision: record.sourceRevision, contentDigest: record.contentDigest, recordDigest: digest(record),
@@ -215,6 +217,16 @@ export class MemoryStore {
     return { record: structuredClone(node.record as SourceRecord), content: node.view.content, nodeId: node.view.id };
   }
   getNode(id: string, namespace: MemoryNamespace): MemoryNode | undefined { return this.exportSnapshot(namespace).nodes.find(n => n.id === id); }
+  /** Read-only promotion trail of a claim node; undefined for other kinds or foreign namespaces. Never changes lifecycle. */
+  claimAssurance(nodeId: string, namespace: MemoryNamespace): ClaimAssurance | undefined {
+    const n = this.namespace(namespace), node = this.node(nodeId);
+    if (!node || node.view.kind !== 'claim' || !fits(node.namespace, n)) return undefined;
+    const claim = node.record as Claim, review = claim.reviewRef ? this.read<StoredReview>('review', claim.reviewRef) : undefined;
+    return { roleModel: 'local-single-process-roles', reviewRef: claim.reviewRef ?? null, reviewedBy: review?.report.reviewedBy ?? null,
+      reviewReason: review?.input.reason ?? null, approvedBy: claim.approvedBy ?? null,
+      evidence: claim.promotionEvidenceRefs.flatMap(id => { const e = this.read<StoredEvidence>('evidence', id);
+        return e ? [{ evidenceId: id, recordedBy: e.recordedBy, attestationRef: e.evidence.attestationRef, conclusion: e.evidence.conclusion }] : []; }) };
+  }
   transitionSource(input: { sourceId: string; sourceRevision?: string; namespace: MemoryNamespace; to: 'stale' | 'quarantined' | 'revoked' | 'deleted'; reason: string }, actorId: string): void {
     const n = this.namespace(input.namespace); this.actor(actorId, n, ['memoryPromoter']);
     if (!['stale', 'quarantined', 'revoked', 'deleted'].includes(input.to) || !input.reason.trim()) throw new Error('MEMORY_TRANSITION_INVALID');
@@ -222,6 +234,9 @@ export class MemoryStore {
       const selected = this.nodes().filter(node => node.view.kind === 'source' && namespaceKey(node.namespace) === namespaceKey(n) &&
         (node.record as SourceRecord).sourceId === input.sourceId && (!input.sourceRevision || (node.record as SourceRecord).sourceRevision === input.sourceRevision));
       if (!selected.length || selected.some(node => !fits(node.namespace, n))) throw new Error('MEMORY_SOURCE_MISSING');
+      // The caller's reason is kept canonically beside the transition (repeat calls overwrite the same entry).
+      this.write('source-transition', digest([namespaceKey(n), input.sourceId, input.sourceRevision ?? null, this.memoryVersion, input.to, input.reason.trim()]),
+        { ns: namespaceKey(n), sourceId: input.sourceId, sourceRevision: input.sourceRevision ?? null, to: input.to, reason: input.reason.trim(), actorId, at: this.now() });
       for (const node of selected) {
         const lifecycle = input.to === 'stale' ? node.view.status.lifecycle : input.to;
         node.source!.freshnessOverride = 'stale';
@@ -229,6 +244,14 @@ export class MemoryStore {
         this.invalidate([node.view.id], `source-${input.to}`);
       }
     });
+  }
+  /** Recorded source transitions (stale/quarantine/revoke/delete) with the caller's reason, oldest first. Read-only. */
+  sourceTransitions(sourceId: string, namespace: MemoryNamespace): { sourceId: string; sourceRevision: string | null; to: string; reason: string; actorId: string; at: string }[] {
+    const key = namespaceKey(this.namespace(namespace));
+    return this.db.prepare("SELECT body FROM aux WHERE kind='source-transition'").all()
+      .map(r => JSON.parse(String(r.body)) as { ns: string; sourceId: string; sourceRevision: string | null; to: string; reason: string; actorId: string; at: string })
+      .filter(x => x.ns === key && x.sourceId === sourceId).sort((a, b) => a.at.localeCompare(b.at))
+      .map(({ ns: _ns, ...rest }) => rest);
   }
   deleteSource(sourceId: string, namespace: MemoryNamespace, actorId: string): void { this.transitionSource({ sourceId, namespace, to: 'deleted', reason: 'Explicit source deletion; history retained' }, actorId); }
   /** Local fixture adapter only; no network request or external-source authenticity claim. */
